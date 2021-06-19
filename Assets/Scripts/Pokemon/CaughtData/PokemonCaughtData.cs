@@ -22,9 +22,16 @@ public class PokemonCaughtData
         return damageTaken >= GetCurrentStats().health;
     }
 
-    public void ChangeHealth(int change)
+    public int ChangeHealth(int change)
     {
         damageTaken = Mathf.Clamp(damageTaken - change, 0, GetCurrentStats().health);
+        int maxHealth = GetCurrentStats().health;
+        return maxHealth - damageTaken;
+    }
+    public int GetCurrentHealth()
+    {
+        int maxHealth = GetCurrentStats().health;
+        return Mathf.Clamp(maxHealth - damageTaken, 0, maxHealth);
     }
 
     public PokemonBaseData GetPokemonBaseData()
@@ -60,21 +67,21 @@ public class PokemonCaughtData
         PokemonBaseStats pokemonBaseStats = new PokemonBaseStats();
         int level = GetLevel();
         pokemonBaseStats.health = GetHealthValue(
-            level, pokemonBaseStats.health);
+            level, pokemonBase.baseStats.health);
         pokemonBaseStats.attack = GetStatValue(
-            level, pokemonBaseStats.attack,
+            level, pokemonBase.baseStats.attack,
             natureId.Equals(PokemonNatureId.ruthless));
         pokemonBaseStats.defense = GetStatValue(
-            level, pokemonBaseStats.defense,
+            level, pokemonBase.baseStats.defense,
             natureId.Equals(PokemonNatureId.careful));
         pokemonBaseStats.spAttack = GetStatValue(
-            level, pokemonBaseStats.spAttack,
+            level, pokemonBase.baseStats.spAttack,
             natureId.Equals(PokemonNatureId.cunning));
         pokemonBaseStats.spDefense = GetStatValue(
-            level, pokemonBaseStats.spDefense,
+            level, pokemonBase.baseStats.spDefense,
             natureId.Equals(PokemonNatureId.reserved));
         pokemonBaseStats.speed = GetStatValue(
-            level, pokemonBaseStats.speed,
+            level, pokemonBase.baseStats.speed,
             natureId.Equals(PokemonNatureId.restless));
         return pokemonBaseStats;
     }

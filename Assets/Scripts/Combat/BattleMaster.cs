@@ -9,6 +9,8 @@ public class BattleMaster : MonoBehaviour
     public BattleManager currenBattle;
     public bool triggerBattleOnStart = false;
 
+    public BattleTypeAdvantageManager advantageManager = new BattleTypeAdvantageManager();
+
     private void Awake()
     {
         if (Instance)
@@ -43,5 +45,21 @@ public class BattleMaster : MonoBehaviour
     {
         Debug.Log("Started test battle");
         GetCurrentBattle().StartBattle();
+    }
+
+    public float GetAdvantageMultiplier(PokemonTypeId damageType, List<PokemonTypeId> targetTypes)
+    {
+        float multiplier = 1;
+        foreach(PokemonTypeId targetType in targetTypes)
+        {
+            BattleTypeAdvantageType adv = advantageManager.GetTypeRelation(damageType, targetType);
+            multiplier *= advantageManager.GetAdvantageMultiplier(adv);
+        }
+        return multiplier;
+    }
+
+    public TypeData GetTypeData(PokemonTypeId type)
+    {
+        return advantageManager.GetTypeData(type);
     }
 }

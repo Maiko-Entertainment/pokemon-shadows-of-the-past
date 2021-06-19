@@ -32,27 +32,38 @@ public class BattleManager
         eventManager.AddEvent(new BattleEventEnterPokemon(team1Pokemon));
         eventManager.AddEvent(new BattleEventEnterPokemon(team2Pokemon));
         eventManager.ResolveAllEventTriggers();
-
-        HandleTurnInput();
-        HandleAIInput();
-        HandleDesitions();
+        BattleAnimatorMaster.GetInstance().battleOptionsManager.Show();
     }
 
-    public void HandleTurnInput()
+    public void HandleTurnInput(BattleTurnDesition desition)
     {
-
+        BattleTurnDesition AIDesition = HandleAIInput();
+        if (desition.priority >= AIDesition.priority)
+        {
+            desition.Execute();
+            AIDesition?.Execute();
+        }
+        else
+        {
+            desition.Execute();
+            AIDesition?.Execute();
+        }
+        HandleDesitions();
+        BattleAnimatorMaster.GetInstance().battleOptionsManager.Hide();
     }
 
-    public void HandleAIInput()
+    public BattleTurnDesition HandleAIInput()
     {
         PokemonBattleData team2Pokemon = team2.GetActivePokemon();
         List<MoveEquipped> moves = team2Pokemon.GetPokemonCaughtData().GetAvailableMoves();
         if (moves.Count > 0)
         {
             int randomIndex = Random.Range(0, moves.Count);
-            MoveData move = moves[randomIndex].move;
-            AddMoveEvent(team2Pokemon, move);
+            MoveEquipped move = moves[randomIndex];
+
+            return new BattleTurnDesitionPokemonMove(move, team2Pokemon, BattleTeamId.Team2);
         }
+        return null;
     }
 
     public PokemonBattleData GetTeamActivePokemon(BattleTeamId teamId)
@@ -60,9 +71,19 @@ public class BattleManager
         return teamId == BattleTeamId.Team1 ? team1.GetActivePokemon() : team2.GetActivePokemon();
     }
 
+    public BattleTeamId GetTeamId(PokemonBattleData pokemon)
+    {
+        if (team1.pokemon.Contains(pokemon))
+            return BattleTeamId.Team1;
+        if (team2.pokemon.Contains(pokemon))
+            return BattleTeamId.Team2;
+        return BattleTeamId.None;
+    }
+
     public void HandleDesitions()
     {
         eventManager.ResolveAllEventTriggers();
+        BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
     }
 
     public void AddTrigger(BattleTrigger trigger)
@@ -118,15 +139,22 @@ public class BattleManager
         PokemonBattleData target = GetTarget(attacker, finalEvent.move.targetType);
         MoveData moveUsed = finalEvent.move;
         UseMoveMods moveMods = finalEvent.moveMods;
+        // Target and Pokemon Types
         PokemonTypeId moveTypeId = moveMods.moveTypeId;
-        MoveCategoryId attackAttackCategory = moveUsed.GetAttackCategory();
+        List<PokemonTypeId> targetTypes = target.inBattleTypes;
+        // Categories
+        MoveCategoryId attackerAttackCategory = moveUsed.GetAttackCategory();
         MoveCategoryId targetDefenseCategory = moveUsed.GetAttackCategory();
+        //Stats
         PokemonBattleStats attackerStats = attacker.GetBattleStats();
         PokemonBattleStats targetStats = target.GetBattleStats();
+        // Type Advantages
+        float advantageMultiplier = BattleMaster.GetInstance()
+            .GetAdvantageMultiplier(moveTypeId, targetTypes);
         // Formula Variables
         int attackerLevel = attacker.GetPokemonCaughtData().GetLevel();
         int attack =
-            attackAttackCategory == MoveCategoryId.physical ? 
+            attackerAttackCategory == MoveCategoryId.physical ? 
             attackerStats.attack : attackerStats.spAttack;
         int defense =
             targetDefenseCategory == MoveCategoryId.physical ?
@@ -136,14 +164,31 @@ public class BattleManager
         float stabBonus = attacker.GetTypeIds().Contains(moveTypeId) ? 1.5f : 1f;
         // Final calculations
         float baseDamage = 2 + (2 * attackerLevel + 10) / 250f * attack / defense * movePower;
-        float finalDamage = baseDamage * randomMultiplier * stabBonus;
+        float finalDamage = baseDamage * randomMultiplier * advantageMultiplier * stabBonus;
+        
         DamageSummary damageSummary = new DamageSummary(
             moveTypeId,
             (int) finalDamage,
             DamageSummarySource.Move,
-            (int) moveUsed.moveId
+            (int) moveUsed.moveId,
+            GetSimpleAdvantageTypeFromMult(advantageMultiplier),
+            attacker
             );
         return damageSummary;
+    }
+
+    public BattleTypeAdvantageType GetSimpleAdvantageTypeFromMult(float multiplier)
+    {
+        if (multiplier > 1)
+            return BattleTypeAdvantageType.superEffective;
+        else if (multiplier < 1)
+        {
+            if (multiplier > 0)
+                return BattleTypeAdvantageType.resists;
+            else
+                return BattleTypeAdvantageType.inmune;
+        }
+        return BattleTypeAdvantageType.normal;
     }
 
     public void AddDamageDealtEvent(PokemonBattleData target, DamageSummary summary)
@@ -151,9 +196,9 @@ public class BattleManager
         eventManager.AddEvent(new BattleEventTakeDamage(target, summary));
     }
 
-    public void ApplyDamage(BattleEventTakeDamage damage)
+    public int ApplyDamage(BattleEventTakeDamage damage)
     {
-        damage.pokemon.ChangeHealth(-1 * damage.damageSummary.damageAmount);
+        return damage.pokemon.ChangeHealth(-1 * damage.damageSummary.damageAmount);
     }
 
     // Turn Cycle

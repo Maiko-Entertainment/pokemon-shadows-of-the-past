@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class BattleAnimatorMaster : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class BattleAnimatorMaster : MonoBehaviour
     public Transform background;
     public Transform pokemonTeam1Position;
     public Transform pokemonTeam2Position;
+    public UIBattleOptionsManager battleOptionsManager;
+    public UIBattlePokemonInfoManager battleInfoManager;
+    public Flowchart battleFlowchart;
 
+    public BattleAnimatorManager animatorManager = new BattleAnimatorManager();
     public BattleManager currentBattle;
 
     public void Awake()
@@ -32,6 +37,8 @@ public class BattleAnimatorMaster : MonoBehaviour
         PokemonBattleData team2Pokemon = battleState.GetTeamActivePokemon(BattleTeamId.Team2);
         SetTeamPokemon(team1Pokemon, BattleTeamId.Team1);
         SetTeamPokemon(team2Pokemon, BattleTeamId.Team2);
+        battleOptionsManager?.LoadMoves();
+        battleInfoManager?.UpdateInfo(battleState);
     }
 
     public void SetTeamPokemon(PokemonBattleData pokemon, BattleTeamId teamId)
@@ -65,5 +72,63 @@ public class BattleAnimatorMaster : MonoBehaviour
             pkmnInstance.TriggerBack();
         }
         return pkmnInstance;
+    }
+
+    public void GoToNextBattleAnim(float seconds=0)
+    {
+        StartCoroutine(TriggerNextEvent(seconds));
+    }
+    IEnumerator TriggerNextEvent(float seconds=0)
+    {
+        yield return new WaitForSeconds(seconds);
+        animatorManager.TriggerNextEvent();
+    }
+
+    public void AddEvent(BattleAnimatorEvent newEvent)
+    {
+        animatorManager.AddEvent(newEvent);
+    }
+
+
+    // Must only be used by Anim events when they are executed
+    public void ExecuteMoveFlowchart(BattleEventUseMove moveEvent)
+    {
+        battleFlowchart.StopAllBlocks();
+        battleFlowchart.SetStringVariable("pokemon", moveEvent.pokemon.GetName());
+        battleFlowchart.SetStringVariable("move", moveEvent.move.moveName);
+        battleFlowchart.ExecuteBlock("Move Use");
+    }
+
+    public void ExecuteEffectivenessFlowchart(BattleTypeAdvantageType advantageType)
+    {
+        switch (advantageType)
+        {
+            case BattleTypeAdvantageType.superEffective:
+                battleFlowchart.ExecuteBlock("Super Effective");
+                break;
+            case BattleTypeAdvantageType.resists:
+                battleFlowchart.ExecuteBlock("Resistant");
+                break;
+            case BattleTypeAdvantageType.inmune:
+                battleFlowchart.ExecuteBlock("Inmune");
+                break;
+            default:
+                GoToNextBattleAnim();
+                break;
+        }
+    }
+
+    public float UpdateHealthBar(PokemonBattleData pokemon, int target)
+    {
+        return battleInfoManager.UpdateHealthbar(pokemon, target);
+    }
+
+    public void ShowTurnOptions()
+    {
+        battleOptionsManager.Show();
+    }
+    public void HideTurnOptions()
+    {
+        battleOptionsManager.Hide();
     }
 }

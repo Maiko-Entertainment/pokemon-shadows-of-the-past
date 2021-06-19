@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoveData : ScriptableObject
 {
     public MoveId moveId;
+    public string moveName = "";
     public int power;
     public float hitChance = 1f;
     public bool alwaysHit = false;
@@ -30,7 +31,7 @@ public class MoveData : ScriptableObject
             bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
         }
         HandleStatsChanges(battleEvent.pokemon);
-        
+        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
     }
 
     public virtual void HandleStatsChanges(PokemonBattleData pokemon)

@@ -2,5 +2,6 @@
 public enum PokemonBaseId
 {
     Bulbasaur = 0,
-    Ivysaur = 1
+    Ivysaur = 1,
+    Gastly = 92
 }

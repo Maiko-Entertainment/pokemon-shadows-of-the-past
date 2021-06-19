@@ -22,6 +22,11 @@ public class PokemonBattleData
         ad.Initialize(this);
     }
 
+    public string GetName()
+    {
+        return pokemon.pokemonName;
+    }
+
     public List<PokemonTypeId> GetTypeIds()
     {
         return inBattleTypes;
@@ -37,17 +42,17 @@ public class PokemonBattleData
         return GetPokemonCaughtData().IsFainted();
     }
 
-    public void ChangeHealth(int change)
+    public int ChangeHealth(int change)
     {
-        pokemon.ChangeHealth(change);
+        return pokemon.ChangeHealth(change);
     }
 
     public float GetMainStatMultiplier(int statChangeLevel)
     {
         if (statChangeLevel > 0)
-            return 1 + statChangeLevel * 0.5f;
+            return 1f + statChangeLevel * 0.5f;
         else
-            return 2 / (2 - statChangeLevel);
+            return 2f / (2f - statChangeLevel);
     }
 
     public PokemonBattleStats GetBattleStats()

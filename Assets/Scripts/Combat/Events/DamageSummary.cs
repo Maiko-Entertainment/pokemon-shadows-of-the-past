@@ -10,16 +10,23 @@ public class DamageSummary
     // Used to identify the ID of the source, 
     // for instace moveID, abilityId, StatusID
     public int sourceId;
+    // Optional
+    public BattleTypeAdvantageType advantageType;
+    public PokemonBattleData pokemonSource;
 
     public DamageSummary(
         PokemonTypeId damageType, 
-        int damageAmount, 
+        int damageAmount,
         DamageSummarySource damageSource, 
-        int sourceId)
+        int sourceId,
+        BattleTypeAdvantageType advantageType = BattleTypeAdvantageType.normal,
+        PokemonBattleData pokemonSource=null)
     {
         this.damageType = damageType;
         this.damageAmount = damageAmount;
         this.damageSource = damageSource;
         this.sourceId = sourceId;
+        this.advantageType = advantageType;
+        this.pokemonSource = pokemonSource;
     }
 }

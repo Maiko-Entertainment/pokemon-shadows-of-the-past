@@ -6,5 +6,7 @@ public enum MoveId
 {
     Tackle = 0,
     Growl = 1,
-    PoisonPowder = 2
+    PoisonPowder = 2,
+    Ember = 3,
+    WaterGun = 4
 }
