@@ -8,5 +8,6 @@ public enum MoveId
     Growl = 1,
     PoisonPowder = 2,
     Ember = 3,
-    WaterGun = 4
+    WaterGun = 4,
+    WillOWisp = 5
 }

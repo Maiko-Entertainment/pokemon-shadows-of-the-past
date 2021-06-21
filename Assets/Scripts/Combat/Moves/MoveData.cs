@@ -30,7 +30,9 @@ public class MoveData : ScriptableObject
             PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
             bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
         }
+        bm.AddMoveSuccessEvent(battleEvent);
         HandleStatsChanges(battleEvent.pokemon);
+        HandleStatusAdds(battleEvent.pokemon);
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
     }
 
@@ -44,6 +46,20 @@ public class MoveData : ScriptableObject
             if (random < msc.changeChance)
             {
                 bm.AddStatChangeEvent(pokemonTarget, msc.statsAmountChange);
+            }
+        }
+    }
+
+    public virtual void HandleStatusAdds(PokemonBattleData pokemon)
+    {
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        foreach (MoveStatusChance msc in statusChances)
+        {
+            PokemonBattleData pokemonTarget = bm.GetTarget(pokemon, msc.targetType);
+            float random = Random.value;
+            if (random < msc.chance)
+            {
+                bm.AddStatusEffectEvent(pokemonTarget,msc.effectId);
             }
         }
     }

@@ -12,10 +12,13 @@ public class BattleAnimatorMaster : MonoBehaviour
     public Transform pokemonTeam2Position;
     public UIBattleOptionsManager battleOptionsManager;
     public UIBattlePokemonInfoManager battleInfoManager;
+    public UIBattlePokemonPickerManager battlePokemonPickerManager;
     public Flowchart battleFlowchart;
 
     public BattleAnimatorManager animatorManager = new BattleAnimatorManager();
     public BattleManager currentBattle;
+
+    public List<StatusEffectData> statusEffectData = new List<StatusEffectData>();
 
     public void Awake()
     {
@@ -89,6 +92,16 @@ public class BattleAnimatorMaster : MonoBehaviour
         animatorManager.AddEvent(newEvent);
     }
 
+    public void AddEventInmuneTextEvent()
+    {
+        animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Inmune"
+            ))
+        );
+    }
+
 
     // Must only be used by Anim events when they are executed
     public void ExecuteMoveFlowchart(BattleEventUseMove moveEvent)
@@ -123,6 +136,19 @@ public class BattleAnimatorMaster : MonoBehaviour
         return battleInfoManager.UpdateHealthbar(pokemon, target);
     }
 
+    public void UpdatePokemonStatus(PokemonBattleData pokemon, StatusEffectId id)
+    {
+        foreach(StatusEffectData se in statusEffectData)
+        {
+            if (se.statusId == id)
+            {
+                battleInfoManager.UpdateStatus(pokemon, se);
+                return;
+            }
+        }
+        
+    }
+
     public void ShowTurnOptions()
     {
         battleOptionsManager.Show();
@@ -130,5 +156,15 @@ public class BattleAnimatorMaster : MonoBehaviour
     public void HideTurnOptions()
     {
         battleOptionsManager.Hide();
+    }
+
+    public void ShowPokemonSelection()
+    {
+        battlePokemonPickerManager.ShowPokemonPicker();
+    }
+    public void ClosePokemonSelection()
+    {
+        battlePokemonPickerManager.ClosePokemonPicker();
+        GoToNextBattleAnim(0.2f);
     }
 }

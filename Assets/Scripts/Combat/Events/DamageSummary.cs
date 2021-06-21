@@ -29,4 +29,9 @@ public class DamageSummary
         this.advantageType = advantageType;
         this.pokemonSource = pokemonSource;
     }
+
+    public override string ToString()
+    {
+        return damageType + " - " + damageAmount + " - " + damageSource + " - " + sourceId;
+    }
 }

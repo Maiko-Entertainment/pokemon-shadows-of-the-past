@@ -13,14 +13,19 @@ MonoBehaviour:
   m_Name: PoisonPowder
   m_EditorClassIdentifier: 
   moveId: 2
+  moveName: Poison Powder
   power: 0
   hitChance: 1
-  uses: 35
+  alwaysHit: 0
+  uses: 25
   typeId: 16
   categoryId: 2
+  targetType: 0
   statusChances:
-  - effectId: 0
+  - effectId: 1
     targetType: 0
-    chance: 0.75
+    chance: 1
   moveStatChanges: []
+  isContact: 0
+  drainsDamage: 0
   description: 'The user scatters a cloud of poisonous dust that poisons the target. '

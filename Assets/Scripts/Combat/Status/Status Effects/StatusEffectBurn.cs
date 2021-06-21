@@ -1,0 +1,51 @@
+﻿using Fungus;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StatusEffectBurn : StatusEffect
+{
+    public float porcentualDamage = 0.0625f;
+    public StatusEffectBurn(PokemonBattleData pokemon, Flowchart message): base(pokemon, message)
+    {
+        effectId = StatusEffectId.Burn;
+        isPrimary = true;
+        minTurns = 99999;
+    }
+
+    public override void Initiate()
+    {
+        BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
+                    pokemon,
+                    new DamageSummary(
+                        PokemonTypeId.Undefined,
+                        (int)(pokemon.GetPokemonHealth() * porcentualDamage),
+                        DamageSummarySource.Status,
+                        (int)effectId
+                    )
+                );
+        BattleTrigger messageTrigger = new BattleTriggerOnPokemonTurnEndMessage(
+                    pokemon,
+                    new BattleTriggerMessageData(
+                        message,
+                        "Burn Damage",
+                        new Dictionary<string, string>()
+                        {
+                            { "pokemon", pokemon.GetName() }
+                        }
+                    )
+                );
+        // Needs trigger to reduce physical attack damage
+        battleTriggers.Add(messageTrigger);
+        battleTriggers.Add(statusTrigger);
+        BattleMaster.GetInstance()?
+            .GetCurrentBattle()?.AddTrigger(
+                messageTrigger
+            );
+        BattleMaster.GetInstance()?
+            .GetCurrentBattle()?.AddTrigger(
+                statusTrigger
+            );
+        base.Initiate();
+    }
+}

@@ -28,4 +28,18 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
             return team2Health.UpdateTarget(target);
         }
     }
+
+    public void UpdateStatus(PokemonBattleData pokemon, StatusEffectData status)
+    {
+        BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();
+        BattleTeamId team = battleState.GetTeamId(pokemon);
+        if (team == BattleTeamId.Team1)
+        {
+            team1Health.UpdateStatus(status);
+        }
+        else
+        {
+            team2Health.UpdateStatus(status);
+        }
+    }
 }

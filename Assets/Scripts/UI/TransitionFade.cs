@@ -9,7 +9,7 @@ public class TransitionFade : MonoBehaviour
 
     private CanvasGroup canvasGroup;
 
-    void Start()
+    void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         if (!canvasGroup)
@@ -19,6 +19,8 @@ public class TransitionFade : MonoBehaviour
     public void FadeIn()
     {
         fading = true;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
         speed = Mathf.Abs(speed);
     }
 
@@ -26,12 +28,15 @@ public class TransitionFade : MonoBehaviour
     {
         fading = true;
         speed = -1 * Mathf.Abs(speed);
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
     }
 
     public void Hide()
     {
         fading = false;
         canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
     }
 
     void Update()

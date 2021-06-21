@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using Fungus;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleMaster : MonoBehaviour
 {
     public static BattleMaster Instance { get; set; }
+    public Flowchart battleFlowchart;
 
     public BattleManager currenBattle;
     public bool triggerBattleOnStart = false;
@@ -61,5 +63,10 @@ public class BattleMaster : MonoBehaviour
     public TypeData GetTypeData(PokemonTypeId type)
     {
         return advantageManager.GetTypeData(type);
+    }
+
+    public Flowchart GetBattleFlowchart()
+    {
+        return battleFlowchart;
     }
 }

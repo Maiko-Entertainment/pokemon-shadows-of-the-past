@@ -7,7 +7,19 @@ public class BattleTeamData
     // Handles status that affect the whole team such as lightscreen
     public List<Status> teamStatus = new List<Status>();
 
+    private PokemonBattleData activePokemon;
+
+    public void InitiateTeam()
+    {
+        SetActivePokemon(GetFirstAvailabelPokemon());
+    }
+
     public PokemonBattleData GetActivePokemon()
+    {
+        return activePokemon;
+    }
+
+    public PokemonBattleData GetFirstAvailabelPokemon()
     {
         foreach (PokemonBattleData p in pokemon)
         {
@@ -15,5 +27,11 @@ public class BattleTeamData
                 return p;
         }
         return null;
+    }
+
+    public void SetActivePokemon(PokemonBattleData pokemon)
+    {
+        activePokemon = pokemon;
+        pokemon.Initiate();
     }
 }

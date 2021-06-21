@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class UIBattleHealthbar : MonoBehaviour
 {
     public TextMeshProUGUI pokemonName;
     public Image currentBar;
+    public Image statusSimbol;
     public TextMeshProUGUI currenthealth;
     public float changeSpeed = 0.2f;
     public Color healthyColor;
@@ -50,6 +52,17 @@ public class UIBattleHealthbar : MonoBehaviour
         {
             currenthealth.text = "" + (int)value + "/" + maxHealth;
         }
+    }
+
+    public void UpdateStatus(StatusEffectData status)
+    {
+        if (status)
+        {
+            statusSimbol.enabled = true;
+            statusSimbol.sprite = status.icon;
+            return;
+        }
+        statusSimbol.enabled = false;
     }
 
     private void Update()

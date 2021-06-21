@@ -68,6 +68,16 @@ public class PokemonBattleData
         return finalStats;
     }
 
+    public int GetPokemonHealth()
+    {
+        return pokemon.GetCurrentStats().health;
+    }
+
+    public int GetPokemonCurrentHealth()
+    {
+        return pokemon.GetCurrentHealth();
+    }
+
     public void ChangeStatsLevel(PokemonBattleStats statsChange)
     {
         statsLevel.attack = Mathf.Clamp(statsLevel.attack + statsChange.attack, -minMaxStatLevelChange, minMaxStatLevelChange);
@@ -84,4 +94,19 @@ public class PokemonBattleData
     {
         return statsLevel;
     }
+
+    public void AddStatusEffect(StatusEffect status)
+    {
+        statusEffects.Add(status);
+        status.Initiate();
+    }
+
+    public bool AlreadyHasPrimaryStatus()
+    {
+        foreach (StatusEffect status in statusEffects)
+            if (status.isPrimary)
+                return true;
+        return false;
+    }
+
 }

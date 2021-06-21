@@ -8,7 +8,8 @@ public class UIBattleMove : MonoBehaviour
 {
     public TextMeshProUGUI moveName;
     public TextMeshProUGUI usesLeft;
-    public Image typingImage;
+    public Image typingImageBackground;
+    public Image typingIcon;
     //public TextMeshProUGUI usesTotal;
 
     private MoveEquipped move;
@@ -20,8 +21,10 @@ public class UIBattleMove : MonoBehaviour
         this.pokemon = pokemon;
 
         moveName.text = move.move.moveName;
-        usesLeft.text = "" + (move.move.uses - move.timesUsed);
-        typingImage.color = BattleMaster.GetInstance().GetTypeData(move.move.typeId).color;
+        usesLeft.text = (move.move.uses - move.timesUsed) + "/" + move.move.uses;
+        TypeData type = BattleMaster.GetInstance().GetTypeData(move.move.typeId);
+        typingImageBackground.color = type.color;
+        typingIcon.sprite = type.icon;
         // usesLeft.text = "" + move.move.uses;
     }
 

@@ -76,6 +76,10 @@ public class BattleEventManager
                     BattleTriggerOnPokemonFaint btpf = (BattleTriggerOnPokemonFaint)bt;
                     keepGoing = btpf.Execute((BattleEventPokemonFaint)next);
                     break;
+                case BattleEventId.roundEnd:
+                    BattleTriggerOnPokemonRoundEnd btpte = (BattleTriggerOnPokemonRoundEnd)bt;
+                    keepGoing = btpte.Execute((BattleEventRoundEnd)next);
+                    break;
             }
             if (!keepGoing)
             {

@@ -7,6 +7,7 @@ public class PokemonBaseData : ScriptableObject
 {
     public PokemonBaseId pokemonId;
     public string species;
+    public Sprite icon;
     public PokemonBaseStats baseStats;
     public List<PokemonTypeId> types;
     public List<PokemonBaseAbility> abilities;

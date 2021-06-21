@@ -1,7 +1,8 @@
 ﻿[System.Serializable]
 public enum PokemonBaseId
 {
-    Bulbasaur = 0,
-    Ivysaur = 1,
+    Bulbasaur = 1,
+    Ivysaur = 2,
+    Charmander = 4,
     Gastly = 92
 }

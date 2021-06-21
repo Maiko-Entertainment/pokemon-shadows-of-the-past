@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Fungus;
+using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
 public class BattleManager
@@ -21,16 +22,13 @@ public class BattleManager
     public void StartBattle()
     {
         eventManager = new BattleEventManager();
+        team1.InitiateTeam();
+        team2.InitiateTeam();
 
-        PokemonBattleData team1Pokemon = team1.GetActivePokemon();
-        PokemonBattleData team2Pokemon = team2.GetActivePokemon();
-
-        team1Pokemon.Initiate();
-        team2Pokemon.Initiate();
         BattleAnimatorMaster.GetInstance().LoadBattle(this);
+        AddPokemonEnterEvent(team1.GetActivePokemon());
+        AddPokemonEnterEvent(team2.GetActivePokemon());
 
-        eventManager.AddEvent(new BattleEventEnterPokemon(team1Pokemon));
-        eventManager.AddEvent(new BattleEventEnterPokemon(team2Pokemon));
         eventManager.ResolveAllEventTriggers();
         BattleAnimatorMaster.GetInstance().battleOptionsManager.Show();
     }
@@ -38,6 +36,7 @@ public class BattleManager
     public void HandleTurnInput(BattleTurnDesition desition)
     {
         BattleTurnDesition AIDesition = HandleAIInput();
+        HandleRoundEnd();
         if (desition.priority >= AIDesition.priority)
         {
             desition.Execute();
@@ -50,6 +49,11 @@ public class BattleManager
         }
         HandleDesitions();
         BattleAnimatorMaster.GetInstance().battleOptionsManager.Hide();
+    }
+
+    public void HandleRoundEnd()
+    {
+        eventManager.AddEvent(new BattleEventRoundEnd());
     }
 
     public BattleTurnDesition HandleAIInput()
@@ -71,6 +75,20 @@ public class BattleManager
         return teamId == BattleTeamId.Team1 ? team1.GetActivePokemon() : team2.GetActivePokemon();
     }
 
+    public void SetTeamActivePokemon(PokemonBattleData pokemon, BattleTeamId teamId)
+    {
+        if (teamId == BattleTeamId.Team1)
+        {
+            team1.SetActivePokemon(pokemon);
+        }
+        else
+        {
+            team2.SetActivePokemon(pokemon);
+        }
+        AddPokemonEnterEvent(pokemon);
+        BattleAnimatorMaster.GetInstance().LoadBattle(this);
+    }
+
     public BattleTeamId GetTeamId(PokemonBattleData pokemon)
     {
         if (team1.pokemon.Contains(pokemon))
@@ -84,6 +102,16 @@ public class BattleManager
     {
         eventManager.ResolveAllEventTriggers();
         BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
+        CheckForFainted();
+    }
+
+    public void CheckForFainted()
+    {
+        PokemonBattleData pokemon = GetTeamActivePokemon(BattleTeamId.Team1);
+        if (pokemon.IsFainted())
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPickPokemon());
+        }
     }
 
     public void AddTrigger(BattleTrigger trigger)
@@ -101,9 +129,19 @@ public class BattleManager
         eventManager.AddEvent(new BattleEventUseMove(user, move));
     }
 
+    public void AddMoveSuccessEvent(BattleEventUseMove battleEvent)
+    {
+        eventManager.AddEvent(new BattleEventUseMoveSuccess(battleEvent));
+    }
+
     public void AddStatChangeEvent(PokemonBattleData target, PokemonBattleStats statLevelChange)
     {
         eventManager.AddEvent(new BattleEventPokemonChangeStat(target, statLevelChange));
+    }
+
+    public void AddStatusEffectEvent(PokemonBattleData target, StatusEffectId statusId)
+    {
+        eventManager.AddEvent(new BattleEventPokemonStatusAdd(target, statusId));
     }
 
     public void AddPokemonEnterEvent(PokemonBattleData target)
@@ -199,6 +237,43 @@ public class BattleManager
     public int ApplyDamage(BattleEventTakeDamage damage)
     {
         return damage.pokemon.ChangeHealth(-1 * damage.damageSummary.damageAmount);
+    }
+
+    public void AddStatusEffect(BattleEventPokemonStatusAdd battleEvent)
+    {
+        PokemonBattleData pokemon = battleEvent.pokemon;
+        StatusEffectId statusId = battleEvent.statusId;
+        Flowchart battleFlowchart = BattleMaster.GetInstance().GetBattleFlowchart();
+        StatusEffect status = new StatusEffect(pokemon, battleFlowchart);
+        bool typePreventsStatus = false;
+        bool alreadyHasPrimaryStatus = pokemon.AlreadyHasPrimaryStatus();
+
+        switch (statusId)
+        {
+            case StatusEffectId.Poison:
+                status = new StatusEffectPoison(pokemon, battleFlowchart);
+                typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Poison);
+                break;
+            case StatusEffectId.Burn:
+                status = new StatusEffectBurn(pokemon, battleFlowchart);
+                typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
+                break;
+        }
+        if (status.isPrimary && alreadyHasPrimaryStatus) 
+        {
+            // Cant add status due to type message
+            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+        }
+        else if (typePreventsStatus)
+        {
+            // Display cant add message
+            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+        }
+        else
+        {
+            pokemon.AddStatusEffect(status);
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon, statusId));
+        }
     }
 
     // Turn Cycle

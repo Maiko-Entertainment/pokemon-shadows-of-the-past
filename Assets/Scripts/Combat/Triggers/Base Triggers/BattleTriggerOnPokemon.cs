@@ -18,6 +18,6 @@ public class BattleTriggerOnPokemon : BattleTrigger
 
     public override string ToString()
     {
-        return base.ToString() + " - " + pokemon.pokemon.pokemonName;
+        return ""+pokemon.pokemon.pokemonName;
     }
 }

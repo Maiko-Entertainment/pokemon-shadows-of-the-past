@@ -7,9 +7,4 @@ public class BattleTrigger
     {
         return true;
     }
-
-    public override string ToString()
-    {
-        return eventId.ToString();
-    }
 }

@@ -26,4 +26,9 @@ public class BattleTriggerOnPokemonEnterChangeStats : BattleTriggerOnPokemonEnte
         }
         return base.Execute(battleEvent);
     }
+
+    public override string ToString()
+    {
+        return base.ToString() + " - ChangeStats - "+ target;
+    }
 }
