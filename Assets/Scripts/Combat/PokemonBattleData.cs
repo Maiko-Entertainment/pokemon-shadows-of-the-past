@@ -109,4 +109,17 @@ public class PokemonBattleData
         return false;
     }
 
+    public StatusEffect GetCurrentPrimaryStatus()
+    {
+        foreach (StatusEffect status in statusEffects)
+            if (status.isPrimary)
+                return status;
+        return null;
+    }
+
+    public List<MoveEquipped> GetMoves()
+    {
+        return pokemon.moves;
+    }
+
 }

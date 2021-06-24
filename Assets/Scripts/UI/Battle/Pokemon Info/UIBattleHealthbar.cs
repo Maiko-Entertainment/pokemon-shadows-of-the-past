@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIBattleHealthbar : MonoBehaviour
 {
     public TextMeshProUGUI pokemonName;
+    public TextMeshProUGUI pokemonLevel;
     public Image currentBar;
     public Image statusSimbol;
     public TextMeshProUGUI currenthealth;
@@ -25,8 +26,13 @@ public class UIBattleHealthbar : MonoBehaviour
         PokemonCaughtData pkmn = pokemon.GetPokemonCaughtData();
         currentValue = pkmn.GetCurrentHealth();
         maxHealth = pkmn.GetCurrentStats().health;
-        UpdateHealth(pokemon, currentValue);
+        pokemonName.text = pkmn.pokemonName;
+        pokemonLevel.text = "Lv. " + pkmn.GetLevel();
+        UpdateHealth(currentValue);
         UpdateTarget(currentValue);
+        StatusEffect currenStatus = pokemon.GetCurrentPrimaryStatus();
+        StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
+        UpdateStatus(status);
     }
 
     public float UpdateTarget(float target)
@@ -36,11 +42,9 @@ public class UIBattleHealthbar : MonoBehaviour
         return time;
     }
 
-    public void UpdateHealth(PokemonBattleData pokemon, float value)
+    public void UpdateHealth(float value)
     {
-        PokemonCaughtData pkmn = pokemon.GetPokemonCaughtData();
-        
-        pokemonName.text = pkmn.pokemonName;
+        currentValue = value;
         currentBar.fillAmount = value / maxHealth;
         if (currentBar.fillAmount > 0.5f)
             currentBar.color = healthyColor;
@@ -72,7 +76,7 @@ public class UIBattleHealthbar : MonoBehaviour
             currentValue = Mathf.MoveTowards(
                 currentValue, targetHealth,
                 GetChangeSpeed() * Time.deltaTime);
-            UpdateHealth(pokemon, currentValue);
+            UpdateHealth(currentValue);
         }
     }
 

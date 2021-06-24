@@ -10,6 +10,8 @@ public class UIBattleOptionsPokemon : MonoBehaviour
     public TextMeshProUGUI pokemonName;
     public Image healthbar;
     public TextMeshProUGUI healthValue;
+    public TransitionFade selectedArrow;
+    public Color faintedColor;
 
     private PokemonBattleData pokemon;
 
@@ -18,17 +20,44 @@ public class UIBattleOptionsPokemon : MonoBehaviour
         this.pokemon = pokemon;
         pokemonIcon.sprite = pokemon.GetPokemonCaughtData().GetPokemonBaseData().icon;
         pokemonName.text = pokemon.GetName();
+        pokemonName.color = pokemon.IsFainted() ? faintedColor : Color.white;
         float maxHealth = pokemon.GetPokemonHealth();
         float currentHealth = pokemon.GetPokemonCurrentHealth();
         healthbar.fillAmount = currentHealth / maxHealth;
         healthValue.text = currentHealth + "/"+ maxHealth;
     }
 
+    public void UpdateSelected(PokemonBattleData pkmn)
+    {
+        if (this.pokemon == pkmn)
+            selectedArrow?.FadeIn();
+        else
+            selectedArrow?.FadeOut();
+    }
+
     public void OnClick()
     {
         if (!pokemon.IsFainted()){
-            BattleMaster.GetInstance()?.GetCurrentBattle()?.SetTeamActivePokemon(pokemon, BattleTeamId.Team1);
-            BattleAnimatorMaster.GetInstance()?.ClosePokemonSelection();
+            BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+            PokemonBattleData activePokemon = bm.GetTeamActivePokemon(BattleTeamId.Team1);
+            if (activePokemon.IsFainted())
+            {
+                bm.AddSwitchInPokemonEvent(pokemon);
+            }
+            else
+            {
+                bm.HandleTurnInput(
+                    new BattleTurnDesitionPokemonSwitch(
+                        pokemon,
+                        BattleTeamId.Team1
+                    ));
+            }
+            BattleAnimatorMaster.GetInstance()?.HideOptions();
         }
+    }
+
+    public void ShowPreview()
+    {
+        BattleAnimatorMaster.GetInstance()?.ShowPokemonSelectionData(pokemon);
     }
 }

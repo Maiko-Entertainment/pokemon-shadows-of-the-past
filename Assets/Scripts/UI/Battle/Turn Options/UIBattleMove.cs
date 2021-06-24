@@ -10,12 +10,13 @@ public class UIBattleMove : MonoBehaviour
     public TextMeshProUGUI usesLeft;
     public Image typingImageBackground;
     public Image typingIcon;
+    public bool seeOnly;
     //public TextMeshProUGUI usesTotal;
 
     private MoveEquipped move;
     private PokemonBattleData pokemon;
 
-    public void Load(MoveEquipped move, PokemonBattleData pokemon)
+    public UIBattleMove Load(MoveEquipped move, PokemonBattleData pokemon)
     {
         this.move = move;
         this.pokemon = pokemon;
@@ -26,19 +27,22 @@ public class UIBattleMove : MonoBehaviour
         typingImageBackground.color = type.color;
         typingIcon.sprite = type.icon;
         // usesLeft.text = "" + move.move.uses;
+        return this;
     }
 
     public void UseMove()
     {
-        // TO DO
-        BattleMaster.GetInstance()
-            ?.GetCurrentBattle()
-            ?.HandleTurnInput(
-                new BattleTurnDesitionPokemonMove(
-                    move, 
-                    pokemon, 
-                    BattleTeamId.Team1
-                    )
-                );
+        if (!seeOnly)
+        {
+            BattleMaster.GetInstance()
+                ?.GetCurrentBattle()
+                ?.HandleTurnInput(
+                    new BattleTurnDesitionPokemonMove(
+                        move, 
+                        pokemon, 
+                        BattleTeamId.Team1
+                        )
+                    );
+        }
     }
 }

@@ -27,7 +27,7 @@ public class BattleEventManager
     public void AddEvent(BattleEvent battleEvent)
     {
         Debug.Log("Stacked Event - "+ battleEvent.ToString());
-        eventsPile.Insert(0, battleEvent);
+        eventsPile.Insert(0,battleEvent);
     }
 
     public BattleEvent GetNextEvent()

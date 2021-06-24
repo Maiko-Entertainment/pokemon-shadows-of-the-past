@@ -7,6 +7,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     public UIBattleMove movePrefab;
 
     public TransitionFade container;
+    public TransitionFade movesSelector;
     public Transform moveList;
 
     public void LoadMoves()
@@ -28,6 +29,17 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         foreach (Transform moves in moveList)
             Destroy(moves.gameObject);
+    }
+
+    public void ShowMoveSelector()
+    {
+        LoadMoves();
+        BattleAnimatorMaster.GetInstance()?.HideOptions();
+        movesSelector.FadeIn();
+    }
+    public void HideMoveSelector()
+    {
+        movesSelector.FadeOut();
     }
 
     public void Hide()

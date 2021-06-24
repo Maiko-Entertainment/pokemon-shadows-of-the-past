@@ -15,6 +15,25 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
         team2Health.Load(team2Pokemon);
     }
 
+    public void UpdatePokemonData(PokemonBattleData pokemon, int health, StatusEffectData status)
+    {
+        BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();
+        BattleTeamId team = battleState.GetTeamId(pokemon);
+        if (team == BattleTeamId.Team1)
+        {
+            team1Health.Load(pokemon);
+            team1Health.UpdateTarget(health);
+            team1Health.UpdateHealth(health);
+        }
+        else
+        {
+            team2Health.Load(pokemon);
+            team2Health.UpdateTarget(health);
+            team2Health.UpdateHealth(health);
+        }
+        UpdateStatus(pokemon, status);
+    }
+
     public float UpdateHealthbar(PokemonBattleData pokemon, int target)
     {
         BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();

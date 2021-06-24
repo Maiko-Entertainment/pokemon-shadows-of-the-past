@@ -11,6 +11,7 @@ public class BattleAnimatorEventTakeDamage: BattleAnimatorEvent
     {
         this.battleEvent = battleEvent;
         this.targetHealth = targetHealth;
+        eventType = BattleAnimatorEventType.PokemonInfoChange;
     }
 
     public override void Execute()
@@ -19,5 +20,8 @@ public class BattleAnimatorEventTakeDamage: BattleAnimatorEvent
         base.Execute();
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(time);
     }
-
+    public override string ToString()
+    {
+       return "Damage - " + battleEvent.damageSummary.ToString(); ;
+    }
 }

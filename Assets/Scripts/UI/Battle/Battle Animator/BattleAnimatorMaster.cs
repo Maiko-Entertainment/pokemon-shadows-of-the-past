@@ -36,12 +36,8 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public void LoadBattle(BattleManager battleState)
     {
-        PokemonBattleData team1Pokemon = battleState.GetTeamActivePokemon(BattleTeamId.Team1);
-        PokemonBattleData team2Pokemon = battleState.GetTeamActivePokemon(BattleTeamId.Team2);
-        SetTeamPokemon(team1Pokemon, BattleTeamId.Team1);
-        SetTeamPokemon(team2Pokemon, BattleTeamId.Team2);
         battleOptionsManager?.LoadMoves();
-        battleInfoManager?.UpdateInfo(battleState);
+        //battleInfoManager?.UpdateInfo(battleState);
     }
 
     public void SetTeamPokemon(PokemonBattleData pokemon, BattleTeamId teamId)
@@ -64,6 +60,11 @@ public class BattleAnimatorMaster : MonoBehaviour
         InstantiatePokemonAnim(pokemon, teamId);
     }
 
+    public void LoadPokemonsInfo(PokemonBattleData pokemon, int health, StatusEffect status)
+    {
+        battleInfoManager.UpdatePokemonData(pokemon, health, GetStatusEffectData(status!=null ? status.effectId : StatusEffectId.None));
+    }
+
     public PokemonAnimationController InstantiatePokemonAnim(PokemonBattleData pokemon, BattleTeamId teamId)
     {
         PokemonAnimationController pkmnInstance = Instantiate(
@@ -74,7 +75,13 @@ public class BattleAnimatorMaster : MonoBehaviour
         {
             pkmnInstance.TriggerBack();
         }
+
         return pkmnInstance;
+    }
+
+    public void UpdatePokemonHealthbarInfo(PokemonBattleData pokemon)
+    {
+
     }
 
     public void GoToNextBattleAnim(float seconds=0)
@@ -98,6 +105,28 @@ public class BattleAnimatorMaster : MonoBehaviour
             new BattleTriggerMessageData(
                 battleFlowchart,
                 "Inmune"
+            ))
+        );
+    }
+
+    public void AddEventPokemonFaintText(PokemonBattleData pokemon)
+    {
+        animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Faint",
+                new Dictionary<string, string>() { { "pokemon", pokemon .GetName() } }
+            ))
+        );
+    }
+
+    public void AddEventBattleFlowcartPokemonText(string blockName, PokemonBattleData pokemon)
+    {
+        animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                blockName,
+                new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } }
             ))
         );
     }
@@ -138,25 +167,26 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public void UpdatePokemonStatus(PokemonBattleData pokemon, StatusEffectId id)
     {
-        foreach(StatusEffectData se in statusEffectData)
+        battleInfoManager.UpdateStatus(pokemon, GetStatusEffectData(id));
+    }
+
+    public StatusEffectData GetStatusEffectData(StatusEffectId id)
+    {
+        foreach (StatusEffectData se in statusEffectData)
         {
             if (se.statusId == id)
             {
-                battleInfoManager.UpdateStatus(pokemon, se);
-                return;
+                return se;
             }
         }
-        
+        return null;
     }
 
     public void ShowTurnOptions()
     {
         battleOptionsManager.Show();
     }
-    public void HideTurnOptions()
-    {
-        battleOptionsManager.Hide();
-    }
+
 
     public void ShowPokemonSelection()
     {
@@ -164,7 +194,28 @@ public class BattleAnimatorMaster : MonoBehaviour
     }
     public void ClosePokemonSelection()
     {
-        battlePokemonPickerManager.ClosePokemonPicker();
-        GoToNextBattleAnim(0.2f);
+        battlePokemonPickerManager.Hide();
+    }
+
+    public void ShowPokemonSelectionData(PokemonBattleData pokemon)
+    {
+        battlePokemonPickerManager?.ShowPokemonPreview(pokemon);
+    }
+
+    public void ShowPokemonMoveSelection()
+    {
+        battleOptionsManager?.LoadMoves();
+        battleOptionsManager?.ShowMoveSelector();
+    }
+
+    public void HidePokemonMoveSelection()
+    {
+        battleOptionsManager?.HideMoveSelector();
+    }
+
+    public void HideOptions()
+    {
+        HidePokemonMoveSelection();
+        ClosePokemonSelection();
     }
 }

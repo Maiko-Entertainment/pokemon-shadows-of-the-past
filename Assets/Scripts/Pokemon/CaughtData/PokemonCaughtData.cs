@@ -85,4 +85,9 @@ public class PokemonCaughtData
             natureId.Equals(PokemonNatureId.restless));
         return pokemonBaseStats;
     }
+
+    public List<PokemonTypeId> GetTypes()
+    {
+        return GetPokemonBaseData().types;
+    }
 }

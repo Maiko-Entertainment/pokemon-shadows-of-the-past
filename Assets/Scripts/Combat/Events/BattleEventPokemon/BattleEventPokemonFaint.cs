@@ -8,6 +8,13 @@ public class BattleEventPokemonFaint : BattleEventPokemon
     public BattleEventPokemonFaint(BattleEventTakeDamage eventCauser) :
         base(eventCauser.pokemon)
     {
+        eventId = BattleEventId.pokemonFaint;
         this.eventCauser = eventCauser;
+    }
+
+    public override void Execute()
+    {
+        BattleAnimatorMaster.GetInstance()?.AddEventPokemonFaintText(pokemon);
+        base.Execute();
     }
 }

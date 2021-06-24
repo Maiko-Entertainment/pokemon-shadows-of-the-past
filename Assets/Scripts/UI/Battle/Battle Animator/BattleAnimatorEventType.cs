@@ -8,4 +8,5 @@ public enum BattleAnimatorEventType
     PokemonMoveAnim = 1,
     PokemonAbilityAnim = 2,
     BattleDescriptionText = 3,
+    PokemonInfoChange = 4
 }

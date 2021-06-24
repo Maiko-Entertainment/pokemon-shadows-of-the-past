@@ -14,6 +14,7 @@ public class BattleEventUseMove : BattleEventPokemon
 
     public override void Execute()
     {
-        move.Execute(this);
+        if (!pokemon.IsFainted())
+            move.Execute(this);
     }
 }

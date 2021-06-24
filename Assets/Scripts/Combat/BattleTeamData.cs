@@ -32,6 +32,6 @@ public class BattleTeamData
     public void SetActivePokemon(PokemonBattleData pokemon)
     {
         activePokemon = pokemon;
-        pokemon.Initiate();
+        pokemon?.Initiate();
     }
 }

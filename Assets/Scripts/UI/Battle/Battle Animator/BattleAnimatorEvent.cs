@@ -12,4 +12,9 @@ public class BattleAnimatorEvent
         if (dontWait)
             BattleAnimatorMaster.GetInstance().animatorManager.TriggerNextEvent();
     }
+
+    public override string ToString()
+    {
+        return eventType.ToString();
+    }
 }

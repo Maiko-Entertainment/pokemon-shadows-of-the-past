@@ -13,6 +13,7 @@ public class BattleAnimatorManager
 
     public void TriggerNextEvent()
     {
+        UIBattleEventDebugger.GetInstance()?.UpdateAnims();
         if (events.Count > 0)
         {
             events[0].Execute();

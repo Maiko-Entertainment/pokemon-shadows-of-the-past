@@ -5,6 +5,7 @@
     public BattleAnimatorEventTypeAdvantage(BattleTypeAdvantageType advantageType)
     {
         this.advantageType = advantageType;
+        eventType = BattleAnimatorEventType.BattleDescriptionText;
     }
 
     public override void Execute()

@@ -8,11 +8,17 @@ public class BattleAnimatorEventPokemonMove : BattleAnimatorEventPokemon
     public BattleAnimatorEventPokemonMove(BattleEventUseMove battleEvent) : base(battleEvent.pokemon)
     {
         moveEvent = battleEvent;
+        eventType = BattleAnimatorEventType.BattleDescriptionText;
     }
 
     public override void Execute()
     {
         BattleAnimatorMaster.GetInstance().ExecuteMoveFlowchart(moveEvent);
         base.Execute();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString() + " - " + moveEvent.move.moveName;
     }
 }

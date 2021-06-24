@@ -12,7 +12,7 @@ public class FungusTriggerNextAnim : Command
     public override void OnEnter()
     {
         Continue();
-        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim();
+        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(0.2f);
     }
 
     public override Color GetButtonColor()

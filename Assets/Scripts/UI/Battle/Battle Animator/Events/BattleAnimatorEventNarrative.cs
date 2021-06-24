@@ -11,6 +11,7 @@ public class BattleAnimatorEventNarrative : BattleAnimatorEvent
         base()
     {
         this.messageData = messageData;
+        eventType = BattleAnimatorEventType.BattleDescriptionText;
     }
 
     public override void Execute()
