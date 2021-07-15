@@ -5,9 +5,11 @@ using UnityEngine;
 public class PokemonAnimationController : MonoBehaviour
 {
     public Animator animator;
+    public SpriteRenderer sprite;
 
     public void TriggerIdle()
     {
+        sprite.sortingLayerName = "Pokemon Enemy";
         animator.SetTrigger("Idle");
     }
     public void TriggerAttack()
@@ -20,6 +22,7 @@ public class PokemonAnimationController : MonoBehaviour
     }
     public void TriggerBack()
     {
+        sprite.sortingLayerName = "Pokemon Player";
         animator.SetTrigger("Back");
     }
 

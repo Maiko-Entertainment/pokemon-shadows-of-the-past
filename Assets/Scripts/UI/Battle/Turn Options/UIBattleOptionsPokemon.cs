@@ -10,12 +10,19 @@ public class UIBattleOptionsPokemon : MonoBehaviour
     public TextMeshProUGUI pokemonName;
     public Image healthbar;
     public TextMeshProUGUI healthValue;
+    public Image exphbar;
+    public Image statusSimbol;
     public TransitionFade selectedArrow;
     public Color faintedColor;
 
+    public delegate void Hover(PokemonBattleData pkmn);
+    public event Hover onHover;
+    public delegate void Click(PokemonBattleData pkmn);
+    public event Click onClick;
+
     private PokemonBattleData pokemon;
 
-    public void Load(PokemonBattleData pokemon)
+    public UIBattleOptionsPokemon Load(PokemonBattleData pokemon)
     {
         this.pokemon = pokemon;
         pokemonIcon.sprite = pokemon.GetPokemonCaughtData().GetPokemonBaseData().icon;
@@ -25,11 +32,29 @@ public class UIBattleOptionsPokemon : MonoBehaviour
         float currentHealth = pokemon.GetPokemonCurrentHealth();
         healthbar.fillAmount = currentHealth / maxHealth;
         healthValue.text = currentHealth + "/"+ maxHealth;
+        if (exphbar)
+            exphbar.fillAmount = ((float)pokemon.pokemon.GetExperience()) / pokemon.pokemon.GetTotalExperienceToNextLevel();
+        if (statusSimbol)
+        {
+            UpdateStatus(pokemon.GetCurrentPrimaryStatus());
+        }
+        return this;
+    }
+    public void UpdateStatus(StatusEffect currenStatus)
+    {
+        StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
+        if (status)
+        {
+            statusSimbol.enabled = true;
+            statusSimbol.sprite = status.icon;
+            return;
+        }
+        statusSimbol.enabled = false;
     }
 
     public void UpdateSelected(PokemonBattleData pkmn)
     {
-        if (this.pokemon == pkmn)
+        if (pokemon == pkmn)
             selectedArrow?.FadeIn();
         else
             selectedArrow?.FadeOut();
@@ -37,27 +62,11 @@ public class UIBattleOptionsPokemon : MonoBehaviour
 
     public void OnClick()
     {
-        if (!pokemon.IsFainted()){
-            BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
-            PokemonBattleData activePokemon = bm.GetTeamActivePokemon(BattleTeamId.Team1);
-            if (activePokemon.IsFainted())
-            {
-                bm.AddSwitchInPokemonEvent(pokemon);
-            }
-            else
-            {
-                bm.HandleTurnInput(
-                    new BattleTurnDesitionPokemonSwitch(
-                        pokemon,
-                        BattleTeamId.Team1
-                    ));
-            }
-            BattleAnimatorMaster.GetInstance()?.HideOptions();
-        }
+        onClick?.Invoke(pokemon);
     }
 
     public void ShowPreview()
     {
-        BattleAnimatorMaster.GetInstance()?.ShowPokemonSelectionData(pokemon);
+        onHover?.Invoke(pokemon);
     }
 }

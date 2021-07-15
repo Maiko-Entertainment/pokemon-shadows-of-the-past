@@ -24,6 +24,12 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
         screenContainer.FadeIn();
         foreach (Transform pkmn in pokemonList)
         {
+            UIBattleOptionsPokemon pokemonOption = pkmn.GetComponent<UIBattleOptionsPokemon>();
+            if (pokemonOption)
+            {
+                pokemonOption.onClick -= OnPokemonSelect;
+                pokemonOption.onHover -= ShowPokemonPreview;
+            }
             Destroy(pkmn.gameObject);
         }
         ShowPokemonPreview(BattleMaster.GetInstance()?.GetCurrentBattle()?.team1.GetFirstAvailabelPokemon());
@@ -34,6 +40,8 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
             UIBattleOptionsPokemon pokemonOption = Instantiate(pokemonOptionPrefab.gameObject, pokemonList)
                 .GetComponent<UIBattleOptionsPokemon>();
             pokemonOption.Load(pkmn);
+            pokemonOption.onClick += OnPokemonSelect;
+            pokemonOption.onHover += ShowPokemonPreview;
             pokemonOption.UpdateSelected(currentlySelected);
         }
     }
@@ -72,6 +80,28 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
         {
             UIBattleMove moveInstance = Instantiate(movePrefab.gameObject, pokemonMoveList).GetComponent<UIBattleMove>().Load(move, pokemon);
             moveInstance.seeOnly = true;
+        }
+    }
+
+    public void OnPokemonSelect(PokemonBattleData pokemon)
+    {
+        if (!pokemon.IsFainted())
+        {
+            BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+            PokemonBattleData activePokemon = bm.GetTeamActivePokemon(BattleTeamId.Team1);
+            if (activePokemon.IsFainted())
+            {
+                bm.AddSwitchInPokemonEvent(pokemon);
+            }
+            else
+            {
+                bm.HandleTurnInput(
+                    new BattleTurnDesitionPokemonSwitch(
+                        pokemon,
+                        BattleTeamId.Team1
+                    ));
+            }
+            BattleAnimatorMaster.GetInstance()?.HideOptions();
         }
     }
 

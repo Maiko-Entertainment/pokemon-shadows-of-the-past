@@ -14,4 +14,9 @@ public class MoveEquipped
     {
         return timesUsed < move.uses && disabledTurnsLeft <= 0;
     }
+
+    public void ChangeTimesUsed(int uses)
+    {
+        timesUsed += uses;
+    }
 }

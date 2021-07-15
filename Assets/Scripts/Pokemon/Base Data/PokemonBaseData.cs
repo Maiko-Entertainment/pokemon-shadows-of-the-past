@@ -15,6 +15,22 @@ public class PokemonBaseData : ScriptableObject
     public bool isGenderless = false;
     public float captureRate;
     public float baseFriendship;
+    public float baseExp = 50;
+    public List<PokemonMoveLearn> levelUpMoves;
     public List<PokemonBaseEvolution> evolutions;
     public PokemonAnimationController battleAnimation;
+
+    public List<MoveData> GetMovesLearnedForLevel(int level)
+    {
+        List<MoveData> moves = new List<MoveData>();
+        foreach(PokemonMoveLearn move in levelUpMoves)
+        {
+            if (move.learnType == PokemonMoveLearnType.Level &&
+                move.levelRequired == level)
+            {
+                moves.Add(move.move);
+            }
+        }
+        return moves;
+    }
 }

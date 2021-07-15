@@ -11,7 +11,9 @@ public enum BattleEventId
     pokemonChangeStats = 6,
     pokemonAddStatus = 12,
     pokemonTurnEnd = 11,
+    pokemonGainExp = 14,
     roundEnd = 8,
     useTactic = 7,
+    useItemOnPokemon = 13,
     pokemonLeaveCleanUp = 9
 }

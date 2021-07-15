@@ -2,6 +2,7 @@
 [System.Serializable]
 public class BattleTeamData
 {
+    public string trainerTitle = "Trainer Name";
     public List<PokemonBattleData> pokemon = new List<PokemonBattleData>();
     public int moneyPrice = 200;
     // Handles status that affect the whole team such as lightscreen
@@ -11,7 +12,12 @@ public class BattleTeamData
 
     public void InitiateTeam()
     {
-        SetActivePokemon(GetFirstAvailabelPokemon());
+        // SetActivePokemon(GetFirstAvailabelPokemon());
+    }
+
+    public string GetTrainerTitle()
+    {
+        return trainerTitle;
     }
 
     public PokemonBattleData GetActivePokemon()

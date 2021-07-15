@@ -11,7 +11,6 @@ public class UIBattleMove : MonoBehaviour
     public Image typingImageBackground;
     public Image typingIcon;
     public bool seeOnly;
-    //public TextMeshProUGUI usesTotal;
 
     private MoveEquipped move;
     private PokemonBattleData pokemon;
@@ -26,7 +25,6 @@ public class UIBattleMove : MonoBehaviour
         TypeData type = BattleMaster.GetInstance().GetTypeData(move.move.typeId);
         typingImageBackground.color = type.color;
         typingIcon.sprite = type.icon;
-        // usesLeft.text = "" + move.move.uses;
         return this;
     }
 
@@ -34,15 +32,23 @@ public class UIBattleMove : MonoBehaviour
     {
         if (!seeOnly)
         {
-            BattleMaster.GetInstance()
-                ?.GetCurrentBattle()
-                ?.HandleTurnInput(
-                    new BattleTurnDesitionPokemonMove(
-                        move, 
-                        pokemon, 
-                        BattleTeamId.Team1
-                        )
-                    );
+            if (move.IsAvailable())
+            {
+                BattleMaster.GetInstance()
+                    ?.GetCurrentBattle()
+                    ?.HandleTurnInput(
+                        new BattleTurnDesitionPokemonMove(
+                            move, 
+                            pokemon, 
+                            BattleTeamId.Team1
+                            )
+                        );
+                BattleAnimatorMaster.GetInstance().HideOptions();
+            }
+            else
+            {
+                BattleAnimatorMaster.GetInstance()?.ExecuteMoveNoUsesLeftFlowchart();
+            }
         }
     }
 }

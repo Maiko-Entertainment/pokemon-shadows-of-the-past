@@ -20,6 +20,8 @@ public class PokemonBattleData
         inBattleTypes = pokemon.GetPokemonBaseData().types;
         AbilityData ad = AbilityMaster.GetInstance().GetAbility(abilityId);
         ad.Initialize(this);
+        foreach (StatusEffect se in statusEffects)
+            se.Initiate();
     }
 
     public string GetName()
@@ -120,6 +122,16 @@ public class PokemonBattleData
     public List<MoveEquipped> GetMoves()
     {
         return pokemon.moves;
+    }
+
+    public void ReduceMovePP(MoveData move)
+    {
+        List<MoveEquipped> moves = GetMoves();
+        foreach(MoveEquipped m in moves)
+        {
+            if (m.move.moveId == move.moveId)
+                m.ChangeTimesUsed(1);
+        }
     }
 
 }

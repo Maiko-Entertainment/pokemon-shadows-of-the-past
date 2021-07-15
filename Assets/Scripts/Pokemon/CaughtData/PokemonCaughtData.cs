@@ -49,6 +49,10 @@ public class PokemonCaughtData
         }
         return availableMoves;
     }
+    public List<MoveEquipped> GetMoves()
+    {
+        return moves;
+    }
 
     public int GetStatValue(int level, int statBase, bool natureBoost)
     {
@@ -89,5 +93,52 @@ public class PokemonCaughtData
     public List<PokemonTypeId> GetTypes()
     {
         return GetPokemonBaseData().types;
+    }
+    public int GetExperience()
+    {
+        return experience;
+    }
+    public int GetTotalExperienceToNextLevel()
+    {
+        return GetTotalExperienceToNextLevel(GetLevel());
+    }
+    public int GetTotalExperienceToNextLevel(int level)
+    {
+        int amount = (int)(
+              1f   * Mathf.Pow(level, 2.5f)
+        );
+        return amount;
+    }
+
+    public int GetRemainingExperienceToNextLevel()
+    {
+        return GetRemainingExperienceToNextLevel(GetLevel());
+    }
+    public int GetRemainingExperienceToNextLevel(int level)
+    {
+        return GetTotalExperienceToNextLevel(level) - experience;
+    }
+
+    public LevelUpSummary GainExp(int exp)
+    {
+        int initialLevel = GetLevel();
+        int remainingExp = experience + exp;
+        int toNext = GetTotalExperienceToNextLevel();
+        List<MoveData> movesLearned = new List<MoveData>();
+        while (remainingExp >= toNext)
+        {
+            remainingExp -= toNext;
+            LevelUp();
+            movesLearned.AddRange(pokemonBase.GetMovesLearnedForLevel(GetLevel()));
+        }
+        experience = remainingExp;
+        
+        return new LevelUpSummary(initialLevel, GetLevel(), movesLearned);
+    }
+
+    public void LevelUp()
+    {
+        experience = 0;
+        level += 1;
     }
 }

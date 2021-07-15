@@ -24,6 +24,14 @@ public class StatusEffectBurn : StatusEffect
                         (int)effectId
                     )
                 );
+
+        List<BattleAnimation> animations = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId).hitAnims;
+        BattleTrigger animTrigger = new BattleTriggerRoundEndAnimations(
+                       pokemon,
+                       pokemon,
+                       animations
+                   );
+        
         BattleTrigger messageTrigger = new BattleTriggerOnPokemonTurnEndMessage(
                     pokemon,
                     new BattleTriggerMessageData(
@@ -37,10 +45,15 @@ public class StatusEffectBurn : StatusEffect
                 );
         // Needs trigger to reduce physical attack damage
         battleTriggers.Add(messageTrigger);
+        battleTriggers.Add(animTrigger);
         battleTriggers.Add(statusTrigger);
         BattleMaster.GetInstance()?
             .GetCurrentBattle()?.AddTrigger(
                 messageTrigger
+            );
+        BattleMaster.GetInstance()?
+            .GetCurrentBattle()?.AddTrigger(
+                animTrigger
             );
         BattleMaster.GetInstance()?
             .GetCurrentBattle()?.AddTrigger(

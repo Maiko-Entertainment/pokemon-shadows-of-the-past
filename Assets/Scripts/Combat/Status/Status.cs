@@ -35,7 +35,6 @@ public class Status
 
     public virtual void Remove()
     {
-        // TO DO remove BattleTriggers from BattleEventManager
         foreach (BattleTrigger bt in battleTriggers)
             BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveTrigger(bt);
     }

@@ -27,7 +27,7 @@ public class TransitionFade : MonoBehaviour
     public void FadeOut()
     {
         fading = true;
-        speed = -1 * Mathf.Abs(speed);
+        speed = -1f * Mathf.Abs(speed);
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
     }

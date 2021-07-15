@@ -12,6 +12,8 @@ public class BattleManager
 
     public BattleEventManager eventManager = new BattleEventManager();
 
+    private List<PokemonBattleData> participatedPokemon = new List<PokemonBattleData>();
+
     public BattleManager(BattleTeamData player, BattleTeamData opponent, bool isTrainerBattle = false)
     {
         team1 = player;
@@ -22,12 +24,13 @@ public class BattleManager
     public void StartBattle()
     {
         eventManager = new BattleEventManager();
+        participatedPokemon = new List<PokemonBattleData>();
         team1.InitiateTeam();
         team2.InitiateTeam();
+        SetTeamActivePokemon(team1.GetFirstAvailabelPokemon());
+        SetTeamActivePokemon(team2.GetFirstAvailabelPokemon());
 
         BattleAnimatorMaster.GetInstance().LoadBattle(this);
-        AddPokemonEnterEvent(team1.GetActivePokemon());
-        AddPokemonEnterEvent(team2.GetActivePokemon());
 
         eventManager.ResolveAllEventTriggers();
         BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
@@ -82,6 +85,8 @@ public class BattleManager
         if (teamId == BattleTeamId.Team1)
         {
             team1.SetActivePokemon(pokemon);
+            if (!participatedPokemon.Contains(pokemon))
+                participatedPokemon.Add(pokemon);
         }
         else
         {
@@ -99,6 +104,19 @@ public class BattleManager
         return BattleTeamId.None;
     }
 
+    public BattleTeamData GetTeamData(BattleTeamId teamId)
+    {
+        if (teamId == BattleTeamId.Team1)
+        {
+            return team1;
+        }
+        else if (teamId == BattleTeamId.Team2)
+        {
+            return team2;
+        }
+        return null;
+    }
+
     public void HandleDesitions()
     {
         eventManager.ResolveAllEventTriggers();
@@ -111,6 +129,8 @@ public class BattleManager
         PokemonBattleData pokemon2 = GetTeamActivePokemon(BattleTeamId.Team2);
         if (pokemon2.IsFainted())
         {
+            HandleExpGain(pokemon2);
+            participatedPokemon.Clear();
             PokemonBattleData newPokemon = team2.GetFirstAvailabelPokemon();
             SetTeamActivePokemon(newPokemon);
         }
@@ -121,8 +141,35 @@ public class BattleManager
         }
         else
         {
+            if (!participatedPokemon.Contains(pokemon))
+                participatedPokemon.Add(pokemon);
             eventManager.ResolveAllEventTriggers();
         }
+    }
+
+    public void HandleExpGain(PokemonBattleData defeatedPokemon)
+    {
+        int totalPokemon = 0;
+        int exp = BattleMaster.GetInstance().GetExperienceForDefeating(defeatedPokemon);
+        foreach (PokemonBattleData pokemonBattle in participatedPokemon)
+        {
+            if (!pokemonBattle.IsFainted())
+            {
+                totalPokemon += 1;
+            }
+        }
+        if (totalPokemon == 0)
+            return;
+        int expGained = exp / totalPokemon;
+        foreach (PokemonBattleData pokemonBattle in participatedPokemon)
+        {
+            if (!pokemonBattle.IsFainted())
+            {
+                
+                eventManager.AddEvent(new BattleEventPokemonGainExp(pokemonBattle, expGained));
+            }
+        }
+        eventManager.ResolveAllEventTriggers();
     }
 
     public void HandlePlayerPokemonEnter(PokemonBattleData pokemon)
@@ -150,6 +197,10 @@ public class BattleManager
     {
         eventManager.AddEvent(new BattleEventUseMoveSuccess(battleEvent));
     }
+    public void AddItemPokemonUseEvent(PokemonBattleData pkmn, ItemDataOnPokemon item)
+    {
+        eventManager.AddEvent(new BattleEventPokemonUseItem(pkmn, item));
+    }
 
     public void AddStatChangeEvent(PokemonBattleData target, PokemonBattleStats statLevelChange)
     {
@@ -164,6 +215,11 @@ public class BattleManager
     public void AddPokemonEnterEvent(PokemonBattleData target)
     {
         eventManager.AddEvent(new BattleEventEnterPokemon(target));
+    }
+
+    public void AddPokemonHealEvent(PokemonBattleData target, HealSummary healSummary)
+    {
+        eventManager.AddEvent(new BattleEventPokemonHeal(target, healSummary));
     }
 
     // Used for pokemon after fainting, doesnt trigger enemys next turn
@@ -299,12 +355,12 @@ public class BattleManager
         if (status.isPrimary && alreadyHasPrimaryStatus) 
         {
             // Cant add status due to type message
-            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+            // BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
         }
         else if (typePreventsStatus)
         {
             // Display cant add message
-            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+            // BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
         }
         else
         {
@@ -312,6 +368,12 @@ public class BattleManager
             BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon, statusId));
             BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
         }
+    }
+
+    public int HealPokemon(PokemonBattleData pokemon, HealSummary heal)
+    {
+        int resultingHealth = pokemon.ChangeHealth(heal.amount);
+        return resultingHealth;
     }
 
     // Turn Cycle

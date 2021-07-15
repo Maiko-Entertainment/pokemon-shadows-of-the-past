@@ -7,4 +7,5 @@ public class StatusEffectData : ScriptableObject
     public StatusEffectId statusId;
     public string statusName;
     public Sprite icon;
+    public List<BattleAnimation> hitAnims;
 }

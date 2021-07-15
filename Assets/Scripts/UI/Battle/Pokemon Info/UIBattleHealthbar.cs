@@ -8,6 +8,7 @@ public class UIBattleHealthbar : MonoBehaviour
     public TextMeshProUGUI pokemonName;
     public TextMeshProUGUI pokemonLevel;
     public Image currentBar;
+    public Image currentExpBar;
     public Image statusSimbol;
     public TextMeshProUGUI currenthealth;
     public float changeSpeed = 0.2f;
@@ -20,16 +21,23 @@ public class UIBattleHealthbar : MonoBehaviour
     private float currentValue;
     private float maxHealth;
 
+    public float targetExp;
+    private float currentExp;
+    private int maxExp;
+
     public void Load(PokemonBattleData pokemon)
     {
         this.pokemon = pokemon;
         PokemonCaughtData pkmn = pokemon.GetPokemonCaughtData();
         currentValue = pkmn.GetCurrentHealth();
         maxHealth = pkmn.GetCurrentStats().health;
+        currentExp = pkmn.GetExperience();
         pokemonName.text = pkmn.pokemonName;
         pokemonLevel.text = "Lv. " + pkmn.GetLevel();
         UpdateHealth(currentValue);
         UpdateTarget(currentValue);
+        UpdateExp(currentExp);
+        UpdateTargetExp(currentExp, pkmn.GetTotalExperienceToNextLevel());
         StatusEffect currenStatus = pokemon.GetCurrentPrimaryStatus();
         StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
         UpdateStatus(status);
@@ -58,6 +66,31 @@ public class UIBattleHealthbar : MonoBehaviour
         }
     }
 
+    public float UpdateTargetExp(float target, int max)
+    {
+        targetExp = target;
+        UpdateMaxExp(max);
+        float time = Mathf.Abs(targetExp - currentExp) / GetExpChangeSpeed();
+        return time;
+    }
+    public void UpdateMaxExp(int maxExp)
+    {
+        this.maxExp = maxExp;
+    }
+    public void UpdateExp(float value)
+    {
+        currentExp = value;
+        if (currentExpBar)
+        {
+            if (currentExpBar.fillAmount == 1)
+            {
+                currentExp = 0;
+                UpdateTargetExp(0, maxExp);
+            }
+            currentExpBar.fillAmount = currentExp / maxExp;
+        }
+    }
+
     public void UpdateStatus(StatusEffectData status)
     {
         if (status)
@@ -67,6 +100,10 @@ public class UIBattleHealthbar : MonoBehaviour
             return;
         }
         statusSimbol.enabled = false;
+    }
+    public void UpdateLevel(int level)
+    {
+        pokemonLevel.text = "Lv. " + level;
     }
 
     private void Update()
@@ -78,10 +115,22 @@ public class UIBattleHealthbar : MonoBehaviour
                 GetChangeSpeed() * Time.deltaTime);
             UpdateHealth(currentValue);
         }
+        if (currentExp != targetExp)
+        {
+            currentExp = Mathf.MoveTowards(
+                currentExp, targetExp,
+                GetExpChangeSpeed() * Time.deltaTime);
+        }
+        UpdateExp(currentExp);
     }
 
     public float GetChangeSpeed()
     {
         return maxHealth * changeSpeed;
+    }
+
+    public float GetExpChangeSpeed()
+    {
+        return maxExp * changeSpeed * 2f;
     }
 }

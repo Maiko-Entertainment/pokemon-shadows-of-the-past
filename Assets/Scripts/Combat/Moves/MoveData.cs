@@ -19,21 +19,24 @@ public class MoveData : ScriptableObject
     public bool isContact;
     public bool drainsDamage;
     public string description;
+    public List<BattleAnimation> animations = new List<BattleAnimation>();
 
     // This will be Executed after a pokemon Move Event
     public virtual void Execute(BattleEventUseMove battleEvent)
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        HandleStatsChanges(battleEvent.pokemon);
+        HandleStatusAdds(battleEvent.pokemon);
+        battleEvent.pokemon.ReduceMovePP(this);
+        PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
         if (categoryId != MoveCategoryId.status)
         {
             DamageSummary damageSummary = bm.CalculateMoveDamage(battleEvent);
-            PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
             bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
         }
         bm.AddMoveSuccessEvent(battleEvent);
-        HandleStatsChanges(battleEvent.pokemon);
-        HandleStatusAdds(battleEvent.pokemon);
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
+        HandleAnimations(battleEvent.pokemon, pokemonTarget);
     }
 
     public virtual void HandleStatsChanges(PokemonBattleData pokemon)
@@ -61,6 +64,16 @@ public class MoveData : ScriptableObject
             {
                 bm.AddStatusEffectEvent(pokemonTarget,msc.effectId);
             }
+        }
+    }
+
+    public void HandleAnimations(PokemonBattleData user, PokemonBattleData target)
+    {
+        foreach(BattleAnimation anim in animations)
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(
+                new BattleAnimatorEventPokemonMoveAnimation(user, target, anim)
+            );
         }
     }
 
