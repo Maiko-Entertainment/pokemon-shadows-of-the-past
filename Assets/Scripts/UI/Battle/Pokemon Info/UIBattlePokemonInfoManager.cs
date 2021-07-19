@@ -7,6 +7,18 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
     public UIBattleHealthbar team1Health;
     public UIBattleHealthbar team2Health;
 
+    public void HideTeamInfo(BattleTeamId team)
+    {
+        if (team == BattleTeamId.Team1)
+        {
+            team1Health.FadeOut();
+        }
+        else
+        {
+            team2Health.FadeOut();
+        }
+    }
+
     public void UpdateInfo(BattleManager battleState)
     {
         PokemonBattleData team1Pokemon = battleState.GetTeamActivePokemon(BattleTeamId.Team1);
@@ -36,12 +48,14 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
         if (team == BattleTeamId.Team1)
         {
             team1Health.Load(pokemon);
+            team1Health.FadeIn();
             team1Health.UpdateTarget(health);
             team1Health.UpdateHealth(health);
         }
         else
         {
             team2Health.Load(pokemon);
+            team2Health.FadeIn();
             team2Health.UpdateTarget(health);
             team2Health.UpdateHealth(health);
         }

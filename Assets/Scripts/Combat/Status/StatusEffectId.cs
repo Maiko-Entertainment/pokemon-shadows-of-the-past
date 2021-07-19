@@ -1,4 +1,4 @@
-﻿
+﻿[System.Serializable]
 public enum StatusEffectId
 {
     None = 0,

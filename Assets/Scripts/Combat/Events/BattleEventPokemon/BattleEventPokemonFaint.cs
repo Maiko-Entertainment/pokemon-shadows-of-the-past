@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class BattleEventPokemonFaint : BattleEventPokemon
+﻿public class BattleEventPokemonFaint : BattleEventPokemon
 {
     public BattleEventTakeDamage eventCauser;
     public BattleEventPokemonFaint(BattleEventTakeDamage eventCauser) :
@@ -15,6 +11,9 @@ public class BattleEventPokemonFaint : BattleEventPokemon
     public override void Execute()
     {
         BattleAnimatorMaster.GetInstance()?.AddEventPokemonFaintText(pokemon);
+        BattleAnimatorMaster.GetInstance()?.AddEvent(
+            new BattleAnimatorEventPokemonFaint(pokemon)
+            );
         base.Execute();
     }
 }

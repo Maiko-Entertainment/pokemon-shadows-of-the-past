@@ -43,6 +43,15 @@ public class UIBattleHealthbar : MonoBehaviour
         UpdateStatus(status);
     }
 
+    public void FadeIn()
+    {
+        GetComponent<TransitionFade>()?.FadeIn();
+    }
+    public void FadeOut()
+    {
+        GetComponent<TransitionFade>()?.FadeOut();
+    }
+
     public float UpdateTarget(float target)
     {
         targetHealth = target;

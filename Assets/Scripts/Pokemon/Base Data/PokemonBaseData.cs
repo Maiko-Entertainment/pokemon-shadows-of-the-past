@@ -33,4 +33,22 @@ public class PokemonBaseData : ScriptableObject
         }
         return moves;
     }
+
+    public AbilityId GetRandomAbility()
+    {
+        int total = 0;
+        foreach (PokemonBaseAbility naturePriority in abilities)
+        {
+            total += naturePriority.abilityPriority;
+        }
+        int neededPrioritySum = Random.Range(0, total);
+        total = 0;
+        foreach (PokemonBaseAbility naturePriority in abilities)
+        {
+            total += naturePriority.abilityPriority;
+            if (total >= neededPrioritySum)
+                return naturePriority.abilityId;
+        }
+        return AbilityId.Intimidate;
+    }
 }

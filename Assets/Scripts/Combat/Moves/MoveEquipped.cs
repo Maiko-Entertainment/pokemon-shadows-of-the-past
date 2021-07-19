@@ -10,6 +10,13 @@ public class MoveEquipped
         this.move = move;
     }
 
+    public MoveEquipped(MoveData move, int timesUsed, int disabledTurnsLeft)
+    {
+        this.move = move;
+        this.timesUsed = timesUsed;
+        this.disabledTurnsLeft = disabledTurnsLeft;
+    }
+
     public bool IsAvailable()
     {
         return timesUsed < move.uses && disabledTurnsLeft <= 0;
@@ -18,5 +25,10 @@ public class MoveEquipped
     public void ChangeTimesUsed(int uses)
     {
         timesUsed += uses;
+    }
+
+    public MoveEquipped Copy()
+    {
+        return new MoveEquipped(move, timesUsed, disabledTurnsLeft);
     }
 }

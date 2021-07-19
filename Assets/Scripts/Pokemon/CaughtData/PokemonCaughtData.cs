@@ -6,13 +6,44 @@ public class PokemonCaughtData
     public PokemonBaseData pokemonBase;
     public string pokemonName;
     public int level;
-    public int experience;
-    public int damageTaken;
-    public StatusEffectId statusEffectId;
+    public int experience = 0;
+    public int damageTaken = 0;
+    public StatusEffectId statusEffectId = StatusEffectId.None;
     public PokemonNatureId natureId;
     public AbilityId abilityId;
     public List<MoveEquipped> moves = new List<MoveEquipped>();
 
+    public PokemonCaughtData() { }
+
+    public PokemonCaughtData Copy()
+    {
+        PokemonCaughtData newInsntace = new PokemonCaughtData();
+        newInsntace.pokemonBase = pokemonBase;
+        newInsntace.pokemonName = pokemonName;
+        newInsntace.level = level;
+        newInsntace.experience = experience;
+        newInsntace.damageTaken = damageTaken;
+        newInsntace.statusEffectId = statusEffectId;
+        newInsntace.natureId = natureId;
+        newInsntace.abilityId = abilityId;
+        List<MoveEquipped> movesInstance = new List<MoveEquipped>();
+        foreach(MoveEquipped move in moves)
+        {
+            movesInstance.Add(move.Copy());
+        }
+        newInsntace.moves = movesInstance;
+        return newInsntace;
+    }
+
+    public PokemonCaughtData(PokemonEncounter encounter)
+    {
+        pokemonBase = encounter.pokemon;
+        pokemonName = encounter.pokemon.species;
+        level = encounter.baseLevel + Random.Range(0, encounter.extraLevelRange+1);
+        natureId = encounter.GetRandomNature();
+        abilityId = pokemonBase.GetRandomAbility();
+        moves = encounter.GetMovesEquipped();
+    }
     public int GetLevel()
     {
         return level;

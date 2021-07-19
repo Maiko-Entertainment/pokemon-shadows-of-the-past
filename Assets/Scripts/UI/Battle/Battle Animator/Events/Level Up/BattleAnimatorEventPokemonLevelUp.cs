@@ -32,7 +32,7 @@ public class BattleAnimatorEventPokemonLevelUp : BattleAnimatorEventPokemon
             {
                 time = BattleAnimatorMaster.GetInstance().UpdateExpBar(
                     pokemon,
-                    pokemon.pokemon.GetRemainingExperienceToNextLevel(summary.finalLevel),
+                    pokemon.pokemon.GetTotalExperienceToNextLevel(summary.initialLevel),
                     pokemon.pokemon.GetTotalExperienceToNextLevel(summary.initialLevel)
                 );
             }

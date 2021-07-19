@@ -12,7 +12,28 @@ public class PokemonBattleData
     public AbilityId abilityId;
 
     public static int minMaxStatLevelChange = 6;
-    
+
+    public PokemonBattleData(PokemonCaughtData pokemon)
+    {
+        this.pokemon = pokemon;
+        statusEffects = new List<StatusEffect>();
+        inBattleTypes = new List<PokemonTypeId>();
+    }
+
+    public PokemonBattleData Copy()
+    {
+        PokemonBattleData newInstance = new PokemonBattleData(pokemon.Copy());
+        List<StatusEffect> statusEffectsNewInstance = new List<StatusEffect>();
+        if (statusEffects == null)
+            statusEffects = new List<StatusEffect>();
+        foreach (StatusEffect se in statusEffects)
+        {
+            statusEffectsNewInstance.Add(se.DeepClone());
+        }
+        newInstance.abilityId = abilityId;
+        return newInstance;
+    }
+
     // Handles abilities, items enter triggers and more right 
     // before the pokemon enters
     public void Initiate()
@@ -20,6 +41,8 @@ public class PokemonBattleData
         inBattleTypes = pokemon.GetPokemonBaseData().types;
         AbilityData ad = AbilityMaster.GetInstance().GetAbility(abilityId);
         ad.Initialize(this);
+        if (statusEffects == null)
+            statusEffects = new List<StatusEffect>();
         foreach (StatusEffect se in statusEffects)
             se.Initiate();
     }
@@ -113,9 +136,13 @@ public class PokemonBattleData
 
     public StatusEffect GetCurrentPrimaryStatus()
     {
-        foreach (StatusEffect status in statusEffects)
-            if (status.isPrimary)
-                return status;
+        if (statusEffects != null)
+        {
+            foreach (StatusEffect status in statusEffects)
+                if (status.isPrimary)
+                    return status;
+            return null;
+        }
         return null;
     }
 

@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13db0d02b476dd74f8de318bb58f9918, type: 3}
+  m_Name: Akane Encounter
+  m_EditorClassIdentifier: 
+  battleData:
+    trainerTitle: Your rival Akane?
+    brain: {fileID: 11400000, guid: affcce6adc9b3294b95e1dc43192d601, type: 2}
+    pokemon:
+    - pokemon:
+        pokemonBase: {fileID: 11400000, guid: 1569aa02690b8934d8958cbd4b633e0b, type: 2}
+        pokemonName: Phoenix
+        level: 10
+        experience: 0
+        damageTaken: 0
+        statusEffectId: 0
+        natureId: 0
+        abilityId: 0
+        moves:
+        - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
+          timesUsed: 5
+          disabledTurnsLeft: 0
+        - move: {fileID: 11400000, guid: fe24dbdabdef90f4f882ed3a24d0befa, type: 2}
+          timesUsed: 3
+          disabledTurnsLeft: 0
+      statsLevel:
+        attack: -3
+        defense: 0
+        spAttack: 0
+        spDefense: 0
+        speed: 0
+        accuracy: 0
+        evasion: 0
+        critical: 0
+      inBattleTypes: 06000000
+      abilityId: 0
+    - pokemon:
+        pokemonBase: {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
+        pokemonName: Poison Ivy
+        level: 10
+        experience: 0
+        damageTaken: 0
+        statusEffectId: 0
+        natureId: 0
+        abilityId: 0
+        moves:
+        - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
+          timesUsed: 3
+          disabledTurnsLeft: 0
+      statsLevel:
+        attack: -1
+        defense: 0
+        spAttack: 0
+        spDefense: 0
+        speed: 0
+        accuracy: 0
+        evasion: 0
+        critical: 0
+      inBattleTypes: 0b00000010000000
+      abilityId: 0
+    moneyPrice: 200
+    teamStatus: []
+  battleSong: {fileID: 8300000, guid: 7ade61bc3155b484fb48c94d91872ff6, type: 3}
+  transition: {fileID: 724271575486075591, guid: 8f4d866f234a5be43b0a7acf934f4a62, type: 3}

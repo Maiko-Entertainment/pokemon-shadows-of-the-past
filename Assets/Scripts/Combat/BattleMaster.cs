@@ -49,6 +49,26 @@ public class BattleMaster : MonoBehaviour
         GetCurrentBattle().StartBattle();
     }
 
+    public void RunPokemonBattle(PokemonBattleData pokemon)
+    {
+        BattleTeamData team1 = currenBattle.team1;
+        BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
+        BattleManager newBattle = new BattleManager(team1, team2);
+        currenBattle = newBattle;
+        GetCurrentBattle().StartBattle();
+        BattleAnimatorMaster.GetInstance().ShowAll();
+    }
+
+    public void RunTrainerBattle(TrainerCombatData trainer)
+    {
+        BattleTeamData team1 = currenBattle.team1;
+        BattleTeamData team2 = trainer.GetTeambattleData();
+        BattleManager newBattle = new BattleManager(team1, team2, true);
+        currenBattle = newBattle;
+        GetCurrentBattle().StartBattle();
+        BattleAnimatorMaster.GetInstance().ShowAll();
+    }
+
     public float GetAdvantageMultiplier(PokemonTypeId damageType, List<PokemonTypeId> targetTypes)
     {
         float multiplier = 1;

@@ -7,6 +7,7 @@ public class BattleAnimatorMaster : MonoBehaviour
 {
     public static BattleAnimatorMaster Instance;
 
+    public Canvas combatCanvas;
     public Transform background;
     public Transform pokemonTeam1Position;
     public Transform pokemonTeam2Position;
@@ -16,7 +17,6 @@ public class BattleAnimatorMaster : MonoBehaviour
     public Flowchart battleFlowchart;
 
     public BattleAnimatorManager animatorManager = new BattleAnimatorManager();
-    public BattleManager currentBattle;
 
     public List<StatusEffectData> statusEffectData = new List<StatusEffectData>();
 
@@ -34,21 +34,21 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public static BattleAnimatorMaster GetInstance() { return Instance; }
 
-    public void LoadBattle(BattleManager battleState)
+    public void LoadBattle()
     {
-        //battleOptionsManager?.Show();
-        //battleInfoManager?.UpdateInfo(battleState);
+        ClearTeamPokemon(BattleTeamId.Team1);
+        ClearTeamPokemon(BattleTeamId.Team2);
     }
 
-    public void SetTeamPokemon(PokemonBattleData pokemon, BattleTeamId teamId)
+    private void ClearTeamPokemon(BattleTeamId teamId)
     {
         if (teamId == BattleTeamId.Team1)
         {
-            foreach(Transform p in pokemonTeam1Position)
+            foreach (Transform p in pokemonTeam1Position)
             {
                 Destroy(p.gameObject);
             }
-            
+
         }
         else if (teamId == BattleTeamId.Team2)
         {
@@ -57,7 +57,23 @@ public class BattleAnimatorMaster : MonoBehaviour
                 Destroy(p.gameObject);
             }
         }
+    }
+
+    public void SetTeamPokemon(PokemonBattleData pokemon, BattleTeamId teamId)
+    {
+        ClearTeamPokemon(teamId);
         InstantiatePokemonAnim(pokemon, teamId);
+    }
+
+    public void HandlePokemonEnterAnim(PokemonBattleData pokemon)
+    {
+        Transform teamTransform = GetPokemonTeamTransform(pokemon).parent;
+        TransitionSize transition = teamTransform.gameObject.AddComponent<TransitionSize>();
+        transition.initialSize = Vector3.zero;
+        transition.finalSize = teamTransform.localScale;
+        transition.speed = 1.2f;
+        transition.FadeIn();
+        Destroy(transition, 1 / transition.speed + 0.5f);
     }
 
     public void LoadPokemonsInfo(PokemonBattleData pokemon, int health, StatusEffect status)
@@ -114,6 +130,24 @@ public class BattleAnimatorMaster : MonoBehaviour
             ))
         );
     }
+    public void AddEventPokemonEnterText(PokemonBattleData pokemon)
+    {
+        BattleManager bm = BattleMaster.GetInstance()?.GetCurrentBattle();
+        if (bm.isTrainerBattle)
+        {
+            string trainerName = bm.GetTeamData(bm.GetTeamId(pokemon)).trainerTitle;
+            animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+                new BattleTriggerMessageData(
+                    battleFlowchart,
+                    "Enter Trainer",
+                    new Dictionary<string, string>() {
+                        { "pokemon", pokemon.GetName() },
+                        { "trainer", trainerName },
+                    }
+                ))
+            );
+        }
+    }
 
     public void AddEventBattleFlowcartPokemonText(string blockName, PokemonBattleData pokemon)
     {
@@ -168,6 +202,12 @@ public class BattleAnimatorMaster : MonoBehaviour
                 break;
         }
     }
+    public void ExecuteEnemyTrainerDefeated(string trainerName)
+    {
+        battleFlowchart.StopAllBlocks();
+        battleFlowchart.SetStringVariable("trainer", trainerName);
+        battleFlowchart.ExecuteBlock("Trainer Enemy Defeat");
+    }
     public void ExecuteMoveNoUsesLeftFlowchart()
     {
         battleFlowchart.StopAllBlocks();
@@ -197,6 +237,10 @@ public class BattleAnimatorMaster : MonoBehaviour
     public void UpdatePokemonInfo(PokemonBattleData pokemon)
     {
         battleInfoManager.UpdatePokemonInfo(pokemon);
+    }
+    public void HidePokemonInfo(BattleTeamId team)
+    {
+        battleInfoManager.HideTeamInfo(team);
     }
 
     public StatusEffectData GetStatusEffectData(StatusEffectId id)
@@ -287,5 +331,16 @@ public class BattleAnimatorMaster : MonoBehaviour
         HidePokemonMoveSelection();
         HidePokemonSelection();
         HideItemSelection();
+    }
+
+    public void HideAll()
+    {
+        HideOptions();
+        combatCanvas?.gameObject.SetActive(false);
+    }
+
+    public void ShowAll()
+    {
+        combatCanvas?.gameObject.SetActive(true);
     }
 }

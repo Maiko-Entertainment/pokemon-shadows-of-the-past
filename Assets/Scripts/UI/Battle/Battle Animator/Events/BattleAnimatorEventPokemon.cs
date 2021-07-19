@@ -1,6 +1,6 @@
 ﻿public class BattleAnimatorEventPokemon : BattleAnimatorEvent
 {
-    public PokemonBattleData pokemon = new PokemonBattleData();
+    public PokemonBattleData pokemon;
 
     public BattleAnimatorEventPokemon(PokemonBattleData pokemon)
     {

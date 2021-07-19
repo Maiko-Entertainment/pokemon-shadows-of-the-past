@@ -344,6 +344,8 @@ GameObject:
   - component: {fileID: 6920377421277537977}
   - component: {fileID: 6920377421277537974}
   - component: {fileID: 5819003682148523536}
+  - component: {fileID: 1662029726150487741}
+  - component: {fileID: 381586506466749008}
   m_Layer: 5
   m_Name: Team 1 Info
   m_TagString: Untagged
@@ -460,6 +462,32 @@ MonoBehaviour:
     abilityId: 0
   targetHealth: 0
   targetExp: 0
+--- !u!225 &1662029726150487741
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920377421277537972}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &381586506466749008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920377421277537972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba736a6f5bbbfe438e4b80126eaddb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  fading: 0
 --- !u!1 &6920377421598841238
 GameObject:
   m_ObjectHideFlags: 0

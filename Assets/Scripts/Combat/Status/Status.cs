@@ -1,7 +1,7 @@
 ﻿using Fungus;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class Status
 {
     public StatusEffectId effectId;

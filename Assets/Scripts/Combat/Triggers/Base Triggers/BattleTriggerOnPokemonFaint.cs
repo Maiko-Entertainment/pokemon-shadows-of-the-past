@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BattleTriggerOnPokemonFaint : BattleTriggerOnPokemon
 {
-    public BattleTriggerOnPokemonFaint(BattleEventPokemonFaint battleEvent, bool deleteOnLeave = true) :
-        base(battleEvent.pokemon, deleteOnLeave)
+    public BattleTriggerOnPokemonFaint(PokemonBattleData pokemon, bool deleteOnLeave = true) :
+        base(pokemon, deleteOnLeave)
     {
-
+        eventId = BattleEventId.pokemonFaint;
     }
 }

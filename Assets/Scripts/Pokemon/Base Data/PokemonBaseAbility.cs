@@ -6,5 +6,5 @@ using UnityEngine;
 public class PokemonBaseAbility
 {
     public AbilityId abilityId;
-    public float abilityPriority;
+    public int abilityPriority;
 }

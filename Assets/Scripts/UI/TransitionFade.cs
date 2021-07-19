@@ -16,7 +16,7 @@ public class TransitionFade : MonoBehaviour
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
     }
 
-    public void FadeIn()
+    public virtual void FadeIn()
     {
         fading = true;
         canvasGroup.interactable = true;
@@ -24,7 +24,7 @@ public class TransitionFade : MonoBehaviour
         speed = Mathf.Abs(speed);
     }
 
-    public void FadeOut()
+    public virtual void FadeOut()
     {
         fading = true;
         speed = -1f * Mathf.Abs(speed);

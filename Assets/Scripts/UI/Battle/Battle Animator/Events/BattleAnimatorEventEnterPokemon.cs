@@ -14,10 +14,8 @@ public class BattleAnimatorEventEnterPokemon : BattleAnimatorEventPokemon
 
     public override void Execute()
     {
-        BattleTeamId id = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon);
-        BattleAnimatorMaster.GetInstance().SetTeamPokemon(pokemon, id);
         BattleAnimatorMaster.GetInstance().LoadPokemonsInfo(pokemon, pokemonHealth, pokemonStatus);
-        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(0.25f);
+        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(0f);
         base.Execute();
     }
 }

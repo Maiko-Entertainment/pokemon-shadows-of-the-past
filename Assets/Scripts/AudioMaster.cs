@@ -7,6 +7,9 @@ public class AudioMaster : MonoBehaviour
     public static AudioMaster Instance;
 
     public float soundEffectVolume = 1;
+    public float musicVolume = 1;
+
+    public AudioSource musicSource;
 
     void Awake()
     {
@@ -38,5 +41,17 @@ public class AudioMaster : MonoBehaviour
         audioSource.volume = soundEffectVolume;
         audioSource.Play();
         Destroy(audioSource, duration + 0.5f);
+    }
+
+    public void PlayMusic(AudioClip clip)
+    {
+        musicSource.clip = clip;
+        musicSource.volume = musicVolume;
+        musicSource.Play();
+    }
+
+    public void StopMusic(bool fade)
+    {
+        musicSource.Stop();
     }
 }

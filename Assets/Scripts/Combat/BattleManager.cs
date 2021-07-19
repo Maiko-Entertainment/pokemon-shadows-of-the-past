@@ -30,7 +30,7 @@ public class BattleManager
         SetTeamActivePokemon(team1.GetFirstAvailabelPokemon());
         SetTeamActivePokemon(team2.GetFirstAvailabelPokemon());
 
-        BattleAnimatorMaster.GetInstance().LoadBattle(this);
+        BattleAnimatorMaster.GetInstance().LoadBattle();
 
         eventManager.ResolveAllEventTriggers();
         BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
@@ -61,6 +61,10 @@ public class BattleManager
 
     public BattleTurnDesition HandleAIInput()
     {
+        if (team2.brain)
+        {
+            return team2.brain.GetTurnDesition(this);
+        }
         PokemonBattleData team2Pokemon = team2.GetActivePokemon();
         List<MoveEquipped> moves = team2Pokemon.GetPokemonCaughtData().GetAvailableMoves();
         if (moves.Count > 0)
@@ -127,17 +131,24 @@ public class BattleManager
     public void CheckForFainted()
     {
         PokemonBattleData pokemon2 = GetTeamActivePokemon(BattleTeamId.Team2);
+        PokemonBattleData pokemon = GetTeamActivePokemon(BattleTeamId.Team1);
+        if (pokemon.IsFainted() || pokemon2.IsFainted())
+        {
+            CheckForBattleEnd();
+        }
         if (pokemon2.IsFainted())
         {
             HandleExpGain(pokemon2);
             participatedPokemon.Clear();
             PokemonBattleData newPokemon = team2.GetFirstAvailabelPokemon();
-            SetTeamActivePokemon(newPokemon);
+            if (newPokemon != null)
+                SetTeamActivePokemon(newPokemon);
         }
-        PokemonBattleData pokemon = GetTeamActivePokemon(BattleTeamId.Team1);
         if (pokemon.IsFainted())
         {
-            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPickPokemon());
+            PokemonBattleData newPokemon = team1.GetFirstAvailabelPokemon();
+            if (newPokemon != null)
+                BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPickPokemon());
         }
         else
         {
@@ -145,6 +156,7 @@ public class BattleManager
                 participatedPokemon.Add(pokemon);
             eventManager.ResolveAllEventTriggers();
         }
+
     }
 
     public void HandleExpGain(PokemonBattleData defeatedPokemon)
@@ -170,6 +182,24 @@ public class BattleManager
             }
         }
         eventManager.ResolveAllEventTriggers();
+    }
+    public void CheckForBattleEnd()
+    {
+        if (team1.GetFirstAvailabelPokemon() == null)
+        {
+            HandleBattleEnd(BattleTeamId.Team2);
+            eventManager.ResolveAllEventTriggers();
+        }
+        else if (team2.GetFirstAvailabelPokemon() == null)
+        {
+            HandleBattleEnd(BattleTeamId.Team1);
+        }
+    }
+
+    public void HandleBattleEnd(BattleTeamId winningTeam)
+    {
+        // Add event for battle end to handle variable saving, end combat dialogue, etc
+        eventManager.AddEvent(new BattleEventBattleEnd(this, winningTeam));
     }
 
     public void HandlePlayerPokemonEnter(PokemonBattleData pokemon)
