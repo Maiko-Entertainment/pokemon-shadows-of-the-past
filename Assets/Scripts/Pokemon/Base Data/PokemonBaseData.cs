@@ -8,6 +8,7 @@ public class PokemonBaseData : ScriptableObject
     public PokemonBaseId pokemonId;
     public string species;
     public Sprite icon;
+    public AudioClip cry;
     public PokemonBaseStats baseStats;
     public List<PokemonTypeId> types;
     public List<PokemonBaseAbility> abilities;
@@ -19,6 +20,8 @@ public class PokemonBaseData : ScriptableObject
     public List<PokemonMoveLearn> levelUpMoves;
     public List<PokemonBaseEvolution> evolutions;
     public PokemonAnimationController battleAnimation;
+
+    public AudioClip GetCry() { return cry; }
 
     public List<MoveData> GetMovesLearnedForLevel(int level)
     {

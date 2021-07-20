@@ -47,9 +47,10 @@ public class BattleAnimationUserCharge : BattleAnimation
         }
         else if (stage == 2)
         {
-            teamTransform.localPosition = Vector3.Lerp(frontMovement, initialPosition, timePassed / destroyAfter / 0.3f);
+            teamTransform.localPosition = Vector3.Lerp(frontMovement, initialPosition, timePassed / destroyAfter / 0.25f);
             if (Vector3.Distance(teamTransform.localPosition, initialPosition) == 0)
             {
+                teamTransform.localPosition = initialPosition;
                 stage++;
                 timePassed = 0;
             }

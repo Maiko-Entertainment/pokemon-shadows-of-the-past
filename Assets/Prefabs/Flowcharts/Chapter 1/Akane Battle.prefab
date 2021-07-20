@@ -19,7 +19,8 @@ GameObject:
   - component: {fileID: 8109594624502424226}
   - component: {fileID: 8109594624502424225}
   - component: {fileID: 8109594624502424224}
-  - component: {fileID: 8109594624502424239}
+  - component: {fileID: 1402034308}
+  - component: {fileID: 1402034311}
   m_Layer: 0
   m_Name: Akane Battle
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MonoBehaviour:
   scrollPos: {x: 178, y: 2}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 282
+  blockViewHeight: 283
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -68,8 +69,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 8109594624502424249}
-  selectedCommands:
-  - {fileID: 8109594624502424224}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -107,13 +107,14 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 8109594624502424229}
+  - {fileID: 1402034308}
   - {fileID: 8109594624502424231}
   - {fileID: 8109594624502424230}
   - {fileID: 8109594624502424228}
   - {fileID: 8109594624502424227}
+  - {fileID: 1402034311}
   - {fileID: 8109594624502424226}
   - {fileID: 8109594624502424224}
-  - {fileID: 8109594624502424239}
   - {fileID: 8109594624502424225}
   suppressAllAutoSelections: 0
 --- !u!114 &8109594624502424231
@@ -188,7 +189,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 7452363465969476760}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 89ec55f6447363b4fa5136604a47f374, type: 3}
+  portrait: {fileID: 21300000, guid: 294945e74de2dc8498f103702685b403, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 4
   indentLevel: 0
-  storyText: Wh-what? Are you serius?
+  storyText: Wh-what? Are you serious?
   description: 
   character: {fileID: 6623088686138786548}
   portrait: {fileID: 0}
@@ -241,8 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 5
   indentLevel: 0
-  storyText: Once two trainers eyes have met, a battle ensues. This is that battle,
-    this is that moment!
+  storyText: Once two trainers eyes have met, a battle ensues.
   description: 
   character: {fileID: 7452363465969476760}
   portrait: {fileID: 0}
@@ -327,7 +327,7 @@ MonoBehaviour:
   move: 1
   shiftIntoPlace: 0
   waitUntilFinished: 0
---- !u!114 &8109594624502424239
+--- !u!114 &1402034308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,11 +336,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 8109594624502424251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 949822ad880cd554b8214f0906c234ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 9
+  itemId: 12
   indentLevel: 0
+  clip: {fileID: 8300000, guid: 279ee83879b6ece4f9beaab6f4352160, type: 3}
+--- !u!114 &1402034311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109594624502424251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 11
+  indentLevel: 0
+  storyText: "{punch}This is that battle, \n{punch}this is that moment."
+  description: 
+  character: {fileID: 7452363465969476760}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1001 &4678805400721717909
 PrefabInstance:
   m_ObjectHideFlags: 0

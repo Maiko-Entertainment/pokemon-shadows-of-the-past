@@ -7,6 +7,8 @@ public class BattleAnimatorMaster : MonoBehaviour
 {
     public static BattleAnimatorMaster Instance;
 
+    public CameraFollow combatCamera;
+    public float pokemonZoomValue = 1;
     public Canvas combatCanvas;
     public Transform background;
     public Transform pokemonTeam1Position;
@@ -74,6 +76,20 @@ public class BattleAnimatorMaster : MonoBehaviour
         transition.speed = 1.2f;
         transition.FadeIn();
         Destroy(transition, 1 / transition.speed + 0.5f);
+    }
+
+    public float HandleCameraZoomPokemon(PokemonBattleData pokemon)
+    {
+        Transform position = GetPokemonTeamTransform(pokemon).parent;
+        combatCamera.SetTarget(position.position);
+        combatCamera.SetSizeTarget(pokemonZoomValue);
+        return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
+    }
+
+    public float HandleCameraReset()
+    {
+        combatCamera.ResetCamera();
+        return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
     }
 
     public void LoadPokemonsInfo(PokemonBattleData pokemon, int health, StatusEffect status)

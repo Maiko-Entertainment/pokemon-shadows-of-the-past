@@ -14,6 +14,8 @@ public class PokemonCaughtData
     public List<MoveEquipped> moves = new List<MoveEquipped>();
 
     public PokemonCaughtData() { }
+    public AudioClip GetCry() { return pokemonBase.GetCry(); }
+
 
     public PokemonCaughtData Copy()
     {

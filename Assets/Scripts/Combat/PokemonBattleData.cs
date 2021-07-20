@@ -52,6 +52,11 @@ public class PokemonBattleData
         return pokemon.pokemonName;
     }
 
+    public AudioClip GetCry()
+    {
+        return pokemon.GetCry();
+    }
+
     public List<PokemonTypeId> GetTypeIds()
     {
         return inBattleTypes;

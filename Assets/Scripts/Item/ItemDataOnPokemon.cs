@@ -30,7 +30,7 @@ public class ItemDataOnPokemon : ItemData
         BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartTrainerItemText(battleTeam.GetTrainerTitle(), itemName);
         if (useSound)
         {
-            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(useSound, true));
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(useSound, 1, true));
         }
         HandleAfterUse();
     }

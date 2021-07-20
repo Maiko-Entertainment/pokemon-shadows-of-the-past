@@ -15,6 +15,7 @@ public class BattleEventEnterPokemon : BattleEventPokemon
         BattleAnimatorMaster.GetInstance().AddEventPokemonEnterText(pokemon);
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEnterPokemon(pokemon));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonEnterAnim(pokemon));
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(pokemon.GetCry()));
         base.Execute();
     }
 }

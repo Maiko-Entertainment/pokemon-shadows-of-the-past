@@ -16,6 +16,6 @@ public class BattleAnimatorEventPokemonEnterAnim : BattleAnimatorEventPokemon
         BattleTeamId id = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon);
         BattleAnimatorMaster.GetInstance().SetTeamPokemon(pokemon, id);
         BattleAnimatorMaster.GetInstance().HandlePokemonEnterAnim(pokemon);
-        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(1f);
+        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(0.5f);
     }
 }

@@ -33,12 +33,13 @@ public class AudioMaster : MonoBehaviour
     }
 
     // Plays a sound effect once
-    public void PlaySfx(AudioClip clip)
+    public void PlaySfx(AudioClip clip, float pitch=1f)
     {
-        float duration = clip.length;
+        float duration = clip!=null ? clip.length : 0f;
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
         audioSource.volume = soundEffectVolume;
+        audioSource.pitch = pitch;
         audioSource.Play();
         Destroy(audioSource, duration + 0.5f);
     }

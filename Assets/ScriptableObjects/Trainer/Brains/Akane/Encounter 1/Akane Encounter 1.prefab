@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4143002596830451905}
   - component: {fileID: 4143002596830451904}
   - component: {fileID: 4143002596830451908}
-  - component: {fileID: 4143002596830451911}
   - component: {fileID: 4143002596830451909}
   - component: {fileID: 4143002596830451962}
   - component: {fileID: 4143002596830451963}
@@ -67,7 +66,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 4143002596830451904}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 4143002596830451909}
   variables:
   - {fileID: 3051776966484166571}
   - {fileID: 1528421016120922647}
@@ -108,7 +108,6 @@ MonoBehaviour:
   commandList:
   - {fileID: 4143002596830451908}
   - {fileID: 4143002596830451962}
-  - {fileID: 4143002596830451911}
   - {fileID: 4143002596830451909}
   - {fileID: 4143002596830451963}
   - {fileID: 5533073878782729211}
@@ -127,33 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   indentLevel: 0
---- !u!114 &4143002596830451911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4143002596830451907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 2
-  indentLevel: 0
-  storyText: ...
-  description: 
-  character: {fileID: 6567844941480541992}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &4143002596830451909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   indentLevel: 0
-  storyText: This is {punch}NOT over yet!
+  storyText: ... This is {punch}NOT over yet!
   description: 
   character: {fileID: 6567844941480541992}
   portrait: {fileID: 0}
@@ -199,7 +171,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 6567844941480541992}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 89ec55f6447363b4fa5136604a47f374, type: 3}
+  portrait: {fileID: 21300000, guid: 294945e74de2dc8498f103702685b403, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -229,7 +201,7 @@ MonoBehaviour:
   stage: {fileID: 0}
   character: {fileID: 6567844941480541992}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 0}
+  portrait: {fileID: 6397032280886146831, guid: 9f7946292c8787f4990adf0d5a06d574, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
