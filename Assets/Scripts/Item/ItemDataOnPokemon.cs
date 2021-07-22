@@ -32,6 +32,16 @@ public class ItemDataOnPokemon : ItemData
         {
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(useSound, 1, true));
         }
+        PlayAnimations();
         HandleAfterUse();
+    }
+    public void PlayAnimations(PokemonBattleData pokemon)
+    {
+        foreach (BattleAnimation anim in animations)
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(
+                new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim)
+            );
+        }
     }
 }

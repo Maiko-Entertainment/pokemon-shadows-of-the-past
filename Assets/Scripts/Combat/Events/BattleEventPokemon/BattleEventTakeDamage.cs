@@ -21,6 +21,11 @@ public class BattleEventTakeDamage : BattleEventPokemon
         {
             bm.AddPokemonFaintEvent(this);
         }
+        if (damageSummary.advantageType == BattleTypeAdvantageType.superEffective)
+        {
+            AudioClip superEffectiveClip = BattleAnimatorMaster.GetInstance().superEffectiveClip;
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPlaySound(superEffectiveClip,1,true));
+        }
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTakeDamage(this, resultingHealth));
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTypeAdvantage(damageSummary.advantageType));
     }

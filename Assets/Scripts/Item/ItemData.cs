@@ -11,6 +11,7 @@ public class ItemData : ScriptableObject
     public AudioClip useSound;
     public Sprite icon;
     public string description;
+    public List<BattleAnimation> animations = new List<BattleAnimation>();
 
     public string GetName()
     {
@@ -47,6 +48,16 @@ public class ItemData : ScriptableObject
         if (isConsumable)
         {
             InventoryMaster.GetInstance()?.ChangeItemAmount(itemId, -1);
+        }
+    }
+
+    public virtual void PlayAnimations()
+    {
+        foreach (BattleAnimation anim in animations)
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(
+                new BattleAnimatorEventPokemonMoveAnimation(null, null, anim)
+            );
         }
     }
 }

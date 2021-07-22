@@ -7,7 +7,7 @@ public class TransitionFade : MonoBehaviour
     public float speed = 1;
     public bool fading;
 
-    private CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
 
     void Awake()
     {

@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     public float time = 1;
     public float zoomTime = 0.5f;
 
-    private Vector3 currentSpeed = Vector3.zero;
+    private Vector2 currentSpeed = Vector2.zero;
     private Vector2 target;
     private Vector3 initialPosition;
     private float currentSizeSpeed = 0;
@@ -41,7 +41,8 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, target, ref currentSpeed, time);
+        transform.position = Vector2.SmoothDamp(transform.position, target, ref currentSpeed, time);
+        transform.position += Vector3.forward * initialPosition.z;
         myCamera.orthographicSize = Mathf.SmoothDamp(myCamera.orthographicSize, sizeTarget, ref currentSizeSpeed, zoomTime);
     }
 }

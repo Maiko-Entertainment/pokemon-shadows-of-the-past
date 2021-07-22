@@ -49,11 +49,11 @@ public class BattleMaster : MonoBehaviour
         GetCurrentBattle().StartBattle();
     }
 
-    public void RunPokemonBattle(PokemonBattleData pokemon)
+    public void RunPokemonBattle(PokemonBattleData pokemon, BattleData battleData)
     {
         BattleTeamData team1 = currenBattle.team1;
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
-        BattleManager newBattle = new BattleManager(team1, team2);
+        BattleManager newBattle = new BattleManager(team1, team2, battleData);
         currenBattle = newBattle;
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
@@ -63,7 +63,7 @@ public class BattleMaster : MonoBehaviour
     {
         BattleTeamData team1 = currenBattle.team1;
         BattleTeamData team2 = trainer.GetTeambattleData();
-        BattleManager newBattle = new BattleManager(team1, team2, true);
+        BattleManager newBattle = new BattleManager(team1, team2, trainer.battleData);
         currenBattle = newBattle;
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();

@@ -5,14 +5,18 @@ using UnityEngine;
 public class SceneInteractablePokemonEncounter : SceneInteractable
 {
     public List<PokemonEncounter> possibleEncounters = new List<PokemonEncounter>();
-    public AudioClip battleMusic;
+    public BattleData battleData;
     public ViewTransition transition;
-
 
     public override void Interact()
     {
+        InteractionsMaster.GetInstance().AddEvent(new InteractionEventPokemonBattle(this));
+    }
+
+    public virtual void Execute()
+    {
         TransitionMaster.GetInstance().RunPokemonBattleTransition(transition);
-        AudioMaster.GetInstance().PlayMusic(battleMusic);
+        AudioMaster.GetInstance().PlayMusic(battleData.battleMusic);
         StartCoroutine(RunBattle(transition.changeTime));
     }
 
@@ -21,7 +25,8 @@ public class SceneInteractablePokemonEncounter : SceneInteractable
         yield return new WaitForSeconds(delay);
         PokemonCaughtData encounterPokemon = SelectRandomEncounter();
         PokemonBattleData battlePokemon = new PokemonBattleData(encounterPokemon);
-        BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon);
+        BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon, battleData);
+        InteractionsMaster.GetInstance()?.ExecuteNext(0);
     }
 
     public PokemonCaughtData SelectRandomEncounter()

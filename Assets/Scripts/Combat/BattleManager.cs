@@ -6,7 +6,7 @@ public class BattleManager
 {
     public BattleTeamData team1;
     public BattleTeamData team2;
-    public bool isTrainerBattle = false;
+    public BattleData battleData;
     public Status weather = null;
     public int turnsPassed = 0;
 
@@ -14,17 +14,18 @@ public class BattleManager
 
     private List<PokemonBattleData> participatedPokemon = new List<PokemonBattleData>();
 
-    public BattleManager(BattleTeamData player, BattleTeamData opponent, bool isTrainerBattle = false)
+    public BattleManager(BattleTeamData player, BattleTeamData opponent, BattleData battleData)
     {
         team1 = player;
         team2 = opponent;
-        this.isTrainerBattle = isTrainerBattle;
+        this.battleData = battleData;
     }
 
     public void StartBattle()
     {
         eventManager = new BattleEventManager();
         participatedPokemon = new List<PokemonBattleData>();
+        BattleAnimatorMaster.GetInstance()?.SetBackground(battleData.battlebackground);
         team1.InitiateTeam();
         team2.InitiateTeam();
         SetTeamActivePokemon(team1.GetFirstAvailabelPokemon());
@@ -33,7 +34,7 @@ public class BattleManager
         BattleAnimatorMaster.GetInstance().LoadBattle();
 
         eventManager.ResolveAllEventTriggers();
-        BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
+        // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
     }
 
     public void HandleTurnInput(BattleTurnDesition desition)
@@ -125,7 +126,7 @@ public class BattleManager
     {
         eventManager.ResolveAllEventTriggers();
         CheckForFainted();
-        BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
+        // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
     }
 
     public void CheckForFainted()
@@ -205,7 +206,7 @@ public class BattleManager
     public void HandlePlayerPokemonEnter(PokemonBattleData pokemon)
     {
         SetTeamActivePokemon(pokemon);
-        BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
+        // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
     }
 
     public void AddTrigger(BattleTrigger trigger)
@@ -260,7 +261,7 @@ public class BattleManager
         if (!isDesition)
         {
             eventManager.ResolveAllEventTriggers();
-            BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
+            // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
         }
     }
 
@@ -404,6 +405,20 @@ public class BattleManager
     {
         int resultingHealth = pokemon.ChangeHealth(heal.amount);
         return resultingHealth;
+    }
+
+    public PokeballResult HandlePokeballUse(ItemDataPokeball pokeball)
+    {
+        float catchRate = pokeball.GetCaptureRate();
+        PokemonBattleData enemy = GetTeamActivePokemon(BattleTeamId.Team2);
+        float captureRate = enemy.GetCaptureRate();
+        int max = enemy.GetPokemonHealth();
+        int current = enemy.GetPokemonCurrentHealth();
+        float a = (3 * max - 2 * current) * captureRate * catchRate / (3 * max);
+        int randomValue = Random.Range(0, 255);
+        bool isCaptured = randomValue <= a;
+        int shakes = isCaptured ? 3 : Random.Range(1, 3);
+        return new PokeballResult(isCaptured, shakes, enemy);
     }
 
     // Turn Cycle

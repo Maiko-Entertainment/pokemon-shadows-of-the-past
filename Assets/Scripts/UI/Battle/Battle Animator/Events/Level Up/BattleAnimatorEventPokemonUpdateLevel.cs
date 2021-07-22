@@ -15,6 +15,8 @@ public class BattleAnimatorEventPokemonUpdateLevel : BattleAnimatorEventPokemon
 
     public override void Execute()
     {
+        AudioClip levelUpClip = BattleAnimatorMaster.GetInstance().levelUpClip;
+        AudioMaster.GetInstance()?.PlaySfx(levelUpClip);
         BattleAnimatorMaster.GetInstance().UpdatePokemonLevel(pokemon, level);
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(0.5f);
     }

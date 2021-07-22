@@ -4,7 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Encounters/Trainer Battle Base")]
 public class TrainerCombatData : ScriptableObject
 {
-    public BattleTeamData battleData;
+    public BattleTeamData battleTeamData;
+    public BattleData battleData;
     public AudioClip battleSong;
     public ViewTransition transition;
     
@@ -15,6 +16,6 @@ public class TrainerCombatData : ScriptableObject
 
     public BattleTeamData GetTeambattleData()
     {
-        return battleData.Copy();
+        return battleTeamData.Copy();
     }
 }

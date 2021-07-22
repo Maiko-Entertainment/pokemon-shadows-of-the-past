@@ -18,6 +18,11 @@ public class BattleAnimatorMaster : MonoBehaviour
     public UIBattlePokemonPickerManager battlePokemonPickerManager;
     public Flowchart battleFlowchart;
 
+    // Sounds Common
+    public AudioClip expGainClip;
+    public AudioClip levelUpClip;
+    public AudioClip superEffectiveClip;
+
     public BattleAnimatorManager animatorManager = new BattleAnimatorManager();
 
     public List<StatusEffectData> statusEffectData = new List<StatusEffectData>();
@@ -59,6 +64,13 @@ public class BattleAnimatorMaster : MonoBehaviour
                 Destroy(p.gameObject);
             }
         }
+    }
+
+    public void SetBackground(GameObject background)
+    {
+        foreach (Transform t in this.background)
+            Destroy(t.gameObject);
+        Instantiate(background, this.background);
     }
 
     public void SetTeamPokemon(PokemonBattleData pokemon, BattleTeamId teamId)
@@ -124,11 +136,15 @@ public class BattleAnimatorMaster : MonoBehaviour
     public void AddEvent(BattleAnimatorEvent newEvent)
     {
         animatorManager.AddEvent(newEvent);
+        if (animatorManager.events.Count == 1)
+        {
+            GoToNextBattleAnim();
+        }
     }
 
     public void AddEventInmuneTextEvent()
     {
-        animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+        AddEvent(new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
                 battleFlowchart,
                 "Inmune"
@@ -138,7 +154,7 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public void AddEventPokemonFaintText(PokemonBattleData pokemon)
     {
-        animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+        AddEvent(new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
                 battleFlowchart,
                 "Faint",
@@ -149,10 +165,10 @@ public class BattleAnimatorMaster : MonoBehaviour
     public void AddEventPokemonEnterText(PokemonBattleData pokemon)
     {
         BattleManager bm = BattleMaster.GetInstance()?.GetCurrentBattle();
-        if (bm.isTrainerBattle)
+        if (bm.battleData.battleType == BattleType.Trainer)
         {
             string trainerName = bm.GetTeamData(bm.GetTeamId(pokemon)).trainerTitle;
-            animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+            AddEvent(new BattleAnimatorEventNarrative(
                 new BattleTriggerMessageData(
                     battleFlowchart,
                     "Enter Trainer",
@@ -167,7 +183,7 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public void AddEventBattleFlowcartPokemonText(string blockName, PokemonBattleData pokemon)
     {
-        animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+        AddEvent(new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
                 battleFlowchart,
                 blockName,
@@ -178,13 +194,50 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public void AddEventBattleFlowcartTrainerItemText(string trainerTitle, string itemName)
     {
-        animatorManager.AddEvent(new BattleAnimatorEventNarrative(
+        AddEvent(new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
                 battleFlowchart,
                 "Use Item",
                 new Dictionary<string, string>() { 
                     { "trainer", trainerTitle },
                     { "item", itemName },
+                }
+            ))
+        );
+    }
+    public void AddEventBattleFlowcartGainExpText(int exp)
+    {
+        AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Exp Gain",
+                new Dictionary<string, string>() {
+                    { "exp", ""+exp },
+                }
+            ))
+        );
+    }
+    public void AddEventBattleFlowcartGainLevelText(int level)
+    {
+        AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Level Up",
+                new Dictionary<string, string>() {
+                    { "level", ""+level },
+                }
+            ))
+        );
+    }
+
+    public void AddEventBattleFlowcartCaptureFailText(string pokemonName)
+    {
+        AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Capture Fail",
+                new Dictionary<string, string>() {
+                    { "pokemon", pokemonName },
                 }
             ))
         );
@@ -339,7 +392,7 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public void HideItemSelection()
     {
-        battleOptionsManager?.HideMoveSelector();
+        battleOptionsManager?.itemSelector.HideItemSelector();
     }
 
     public void HideOptions()

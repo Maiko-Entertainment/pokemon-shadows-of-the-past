@@ -35,7 +35,7 @@ public class InteractionsMaster : MonoBehaviour
         }
     }
 
-    public void ExecuteNext(float time)
+    public void ExecuteNext(float time = 0f)
     {
         StartCoroutine(ExecuteAfterDelay(time));
     }

@@ -12,28 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13db0d02b476dd74f8de318bb58f9918, type: 3}
   m_Name: Akane Encounter
   m_EditorClassIdentifier: 
-  battleData:
-    trainerTitle: Your rival Akane?
+  battleTeamData:
+    trainerTitle: Your Rival Akane?
     brain: {fileID: 11400000, guid: affcce6adc9b3294b95e1dc43192d601, type: 2}
     pokemon:
     - pokemon:
         pokemonBase: {fileID: 11400000, guid: 1569aa02690b8934d8958cbd4b633e0b, type: 2}
         pokemonName: Phoenix
-        level: 10
+        level: 12
         experience: 0
         damageTaken: 0
         statusEffectId: 0
         natureId: 0
         abilityId: 0
         moves:
-        - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
-          timesUsed: 5
+        - move: {fileID: 11400000, guid: d53107e9ee3a4004e9d996767621a142, type: 2}
+          timesUsed: 0
           disabledTurnsLeft: 0
-        - move: {fileID: 11400000, guid: fe24dbdabdef90f4f882ed3a24d0befa, type: 2}
-          timesUsed: 3
+        - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
+          timesUsed: 0
           disabledTurnsLeft: 0
       statsLevel:
-        attack: -3
+        attack: 0
         defense: 0
         spAttack: 0
         spDefense: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
         accuracy: 0
         evasion: 0
         critical: 0
-      inBattleTypes: 06000000
+      inBattleTypes: 
       abilityId: 0
     - pokemon:
         pokemonBase: {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
@@ -53,11 +53,14 @@ MonoBehaviour:
         natureId: 0
         abilityId: 0
         moves:
+        - move: {fileID: 11400000, guid: 8657c66fc60d6ba4aa5c61631003872f, type: 2}
+          timesUsed: 0
+          disabledTurnsLeft: 0
         - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
-          timesUsed: 3
+          timesUsed: 0
           disabledTurnsLeft: 0
       statsLevel:
-        attack: -1
+        attack: 0
         defense: 0
         spAttack: 0
         spDefense: 0
@@ -65,9 +68,13 @@ MonoBehaviour:
         accuracy: 0
         evasion: 0
         critical: 0
-      inBattleTypes: 0b00000010000000
+      inBattleTypes: 
       abilityId: 0
-    moneyPrice: 200
+    moneyPrice: 0
     teamStatus: []
+  battleData:
+    battleMusic: {fileID: 8300000, guid: 7ade61bc3155b484fb48c94d91872ff6, type: 3}
+    battlebackground: {fileID: 1727051147952888905, guid: d8d0288b7a31e1b42b873e87bfeac93c, type: 3}
+    battleType: 1
   battleSong: {fileID: 8300000, guid: 7ade61bc3155b484fb48c94d91872ff6, type: 3}
   transition: {fileID: 724271575486075591, guid: 8f4d866f234a5be43b0a7acf934f4a62, type: 3}

@@ -57,6 +57,11 @@ public class PokemonBattleData
         return pokemon.GetCry();
     }
 
+    public float GetCaptureRate()
+    {
+        return pokemon.GetPokemonBaseData().captureRate;
+    }
+
     public List<PokemonTypeId> GetTypeIds()
     {
         return inBattleTypes;

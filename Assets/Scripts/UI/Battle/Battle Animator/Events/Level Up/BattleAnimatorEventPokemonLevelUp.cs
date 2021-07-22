@@ -36,8 +36,9 @@ public class BattleAnimatorEventPokemonLevelUp : BattleAnimatorEventPokemon
                     pokemon.pokemon.GetTotalExperienceToNextLevel(summary.initialLevel)
                 );
             }
-            
         }
+        AudioClip gainExpClip = BattleAnimatorMaster.GetInstance().expGainClip;
+        AudioMaster.GetInstance()?.PlaySfxWithDuration(gainExpClip, time);
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(time);
         base.Execute();
     }
