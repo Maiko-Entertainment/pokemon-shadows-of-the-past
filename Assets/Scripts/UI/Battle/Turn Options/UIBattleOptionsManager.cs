@@ -22,7 +22,6 @@ public class UIBattleOptionsManager : MonoBehaviour
 
     public void ShowItemPokemonSelector(ItemDataOnPokemon item)
     {
-        BattleAnimatorMaster.GetInstance()?.HideOptions();
         itemSelector.ShowPokemonList(item);
     }
     public void ShowItemSelector()
