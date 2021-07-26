@@ -9,6 +9,7 @@ public class TransitionMaster : MonoBehaviour
 
     public Camera sceneCamera;
     public Camera battleCamera;
+    public Camera worldCamera;
 
     public SayDialog sceneDialogue;
     public SayDialog combatDialogue;
@@ -29,7 +30,7 @@ public class TransitionMaster : MonoBehaviour
 
     private void Start()
     {
-        EnableSceneCamera();
+        EnableWorldCamera();
     }
 
     public static TransitionMaster GetInstance()
@@ -84,6 +85,7 @@ public class TransitionMaster : MonoBehaviour
     {
         sceneCamera.enabled = false;
         battleCamera.enabled = false;
+        worldCamera.enabled = false;
     }
 
     public void EnableSceneCamera()
@@ -95,5 +97,11 @@ public class TransitionMaster : MonoBehaviour
     {
         DisableCameras();
         battleCamera.enabled = true;
+    }
+
+    public void EnableWorldCamera()
+    {
+        DisableCameras();
+        worldCamera.enabled = true;
     }
 }
