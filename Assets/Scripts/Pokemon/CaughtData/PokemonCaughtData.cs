@@ -3,8 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class PokemonCaughtData
 {
-    public PokemonBaseData pokemonBase;
     public string pokemonName;
+    public PokemonBaseData pokemonBase;
     public int level;
     public int experience = 0;
     public int damageTaken = 0;

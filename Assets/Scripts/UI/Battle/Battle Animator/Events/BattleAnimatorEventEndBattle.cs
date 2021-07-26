@@ -13,6 +13,8 @@ public class BattleAnimatorEventEndBattle : BattleAnimatorEvent
 
     public override void Execute()
     {
+        BattleAnimatorMaster.GetInstance().ClearEvents();
+        BattleAnimatorMaster.GetInstance().HandleCameraReset();
         float duration = TransitionMaster.GetInstance().RunSceneTransition();
         BattleAnimatorMaster.GetInstance().HideAll();
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(duration);

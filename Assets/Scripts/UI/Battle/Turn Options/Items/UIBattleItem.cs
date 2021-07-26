@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class UIBattleItem : MonoBehaviour
+public class UIBattleItem : MonoBehaviour, IPointerEnterHandler
 {
     public TextMeshProUGUI title;
     public Image icon;
@@ -32,5 +31,10 @@ public class UIBattleItem : MonoBehaviour
     public void HandlePreview()
     {
         onHover?.Invoke(item);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        HandlePreview();
     }
 }

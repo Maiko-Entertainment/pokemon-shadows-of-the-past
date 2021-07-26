@@ -21,6 +21,7 @@ public class BattleAnimatorMaster : MonoBehaviour
     // Sounds Common
     public AudioClip expGainClip;
     public AudioClip levelUpClip;
+    public AudioClip pokemonCaughtClip;
     public AudioClip superEffectiveClip;
 
     public BattleAnimatorManager animatorManager = new BattleAnimatorManager();
@@ -241,6 +242,24 @@ public class BattleAnimatorMaster : MonoBehaviour
                 }
             ))
         );
+    }
+
+    public void AddEventBattleFlowcartCaptureSuccessText(string pokemonName)
+    {
+        AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Capture Success",
+                new Dictionary<string, string>() {
+                    { "pokemon", pokemonName },
+                }
+            ))
+        );
+    }
+
+    public void ClearEvents()
+    {
+        animatorManager.events.Clear();
     }
 
 

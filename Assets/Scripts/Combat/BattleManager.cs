@@ -197,10 +197,14 @@ public class BattleManager
         }
     }
 
-    public void HandleBattleEnd(BattleTeamId winningTeam)
+    public void HandleBattleEnd(BattleTeamId winningTeam, bool endNow = false)
     {
         // Add event for battle end to handle variable saving, end combat dialogue, etc
         eventManager.AddEvent(new BattleEventBattleEnd(this, winningTeam));
+        if (endNow)
+        {
+            eventManager.ResolveAllEventTriggers();
+        }
     }
 
     public void HandlePlayerPokemonEnter(PokemonBattleData pokemon)
@@ -411,10 +415,12 @@ public class BattleManager
     {
         float catchRate = pokeball.GetCaptureRate();
         PokemonBattleData enemy = GetTeamActivePokemon(BattleTeamId.Team2);
+        StatusEffect se = enemy.GetCurrentPrimaryStatus();
+        int statusBonus = se != null ? se.GetCaptureRateBonus() : 0;
         float captureRate = enemy.GetCaptureRate();
         int max = enemy.GetPokemonHealth();
         int current = enemy.GetPokemonCurrentHealth();
-        float a = (3 * max - 2 * current) * captureRate * catchRate / (3 * max);
+        float a = (3 * max - 2 * current) * captureRate * catchRate / (3 * max) + statusBonus;
         int randomValue = Random.Range(0, 255);
         bool isCaptured = randomValue <= a;
         int shakes = isCaptured ? 3 : Random.Range(1, 3);

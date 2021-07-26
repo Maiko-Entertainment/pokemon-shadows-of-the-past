@@ -11,6 +11,7 @@ public class StatusEffectBurn : StatusEffect
         effectId = StatusEffectId.Burn;
         isPrimary = true;
         minTurns = 99999;
+        captureRateBonus = 10;
     }
 
     public override void Initiate()

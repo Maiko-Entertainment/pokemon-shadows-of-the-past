@@ -16,8 +16,11 @@ public class BattleAnimatorManager
         UIBattleEventDebugger.GetInstance()?.UpdateAnims();
         if (events.Count > 0)
         {
-            events[0].Execute();
-            events.RemoveAt(0);
+            if (events[0] != null)
+            {
+                events[0].Execute();
+                events.RemoveAt(0);
+            }
         }
         else
         {

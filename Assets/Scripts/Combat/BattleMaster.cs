@@ -51,7 +51,8 @@ public class BattleMaster : MonoBehaviour
 
     public void RunPokemonBattle(PokemonBattleData pokemon, BattleData battleData)
     {
-        BattleTeamData team1 = currenBattle.team1;
+        List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
+        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0);
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
         currenBattle = newBattle;
@@ -61,12 +62,23 @@ public class BattleMaster : MonoBehaviour
 
     public void RunTrainerBattle(TrainerCombatData trainer)
     {
-        BattleTeamData team1 = currenBattle.team1;
+        List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
+        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0); ;
         BattleTeamData team2 = trainer.GetTeambattleData();
         BattleManager newBattle = new BattleManager(team1, team2, trainer.battleData);
         currenBattle = newBattle;
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
+    }
+
+    public static List<PokemonBattleData> GetPokemonBattleDataFromCaught(List<PokemonCaughtData> party)
+    {
+        List<PokemonBattleData> battleParty = new List<PokemonBattleData>();
+        foreach(PokemonCaughtData pokemon in party)
+        {
+            battleParty.Add(new PokemonBattleData(pokemon));
+        }
+        return battleParty;
     }
 
     public float GetAdvantageMultiplier(PokemonTypeId damageType, List<PokemonTypeId> targetTypes)
@@ -96,5 +108,10 @@ public class BattleMaster : MonoBehaviour
         int pokemonLevel = pokemon.GetPokemonCaughtData().GetLevel();
         int experienceGained = (int)(baseExp * pokemonLevel / 4);
         return experienceGained;
+    }
+
+    public void ClearBattleEvents()
+    {
+        currenBattle.eventManager.ClearEvents();
     }
 }

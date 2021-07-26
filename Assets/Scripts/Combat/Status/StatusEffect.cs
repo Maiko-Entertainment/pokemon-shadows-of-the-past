@@ -6,6 +6,7 @@ public class StatusEffect: Status
     public bool isPrimary;
     public PokemonBattleData pokemon;
     public Flowchart message;
+    public int captureRateBonus = 0;
 
     public StatusEffect(PokemonBattleData pokemon, Flowchart message)
     {
@@ -24,6 +25,11 @@ public class StatusEffect: Status
                 this
             )
         );
+    }
+
+    public int GetCaptureRateBonus()
+    {
+        return captureRateBonus;
     }
 
     public override string ToString()

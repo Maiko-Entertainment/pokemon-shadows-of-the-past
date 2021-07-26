@@ -120,4 +120,9 @@ public class BattleEventManager
         }
         return new List<BattleTrigger>();
     }
+
+    public void ClearEvents()
+    {
+        battleEvents.Clear();
+    }
 }

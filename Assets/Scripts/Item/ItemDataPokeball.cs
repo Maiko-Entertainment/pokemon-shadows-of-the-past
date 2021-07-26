@@ -4,6 +4,8 @@ using UnityEngine;
 public class ItemDataPokeball : ItemData
 {
     public float baseCaptureRate = 1f;
+    public List<BattleAnimation> shakeLeftAnim = new List<BattleAnimation>();
+    public List<BattleAnimation> shakeRightAnim = new List<BattleAnimation>();
     public List<BattleAnimation> onCatchAnim = new List<BattleAnimation>();
     public List<BattleAnimation> onFailAnim = new List<BattleAnimation>();
     public override CanUseResult CanUse()
@@ -37,10 +39,15 @@ public class ItemDataPokeball : ItemData
     public virtual void UseInBattle()
     {
         PokeballResult result = BattleMaster.GetInstance().GetCurrentBattle().HandlePokeballUse(this);
-        PlayAnimations();
+        PlayAnimations(result);
         if (result.wasCaptured)
         {
             PlaySuccessAnim();
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(BattleAnimatorMaster.GetInstance().pokemonCaughtClip,1,true));
+            BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartCaptureSuccessText(result.pokemon.GetName());
+            BattleMaster.GetInstance()?.ClearBattleEvents();
+            BattleMaster.GetInstance()?.GetCurrentBattle()?.HandleBattleEnd(BattleTeamId.Team1, true);
+            PartyMaster.GetInstance().AddPartyMember(result.pokemon.GetPokemonCaughtData());
         }
         else
         {
@@ -75,7 +82,7 @@ public class ItemDataPokeball : ItemData
         }
     }
 
-    public override void PlayAnimations()
+    public void PlayAnimations(PokeballResult result)
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         PokemonBattleData pkmn1 = bm.GetTeamActivePokemon(BattleTeamId.Team1);
@@ -85,6 +92,16 @@ public class ItemDataPokeball : ItemData
             BattleAnimatorMaster.GetInstance()?.AddEvent(
                 new BattleAnimatorEventPokemonMoveAnimation(pkmn1, pkmn2, anim)
             );
+        }
+        for(int i=0; i < result.shakes; i++)
+        {
+            List<BattleAnimation> shakeAnims = (i % 2 == 0) ? shakeLeftAnim : shakeRightAnim;
+            foreach (BattleAnimation anim in shakeAnims)
+            {
+                BattleAnimatorMaster.GetInstance()?.AddEvent(
+                    new BattleAnimatorEventPokemonMoveAnimation(pkmn1, pkmn2, anim)
+                );
+            }
         }
     }
 

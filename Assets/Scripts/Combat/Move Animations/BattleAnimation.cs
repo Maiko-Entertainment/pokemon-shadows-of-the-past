@@ -8,6 +8,7 @@ public class BattleAnimation : MonoBehaviour
     public Animator animator;
     public float duration; // Lets animator manager know when to go to next anim
     public float destroyAfter;
+    public string triggerName = "";
 
     protected PokemonBattleData user;
     protected PokemonBattleData target;
@@ -17,6 +18,8 @@ public class BattleAnimation : MonoBehaviour
     {
         this.user = user;
         this.target = target;
+        if (triggerName != "" && animator != null)
+            animator.SetTrigger(triggerName);
         Destroy(gameObject, destroyAfter);
         return this;
     }

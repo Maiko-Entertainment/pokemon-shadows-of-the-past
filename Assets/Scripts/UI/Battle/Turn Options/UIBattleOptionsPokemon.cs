@@ -10,6 +10,7 @@ public class UIBattleOptionsPokemon : MonoBehaviour
     public TextMeshProUGUI pokemonName;
     public Image healthbar;
     public TextMeshProUGUI healthValue;
+    public TextMeshProUGUI level;
     public Image exphbar;
     public Image statusSimbol;
     public TransitionFade selectedArrow;
@@ -32,6 +33,7 @@ public class UIBattleOptionsPokemon : MonoBehaviour
         float currentHealth = pokemon.GetPokemonCurrentHealth();
         healthbar.fillAmount = currentHealth / maxHealth;
         healthValue.text = currentHealth + "/"+ maxHealth;
+        level.text = "Lv " + pokemon.GetPokemonCaughtData().level;
         if (exphbar)
             exphbar.fillAmount = ((float)pokemon.pokemon.GetExperience()) / pokemon.pokemon.GetTotalExperienceToNextLevel();
         if (statusSimbol)
