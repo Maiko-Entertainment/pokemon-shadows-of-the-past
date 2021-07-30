@@ -5,12 +5,56 @@ using UnityEngine;
 public class WorldInteractablePokemonEncounter : WorldInteractable
 {
     public List<PokemonEncounter> possibleEncounters = new List<PokemonEncounter>();
+    public float activeChance = 0.3f;
+    public float retryInterval = 7;
+    public GameObject activePrefab;
     public BattleData battleData;
     public ViewTransition transition;
 
+    protected bool isActive = false;
+    protected GameObject activeGameoBject;
+    protected float timePassed = 0;
+
+    private void Start()
+    {
+        TryToActivate();
+        timePassed = Random.value * retryInterval;
+    }
+
+    public void TryToActivate()
+    {
+        float random = Random.value;
+        if (random <= activeChance && !isActive)
+        {
+            isActive = true;
+            StartCoroutine(CreateDelay(0f));
+        }
+        else
+        {
+            isActive = false;
+            Destroy(activeGameoBject);
+        }
+        timePassed = 0;
+    }
+
+    IEnumerator CreateDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        activeGameoBject = Instantiate(activePrefab, transform);
+    }
+
     public override void OnInteract()
     {
-        base.OnInteract();
+        if (isActive)
+        {
+            isActive = false;
+            base.OnInteract();
+            InteractionsMaster.GetInstance().AddEvent(new InteractionEventPokemonBattle(this));
+        }
+    }
+
+    public virtual void Execute()
+    {
         TransitionMaster.GetInstance().RunPokemonBattleTransition(transition);
         AudioMaster.GetInstance().PlayMusic(battleData.battleMusic);
         StartCoroutine(RunBattle(transition.changeTime));
@@ -23,6 +67,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
         PokemonBattleData battlePokemon = new PokemonBattleData(encounterPokemon);
         BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon, battleData);
         InteractionsMaster.GetInstance()?.ExecuteNext(0);
+        Destroy(activeGameoBject);
     }
     public PokemonCaughtData SelectRandomEncounter()
     {
@@ -40,5 +85,18 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
                 return encounterPriority.GetPokemonCaught();
         }
         return null;
+    }
+
+    private void Update()
+    {
+        bool interactionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+        if (!interactionPlaying)
+        {
+            timePassed += Time.deltaTime;
+            if (timePassed >= retryInterval)
+            {
+                TryToActivate();
+            }
+        }
     }
 }

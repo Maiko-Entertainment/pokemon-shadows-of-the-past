@@ -14,7 +14,11 @@ public class TransitionMaster : MonoBehaviour
     public SayDialog sceneDialogue;
     public SayDialog combatDialogue;
 
+    public ViewTransition battleEndTransition;
+
     public Transform transitions;
+
+    private bool wasInWorldBefore = false;
 
     private void Awake()
     {
@@ -76,9 +80,29 @@ public class TransitionMaster : MonoBehaviour
 
     public float RunSceneTransition()
     {
+        StartCoroutine(EnableSceneCameraAfter(battleEndTransition.changeTime));
+        Instantiate(battleEndTransition, transitions);
+        return battleEndTransition.changeTime;
+    }
+    IEnumerator EnableSceneCameraAfter(float duration)
+    {
+        yield return new WaitForSeconds(duration);
         EnableSceneCamera();
         SetDialogueToScene();
-        return 0f;
+    }
+
+    public float RunWorldTransition()
+    {
+        
+        StartCoroutine(EnableWorldCameraAfter(battleEndTransition.changeTime));
+        Instantiate(battleEndTransition, transitions);
+        return battleEndTransition.changeTime;
+    }
+    IEnumerator EnableWorldCameraAfter(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        EnableWorldCamera();
+        SetDialogueToScene();
     }
 
     public void DisableCameras()
@@ -91,6 +115,7 @@ public class TransitionMaster : MonoBehaviour
     public void EnableSceneCamera()
     {
         DisableCameras();
+        wasInWorldBefore = false;
         sceneCamera.enabled = true;
     }
     public void EnableBattleCamera()
@@ -102,6 +127,15 @@ public class TransitionMaster : MonoBehaviour
     public void EnableWorldCamera()
     {
         DisableCameras();
+        wasInWorldBefore = true;
         worldCamera.enabled = true;
+    }
+
+    public float ReturnToPreviousCamera()
+    {
+        if (wasInWorldBefore)
+            return RunWorldTransition();
+        else
+            return RunSceneTransition();
     }
 }

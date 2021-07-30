@@ -14,6 +14,8 @@ public class BattleManager
 
     private List<PokemonBattleData> participatedPokemon = new List<PokemonBattleData>();
 
+    private bool isBattleActive = false;
+
     public BattleManager(BattleTeamData player, BattleTeamData opponent, BattleData battleData)
     {
         team1 = player;
@@ -23,6 +25,7 @@ public class BattleManager
 
     public void StartBattle()
     {
+        isBattleActive = true;
         eventManager = new BattleEventManager();
         participatedPokemon = new List<PokemonBattleData>();
         BattleAnimatorMaster.GetInstance()?.SetBackground(battleData.battlebackground);
@@ -35,6 +38,11 @@ public class BattleManager
 
         eventManager.ResolveAllEventTriggers();
         // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
+    }
+
+    public bool IsBattleActive()
+    {
+        return isBattleActive;
     }
 
     public void HandleTurnInput(BattleTurnDesition desition)
@@ -200,6 +208,7 @@ public class BattleManager
     public void HandleBattleEnd(BattleTeamId winningTeam, bool endNow = false)
     {
         // Add event for battle end to handle variable saving, end combat dialogue, etc
+        isBattleActive = false;
         eventManager.AddEvent(new BattleEventBattleEnd(this, winningTeam));
         if (endNow)
         {

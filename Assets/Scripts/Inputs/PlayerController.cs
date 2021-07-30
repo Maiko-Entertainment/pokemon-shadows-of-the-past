@@ -41,7 +41,11 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovementStart(CallbackContext context)
     {
-         Move(context.ReadValue<Vector2>());
+        bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+        if (!isInteractionPlaying)
+        {
+            Move(context.ReadValue<Vector2>());
+        }
     }
 
     void HandleMovementStop()
@@ -80,7 +84,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (CanMove(cacheDirection))
+            bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+            if (CanMove(cacheDirection) && !isInteractionPlaying)
             {
                 target = transform.position + (Vector3)cacheDirection;
                 animator.SetFloat("Horizontal", cacheDirection.x);

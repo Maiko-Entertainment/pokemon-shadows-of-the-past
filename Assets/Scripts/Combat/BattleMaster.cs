@@ -13,6 +13,7 @@ public class BattleMaster : MonoBehaviour
 
     public BattleTypeAdvantageManager advantageManager = new BattleTypeAdvantageManager();
 
+
     private void Awake()
     {
         if (Instance)

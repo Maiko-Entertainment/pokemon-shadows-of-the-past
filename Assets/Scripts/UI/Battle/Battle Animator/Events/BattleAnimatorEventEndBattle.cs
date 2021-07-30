@@ -15,7 +15,7 @@ public class BattleAnimatorEventEndBattle : BattleAnimatorEvent
     {
         BattleAnimatorMaster.GetInstance().ClearEvents();
         BattleAnimatorMaster.GetInstance().HandleCameraReset();
-        float duration = TransitionMaster.GetInstance().RunSceneTransition();
+        float duration = TransitionMaster.GetInstance().ReturnToPreviousCamera();
         BattleAnimatorMaster.GetInstance().HideAll();
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(duration);
         AudioMaster.GetInstance().StopMusic(false);

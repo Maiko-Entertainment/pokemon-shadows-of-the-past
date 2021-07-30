@@ -18,8 +18,9 @@ public class BattleAnimatorManager
         {
             if (events[0] != null)
             {
-                events[0].Execute();
+                BattleAnimatorEvent animEvent = events[0];
                 events.RemoveAt(0);
+                animEvent?.Execute();
             }
         }
         else

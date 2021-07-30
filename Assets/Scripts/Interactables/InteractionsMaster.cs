@@ -57,6 +57,7 @@ public class InteractionsMaster : MonoBehaviour
 
     public bool IsInteractionPlaying()
     {
-        return isInteracting;
+        bool isBattleHappening = BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive();
+        return isInteracting || isBattleHappening;
     }
 }
