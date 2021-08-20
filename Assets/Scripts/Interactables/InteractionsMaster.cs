@@ -29,6 +29,7 @@ public class InteractionsMaster : MonoBehaviour
     public void AddEvent(InteractionEvent intEvent)
     {
         events.Add(intEvent);
+        isInteracting = true;
         if (events.Count == 1)
         {
             ExecuteNext(0);
@@ -47,7 +48,6 @@ public class InteractionsMaster : MonoBehaviour
         {
             events[0].Execute();
             events.RemoveAt(0);
-            isInteracting = true;
         }
         else
         {

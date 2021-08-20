@@ -11,9 +11,29 @@ public class WorldInteractable : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (onStep && collision.tag == "Player")
+        bool isPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+        if (!isPlaying)
         {
-            OnInteract();
+            print(collision.transform.position + " - " + collision.name + " touched " + gameObject.name);
+            if (onStep && collision.tag == "Player")
+            {
+                OnInteract();
+            }
+            else if (!onStep && collision.tag == "Touch")
+            {
+                OnInteract();
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        bool isPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+        if (!isPlaying)
+        {
+            if (!onStep && collision.collider.tag == "Touch")
+            {
+                OnInteract();
+            }
         }
     }
 }

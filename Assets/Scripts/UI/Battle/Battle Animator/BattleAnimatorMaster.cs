@@ -105,6 +105,11 @@ public class BattleAnimatorMaster : MonoBehaviour
         return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
     }
 
+    public void HandleCameraIdle()
+    {
+        combatCamera.SetIdle(0f);
+    }
+
     public void LoadPokemonsInfo(PokemonBattleData pokemon, int health, StatusEffect status)
     {
         battleInfoManager.UpdatePokemonData(pokemon, health, GetStatusEffectData(status!=null ? status.effectId : StatusEffectId.None));

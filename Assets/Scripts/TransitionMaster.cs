@@ -57,6 +57,10 @@ public class TransitionMaster : MonoBehaviour
             SayDialog.ActiveSayDialog = combatDialogue;
         }
     }
+    public void RunTransition(ViewTransition transition)
+    {
+        Instantiate(transition.gameObject, transitions);
+    }
 
     // Returns time it takes to cover entire screen
     public void RunPokemonBattleTransition(ViewTransition transition)
@@ -103,6 +107,7 @@ public class TransitionMaster : MonoBehaviour
         yield return new WaitForSeconds(duration);
         EnableWorldCamera();
         SetDialogueToScene();
+        WorldMapMaster.GetInstance()?.HandleMapReturn();
     }
 
     public void DisableCameras()

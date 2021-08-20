@@ -25,6 +25,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""e17a1fff-eed3-48fe-aae6-46bc4425ad58"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -82,6 +90,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83a489bb-ab40-49d8-a4c4-23e6e11934d2"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47f945e1-0b33-4ee2-a2a4-4d9804e0ad07"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -91,6 +121,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // Player Character
         m_PlayerCharacter = asset.FindActionMap("Player Character", throwIfNotFound: true);
         m_PlayerCharacter_Movement = m_PlayerCharacter.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerCharacter_Interact = m_PlayerCharacter.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,11 +172,13 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerCharacter;
     private IPlayerCharacterActions m_PlayerCharacterActionsCallbackInterface;
     private readonly InputAction m_PlayerCharacter_Movement;
+    private readonly InputAction m_PlayerCharacter_Interact;
     public struct PlayerCharacterActions
     {
         private @Controls m_Wrapper;
         public PlayerCharacterActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerCharacter_Movement;
+        public InputAction @Interact => m_Wrapper.m_PlayerCharacter_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,6 +191,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnMovement;
+                @Interact.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -165,6 +201,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -172,5 +211,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerCharacterActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

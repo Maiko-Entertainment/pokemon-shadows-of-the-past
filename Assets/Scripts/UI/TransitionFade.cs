@@ -11,9 +11,12 @@ public class TransitionFade : MonoBehaviour
 
     void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
         if (!canvasGroup)
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+            if (!canvasGroup)
+                canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
     }
 
     public virtual void FadeIn()

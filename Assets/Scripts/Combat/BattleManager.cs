@@ -29,6 +29,7 @@ public class BattleManager
         eventManager = new BattleEventManager();
         participatedPokemon = new List<PokemonBattleData>();
         BattleAnimatorMaster.GetInstance()?.SetBackground(battleData.battlebackground);
+        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTurnStart());
         team1.InitiateTeam();
         team2.InitiateTeam();
         SetTeamActivePokemon(team1.GetFirstAvailabelPokemon());

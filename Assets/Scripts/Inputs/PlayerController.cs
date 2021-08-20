@@ -9,13 +9,16 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 1f;
     public Animator animator;
+    public Collider2D touchCollider;
     public Tilemap groundTilemap;
+    public Tilemap waterTilemap;
     public Tilemap collisionTilemap;
 
     private Controls controls;
     private bool wantsToMove = false;
     private Vector2 target;
     private Vector2 cacheDirection;
+    private bool waterMode = false;
 
     void Awake()
     {
@@ -32,11 +35,42 @@ public class PlayerController : MonoBehaviour
         controls.Disable();
     }
 
+    public void Load(WorldMap map)
+    {
+        groundTilemap = map.groundTilemap;
+        waterTilemap = map.waterTilemap;
+        collisionTilemap = map.collisionTilemap;
+        target = transform.position;
+    }
+
     void Start()
     {
         controls.PlayerCharacter.Movement.started += ctx => HandleMovementStart(ctx);
         controls.PlayerCharacter.Movement.canceled += ctx => HandleMovementStop();
+        controls.PlayerCharacter.Interact.started += ctx => Interact(ctx);
         target = transform.position;
+    }
+    void Interact(CallbackContext context)
+    {
+        bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+        if (!isInteractionPlaying)
+        {
+            if (Mathf.Abs(cacheDirection.x) > 0)
+            {
+                touchCollider.transform.localPosition = Vector3.right * cacheDirection.x;
+            }
+            else if (Mathf.Abs(cacheDirection.y) > 0)
+            {
+                touchCollider.transform.localPosition = Vector3.up * cacheDirection.y;
+            }
+            StartCoroutine(ResetAfterFrame());
+        }
+    }
+
+    IEnumerator ResetAfterFrame()
+    {
+        yield return new WaitForSeconds(0.1f);
+        touchCollider.transform.localPosition = Vector3.zero;
     }
 
     void HandleMovementStart(CallbackContext context)
@@ -63,7 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
         bool reachedTarget = HasReachedTarget();
-        if (!groundTilemap.HasTile(gridPosition) || collisionTilemap.HasTile(gridPosition))
+        if (!groundTilemap.HasTile(gridPosition) || collisionTilemap.HasTile(gridPosition) || (waterTilemap.HasTile(gridPosition) && !waterMode))
         {
             return false;
         }

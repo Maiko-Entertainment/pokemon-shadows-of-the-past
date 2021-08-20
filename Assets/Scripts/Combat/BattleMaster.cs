@@ -23,6 +23,7 @@ public class BattleMaster : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 

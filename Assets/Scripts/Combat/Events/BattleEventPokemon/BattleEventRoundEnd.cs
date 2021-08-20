@@ -8,4 +8,10 @@ public class BattleEventRoundEnd : BattleEvent
     {
         eventId = BattleEventId.roundEnd;
     }
+
+    public override void Execute()
+    {
+        base.Execute();
+        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTurnStart());
+    }
 }
