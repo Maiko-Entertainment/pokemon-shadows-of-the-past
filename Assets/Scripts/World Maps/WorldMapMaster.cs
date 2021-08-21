@@ -8,9 +8,12 @@ public class WorldMapMaster : MonoBehaviour
 
     public PlayerController playerPrefab;
     public List<WorldMap> maps;
+    public List<SceneMap> scenes;
+    public Transform sceneContainer;
     public Transform mapNameContainer;
 
     protected WorldMap currentMap;
+    protected SceneMap currentScene;
     protected PlayerController player;
 
     private void Awake()
@@ -35,6 +38,7 @@ public class WorldMapMaster : MonoBehaviour
     public void GoToMap(int mapId, int spawnIndex)
     {
         Destroy(currentMap?.gameObject);
+        Destroy(currentScene?.gameObject);
         WorldMap map = Getmap(mapId);
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         Transform spawn = mapInstance.GetSpawn(spawnIndex);
@@ -84,5 +88,24 @@ public class WorldMapMaster : MonoBehaviour
         float fadeOutAfter = 1f / titleCardInstance.speed;
         titleCardInstance.FadeOut();
         Destroy(titleCardInstance.gameObject, fadeOutAfter);
+    }
+
+    public void GoToScene(int sceneId)
+    {
+        Destroy(currentScene?.gameObject);
+        Destroy(currentMap?.gameObject);
+        SceneMap map = GetScene(sceneId);
+        SceneMap mapInstance = Instantiate(map.gameObject).GetComponent<SceneMap>();
+        currentScene = mapInstance;
+    }
+
+    public SceneMap GetScene(int sceneId)
+    {
+        foreach (SceneMap wm in scenes)
+        {
+            if (wm.sceneId == sceneId)
+                return wm;
+        }
+        return null;
     }
 }

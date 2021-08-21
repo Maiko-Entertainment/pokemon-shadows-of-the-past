@@ -55,9 +55,12 @@ public class AudioMaster : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
-        musicSource.clip = clip;
-        musicSource.volume = musicVolume;
-        musicSource.Play();
+        if (musicSource.clip != clip)
+        {
+            musicSource.clip = clip;
+            musicSource.volume = musicVolume;
+            musicSource.Play();
+        }
     }
 
     public void StopMusic(bool fade)
