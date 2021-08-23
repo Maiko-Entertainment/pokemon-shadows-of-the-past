@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TransitionSpin : TransitionBase
 {
+    public Vector3 initialRotation;
     public Vector3 rotationAdd = new Vector3(0, 360, 0);
 
-    protected Vector3 initialRotation;
     protected Vector3 vSpeed = Vector3.zero;
 
     Vector3 currentValues;

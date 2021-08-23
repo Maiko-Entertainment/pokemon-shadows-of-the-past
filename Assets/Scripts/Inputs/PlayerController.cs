@@ -111,24 +111,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, target) != 0)
-        {
-            animator.SetBool("Moving", true);
-            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        }
-        else
+        if (HasReachedTarget())
         {
             bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
             if (CanMove(cacheDirection) && !isInteractionPlaying)
             {
                 target = transform.position + (Vector3)cacheDirection;
-                animator.SetFloat("Horizontal", cacheDirection.x);
-                animator.SetFloat("Vertical", cacheDirection.y);
             }
             else
             {
                 animator.SetBool("Moving", false);
             }
+            animator.SetFloat("Horizontal", cacheDirection.x);
+            animator.SetFloat("Vertical", cacheDirection.y);
+        }
+        else
+        {
+            animator.SetBool("Moving", true);
+            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
         }
     }
 }

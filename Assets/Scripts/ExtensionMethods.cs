@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine;
 
 public static class ExtensionMethods
 {
@@ -13,5 +14,9 @@ public static class ExtensionMethods
             stream.Position = 0;
             return (T)formatter.Deserialize(stream);
         }
+    }
+    public static bool IsEqualTo(this Color me, Color other)
+    {
+        return me.r == other.r && me.g == other.g && me.b == other.b && me.a == other.a;
     }
 }

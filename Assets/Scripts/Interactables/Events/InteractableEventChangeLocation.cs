@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class InteractableEventChangeLocation : InteractionEvent
 {
-    WorldInteractableChangeLocation interaction;
-    public InteractableEventChangeLocation(WorldInteractableChangeLocation interaction)
+    WorldInteractableChangeLocation worldInteraction;
+    SceneInteractableGoToWorldMap sceneInteraction;
+
+    public InteractableEventChangeLocation(WorldInteractableChangeLocation worldInteraction)
     {
-        this.interaction = interaction;
+        this.worldInteraction = worldInteraction;
+    }
+    public InteractableEventChangeLocation(SceneInteractableGoToWorldMap sceneInteraction)
+    {
+        this.sceneInteraction = sceneInteraction;
     }
 
     public override void Execute()
     {
-        interaction.Execute();
+        worldInteraction?.Execute();
+        sceneInteraction?.Execute();
     }
 }

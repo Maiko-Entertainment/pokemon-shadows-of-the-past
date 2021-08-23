@@ -10,11 +10,11 @@ public class BattleAnimationFromUserToTarget : BattleAnimation
         return base.Execute(user, target);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        timePassed += Time.deltaTime;
         Vector3 origin = BattleAnimatorMaster.GetInstance().GetPokemonPosition(user);
         Vector3 destiny = BattleAnimatorMaster.GetInstance().GetPokemonPosition(target);
         transform.position = Vector3.Lerp(origin, destiny, timePassed / destroyAfter);
+        timePassed += Time.fixedDeltaTime;
     }
 }

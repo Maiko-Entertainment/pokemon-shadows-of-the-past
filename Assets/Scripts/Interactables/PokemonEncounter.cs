@@ -8,6 +8,7 @@ public class PokemonEncounter: ScriptableObject
     public int priority = 4;
     public int baseLevel = 5;
     public int extraLevelRange = 3;
+    public TimeOfDayType timeOfDayRequired;
     public List<EncounterNaturePriority> natures = new List<EncounterNaturePriority>();
     public List<MoveData> moves = new List<MoveData>();
 

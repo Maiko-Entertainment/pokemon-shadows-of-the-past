@@ -62,6 +62,12 @@ public class TransitionMaster : MonoBehaviour
         Instantiate(transition.gameObject, transitions);
     }
 
+    public void RunToWorldTransition(ViewTransition transition)
+    {
+        RunTransition(transition);
+        StartCoroutine(EnableWorldCameraAfter(transition.changeTime));
+    }
+
     // Returns time it takes to cover entire screen
     public void RunPokemonBattleTransition(ViewTransition transition)
     {
@@ -95,7 +101,7 @@ public class TransitionMaster : MonoBehaviour
         SetDialogueToScene();
     }
 
-    public float RunWorldTransition()
+    public float RunBattleToWorldTransition()
     {
         
         StartCoroutine(EnableWorldCameraAfter(battleEndTransition.changeTime));
@@ -134,12 +140,13 @@ public class TransitionMaster : MonoBehaviour
         DisableCameras();
         wasInWorldBefore = true;
         worldCamera.enabled = true;
+        worldCamera.GetComponent<WorldCamera>().LookForPlayer();
     }
 
     public float ReturnToPreviousCamera()
     {
         if (wasInWorldBefore)
-            return RunWorldTransition();
+            return RunBattleToWorldTransition();
         else
             return RunSceneTransition();
     }

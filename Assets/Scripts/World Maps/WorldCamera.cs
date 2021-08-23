@@ -7,6 +7,11 @@ public class WorldCamera : MonoBehaviour
     Transform player;
     void Start()
     {
+        LookForPlayer();
+    }
+
+    public void LookForPlayer()
+    {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -15,4 +20,6 @@ public class WorldCamera : MonoBehaviour
     {
         transform.position = player.position + Vector3.forward * -1;
     }
+
+
 }

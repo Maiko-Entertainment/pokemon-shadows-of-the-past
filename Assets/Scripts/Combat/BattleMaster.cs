@@ -108,7 +108,7 @@ public class BattleMaster : MonoBehaviour
     {
         float baseExp = pokemon.GetPokemonCaughtData().pokemonBase.baseExp;
         int pokemonLevel = pokemon.GetPokemonCaughtData().GetLevel();
-        int experienceGained = (int)(baseExp * pokemonLevel / 4);
+        int experienceGained = (int)(baseExp * pokemonLevel / 2);
         return experienceGained;
     }
 

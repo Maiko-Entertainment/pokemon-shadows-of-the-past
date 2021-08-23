@@ -24,6 +24,9 @@ public class BattleAnimatorMaster : MonoBehaviour
     public AudioClip pokemonCaughtClip;
     public AudioClip superEffectiveClip;
 
+    // Utils
+    public Material shadowMaterial;
+
     public BattleAnimatorManager animatorManager = new BattleAnimatorManager();
 
     public List<StatusEffectData> statusEffectData = new List<StatusEffectData>();
@@ -93,9 +96,10 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public float HandleCameraZoomPokemon(PokemonBattleData pokemon)
     {
+        BattleTeamId pokemonTeam = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon);
         Transform position = GetPokemonTeamTransform(pokemon).parent;
-        combatCamera.SetTarget(position.position);
-        combatCamera.SetSizeTarget(pokemonZoomValue);
+        combatCamera.SetTarget(position.position + Vector3.up * 0.5f);
+        combatCamera.SetSizeTarget(pokemonTeam == BattleTeamId.Team1 ? pokemonZoomValue : pokemonZoomValue * 0.7f);
         return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
     }
 

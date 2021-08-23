@@ -6,6 +6,7 @@ public class TransitionBase : MonoBehaviour
 {
     public float speed = 1;
     public bool fading;
+    public bool pingPong = false;
 
     protected float timePassed;
 

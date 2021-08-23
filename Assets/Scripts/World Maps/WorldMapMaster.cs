@@ -11,6 +11,7 @@ public class WorldMapMaster : MonoBehaviour
     public List<SceneMap> scenes;
     public Transform sceneContainer;
     public Transform mapNameContainer;
+    public TimeOfDayType timeOfDay;
 
     protected WorldMap currentMap;
     protected SceneMap currentScene;
@@ -25,6 +26,7 @@ public class WorldMapMaster : MonoBehaviour
         else
         {
             Instance = this;
+            GetPlayer();
         }
     }
 
@@ -32,13 +34,12 @@ public class WorldMapMaster : MonoBehaviour
 
     private void Start()
     {
-        GoToMap(0, 0);
+        GoToMap(0, 1);
     }
 
     public void GoToMap(int mapId, int spawnIndex)
     {
-        Destroy(currentMap?.gameObject);
-        Destroy(currentScene?.gameObject);
+        ClearPrevius();
         WorldMap map = Getmap(mapId);
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         Transform spawn = mapInstance.GetSpawn(spawnIndex);
@@ -92,8 +93,7 @@ public class WorldMapMaster : MonoBehaviour
 
     public void GoToScene(int sceneId)
     {
-        Destroy(currentScene?.gameObject);
-        Destroy(currentMap?.gameObject);
+        ClearPrevius();
         SceneMap map = GetScene(sceneId);
         SceneMap mapInstance = Instantiate(map.gameObject).GetComponent<SceneMap>();
         currentScene = mapInstance;
@@ -107,5 +107,22 @@ public class WorldMapMaster : MonoBehaviour
                 return wm;
         }
         return null;
+    }
+    public void ClearPrevius()
+    {
+        if (currentMap != null)
+            Destroy(currentMap?.gameObject);
+        if (currentScene != null)
+            Destroy(currentScene?.gameObject);
+    }
+
+    public void SetTimeOfDay(TimeOfDayType type)
+    {
+        timeOfDay = type;
+    }
+
+    public TimeOfDayType GetTimeOfDay()
+    {
+        return timeOfDay;
     }
 }

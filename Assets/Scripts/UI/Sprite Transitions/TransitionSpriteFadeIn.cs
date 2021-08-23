@@ -16,6 +16,13 @@ public class TransitionSpriteFadeIn : TransitionBase
             Color c = spriteRenderer.color;
             float alpha = Mathf.SmoothStep(startingAlpha, finalAlpha, timePassed * speed);
             spriteRenderer.color = new Color(c.r,c.g,c.b, alpha);
+            if (pingPong && spriteRenderer.color.a == finalAlpha)
+            {
+                timePassed = 0;
+                float newFinal = startingAlpha;
+                startingAlpha = finalAlpha;
+                finalAlpha = newFinal;
+            }
         }
     }
 }
