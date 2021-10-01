@@ -17,6 +17,10 @@ public class ItemData : ScriptableObject
     {
         return itemName;
     }
+    public string GetDescription()
+    {
+        return description;
+    }
 
     public virtual ItemId GetItemId()
     {

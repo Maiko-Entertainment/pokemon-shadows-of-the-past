@@ -8,6 +8,9 @@ public class PartyMaster : MonoBehaviour
     public static int maxParty = 6;
 
     public List<PokemonCaughtData> party = new List<PokemonCaughtData>();
+    public List<PokemonCaughtData> pokemonBox = new List<PokemonCaughtData>();
+
+    public bool loadDefaultParty = false;
 
     private void Awake()
     {
@@ -24,6 +27,28 @@ public class PartyMaster : MonoBehaviour
     public static PartyMaster GetInstance()
     {
         return Instance;
+    }
+
+    public void Load(SaveFile save)
+    {
+        if (!loadDefaultParty)
+        {
+            party = new List<PokemonCaughtData>();
+            foreach (PersistedPokemon pp in save.persistedParty)
+            {
+                party.Add(new PokemonCaughtData(pp));
+            }
+        }
+    }
+
+    public void HandleSave()
+    {
+        List<PersistedPokemon> persistedPokemon = new List<PersistedPokemon>();
+        foreach(PokemonCaughtData pokemon in party)
+        {
+            persistedPokemon.Add(pokemon.GetSave());
+        }
+        SaveMaster.Instance.activeSaveFile.persistedParty = persistedPokemon;
     }
 
     public List<PokemonCaughtData> GetParty()

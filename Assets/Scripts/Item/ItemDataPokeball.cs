@@ -11,7 +11,7 @@ public class ItemDataPokeball : ItemData
     public override CanUseResult CanUse()
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
-        if (bm!=null)
+        if (bm!=null && bm.IsBattleActive())
         {
             if (bm.battleData.battleType == BattleType.Pokemon)
             {
@@ -108,5 +108,10 @@ public class ItemDataPokeball : ItemData
     public virtual float GetCaptureRate()
     {
         return baseCaptureRate;
+    }
+
+    public override ItemTargetType GetItemTargetType()
+    {
+        return ItemTargetType.None;
     }
 }

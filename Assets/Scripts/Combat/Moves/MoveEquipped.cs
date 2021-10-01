@@ -9,12 +9,25 @@ public class MoveEquipped
     {
         this.move = move;
     }
+    public MoveEquipped(PersistedPokemonMove move)
+    {
+        this.move = MovesMaster.Instance.GetMove(move.id);
+        timesUsed = move.uses;
+    }
 
     public MoveEquipped(MoveData move, int timesUsed, int disabledTurnsLeft)
     {
         this.move = move;
         this.timesUsed = timesUsed;
         this.disabledTurnsLeft = disabledTurnsLeft;
+    }
+
+    public PersistedPokemonMove GetSave()
+    {
+        PersistedPokemonMove pe = new PersistedPokemonMove();
+        pe.id = move.moveId;
+        pe.uses = timesUsed;
+        return pe;
     }
 
     public bool IsAvailable()

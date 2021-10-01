@@ -23,28 +23,37 @@ public class UIBattleOptionsPokemon : MonoBehaviour
 
     private PokemonBattleData pokemon;
 
+    public UIBattleOptionsPokemon Load(PokemonCaughtData pokemon)
+    {
+        pokemonIcon.sprite = pokemon.GetPokemonBaseData().icon;
+        pokemonName.text = pokemon.GetName();
+        pokemonName.color = pokemon.IsFainted() ? faintedColor : Color.white;
+        float maxHealth = pokemon.GetCurrentStats().health;
+        float currentHealth = pokemon.GetCurrentHealth();
+        healthbar.fillAmount = currentHealth / maxHealth;
+        healthValue.text = currentHealth + "/"+ maxHealth;
+        level.text = "Lv " + pokemon.level;
+        if (exphbar)
+            exphbar.fillAmount = ((float)pokemon.GetExperience()) / pokemon.GetTotalExperienceToNextLevel();
+        if (statusSimbol)
+        {
+            StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(pokemon.statusEffectId);
+            UpdateStatus(status);
+        }
+        return this;
+    }
     public UIBattleOptionsPokemon Load(PokemonBattleData pokemon)
     {
         this.pokemon = pokemon;
-        pokemonIcon.sprite = pokemon.GetPokemonCaughtData().GetPokemonBaseData().icon;
-        pokemonName.text = pokemon.GetName();
-        pokemonName.color = pokemon.IsFainted() ? faintedColor : Color.white;
-        float maxHealth = pokemon.GetPokemonHealth();
-        float currentHealth = pokemon.GetPokemonCurrentHealth();
-        healthbar.fillAmount = currentHealth / maxHealth;
-        healthValue.text = currentHealth + "/"+ maxHealth;
-        level.text = "Lv " + pokemon.GetPokemonCaughtData().level;
-        if (exphbar)
-            exphbar.fillAmount = ((float)pokemon.pokemon.GetExperience()) / pokemon.pokemon.GetTotalExperienceToNextLevel();
-        if (statusSimbol)
-        {
-            UpdateStatus(pokemon.GetCurrentPrimaryStatus());
-        }
-        return this;
+        return Load(pokemon.GetPokemonCaughtData());
     }
     public void UpdateStatus(StatusEffect currenStatus)
     {
         StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
+        UpdateStatus(status);
+    }
+    public void UpdateStatus(StatusEffectData status)
+    {
         if (status)
         {
             statusSimbol.enabled = true;

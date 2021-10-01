@@ -12,11 +12,50 @@ public class PokemonCaughtData
     public PokemonNatureId natureId;
     public AbilityId abilityId;
     public List<MoveEquipped> moves = new List<MoveEquipped>();
+    public List<MoveEquipped> learnedMoves = new List<MoveEquipped>();
 
     public PokemonCaughtData() { }
     public AudioClip GetCry() { return pokemonBase.GetCry(); }
 
+    public PokemonCaughtData(PersistedPokemon pkmn)
+    {
+        pokemonBase = PokemonMaster.GetInstance().GetPokemonData(pkmn.pokemonId);
+        pokemonName = pkmn.pokemonName;
+        level = pkmn.level;
+        experience = pkmn.experience;
+        damageTaken = pkmn.damageTaken;
+        statusEffectId = pkmn.statusEffectId;
+        natureId = pkmn.natureId;
+        foreach(PersistedPokemonMove me in pkmn.moves)
+        {
+            moves.Add(new MoveEquipped(me));
+        }
+        foreach (PersistedPokemonMove me in pkmn.learnedMoves)
+        {
+            learnedMoves.Add(new MoveEquipped(me));
+        }
+    }
 
+    public PersistedPokemon GetSave()
+    {
+        PersistedPokemon pp = new PersistedPokemon();
+        pp.pokemonId = pokemonBase.pokemonId;
+        pp.pokemonName = pokemonName;
+        pp.level = level;
+        pp.experience = experience;
+        pp.damageTaken = damageTaken;
+        pp.statusEffectId = statusEffectId;
+        pp.natureId = natureId;
+        foreach (MoveEquipped me in moves)
+        {
+            pp.moves.Add(me.GetSave());
+        }
+        foreach (MoveEquipped me in learnedMoves)
+        {
+            pp.learnedMoves.Add(me.GetSave());
+        }
+        return pp;
+    }
     public PokemonCaughtData Copy()
     {
         PokemonCaughtData newInsntace = new PokemonCaughtData();
@@ -45,6 +84,11 @@ public class PokemonCaughtData
         natureId = encounter.GetRandomNature();
         abilityId = pokemonBase.GetRandomAbility();
         moves = encounter.GetMovesEquipped();
+    }
+
+    public string GetName()
+    {
+        return pokemonName;
     }
     public int GetLevel()
     {

@@ -14,6 +14,20 @@ public class TransitionCanvasGroup : TransitionBase
         }
     }
 
+    public override void FadeIn()
+    {
+        base.FadeIn();
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    public override void FadeOut()
+    {
+        base.FadeOut();
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+    }
+
     void Update()
     {
         if (fading)

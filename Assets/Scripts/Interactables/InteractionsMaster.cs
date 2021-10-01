@@ -58,6 +58,7 @@ public class InteractionsMaster : MonoBehaviour
     public bool IsInteractionPlaying()
     {
         bool isBattleHappening = BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive();
-        return isInteracting || isBattleHappening;
+        bool isMenuOpen = UIPauseMenuMaster.GetInstance().IsMenuOpen();
+        return isInteracting || isBattleHappening || isMenuOpen;
     }
 }

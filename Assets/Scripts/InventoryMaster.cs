@@ -21,6 +21,22 @@ public class InventoryMaster : MonoBehaviour
     }
 
     public static InventoryMaster GetInstance() { return Instance; }
+    public void Load(SaveFile save)
+    {
+        foreach (PersistedItem pi in save.persistedItems)
+        {
+            inventory.Add(new ItemInventory(pi));
+        }
+    }
+    public void HandleSave()
+    {
+        List<PersistedItem> persistedItem = new List<PersistedItem>();
+        foreach (ItemInventory item in inventory)
+        {
+            persistedItem.Add(item.GetSave());
+        }
+        SaveMaster.Instance.activeSaveFile.persistedItems = persistedItem;
+    }
 
     public List<ItemInventory> GetItemsFromCategory(ItemCategory category)
     {

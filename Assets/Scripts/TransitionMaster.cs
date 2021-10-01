@@ -71,12 +71,14 @@ public class TransitionMaster : MonoBehaviour
     // Returns time it takes to cover entire screen
     public void RunPokemonBattleTransition(ViewTransition transition)
     {
+        UIPauseMenuMaster.GetInstance()?.HideOpener();
         StartCoroutine(EnableBattleCameraAfter(transition.changeTime));
         Instantiate(transition.gameObject, transitions);
     }
 
     public void RunTrainerBattleTransition(ViewTransition transition)
     {
+        UIPauseMenuMaster.GetInstance()?.HideOpener();
         StartCoroutine(EnableBattleCameraAfter(transition.changeTime));
         Instantiate(transition.gameObject, transitions);
     }
@@ -99,6 +101,7 @@ public class TransitionMaster : MonoBehaviour
         yield return new WaitForSeconds(duration);
         EnableSceneCamera();
         SetDialogueToScene();
+        UIPauseMenuMaster.GetInstance()?.ShowOpener();
     }
 
     public float RunBattleToWorldTransition()
@@ -114,6 +117,7 @@ public class TransitionMaster : MonoBehaviour
         EnableWorldCamera();
         SetDialogueToScene();
         WorldMapMaster.GetInstance()?.HandleMapReturn();
+        UIPauseMenuMaster.GetInstance()?.ShowOpener();
     }
 
     public void DisableCameras()

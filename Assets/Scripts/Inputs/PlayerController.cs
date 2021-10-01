@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Tilemap groundTilemap;
     public Tilemap waterTilemap;
     public Tilemap collisionTilemap;
+    public List<string> customColissionTags;
 
     private Controls controls;
     private bool wantsToMove = false;
@@ -95,13 +96,27 @@ public class PlayerController : MonoBehaviour
 
     bool CanMove(Vector2 direction)
     {
-        Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction);
+        Vector3 nextPosition = transform.position + (Vector3)direction;
+        Vector3Int gridPosition = groundTilemap.WorldToCell(nextPosition);
         bool reachedTarget = HasReachedTarget();
-        if (!groundTilemap.HasTile(gridPosition) || collisionTilemap.HasTile(gridPosition) || (waterTilemap.HasTile(gridPosition) && !waterMode))
+        bool wouldHitCustomColliders = AreCustomCollidersInPosition(nextPosition);
+        if (!groundTilemap.HasTile(gridPosition) || collisionTilemap.HasTile(gridPosition) || (waterTilemap.HasTile(gridPosition) && !waterMode) || wouldHitCustomColliders)
         {
             return false;
         }
         return wantsToMove && reachedTarget;
+    }
+
+    bool AreCustomCollidersInPosition(Vector2 position)
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, 0.4f);
+        foreach(Collider2D col in hitColliders)
+        {
+            print("Found collider for custom check: " + col.tag);
+            if (customColissionTags.Contains(col.tag))
+                return true;
+        }
+        return false;
     }
 
     bool HasReachedTarget()

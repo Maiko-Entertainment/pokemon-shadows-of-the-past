@@ -10,6 +10,7 @@ public class AudioMaster : MonoBehaviour
     public float musicVolume = 1;
 
     public AudioSource musicSource;
+    public List<AudioSource> voiceSources = new List<AudioSource>();
 
     void Awake()
     {
@@ -24,7 +25,7 @@ public class AudioMaster : MonoBehaviour
     }
     void Start()
     {
-        
+        SetSoundEffectVolume(soundEffectVolume);
     }
 
     public static AudioMaster GetInstance()
@@ -66,5 +67,12 @@ public class AudioMaster : MonoBehaviour
     public void StopMusic(bool fade)
     {
         musicSource.Stop();
+    }
+
+    public void SetSoundEffectVolume(float volume)
+    {
+        soundEffectVolume = volume;
+        foreach (AudioSource audioSource in voiceSources)
+            audioSource.volume = volume;
     }
 }

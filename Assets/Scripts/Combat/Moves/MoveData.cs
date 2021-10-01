@@ -77,7 +77,12 @@ public class MoveData : ScriptableObject
         }
     }
 
+    // Use this in combat to get final power
     public virtual int GetPower(PokemonBattleData user)
+    {
+        return power;
+    }
+    public virtual int GetPower()
     {
         return power;
     }

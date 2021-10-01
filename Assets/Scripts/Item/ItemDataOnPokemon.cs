@@ -20,6 +20,7 @@ public class ItemDataOnPokemon : ItemData
 
     public virtual void UseOnPokemon(PokemonCaughtData pokemon)
     {
+        AudioMaster.GetInstance().PlaySfx(useSound);
         HandleAfterUse();
     }
 

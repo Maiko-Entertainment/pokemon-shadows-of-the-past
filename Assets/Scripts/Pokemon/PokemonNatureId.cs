@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum PokemonNatureId
 {
-    ruthless = 0,
-    careful = 1,
-    cunning = 2,
-    reserved = 3,
-    restless = 4
+    ruthless = 0,   // Attack
+    careful = 1,    // Defense
+    cunning = 2,    // Special Attack
+    reserved = 3,   // Special Defense
+    restless = 4    // Speed
 }

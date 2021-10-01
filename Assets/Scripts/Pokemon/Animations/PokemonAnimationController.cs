@@ -62,4 +62,9 @@ public class PokemonAnimationController : MonoBehaviour
     {
         sprite.GetComponent<Renderer>().material = material;
     }
+
+    public Sprite GetCurrentSprite()
+    {
+        return sprite.sprite;
+    }
 }
