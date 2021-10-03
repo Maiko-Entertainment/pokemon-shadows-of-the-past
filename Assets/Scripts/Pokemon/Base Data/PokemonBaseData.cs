@@ -20,6 +20,7 @@ public class PokemonBaseData : ScriptableObject
     public List<PokemonMoveLearn> levelUpMoves;
     public List<PokemonBaseEvolution> evolutions;
     public PokemonAnimationController battleAnimation;
+    public string pokedexEntry;
 
     public AudioClip GetCry() { return cry; }
 
@@ -53,5 +54,10 @@ public class PokemonBaseData : ScriptableObject
                 return naturePriority.abilityId;
         }
         return AbilityId.Intimidate;
+    }
+
+    public string GetPokedexEntry()
+    {
+        return pokedexEntry;
     }
 }

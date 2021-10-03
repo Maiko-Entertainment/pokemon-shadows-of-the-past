@@ -18,4 +18,8 @@ public class SaveElementText : SaveElement
     {
         return SaveValueType.text;
     }
+    public override void SetValue(object newValue)
+    {
+        SaveMaster.Instance.SetSaveElementInner(""+newValue, id);
+    }
 }

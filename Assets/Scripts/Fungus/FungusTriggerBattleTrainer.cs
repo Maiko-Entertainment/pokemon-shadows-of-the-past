@@ -29,4 +29,9 @@ public class FungusTriggerBattleTrainer : Command
     {
         return new Color32(61, 170, 191, 255);
     }
+    public override string GetSummary()
+    {
+        string clipName = trainer != null ? trainer.name : "None";
+        return clipName;
+    }
 }

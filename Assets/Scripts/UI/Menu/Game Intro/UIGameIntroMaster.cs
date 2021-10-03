@@ -1,0 +1,123 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class UIGameIntroMaster : MonoBehaviour
+{
+    public static UIGameIntroMaster Instance;
+
+    public TransitionBase characterData;
+    public TransitionBase starterSelector;
+
+    public TMP_InputField nameInput;
+    public Transform characterList;
+    public Button submitcharacterData;
+    // Starter Picker
+    public Transform starterList;
+    public Image starterPreviewImage;
+    public TMP_InputField starterNickname;
+    public TextMeshProUGUI starterName;
+    public TextMeshProUGUI starterDescription;
+    public Transform typesList;
+    public Button submitStarter;
+
+    public UICharacterPicker pickerPrefab;
+    public UIStarterPicker starterPickerPrefab;
+    public UIBattleType typePrefab;
+    public List<PokemonBaseData> starterPokemon = new List<PokemonBaseData>();
+
+    public AudioClip openMenuSound;
+    public AudioClip submitSound;
+
+    private PokemonAnimationController animatorCheat;
+
+    private void Awake()
+    {
+        if (Instance)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    public static UIGameIntroMaster GetInstance()
+    {
+        return Instance;
+    }
+    public void OnChangeName(string name)
+    {
+        submitcharacterData.interactable = name != "";
+    }
+
+    public void OpenPlayerDataPanel()
+    {
+        starterSelector?.FadeOut();
+        AudioMaster.GetInstance().PlaySfx(openMenuSound);
+        characterData?.FadeIn();
+        foreach (Transform t in characterList)
+        {
+            Destroy(t.gameObject);
+        }
+        int playerAmounts = WorldMapMaster.GetInstance().playerPrefabs.Count;
+        for (int i = 0; i < playerAmounts; i++)
+        {
+            Instantiate(pickerPrefab, characterList).Load(i);
+        }
+    }
+
+    public void SubmitPlayerData()
+    {
+        SaveElement playerName = SaveMaster.Instance.GetSaveElement(SaveElementId.playerName);
+        playerName.SetValue(nameInput.text);
+        characterData?.FadeOut();
+        AudioMaster.GetInstance().PlaySfx(submitSound);
+        starterSelector?.FadeIn();
+        foreach (Transform t in starterList)
+        {
+            Destroy(t.gameObject);
+        }
+        foreach (PokemonBaseData p in starterPokemon)
+        {
+            UIStarterPicker starter = Instantiate(starterPickerPrefab, starterList).Load(p);
+            starter.OnClick += PreviewStarter;
+        }
+        PreviewStarter(starterPokemon[0]);
+    }
+
+    public void PreviewStarter(PokemonBaseData pokemon)
+    {
+        starterName.text = pokemon.species;
+        starterDescription.text = pokemon.GetPokedexEntry();
+        if (animatorCheat)
+            Destroy(animatorCheat.gameObject);
+        animatorCheat = Instantiate(pokemon.battleAnimation);
+        foreach(Transform t in typesList)
+        {
+            Destroy(t.gameObject);
+        }
+        foreach (PokemonTypeId t in pokemon.types)
+        {
+            Instantiate(typePrefab, typesList).Load(t);
+        }
+    }
+
+    public void GoToNextScene()
+    {
+        AudioMaster.GetInstance().PlaySfx(submitSound);
+        InteractionsMaster.GetInstance().ExecuteNext();
+        WorldMapMaster.GetInstance().GoToMap(0, 1);
+    }
+
+    private void Update()
+    {
+        if (animatorCheat)
+        {
+            starterPreviewImage.sprite = animatorCheat.sprite.sprite;
+        }
+    }
+}

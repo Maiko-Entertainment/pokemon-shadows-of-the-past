@@ -5,6 +5,14 @@ using UnityEngine;
 public class WorldInteractable : MonoBehaviour
 {
     public bool onStep = false;
+    public bool activateOnSpawn = false;
+
+    private void Start()
+    {
+        if (activateOnSpawn)
+            OnInteract();
+    }
+
     public virtual void OnInteract()
     {
 

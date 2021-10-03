@@ -6,12 +6,16 @@ public class WorldMapMaster : MonoBehaviour
 {
     public static WorldMapMaster Instance;
 
-    public PlayerController playerPrefab;
+    public List<PlayerController> playerPrefabs;
     public List<WorldMap> maps;
     public List<SceneMap> scenes;
     public Transform sceneContainer;
     public Transform mapNameContainer;
     public TimeOfDayType timeOfDay;
+
+    public bool forceMapLoad = false;
+    public int customMap = 2;
+    public int customSpawn = 0;
 
     protected WorldMap currentMap;
     protected SceneMap currentScene;
@@ -26,7 +30,6 @@ public class WorldMapMaster : MonoBehaviour
         else
         {
             Instance = this;
-            GetPlayer();
         }
     }
 
@@ -34,7 +37,10 @@ public class WorldMapMaster : MonoBehaviour
 
     private void Start()
     {
-        GoToMap(0, 1);
+        if (forceMapLoad)
+        {
+            GoToMap(customMap, customSpawn);
+        }
     }
 
     public void GoToMap(int mapId, int spawnIndex)
@@ -63,8 +69,17 @@ public class WorldMapMaster : MonoBehaviour
     public PlayerController GetPlayer()
     {
         if (player == null)
-            player = Instantiate(playerPrefab.gameObject).GetComponent<PlayerController>();
+        {
+            SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.characterModelId);
+            int index = (int)(float)se.GetValue();
+            player = Instantiate(playerPrefabs[index].gameObject).GetComponent<PlayerController>();
+        }
         return player;
+    }
+
+    public PlayerController GetPlayer(int index)
+    {
+        return playerPrefabs[index].gameObject.GetComponent<PlayerController>();
     }
 
     public void HandleMapReturn()

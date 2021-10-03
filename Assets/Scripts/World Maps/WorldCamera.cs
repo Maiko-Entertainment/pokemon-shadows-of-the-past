@@ -12,13 +12,25 @@ public class WorldCamera : MonoBehaviour
 
     public void LookForPlayer()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        GameObject go = GameObject.FindGameObjectWithTag("Player");
+        if (go)
+        {
+            player = go.transform;
+
+        }
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = player.position + Vector3.forward * -1;
+        if (player)
+        {
+            transform.position = player.position + Vector3.forward * -1;
+        }
+        else
+        {
+            LookForPlayer();
+        }
     }
 
 

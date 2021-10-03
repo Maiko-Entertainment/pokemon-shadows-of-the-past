@@ -18,4 +18,9 @@ public class SaveElementNumber : SaveElement
     {
         return SaveValueType.number;
     }
+
+    public override void SetValue(object newValue)
+    {
+        SaveMaster.Instance.SetSaveElementInner((float)newValue, id);
+    }
 }

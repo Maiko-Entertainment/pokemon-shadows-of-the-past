@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Tilemap waterTilemap;
     public Tilemap collisionTilemap;
     public List<string> customColissionTags;
+    public Sprite preview;
 
     private Controls controls;
     private bool wantsToMove = false;
@@ -96,6 +97,8 @@ public class PlayerController : MonoBehaviour
 
     bool CanMove(Vector2 direction)
     {
+        if (!groundTilemap || !collisionTilemap || !waterTilemap)
+            return false;
         Vector3 nextPosition = transform.position + (Vector3)direction;
         Vector3Int gridPosition = groundTilemap.WorldToCell(nextPosition);
         bool reachedTarget = HasReachedTarget();

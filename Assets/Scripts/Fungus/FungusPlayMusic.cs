@@ -18,4 +18,10 @@ public class FungusPlayMusic : Command
     {
         return new Color32(42, 176, 49, 255);
     }
+
+    public override string GetSummary()
+    {
+        string clipName = clip != null ? clip.name : "None";
+        return clipName;
+    }
 }
