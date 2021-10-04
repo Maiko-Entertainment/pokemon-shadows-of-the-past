@@ -11,6 +11,7 @@ public class PokemonCaughtData
     public StatusEffectId statusEffectId = StatusEffectId.None;
     public PokemonNatureId natureId;
     public AbilityId abilityId;
+    public bool isMale = true;
     public List<MoveEquipped> moves = new List<MoveEquipped>();
     public List<MoveEquipped> learnedMoves = new List<MoveEquipped>();
 
@@ -217,5 +218,33 @@ public class PokemonCaughtData
     {
         experience = 0;
         level += 1;
+    }
+
+    // returns a list of NEW moves the pokemon learns at certain level
+    public List<PokemonMoveLearn> CheckForLearnedMoves(int level)
+    {
+        List<PokemonMoveLearn> newMovesLearned = new List<PokemonMoveLearn>();
+        List<MoveEquipped> newCompleteMovesLearned = new List<MoveEquipped>();
+        List<PokemonMoveLearn> allMovesLearned = pokemonBase.GetLearntMovesByLevel(level);
+        newCompleteMovesLearned.AddRange(learnedMoves);
+
+        foreach (PokemonMoveLearn availableMove in allMovesLearned)
+        {
+            bool isMoveInLearnedMoves = false;
+            foreach(MoveEquipped me in learnedMoves)
+            {
+                if (availableMove.move.moveId == me.move.moveId)
+                {
+                    isMoveInLearnedMoves = true;
+                    break;
+                }
+            }
+            if (!isMoveInLearnedMoves)
+            {
+                newMovesLearned.Add(availableMove);
+                newCompleteMovesLearned.Add(new MoveEquipped(availableMove.move));
+            }
+        }
+        return newMovesLearned;
     }
 }

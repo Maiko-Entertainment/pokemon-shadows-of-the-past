@@ -21,6 +21,7 @@ public class UIGameIntroMaster : MonoBehaviour
     public TextMeshProUGUI starterName;
     public TextMeshProUGUI starterDescription;
     public Transform typesList;
+    public UIGenderButton genderButton;
     public Button submitStarter;
 
     public UICharacterPicker pickerPrefab;
@@ -32,6 +33,8 @@ public class UIGameIntroMaster : MonoBehaviour
     public AudioClip submitSound;
 
     private PokemonAnimationController animatorCheat;
+    private PokemonBaseData pickedStarter;
+    private bool isStarterMale = true;
 
     private void Awake()
     {
@@ -86,11 +89,13 @@ public class UIGameIntroMaster : MonoBehaviour
             UIStarterPicker starter = Instantiate(starterPickerPrefab, starterList).Load(p);
             starter.OnClick += PreviewStarter;
         }
+        genderButton.Load(isStarterMale);
         PreviewStarter(starterPokemon[0]);
     }
 
     public void PreviewStarter(PokemonBaseData pokemon)
     {
+        pickedStarter = pokemon;
         starterName.text = pokemon.species;
         starterDescription.text = pokemon.GetPokedexEntry();
         if (animatorCheat)
@@ -106,8 +111,25 @@ public class UIGameIntroMaster : MonoBehaviour
         }
     }
 
+    public void FlipGender()
+    {
+        AudioMaster.GetInstance().PlaySfx(openMenuSound);
+        isStarterMale = !isStarterMale;
+        genderButton.Load(isStarterMale);
+    }
+
     public void GoToNextScene()
     {
+        PokemonCaughtData starter = new PokemonCaughtData();
+        starter.pokemonBase = pickedStarter;
+        starter.level = 5;
+        starter.pokemonName = starterNickname.text;
+        starter.isMale = isStarterMale;
+        List<PokemonNatureId> natures = new List<PokemonNatureId>() { PokemonNatureId.careful, PokemonNatureId.cunning, PokemonNatureId.reserved, PokemonNatureId.restless, PokemonNatureId.ruthless };
+        starter.natureId = natures[Random.Range(0,4)];
+        starter.CheckForLearnedMoves(starter.level);
+        PartyMaster.GetInstance().AddPartyMember(starter);
+        starterSelector?.FadeOut();
         AudioMaster.GetInstance().PlaySfx(submitSound);
         InteractionsMaster.GetInstance().ExecuteNext();
         WorldMapMaster.GetInstance().GoToMap(0, 1);

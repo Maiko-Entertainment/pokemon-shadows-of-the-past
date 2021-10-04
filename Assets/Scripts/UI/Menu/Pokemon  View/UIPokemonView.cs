@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UIPokemonView : MonoBehaviour
 {
     public UIBattleType battleTypePrefab;
-    public UIBattleOptionsPokemon pokemonPrefab;
+    public UIItemOptionsPokemon pokemonPrefab;
 
     public UIPokemonInfo pokemonSectionInfo;
     public UIPokemonMovesViewer pokemonSectionMoves;
@@ -33,12 +33,14 @@ public class UIPokemonView : MonoBehaviour
         List<PokemonCaughtData> pokemonList = PartyMaster.GetInstance().GetParty();
         foreach (PokemonCaughtData pokemon in pokemonList)
         {
-            UIBattleOptionsPokemon options = Instantiate(pokemonPrefab, pokemonListContainer).GetComponent<UIBattleOptionsPokemon>().Load(pokemon);
-            options.onClick += (PokemonBattleData pkmn)=> LoadPokemon(pokemon);
+            UIItemOptionsPokemon options = Instantiate(pokemonPrefab, pokemonListContainer).Load(pokemon);
+            options.onClick += LoadPokemon;
         }
         PokemonCaughtData first = pokemonList[0];
-        LoadPokemon(first);
-       
+        if (currentPokemon == null)
+        {
+            LoadPokemon(first);
+        }
     }
 
     public void LoadPokemon(PokemonCaughtData pkmn)
@@ -54,6 +56,7 @@ public class UIPokemonView : MonoBehaviour
         if (animator)
             Destroy(animator.gameObject);
         animator = Instantiate(pkmn.GetPokemonBaseData().battleAnimation);
+        animator.transform.position = new Vector3(300000, 300000, 0);
         pokemonIcon.sprite = pkmn.GetPokemonBaseData().icon;
         ViewPokemonInfo();
     }

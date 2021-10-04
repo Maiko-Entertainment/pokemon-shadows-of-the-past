@@ -60,4 +60,15 @@ public class PokemonBaseData : ScriptableObject
     {
         return pokedexEntry;
     }
+
+    public List<PokemonMoveLearn> GetLearntMovesByLevel(int level)
+    {
+        List<PokemonMoveLearn> levelUpMoves = new List<PokemonMoveLearn>();
+        foreach(PokemonMoveLearn pml in this.levelUpMoves)
+        {
+            if (pml.learnType == PokemonMoveLearnType.Level && pml.levelRequired <= level)
+                levelUpMoves.Add(pml);
+        }
+        return levelUpMoves;
+    }
 }
