@@ -132,7 +132,6 @@ public class UIGameIntroMaster : MonoBehaviour
         starterSelector?.FadeOut();
         AudioMaster.GetInstance().PlaySfx(submitSound);
         InteractionsMaster.GetInstance().ExecuteNext();
-        WorldMapMaster.GetInstance().GoToMap(0, 1);
     }
 
     private void Update()

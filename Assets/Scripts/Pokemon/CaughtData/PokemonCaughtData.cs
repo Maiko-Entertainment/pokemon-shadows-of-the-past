@@ -89,7 +89,7 @@ public class PokemonCaughtData
 
     public string GetName()
     {
-        return pokemonName;
+        return pokemonName != "" ? pokemonName : pokemonBase.species;
     }
     public int GetLevel()
     {
@@ -242,9 +242,15 @@ public class PokemonCaughtData
             if (!isMoveInLearnedMoves)
             {
                 newMovesLearned.Add(availableMove);
-                newCompleteMovesLearned.Add(new MoveEquipped(availableMove.move));
+                MoveEquipped me = new MoveEquipped(availableMove.move);
+                newCompleteMovesLearned.Add(me);
+                if (moves.Count < 4)
+                {
+                    moves.Add(me);
+                }
             }
         }
+        learnedMoves = newCompleteMovesLearned;
         return newMovesLearned;
     }
 }
