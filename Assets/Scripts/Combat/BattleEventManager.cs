@@ -80,6 +80,10 @@ public class BattleEventManager
                     BattleTriggerOnPokemonRoundEnd btpte = (BattleTriggerOnPokemonRoundEnd)bt;
                     keepGoing = btpte.Execute((BattleEventRoundEnd)next);
                     break;
+                case BattleEventId.pokemonUseMove:
+                    BattleTriggerOnPokemonMove btpm = (BattleTriggerOnPokemonMove)bt;
+                    keepGoing = btpm.Execute((BattleEventUseMove)next);
+                    break;
             }
             if (!keepGoing)
             {

@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +15,9 @@ public class UIBattleHealthbar : MonoBehaviour
     public Color healthyColor;
     public Color dangerColor;
     public Color criticalColor;
+    public TransitionBase abilityPanel;
+    public TextMeshProUGUI pokemonAbilityName;
+    public AudioClip abilitySound;
 
     public PokemonBattleData pokemon;
     public float targetHealth;
@@ -34,6 +37,7 @@ public class UIBattleHealthbar : MonoBehaviour
         currentExp = pkmn.GetExperience();
         pokemonName.text = pkmn.pokemonName;
         pokemonLevel.text = "Lv. " + pkmn.GetLevel();
+        pokemonAbilityName.text = AbilityMaster.GetInstance().GetAbility(pkmn.abilityId).GetName();
         UpdateHealth(currentValue);
         UpdateTarget(currentValue);
         UpdateExp(currentExp);
@@ -142,4 +146,20 @@ public class UIBattleHealthbar : MonoBehaviour
     {
         return maxExp * changeSpeed * 2f;
     }
+
+    public float ShowAbility()
+    {
+        float stayTime = 2f;
+        abilityPanel.FadeIn();
+        AudioMaster.GetInstance()?.PlaySfx(abilitySound);
+        StartCoroutine(FadeOutAbiliy(stayTime));
+        return stayTime;
+    }
+
+    IEnumerator FadeOutAbiliy(float time)
+    {
+        yield return new WaitForSeconds(time);
+        abilityPanel.FadeOut();
+    }
+
 }

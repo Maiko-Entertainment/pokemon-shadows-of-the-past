@@ -39,6 +39,7 @@ public class PokemonBattleData
     public void Initiate()
     {
         inBattleTypes = pokemon.GetPokemonBaseData().types;
+        abilityId = pokemon.abilityId;
         AbilityData ad = AbilityMaster.GetInstance().GetAbility(abilityId);
         ad.Initialize(this);
         if (statusEffects == null)
@@ -49,7 +50,7 @@ public class PokemonBattleData
 
     public string GetName()
     {
-        return pokemon.pokemonName;
+        return pokemon.GetName();
     }
 
     public AudioClip GetCry()

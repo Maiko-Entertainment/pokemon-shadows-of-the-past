@@ -27,6 +27,7 @@ public class PokemonCaughtData
         damageTaken = pkmn.damageTaken;
         statusEffectId = pkmn.statusEffectId;
         natureId = pkmn.natureId;
+        abilityId = pkmn.abilityId;
         foreach(PersistedPokemonMove me in pkmn.moves)
         {
             moves.Add(new MoveEquipped(me));

@@ -237,6 +237,10 @@ public class BattleManager
     {
         eventManager.AddEvent(new BattleEventUseMove(user, move));
     }
+    public void AddAbilityEvent(PokemonBattleData user)
+    {
+        eventManager.AddEvent(new BattleEventPokemonAbility(user));
+    }
 
     public void AddMoveSuccessEvent(BattleEventUseMove battleEvent)
     {
@@ -332,7 +336,7 @@ public class BattleManager
         float stabBonus = attacker.GetTypeIds().Contains(moveTypeId) ? 1.5f : 1f;
         // Final calculations
         float baseDamage = 2 + (2 * attackerLevel + 10) / 250f * attack / defense * movePower;
-        float finalDamage = baseDamage * randomMultiplier * advantageMultiplier * stabBonus;
+        float finalDamage = baseDamage * randomMultiplier * advantageMultiplier * stabBonus * moveMods.powerMultiplier;
         
         DamageSummary damageSummary = new DamageSummary(
             moveTypeId,

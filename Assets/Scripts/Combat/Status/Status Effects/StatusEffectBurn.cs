@@ -44,22 +44,21 @@ public class StatusEffectBurn : StatusEffect
                         }
                     )
                 );
+        BattleTriggerOnPokemonBurn triggerMove = new BattleTriggerOnPokemonBurn(
+            pokemon
+           );
         // Needs trigger to reduce physical attack damage
         battleTriggers.Add(messageTrigger);
         battleTriggers.Add(animTrigger);
         battleTriggers.Add(statusTrigger);
-        BattleMaster.GetInstance()?
-            .GetCurrentBattle()?.AddTrigger(
-                messageTrigger
-            );
-        BattleMaster.GetInstance()?
-            .GetCurrentBattle()?.AddTrigger(
-                animTrigger
-            );
-        BattleMaster.GetInstance()?
-            .GetCurrentBattle()?.AddTrigger(
-                statusTrigger
-            );
+        battleTriggers.Add(triggerMove);
+        foreach(BattleTrigger bt in battleTriggers)
+        {
+            BattleMaster.GetInstance()?
+                .GetCurrentBattle()?.AddTrigger(
+                    bt
+                );
+        }
         base.Initiate();
     }
 }

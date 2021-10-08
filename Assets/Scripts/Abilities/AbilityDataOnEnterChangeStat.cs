@@ -11,6 +11,7 @@ public class AbilityDataOnEnterChangeStat : AbilityData
         if (bm!=null)
         {
             bm.AddTrigger(new BattleTriggerOnPokemonEnterChangeStats(pokemon, levelChange, targetType));
+            bm.AddAbilityEvent(pokemon);
         }
     }
 }

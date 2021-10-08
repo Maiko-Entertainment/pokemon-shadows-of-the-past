@@ -102,6 +102,21 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
             team2Health.UpdateLevel(level);
         }
     }
+    public float ShowPokemonAbility(PokemonBattleData pokemon)
+    {
+        BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();
+        BattleTeamId team = battleState.GetTeamId(pokemon);
+        if (team == BattleTeamId.Team1)
+        {
+            return team1Health.ShowAbility();
+        }
+        else
+        {
+            return team2Health.ShowAbility();
+        }
+    }
+
+    
 
     public void UpdateStatus(PokemonBattleData pokemon, StatusEffectData status)
     {

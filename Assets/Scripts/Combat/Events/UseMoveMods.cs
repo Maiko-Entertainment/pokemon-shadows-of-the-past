@@ -14,4 +14,12 @@ public class UseMoveMods
     {
         this.moveTypeId = moveTypeId;
     }
+
+    public void Implement(UseMoveMods mod)
+    {
+        powerMultiplier *= mod.powerMultiplier;
+        accuracyMultiplier *= mod.accuracyMultiplier;
+        criticalLevelChange += mod.criticalLevelChange;
+        moveTypeId = mod.moveTypeId == PokemonTypeId.Unmodify ? moveTypeId : mod.moveTypeId;
+    }
 }

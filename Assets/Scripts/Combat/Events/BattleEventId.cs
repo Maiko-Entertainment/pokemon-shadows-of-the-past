@@ -4,6 +4,7 @@ public enum BattleEventId
     pokemonEnter = 0,
     pokemonSwitch = 1,
     pokemonFaint = 2,
+    pokemonAbilityUse = 15,
     pokemonUseMove = 3,
     pokemonUseMoveSuccess = 10,
     pokemonTakeDamage = 4,

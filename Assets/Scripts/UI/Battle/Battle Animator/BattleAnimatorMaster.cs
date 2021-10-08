@@ -386,6 +386,11 @@ public class BattleAnimatorMaster : MonoBehaviour
         }
     }
 
+    public float ShowPokemonAbility(PokemonBattleData pokemon)
+    {
+        return battleInfoManager.ShowPokemonAbility(pokemon);
+    }
+
     // Menus
 
     public void ShowTurnOptions()

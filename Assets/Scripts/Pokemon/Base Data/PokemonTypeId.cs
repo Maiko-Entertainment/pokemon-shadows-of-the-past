@@ -22,5 +22,6 @@ public enum PokemonTypeId
     Ground,
     Poison,
     Flying,
-    Undefined
+    Undefined,
+    Unmodify // Used only for BattleTriggerOnPokemonMove
 }
