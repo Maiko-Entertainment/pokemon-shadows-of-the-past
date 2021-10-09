@@ -140,4 +140,13 @@ public class WorldMapMaster : MonoBehaviour
     {
         return timeOfDay;
     }
+
+    public void PlayCurrentPlaceMusic()
+    {
+        if (currentMap)
+        {
+            AudioClip mapMusic = currentMap.GetMapMusic();
+            AudioMaster.GetInstance().PlayMusic(mapMusic);
+        }
+    }
 }

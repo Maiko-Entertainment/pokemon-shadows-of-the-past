@@ -31,4 +31,9 @@ public class WorldMap : MonoBehaviour
     {
         return spawnList[index];
     }
+
+    public AudioClip GetMapMusic()
+    {
+        return mapMusic;
+    }
 }

@@ -23,6 +23,7 @@ public class TransitionSize : TransitionBase
                 Vector3 newFinal = initialSize;
                 initialSize = finalSize;
                 finalSize = newFinal;
+                timePassed = 0;
             }
         }
     }

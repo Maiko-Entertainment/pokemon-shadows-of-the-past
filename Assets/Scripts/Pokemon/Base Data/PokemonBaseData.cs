@@ -71,4 +71,9 @@ public class PokemonBaseData : ScriptableObject
         }
         return levelUpMoves;
     }
+
+    public PokemonAnimationController GetAnimatorController()
+    {
+        return battleAnimation;
+    }
 }

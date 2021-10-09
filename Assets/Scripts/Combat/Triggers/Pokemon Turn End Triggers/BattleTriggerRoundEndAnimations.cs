@@ -14,9 +14,12 @@ public class BattleTriggerRoundEndAnimations : BattleTriggerOnPokemonRoundEnd
     }
     public override bool Execute(BattleEventRoundEnd battleEvent)
     {
-        foreach (BattleAnimation anim in animations)
+        if (!target.IsFainted() && !pokemon.IsFainted())
         {
-            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, target, anim));
+            foreach (BattleAnimation anim in animations)
+            {
+                BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, target, anim));
+            }
         }
         return base.Execute(battleEvent);
     }
