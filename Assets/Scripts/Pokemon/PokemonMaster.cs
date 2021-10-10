@@ -59,6 +59,25 @@ public class PokemonMaster : MonoBehaviour
 
     public void EvolvePokemon(PokemonCaughtData pokemon, PokemonBaseData evolution)
     {
-        UIEvolutionMaster.GetInstance().InitiateEvolution(pokemon, evolution);
+        PokemonCaughtData original = pokemon.Copy();
+
+        AbilityId originalAbility = pokemon.abilityId;
+        bool foundSameAbilty = false;
+        foreach(PokemonBaseAbility ability in evolution.abilities)
+        {
+            if (originalAbility == ability.abilityId)
+            {
+                foundSameAbilty = true;
+            }
+        }
+        if (!foundSameAbilty)
+        {
+            originalAbility = evolution.GetRandomAbility();
+        }
+        pokemon.pokemonBase = evolution;
+        pokemon.abilityId = originalAbility;
+        List<PokemonMoveLearn> learnedMoves = pokemon.CheckForLearnedMoves(pokemon.GetLevel());
+
+        UIEvolutionMaster.GetInstance().InitiateEvolution(original, evolution, learnedMoves);
     }
 }

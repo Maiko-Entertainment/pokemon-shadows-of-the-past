@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,7 @@ public class UIEvolutionMaster : MonoBehaviour
     public Transform evolutionLightsContainer;
     public Transform evolutionGlowContainer;
     public Transform evolutionFinalWaveContainer;
+    public Flowchart flowchart;
 
     private PokemonAnimationController originalPokemon;
     private PokemonAnimationController evolvedPokemon;
@@ -49,19 +51,28 @@ public class UIEvolutionMaster : MonoBehaviour
         return Instance;
     }
 
-    public void InitiateEvolution(PokemonCaughtData pokemon, PokemonBaseData evolution)
+    public void InitiateEvolution(PokemonCaughtData pokemon, PokemonBaseData evolution, List<PokemonMoveLearn> learnedMoves=null)
     {
+        if (learnedMoves == null)
+        {
+            learnedMoves = new List<PokemonMoveLearn>();
+        }
         isEvolving = true;
         evolvedPokemonImage.gameObject.SetActive(false);
         evolutionPanel.FadeIn();
+        UIPauseMenuMaster.GetInstance().HideOpener();
         AudioMaster.GetInstance().PlayMusic(null);
         PokemonAnimationController animator = pokemon.GetPokemonBaseData().GetAnimatorController();
         originalPokemon = Instantiate(animator);
-        
-        StartCoroutine(InitiateEvolutionSequence(pokemon, evolution));
+
+        Dictionary<string, string> variables = new Dictionary<string, string>();
+        variables.Add("pokemon", pokemon.GetName());
+        InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Start", variables));
+
+        StartCoroutine(InitiateEvolutionSequence(pokemon, evolution, learnedMoves));
     }
 
-    IEnumerator InitiateEvolutionSequence(PokemonCaughtData pokemon, PokemonBaseData evolution)
+    IEnumerator InitiateEvolutionSequence(PokemonCaughtData pokemon, PokemonBaseData evolution, List<PokemonMoveLearn> learnedMoves = null)
     {
         float evoGlowTime = 2f;
         float evolutionTransitionDuration = 15f;
@@ -113,12 +124,22 @@ public class UIEvolutionMaster : MonoBehaviour
         AudioMaster.GetInstance().PlaySfx(evolution.GetCry());
         yield return new WaitForSeconds(2f);
         AudioMaster.GetInstance().PlaySfx(evolutionSuccessSound);
-        yield return new WaitForSeconds(6f);
-        // Close Pokemon Screen and reset all
-        isEvolving = false;
-        evolvedPokemonImage.gameObject.SetActive(false);
-        evolutionPanel.FadeOut();
-        WorldMapMaster.GetInstance().PlayCurrentPlaceMusic();
+        Dictionary<string, string> variables = new Dictionary<string, string>();
+        variables.Add("pokemon", pokemon.GetName());
+        variables.Add("evolution", evolution.species);
+        InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Evolution", variables));
+        foreach (PokemonMoveLearn ml in learnedMoves)
+        {
+            Dictionary<string, string> moveVar = new Dictionary<string, string>();
+            moveVar.Add("pokemon", pokemon.GetName());
+            moveVar.Add("move", ml.move.moveName);
+            InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Move Learned", moveVar));
+        }
+        if (learnedMoves.Count > 0)
+        {
+            InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Move Equip"));
+        }
+        InteractionsMaster.GetInstance().AddEvent(new InteractionEventFinishEvolution());
     }
 
     IEnumerator CreateLights(float interval, float duration)
@@ -141,6 +162,21 @@ public class UIEvolutionMaster : MonoBehaviour
             Destroy(lines, 2f);
             yield return new WaitForSeconds(interval);
         }
+    }
+
+    public float FinishEvolution()
+    {
+        // Close Pokemon Screen and reset all
+        isEvolving = false;
+        evolvedPokemonImage.gameObject.SetActive(false);
+        Destroy(originalPokemon.gameObject);
+        Destroy(evolvedPokemon.gameObject);
+        evolutionPanel.FadeOut();
+        WorldMapMaster.GetInstance().PlayCurrentPlaceMusic();
+        TransitionMaster.GetInstance().SetDialogueToScene();
+        UIPauseMenuMaster.GetInstance().ShowOpener();
+        InteractionsMaster.GetInstance().ExecuteNext(1f);
+        return 1f;
     }
 
 

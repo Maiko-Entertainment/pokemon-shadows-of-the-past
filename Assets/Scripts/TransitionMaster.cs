@@ -13,6 +13,7 @@ public class TransitionMaster : MonoBehaviour
 
     public SayDialog sceneDialogue;
     public SayDialog combatDialogue;
+    public SayDialog evolutionDialogue;
 
     public ViewTransition battleEndTransition;
 
@@ -55,6 +56,13 @@ public class TransitionMaster : MonoBehaviour
         if (sceneDialogue != null)
         {
             SayDialog.ActiveSayDialog = combatDialogue;
+        }
+    }
+    public void SetDialogueToEvolution()
+    {
+        if (sceneDialogue != null)
+        {
+            SayDialog.ActiveSayDialog = evolutionDialogue;
         }
     }
     public void RunTransition(ViewTransition transition)
@@ -145,6 +153,7 @@ public class TransitionMaster : MonoBehaviour
         wasInWorldBefore = true;
         worldCamera.enabled = true;
         worldCamera.GetComponent<WorldCamera>().LookForPlayer();
+        SetDialogueToScene();
     }
 
     public float ReturnToPreviousCamera()

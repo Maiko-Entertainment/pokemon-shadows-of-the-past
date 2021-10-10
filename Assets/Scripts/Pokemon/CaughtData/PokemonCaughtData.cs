@@ -36,6 +36,7 @@ public class PokemonCaughtData
         {
             learnedMoves.Add(new MoveEquipped(me));
         }
+        CheckForLearnedMoves(pkmn.level);
     }
 
     public PersistedPokemon GetSave()
@@ -245,7 +246,15 @@ public class PokemonCaughtData
                 newMovesLearned.Add(availableMove);
                 MoveEquipped me = new MoveEquipped(availableMove.move);
                 newCompleteMovesLearned.Add(me);
-                if (moves.Count < 4)
+                foreach (MoveEquipped move in moves)
+                {
+                    if (availableMove.move.moveId == move.move.moveId)
+                    {
+                        isMoveInLearnedMoves = true;
+                        break;
+                    }
+                }
+                if (moves.Count < 4 && !isMoveInLearnedMoves)
                 {
                     moves.Add(me);
                 }
