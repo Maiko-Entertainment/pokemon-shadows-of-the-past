@@ -17,6 +17,7 @@ public class BattleEventBattleEnd : BattleEvent
     {
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventBattleEndMessage(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEndBattle(this));
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventCheckEvolution());
         base.Execute();
     }
 }

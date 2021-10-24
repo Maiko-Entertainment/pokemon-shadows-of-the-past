@@ -12,8 +12,11 @@ public class PokemonCaughtData
     public PokemonNatureId natureId;
     public AbilityId abilityId;
     public bool isMale = true;
+    public float friendship = 0;
     public List<MoveEquipped> moves = new List<MoveEquipped>();
     public List<MoveEquipped> learnedMoves = new List<MoveEquipped>();
+
+    public static int MAX_FRIENDSHIP = 255;
 
     public PokemonCaughtData() { }
     public AudioClip GetCry() { return pokemonBase.GetCry(); }
@@ -87,6 +90,7 @@ public class PokemonCaughtData
         natureId = encounter.GetRandomNature();
         abilityId = pokemonBase.GetRandomAbility();
         moves = encounter.GetMovesEquipped();
+        friendship = encounter.pokemon.baseFriendship;
     }
 
     public string GetName()
@@ -169,7 +173,10 @@ public class PokemonCaughtData
             natureId.Equals(PokemonNatureId.restless));
         return pokemonBaseStats;
     }
-
+    public float GetFriendship()
+    {
+        return friendship;
+    }
     public List<PokemonTypeId> GetTypes()
     {
         return GetPokemonBaseData().types;
@@ -214,6 +221,12 @@ public class PokemonCaughtData
         experience = remainingExp;
         
         return new LevelUpSummary(initialLevel, GetLevel(), movesLearned);
+    }
+
+    public float GainFriendship(int friendshipGained)
+    {
+        friendship = Mathf.Min(friendship + friendshipGained, MAX_FRIENDSHIP);
+        return friendship;
     }
 
     public void LevelUp()

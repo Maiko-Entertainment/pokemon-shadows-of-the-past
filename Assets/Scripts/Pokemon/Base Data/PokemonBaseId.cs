@@ -5,5 +5,6 @@ public enum PokemonBaseId
     Ivysaur = 2,
     Charmander = 4,
     Gastly = 92,
+    Ralts= 280,
     Mimikyu = 778
 }

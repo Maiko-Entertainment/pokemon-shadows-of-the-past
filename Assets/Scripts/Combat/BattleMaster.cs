@@ -116,4 +116,44 @@ public class BattleMaster : MonoBehaviour
     {
         currenBattle.eventManager.ClearEvents();
     }
+
+    public DamageSummary CalculateOutOfBattleDamage(PokemonCaughtData pokemon, OutOfCombatDamage damage)
+    {
+        List<PokemonTypeId> targetTypes = pokemon.GetTypes();
+        // Effectiveness
+        float advantageMultiplier = GetAdvantageMultiplier(damage.type, targetTypes);
+        // Stats
+        PokemonBaseStats targetStats = pokemon.GetCurrentStats();
+        int defense =
+            damage.moveCategory == MoveCategoryId.physical ?
+            targetStats.defense : targetStats.spDefense;
+        // Damage Calc
+        float randomMultiplier = 0.8f + Random.value * 0.2f;
+        // Damage scales with pkmn level
+        float baseDamage = 2 + (2 * pokemon.GetLevel() + 10f) / defense * damage.damagePower;
+        float finalDamage = baseDamage * randomMultiplier * advantageMultiplier;
+
+        DamageSummary damageSummary = new DamageSummary(
+           0,
+           (int)finalDamage,
+           DamageSummarySource.Move,
+           0,
+           GetSimpleAdvantageTypeFromMult(advantageMultiplier),
+           null
+           );
+        return damageSummary;
+    }
+    public BattleTypeAdvantageType GetSimpleAdvantageTypeFromMult(float multiplier)
+    {
+        if (multiplier > 1)
+            return BattleTypeAdvantageType.superEffective;
+        else if (multiplier < 1)
+        {
+            if (multiplier > 0)
+                return BattleTypeAdvantageType.resists;
+            else
+                return BattleTypeAdvantageType.inmune;
+        }
+        return BattleTypeAdvantageType.normal;
+    }
 }

@@ -68,4 +68,14 @@ public class PartyMaster : MonoBehaviour
     {
         return party.Count < maxParty;
     }
+
+    public PokemonCaughtData GetFirstAvailablePokemon()
+    {
+        foreach(PokemonCaughtData pkmn in party)
+        {
+            if (!pkmn.IsFainted())
+                return pkmn;
+        }
+        return null;
+    }
 }

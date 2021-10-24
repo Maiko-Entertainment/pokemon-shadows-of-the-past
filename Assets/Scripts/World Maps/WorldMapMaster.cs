@@ -53,6 +53,7 @@ public class WorldMapMaster : MonoBehaviour
         PlayerController player = GetPlayer();
         player.transform.position = spawn.position;
         player.Load(mapInstance);
+        UIPauseMenuMaster.GetInstance().ShowWorldUI();
         currentMap = mapInstance;
     }
 
@@ -64,6 +65,11 @@ public class WorldMapMaster : MonoBehaviour
                 return wm;
         }
         return null;
+    }
+
+    public WorldMap GetCurrentMap()
+    {
+        return currentMap;
     }
 
     public PlayerController GetPlayer()
@@ -99,11 +105,6 @@ public class WorldMapMaster : MonoBehaviour
         yield return new WaitForSeconds(1f);
         TransitionBase titleCardInstance = Instantiate(titleCard, mapNameContainer).GetComponent<TransitionBase>();
         titleCardInstance.FadeIn();
-        float stayTime = 3;
-        yield return new WaitForSeconds(stayTime);
-        float fadeOutAfter = 1f / titleCardInstance.speed;
-        titleCardInstance.FadeOut();
-        Destroy(titleCardInstance.gameObject, fadeOutAfter);
     }
 
     public void GoToScene(int sceneId)

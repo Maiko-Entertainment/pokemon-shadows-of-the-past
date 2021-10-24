@@ -34,7 +34,7 @@ public class PokemonMaster : MonoBehaviour
     IEnumerator EvolveAfter(float after)
     {
         yield return new WaitForSeconds(after);
-        EvolvePokemon(PartyMaster.GetInstance().GetParty()[0], forceEvolveTo);
+        InteractionsMaster.GetInstance().AddEvent(new InteractionEventStartEvolution(PartyMaster.GetInstance().GetParty()[0], forceEvolveTo));
     }
 
     public static PokemonMaster GetInstance()
@@ -79,5 +79,19 @@ public class PokemonMaster : MonoBehaviour
         List<PokemonMoveLearn> learnedMoves = pokemon.CheckForLearnedMoves(pokemon.GetLevel());
 
         UIEvolutionMaster.GetInstance().InitiateEvolution(original, evolution, learnedMoves);
+    }
+
+    public void CheckForEvolution(PokemonCaughtData pokemon)
+    {
+        List<PokemonBaseEvolution> evolutions = pokemon.GetPokemonBaseData().evolutions;
+        foreach(PokemonBaseEvolution evo in evolutions)
+        {
+            if (evo.CanEvolve(pokemon))
+            {
+                PokemonBaseData evolution = GetPokemonData(evo.pokemonId);
+                InteractionsMaster.GetInstance().AddEvent(new InteractionEventStartEvolution(pokemon, evolution));
+                break;
+            }
+        }
     }
 }

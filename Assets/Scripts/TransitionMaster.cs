@@ -18,6 +18,7 @@ public class TransitionMaster : MonoBehaviour
     public ViewTransition battleEndTransition;
 
     public Transform transitions;
+    public Transform mapDayEffectsList;
 
     private bool wasInWorldBefore = false;
 
@@ -79,14 +80,14 @@ public class TransitionMaster : MonoBehaviour
     // Returns time it takes to cover entire screen
     public void RunPokemonBattleTransition(ViewTransition transition)
     {
-        UIPauseMenuMaster.GetInstance()?.HideOpener();
+        UIPauseMenuMaster.GetInstance()?.HideWorldUI();
         StartCoroutine(EnableBattleCameraAfter(transition.changeTime));
         Instantiate(transition.gameObject, transitions);
     }
 
     public void RunTrainerBattleTransition(ViewTransition transition)
     {
-        UIPauseMenuMaster.GetInstance()?.HideOpener();
+        UIPauseMenuMaster.GetInstance()?.HideWorldUI();
         StartCoroutine(EnableBattleCameraAfter(transition.changeTime));
         Instantiate(transition.gameObject, transitions);
     }
@@ -94,6 +95,7 @@ public class TransitionMaster : MonoBehaviour
     IEnumerator EnableBattleCameraAfter(float duration)
     {
         yield return new WaitForSeconds(duration);
+        ClearDayEffects();
         SetDialogueToBattle();
         EnableBattleCamera();
     }
@@ -109,12 +111,11 @@ public class TransitionMaster : MonoBehaviour
         yield return new WaitForSeconds(duration);
         EnableSceneCamera();
         SetDialogueToScene();
-        UIPauseMenuMaster.GetInstance()?.ShowOpener();
+        UIPauseMenuMaster.GetInstance()?.ShowWorldUI();
     }
 
     public float RunBattleToWorldTransition()
     {
-        
         StartCoroutine(EnableWorldCameraAfter(battleEndTransition.changeTime));
         Instantiate(battleEndTransition, transitions);
         return battleEndTransition.changeTime;
@@ -125,7 +126,7 @@ public class TransitionMaster : MonoBehaviour
         EnableWorldCamera();
         SetDialogueToScene();
         WorldMapMaster.GetInstance()?.HandleMapReturn();
-        UIPauseMenuMaster.GetInstance()?.ShowOpener();
+        UIPauseMenuMaster.GetInstance()?.ShowWorldUI();
     }
 
     public void DisableCameras()
@@ -162,5 +163,16 @@ public class TransitionMaster : MonoBehaviour
             return RunBattleToWorldTransition();
         else
             return RunSceneTransition();
+    }
+    public void ClearDayEffects()
+    {
+        foreach(Transform previousEffect in mapDayEffectsList)
+        {
+            Destroy(previousEffect.gameObject);
+        }
+    }
+    public void InitiateDayEffect(GameObject effect)
+    {
+        Instantiate(effect, mapDayEffectsList);
     }
 }

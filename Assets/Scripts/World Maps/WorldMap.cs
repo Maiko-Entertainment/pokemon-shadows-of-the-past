@@ -15,11 +15,18 @@ public class WorldMap : MonoBehaviour
     public Tilemap waterTilemap;
     public Tilemap collisionTilemap;
 
+    public List<WorldMapTimeOfDayEffect> timeOfDayEffects = new List<WorldMapTimeOfDayEffect>();
+
     public void HandleEntrance()
     {
         AudioMaster.GetInstance().PlayMusic(mapMusic);
         if (titleCard != null)
             WorldMapMaster.GetInstance().CreateTitleCard(titleCard);
+        TransitionMaster.GetInstance().ClearDayEffects();
+        foreach(WorldMapTimeOfDayEffect tode in timeOfDayEffects)
+        {
+            tode.Initiate();
+        }
     }
 
     public void HandleReturn()

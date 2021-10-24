@@ -60,7 +60,7 @@ public class UIEvolutionMaster : MonoBehaviour
         isEvolving = true;
         evolvedPokemonImage.gameObject.SetActive(false);
         evolutionPanel.FadeIn();
-        UIPauseMenuMaster.GetInstance().HideOpener();
+        UIPauseMenuMaster.GetInstance().HideWorldUI();
         AudioMaster.GetInstance().PlayMusic(null);
         PokemonAnimationController animator = pokemon.GetPokemonBaseData().GetAnimatorController();
         originalPokemon = Instantiate(animator);
@@ -80,6 +80,7 @@ public class UIEvolutionMaster : MonoBehaviour
         float finalWaveDuration = 2f;
         float transitionDurationFinal = evolutionTransitionDuration - finalGlowDuration;
         StartCoroutine(CreateLines(0.25f));
+        InteractionsMaster.GetInstance().ExecuteNext(0.25f);
         AudioMaster.GetInstance().PlayMusic(null);
         yield return new WaitForSeconds(1);
         AudioMaster.GetInstance().PlaySfx(evolutionStartSound);
@@ -174,7 +175,7 @@ public class UIEvolutionMaster : MonoBehaviour
         evolutionPanel.FadeOut();
         WorldMapMaster.GetInstance().PlayCurrentPlaceMusic();
         TransitionMaster.GetInstance().SetDialogueToScene();
-        UIPauseMenuMaster.GetInstance().ShowOpener();
+        UIPauseMenuMaster.GetInstance().ShowWorldUI();
         InteractionsMaster.GetInstance().ExecuteNext(1f);
         return 1f;
     }

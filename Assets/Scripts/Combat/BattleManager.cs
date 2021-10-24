@@ -16,6 +16,8 @@ public class BattleManager
 
     private bool isBattleActive = false;
 
+    public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 10;
+
     public BattleManager(BattleTeamData player, BattleTeamData opponent, BattleData battleData)
     {
         team1 = player;
@@ -179,6 +181,7 @@ public class BattleManager
             {
                 totalPokemon += 1;
             }
+            pokemonBattle.GetPokemonCaughtData().GainFriendship(BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN);
         }
         if (totalPokemon == 0)
             return;
@@ -439,6 +442,11 @@ public class BattleManager
         bool isCaptured = randomValue <= a;
         int shakes = isCaptured ? 3 : Random.Range(1, 3);
         return new PokeballResult(isCaptured, shakes, enemy);
+    }
+
+    public BattleData GetBattleData()
+    {
+        return battleData;
     }
 
     // Turn Cycle

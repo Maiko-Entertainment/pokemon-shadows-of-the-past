@@ -22,7 +22,10 @@ public class BattleAnimatorMaster : MonoBehaviour
     public AudioClip expGainClip;
     public AudioClip levelUpClip;
     public AudioClip pokemonCaughtClip;
+    public AudioClip pokemonFaintClip;
     public AudioClip superEffectiveClip;
+    public AudioClip weakClip;
+    public AudioClip normalClip;
 
     // Utils
     public Material shadowMaterial;
@@ -83,15 +86,36 @@ public class BattleAnimatorMaster : MonoBehaviour
         InstantiatePokemonAnim(pokemon, teamId);
     }
 
-    public void HandlePokemonEnterAnim(PokemonBattleData pokemon)
+    public float HandlePokemonEnterAnim(PokemonBattleData pokemon)
     {
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        BattleData bd = bm.GetBattleData();
         Transform teamTransform = GetPokemonTeamTransform(pokemon).parent;
-        TransitionSize transition = teamTransform.gameObject.AddComponent<TransitionSize>();
-        transition.initialSize = Vector3.zero;
-        transition.finalSize = teamTransform.localScale;
-        transition.speed = 1.2f;
-        transition.FadeIn();
-        Destroy(transition, 1 / transition.speed + 0.5f);
+        if(bd.battleType == BattleType.Pokemon && bm.GetTeamId(pokemon) == BattleTeamId.Team2)
+        {
+            TransitionSpriteChangeColor colorTrans = teamTransform.gameObject.AddComponent<TransitionSpriteChangeColor>();
+            colorTrans.initialColor = Color.black;
+            colorTrans.finalColor = Color.white;
+            colorTrans.sprite = teamTransform.GetComponentInChildren<PokemonAnimationController>().sprite;
+            colorTrans.sprite.color = colorTrans.initialColor;
+            colorTrans.initialDelay = 1f;
+            colorTrans.FadeIn();
+            float time = 1 / colorTrans.speed + colorTrans.initialDelay;
+            HandleCameraZoomPokemon(pokemon);
+            HandleCameraReset(time);
+            Destroy(colorTrans, time);
+            return colorTrans.initialDelay;
+        }
+        else{
+            TransitionSize transition = teamTransform.gameObject.AddComponent<TransitionSize>();
+            transition.initialSize = Vector3.zero;
+            transition.finalSize = teamTransform.localScale;
+            transition.speed = 1.2f;
+            transition.FadeIn();
+            float time = 1 / transition.speed + 0.2f;
+            Destroy(transition, time);
+            return time;
+        }
     }
 
     public float HandleCameraZoomPokemon(PokemonBattleData pokemon)
@@ -103,10 +127,16 @@ public class BattleAnimatorMaster : MonoBehaviour
         return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
     }
 
-    public float HandleCameraReset()
+    public float HandleCameraReset(float delay = 0)
     {
-        combatCamera.ResetCamera();
+        StartCoroutine(HandleCameraResetEnum(delay));
         return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
+    }
+
+    IEnumerator HandleCameraResetEnum(float delay=0)
+    {
+        yield return new WaitForSeconds(delay);
+        combatCamera.ResetCamera();
     }
 
     public void HandleCameraIdle()

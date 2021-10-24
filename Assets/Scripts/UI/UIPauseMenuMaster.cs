@@ -8,6 +8,9 @@ public class UIPauseMenuMaster : MonoBehaviour
 
     public UIPokemonView pokemonViewerPrefab;
     public UIItemsViewer itemViewerPrefab;
+    public UIItemOptionsPokemon pokemonMiniViewPrefab;
+    public GameObject dayPrefab;
+    public GameObject nightPrefab;
     public AudioClip menuOpenSound;
 
     public TransitionBase menu;
@@ -15,6 +18,8 @@ public class UIPauseMenuMaster : MonoBehaviour
 
     public Transform menuContainer;
     public Transform submenuContainer;
+    public Transform pokemonMiniViewList;
+    public Transform timeofDayContainer;
 
     private bool isMenuOpen = false;
 
@@ -29,15 +34,24 @@ public class UIPauseMenuMaster : MonoBehaviour
             Destroy(this);
         }
     }
+
+    private void Start()
+    {
+        ShowWorldUI();
+    }
     public static UIPauseMenuMaster GetInstance() { return Instance; }
 
-    public void HideOpener()
+    public void HideWorldUI()
     {
         opener.SetActive(false);
+        pokemonMiniViewList?.gameObject.SetActive(false);
     }
-    public void ShowOpener()
+    public void ShowWorldUI()
     {
         opener.SetActive(true);
+        pokemonMiniViewList?.gameObject.SetActive(true);
+        UpdatePartyMiniPreview();
+        UpdateTimeOfDay();
     }
 
     public void OpenMenu()
@@ -73,4 +87,30 @@ public class UIPauseMenuMaster : MonoBehaviour
     }
 
     public bool IsMenuOpen() { return isMenuOpen; }
+
+    public void UpdatePartyMiniPreview()
+    {
+        foreach (Transform t in pokemonMiniViewList)
+            Destroy(t.gameObject);
+        List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
+        foreach(PokemonCaughtData p in party)
+        {
+            UIItemOptionsPokemon pokemonOpt = Instantiate(pokemonMiniViewPrefab, pokemonMiniViewList).Load(p);
+        }
+    }
+
+    public void UpdateTimeOfDay()
+    {
+        foreach (Transform t in timeofDayContainer)
+            Destroy(t.gameObject);
+        TimeOfDayType time = WorldMapMaster.GetInstance().GetTimeOfDay();
+        if (time == TimeOfDayType.Day)
+        {
+            Instantiate(dayPrefab, timeofDayContainer);
+        }
+        else
+        {
+            Instantiate(nightPrefab, timeofDayContainer);
+        }
+    }
 }
