@@ -19,5 +19,15 @@ public class BrainAkaneEncounter1 : TrainerBrainDataAdvanced
                     )
                 )
             );
+        currentBattle.AddTrigger(
+            new BattleTriggerOnPokemonEnterDialogue(
+                charmander,
+                 new BattleTriggerMessageData(
+                    flowchartInstance,
+                    "Start",
+                    new Dictionary<string, string>()
+                    )
+                )
+            );
     }
 }

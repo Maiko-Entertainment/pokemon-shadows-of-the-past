@@ -17,14 +17,16 @@ MonoBehaviour:
     brain: {fileID: 11400000, guid: affcce6adc9b3294b95e1dc43192d601, type: 2}
     pokemon:
     - pokemon:
-        pokemonBase: {fileID: 11400000, guid: 1569aa02690b8934d8958cbd4b633e0b, type: 2}
         pokemonName: Phoenix
+        pokemonBase: {fileID: 11400000, guid: 1569aa02690b8934d8958cbd4b633e0b, type: 2}
         level: 12
         experience: 0
-        damageTaken: 0
+        damageTaken: 15
         statusEffectId: 0
         natureId: 0
-        abilityId: 0
+        abilityId: 2
+        isMale: 1
+        friendship: 0
         moves:
         - move: {fileID: 11400000, guid: d53107e9ee3a4004e9d996767621a142, type: 2}
           timesUsed: 0
@@ -32,6 +34,7 @@ MonoBehaviour:
         - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
           timesUsed: 0
           disabledTurnsLeft: 0
+        learnedMoves: []
       statsLevel:
         attack: 0
         defense: 0
@@ -44,14 +47,16 @@ MonoBehaviour:
       inBattleTypes: 
       abilityId: 0
     - pokemon:
-        pokemonBase: {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
         pokemonName: Poison Ivy
+        pokemonBase: {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
         level: 10
         experience: 0
         damageTaken: 0
         statusEffectId: 0
         natureId: 0
-        abilityId: 0
+        abilityId: 3
+        isMale: 1
+        friendship: 0
         moves:
         - move: {fileID: 11400000, guid: 8657c66fc60d6ba4aa5c61631003872f, type: 2}
           timesUsed: 0
@@ -59,6 +64,7 @@ MonoBehaviour:
         - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
           timesUsed: 0
           disabledTurnsLeft: 0
+        learnedMoves: []
       statsLevel:
         attack: 0
         defense: 0

@@ -6,7 +6,7 @@ public class WorldInteractable : MonoBehaviour
 {
     public bool onStep = false;
     public bool activateOnSpawn = false;
-    public WorldInteractableMoveBrain moveBrain = new WorldInteractableMoveBrain();
+    public WorldInteractableMoveBrain moveBrain;
 
 
     private void Start()

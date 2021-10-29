@@ -9,8 +9,6 @@ public class Cutscene : MonoBehaviour
     public string blockName = "Start";
 
     public List<WorldInteractable> cutsceneAgents = new List<WorldInteractable>();
-
-    protected List<WorldInteractable> spawnedAgents = new List<WorldInteractable>();
     protected bool wasTriggered = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,17 +28,12 @@ public class Cutscene : MonoBehaviour
     public void Initiate()
     {
         CutsceneMaster.GetInstance().LoadCutscene(this);
-        foreach(WorldInteractable ca in cutsceneAgents)
-        {
-            WorldInteractable agentInstance = Instantiate(ca, transform);
-            spawnedAgents.Add(agentInstance);
-        }
         flowchart.ExecuteBlock(blockName);
     }
 
     public WorldInteractable GetAgent(string agentId)
     {
-        foreach(WorldInteractable spawnedAgent in spawnedAgents)
+        foreach(WorldInteractable spawnedAgent in cutsceneAgents)
         {
             if(spawnedAgent.moveBrain.moveIdentifier == agentId)
             {
