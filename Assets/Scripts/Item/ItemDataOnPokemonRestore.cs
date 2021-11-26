@@ -27,7 +27,8 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     }
     public override void UseOnPokemon(PokemonCaughtData pokemon)
     {
-        pokemon.ChangeHealth(restoreAmount);
+        int healAmount = GetHealAmount(pokemon);
+        pokemon.ChangeHealth(healAmount);
         if (statusClears.Contains(pokemon.statusEffectId))
         {
             pokemon.statusEffectId = StatusEffectId.None;
@@ -39,17 +40,23 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         base.UseOnPokemonBattle(pokemon);
+        int healAmount = GetHealAmount(pokemon.GetPokemonCaughtData());
         if (restoreAmount > 0)
         {
             if (restoresPercentage)
             {
-                bm.AddPokemonHealEvent(pokemon, new HealSummary((int)(pokemon.GetPokemonHealth() * restoreAmount / 100f), HealSource.Item, (int)itemId));
+                bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, (int)itemId));
             }
             else
             {
-                bm.AddPokemonHealEvent(pokemon, new HealSummary(restoreAmount, HealSource.Item, (int)itemId));
+                bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, (int)itemId));
             }
         }
+    }
+    public int GetHealAmount(PokemonCaughtData pokemon)
+    {
+        int healAmount = (int)(pokemon.GetCurrentStats().health * restoreAmount / 100f);
+        return healAmount;
     }
 
     public override void Use()

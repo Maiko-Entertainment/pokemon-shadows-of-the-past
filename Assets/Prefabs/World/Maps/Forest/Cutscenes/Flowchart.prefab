@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 1133255209266624128}
   - component: {fileID: 3040837561786032075}
   - component: {fileID: 8648245344935990365}
+  - component: {fileID: 4253519117881303225}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -124,9 +125,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 9168260395985911623}
-  selectedCommands:
-  - {fileID: 8648245344935990365}
+  - {fileID: 4946835839507304033}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 5279357572832578035}
   - {fileID: 7872587531852210598}
+  - {fileID: 4253519117881303225}
   - {fileID: 1219808552745528864}
   - {fileID: 564891733972222431}
   - {fileID: 2968725580546402982}
@@ -1838,6 +1839,23 @@ MonoBehaviour:
   indentLevel: 0
   offset: {x: 0, y: 0, z: 0}
   waitForEnd: 1
+--- !u!114 &4253519117881303225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460174479093708419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 78
+  indentLevel: 0
+  variableId: 4
+  operation: 0
+  value: 20
 --- !u!1001 &484808790632453938
 PrefabInstance:
   m_ObjectHideFlags: 0

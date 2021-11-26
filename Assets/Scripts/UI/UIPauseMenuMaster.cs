@@ -21,6 +21,8 @@ public class UIPauseMenuMaster : MonoBehaviour
     public Transform pokemonMiniViewList;
     public Transform timeofDayContainer;
 
+    public UIVariablesList variablesInstance;
+
     private bool isMenuOpen = false;
 
     private void Awake()
@@ -40,15 +42,22 @@ public class UIPauseMenuMaster : MonoBehaviour
         ShowWorldUI();
     }
     public static UIPauseMenuMaster GetInstance() { return Instance; }
-
-    public void HideWorldUI()
+    public void ShowMenuOpener()
+    {
+        opener.SetActive(true);
+    }
+    public void HideMenuOpener()
     {
         opener.SetActive(false);
+    }
+    public void HideWorldUI()
+    {
+        HideMenuOpener();
         pokemonMiniViewList?.gameObject.SetActive(false);
     }
     public void ShowWorldUI()
     {
-        opener.SetActive(true);
+        ShowMenuOpener();
         pokemonMiniViewList?.gameObject.SetActive(true);
         UpdatePartyMiniPreview();
         UpdateTimeOfDay();
@@ -59,6 +68,7 @@ public class UIPauseMenuMaster : MonoBehaviour
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
         menu.FadeIn();
         isMenuOpen = true;
+        variablesInstance.LoadVaraibles();
     }
 
     public void CloseMenu()

@@ -18,16 +18,13 @@ public class FungusCutsceneMoveAgent : Command
     public bool waitUntilEnd = true;
     public override void OnEnter()
     {
-        Cutscene cs = CutsceneMaster.GetInstance().GetCurrentCutscene();
-        WorldInteractable wi = cs.GetAgent(agentId);
         float finalTime = 0;
-        if (wi)
+        if (agentId == "player")
         {
-            WorldInteractableMoveBrain mb = wi.moveBrain;
-            if (overwriteSpeed)
-                mb.speed = speed;
-            foreach (MoveBrainDirectionData mbd in directions)
-                finalTime = mb.AddDirection(mbd);
+            foreach(MoveBrainDirectionData direction in directions)
+            {
+                finalTime = WorldMapMaster.GetInstance().GetPlayer().AddDirection(direction);
+            }
             if (waitUntilEnd)
             {
                 StartCoroutine(ContinueAfter(finalTime));
@@ -39,7 +36,28 @@ public class FungusCutsceneMoveAgent : Command
         }
         else
         {
-            Continue();
+            Cutscene cs = CutsceneMaster.GetInstance().GetCurrentCutscene();
+            WorldInteractable wi = cs.GetAgent(agentId);
+            if (wi)
+            {
+                WorldInteractableMoveBrain mb = wi.moveBrain;
+                if (overwriteSpeed)
+                    mb.speed = speed;
+                foreach (MoveBrainDirectionData mbd in directions)
+                    finalTime = mb.AddDirection(mbd);
+                if (waitUntilEnd)
+                {
+                    StartCoroutine(ContinueAfter(finalTime));
+                }
+                else
+                {
+                    Continue();
+                }
+            }
+            else
+            {
+                Continue();
+            }
         }
     }
 

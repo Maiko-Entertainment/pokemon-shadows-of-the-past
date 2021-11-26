@@ -34,6 +34,7 @@ public class InteractionsMaster : MonoBehaviour
         if (events.Count == 1)
         {
             ExecuteNext(0);
+            UIPauseMenuMaster.GetInstance().HideMenuOpener();
         }
     }
 
@@ -55,6 +56,8 @@ public class InteractionsMaster : MonoBehaviour
         else
         {
             isInteracting = false;
+            if (!BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive())
+                UIPauseMenuMaster.GetInstance().ShowMenuOpener();
         }
     }
 

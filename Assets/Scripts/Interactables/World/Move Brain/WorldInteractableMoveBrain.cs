@@ -104,7 +104,7 @@ public class WorldInteractableMoveBrain : MonoBehaviour
                 Vector2 direction = (Vector3)GetCurrentDirection();
                 bool justTurn = cachedDirections[0].justTurn;
                 if (!justTurn)
-                    target = transform.position + (Vector3)GetCurrentDirection();
+                    target = transform.position + (Vector3)direction;
                 animator.SetFloat("Horizontal", GetCurrentDirection().x);
                 animator.SetFloat("Vertical", GetCurrentDirection().y);
                 cachedDirections.RemoveAt(0);

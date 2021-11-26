@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 cacheDirection;
     private bool waterMode = false;
 
+    List<MoveBrainDirectionData> storedDirections = new List<MoveBrainDirectionData>();
+
     void Awake()
     {
         controls = new Controls();
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
     void Interact(CallbackContext context)
     {
         bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
-        if (!isInteractionPlaying)
+        if (!isInteractionPlaying && storedDirections.Count == 0)
         {
             if (Mathf.Abs(cacheDirection.x) > 0)
             {
@@ -137,22 +139,66 @@ public class PlayerController : MonoBehaviour
     {
         return Vector2.Distance(transform.position, target) == 0;
     }
+    Vector2 GetCurrentStoredDirection()
+    {
+        if (storedDirections.Count == 0)
+            return Vector2.zero;
+        MoveBrainDirection direction = storedDirections[0].direction;
+        switch (direction)
+        {
+            case MoveBrainDirection.Top:
+                return Vector2.up;
+            case MoveBrainDirection.Left:
+                return Vector2.left;
+            case MoveBrainDirection.Bottom:
+                return Vector2.down;
+            case MoveBrainDirection.Right:
+                return Vector2.right;
+            default:
+                return Vector2.zero;
+        }
+    }
+
+    public float AddDirection(MoveBrainDirectionData direction)
+    {
+        storedDirections.Add(direction);
+        float movesSum = 0;
+        foreach (MoveBrainDirectionData d in storedDirections)
+        {
+            if (!d.justTurn)
+                movesSum += 1;
+        }
+        return movesSum / speed;
+    }
 
     void Update()
     {
         if (HasReachedTarget())
         {
-            bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
-            if (CanMove(cacheDirection) && !isInteractionPlaying)
+            if (storedDirections.Count > 0)
             {
-                target = transform.position + (Vector3)cacheDirection;
+                Vector2 direction = (Vector3)GetCurrentStoredDirection();
+                bool justTurn = storedDirections[0].justTurn;
+                if (!justTurn)
+                    target = transform.position + (Vector3)direction;
+                animator.SetFloat("Horizontal", GetCurrentStoredDirection().x);
+                animator.SetFloat("Vertical", GetCurrentStoredDirection().y);
+                storedDirections.RemoveAt(0);
             }
             else
             {
-                animator.SetBool("Moving", false);
+                bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+                if (CanMove(cacheDirection) && !isInteractionPlaying)
+                {
+                    target = transform.position + (Vector3)cacheDirection;
+                }
+                else
+                {
+                    animator.SetBool("Moving", false);
+                }
+                animator.SetFloat("Horizontal", cacheDirection.x);
+                animator.SetFloat("Vertical", cacheDirection.y);
             }
-            animator.SetFloat("Horizontal", cacheDirection.x);
-            animator.SetFloat("Vertical", cacheDirection.y);
         }
         else
         {
