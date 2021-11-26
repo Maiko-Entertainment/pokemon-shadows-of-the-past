@@ -14,11 +14,11 @@ public class BattleAnimatorEventBattleEndMessage : BattleAnimatorEvent
 
     public override void Execute()
     {
-        if (battleEvent.battleTeamId == BattleTeamId.Team1)
+        if (battleEvent.winningTeamId == BattleTeamId.Team1)
         {
             BattleAnimatorMaster.GetInstance().ExecuteEnemyTrainerDefeated(battleEvent.finalBattleState.team2.trainerTitle);
         }
-        else if (battleEvent.battleTeamId == BattleTeamId.Team2)
+        else if (battleEvent.winningTeamId == BattleTeamId.Team2)
         {
             BattleAnimatorMaster.GetInstance().ExecuteEnemyTrainerDefeated(battleEvent.finalBattleState.team1.trainerTitle);
         }

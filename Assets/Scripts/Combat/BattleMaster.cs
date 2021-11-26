@@ -62,6 +62,11 @@ public class BattleMaster : MonoBehaviour
         BattleAnimatorMaster.GetInstance().ShowAll();
     }
 
+    public void SetPostBattleEvent(BattleEndEvent postBattleEvent)
+    {
+        GetCurrentBattle()?.SetOnEndEvent(postBattleEvent);
+    }
+
     public void RunTrainerBattle(TrainerCombatData trainer)
     {
         List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
@@ -71,6 +76,11 @@ public class BattleMaster : MonoBehaviour
         currenBattle = newBattle;
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
+    }
+
+    public void AddBattleEndFlowchart()
+    {
+
     }
 
     public static List<PokemonBattleData> GetPokemonBattleDataFromCaught(List<PokemonCaughtData> party)

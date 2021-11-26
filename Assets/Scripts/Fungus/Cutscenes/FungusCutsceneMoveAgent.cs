@@ -14,7 +14,7 @@ public class FungusCutsceneMoveAgent : Command
     public string agentId;
     public bool overwriteSpeed = false;
     public float speed = 3;
-    public List<MoveBrainDirection> directions = new List<MoveBrainDirection>();
+    public List<MoveBrainDirectionData> directions = new List<MoveBrainDirectionData>();
     public bool waitUntilEnd = true;
     public override void OnEnter()
     {
@@ -26,7 +26,7 @@ public class FungusCutsceneMoveAgent : Command
             WorldInteractableMoveBrain mb = wi.moveBrain;
             if (overwriteSpeed)
                 mb.speed = speed;
-            foreach (MoveBrainDirection mbd in directions)
+            foreach (MoveBrainDirectionData mbd in directions)
                 finalTime = mb.AddDirection(mbd);
             if (waitUntilEnd)
             {

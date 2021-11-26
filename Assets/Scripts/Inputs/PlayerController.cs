@@ -47,6 +47,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(SetControls(0.2f));
+    }
+
+    IEnumerator SetControls(float delay)
+    {
+        yield return new WaitForSeconds(delay);
         controls.PlayerCharacter.Movement.started += ctx => HandleMovementStart(ctx);
         controls.PlayerCharacter.Movement.canceled += ctx => HandleMovementStop();
         controls.PlayerCharacter.Interact.started += ctx => Interact(ctx);
@@ -84,6 +90,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ClearCache()
+    {
+        cacheDirection = Vector2.zero;
+    }
+
     void HandleMovementStop()
     {
         wantsToMove = false;
@@ -115,7 +126,7 @@ public class PlayerController : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(position, 0.4f);
         foreach(Collider2D col in hitColliders)
         {
-            print("Found collider for custom check: " + col.tag);
+            // print("Found collider for custom check: " + col.tag);
             if (customColissionTags.Contains(col.tag))
                 return true;
         }

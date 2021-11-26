@@ -9,6 +9,7 @@ public class BattleManager
     public BattleData battleData;
     public Status weather = null;
     public int turnsPassed = 0;
+    public BattleEndEvent postBattleEvent;
 
     public BattleEventManager eventManager = new BattleEventManager();
 
@@ -23,6 +24,11 @@ public class BattleManager
         team1 = player;
         team2 = opponent;
         this.battleData = battleData;
+    }
+
+    public void SetOnEndEvent(BattleEndEvent postBattleEvent)
+    {
+        this.postBattleEvent = postBattleEvent;
     }
 
     public void StartBattle()
@@ -213,7 +219,8 @@ public class BattleManager
     {
         // Add event for battle end to handle variable saving, end combat dialogue, etc
         isBattleActive = false;
-        eventManager.AddEvent(new BattleEventBattleEnd(this, winningTeam));
+        BattleEventBattleEnd battleEndEvent = new BattleEventBattleEnd(this, winningTeam, postBattleEvent);
+        eventManager.AddEvent(battleEndEvent);
         if (endNow)
         {
             eventManager.ResolveAllEventTriggers();

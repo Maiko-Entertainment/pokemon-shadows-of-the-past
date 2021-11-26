@@ -78,4 +78,21 @@ public class PartyMaster : MonoBehaviour
         }
         return null;
     }
+
+    public void HealAll()
+    {
+        foreach(PokemonCaughtData pkmn in party)
+        {
+            FullyHeal(pkmn);
+        }
+    }
+    public void FullyHeal(int partyIndex)
+    {
+        PokemonCaughtData pkmn = party[partyIndex];
+        FullyHeal(pkmn);
+    }
+    public void FullyHeal(PokemonCaughtData pkmn)
+    {
+        pkmn.ChangeHealth(9999);
+    }
 }

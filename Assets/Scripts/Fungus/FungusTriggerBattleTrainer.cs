@@ -11,6 +11,8 @@ using Fungus;
 public class FungusTriggerBattleTrainer : Command
 {
     public TrainerCombatData trainer;
+    public string onWinBlock;
+    public string onLoseBlock;
     public override void OnEnter()
     {
         TransitionMaster.GetInstance().RunTrainerBattleTransition(trainer.transition);
@@ -22,6 +24,7 @@ public class FungusTriggerBattleTrainer : Command
     {
         yield return new WaitForSeconds(delay);
         BattleMaster.GetInstance()?.RunTrainerBattle(trainer);
+        BattleMaster.GetInstance()?.SetPostBattleEvent(new BattleEndEvent(GetFlowchart(), onWinBlock, onLoseBlock));
         Continue();
     }
 

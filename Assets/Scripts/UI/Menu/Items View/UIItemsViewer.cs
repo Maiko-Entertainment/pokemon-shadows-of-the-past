@@ -116,6 +116,11 @@ public class UIItemsViewer : MonoBehaviour
         if (sectionChangeSound) AudioMaster.GetInstance().PlaySfx(sectionChangeSound);
         ViewCategory(ItemCategory.General);
     }
+    public void ViewCategoryBerry()
+    {
+        if (sectionChangeSound) AudioMaster.GetInstance().PlaySfx(sectionChangeSound);
+        ViewCategory(ItemCategory.Berry);
+    }
     public void ViewCategoryPokeball()
     {
         if (sectionChangeSound) AudioMaster.GetInstance().PlaySfx(sectionChangeSound);
@@ -151,7 +156,7 @@ public class UIItemsViewer : MonoBehaviour
         foreach (PokemonCaughtData p in party)
         {
             UIItemOptionsPokemon pkmn = Instantiate(pokemonPrefab, pokemonListContainer).GetComponent<UIItemOptionsPokemon>().Load(p);
-            CanUseResult canUse = ip.CanUseOnPokemon(currentPokemon);
+            CanUseResult canUse = ip.CanUseOnPokemon(p);
             if (canUse.canUse && currentPokemon == null)
             {
                 currentPokemon = p;

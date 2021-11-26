@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class ItemDataOnPokemon : ItemData
 {
+    public bool equipable;
     public override ItemTargetType GetItemTargetType()
     {
         return ItemTargetType.Pokemon;
     }
     public virtual CanUseResult CanUseOnPokemon(PokemonCaughtData pokemon)
     {
-        return new CanUseResult(true, "");
+        return new CanUseResult(equipable, "");
     }
 
     public virtual CanUseResult CanUseOnPokemonBattle(PokemonBattleData pokemon)

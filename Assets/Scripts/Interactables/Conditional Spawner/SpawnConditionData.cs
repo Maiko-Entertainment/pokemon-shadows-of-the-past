@@ -6,6 +6,7 @@ public class SpawnConditionData : MonoBehaviour
 {
     public List<SpawnConditionDataSaveValue> conditions = new List<SpawnConditionDataSaveValue>();
     public List<ConditionalSpawnData> spawns = new List<ConditionalSpawnData>();
+    public float chance = 1f;
 
     private void Start()
     {
@@ -24,12 +25,22 @@ public class SpawnConditionData : MonoBehaviour
 
     public void CheckForSpawn()
     {
-        if (MeetsConditions())
+        float random = Random.value;
+        print("Chance: " + chance + " - Random: " + random);
+        if (MeetsConditions() && chance >= random)
         {
             foreach(ConditionalSpawnData spawn in spawns)
             {
-                GameObject obj = Instantiate(spawn.spawn);
-                obj.transform.localPosition = spawn.spawnPostion;
+                print("Instancing " + spawn.spawn);
+                GameObject obj = Instantiate(spawn.spawn, spawn.spawnAsChild ? transform : null);
+                if (spawn.spawnAsChild)
+                {
+                    obj.transform.localPosition = spawn.spawnPostion;
+                }
+                else
+                {
+                    obj.transform.localPosition = transform.position + spawn.spawnPostion;
+                }
             }
         }
     }

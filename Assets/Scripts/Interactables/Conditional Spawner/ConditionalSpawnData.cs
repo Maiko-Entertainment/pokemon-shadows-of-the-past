@@ -6,4 +6,5 @@ public class ConditionalSpawnData
 {
     public GameObject spawn;
     public Vector3 spawnPostion;
+    public bool spawnAsChild = true;
 }

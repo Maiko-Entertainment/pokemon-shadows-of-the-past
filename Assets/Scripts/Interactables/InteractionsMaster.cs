@@ -28,6 +28,7 @@ public class InteractionsMaster : MonoBehaviour
 
     public void AddEvent(InteractionEvent intEvent)
     {
+        print("Adding event: " + intEvent);
         events.Add(intEvent);
         isInteracting = true;
         if (events.Count == 1)
@@ -38,14 +39,16 @@ public class InteractionsMaster : MonoBehaviour
 
     public void ExecuteNext(float time = 0f)
     {
-        StartCoroutine(ExecuteAfterDelay(time));
+         StartCoroutine(ExecuteAfterDelay(time));
     }
 
     private IEnumerator ExecuteAfterDelay(float time)
     {
         yield return new WaitForSeconds(time);
+        print("Events before cheking " + events.Count);
         if (events.Count != 0)
         {
+            print("Executing event: " + events[0]);
             events[0].Execute();
             events.RemoveAt(0);
         }

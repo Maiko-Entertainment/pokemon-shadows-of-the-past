@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class BattleEventBattleEnd : BattleEvent
 {
-    public BattleTeamId battleTeamId;
+    public BattleTeamId winningTeamId;
     public BattleManager finalBattleState;
-    public BattleEventBattleEnd(BattleManager finalBattleState, BattleTeamId battleTeamId)
+    public BattleEndEvent endEvent;
+    public BattleEventBattleEnd(BattleManager finalBattleState, BattleTeamId winningTeamId, BattleEndEvent endEvent)
     {
         eventId = BattleEventId.battleEnd;
-        this.battleTeamId = battleTeamId;
+        this.winningTeamId = winningTeamId;
         this.finalBattleState = finalBattleState;
+        this.endEvent = endEvent;
     }
 
     public override void Execute()
@@ -18,6 +20,7 @@ public class BattleEventBattleEnd : BattleEvent
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventBattleEndMessage(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEndBattle(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventCheckEvolution());
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleEventPostBattleFungus(endEvent, this));
         base.Execute();
     }
 }

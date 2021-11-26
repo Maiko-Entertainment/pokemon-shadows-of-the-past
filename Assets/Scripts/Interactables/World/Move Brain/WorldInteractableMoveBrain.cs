@@ -16,7 +16,7 @@ public class WorldInteractableMoveBrain : MonoBehaviour
     protected Tilemap collisionTilemap;
 
     protected Vector2 target;
-    protected List<MoveBrainDirection> cachedDirections = new List<MoveBrainDirection>();
+    protected List<MoveBrainDirectionData> cachedDirections = new List<MoveBrainDirectionData>();
     protected float jumpHeight = 0.5f;
     protected float jumpSpeed = 1f;
 
@@ -34,10 +34,16 @@ public class WorldInteractableMoveBrain : MonoBehaviour
         target = transform.position;
     }
     // return time it takes to complete current walk
-    public float AddDirection(MoveBrainDirection direction)
+    public float AddDirection(MoveBrainDirectionData direction)
     {
         cachedDirections.Add(direction);
-        return cachedDirections.Count / speed;
+        float movesSum = 0;
+        foreach(MoveBrainDirectionData d in cachedDirections)
+        {
+            if (!d.justTurn)
+                movesSum += 1;
+        }
+        return movesSum / speed;
     }
     bool HasReachedTarget()
     {
@@ -47,7 +53,8 @@ public class WorldInteractableMoveBrain : MonoBehaviour
     {
         if (cachedDirections.Count == 0)
             return Vector2.zero;
-        switch (cachedDirections[0])
+        MoveBrainDirection direction = cachedDirections[0].direction;
+        switch (direction)
         {
             case MoveBrainDirection.Top:
                 return Vector2.up;
@@ -94,7 +101,10 @@ public class WorldInteractableMoveBrain : MonoBehaviour
         {
             if (cachedDirections.Count > 0)
             {
-                target = transform.position + (Vector3)GetCurrentDirection();
+                Vector2 direction = (Vector3)GetCurrentDirection();
+                bool justTurn = cachedDirections[0].justTurn;
+                if (!justTurn)
+                    target = transform.position + (Vector3)GetCurrentDirection();
                 animator.SetFloat("Horizontal", GetCurrentDirection().x);
                 animator.SetFloat("Vertical", GetCurrentDirection().y);
                 cachedDirections.RemoveAt(0);

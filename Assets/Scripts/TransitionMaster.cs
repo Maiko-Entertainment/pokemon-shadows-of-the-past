@@ -157,6 +157,11 @@ public class TransitionMaster : MonoBehaviour
         SetDialogueToScene();
     }
 
+    public float SetWorldCameraOffset(Vector3 offset)
+    {
+        return worldCamera.GetComponent<WorldCamera>().SetOffset(offset);
+    }
+
     public float ReturnToPreviousCamera()
     {
         if (wasInWorldBefore)

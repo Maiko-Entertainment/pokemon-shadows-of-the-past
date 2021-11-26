@@ -50,11 +50,17 @@ public class WorldMapMaster : MonoBehaviour
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         Transform spawn = mapInstance.GetSpawn(spawnIndex);
         mapInstance.HandleEntrance();
-        PlayerController player = GetPlayer();
-        player.transform.position = spawn.position;
-        player.Load(mapInstance);
+        StartCoroutine(SetPlayer(0.1f, spawn));
         UIPauseMenuMaster.GetInstance().ShowWorldUI();
         currentMap = mapInstance;
+    }
+
+    IEnumerator SetPlayer(float delay, Transform spawn)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayerController player = GetPlayer();
+        player.transform.position = spawn.position;
+        player.Load(currentMap);
     }
 
     public WorldMap Getmap(int mapId)

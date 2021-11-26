@@ -12,4 +12,6 @@ public enum ItemId
     Pokeball = 5,
     Greatball = 6,
     Ultraball = 7,
+    BerrySitrus = 8,
+    BerryPecha = 9
 }
