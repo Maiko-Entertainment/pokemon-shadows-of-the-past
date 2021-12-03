@@ -77,6 +77,9 @@ GameObject:
   - component: {fileID: 3040837561786032075}
   - component: {fileID: 8648245344935990365}
   - component: {fileID: 4253519117881303225}
+  - component: {fileID: 1157410557220325166}
+  - component: {fileID: 1085130886184507221}
+  - component: {fileID: 6571376929940749280}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -126,7 +129,8 @@ MonoBehaviour:
     height: 0
   selectedBlocks:
   - {fileID: 4946835839507304033}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 6571376929940749280}
   variables: []
   description: 
   stepPause: 0
@@ -152,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 355.59793
+    x: 354.59793
     y: 84.68043
     width: 77
     height: 40
@@ -163,6 +167,8 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 1085130886184507221}
+  - {fileID: 6571376929940749280}
   - {fileID: 5279357572832578035}
   - {fileID: 7872587531852210598}
   - {fileID: 4253519117881303225}
@@ -176,6 +182,7 @@ MonoBehaviour:
   - {fileID: 1047760660617207211}
   - {fileID: 5596876585509033637}
   - {fileID: 9178385834529284469}
+  - {fileID: 1157410557220325166}
   - {fileID: 831629075811580766}
   - {fileID: 2249189663595213331}
   - {fileID: 381889542096131895}
@@ -1856,6 +1863,69 @@ MonoBehaviour:
   variableId: 4
   operation: 0
   value: 20
+--- !u!114 &1157410557220325166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460174479093708419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec39367af1761d14e903c0235f0ece5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 79
+  indentLevel: 0
+  agentId: Dante
+  overwriteSpeed: 0
+  speed: 3
+  directions:
+  - direction: 0
+    justTurn: 1
+  waitUntilEnd: 0
+--- !u!114 &1085130886184507221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460174479093708419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec39367af1761d14e903c0235f0ece5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 80
+  indentLevel: 0
+  agentId: Akane
+  overwriteSpeed: 0
+  speed: 3
+  directions:
+  - direction: 3
+    justTurn: 1
+  waitUntilEnd: 0
+--- !u!114 &6571376929940749280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460174479093708419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec39367af1761d14e903c0235f0ece5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 81
+  indentLevel: 0
+  agentId: Dante
+  overwriteSpeed: 0
+  speed: 3
+  directions:
+  - direction: 1
+    justTurn: 1
+  waitUntilEnd: 0
 --- !u!1001 &484808790632453938
 PrefabInstance:
   m_ObjectHideFlags: 0
