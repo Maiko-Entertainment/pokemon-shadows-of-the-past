@@ -10,9 +10,10 @@ public class UIPokemonMove : MonoBehaviour
     public TextMeshProUGUI uses;
     public Image moveTypeIcon;
     public Image typingImageBackground;
+    public TransitionFade selectedArrow;
 
-    public delegate void Hover(MoveEquipped move, PokemonCaughtData pkmn);
-    public event Hover onHover;
+    public delegate void Select(MoveEquipped move, PokemonCaughtData pkmn);
+    public event Select onSelect;
     public delegate void Click(MoveEquipped move, PokemonCaughtData pkmn);
     public event Click onClick;
 
@@ -35,5 +36,21 @@ public class UIPokemonMove : MonoBehaviour
     public void HandleClick()
     {
         onClick?.Invoke(move, pokemon);
+    }
+    public void HandleSelect()
+    {
+        onSelect?.Invoke(move, pokemon);
+    }
+
+    public void UpdateSelectedStatus(MoveEquipped move)
+    {
+        if (this.move == move)
+        {
+            selectedArrow.FadeIn();
+        }
+        else
+        {
+            selectedArrow.FadeOut();
+        }
     }
 }

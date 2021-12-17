@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIPauseMenuMaster : MonoBehaviour
 {
     public static UIPauseMenuMaster Instance;
 
-    public UIPokemonView pokemonViewerPrefab;
-    public UIItemsViewer itemViewerPrefab;
+    public UIMenuPile pokemonViewerPrefab;
+    public UIMenuPile itemViewerPrefab;
     public UIItemOptionsPokemon pokemonMiniViewPrefab;
     public GameObject dayPrefab;
     public GameObject nightPrefab;
     public AudioClip menuOpenSound;
 
-    public TransitionBase menu;
-    public GameObject opener;
+    public UIMenuPile menuPrefab;
+    public Button opener;
 
     public Transform menuContainer;
     public Transform submenuContainer;
@@ -24,6 +25,7 @@ public class UIPauseMenuMaster : MonoBehaviour
     public UIVariablesList variablesInstance;
 
     private bool isMenuOpen = false;
+    private List<UIMenuPile> openedMenus = new List<UIMenuPile>();
 
     private void Awake()
     {
@@ -42,13 +44,25 @@ public class UIPauseMenuMaster : MonoBehaviour
         ShowWorldUI();
     }
     public static UIPauseMenuMaster GetInstance() { return Instance; }
+
+    public void OpenMenu(UIMenuPile menuPrefab)
+    {
+        UIMenuPile instance = Instantiate(menuPrefab, submenuContainer);
+        if (openedMenus.Count > 0)
+        {
+            openedMenus[openedMenus.Count - 1].DeactivateMenu();
+        }
+        openedMenus.Add(instance);
+        instance.Open();
+        HideMenuOpener();
+    }
     public void ShowMenuOpener()
     {
-        opener.SetActive(true);
+        opener.gameObject.SetActive(true);
     }
     public void HideMenuOpener()
     {
-        opener.SetActive(false);
+        opener.gameObject.SetActive(false);
     }
     public void HideWorldUI()
     {
@@ -66,27 +80,37 @@ public class UIPauseMenuMaster : MonoBehaviour
     public void OpenMenu()
     {
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
-        menu.FadeIn();
-        isMenuOpen = true;
-        variablesInstance.LoadVaraibles();
+        OpenMenu(menuPrefab);
     }
 
-    public void CloseMenu()
+    public void CloseCurrentMenu()
     {
-        menu.FadeOut();
-        isMenuOpen = false;
+        if (openedMenus.Count > 0)
+        {
+            UIMenuPile menu = openedMenus[openedMenus.Count - 1];
+            openedMenus.RemoveAt(openedMenus.Count - 1);
+            menu.Close();
+            if (openedMenus.Count > 0)
+            {
+                openedMenus[openedMenus.Count - 1].ReactivateMenu();
+            }
+            else
+            {
+                ShowMenuOpener();
+            }
+        }
     }
 
     public void OpenPokemonViewer()
     {
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
-        Instantiate(pokemonViewerPrefab, submenuContainer);
+        OpenMenu(pokemonViewerPrefab);
     }
 
     public void OpenItemsViewer()
     {
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
-        Instantiate(itemViewerPrefab, submenuContainer);
+        OpenMenu(itemViewerPrefab);
     }
     
     public void OpenSaveViewer()
@@ -96,7 +120,7 @@ public class UIPauseMenuMaster : MonoBehaviour
         // Instantiate(itemViewerPrefab, submenuContainer);
     }
 
-    public bool IsMenuOpen() { return isMenuOpen; }
+    public bool IsMenuOpen() { return openedMenus.Count > 0; }
 
     public void UpdatePartyMiniPreview()
     {
@@ -106,6 +130,7 @@ public class UIPauseMenuMaster : MonoBehaviour
         foreach(PokemonCaughtData p in party)
         {
             UIItemOptionsPokemon pokemonOpt = Instantiate(pokemonMiniViewPrefab, pokemonMiniViewList).Load(p);
+            pokemonOpt.GetComponent<Button>().interactable = false;
         }
     }
 

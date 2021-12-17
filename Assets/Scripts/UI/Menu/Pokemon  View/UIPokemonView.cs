@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.InputAction;
 
 public class UIPokemonView : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class UIPokemonView : MonoBehaviour
     public Transform pokemonListContainer;
     public Transform typeList;
     public Transform pokemonSectionContainer;
+    public Transform sectionsListContainer;
     public TextMeshProUGUI pokemonName;
     public TextMeshProUGUI pokemonAbility;
     public Image pokemonSprite;
@@ -23,24 +26,67 @@ public class UIPokemonView : MonoBehaviour
     private PokemonAnimationController animator;
 
     private PokemonCaughtData currentPokemon;
+    private int currentSectionIndex = 0;
 
     private void Start()
     {
         Load();
     }
-    public void Load()
+
+    public void UpdatePokemonList(PokemonCaughtData newSelected)
     {
+        currentPokemon = newSelected;
         List<PokemonCaughtData> pokemonList = PartyMaster.GetInstance().GetParty();
         foreach (PokemonCaughtData pokemon in pokemonList)
         {
             UIItemOptionsPokemon options = Instantiate(pokemonPrefab, pokemonListContainer).Load(pokemon);
-            options.onClick += LoadPokemon;
+            // options.onClick += (PokemonCaughtData p) => SelectPokemon();
+            options.onHover += LoadPokemon;
+            Button btn = options.GetComponent<Button>();
+           
+            // Sets first pokemon as selected
+            if (currentPokemon == null && pokemonList.IndexOf(pokemon) == 0 || currentPokemon != null && currentPokemon == pokemon)
+            {
+                EventSystem eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(options.gameObject, new BaseEventData(eventSystem));
+                currentPokemon = pokemon;
+            }
         }
-        PokemonCaughtData first = pokemonList[0];
-        if (currentPokemon == null)
+        for (int i = 0; i< pokemonListContainer.childCount; i++)
         {
-            LoadPokemon(first);
+            Navigation nav = new Navigation();
+            nav.mode = Navigation.Mode.Explicit;
+            if (i != 0)
+            {
+                nav.selectOnUp = pokemonListContainer.GetChild(i - 1).GetComponent<Button>();
+            }
+            else
+            {
+                nav.selectOnUp = pokemonListContainer.GetChild(pokemonListContainer.childCount - 1).GetComponent<Button>();
+            }
+            if (i != pokemonListContainer.childCount - 1)
+            {
+                nav.selectOnDown = pokemonListContainer.GetChild(i + 1).GetComponent<Button>();
+            }
+            else
+            {
+                nav.selectOnDown = pokemonListContainer.GetChild(0).GetComponent<Button>();
+            }
+            pokemonListContainer.GetChild(i).GetComponent<Button>().navigation = nav;
         }
+    }
+    public void UpdatePokemonSelectedStatus(PokemonCaughtData pkmn)
+    {
+        foreach (Transform pokemon in pokemonListContainer)
+        {
+            pokemon.GetComponent<UIItemOptionsPokemon>().UpdateSelected(pkmn);
+        }
+    }
+
+    public void Load()
+    {
+        UpdatePokemonList(PartyMaster.GetInstance().GetParty()[0]);
+        LoadPokemon(currentPokemon);
     }
 
     public void LoadPokemon(PokemonCaughtData pkmn)
@@ -58,9 +104,11 @@ public class UIPokemonView : MonoBehaviour
         animator = Instantiate(pkmn.GetPokemonBaseData().battleAnimation);
         animator.transform.position = new Vector3(300000, 300000, 0);
         pokemonIcon.sprite = pkmn.GetPokemonBaseData().icon;
-        ViewPokemonInfo();
+        UpdatePokemonSelectedStatus(pkmn);
+        ViewCurrentSection();
     }
-    public void ClearnSection()
+
+    public void ClearSection()
     {
         foreach (Transform t in pokemonSectionContainer)
         {
@@ -68,15 +116,61 @@ public class UIPokemonView : MonoBehaviour
         }
     }
 
+    public void HandleSectionChange()
+    {
+        foreach(Transform section in sectionsListContainer)
+        {
+            Transform selectedSection = sectionsListContainer.GetChild(currentSectionIndex);
+            if (selectedSection == section)
+            {
+                section.GetComponent<TransitionFade>().FadeIn();
+            }
+            else
+            {
+                section.GetComponent<TransitionFade>().FadeOut();
+            }
+        }
+    }
+
+    public void HandlePokemonMenuSection(CallbackContext context)
+    {
+        Vector2 direction = context.ReadValue<Vector2>();
+        if (direction.x < 0)
+        {
+            currentSectionIndex = Mathf.Max(0, currentSectionIndex - 1);
+        }
+        else if (direction.x > 0)
+        {
+            currentSectionIndex = Mathf.Min(pokemonSectionContainer.childCount, currentSectionIndex + 1);
+        }
+        ViewCurrentSection();
+    }
+    public void ViewCurrentSection()
+    {
+        switch (currentSectionIndex)
+        {
+            case 0:
+                ViewPokemonInfo();
+                break;
+            case 1:
+                ViewPokemonMoves();
+                break;
+        }
+    }
+
     public void ViewPokemonInfo()
     {
-        ClearnSection();
+        ClearSection();
         Instantiate(pokemonSectionInfo, pokemonSectionContainer).GetComponent<UIPokemonInfo>().Load(currentPokemon);
+        currentSectionIndex = 0;
+        HandleSectionChange();
     }
     public void ViewPokemonMoves()
     {
-        ClearnSection();
+        ClearSection();
         Instantiate(pokemonSectionMoves, pokemonSectionContainer).GetComponent<UIPokemonMovesViewer>().Load(currentPokemon);
+        currentSectionIndex = 1;
+        HandleSectionChange();
     }
 
     public void HandleClose()

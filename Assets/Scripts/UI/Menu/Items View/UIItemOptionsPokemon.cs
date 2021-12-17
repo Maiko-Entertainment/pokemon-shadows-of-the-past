@@ -21,7 +21,7 @@ public class UIItemOptionsPokemon : MonoBehaviour
     public delegate void Click(PokemonCaughtData pkmn);
     public event Click onClick;
 
-    private PokemonCaughtData pokemon;
+    public PokemonCaughtData pokemon;
     private float targetHealth;
     private float currentHealth;
 

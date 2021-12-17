@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIPokemonMovesViewer : MonoBehaviour
@@ -20,9 +21,9 @@ public class UIPokemonMovesViewer : MonoBehaviour
     public TextMeshProUGUI moveAccuracy;
     public Image moveCategory;
 
-
     private PokemonCaughtData pokemon;
     private List<UIPokemonMove> movesInstanced = new List<UIPokemonMove>();
+    private MoveEquipped currentMove;
 
     public void Load(PokemonCaughtData pokemon)
     {
@@ -42,12 +43,20 @@ public class UIPokemonMovesViewer : MonoBehaviour
         {
             UIPokemonMove uiMove = Instantiate(movePrefab, moveContainer).GetComponent<UIPokemonMove>().Load(m, pokemon);
             movesInstanced.Add(uiMove);
-            uiMove.onClick += ViewMove;
+            uiMove.onSelect += ViewMove;
         }
+    }
+
+    public void HandleMoveView()
+    {
+        EventSystem eventSystem = EventSystem.current;
+        eventSystem.SetSelectedGameObject(movesInstanced[0].gameObject, new BaseEventData(eventSystem));
+        ViewMove(pokemon.GetMoves()[0], pokemon);
     }
 
     public void ViewMove(MoveEquipped move, PokemonCaughtData pkmn)
     {
+        currentMove = move;
         moveInspector?.FadeIn();
         MoveData m = move.move;
         moveName.text = m.moveName;
@@ -65,6 +74,10 @@ public class UIPokemonMovesViewer : MonoBehaviour
             default:
                 moveCategory.sprite = statusAttackIcon;
                 break;
+        }
+        foreach (UIPokemonMove listMove in movesInstanced)
+        {
+            listMove.UpdateSelectedStatus(currentMove);
         }
     }
 }

@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class UIOptionsMenuHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void Close()
     {
-        UIPauseMenuMaster.GetInstance().CloseMenu();
+        UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+    }
+
+    public void OpenPokemonView()
+    {
+        UIPauseMenuMaster.GetInstance().OpenPokemonViewer();
+    }
+    public void OpenItemView()
+    {
+        UIPauseMenuMaster.GetInstance().OpenItemsViewer();
     }
 }

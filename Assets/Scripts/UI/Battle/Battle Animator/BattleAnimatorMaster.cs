@@ -43,6 +43,7 @@ public class BattleAnimatorMaster : MonoBehaviour
         else
         {
             Instance = this;
+            HideAll();
         }
     }
 
@@ -52,6 +53,8 @@ public class BattleAnimatorMaster : MonoBehaviour
     {
         ClearTeamPokemon(BattleTeamId.Team1);
         ClearTeamPokemon(BattleTeamId.Team2);
+        combatCanvas.GetComponent<CanvasGroup>().interactable = true;
+        combatCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     private void ClearTeamPokemon(BattleTeamId teamId)

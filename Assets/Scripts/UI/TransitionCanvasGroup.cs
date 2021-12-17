@@ -5,7 +5,7 @@ using UnityEngine;
 public class TransitionCanvasGroup : TransitionBase
 {
     public CanvasGroup canvasGroup;
-
+    public bool destroyAfterFadeOut = false;
     private void Start()
     {
         if (!canvasGroup)
@@ -33,6 +33,13 @@ public class TransitionCanvasGroup : TransitionBase
         if (fading)
         {
             canvasGroup.alpha += speed * Time.deltaTime;
+            if (destroyAfterFadeOut)
+            {
+                if (canvasGroup.alpha <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
         }
     }
 }
