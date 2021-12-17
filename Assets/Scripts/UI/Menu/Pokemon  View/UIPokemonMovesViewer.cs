@@ -24,6 +24,7 @@ public class UIPokemonMovesViewer : MonoBehaviour
     private PokemonCaughtData pokemon;
     private List<UIPokemonMove> movesInstanced = new List<UIPokemonMove>();
     private MoveEquipped currentMove;
+    private bool isInsideSection = false;
 
     public void Load(PokemonCaughtData pokemon)
     {
@@ -45,13 +46,18 @@ public class UIPokemonMovesViewer : MonoBehaviour
             movesInstanced.Add(uiMove);
             uiMove.onSelect += ViewMove;
         }
+        UtilsMaster.LineSelectables(new List<Selectable>(moveContainer.GetComponentsInChildren<Selectable>()));
     }
 
     public void HandleMoveView()
     {
-        EventSystem eventSystem = EventSystem.current;
-        eventSystem.SetSelectedGameObject(movesInstanced[0].gameObject, new BaseEventData(eventSystem));
-        ViewMove(pokemon.GetMoves()[0], pokemon);
+        if (!isInsideSection)
+        {
+            EventSystem eventSystem = EventSystem.current;
+            eventSystem.SetSelectedGameObject(movesInstanced[0].gameObject, new BaseEventData(eventSystem));
+            ViewMove(pokemon.GetMoves()[0], pokemon);
+            isInsideSection = true;
+        }
     }
 
     public void ViewMove(MoveEquipped move, PokemonCaughtData pkmn)

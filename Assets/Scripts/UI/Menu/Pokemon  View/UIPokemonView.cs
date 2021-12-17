@@ -37,6 +37,10 @@ public class UIPokemonView : MonoBehaviour
     {
         currentPokemon = newSelected;
         List<PokemonCaughtData> pokemonList = PartyMaster.GetInstance().GetParty();
+        foreach (Transform pokemon in pokemonListContainer)
+        {
+            Destroy(pokemon.gameObject);
+        }
         foreach (PokemonCaughtData pokemon in pokemonList)
         {
             UIItemOptionsPokemon options = Instantiate(pokemonPrefab, pokemonListContainer).Load(pokemon);
@@ -52,27 +56,18 @@ public class UIPokemonView : MonoBehaviour
                 currentPokemon = pokemon;
             }
         }
-        for (int i = 0; i< pokemonListContainer.childCount; i++)
+        UtilsMaster.LineSelectables(new List<Selectable>(pokemonListContainer.GetComponentsInChildren<Selectable>()));
+    }
+    public void ReturnToPokemonSelectionList()
+    {
+        foreach (Transform pokemon in pokemonListContainer)
         {
-            Navigation nav = new Navigation();
-            nav.mode = Navigation.Mode.Explicit;
-            if (i != 0)
+            if (pokemon.GetComponent<UIItemOptionsPokemon>().pokemon == currentPokemon)
             {
-                nav.selectOnUp = pokemonListContainer.GetChild(i - 1).GetComponent<Button>();
+                EventSystem eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(pokemon.gameObject, new BaseEventData(eventSystem));
+                break;
             }
-            else
-            {
-                nav.selectOnUp = pokemonListContainer.GetChild(pokemonListContainer.childCount - 1).GetComponent<Button>();
-            }
-            if (i != pokemonListContainer.childCount - 1)
-            {
-                nav.selectOnDown = pokemonListContainer.GetChild(i + 1).GetComponent<Button>();
-            }
-            else
-            {
-                nav.selectOnDown = pokemonListContainer.GetChild(0).GetComponent<Button>();
-            }
-            pokemonListContainer.GetChild(i).GetComponent<Button>().navigation = nav;
         }
     }
     public void UpdatePokemonSelectedStatus(PokemonCaughtData pkmn)
@@ -135,15 +130,25 @@ public class UIPokemonView : MonoBehaviour
     public void HandlePokemonMenuSection(CallbackContext context)
     {
         Vector2 direction = context.ReadValue<Vector2>();
+        int previousIndex = currentSectionIndex;
         if (direction.x < 0)
         {
+            if (currentSectionIndex == 0)
+            {
+                return;
+            }
             currentSectionIndex = Mathf.Max(0, currentSectionIndex - 1);
+            ReturnToPokemonSelectionList();
         }
         else if (direction.x > 0)
         {
             currentSectionIndex = Mathf.Min(pokemonSectionContainer.childCount, currentSectionIndex + 1);
+            ReturnToPokemonSelectionList();
         }
-        ViewCurrentSection();
+        if (previousIndex != currentSectionIndex)
+        {
+            ViewCurrentSection();
+        }
     }
     public void ViewCurrentSection()
     {
