@@ -84,6 +84,10 @@ public class BattleEventManager
                     BattleTriggerOnPokemonMove btpm = (BattleTriggerOnPokemonMove)bt;
                     keepGoing = btpm.Execute((BattleEventUseMove)next);
                     break;
+                case BattleEventId.pokemonTakeDamageSuccess:
+                    BattleTriggerOnPokemonDamage btpds = (BattleTriggerOnPokemonDamage)bt;
+                    keepGoing = btpds.Execute((BattleEventTakeDamageSuccess)next);
+                    break;
             }
             if (!keepGoing)
             {

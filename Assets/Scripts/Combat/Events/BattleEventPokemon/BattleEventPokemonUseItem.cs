@@ -1,15 +1,17 @@
 ﻿public class BattleEventPokemonUseItem : BattleEventPokemon
 {
     ItemDataOnPokemon item;
-    public BattleEventPokemonUseItem(PokemonBattleData pokemon, ItemDataOnPokemon item):
+    bool isPokemonUsingIt = false;
+    public BattleEventPokemonUseItem(PokemonBattleData pokemon, ItemDataOnPokemon item, bool isPokemonUsingIt = false) :
         base(pokemon)
     {
         this.item = item;
         eventId = BattleEventId.useItemOnPokemon;
+        this.isPokemonUsingIt = isPokemonUsingIt;
     }
 
     public override void Execute()
     {
-        item.UseOnPokemonBattle(pokemon);
+        item.UseOnPokemonBattle(pokemon, isPokemonUsingIt);
     }
 }

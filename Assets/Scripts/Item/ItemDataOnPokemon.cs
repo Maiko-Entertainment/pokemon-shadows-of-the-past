@@ -5,6 +5,20 @@ using UnityEngine;
 public class ItemDataOnPokemon : ItemData
 {
     public bool equipable;
+    public InBattleAutouseCondition autoUseCondition;
+
+    public virtual void InitiateInBattle(PokemonBattleData user)
+    {
+        BattleManager battle = BattleMaster.GetInstance().GetCurrentBattle();
+        switch (autoUseCondition)
+        {
+            case InBattleAutouseCondition.HalfHealth:
+                BattleTriggerPokemonHalfHealthUseItem trigger = new BattleTriggerPokemonHalfHealthUseItem(user, this, true);
+                trigger.maxTriggers = 1;
+                battle.AddTrigger(trigger);
+                break;
+        }
+    }
     public override ItemTargetType GetItemTargetType()
     {
         return ItemTargetType.Pokemon;
@@ -25,11 +39,11 @@ public class ItemDataOnPokemon : ItemData
         HandleAfterUse();
     }
 
-    public virtual void UseOnPokemonBattle(PokemonBattleData pokemon)
+    public virtual void UseOnPokemonBattle(PokemonBattleData pokemon, bool isPokemonUsingIt = false)
     {
         BattleTeamId teamId = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon);
         BattleTeamData battleTeam = BattleMaster.GetInstance().GetCurrentBattle().GetTeamData(teamId);
-        BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartTrainerItemText(battleTeam.GetTrainerTitle(), itemName);
+        BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartTrainerItemText(isPokemonUsingIt ? pokemon.GetName() : battleTeam.GetTrainerTitle(), itemName);
         if (useSound)
         {
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(useSound, 1, true));

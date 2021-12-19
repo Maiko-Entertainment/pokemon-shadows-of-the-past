@@ -5,6 +5,7 @@ using UnityEngine;
 public class BattleEventTakeDamage : BattleEventPokemon
 {
     public DamageSummary damageSummary;
+    public int resultingHealth = 0;
     public BattleEventTakeDamage(PokemonBattleData pokemon, DamageSummary summary):base(pokemon)
     {
         eventId = BattleEventId.pokemonTakeDamage;
@@ -16,7 +17,8 @@ public class BattleEventTakeDamage : BattleEventPokemon
         base.Execute();
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         bool wasFaintedBefore = pokemon.IsFainted();
-        int resultingHealth = bm.ApplyDamage(this);
+        resultingHealth = bm.ApplyDamage(this);
+        bm.AddEvent(new BattleEventTakeDamageSuccess(this));
         if (resultingHealth <= 0 && !wasFaintedBefore)
         {
             bm.AddPokemonFaintEvent(this);

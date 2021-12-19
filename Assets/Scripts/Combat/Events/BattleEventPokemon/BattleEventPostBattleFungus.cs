@@ -15,7 +15,7 @@ public class BattleEventPostBattleFungus: BattleAnimatorEvent
 
     public override void Execute()
     {
-        endEvent.Execute(e);
+        endEvent?.Execute(e);
         base.Execute();
     }
 }

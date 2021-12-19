@@ -13,6 +13,7 @@ public class UIItemOptionsPokemon : MonoBehaviour
     public TextMeshProUGUI level;
     public Image exphbar;
     public Image statusSimbol;
+    public Image itemIcon;
     public TransitionFade selectedArrow;
     public Color faintedColor;
 
@@ -40,6 +41,16 @@ public class UIItemOptionsPokemon : MonoBehaviour
         {
             StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(pokemon.statusEffectId);
             UpdateStatus(status);
+        }
+        if (pokemon.equippedItem)
+        {
+            itemIcon.gameObject.SetActive(true);
+            itemIcon.sprite = pokemon.equippedItem.icon;
+        }
+        else
+        {
+            itemIcon.gameObject.SetActive(false);
+            itemIcon.sprite = null;
         }
         targetHealth = currentHealth;
         return this;

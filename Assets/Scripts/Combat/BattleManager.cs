@@ -242,6 +242,10 @@ public class BattleManager
     {
         eventManager.RemoveBattleTrigger(trigger);
     }
+    public void AddEvent(BattleEvent be)
+    {
+        eventManager.AddEvent(be);
+    }
 
     public void AddMoveEvent(PokemonBattleData user, MoveData move)
     {
@@ -256,9 +260,9 @@ public class BattleManager
     {
         eventManager.AddEvent(new BattleEventUseMoveSuccess(battleEvent));
     }
-    public void AddItemPokemonUseEvent(PokemonBattleData pkmn, ItemDataOnPokemon item)
+    public void AddItemPokemonUseEvent(PokemonBattleData pkmn, ItemDataOnPokemon item, bool isPokemonUsingIt=false)
     {
-        eventManager.AddEvent(new BattleEventPokemonUseItem(pkmn, item));
+        eventManager.AddEvent(new BattleEventPokemonUseItem(pkmn, item, isPokemonUsingIt));
     }
 
     public void AddStatChangeEvent(PokemonBattleData target, PokemonBattleStats statLevelChange)

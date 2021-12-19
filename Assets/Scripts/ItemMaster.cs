@@ -37,6 +37,13 @@ public class ItemMaster : MonoBehaviour
 
     public ItemData GetItem(ItemId id)
     {
-        return itemDataBase[id];
+        if (itemDataBase.ContainsKey(id))
+        {
+            return itemDataBase[id];
+        }
+        else
+        {
+            return null;
+        }
     }
 }

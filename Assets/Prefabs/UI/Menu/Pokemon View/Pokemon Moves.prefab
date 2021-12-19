@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 10
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 0
@@ -530,6 +530,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e17a1fff-eed3-48fe-aae6-46bc4425ad58
     m_ActionName: Player Character/Interact[/Keyboard/c,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7b3fad6e-2e2c-45d0-91e8-1b0888125e75
+    m_ActionName: Player Character/Cancel[/Keyboard/x,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0610c658-5460-42f6-ab0a-67c36759652b
+    m_ActionName: Player Character/Special[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Character
@@ -1333,6 +1341,8 @@ MonoBehaviour:
   pingPong: 0
   canvasGroup: {fileID: 5370045522001768492}
   destroyAfterFadeOut: 0
+  min: 0
+  max: 1
 --- !u!225 &5370045522001768492
 CanvasGroup:
   m_ObjectHideFlags: 0

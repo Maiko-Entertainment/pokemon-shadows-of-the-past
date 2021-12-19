@@ -4,14 +4,15 @@ using UnityEngine;
 
 public enum ItemId
 {
-    Potion = 0,
-    SuperPotion = 1,
-    HyperPotion = 2,
-    MaxPotion = 3,
-    FullRestore = 4,
-    Pokeball = 5,
-    Greatball = 6,
-    Ultraball = 7,
-    BerrySitrus = 8,
-    BerryPecha = 9
+    None = 0,
+    Potion = 1,
+    SuperPotion = 2,
+    HyperPotion = 3,
+    MaxPotion = 4,
+    FullRestore = 5,
+    Pokeball = 6,
+    Greatball = 7,
+    Ultraball = 8,
+    BerrySitrus = 9,
+    BerryPecha = 10
 }

@@ -12,6 +12,7 @@ public class UIPokemonView : MonoBehaviour
     public UIItemOptionsPokemon pokemonPrefab;
 
     public UIPokemonInfo pokemonSectionInfo;
+    public UIPokemonStats pokemonSectionStats;
     public UIPokemonMovesViewer pokemonSectionMoves;
 
     public Transform pokemonListContainer;
@@ -129,25 +130,25 @@ public class UIPokemonView : MonoBehaviour
 
     public void HandlePokemonMenuSection(CallbackContext context)
     {
-        Vector2 direction = context.ReadValue<Vector2>();
-        int previousIndex = currentSectionIndex;
-        if (direction.x < 0)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
         {
-            if (currentSectionIndex == 0)
+            Vector2 direction = context.ReadValue<Vector2>();
+            int previousIndex = currentSectionIndex;
+            if (direction.x < 0)
             {
-                return;
+                currentSectionIndex = Mathf.Max(0, currentSectionIndex - 1);
+                ReturnToPokemonSelectionList();
             }
-            currentSectionIndex = Mathf.Max(0, currentSectionIndex - 1);
-            ReturnToPokemonSelectionList();
-        }
-        else if (direction.x > 0)
-        {
-            currentSectionIndex = Mathf.Min(pokemonSectionContainer.childCount, currentSectionIndex + 1);
-            ReturnToPokemonSelectionList();
-        }
-        if (previousIndex != currentSectionIndex)
-        {
-            ViewCurrentSection();
+            else if (direction.x > 0)
+            {
+                currentSectionIndex = Mathf.Min(sectionsListContainer.childCount-1, currentSectionIndex + 1);
+                ReturnToPokemonSelectionList();
+            }
+            if (previousIndex != currentSectionIndex)
+            {
+                ViewCurrentSection();
+            }
+            print("Change section from " + previousIndex + " to " + currentSectionIndex);
         }
     }
     public void ViewCurrentSection()
@@ -158,6 +159,9 @@ public class UIPokemonView : MonoBehaviour
                 ViewPokemonInfo();
                 break;
             case 1:
+                ViewPokemoStats();
+                break;
+            case 2:
                 ViewPokemonMoves();
                 break;
         }
@@ -170,11 +174,18 @@ public class UIPokemonView : MonoBehaviour
         currentSectionIndex = 0;
         HandleSectionChange();
     }
+    public void ViewPokemoStats()
+    {
+        ClearSection();
+        Instantiate(pokemonSectionStats, pokemonSectionContainer).GetComponent<UIPokemonStats>().Load(currentPokemon);
+        currentSectionIndex = 1;
+        HandleSectionChange();
+    }
     public void ViewPokemonMoves()
     {
         ClearSection();
         Instantiate(pokemonSectionMoves, pokemonSectionContainer).GetComponent<UIPokemonMovesViewer>().Load(currentPokemon);
-        currentSectionIndex = 1;
+        currentSectionIndex = 2;
         HandleSectionChange();
     }
 

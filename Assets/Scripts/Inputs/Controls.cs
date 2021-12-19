@@ -33,6 +33,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b3fad6e-2e2c-45d0-91e8-1b0888125e75"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Special"",
+                    ""type"": ""Button"",
+                    ""id"": ""0610c658-5460-42f6-ab0a-67c36759652b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -112,6 +128,39 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9cd1d810-6a15-434a-b51b-b99ab104ef6f"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22ffdace-dc7c-4b87-a52d-fc1591360189"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c5907a6-60d9-4620-8923-47a6bf8cb5b8"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +171,8 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerCharacter = asset.FindActionMap("Player Character", throwIfNotFound: true);
         m_PlayerCharacter_Movement = m_PlayerCharacter.FindAction("Movement", throwIfNotFound: true);
         m_PlayerCharacter_Interact = m_PlayerCharacter.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerCharacter_Cancel = m_PlayerCharacter.FindAction("Cancel", throwIfNotFound: true);
+        m_PlayerCharacter_Special = m_PlayerCharacter.FindAction("Special", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -173,12 +224,16 @@ public class @Controls : IInputActionCollection, IDisposable
     private IPlayerCharacterActions m_PlayerCharacterActionsCallbackInterface;
     private readonly InputAction m_PlayerCharacter_Movement;
     private readonly InputAction m_PlayerCharacter_Interact;
+    private readonly InputAction m_PlayerCharacter_Cancel;
+    private readonly InputAction m_PlayerCharacter_Special;
     public struct PlayerCharacterActions
     {
         private @Controls m_Wrapper;
         public PlayerCharacterActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerCharacter_Movement;
         public InputAction @Interact => m_Wrapper.m_PlayerCharacter_Interact;
+        public InputAction @Cancel => m_Wrapper.m_PlayerCharacter_Cancel;
+        public InputAction @Special => m_Wrapper.m_PlayerCharacter_Special;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -194,6 +249,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnInteract;
+                @Cancel.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnCancel;
+                @Special.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSpecial;
+                @Special.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSpecial;
+                @Special.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSpecial;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -204,6 +265,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Special.started += instance.OnSpecial;
+                @Special.performed += instance.OnSpecial;
+                @Special.canceled += instance.OnSpecial;
             }
         }
     }
@@ -212,5 +279,7 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnSpecial(InputAction.CallbackContext context);
     }
 }

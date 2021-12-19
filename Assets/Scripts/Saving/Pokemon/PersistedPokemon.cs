@@ -13,6 +13,6 @@ public class PersistedPokemon
     public AbilityId abilityId;
     public List<PersistedPokemonMove> moves = new List<PersistedPokemonMove>();
     public List<PersistedPokemonMove> learnedMoves = new List<PersistedPokemonMove>();
-
+    public ItemId equipedItem = ItemId.None;
 
 }

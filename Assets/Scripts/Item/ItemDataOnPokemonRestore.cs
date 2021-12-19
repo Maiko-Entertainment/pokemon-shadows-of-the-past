@@ -36,10 +36,10 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
         base.UseOnPokemon(pokemon);
     }
 
-    public override void UseOnPokemonBattle(PokemonBattleData pokemon)
+    public override void UseOnPokemonBattle(PokemonBattleData pokemon, bool isPokemonUsingIt = false)
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
-        base.UseOnPokemonBattle(pokemon);
+        base.UseOnPokemonBattle(pokemon, isPokemonUsingIt);
         int healAmount = GetHealAmount(pokemon.GetPokemonCaughtData());
         if (restoreAmount > 0)
         {

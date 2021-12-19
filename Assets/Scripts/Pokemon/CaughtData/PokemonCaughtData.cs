@@ -13,6 +13,7 @@ public class PokemonCaughtData
     public AbilityId abilityId;
     public bool isMale = true;
     public float friendship = 0;
+    public ItemDataOnPokemon equippedItem;
     public List<MoveEquipped> moves = new List<MoveEquipped>();
     public List<MoveEquipped> learnedMoves = new List<MoveEquipped>();
 
@@ -31,6 +32,7 @@ public class PokemonCaughtData
         statusEffectId = pkmn.statusEffectId;
         natureId = pkmn.natureId;
         abilityId = pkmn.abilityId;
+        equippedItem = (ItemDataOnPokemon) ItemMaster.GetInstance().GetItem(pkmn.equipedItem);
         foreach(PersistedPokemonMove me in pkmn.moves)
         {
             moves.Add(new MoveEquipped(me));
@@ -140,8 +142,8 @@ public class PokemonCaughtData
 
     public int GetStatValue(int level, int statBase, bool natureBoost)
     {
-        float natureValue = natureBoost ? 1.2f : 1f; 
-        int value = (int) Mathf.Max(5f + (0.02f * statBase) * level * natureValue, 1);
+        float natureValue = natureBoost ? 1 * level : 0; 
+        int value = (int) Mathf.Max(5f + (0.02f * statBase) * level + natureValue, 1);
         return value;
     }
 
@@ -204,6 +206,10 @@ public class PokemonCaughtData
     public int GetRemainingExperienceToNextLevel(int level)
     {
         return GetTotalExperienceToNextLevel(level) - experience;
+    }
+    public ItemDataOnPokemon GetEquippedItem()
+    {
+        return equippedItem;
     }
 
     public LevelUpSummary GainExp(int exp)
@@ -275,5 +281,14 @@ public class PokemonCaughtData
         }
         learnedMoves = newCompleteMovesLearned;
         return newMovesLearned;
+    }
+    public void EquipItem(ItemDataOnPokemon item)
+    {
+        if (equippedItem != null)
+        {
+            InventoryMaster.GetInstance().ChangeItemAmount(equippedItem.GetItemId(), 1);
+        }
+        InventoryMaster.GetInstance().ChangeItemAmount(item.GetItemId(), -1);
+        equippedItem = item;
     }
 }

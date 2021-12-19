@@ -40,6 +40,7 @@ public class PokemonBattleData
     {
         inBattleTypes = pokemon.GetPokemonBaseData().types;
         abilityId = pokemon.abilityId;
+        pokemon?.equippedItem?.InitiateInBattle(this);
         AbilityData ad = AbilityMaster.GetInstance().GetAbility(abilityId);
         ad.Initialize(this);
         if (statusEffects == null)
@@ -102,6 +103,10 @@ public class PokemonBattleData
         finalStats.spDefense = (int)(GetMainStatMultiplier(statsChangeLevel.spDefense) * baseStats.spDefense);
         finalStats.speed = (int)(GetMainStatMultiplier(statsChangeLevel.speed) * baseStats.speed);
         return finalStats;
+    }
+    public int GetMaxHealth()
+    {
+        return pokemon.GetCurrentStats().health;
     }
 
     public int GetPokemonHealth()

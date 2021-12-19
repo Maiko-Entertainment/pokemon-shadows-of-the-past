@@ -24,7 +24,6 @@ public class UIPauseMenuMaster : MonoBehaviour
 
     public UIVariablesList variablesInstance;
 
-    private bool isMenuOpen = false;
     private List<UIMenuPile> openedMenus = new List<UIMenuPile>();
 
     private void Awake()
@@ -47,14 +46,19 @@ public class UIPauseMenuMaster : MonoBehaviour
 
     public void OpenMenu(UIMenuPile menuPrefab)
     {
-        UIMenuPile instance = Instantiate(menuPrefab, submenuContainer);
-        if (openedMenus.Count > 0)
+        bool isInteracting = InteractionsMaster.GetInstance().IsInteracting();
+        if (!isInteracting)
         {
-            openedMenus[openedMenus.Count - 1].DeactivateMenu();
+            UIMenuPile instance = Instantiate(menuPrefab, submenuContainer);
+            if (openedMenus.Count > 0)
+            {
+                openedMenus[openedMenus.Count - 1].DeactivateMenu();
+            }
+            openedMenus.Add(instance);
+            instance.Open();
+            HideMenuOpener();
+            if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
         }
-        openedMenus.Add(instance);
-        instance.Open();
-        HideMenuOpener();
     }
     public void ShowMenuOpener()
     {
@@ -79,8 +83,10 @@ public class UIPauseMenuMaster : MonoBehaviour
 
     public void OpenMenu()
     {
-        if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
-        OpenMenu(menuPrefab);
+        if (!IsMenuOpen())
+        {
+            OpenMenu(menuPrefab);
+        }
     }
 
     public void CloseCurrentMenu()
