@@ -55,7 +55,7 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     }
     public int GetHealAmount(PokemonCaughtData pokemon)
     {
-        int healAmount = (int)(pokemon.GetCurrentStats().health * restoreAmount / 100f);
+        int healAmount = restoresPercentage ? (int)(pokemon.GetCurrentStats().health * restoreAmount / 100f) : restoreAmount;
         return healAmount;
     }
 

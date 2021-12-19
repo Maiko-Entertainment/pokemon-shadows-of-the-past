@@ -15,6 +15,7 @@ public class UIItemOptionsPokemon : MonoBehaviour
     public Image statusSimbol;
     public Image itemIcon;
     public TransitionFade selectedArrow;
+    public TransitionFade swapIcon;
     public Color faintedColor;
 
     public delegate void Hover(PokemonCaughtData pkmn);
@@ -88,6 +89,13 @@ public class UIItemOptionsPokemon : MonoBehaviour
             selectedArrow?.FadeIn();
         else
             selectedArrow?.FadeOut();
+    }
+    public void UpdateSwaping(PokemonCaughtData pkmn)
+    {
+        if (pokemon == pkmn)
+            swapIcon?.FadeIn();
+        else
+            swapIcon?.FadeOut();
     }
     public void UpdateHealth()
     {

@@ -56,6 +56,15 @@ public class PartyMaster : MonoBehaviour
         return party;
     }
 
+    public void SwapParty(PokemonCaughtData swaping, PokemonCaughtData swaper)
+    {
+        int swapingIndex = party.IndexOf(swaping);
+        int swapedIndex = party.IndexOf(swaper);
+        PokemonCaughtData pokemonAux = party[swapingIndex];
+        party[swapingIndex] = party[swapedIndex];
+        party[swapedIndex] = pokemonAux;
+    }
+
     public void AddPartyMember(PokemonCaughtData newPokemon)
     {
         if (CanAddPartyMember())

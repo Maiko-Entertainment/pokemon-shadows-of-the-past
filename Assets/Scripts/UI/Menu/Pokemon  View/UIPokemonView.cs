@@ -27,6 +27,7 @@ public class UIPokemonView : MonoBehaviour
     private PokemonAnimationController animator;
 
     private PokemonCaughtData currentPokemon;
+    private PokemonCaughtData swapingPokemon;
     private int currentSectionIndex = 0;
 
     private void Start()
@@ -77,6 +78,43 @@ public class UIPokemonView : MonoBehaviour
         {
             pokemon.GetComponent<UIItemOptionsPokemon>().UpdateSelected(pkmn);
         }
+    }
+    public void HandleSwaping(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            if (swapingPokemon != null)
+            {
+                Swap(currentPokemon);
+            }
+            else
+            {
+                swapingPokemon = currentPokemon;
+                List<Selectable> selectables = new List<Selectable>();
+                foreach (Transform pokemon in pokemonListContainer)
+                {
+                    UIItemOptionsPokemon option = pokemon.GetComponent<UIItemOptionsPokemon>();
+                    if (option.pokemon != swapingPokemon)
+                    {
+                        selectables.Add(option.GetComponent<Button>());
+                    }
+                    if (currentPokemon == swapingPokemon)
+                    {
+                        currentPokemon = option.pokemon;
+                    }
+                    option.UpdateSwaping(swapingPokemon);
+                    option.onClick += Swap;
+                }
+                UtilsMaster.LineSelectables(selectables);
+                ReturnToPokemonSelectionList();
+            }
+        }
+    }
+    public void Swap(PokemonCaughtData pokemon)
+    {
+        PartyMaster.GetInstance().SwapParty(swapingPokemon, currentPokemon);
+        swapingPokemon = null;
+        UpdatePokemonList(currentPokemon);
     }
 
     public void Load()
