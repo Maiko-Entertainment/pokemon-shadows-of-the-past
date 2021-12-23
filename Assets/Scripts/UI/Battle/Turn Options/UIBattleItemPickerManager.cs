@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class UIBattleItemPickerManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class UIBattleItemPickerManager : MonoBehaviour
 
     private PokemonBattleData currentPokemon;
     private ItemCategory currentCategory;
+    private bool isSelectingPokemon = false;
 
     private void Start()
     {
@@ -47,6 +49,7 @@ public class UIBattleItemPickerManager : MonoBehaviour
 
     public void ShowItemSelector()
     {
+        isSelectingPokemon = false;
         panel.FadeIn();
         LoadItemsByCategory(currentCategory);
         HidePokemonListItem();
@@ -58,6 +61,7 @@ public class UIBattleItemPickerManager : MonoBehaviour
 
     public void ShowPokemonList(ItemDataOnPokemon item)
     {
+        isSelectingPokemon = true;
         List<PokemonBattleData> pokemon = BattleMaster.GetInstance().GetCurrentBattle()?.team1.pokemon;
         HidePokemonListItem();
         foreach (PokemonBattleData pkmn in pokemon)
@@ -100,5 +104,19 @@ public class UIBattleItemPickerManager : MonoBehaviour
     {
         currentPokemon = pkmn;
         UpdatePokemon();
+    }
+    public void HandleCancel(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            if (isSelectingPokemon)
+            {
+                ShowItemSelector();
+            }
+            else
+            {
+                HideItemSelector();
+            }
+        }
     }
 }

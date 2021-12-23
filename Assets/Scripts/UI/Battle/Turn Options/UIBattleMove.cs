@@ -12,6 +12,11 @@ public class UIBattleMove : MonoBehaviour
     public Image typingIcon;
     public bool seeOnly;
 
+    public delegate void Select(PokemonBattleData pkmn, MoveEquipped move);
+    public event Select onSelect;
+    public delegate void Click(PokemonBattleData pkmn, MoveEquipped move);
+    public event Click onClick;
+
     private MoveEquipped move;
     private PokemonBattleData pokemon;
 
@@ -28,27 +33,13 @@ public class UIBattleMove : MonoBehaviour
         return this;
     }
 
-    public void UseMove()
+    public void HandleClick()
     {
-        if (!seeOnly)
-        {
-            if (move.IsAvailable())
-            {
-                BattleMaster.GetInstance()
-                    ?.GetCurrentBattle()
-                    ?.HandleTurnInput(
-                        new BattleTurnDesitionPokemonMove(
-                            move, 
-                            pokemon, 
-                            BattleTeamId.Team1
-                            )
-                        );
-                BattleAnimatorMaster.GetInstance().HideOptions();
-            }
-            else
-            {
-                BattleAnimatorMaster.GetInstance()?.ExecuteMoveNoUsesLeftFlowchart();
-            }
-        }
+        onClick?.Invoke(pokemon, move);
     }
+    public void HandleSelect()
+    {
+        onSelect?.Invoke(pokemon, move);
+    }
+
 }

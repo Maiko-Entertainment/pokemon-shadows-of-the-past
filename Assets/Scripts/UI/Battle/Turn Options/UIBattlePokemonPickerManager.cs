@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.InputAction;
 
 public class UIBattlePokemonPickerManager : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
 
         closeButton.interactable = allowClose;
         screenContainer.FadeIn();
+        int index = 0;
         foreach (Transform pkmn in pokemonList)
         {
             UIBattleOptionsPokemon pokemonOption = pkmn.GetComponent<UIBattleOptionsPokemon>();
@@ -33,7 +36,7 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
             Destroy(pkmn.gameObject);
         }
         ShowPokemonPreview(BattleMaster.GetInstance()?.GetCurrentBattle()?.team1.GetFirstAvailabelPokemon());
-
+        List<Selectable> options = new List<Selectable>();
         List<PokemonBattleData> pokemon = BattleMaster.GetInstance()?.GetCurrentBattle()?.team1.pokemon;
         foreach (PokemonBattleData pkmn in pokemon)
         {
@@ -43,14 +46,25 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
             pokemonOption.onClick += OnPokemonSelect;
             pokemonOption.onHover += ShowPokemonPreview;
             pokemonOption.UpdateSelected(currentlySelected);
+            if (!pkmn.IsFainted())
+            {
+                options.Add(pokemonOption.GetComponent<Selectable>());
+            }
+            if (currentlySelected == pkmn)
+            {
+                EventSystem eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(pokemonOption.gameObject, new BaseEventData(eventSystem));
+            }
+            index++;
         }
+        UtilsMaster.LineSelectables(options);
     }
 
     public void UpdatePokemon()
     {
         foreach (Transform pkmn in pokemonList)
         {
-            pkmn.gameObject.GetComponent<UIBattleOptionsPokemon>().UpdateSelected(currentlySelected);
+            pkmn.GetComponent<UIBattleOptionsPokemon>().UpdateSelected(currentlySelected);
         }
     }
 
@@ -113,5 +127,13 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
     public void Hide()
     {
         screenContainer.FadeOut();
+    }
+
+    public void HandleCancel(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            Hide();
+        }
     }
 }

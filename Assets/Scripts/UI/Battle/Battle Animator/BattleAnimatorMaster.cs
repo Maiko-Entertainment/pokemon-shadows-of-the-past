@@ -431,9 +431,13 @@ public class BattleAnimatorMaster : MonoBehaviour
         battleOptionsManager.Show();
     }
 
-    public void ShowPokemonSelection()
+    public void ShowPokemonSelection(bool allowClose = false)
     {
-        battlePokemonPickerManager.ShowPokemonPicker();
+        battlePokemonPickerManager.ShowPokemonPicker(allowClose);
+        if (allowClose)
+        {
+            battleOptionsManager.isInSubmenu = true;
+        }
     }
     public void HidePokemonSelection()
     {
