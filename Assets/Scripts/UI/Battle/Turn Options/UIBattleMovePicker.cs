@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEngine.InputSystem.InputAction;
 
 public class UIBattleMovePicker : MonoBehaviour
 {
@@ -11,14 +12,18 @@ public class UIBattleMovePicker : MonoBehaviour
     public Transform moveList;
     public TransitionFilledImage transition;
 
+    private bool isOpen = false;
+
     public void Show()
     {
         transition.FadeIn();
         LoadMoves();
+        isOpen = true;
     }
     public void Hide()
     {
         transition.FadeOut();
+        isOpen = false;
     }
 
     private void LoadMoves()
@@ -26,13 +31,14 @@ public class UIBattleMovePicker : MonoBehaviour
         PokemonBattleData activePokemon = BattleMaster.GetInstance().GetCurrentBattle().GetTeamActivePokemon(BattleTeamId.Team1);
         CleanMoves();
         List<MoveEquipped> moves = activePokemon.GetPokemonCaughtData().GetMoves();
+        List<Selectable> options = new List<Selectable>();
         int count = 0;
         foreach (MoveEquipped me in moves)
         {
-            CreateMove(me, activePokemon, count == 0);
+            UIPokemonMove bmp = CreateMove(me, activePokemon, count == 0);
+            options.Add(bmp.GetComponent<Selectable>());
             count++;
         }
-        List<Selectable> options = new List<Selectable>();
         foreach (Transform option in moveList)
         {
             options.Add(option.GetComponent<Selectable>());
@@ -41,7 +47,7 @@ public class UIBattleMovePicker : MonoBehaviour
         UpdateSelected(moves[0]);
     }
 
-    private void CreateMove(MoveEquipped me, PokemonBattleData pkmn, bool select)
+    private UIPokemonMove CreateMove(MoveEquipped me, PokemonBattleData pkmn, bool select)
     {
         UIPokemonMove bm = Instantiate(movePrefab, moveList).Load(me, pkmn.GetPokemonCaughtData());
         bm.onClick += UseMove;
@@ -49,9 +55,9 @@ public class UIBattleMovePicker : MonoBehaviour
         print("Child count " + moveList.childCount);
         if (select)
         {
-            EventSystem eventSystem = EventSystem.current;
-            eventSystem.SetSelectedGameObject(bm.gameObject, new BaseEventData(eventSystem));
+            UtilsMaster.SetSelected(bm.gameObject);
         }
+        return bm;
     }
     public void UseMove(MoveEquipped move, PokemonCaughtData pokemon)
     {
@@ -85,5 +91,14 @@ public class UIBattleMovePicker : MonoBehaviour
         foreach (Transform moves in moveList)
             Destroy(moves.gameObject);
     }
-
+    public void HandleCancel(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            if (isOpen)
+            {
+                BattleAnimatorMaster.GetInstance().HidePokemonMoveSelection(true);
+            }
+        }
+    }
 }

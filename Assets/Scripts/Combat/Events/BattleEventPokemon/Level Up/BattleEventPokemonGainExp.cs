@@ -29,7 +29,7 @@ public class BattleEventPokemonGainExp : BattleEventPokemon
                     )
                 );
                 BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonUpdateLevel(pokemon, level));
-                BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartGainLevelText(level);
+                BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartGainLevelText(pokemon.GetName(), level);
             }
             BattleAnimatorMaster.GetInstance()?.AddEvent(
                 new BattleAnimatorEventPokemonLevelUp(pokemon, new LevelUpSummary(summary.finalLevel, summary.finalLevel, new List<MoveData>()))
@@ -45,7 +45,7 @@ public class BattleEventPokemonGainExp : BattleEventPokemon
                         new LevelUpSummary(level - 1, level, new List<MoveData>())
                     )
                 );
-                BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartGainLevelText(level);
+                BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartGainLevelText(pokemon.GetName(), level);
             }
         }
         base.Execute();

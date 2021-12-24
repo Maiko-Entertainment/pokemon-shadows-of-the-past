@@ -99,6 +99,20 @@ public class BattleManager
     {
         return teamId == BattleTeamId.Team1 ? team1.GetActivePokemon() : team2.GetActivePokemon();
     }
+    public PokemonBattleData GetPokemonFromCaughtData(PokemonCaughtData pkmn)
+    {
+        foreach(PokemonBattleData pbd in GetTeamData(BattleTeamId.Team1).pokemon)
+        {
+            if (pbd.GetPokemonCaughtData() == pkmn)
+                return pbd;
+        }
+        foreach (PokemonBattleData pbd in GetTeamData(BattleTeamId.Team2).pokemon)
+        {
+            if (pbd.GetPokemonCaughtData() == pkmn)
+                return pbd;
+        }
+        return null;
+    }
 
     public void SetTeamActivePokemon(PokemonBattleData pokemon)
     {
@@ -285,6 +299,11 @@ public class BattleManager
         eventManager.AddEvent(new BattleEventPokemonHeal(target, healSummary));
     }
 
+    public void AddTryToRunEvent()
+    {
+        eventManager.AddEvent(new BattleEventRun());
+    }
+
     // Used for pokemon after fainting, doesnt trigger enemys next turn
     public void AddSwitchInPokemonEvent(PokemonBattleData pokemon, bool isDesition=false)
     {
@@ -453,6 +472,34 @@ public class BattleManager
         bool isCaptured = randomValue <= a;
         int shakes = isCaptured ? 3 : Random.Range(1, 3);
         return new PokeballResult(isCaptured, shakes, enemy);
+    }
+
+    public void HandleTryToEscape()
+    {
+        switch (GetBattleData().battleType)
+        {
+            case BattleType.Trainer:
+                BattleAnimatorMaster.GetInstance().ExecuteNoRunningFromTrainerFlowchart();
+                break;
+            case BattleType.Shadow:
+                BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartNoEscape(GetTeamData(BattleTeamId.Team1).trainerTitle);
+                break;
+            default:
+                PokemonBattleData usersPokemon = GetTeamActivePokemon(BattleTeamId.Team1);
+                PokemonBattleData enemysPokemon = GetTeamActivePokemon(BattleTeamId.Team2);
+                float chance = usersPokemon.GetPokemonCaughtData().GetLevel() / (float)enemysPokemon.GetPokemonCaughtData().GetLevel();
+                float random = Random.value;
+                if (chance > random)
+                {
+                    HandleBattleEnd(BattleTeamId.None, true);
+                }
+                else
+                {
+                    BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartEscapeFail(GetTeamData(BattleTeamId.Team1).trainerTitle);
+                }
+                break;
+        }
+        
     }
 
     public BattleData GetBattleData()

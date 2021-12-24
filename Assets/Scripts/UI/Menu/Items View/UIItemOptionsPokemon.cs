@@ -102,12 +102,12 @@ public class UIItemOptionsPokemon : MonoBehaviour
         targetHealth = pokemon.GetCurrentHealth();
     }
 
-    public void OnClick()
+    public void HandleClick()
     {
         onClick?.Invoke(pokemon);
     }
 
-    public void OnHover()
+    public void HandleHover()
     {
         onHover?.Invoke(pokemon);
     }

@@ -27,13 +27,10 @@ public class UIItemsViewer : MonoBehaviour
     private ItemCategory currentCategory;
     private ItemInventory currentItem;
     private PokemonCaughtData currentPokemon;
-    private Color defaultItemColor;
     private int currentSectionIndex = 0;
-    private bool selectingPokemon = false;
 
     void Start()
     {
-        defaultItemColor = itemInfo.GetComponent<Image>().color;
         Load();
     }
 
@@ -69,7 +66,7 @@ public class UIItemsViewer : MonoBehaviour
         List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
         foreach(PokemonCaughtData p in party)
         {
-            Instantiate(pokemonPrefab, pokemonListContainer).GetComponent<UIItemOptionsPokemon>().Load(p);
+            Instantiate(pokemonPrefab, pokemonListContainer).Load(p);
         }
     }
 
@@ -85,10 +82,10 @@ public class UIItemsViewer : MonoBehaviour
             {
                 if (i.GetAmount() > 0)
                 {
-                    UIItemsView uiItem = Instantiate(itemPrefab, itemsContainer).GetComponent<UIItemsView>().Load(i);
+                    UIItemsView uiItem = Instantiate(itemPrefab, itemsContainer).Load(i);
                     uiItem.onHover += ViewItem;
                     uiItem.onClick += UseItem;
-                    elements.Add(uiItem.GetComponent<Button>());
+                    elements.Add(uiItem.GetComponent<Selectable>());
                 }
             }
             if (currentCategory != category && !force)
@@ -98,8 +95,7 @@ public class UIItemsViewer : MonoBehaviour
             UtilsMaster.LineSelectables(elements);
             if (elements.Count > 0)
             {
-                EventSystem eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(elements[0].gameObject, new BaseEventData(eventSystem));
+                UtilsMaster.SetSelected(elements[0].gameObject);
             }
         }
         currentCategory = category;
@@ -294,7 +290,23 @@ public class UIItemsViewer : MonoBehaviour
 
     public void UseCurrentItemOnPokemon(PokemonCaughtData pokemon)
     {
-        ((ItemDataOnPokemon)currentItem.itemData).UseOnPokemon(currentPokemon);
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        if (bm.IsBattleActive())
+        {
+            PokemonBattleData pbd = bm.GetPokemonFromCaughtData(pokemon);
+            BattleTeamId teamId = bm.GetTeamId(pbd);
+            BattleMaster.GetInstance().GetCurrentBattle()?
+                .HandleTurnInput(new BattleTurnDesitionItemPokemonUse(
+                    pbd,
+                    (ItemDataOnPokemon) currentItem.itemData,
+                    teamId
+                ));
+            BattleAnimatorMaster.GetInstance().HideOptions();
+        }
+        else
+        {
+            ((ItemDataOnPokemon)currentItem.itemData).UseOnPokemon(currentPokemon);
+        }
         ViewCategory(currentCategory, true);
         UpdatePokemonsHealth();
         if (currentItem.GetAmount() == 0)
@@ -322,16 +334,27 @@ public class UIItemsViewer : MonoBehaviour
             i.GetComponent<UIItemOptionsPokemon>().SetTargetToCurrent();
         }
     }
+    public void HandleClose(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            HandleClose();
+        }
+    }
 
     public void HandleClose()
     {
-        float time = 0;
-        TransitionBase transition = GetComponent<TransitionBase>();
-        if (transition)
+        if (currentPokemon != null)
         {
-            transition.FadeOut();
-            time = 1f / Mathf.Abs(transition.speed);
+            DeactivatePokemonSelector();
         }
-        Destroy(gameObject, time);
+        else if (BattleMaster.GetInstance().IsBattleActive())
+        {
+            BattleAnimatorMaster.GetInstance().HideItemSelection(true);
+        }
+        else
+        {
+            UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+        }
     }
 }

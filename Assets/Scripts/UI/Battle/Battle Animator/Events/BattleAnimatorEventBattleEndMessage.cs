@@ -22,6 +22,13 @@ public class BattleAnimatorEventBattleEndMessage : BattleAnimatorEvent
         {
             BattleAnimatorMaster.GetInstance().ExecuteEnemyTrainerDefeated(battleEvent.finalBattleState.team1.trainerTitle);
         }
+        else
+        {
+            if (battleEvent.finalBattleState.GetBattleData().battleType == BattleType.Pokemon)
+            {
+                BattleAnimatorMaster.GetInstance().ExecuteBattleEscape(battleEvent.finalBattleState.team1.trainerTitle);
+            }
+        }
         base.Execute();
     }
 }

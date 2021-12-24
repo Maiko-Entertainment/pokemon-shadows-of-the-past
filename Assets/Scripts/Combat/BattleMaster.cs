@@ -8,7 +8,7 @@ public class BattleMaster : MonoBehaviour
     public static BattleMaster Instance { get; set; }
     public Flowchart battleFlowchart;
 
-    public BattleManager currenBattle;
+    public BattleManager currentBattle;
     public bool triggerBattleOnStart = false;
 
     public BattleTypeAdvantageManager advantageManager = new BattleTypeAdvantageManager();
@@ -42,7 +42,16 @@ public class BattleMaster : MonoBehaviour
 
     public BattleManager GetCurrentBattle()
     {
-        return currenBattle;
+        return currentBattle;
+    }
+
+    public bool IsBattleActive()
+    {
+        if (currentBattle != null)
+        {
+            return currentBattle.IsBattleActive();
+        }
+        return false;
     }
 
     public void RunTestBattle()
@@ -57,7 +66,7 @@ public class BattleMaster : MonoBehaviour
         BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0);
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
-        currenBattle = newBattle;
+        currentBattle = newBattle;
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
     }
@@ -73,7 +82,7 @@ public class BattleMaster : MonoBehaviour
         BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0); ;
         BattleTeamData team2 = trainer.GetTeambattleData();
         BattleManager newBattle = new BattleManager(team1, team2, trainer.battleData);
-        currenBattle = newBattle;
+        currentBattle = newBattle;
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
     }
@@ -124,7 +133,7 @@ public class BattleMaster : MonoBehaviour
 
     public void ClearBattleEvents()
     {
-        currenBattle.eventManager.ClearEvents();
+        currentBattle.eventManager.ClearEvents();
     }
 
     public DamageSummary CalculateOutOfBattleDamage(PokemonCaughtData pokemon, OutOfCombatDamage damage)

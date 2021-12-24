@@ -13,15 +13,20 @@ public class BattleTriggerPokemonHalfHealthUseItem : BattleTriggerOnPokemonDamag
 
     public override bool Execute(BattleEventTakeDamageSuccess battleEvent)
     {
-        if (maxTriggers > 0)
+        if (battleEvent.pokemon == pokemon &&
+            !battleEvent.pokemon.IsFainted() &&
+            battleEvent.damageEvent.resultingHealth / (float)battleEvent.pokemon.GetMaxHealth() <= 0.5f)
         {
-            if (battleEvent.pokemon == pokemon &&
-                !battleEvent.pokemon.IsFainted() &&
-                battleEvent.damageEvent.resultingHealth / battleEvent.pokemon.GetMaxHealth() <= 0.5f)
+            if (maxTriggers > 0)
             {
                 BattleMaster.GetInstance().GetCurrentBattle().AddItemPokemonUseEvent(battleEvent.pokemon, (ItemDataOnPokemon) item, true);
                 battleEvent.pokemon.pokemon.equippedItem = null;
             }
+        }
+        else
+        {
+            // Adds a trigger so that it compensates the -1 trigger in the base execute
+            maxTriggers++;
         }
         return base.Execute(battleEvent);
     }

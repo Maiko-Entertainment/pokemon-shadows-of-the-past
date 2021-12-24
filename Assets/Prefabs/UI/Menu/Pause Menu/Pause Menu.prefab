@@ -1284,6 +1284,8 @@ MonoBehaviour:
   pingPong: 1
   canvasGroup: {fileID: 8851532578681880609}
   destroyAfterFadeOut: 1
+  min: 0
+  max: 1
 --- !u!225 &8851532578681880609
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1360,7 +1362,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6691505094054226072}
         m_TargetAssemblyTypeName: UIOptionsMenuHandler, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: CloseIfCurrent
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1372,6 +1374,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7b3fad6e-2e2c-45d0-91e8-1b0888125e75
     m_ActionName: Player Character/Cancel[/Keyboard/x,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0610c658-5460-42f6-ab0a-67c36759652b
+    m_ActionName: Player Character/Special[/Keyboard/z]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Character

@@ -11,7 +11,7 @@ public class ItemDataPokeball : ItemData
     public override CanUseResult CanUse()
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
-        if (bm!=null && bm.IsBattleActive())
+        if (BattleMaster.GetInstance().IsBattleActive())
         {
             if (bm.battleData.battleType == BattleType.Pokemon)
             {

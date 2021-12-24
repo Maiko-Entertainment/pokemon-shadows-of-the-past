@@ -29,10 +29,15 @@ public class UIPokemonView : MonoBehaviour
     private PokemonCaughtData currentPokemon;
     private PokemonCaughtData swapingPokemon;
     private int currentSectionIndex = 0;
+    private bool isInPreFaintPick = false;
 
     private void Start()
     {
         Load();
+    }
+    public void SetPrefaint(bool isInPreFaintPick)
+    {
+        this.isInPreFaintPick = isInPreFaintPick;
     }
 
     public void UpdatePokemonList(PokemonCaughtData newSelected)
@@ -43,22 +48,22 @@ public class UIPokemonView : MonoBehaviour
         {
             Destroy(pokemon.gameObject);
         }
+        List<Selectable> selectables = new List<Selectable>();
         foreach (PokemonCaughtData pokemon in pokemonList)
         {
             UIItemOptionsPokemon options = Instantiate(pokemonPrefab, pokemonListContainer).Load(pokemon);
             // options.onClick += (PokemonCaughtData p) => SelectPokemon();
             options.onHover += LoadPokemon;
             Button btn = options.GetComponent<Button>();
-           
+            selectables.Add(options.GetComponent<Selectable>());
             // Sets first pokemon as selected
             if (currentPokemon == null && pokemonList.IndexOf(pokemon) == 0 || currentPokemon != null && currentPokemon == pokemon)
             {
-                EventSystem eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(options.gameObject, new BaseEventData(eventSystem));
+                UtilsMaster.SetSelected(selectables[0].gameObject);
                 currentPokemon = pokemon;
             }
         }
-        UtilsMaster.LineSelectables(new List<Selectable>(pokemonListContainer.GetComponentsInChildren<Selectable>()));
+        UtilsMaster.LineSelectables(selectables);
     }
     public void ReturnToPokemonSelectionList()
     {
@@ -189,6 +194,52 @@ public class UIPokemonView : MonoBehaviour
             print("Change section from " + previousIndex + " to " + currentSectionIndex);
         }
     }
+    public void HandlePokemonPick(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            if (BattleMaster.GetInstance().IsBattleActive())
+            {
+                BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+                PokemonBattleData pbd = bm.GetTeamActivePokemon(BattleTeamId.Team1);
+                if (!currentPokemon.IsFainted())
+                {
+                    if (pbd.IsFainted())
+                    {
+                        bm.AddSwitchInPokemonEvent(bm.GetPokemonFromCaughtData(currentPokemon));
+                    }
+                    else
+                    {
+                        BattleMaster.GetInstance().GetCurrentBattle().HandleTurnInput(
+                            new BattleTurnDesitionPokemonSwitch(
+                                bm.GetPokemonFromCaughtData(currentPokemon),
+                                BattleTeamId.Team1
+                            ));
+                    }
+                    HandleClose();
+                }
+            }
+        }
+    }
+    public void HandleClose(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick)
+        {
+            HandleClose();
+        }
+    }
+
+    public void HandleClose()
+    {
+        if (BattleMaster.GetInstance().IsBattleActive())
+        {
+            BattleAnimatorMaster.GetInstance().HidePokemonSelection(true);
+        }
+        else
+        {
+            UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+        }
+    }
     public void ViewCurrentSection()
     {
         switch (currentSectionIndex)
@@ -225,18 +276,6 @@ public class UIPokemonView : MonoBehaviour
         Instantiate(pokemonSectionMoves, pokemonSectionContainer).GetComponent<UIPokemonMovesViewer>().Load(currentPokemon);
         currentSectionIndex = 2;
         HandleSectionChange();
-    }
-
-    public void HandleClose()
-    {
-        float time = 0;
-        TransitionBase transition = GetComponent<TransitionBase>();
-        if (transition)
-        {
-            transition.FadeOut();
-            time = 1f / Mathf.Abs(transition.speed);
-        }
-        Destroy(gameObject, time);
     }
 
     private void OnDestroy()

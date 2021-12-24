@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UtilsMaster : MonoBehaviour
@@ -30,5 +31,11 @@ public class UtilsMaster : MonoBehaviour
             selectables[i].GetComponent<Selectable>().navigation = nav;
         }
         return selectables;
+    }
+
+    public static void SetSelected(GameObject select)
+    {
+        EventSystem eventSystem = EventSystem.current;
+        eventSystem.SetSelectedGameObject(select, new BaseEventData(eventSystem));
     }
 }

@@ -672,9 +672,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173622635733817774}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &2563044015256992509
 MonoBehaviour:
@@ -745,11 +745,35 @@ MonoBehaviour:
     m_ActionId: 22f5ccfd-38e1-4a03-96d2-3c32d4f729ae
     m_ActionName: Player Character/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6713284097545221843}
+        m_TargetAssemblyTypeName: UIPokemonView, Assembly-CSharp
+        m_MethodName: HandlePokemonPick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e17a1fff-eed3-48fe-aae6-46bc4425ad58
     m_ActionName: Player Character/Interact[/Keyboard/c,/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6713284097545221843}
+        m_TargetAssemblyTypeName: UIPokemonView, Assembly-CSharp
+        m_MethodName: HandleClose
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7b3fad6e-2e2c-45d0-91e8-1b0888125e75
     m_ActionName: Player Character/Cancel[/Keyboard/x,/Keyboard/escape]
   - m_PersistentCalls:
@@ -3046,9 +3070,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6180597399895176893}
-        m_TargetAssemblyTypeName: UIOptionsMenuHandler, Assembly-CSharp
-        m_MethodName: Close
+      - m_Target: {fileID: 6713284097545221843}
+        m_TargetAssemblyTypeName: UIPokemonView, Assembly-CSharp
+        m_MethodName: HandleClose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -15,7 +15,6 @@ public class BattleAnimatorMaster : MonoBehaviour
     public Transform pokemonTeam2Position;
     public UIBattleOptionsManager battleOptionsManager;
     public UIBattlePokemonInfoManager battleInfoManager;
-    public UIBattlePokemonPickerManager battlePokemonPickerManager;
     public Flowchart battleFlowchart;
 
     // Sounds Common
@@ -260,13 +259,14 @@ public class BattleAnimatorMaster : MonoBehaviour
             ))
         );
     }
-    public void AddEventBattleFlowcartGainLevelText(int level)
+    public void AddEventBattleFlowcartGainLevelText(string pokemonName, int level)
     {
         AddEvent(new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
                 battleFlowchart,
                 "Level Up",
                 new Dictionary<string, string>() {
+                    { "pokemon", ""+pokemonName },
                     { "level", ""+level },
                 }
             ))
@@ -294,6 +294,30 @@ public class BattleAnimatorMaster : MonoBehaviour
                 "Capture Success",
                 new Dictionary<string, string>() {
                     { "pokemon", pokemonName },
+                }
+            ))
+        );
+    }
+    public void AddEventBattleFlowcartEscapeFail(string trainer)
+    {
+        AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Battle Escape Fail",
+                new Dictionary<string, string>() {
+                    { "trainer", trainer },
+                }
+            ))
+        );
+    }
+    public void AddEventBattleFlowcartNoEscape(string trainer)
+    {
+        AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Battle No Escape",
+                new Dictionary<string, string>() {
+                    { "trainer", trainer },
                 }
             ))
         );
@@ -338,10 +362,21 @@ public class BattleAnimatorMaster : MonoBehaviour
         battleFlowchart.SetStringVariable("trainer", trainerName);
         battleFlowchart.ExecuteBlock("Trainer Enemy Defeat");
     }
+    public void ExecuteBattleEscape(string trainerName)
+    {
+        battleFlowchart.StopAllBlocks();
+        battleFlowchart.SetStringVariable("trainer", trainerName);
+        battleFlowchart.ExecuteBlock("Battle Escape");
+    }
     public void ExecuteMoveNoUsesLeftFlowchart()
     {
         battleFlowchart.StopAllBlocks();
         battleFlowchart.ExecuteBlock("Move No Uses");
+    }
+    public void ExecuteNoRunningFromTrainerFlowchart()
+    {
+        battleFlowchart.StopAllBlocks();
+        battleFlowchart.ExecuteBlock("Battle Escape Trainer");
     }
 
     public float UpdateHealthBar(PokemonBattleData pokemon, int target)
@@ -433,20 +468,15 @@ public class BattleAnimatorMaster : MonoBehaviour
 
     public void ShowPokemonSelection(bool allowClose = false)
     {
-        battlePokemonPickerManager.ShowPokemonPicker(allowClose);
+        battleOptionsManager.ShowPokemonSelector(allowClose);
         if (allowClose)
         {
             battleOptionsManager.isInSubmenu = true;
         }
     }
-    public void HidePokemonSelection()
+    public void HidePokemonSelection(bool preSelect = false)
     {
-        battlePokemonPickerManager.Hide();
-    }
-
-    public void ShowPokemonSelectionData(PokemonBattleData pokemon)
-    {
-        battlePokemonPickerManager?.ShowPokemonPreview(pokemon);
+        battleOptionsManager.HidePokemonSelector(preSelect);
     }
 
     public void ShowPokemonMoveSelection()
@@ -455,21 +485,21 @@ public class BattleAnimatorMaster : MonoBehaviour
         battleOptionsManager?.ShowMoveSelector();
     }
 
-    public void HidePokemonMoveSelection()
+    public void HidePokemonMoveSelection(bool preSelect = false)
     {
-        battleOptionsManager?.HideMoveSelector();
+        battleOptionsManager?.HideMoveSelector(preSelect);
     }
 
-    public void HideItemSelection()
+    public void HideItemSelection(bool preSelect = false)
     {
-        battleOptionsManager?.itemSelector.HideItemSelector();
+       battleOptionsManager?.HideItemSelector(preSelect);
     }
 
     public void HideOptions()
     {
-        HidePokemonMoveSelection();
         HidePokemonSelection();
         HideItemSelection();
+        HidePokemonMoveSelection();
     }
 
     public void HideAll()

@@ -66,8 +66,7 @@ public class UIBattleItemPickerManager : MonoBehaviour
         HidePokemonListItem();
         foreach (PokemonBattleData pkmn in pokemon)
         {
-            UIBattleOptionsPokemon pkmnBattle = Instantiate(pokemonTargetPrefab.gameObject, pokemonList.transform)
-                .GetComponent<UIBattleOptionsPokemon>().Load(pkmn);
+            UIBattleOptionsPokemon pkmnBattle = Instantiate(pokemonTargetPrefab, pokemonList.transform).Load(pkmn);
             pkmnBattle.onClick += (PokemonBattleData p)=> HandleItemUse(p,item);
             pkmnBattle.onHover += SetCurrentlySelected;
         }

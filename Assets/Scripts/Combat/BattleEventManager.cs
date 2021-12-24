@@ -98,8 +98,8 @@ public class BattleEventManager
         // Event was not cancelled
         if (keepGoing)
         {
-            next.Execute();
             RemoveEvent(next);
+            next.Execute();
             // Checks if a pokemon left the battlefield and removes triggers related to them
             if (id == BattleEventId.pokemonFaint || id == BattleEventId.pokemonSwitch)
             {
@@ -132,5 +132,6 @@ public class BattleEventManager
     public void ClearEvents()
     {
         battleEvents.Clear();
+        eventsPile.Clear();
     }
 }

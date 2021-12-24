@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -13,7 +11,24 @@ public class UIOptionsMenuHandler : MonoBehaviour
     {
         if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
         {
-            UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+            if (BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive())
+            {
+                BattleAnimatorMaster.GetInstance().HideOptions();
+            }
+            else
+            {
+                UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+            }
+        }
+    }
+    public void CloseIfCurrent(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            if (UIPauseMenuMaster.GetInstance().GetCurrentMenu() == GetComponent<UIMenuPile>())
+            {
+                UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+            }
         }
     }
 

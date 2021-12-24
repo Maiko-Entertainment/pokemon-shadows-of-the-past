@@ -56,20 +56,20 @@ public class InteractionsMaster : MonoBehaviour
         else
         {
             isInteracting = false;
-            if (!BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive())
+            if (!BattleMaster.GetInstance().IsBattleActive())
                 UIPauseMenuMaster.GetInstance().ShowMenuOpener();
         }
     }
 
     public bool IsInteractionPlaying()
     {
-        bool isBattleHappening = BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive();
+        bool isBattleHappening = BattleMaster.GetInstance().IsBattleActive();
         bool isMenuOpen = UIPauseMenuMaster.GetInstance().IsMenuOpen();
         return isInteracting || isBattleHappening || isMenuOpen;
     }
     public bool IsInteracting()
     {
-        bool isBattleHappening = BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive();
+        bool isBattleHappening = BattleMaster.GetInstance().IsBattleActive();
         return isInteracting || isBattleHappening;
     }
 }

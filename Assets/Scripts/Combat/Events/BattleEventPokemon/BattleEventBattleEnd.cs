@@ -17,6 +17,7 @@ public class BattleEventBattleEnd : BattleEvent
 
     public override void Execute()
     {
+        BattleMaster.GetInstance().GetCurrentBattle().eventManager.ClearEvents();
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventBattleEndMessage(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEndBattle(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventCheckEvolution());

@@ -106,6 +106,10 @@ public class UIPauseMenuMaster : MonoBehaviour
             }
         }
     }
+    public UIMenuPile GetCurrentMenu()
+    {
+        return openedMenus[openedMenus.Count - 1];
+    }
 
     public void OpenPokemonViewer()
     {
