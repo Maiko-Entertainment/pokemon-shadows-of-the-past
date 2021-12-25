@@ -63,7 +63,9 @@ public class BattleMaster : MonoBehaviour
     public void RunPokemonBattle(PokemonBattleData pokemon, BattleData battleData)
     {
         List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
-        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0);
+        List<TacticData> finalTactics = TacticsMaster.GetInstance().GetEquippedTactics();
+        finalTactics.AddRange(battleData.playerExtraTactics);
+        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0, finalTactics);
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
         currentBattle = newBattle;
@@ -79,7 +81,9 @@ public class BattleMaster : MonoBehaviour
     public void RunTrainerBattle(TrainerCombatData trainer)
     {
         List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
-        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0); ;
+        List<TacticData> finalTactics = TacticsMaster.GetInstance().GetEquippedTactics();
+        finalTactics.AddRange(trainer.battleData.playerExtraTactics);
+        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0, finalTactics); ;
         BattleTeamData team2 = trainer.GetTeambattleData();
         BattleManager newBattle = new BattleManager(team1, team2, trainer.battleData);
         currentBattle = newBattle;

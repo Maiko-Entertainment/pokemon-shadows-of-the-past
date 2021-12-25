@@ -57,6 +57,7 @@ public class SaveMaster : MonoBehaviour
         activeSaveFile = file == null ? new SaveFile() : file;
         PartyMaster.GetInstance().Load(activeSaveFile);
         InventoryMaster.GetInstance().Load(activeSaveFile);
+        TacticsMaster.GetInstance().Load(activeSaveFile);
     }
 
     public void Save(int saveIndex)

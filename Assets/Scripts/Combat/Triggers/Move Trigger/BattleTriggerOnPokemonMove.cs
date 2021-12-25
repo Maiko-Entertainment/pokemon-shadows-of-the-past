@@ -8,11 +8,19 @@ public class BattleTriggerOnPokemonMove : BattleTriggerOnPokemon
     public BattleTriggerOnPokemonMove(PokemonBattleData pokemon, UseMoveMods useMoveMods, bool deleteOnLeave) : base(pokemon, deleteOnLeave)
     {
         this.useMoveMods = useMoveMods;
+        eventId = BattleEventId.pokemonUseMove;
     }
 
     public virtual bool Execute(BattleEventUseMove battleEvent)
     {
-        battleEvent.moveMods.Implement(useMoveMods);
+        if (battleEvent.pokemon == pokemon && maxTriggers > 0)
+        {
+            battleEvent.moveMods.Implement(useMoveMods);
+        }
+        else
+        {
+            maxTriggers++;
+        }
         return base.Execute(battleEvent);
     }
 }

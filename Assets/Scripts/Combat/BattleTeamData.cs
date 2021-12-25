@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
+
 [System.Serializable]
 public class BattleTeamData
 {
@@ -8,14 +10,20 @@ public class BattleTeamData
     public int moneyPrice = 200;
     // Handles status that affect the whole team such as lightscreen
     public List<Status> teamStatus = new List<Status>();
+    public List<TacticData> tactics = new List<TacticData>();
+    public int tacticGauge = 1;
 
     private PokemonBattleData activePokemon;
 
-    public BattleTeamData(string trainerTitle, List<PokemonBattleData> pokemon, int moneyPrice)
+    public BattleTeamData(string trainerTitle, List<PokemonBattleData> pokemon, int moneyPrice, List<TacticData> tactics = null)
     {
         this.trainerTitle = trainerTitle;
         this.pokemon = pokemon;
         this.moneyPrice = moneyPrice;
+        if (tactics != null)
+        {
+            this.tactics = tactics;
+        }
     }
 
     public BattleTeamData Copy()
@@ -60,5 +68,10 @@ public class BattleTeamData
     {
         activePokemon = pokemon;
         pokemon?.Initiate();
+    }
+
+    public void IncreaseTacticGauge(int increase)
+    {
+        tacticGauge = Mathf.Clamp(tacticGauge + increase, 0, 10);
     }
 }

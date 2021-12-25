@@ -3,7 +3,7 @@ public class BattleTurnDesition
 {
     public BattleTeamId team;
     public int priority = 1;
-    // Add Tactic id selected
+    public TacticData tactic;
 
     public BattleTurnDesition(BattleTeamId teamId)
     {
@@ -12,6 +12,5 @@ public class BattleTurnDesition
 
     public virtual void Execute()
     {
-
     }
 }

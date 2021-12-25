@@ -13,5 +13,8 @@ public class BattleEventRoundEnd : BattleEvent
     {
         base.Execute();
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTurnStart());
+        BattleTeamData team1Data = BattleMaster.GetInstance().GetCurrentBattle().GetTeamData(BattleTeamId.Team1);
+        BattleMaster.GetInstance().GetCurrentBattle().SetSelectedTactic(null);
+        team1Data.IncreaseTacticGauge(1);
     }
 }

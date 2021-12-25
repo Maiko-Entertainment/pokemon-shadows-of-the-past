@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 // Used to modify moves data by trigger without modifying the Scriptable object
 public class UseMoveMods
 {

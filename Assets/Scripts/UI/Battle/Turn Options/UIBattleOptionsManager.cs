@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,12 +13,16 @@ public class UIBattleOptionsManager : MonoBehaviour
     public UIBattleMovePicker movesSelector;
     public UIItemsViewer itemSelector;
     public UIPokemonView pokemonSelector;
+    public UIBattleOptionsTactics tacticSelector;
+    public TextMeshProUGUI selectedTacticText;
+    public TextMeshProUGUI tacticGaugeValue;
     public Transform optionsList;
     public Transform subMenuContainer;
     public bool isInSubmenu = false;
 
     private UIItemsViewer itemSelectorInstance;
     private UIPokemonView pokemonSelectorInstance;
+    private UIBattleOptionsTactics tacticSelectorInstance;
 
     private void Start()
     {
@@ -39,6 +44,20 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         movesSelector.Hide();
         isInSubmenu = false; 
+        if (preSelect)
+            UtilsMaster.SetSelected(optionsList.GetChild(0).gameObject);
+    }
+    public void ShowTacticSelector()
+    {
+        BattleAnimatorMaster.GetInstance()?.HideOptions();
+        tacticSelectorInstance = Instantiate(tacticSelector, subMenuContainer);
+        isInSubmenu = true;
+    }
+    public void HideTacticSelector(bool preSelect = false)
+    {
+        tacticSelectorInstance.GetComponent<UIMenuPile>().Close();
+        isInSubmenu = false;
+        UpdateTacticSelectedText();
         if (preSelect)
             UtilsMaster.SetSelected(optionsList.GetChild(0).gameObject);
     }
@@ -88,6 +107,23 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         container.FadeIn();
         UtilsMaster.SetSelected(optionsList.GetChild(0).gameObject);
+        UpdateTacticSelectedText();
+    }
+
+    public void UpdateTacticSelectedText()
+    {
+        TacticData tactic = BattleMaster.GetInstance().GetCurrentBattle().GetSelectedTactic();
+        BattleTeamData data = BattleMaster.GetInstance().GetCurrentBattle().GetTeamData(BattleTeamId.Team1);
+        if (tactic == null)
+        {
+            selectedTacticText.text = "- None Picked.";
+            tacticGaugeValue.text = "" + data.tacticGauge;
+        }
+        else
+        {
+            selectedTacticText.text = "- "+tactic.GetName();
+            tacticGaugeValue.text = "" + (data.tacticGauge - tactic.GetCost());
+        }
     }
 
     public void TryToEscape()
@@ -113,6 +149,16 @@ public class UIBattleOptionsManager : MonoBehaviour
             {
                 EventSystem eventSystem = EventSystem.current;
                 eventSystem.SetSelectedGameObject(optionsList.GetChild(optionsList.childCount - 1).gameObject, new BaseEventData(eventSystem));
+            }
+        }
+    }
+    public void HandleTacticsOpen(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            if (!isInSubmenu)
+            {
+                ShowTacticSelector();
             }
         }
     }

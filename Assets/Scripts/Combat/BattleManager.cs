@@ -16,8 +16,10 @@ public class BattleManager
     private List<PokemonBattleData> participatedPokemon = new List<PokemonBattleData>();
 
     private bool isBattleActive = false;
+    private TacticData currentTacticSelected;
 
     public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 10;
+
 
     public BattleManager(BattleTeamData player, BattleTeamData opponent, BattleData battleData)
     {
@@ -58,15 +60,28 @@ public class BattleManager
     {
         BattleTurnDesition AIDesition = HandleAIInput();
         HandleRoundEnd();
-        if (desition.priority >= AIDesition.priority)
+        int desitionPriority = desition.priority;
+        int tacticPriority = currentTacticSelected ? 4 : -1;
+        int aiDesitionPriority = AIDesition.priority;
+        int aiTacticPriority = AIDesition.tactic ? 4 : -1;
+        for(int priority = 0; priority < 10; priority++)
         {
-            AIDesition?.Execute();
-            desition.Execute();
-        }
-        else
-        {
-            desition.Execute();
-            AIDesition?.Execute();
+            if (aiDesitionPriority == priority)
+            {
+                AIDesition.Execute();
+            }
+            if (desitionPriority == priority)
+            {
+                desition.Execute();
+            }
+            if (aiTacticPriority == priority)
+            {
+                AddTacticEvent(AIDesition.tactic, BattleTeamId.Team2);
+            }
+            if (tacticPriority == priority)
+            {
+                AddTacticEvent(currentTacticSelected, BattleTeamId.Team1);
+            }
         }
         HandleDesitions();
         BattleAnimatorMaster.GetInstance().battleOptionsManager.Hide();
@@ -298,6 +313,10 @@ public class BattleManager
     {
         eventManager.AddEvent(new BattleEventPokemonHeal(target, healSummary));
     }
+    public void AddTacticEvent(TacticData tactic, BattleTeamId teamId)
+    {
+        eventManager.AddEvent(new BattleEventTactic(tactic, teamId));
+    }
 
     public void AddTryToRunEvent()
     {
@@ -314,6 +333,18 @@ public class BattleManager
             eventManager.ResolveAllEventTriggers();
             // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
         }
+    }
+    public List<TacticData> GetPlayerTactics()
+    {
+        return GetTeamData(BattleTeamId.Team1).tactics;
+    }
+    public TacticData GetSelectedTactic()
+    {
+        return currentTacticSelected;
+    }
+    public void SetSelectedTactic(TacticData tactic)
+    {
+        currentTacticSelected = tactic;
     }
 
     public PokemonBattleData GetTarget(PokemonBattleData pokemon, MoveTarget target)
@@ -509,11 +540,11 @@ public class BattleManager
 
     // Turn Cycle
     // Make desition
-    // Tactics if chosen
     // Desition if chosen
     // 1. Items
     // 2. Swap Pokemon
-    // 3. Moves by priority
+    // 3. Tactics if chosen
+    // 4. Moves by priority
     // End of pokemon turn effects
     // End of round effects
 }

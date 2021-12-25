@@ -19,6 +19,13 @@ public class TransitionSpin : TransitionBase
             Vector3 target = initialRotation + rotationAdd;
             currentValues = Vector3.SmoothDamp(currentValues, target, ref vSpeed, 1 / speed);
             transform.localEulerAngles = currentValues;
+            if (Vector3.Distance(currentValues, target) == 0)
+            {
+                if (pingPong)
+                {
+                    rotationAdd *= -1;
+                }
+            }
             //transform.localEulerAngles = Vector3.SmoothDamp(transform.localEulerAngles, initialRotation + rotationAdd, ref vSpeed, 1 / speed);
         }
     }

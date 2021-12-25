@@ -478,6 +478,10 @@ public class BattleAnimatorMaster : MonoBehaviour
     {
         battleOptionsManager.HidePokemonSelector(preSelect);
     }
+    public void HideTacticSelection(bool preSelect = false)
+    {
+        battleOptionsManager.HideTacticSelector(preSelect);
+    }
 
     public void ShowPokemonMoveSelection()
     {
