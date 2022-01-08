@@ -33,9 +33,14 @@ public class MoveData : ScriptableObject
         {
             DamageSummary damageSummary = bm.CalculateMoveDamage(battleEvent);
             bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
+
         }
         bm.AddMoveSuccessEvent(battleEvent);
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
+        if (drainsDamage)
+        {
+            BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this));
+        }
         HandleAnimations(battleEvent.pokemon, pokemonTarget);
     }
 

@@ -5,5 +5,6 @@ using UnityEngine;
 public enum HealSource
 {
     Item = 0,
-    Ability = 1
+    Ability = 1,
+    Move = 2
 }

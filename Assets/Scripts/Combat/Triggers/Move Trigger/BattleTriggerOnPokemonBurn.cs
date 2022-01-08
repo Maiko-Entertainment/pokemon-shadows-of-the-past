@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleTriggerOnPokemonBurn : BattleTriggerOnPokemon
+public class BattleTriggerOnPokemonBurn : BattleTriggerOnPokemonMove
 {
-    public BattleTriggerOnPokemonBurn(PokemonBattleData pokemon) : base(pokemon, true)
+    public BattleTriggerOnPokemonBurn(PokemonBattleData pokemon): base(pokemon, null, true)
     {
-
+        useMoveMods = new UseMoveMods(PokemonTypeId.Unmodify);
+        useMoveMods.powerMultiplier = 0.5f; 
     }
 
     public override bool Execute(BattleEvent battleEvent)

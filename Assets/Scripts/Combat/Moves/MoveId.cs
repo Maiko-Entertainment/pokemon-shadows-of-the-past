@@ -9,5 +9,6 @@ public enum MoveId
     PoisonPowder = 2,
     Ember = 3,
     WaterGun = 4,
-    WillOWisp = 5
+    WillOWisp = 5,
+    Absorb = 6
 }
