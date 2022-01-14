@@ -19,7 +19,7 @@ public class BattleTriggerOnPokemonMoveDangerTypeMod : BattleTriggerOnPokemonMov
     {
         float healthPercentage = pokemon.GetPokemonCurrentHealth() / (float)pokemon.GetPokemonHealth();
         Debug.Log(pokemon.GetName() + " - cheking for power up for " + moveType.ToString() + " moves.");
-        if (pokemon == battleEvent.pokemon && healthPercentage <= healthTarget && battleEvent.moveMods.moveTypeId == moveType)
+        if (pokemon == battleEvent.pokemon && battleEvent.move.GetAttackCategory() != MoveCategoryId.status && healthPercentage <= healthTarget && battleEvent.moveMods.moveTypeId == moveType)
         {
             Debug.Log(pokemon.GetName() + " - is having it's " + moveType.ToString() + " moves power up.");
             battleEvent.moveMods.Implement(useMoveMods);

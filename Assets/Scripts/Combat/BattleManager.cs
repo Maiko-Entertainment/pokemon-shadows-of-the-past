@@ -81,6 +81,7 @@ public class BattleManager
             if (tacticPriority == priority)
             {
                 AddTacticEvent(currentTacticSelected, BattleTeamId.Team1);
+                GetTeamData(BattleTeamId.Team1).IncreaseTacticGauge(-1 * currentTacticSelected.GetCost());
             }
         }
         HandleDesitions();
@@ -464,6 +465,14 @@ public class BattleManager
                 typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
                 gainStatusBlockName = "Burn Gain";
                 break;
+            case StatusEffectId.LeechSeed:
+                status = new StatusEffectLeechSeed(pokemon, battleFlowchart);
+                gainStatusBlockName = "Leech Gain";
+                break;
+            case StatusEffectId.Charmed:
+                status = new StatusEffectCharm(pokemon, battleFlowchart);
+                gainStatusBlockName = "Charm Gain";
+                break;
         }
         if (status.isPrimary && alreadyHasPrimaryStatus) 
         {
@@ -478,7 +487,7 @@ public class BattleManager
         else
         {
             pokemon.AddStatusEffect(status);
-            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon, statusId));
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon));
             BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
         }
     }

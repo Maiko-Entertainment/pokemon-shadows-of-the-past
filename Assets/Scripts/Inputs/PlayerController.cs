@@ -15,12 +15,14 @@ public class PlayerController : MonoBehaviour
     public Tilemap collisionTilemap;
     public List<string> customColissionTags;
     public Sprite preview;
+    public AudioClip jumpClip;
 
     private Controls controls;
     private bool wantsToMove = false;
     private Vector2 target;
     private Vector2 cacheDirection;
     private bool waterMode = false;
+    private bool jumping = false;
 
     List<MoveBrainDirectionData> storedDirections = new List<MoveBrainDirectionData>();
 
@@ -116,6 +118,7 @@ public class PlayerController : MonoBehaviour
         Vector3Int gridPosition = groundTilemap.WorldToCell(nextPosition);
         bool reachedTarget = HasReachedTarget();
         bool wouldHitCustomColliders = AreCustomCollidersInPosition(nextPosition);
+        if (jumping) return wantsToMove && reachedTarget;
         if (!groundTilemap.HasTile(gridPosition) || collisionTilemap.HasTile(gridPosition) || (waterTilemap.HasTile(gridPosition) && !waterMode) || wouldHitCustomColliders)
         {
             return false;
@@ -179,6 +182,11 @@ public class PlayerController : MonoBehaviour
             {
                 Vector2 direction = (Vector3)GetCurrentStoredDirection();
                 bool justTurn = storedDirections[0].justTurn;
+                if (!jumping && storedDirections[0].jump)
+                {
+                    AudioMaster.GetInstance().PlaySfx(jumpClip);
+                }
+                jumping = storedDirections[0].jump;
                 if (!justTurn)
                     target = transform.position + (Vector3)direction;
                 animator.SetFloat("Horizontal", GetCurrentStoredDirection().x);
@@ -188,6 +196,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+                jumping = false;
                 if (CanMove(cacheDirection) && !isInteractionPlaying)
                 {
                     target = transform.position + (Vector3)cacheDirection;
@@ -199,11 +208,28 @@ public class PlayerController : MonoBehaviour
                 animator.SetFloat("Horizontal", cacheDirection.x);
                 animator.SetFloat("Vertical", cacheDirection.y);
             }
+            ReturnToGround();
         }
         else
         {
             animator.SetBool("Moving", true);
-            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target, (jumping ? 1f : 1f) * speed * Time.deltaTime);
+            animator.speed = 1;
+            if (jumping)
+            {
+                animator.speed = 0;
+                Vector3 jumpHeight = Vector3.up * .5f;
+                animator.gameObject.transform.localPosition = Vector3.MoveTowards(animator.gameObject.transform.localPosition, jumpHeight, 2f * Time.deltaTime);
+            }
+            else
+            {
+                ReturnToGround();
+            }
         }
+    }
+
+    private void ReturnToGround()
+    {
+        animator.gameObject.transform.localPosition = Vector3.MoveTowards(animator.gameObject.transform.localPosition, Vector2.zero, 3f * Time.deltaTime);
     }
 }

@@ -13,6 +13,7 @@ public class DamageSummary
     // Optional
     public BattleTypeAdvantageType advantageType;
     public PokemonBattleData pokemonSource;
+    public float healOpponentByDamage = 0f;
 
     public DamageSummary(
         PokemonTypeId damageType, 

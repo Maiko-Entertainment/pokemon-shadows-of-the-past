@@ -23,7 +23,15 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
             {
                 int damage = ds.damageAmount;
                 int drainAmount = (int)(drainMultiplier * damage);
-                BattleMaster.GetInstance().GetCurrentBattle()?.AddPokemonHealEvent(dealer, new HealSummary(drainAmount, HealSource.Move, (int)move.moveId));
+                // Negative drain is used for recoil
+                if (drainAmount > 0)
+                {
+                    BattleMaster.GetInstance().GetCurrentBattle()?.AddPokemonHealEvent(dealer, new HealSummary(drainAmount, HealSource.Move, (int)move.moveId));
+                }
+                else
+                {
+                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount, DamageSummarySource.Move, (int)move.moveId));
+                }
             }
         }
         return base.Execute(battleEvent);

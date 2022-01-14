@@ -10,6 +10,7 @@ public class TacticData : ScriptableObject
     public int cost = 2;
     public UseMoveMods powerMoveMod = new UseMoveMods(PokemonTypeId.Unmodify);
     public List<StatusEffectId> statusClears = new List<StatusEffectId>();
+    public List<MoveStatusChance> statusAdds = new List<MoveStatusChance>();
 
     public string blockName;
     public string tacticName;
@@ -23,10 +24,10 @@ public class TacticData : ScriptableObject
         BattleTeamId finalTarget = teamId;
         if (targets == MoveTarget.Enemy)
         {
-            finalTarget = teamId == BattleTeamId.Team1 ? BattleTeamId.Team1 : BattleTeamId.Team2;
+            finalTarget = teamId == BattleTeamId.Team1 ? BattleTeamId.Team2 : BattleTeamId.Team1;
         }
         PokemonBattleData pokemon = bm.GetTeamActivePokemon(finalTarget);
-        HandlePostExecute(finalTarget, pokemon);
+        HandlePostExecute(teamId, pokemon);
     }
 
     public virtual void HandlePostExecute(BattleTeamId teamId, PokemonBattleData pokemon)
@@ -49,6 +50,15 @@ public class TacticData : ScriptableObject
                     }
                 )
             ));
+        }
+        foreach(MoveStatusChance msc in statusAdds)
+        {
+            PokemonBattleData pokemonTarget = bm.GetTarget(pokemon, msc.targetType);
+            float random = Random.value;
+            if (random < msc.chance)
+            {
+                bm.AddStatusEffectEvent(pokemonTarget, msc.effectId);
+            }
         }
     }
 

@@ -10,23 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
-  m_Name: PoisonPowder
+  m_Name: Smoke Screen
   m_EditorClassIdentifier: 
-  moveId: 2
-  moveName: Poison Powder
+  moveId: 16
+  moveName: Smoke Screen
   power: 0
   hitChance: 1
   alwaysHit: 0
-  uses: 25
-  typeId: 16
+  uses: 20
+  typeId: 10
   categoryId: 2
   targetType: 0
-  statusChances:
-  - effectId: 1
+  statusChances: []
+  moveStatChanges:
+  - statsAmountChange:
+      attack: 0
+      defense: 0
+      spAttack: 0
+      spDefense: 0
+      speed: 0
+      accuracy: -1
+      evasion: 0
+      critical: 0
+    changeChance: 1
     targetType: 0
-    chance: 1
-  moveStatChanges: []
   isContact: 0
-  drainsDamage: 0
-  description: 'The user scatters a cloud of poisonous dust that poisons the target. '
+  drainMultiplier: 0
+  description: 
   animations: []

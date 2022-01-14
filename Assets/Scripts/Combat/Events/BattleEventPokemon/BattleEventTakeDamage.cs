@@ -17,11 +17,22 @@ public class BattleEventTakeDamage : BattleEventPokemon
         base.Execute();
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         bool wasFaintedBefore = pokemon.IsFainted();
+        int healthBeforeDamage = pokemon.GetPokemonCurrentHealth();
         resultingHealth = bm.ApplyDamage(this);
         bm.AddEvent(new BattleEventTakeDamageSuccess(this));
         if (resultingHealth <= 0 && !wasFaintedBefore)
         {
             bm.AddPokemonFaintEvent(this);
+        }
+        if (damageSummary.healOpponentByDamage > 0)
+        {
+            BattleTeamId enemyId = bm.GetTeamId(pokemon) == BattleTeamId.Team1 ? BattleTeamId.Team2 : BattleTeamId.Team1;
+            PokemonBattleData pkmn = bm.GetTeamActivePokemon(enemyId);
+            if (!pkmn.IsFainted())
+            {
+                int healAmount = Mathf.Max(healthBeforeDamage - resultingHealth, 0);
+                bm.AddPokemonHealEvent(pkmn, new HealSummary(healAmount, HealSource.Move, damageSummary.sourceId));
+            }
         }
         switch (damageSummary.advantageType)
         {

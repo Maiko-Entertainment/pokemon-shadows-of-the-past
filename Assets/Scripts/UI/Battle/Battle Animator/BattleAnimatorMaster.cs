@@ -146,9 +146,15 @@ public class BattleAnimatorMaster : MonoBehaviour
         combatCamera.SetIdle(0f);
     }
 
-    public void LoadPokemonsInfo(PokemonBattleData pokemon, int health, StatusEffect status)
+    public void LoadPokemonsInfo(PokemonBattleData pokemon, int health)
     {
-        battleInfoManager.UpdatePokemonData(pokemon, health, GetStatusEffectData(status!=null ? status.effectId : StatusEffectId.None));
+        List<StatusEffectData> minorData = new List<StatusEffectData>();
+        foreach (StatusEffect s in pokemon.GetNonPrimaryStatus())
+        {
+            minorData.Add(GetStatusEffectData(s.effectId));
+        }
+        StatusEffect status = pokemon.GetCurrentPrimaryStatus();
+        battleInfoManager.UpdatePokemonData(pokemon, health, GetStatusEffectData(status!=null ? status.effectId : StatusEffectId.None), minorData);
     }
 
     public PokemonAnimationController InstantiatePokemonAnim(PokemonBattleData pokemon, BattleTeamId teamId)
@@ -384,9 +390,14 @@ public class BattleAnimatorMaster : MonoBehaviour
         return battleInfoManager.UpdateHealthbar(pokemon, target);
     }
 
-    public void UpdatePokemonStatus(PokemonBattleData pokemon, StatusEffectId id)
+    public void UpdatePokemonStatus(PokemonBattleData pokemon, StatusEffectId primary, List<StatusEffectId> minor)
     {
-        battleInfoManager.UpdateStatus(pokemon, GetStatusEffectData(id));
+        List<StatusEffectData> minorData = new List<StatusEffectData>();
+        foreach(StatusEffectId m in minor)
+        {
+            minorData.Add(GetStatusEffectData(m));
+        }
+        battleInfoManager.UpdateStatus(pokemon, GetStatusEffectData(primary), minorData);
     }
 
     public float UpdateExpBar(PokemonBattleData pokemon, int target, int max)

@@ -8,6 +8,7 @@ public class WorldInteractable : MonoBehaviour
     public bool activateOnSpawn = false;
     public WorldInteractableMoveBrain moveBrain;
 
+    protected bool isPlayerInside = false;
 
     private void Start()
     {
@@ -27,10 +28,12 @@ public class WorldInteractable : MonoBehaviour
             print(collision.transform.position + " - " + collision.name + " touched " + gameObject.name);
             if (onStep && collision.tag == "Player")
             {
+                isPlayerInside = true;
                 OnInteract();
             }
             else if (!onStep && collision.tag == "Touch")
             {
+                isPlayerInside = true;
                 OnInteract();
             }
         }
@@ -42,8 +45,29 @@ public class WorldInteractable : MonoBehaviour
         {
             if (!onStep && collision.collider.tag == "Touch")
             {
+                isPlayerInside = true;
                 OnInteract();
             }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (onStep && collision.tag == "Player")
+        {
+            isPlayerInside = false;
+        }
+        else if (!onStep && collision.tag == "Touch")
+        {
+            isPlayerInside = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (!onStep && collision.collider.tag == "Touch")
+        {
+            isPlayerInside = false;
         }
     }
 }

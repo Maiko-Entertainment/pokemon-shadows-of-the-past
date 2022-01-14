@@ -161,6 +161,18 @@ public class PokemonBattleData
         }
         return null;
     }
+    public List<StatusEffect> GetNonPrimaryStatus()
+    {
+        List<StatusEffect> statuses = new List<StatusEffect>();
+        if (statusEffects != null)
+        {
+            foreach (StatusEffect status in statusEffects)
+                if (!status.isPrimary)
+                    statuses.Add(status);
+            return statuses;
+        }
+        return statuses;
+    }
 
     public List<MoveEquipped> GetMoves()
     {

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UIBattleHealthbar : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class UIBattleHealthbar : MonoBehaviour
     public TransitionBase abilityPanel;
     public TextMeshProUGUI pokemonAbilityName;
     public AudioClip abilitySound;
+    public Transform minorStatusList;
+    public UIStatusMinor statusMinorPrefab;
 
     public PokemonBattleData pokemon;
     public float targetHealth;
@@ -44,7 +47,13 @@ public class UIBattleHealthbar : MonoBehaviour
         UpdateTargetExp(currentExp, pkmn.GetTotalExperienceToNextLevel());
         StatusEffect currenStatus = pokemon.GetCurrentPrimaryStatus();
         StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
-        UpdateStatus(status);
+        List<StatusEffect> statusEffectsMinor = pokemon.GetNonPrimaryStatus();
+        List<StatusEffectData> statusDatas = new List<StatusEffectData>();
+        foreach(StatusEffect s in statusEffectsMinor)
+        {
+            statusDatas.Add(BattleAnimatorMaster.GetInstance().GetStatusEffectData(s.effectId));
+        }
+        UpdateStatus(status, statusDatas);
     }
 
     public void FadeIn()
@@ -54,6 +63,35 @@ public class UIBattleHealthbar : MonoBehaviour
     public void FadeOut()
     {
         GetComponent<TransitionFade>()?.FadeOut();
+    }
+
+    public void LoadStatus(List<StatusEffectData> status)
+    {
+        foreach (Transform t in minorStatusList)
+        {
+            StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
+            if (!status.Contains(s))
+            {
+                Destroy(t.gameObject);
+            }
+        }
+        foreach (StatusEffectData sed in status)
+        {
+            bool contains = false;
+            foreach(Transform t in minorStatusList)
+            {
+                StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
+                if (sed.statusId == s.statusId)
+                {
+                    contains = true;
+                }
+            }
+            if (!contains)
+            {
+                Instantiate(statusMinorPrefab, minorStatusList).Load(sed);
+                AudioMaster.GetInstance().PlaySfx(abilitySound);
+            }
+        }
     }
 
     public float UpdateTarget(float target)
@@ -104,7 +142,7 @@ public class UIBattleHealthbar : MonoBehaviour
         }
     }
 
-    public void UpdateStatus(StatusEffectData status)
+    public void UpdateStatus(StatusEffectData status, List<StatusEffectData> minor)
     {
         if (status)
         {
@@ -112,6 +150,7 @@ public class UIBattleHealthbar : MonoBehaviour
             statusSimbol.sprite = status.icon;
             return;
         }
+        LoadStatus(minor);
         statusSimbol.enabled = false;
     }
     public void UpdateLevel(int level)

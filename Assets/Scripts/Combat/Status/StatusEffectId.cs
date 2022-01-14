@@ -7,5 +7,7 @@ public enum StatusEffectId
     Paralized = 3,
     Sleep = 4,
     Frozen = 5,
-    Burn = 6
+    Burn = 6,
+    LeechSeed = 7,
+    Charmed = 8
 }

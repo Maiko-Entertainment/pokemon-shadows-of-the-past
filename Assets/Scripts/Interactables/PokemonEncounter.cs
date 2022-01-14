@@ -11,6 +11,7 @@ public class PokemonEncounter: ScriptableObject
     public TimeOfDayType timeOfDayRequired;
     public List<EncounterNaturePriority> natures = new List<EncounterNaturePriority>();
     public List<MoveData> moves = new List<MoveData>();
+    public List<TacticData> playerExtraTactics = new List<TacticData>();
 
     public PokemonCaughtData GetPokemonCaught()
     {

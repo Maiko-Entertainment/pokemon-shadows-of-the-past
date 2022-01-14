@@ -17,7 +17,8 @@ public class MoveData : ScriptableObject
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
     public bool isContact;
-    public bool drainsDamage;
+    public float drainMultiplier = 0f;
+    public int moveCritUp = 0;
     public string description;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 
@@ -37,9 +38,10 @@ public class MoveData : ScriptableObject
         }
         bm.AddMoveSuccessEvent(battleEvent);
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
-        if (drainsDamage)
+        // Negative values are used for recoil
+        if (drainMultiplier != 0)
         {
-            BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this));
+            BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this, drainMultiplier));
         }
         HandleAnimations(battleEvent.pokemon, pokemonTarget);
     }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class UIBattlePokemonInfoManager : MonoBehaviour
@@ -41,7 +40,7 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
         }
     }
 
-    public void UpdatePokemonData(PokemonBattleData pokemon, int health, StatusEffectData status)
+    public void UpdatePokemonData(PokemonBattleData pokemon, int health, StatusEffectData status, List<StatusEffectData> minor)
     {
         BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();
         BattleTeamId team = battleState.GetTeamId(pokemon);
@@ -59,7 +58,7 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
             team2Health.UpdateTarget(health);
             team2Health.UpdateHealth(health);
         }
-        UpdateStatus(pokemon, status);
+        UpdateStatus(pokemon, status, minor);
     }
 
     public float UpdateHealthbar(PokemonBattleData pokemon, int target)
@@ -118,17 +117,17 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
 
     
 
-    public void UpdateStatus(PokemonBattleData pokemon, StatusEffectData status)
+    public void UpdateStatus(PokemonBattleData pokemon, StatusEffectData status, List<StatusEffectData> minors)
     {
         BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();
         BattleTeamId team = battleState.GetTeamId(pokemon);
         if (team == BattleTeamId.Team1)
         {
-            team1Health.UpdateStatus(status);
+            team1Health.UpdateStatus(status, minors);
         }
         else
         {
-            team2Health.UpdateStatus(status);
+            team2Health.UpdateStatus(status, minors);
         }
     }
 }

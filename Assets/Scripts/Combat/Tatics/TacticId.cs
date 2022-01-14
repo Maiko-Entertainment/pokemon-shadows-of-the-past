@@ -8,5 +8,6 @@ public enum TacticId
     PowerAttack = 1,
     PowerDefense = 2,
     ThrowStick = 100,
-    Peekaboo = 101
+    Peekaboo = 101,
+    GiftSeeds = 102,
 }

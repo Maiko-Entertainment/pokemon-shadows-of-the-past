@@ -209,6 +209,90 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4616164189593338575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2203792111349554494}
+  - component: {fileID: 8987527377852233898}
+  - component: {fileID: 4174690027419135511}
+  - component: {fileID: 3522542836362238598}
+  m_Layer: 5
+  m_Name: Minor Status List
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2203792111349554494
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616164189593338575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6920377421277537975}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!222 &8987527377852233898
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616164189593338575}
+  m_CullTransparentMesh: 1
+--- !u!114 &4174690027419135511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616164189593338575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
+--- !u!114 &3522542836362238598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4616164189593338575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 20
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 140, y: 40}
+  m_Spacing: {x: 20, y: 10}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &4809917081332116964
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +529,8 @@ MonoBehaviour:
   abilityPanel: {fileID: 0}
   pokemonAbilityName: {fileID: 0}
   abilitySound: {fileID: 0}
+  minorStatusList: {fileID: 0}
+  statusMinorPrefab: {fileID: 0}
   pokemon:
     pokemon:
       pokemonName: 
@@ -512,6 +598,7 @@ RectTransform:
   - {fileID: 751577432648736939}
   - {fileID: 6998027861006422085}
   - {fileID: 4551072400746547047}
+  - {fileID: 2203792111349554494}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -583,6 +670,8 @@ MonoBehaviour:
   abilityPanel: {fileID: 3498528797990830629}
   pokemonAbilityName: {fileID: 8478738278252559566}
   abilitySound: {fileID: 8300000, guid: c5055035ee9003640a6c6b1fda17054d, type: 3}
+  minorStatusList: {fileID: 2203792111349554494}
+  statusMinorPrefab: {fileID: 69221000911850493, guid: 6cb48c7b91c0e1c42842b1a5cb5236b1, type: 3}
   pokemon:
     pokemon:
       pokemonName: 
@@ -619,7 +708,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6920377421277537972}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -949,6 +1038,8 @@ MonoBehaviour:
   abilityPanel: {fileID: 0}
   pokemonAbilityName: {fileID: 0}
   abilitySound: {fileID: 0}
+  minorStatusList: {fileID: 0}
+  statusMinorPrefab: {fileID: 0}
   pokemon:
     pokemon:
       pokemonName: 
