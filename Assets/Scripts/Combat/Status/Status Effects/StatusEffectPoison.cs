@@ -12,6 +12,7 @@ public class StatusEffectPoison : StatusEffect
         isPrimary = true;
         minTurns = 99999;
         captureRateBonus = 10;
+        inmuneTypes.Add(PokemonTypeId.Poison);
     }
 
     public override void Initiate()

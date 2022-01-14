@@ -94,6 +94,7 @@ public class PartyMaster : MonoBehaviour
         {
             FullyHeal(pkmn);
         }
+        UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
     }
     public void FullyHeal(int partyIndex)
     {

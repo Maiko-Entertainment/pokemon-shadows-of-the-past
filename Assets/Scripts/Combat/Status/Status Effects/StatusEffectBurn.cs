@@ -12,6 +12,7 @@ public class StatusEffectBurn : StatusEffect
         isPrimary = true;
         minTurns = 99999;
         captureRateBonus = 10;
+        inmuneTypes.Add(PokemonTypeId.Fire);
     }
 
     public override void Initiate()

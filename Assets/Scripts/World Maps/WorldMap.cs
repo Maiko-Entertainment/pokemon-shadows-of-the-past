@@ -22,8 +22,13 @@ public class WorldMap : MonoBehaviour
         AudioMaster.GetInstance().PlayMusic(mapMusic);
         if (titleCard != null)
             WorldMapMaster.GetInstance().CreateTitleCard(titleCard);
+        CreateDayEffects();
+    }
+
+    public void CreateDayEffects()
+    {
         TransitionMaster.GetInstance().ClearDayEffects();
-        foreach(WorldMapTimeOfDayEffect tode in timeOfDayEffects)
+        foreach (WorldMapTimeOfDayEffect tode in timeOfDayEffects)
         {
             tode.Initiate();
         }
@@ -32,6 +37,7 @@ public class WorldMap : MonoBehaviour
     public void HandleReturn()
     {
         AudioMaster.GetInstance().PlayMusic(mapMusic);
+        CreateDayEffects();
     }
 
     public Transform GetSpawn(int index)

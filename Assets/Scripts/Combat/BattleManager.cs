@@ -300,9 +300,9 @@ public class BattleManager
         eventManager.AddEvent(new BattleEventPokemonChangeStat(target, statLevelChange));
     }
 
-    public void AddStatusEffectEvent(PokemonBattleData target, StatusEffectId statusId)
+    public void AddStatusEffectEvent(PokemonBattleData target, StatusEffectId statusId, bool isStatus=false)
     {
-        eventManager.AddEvent(new BattleEventPokemonStatusAdd(target, statusId));
+        eventManager.AddEvent(new BattleEventPokemonStatusAdd(target, statusId, isStatus));
     }
 
     public void AddPokemonEnterEvent(PokemonBattleData target)
@@ -443,7 +443,7 @@ public class BattleManager
         return damage.pokemon.ChangeHealth(-1 * damage.damageSummary.damageAmount);
     }
 
-    public void AddStatusEffect(BattleEventPokemonStatusAdd battleEvent)
+    public void AddStatusEffect(BattleEventPokemonStatusAdd battleEvent, bool isFromStatusMove = false)
     {
         PokemonBattleData pokemon = battleEvent.pokemon;
         StatusEffectId statusId = battleEvent.statusId;
@@ -467,6 +467,7 @@ public class BattleManager
                 break;
             case StatusEffectId.LeechSeed:
                 status = new StatusEffectLeechSeed(pokemon, battleFlowchart);
+                typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Grass);
                 gainStatusBlockName = "Leech Gain";
                 break;
             case StatusEffectId.Charmed:
@@ -477,12 +478,12 @@ public class BattleManager
         if (status.isPrimary && alreadyHasPrimaryStatus) 
         {
             // Cant add status due to type message
-            // BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
         }
-        else if (typePreventsStatus)
+        else if (typePreventsStatus && isFromStatusMove)
         {
             // Display cant add message
-            // BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
         }
         else
         {

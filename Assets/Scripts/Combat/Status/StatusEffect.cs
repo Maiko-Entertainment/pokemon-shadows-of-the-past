@@ -1,4 +1,5 @@
 ﻿using Fungus;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StatusEffect: Status
@@ -7,6 +8,7 @@ public class StatusEffect: Status
     public PokemonBattleData pokemon;
     public Flowchart message;
     public int captureRateBonus = 0;
+    public List<PokemonTypeId> inmuneTypes = new List<PokemonTypeId>();
 
     public StatusEffect(PokemonBattleData pokemon, Flowchart message)
     {

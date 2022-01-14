@@ -12,6 +12,7 @@ public class StatusEffectLeechSeed : StatusEffect
         isPrimary = false;
         minTurns = 99999;
         captureRateBonus = 10;
+        inmuneTypes.Add(PokemonTypeId.Grass);
     }
 public override void Initiate()
     {
