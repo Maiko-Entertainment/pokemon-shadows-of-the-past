@@ -12,6 +12,7 @@ public enum BattleEventId
     pokemonRecoverHealth = 5,
     pokemonChangeStats = 6,
     pokemonAddStatus = 12,
+    pokemonRemoveStatus = 19,
     pokemonTurnEnd = 11,
     pokemonGainExp = 14,
     roundEnd = 8,

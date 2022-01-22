@@ -130,7 +130,7 @@ public class BattleMaster : MonoBehaviour
 
     public int GetExperienceForDefeating(PokemonBattleData pokemon)
     {
-        float baseExp = pokemon.GetPokemonCaughtData().pokemonBase.baseExp;
+        float baseExp = 70; //pokemon.GetPokemonCaughtData().pokemonBase.baseExp;
         int pokemonLevel = pokemon.GetPokemonCaughtData().GetLevel();
         int experienceGained = (int)(baseExp * pokemonLevel / 2);
         return experienceGained;

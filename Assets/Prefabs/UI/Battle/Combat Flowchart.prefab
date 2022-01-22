@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 1520962997271906015}
   - component: {fileID: 4159362982948825315}
   - component: {fileID: 7910805291050144679}
+  - component: {fileID: 321353732590872002}
   m_Layer: 0
   m_Name: Combat Flowchart
   m_TagString: Untagged
@@ -157,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   scrollPos: {x: 437.59027, y: -11.587515}
-  variablesScrollPos: {x: 0, y: 0}
+  variablesScrollPos: {x: 0, y: 8}
   variablesExpanded: 1
   blockViewHeight: 280
   zoom: 0.8199997
@@ -168,9 +169,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 876309064416300321}
-  selectedCommands:
-  - {fileID: 1520962997271906015}
+  - {fileID: 2423489921552760378}
+  selectedCommands: []
   variables:
   - {fileID: 6151006633196087580}
   - {fileID: 6151006633196087581}
@@ -178,6 +178,7 @@ MonoBehaviour:
   - {fileID: 8013119591801089072}
   - {fileID: 4484055984834632387}
   - {fileID: 652791250648952529}
+  - {fileID: 321353732590872002}
   description: Flowchart for battle
   stepPause: 0
   colorCommands: 1
@@ -2129,7 +2130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4580f28dd8581476b810b38eea2f1316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scope: 0
+  scope: 1
   key: trainer
   value: 
 --- !u!114 &8546704872661418936
@@ -2934,6 +2935,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 113
   indentLevel: 0
+--- !u!114 &321353732590872002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151006633196087577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4580f28dd8581476b810b38eea2f1316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 1
+  key: level
+  value: 
 --- !u!1001 &6151006633973102748
 PrefabInstance:
   m_ObjectHideFlags: 0

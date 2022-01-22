@@ -9,5 +9,7 @@ public enum StatusEffectId
     Frozen = 5,
     Burn = 6,
     LeechSeed = 7,
-    Charmed = 8
+    Charmed = 8,
+    Confused = 9,
+    MoveCharge = 10
 }

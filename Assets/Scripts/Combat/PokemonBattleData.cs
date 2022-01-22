@@ -142,6 +142,33 @@ public class PokemonBattleData
         status.Initiate();
     }
 
+    public void RemoveStatusEffect(StatusEffectId statusId)
+    {
+        List<StatusEffect> statusNew = new List<StatusEffect>();
+        foreach(StatusEffect se in statusEffects)
+        {
+            if (se.effectId != statusId)
+            {
+                statusNew.Add(se);
+            }
+            else
+            {
+                se.Remove();
+            }
+        }
+        statusEffects = statusNew;
+    }
+
+    public void RemoveAllStatusEffects(bool onlyMinors = false)
+    {
+        foreach (StatusEffect se in statusEffects)
+        {
+            if (!onlyMinors || (onlyMinors && !se.isPrimary))
+                se.Remove();
+        }
+        statusEffects = new List<StatusEffect>();
+    }
+
     public bool AlreadyHasPrimaryStatus()
     {
         foreach (StatusEffect status in statusEffects)

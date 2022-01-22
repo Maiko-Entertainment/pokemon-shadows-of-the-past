@@ -14,6 +14,7 @@ public class BattleEventPokemonSwitch : BattleEventPokemon
 
     public override void Execute()
     {
+        pokemon.RemoveAllStatusEffects(true);
         BattleMaster.GetInstance()?.GetCurrentBattle().SetTeamActivePokemon(newPokemon);
         if (!pokemon.IsFainted())
         {

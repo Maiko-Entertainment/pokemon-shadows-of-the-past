@@ -222,6 +222,7 @@ public class PokemonCaughtData
         {
             remainingExp -= toNext;
             LevelUp();
+            toNext = GetTotalExperienceToNextLevel();
             movesLearned.AddRange(pokemonBase.GetMovesLearnedForLevel(GetLevel()));
         }
         experience = remainingExp;

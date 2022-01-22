@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BattleTriggerOnPokemonMoveDangerTypeMod : BattleTriggerOnPokemonMove
 {
-    PokemonTypeId moveType;
-    float healthTarget = 0.3f;
+    public PokemonTypeId moveType;
+    public float healthTarget = 0.3f;
     bool showAbility = false;
 
     public BattleTriggerOnPokemonMoveDangerTypeMod(PokemonBattleData pokemon, UseMoveMods useMoveMods, PokemonTypeId moveType, bool showAbility) : base(pokemon, useMoveMods, true)
@@ -28,6 +28,6 @@ public class BattleTriggerOnPokemonMoveDangerTypeMod : BattleTriggerOnPokemonMov
                 BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorAbility(pokemon));
             }
         }
-        return base.Execute(battleEvent);
+        return true;
     }
 }

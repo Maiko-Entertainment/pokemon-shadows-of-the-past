@@ -12,6 +12,7 @@ public class BattleEventPokemonFaint : BattleEventPokemon
 
     public override void Execute()
     {
+        pokemon.RemoveAllStatusEffects();
         BattleAnimatorMaster.GetInstance()?.AddEventPokemonFaintText(pokemon);
         BattleAnimatorMaster.GetInstance()?.AddEvent(
             new BattleAnimatorEventPlaySound(pokemon.GetCry(), 0.75f));

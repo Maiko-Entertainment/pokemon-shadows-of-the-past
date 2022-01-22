@@ -19,6 +19,7 @@ public class MoveData : ScriptableObject
     public bool isContact;
     public float drainMultiplier = 0f;
     public int moveCritUp = 0;
+    public int priority = 0;
     public string description;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 

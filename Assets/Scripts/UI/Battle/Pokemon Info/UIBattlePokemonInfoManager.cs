@@ -115,8 +115,6 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
         }
     }
 
-    
-
     public void UpdateStatus(PokemonBattleData pokemon, StatusEffectData status, List<StatusEffectData> minors)
     {
         BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();

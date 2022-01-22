@@ -29,6 +29,11 @@ public class StatusEffect: Status
         );
     }
 
+    public virtual void HandleOwnRemove()
+    {
+        BattleMaster.GetInstance().GetCurrentBattle().AddEvent(new BattleEventPokemonStatusRemove(pokemon, effectId));
+    }
+
     public int GetCaptureRateBonus()
     {
         return captureRateBonus;

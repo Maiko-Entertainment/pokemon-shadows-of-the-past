@@ -15,6 +15,8 @@ public class BattleManager
 
     private List<PokemonBattleData> participatedPokemon = new List<PokemonBattleData>();
 
+    public MoveData lastUsedMove = null;
+
     private bool isBattleActive = false;
     private TacticData currentTacticSelected;
 
@@ -474,6 +476,9 @@ public class BattleManager
                 status = new StatusEffectCharm(pokemon, battleFlowchart);
                 gainStatusBlockName = "Charm Gain";
                 break;
+            case StatusEffectId.MoveCharge:
+                status = new StatusEffectMoveCharge(pokemon, battleFlowchart, lastUsedMove);
+                break;
         }
         if (status.isPrimary && alreadyHasPrimaryStatus) 
         {
@@ -489,7 +494,8 @@ public class BattleManager
         {
             pokemon.AddStatusEffect(status);
             BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon));
-            BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
+            if (gainStatusBlockName != "")
+                BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
         }
     }
 

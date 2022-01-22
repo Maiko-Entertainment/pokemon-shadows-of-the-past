@@ -15,9 +15,7 @@ public class BattleTriggerOnPokemonBurn : BattleTriggerOnPokemonMove
         BattleEventUseMove be = (BattleEventUseMove)battleEvent;
         if (be.move.GetAttackCategory() == MoveCategoryId.physical && be.pokemon == pokemon)
         {
-            UseMoveMods mods = new UseMoveMods(PokemonTypeId.Unmodify);
-            mods.powerMultiplier = 0.5f;
-            be.moveMods.Implement(mods);
+            be.moveMods.Implement(useMoveMods);
         }
         return base.Execute(be);
     }

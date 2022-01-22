@@ -37,5 +37,6 @@ public class Status
     {
         foreach (BattleTrigger bt in battleTriggers)
             BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveTrigger(bt);
+        turnsLeft = 0;
     }
 }

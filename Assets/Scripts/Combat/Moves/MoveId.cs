@@ -32,5 +32,18 @@ public enum MoveId
     LeechSeed = 25,
     RazorLeaf = 26,
     SeedBomb = 27,
-    MegaDrain = 28
+    MegaDrain = 28,
+    BabyDollEyes = 29,
+    QuickAttack = 30,
+    DizzyPunch = 31,
+    Charm = 32,
+    Agility = 33,
+    DefenseCurl = 34,
+    WingAttack = 35,
+    DoubleTeam = 36,
+    AerialAce = 37,
+    TakeDown = 38,
+    BraveBird = 39,
+    Leer = 40,
+    FuryCutter = 41
 }
