@@ -3,6 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class PokemonBattleData
 {
+    public int battleId = 0;
     public PokemonCaughtData pokemon;
     // Modifier levels
     public PokemonBattleStats statsLevel = new PokemonBattleStats();
@@ -13,8 +14,9 @@ public class PokemonBattleData
 
     public static int minMaxStatLevelChange = 6;
 
-    public PokemonBattleData(PokemonCaughtData pokemon)
+    public PokemonBattleData(PokemonCaughtData pokemon, int battleId)
     {
+        this.battleId = battleId;
         this.pokemon = pokemon;
         statusEffects = new List<StatusEffect>();
         inBattleTypes = new List<PokemonTypeId>();
@@ -22,13 +24,13 @@ public class PokemonBattleData
 
     public PokemonBattleData Copy()
     {
-        PokemonBattleData newInstance = new PokemonBattleData(pokemon.Copy());
+        PokemonBattleData newInstance = new PokemonBattleData(pokemon.Copy(), battleId);
         List<StatusEffect> statusEffectsNewInstance = new List<StatusEffect>();
         if (statusEffects == null)
             statusEffects = new List<StatusEffect>();
         foreach (StatusEffect se in statusEffects)
         {
-            statusEffectsNewInstance.Add(se.DeepClone());
+            statusEffectsNewInstance.Add(se.Copy(newInstance));
         }
         newInstance.abilityId = abilityId;
         return newInstance;

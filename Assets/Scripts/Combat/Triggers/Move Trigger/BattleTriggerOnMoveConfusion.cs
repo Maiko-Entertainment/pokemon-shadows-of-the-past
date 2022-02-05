@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +16,9 @@ public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
     {
         if (pokemon == battleEvent.pokemon)
         {
+            Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(new BattleTriggerMessageData(
-                status.message,
+                battleFlow,
                 "Confusion Warning",
                 new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } }))
             );

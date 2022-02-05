@@ -6,7 +6,7 @@ using UnityEngine;
 public class StatusEffectLeechSeed : StatusEffect
 {
     public float porcentualDamage = 0.0625f;
-    public StatusEffectLeechSeed(PokemonBattleData pokemon, Flowchart message): base(pokemon, message)
+    public StatusEffectLeechSeed(PokemonBattleData pokemon): base(pokemon)
     {
         effectId = StatusEffectId.LeechSeed;
         isPrimary = false;
@@ -16,6 +16,7 @@ public class StatusEffectLeechSeed : StatusEffect
     }
 public override void Initiate()
     {
+        Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
         DamageSummary damageSummary = new DamageSummary(
                         PokemonTypeId.Undefined,
                         (int)(pokemon.GetPokemonHealth() * porcentualDamage),
@@ -38,7 +39,7 @@ public override void Initiate()
         BattleTrigger messageTrigger = new BattleTriggerOnPokemonTurnEndMessage(
                     pokemon,
                     new BattleTriggerMessageData(
-                        message,
+                        battleFlow,
                         "Leech Damage",
                         new Dictionary<string, string>()
                         {

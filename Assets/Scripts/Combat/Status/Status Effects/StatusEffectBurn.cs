@@ -6,7 +6,7 @@ using UnityEngine;
 public class StatusEffectBurn : StatusEffect
 {
     public float porcentualDamage = 0.0625f;
-    public StatusEffectBurn(PokemonBattleData pokemon, Flowchart message): base(pokemon, message)
+    public StatusEffectBurn(PokemonBattleData pokemon): base(pokemon)
     {
         effectId = StatusEffectId.Burn;
         isPrimary = true;
@@ -17,6 +17,7 @@ public class StatusEffectBurn : StatusEffect
 
     public override void Initiate()
     {
+        Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
                     pokemon,
                     new DamageSummary(
@@ -37,7 +38,7 @@ public class StatusEffectBurn : StatusEffect
         BattleTrigger messageTrigger = new BattleTriggerOnPokemonTurnEndMessage(
                     pokemon,
                     new BattleTriggerMessageData(
-                        message,
+                        battleFlow,
                         "Burn Damage",
                         new Dictionary<string, string>()
                         {
@@ -53,13 +54,6 @@ public class StatusEffectBurn : StatusEffect
         battleTriggers.Add(animTrigger);
         battleTriggers.Add(statusTrigger);
         battleTriggers.Add(triggerMove);
-        foreach(BattleTrigger bt in battleTriggers)
-        {
-            BattleMaster.GetInstance()?
-                .GetCurrentBattle()?.AddTrigger(
-                    bt
-                );
-        }
         base.Initiate();
     }
 }

@@ -66,7 +66,7 @@ public class BattleMaster : MonoBehaviour
         List<TacticData> finalTactics = new List<TacticData>();
         finalTactics.AddRange(TacticsMaster.GetInstance().GetEquippedTactics());
         finalTactics.AddRange(battleData.playerExtraTactics);
-        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0, finalTactics);
+        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
         currentBattle = newBattle;
@@ -84,7 +84,7 @@ public class BattleMaster : MonoBehaviour
         List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
         List<TacticData> finalTactics = TacticsMaster.GetInstance().GetEquippedTactics();
         finalTactics.AddRange(trainer.battleData.playerExtraTactics);
-        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party), 0, finalTactics); ;
+        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics); ;
         BattleTeamData team2 = trainer.GetTeambattleData();
         BattleManager newBattle = new BattleManager(team1, team2, trainer.battleData);
         currentBattle = newBattle;
@@ -97,12 +97,14 @@ public class BattleMaster : MonoBehaviour
 
     }
 
-    public static List<PokemonBattleData> GetPokemonBattleDataFromCaught(List<PokemonCaughtData> party)
+    public static List<PokemonBattleData> GetPokemonBattleDataFromCaught(List<PokemonCaughtData> party, BattleTeamId teamId)
     {
         List<PokemonBattleData> battleParty = new List<PokemonBattleData>();
+        int id = teamId == BattleTeamId.Team1 ? 0 : 100;
         foreach(PokemonCaughtData pokemon in party)
         {
-            battleParty.Add(new PokemonBattleData(pokemon));
+            battleParty.Add(new PokemonBattleData(pokemon, id));
+            id++;
         }
         return battleParty;
     }

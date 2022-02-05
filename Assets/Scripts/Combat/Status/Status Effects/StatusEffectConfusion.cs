@@ -7,7 +7,7 @@ public class StatusEffectConfusion : StatusEffect
 {
     public string hitSelfBlock = "Confusion Success";
 
-    public StatusEffectConfusion (PokemonBattleData pokemon, Flowchart flowchart): base(pokemon, flowchart)
+    public StatusEffectConfusion (PokemonBattleData pokemon): base(pokemon)
     {
         effectId = StatusEffectId.Confused;
         minTurns = 2;
@@ -20,21 +20,15 @@ public class StatusEffectConfusion : StatusEffect
     {
         BattleTriggerOnMoveConfusion confusionTrigger = new BattleTriggerOnMoveConfusion(pokemon, this);
         battleTriggers.Add(confusionTrigger);
-        foreach (BattleTrigger bt in battleTriggers)
-        {
-            BattleMaster.GetInstance()?
-                .GetCurrentBattle()?.AddTrigger(
-                    bt
-                );
-        }
         base.Initiate();
     }
 
     public void HandleConfusionSuccess()
     {
+        Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
-                message,
+                battleFlow,
                 hitSelfBlock,
                 new Dictionary<string, string>()
                 {

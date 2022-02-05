@@ -8,7 +8,7 @@ public class StatusEffectMoveCharge : StatusEffect
     public MoveData move;
     public float currentMultiplier = 1;
 
-    public StatusEffectMoveCharge(PokemonBattleData pkmn, Flowchart flowchart, MoveData move): base(pkmn, flowchart)
+    public StatusEffectMoveCharge(PokemonBattleData pkmn, MoveData move): base(pkmn)
     {
         this.move = move;
         effectId = StatusEffectId.MoveCharge;

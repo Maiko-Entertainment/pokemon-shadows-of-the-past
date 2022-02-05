@@ -5,8 +5,8 @@ public class StatusEffectPoison : StatusEffect
 {
     public float porcentualDamage = 0.125f;
 
-    public StatusEffectPoison(PokemonBattleData pokemon, Flowchart message) : 
-        base(pokemon, message)
+    public StatusEffectPoison(PokemonBattleData pokemon) : 
+        base(pokemon)
     {
         effectId = StatusEffectId.Poison;
         isPrimary = true;
@@ -17,6 +17,7 @@ public class StatusEffectPoison : StatusEffect
 
     public override void Initiate()
     {
+        Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
                     pokemon,
                     new DamageSummary(
@@ -29,7 +30,7 @@ public class StatusEffectPoison : StatusEffect
         BattleTrigger messageTrigger = new BattleTriggerOnPokemonTurnEndMessage(
                     pokemon,
                     new BattleTriggerMessageData(
-                        message,
+                        battleFlow,
                         "Poison Damage",
                         new Dictionary<string, string>()
                         {
@@ -39,14 +40,6 @@ public class StatusEffectPoison : StatusEffect
                 );
         battleTriggers.Add(messageTrigger);
         battleTriggers.Add(statusTrigger);
-        BattleMaster.GetInstance()?
-            .GetCurrentBattle()?.AddTrigger(
-                messageTrigger
-            );
-        BattleMaster.GetInstance()?
-            .GetCurrentBattle()?.AddTrigger(
-                statusTrigger
-            );
         base.Initiate();
     }
 }

@@ -7,10 +7,9 @@ public class StatusEffectFireVortex : StatusEffect
 {
     public float porcentualDamage = 0.125f;
     
-    public StatusEffectFireVortex(PokemonBattleData pokemon, Flowchart message): base(pokemon, message)
+    public StatusEffectFireVortex(PokemonBattleData pokemon): base(pokemon)
     {
-        effectId = StatusEffectId.Burn;
-        isPrimary = true;
+        effectId = StatusEffectId.FireVortex;
         minTurns = 4;
         addedRangeTurns = 1;
         captureRateBonus = 10;
@@ -20,6 +19,7 @@ public class StatusEffectFireVortex : StatusEffect
 
     public override void Initiate()
     {
+        Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
                     pokemon,
                     new DamageSummary(
@@ -39,7 +39,7 @@ public class StatusEffectFireVortex : StatusEffect
         BattleTrigger messageTrigger = new BattleTriggerOnPokemonTurnEndMessage(
                     pokemon,
                     new BattleTriggerMessageData(
-                        message,
+                        battleFlow,
                         "Fire Vortex Damage",
                         new Dictionary<string, string>()
                         {
@@ -50,13 +50,6 @@ public class StatusEffectFireVortex : StatusEffect
         battleTriggers.Add(messageTrigger);
         battleTriggers.Add(animTrigger);
         battleTriggers.Add(statusTrigger);
-        foreach (BattleTrigger bt in battleTriggers)
-        {
-            BattleMaster.GetInstance()?
-                .GetCurrentBattle()?.AddTrigger(
-                    bt
-                );
-        }
         base.Initiate();
     }
 }

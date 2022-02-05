@@ -9,6 +9,7 @@ public class BattleTriggerOnDesition : BattleTrigger
     public BattleTriggerOnDesition(BattleTeamId teamId)
     {
         this.teamId = teamId;
+        eventId = BattleEventId.preDesition;
     }
     public virtual bool Execute(BattleEventDestion battleEvent)
     {

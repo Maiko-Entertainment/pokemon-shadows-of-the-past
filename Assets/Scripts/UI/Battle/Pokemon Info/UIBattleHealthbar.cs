@@ -148,6 +148,7 @@ public class UIBattleHealthbar : MonoBehaviour
         {
             statusSimbol.enabled = true;
             statusSimbol.sprite = status.icon;
+            AudioMaster.GetInstance().PlaySfx(abilitySound);
             return;
         }
         LoadStatus(minor);

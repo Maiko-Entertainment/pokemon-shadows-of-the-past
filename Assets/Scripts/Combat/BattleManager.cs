@@ -153,10 +153,20 @@ public class BattleManager
 
     public BattleTeamId GetTeamId(PokemonBattleData pokemon)
     {
-        if (team1.pokemon.Contains(pokemon))
-            return BattleTeamId.Team1;
-        if (team2.pokemon.Contains(pokemon))
-            return BattleTeamId.Team2;
+        foreach(PokemonBattleData p1 in team1.pokemon)
+        {
+            if (p1.battleId == pokemon.battleId)
+            {
+                return BattleTeamId.Team1;
+            }
+        }
+        foreach (PokemonBattleData p2 in team2.pokemon)
+        {
+            if (p2.battleId == pokemon.battleId)
+            {
+                return BattleTeamId.Team2;
+            }
+        }
         return BattleTeamId.None;
     }
 
@@ -452,7 +462,7 @@ public class BattleManager
         PokemonBattleData pokemon = battleEvent.pokemon;
         StatusEffectId statusId = battleEvent.statusId;
         Flowchart battleFlowchart = BattleMaster.GetInstance().GetBattleFlowchart();
-        StatusEffect status = new StatusEffect(pokemon, battleFlowchart);
+        StatusEffect status = new StatusEffect(pokemon);
         bool typePreventsStatus = false;
         bool alreadyHasPrimaryStatus = pokemon.AlreadyHasPrimaryStatus();
         List<StatusEffect> nonPrimary = pokemon.GetNonPrimaryStatus();
@@ -471,34 +481,38 @@ public class BattleManager
             switch (statusId)
             {
                 case StatusEffectId.Poison:
-                    status = new StatusEffectPoison(pokemon, battleFlowchart);
+                    status = new StatusEffectPoison(pokemon);
                     typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Poison);
                     gainStatusBlockName = "Poison Gain";
                     break;
                 case StatusEffectId.Burn:
-                    status = new StatusEffectBurn(pokemon, battleFlowchart);
+                    status = new StatusEffectBurn(pokemon);
                     typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
                     gainStatusBlockName = "Burn Gain";
                     break;
                 case StatusEffectId.LeechSeed:
-                    status = new StatusEffectLeechSeed(pokemon, battleFlowchart);
+                    status = new StatusEffectLeechSeed(pokemon);
                     typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Grass);
                     gainStatusBlockName = "Leech Gain";
                     break;
                 case StatusEffectId.Charmed:
-                    status = new StatusEffectCharm(pokemon, battleFlowchart);
+                    status = new StatusEffectCharm(pokemon);
                     gainStatusBlockName = "Charm Gain";
                     break;
                 case StatusEffectId.MoveCharge:
-                    status = new StatusEffectMoveCharge(pokemon, battleFlowchart, lastUsedMove);
+                    status = new StatusEffectMoveCharge(pokemon, lastUsedMove);
                     break;
                 case StatusEffectId.FireVortex:
-                    status = new StatusEffectFireVortex(pokemon, battleFlowchart);
+                    status = new StatusEffectFireVortex(pokemon);
                     gainStatusBlockName = "Fire Vortex Gain";
                     break;
                 case StatusEffectId.Confused:
-                    status = new StatusEffectConfusion(pokemon, battleFlowchart);
+                    status = new StatusEffectConfusion(pokemon);
                     gainStatusBlockName = "Confusion Gain";
+                    break;
+                case StatusEffectId.Sleep:
+                    status = new StatusEffectSleep(pokemon);
+                    gainStatusBlockName = "Sleep Gain";
                     break;
             }
         }

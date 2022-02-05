@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StatusEffectCharm : StatusEffect
 {
-    public StatusEffectCharm(PokemonBattleData pokemon, Flowchart flowchart): base(pokemon, flowchart)
+    public StatusEffectCharm(PokemonBattleData pokemon): base(pokemon)
     {
         effectId = StatusEffectId.Charmed;
         minTurns = 99999;

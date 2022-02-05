@@ -64,7 +64,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
     {
         yield return new WaitForSeconds(delay);
         PokemonCaughtData encounterPokemon = SelectRandomEncounter();
-        PokemonBattleData battlePokemon = new PokemonBattleData(encounterPokemon);
+        PokemonBattleData battlePokemon = new PokemonBattleData(encounterPokemon, 100);
         BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon, battleData);
         InteractionsMaster.GetInstance()?.ExecuteNext(0);
         Destroy(activeGameoBject);

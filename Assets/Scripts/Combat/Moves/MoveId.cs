@@ -63,5 +63,6 @@ public enum MoveId
     Moonblast = 56,
     ConfuseRay = 57,
     WaterPulse = 58,
+    Hypnosis = 59,
     SelfHit = 10000
 }

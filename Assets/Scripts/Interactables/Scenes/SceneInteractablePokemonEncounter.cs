@@ -62,7 +62,7 @@ public class SceneInteractablePokemonEncounter : SceneInteractable
     {
         yield return new WaitForSeconds(delay);
         Destroy(activeGameoBject.gameObject);
-        PokemonBattleData battlePokemon = new PokemonBattleData(pokemon);
+        PokemonBattleData battlePokemon = new PokemonBattleData(pokemon, 100);
         BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon, battleData);
         InteractionsMaster.GetInstance()?.ExecuteNext(0);
     }
