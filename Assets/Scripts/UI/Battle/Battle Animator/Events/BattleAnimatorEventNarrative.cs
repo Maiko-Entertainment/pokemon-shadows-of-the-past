@@ -6,8 +6,8 @@ using UnityEngine;
 public class BattleAnimatorEventNarrative : BattleAnimatorEvent
 {
     public BattleTriggerMessageData messageData;
-
     public BattleAnimatorEventNarrative(BattleTriggerMessageData messageData) :
+
         base()
     {
         this.messageData = messageData;

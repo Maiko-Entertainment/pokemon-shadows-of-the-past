@@ -6,14 +6,12 @@ public class StatusEffect: Status
 {
     public bool isPrimary;
     public PokemonBattleData pokemon;
-    public Flowchart message;
     public int captureRateBonus = 0;
     public List<PokemonTypeId> inmuneTypes = new List<PokemonTypeId>();
 
-    public StatusEffect(PokemonBattleData pokemon, Flowchart message)
+    public StatusEffect(PokemonBattleData pokemon, Flowchart message): base(message)
     {
         this.pokemon = pokemon;
-        this.message = message;
     }
 
     public override void Initiate()
@@ -22,9 +20,9 @@ public class StatusEffect: Status
         // Add trigger to handle status turns left reduction
         // Statuses that inherited from this should repeat this behaviour
         BattleMaster.GetInstance()?.GetCurrentBattle()?.AddTrigger(
-            new BattleTriggerOnPokemonRoundEndReduceTurnsLeft(
-                pokemon,
-                this
+            new BattleTriggerOnDesitionStatusDrop(
+                this,
+                BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon)
             )
         );
     }
@@ -37,6 +35,11 @@ public class StatusEffect: Status
     public int GetCaptureRateBonus()
     {
         return captureRateBonus;
+    }
+
+    public override void Remove()
+    {
+        base.Remove();
     }
 
     public override string ToString()

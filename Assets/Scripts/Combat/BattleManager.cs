@@ -71,10 +71,12 @@ public class BattleManager
             if (aiDesitionPriority == priority)
             {
                 AIDesition.Execute();
+                AddEvent(new BattleEventDestion(AIDesition));
             }
             if (desitionPriority == priority)
             {
                 desition.Execute();
+                AddEvent(new BattleEventDestion(desition));
             }
             if (aiTacticPriority == priority)
             {
@@ -453,34 +455,54 @@ public class BattleManager
         StatusEffect status = new StatusEffect(pokemon, battleFlowchart);
         bool typePreventsStatus = false;
         bool alreadyHasPrimaryStatus = pokemon.AlreadyHasPrimaryStatus();
-        string gainStatusBlockName = "";
-
-        switch (statusId)
+        List<StatusEffect> nonPrimary = pokemon.GetNonPrimaryStatus();
+        bool isStatusAlready = false;
+        foreach(StatusEffect s in nonPrimary)
         {
-            case StatusEffectId.Poison:
-                status = new StatusEffectPoison(pokemon, battleFlowchart);
-                typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Poison);
-                gainStatusBlockName = "Poison Gain";
+            if (s.effectId == statusId)
+            {
+                isStatusAlready = true;
                 break;
-            case StatusEffectId.Burn:
-                status = new StatusEffectBurn(pokemon, battleFlowchart);
-                typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
-                gainStatusBlockName = "Burn Gain";
-                break;
-            case StatusEffectId.LeechSeed:
-                status = new StatusEffectLeechSeed(pokemon, battleFlowchart);
-                typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Grass);
-                gainStatusBlockName = "Leech Gain";
-                break;
-            case StatusEffectId.Charmed:
-                status = new StatusEffectCharm(pokemon, battleFlowchart);
-                gainStatusBlockName = "Charm Gain";
-                break;
-            case StatusEffectId.MoveCharge:
-                status = new StatusEffectMoveCharge(pokemon, battleFlowchart, lastUsedMove);
-                break;
+            }
         }
-        if (status.isPrimary && alreadyHasPrimaryStatus) 
+        string gainStatusBlockName = "";
+        if (!isStatusAlready)
+        {
+            switch (statusId)
+            {
+                case StatusEffectId.Poison:
+                    status = new StatusEffectPoison(pokemon, battleFlowchart);
+                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Poison);
+                    gainStatusBlockName = "Poison Gain";
+                    break;
+                case StatusEffectId.Burn:
+                    status = new StatusEffectBurn(pokemon, battleFlowchart);
+                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
+                    gainStatusBlockName = "Burn Gain";
+                    break;
+                case StatusEffectId.LeechSeed:
+                    status = new StatusEffectLeechSeed(pokemon, battleFlowchart);
+                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Grass);
+                    gainStatusBlockName = "Leech Gain";
+                    break;
+                case StatusEffectId.Charmed:
+                    status = new StatusEffectCharm(pokemon, battleFlowchart);
+                    gainStatusBlockName = "Charm Gain";
+                    break;
+                case StatusEffectId.MoveCharge:
+                    status = new StatusEffectMoveCharge(pokemon, battleFlowchart, lastUsedMove);
+                    break;
+                case StatusEffectId.FireVortex:
+                    status = new StatusEffectFireVortex(pokemon, battleFlowchart);
+                    gainStatusBlockName = "Fire Vortex Gain";
+                    break;
+                case StatusEffectId.Confused:
+                    status = new StatusEffectConfusion(pokemon, battleFlowchart);
+                    gainStatusBlockName = "Confusion Gain";
+                    break;
+            }
+        }
+        if (isStatusAlready || status.isPrimary && alreadyHasPrimaryStatus) 
         {
             // Cant add status due to type message
             BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();

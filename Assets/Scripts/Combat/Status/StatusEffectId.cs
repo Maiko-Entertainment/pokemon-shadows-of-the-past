@@ -11,5 +11,6 @@ public enum StatusEffectId
     LeechSeed = 7,
     Charmed = 8,
     Confused = 9,
-    MoveCharge = 10
+    MoveCharge = 10,
+    FireVortex = 11
 }
