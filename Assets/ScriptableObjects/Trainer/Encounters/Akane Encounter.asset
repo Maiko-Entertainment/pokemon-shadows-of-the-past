@@ -16,7 +16,8 @@ MonoBehaviour:
     trainerTitle: Your Rival Akane?
     brain: {fileID: 11400000, guid: affcce6adc9b3294b95e1dc43192d601, type: 2}
     pokemon:
-    - pokemon:
+    - battleId: 0
+      pokemon:
         pokemonName: Phoenix
         pokemonBase: {fileID: 11400000, guid: 1569aa02690b8934d8958cbd4b633e0b, type: 2}
         level: 12
@@ -27,6 +28,7 @@ MonoBehaviour:
         abilityId: 2
         isMale: 1
         friendship: 0
+        equippedItem: {fileID: 0}
         moves:
         - move: {fileID: 11400000, guid: d53107e9ee3a4004e9d996767621a142, type: 2}
           timesUsed: 0
@@ -44,9 +46,11 @@ MonoBehaviour:
         accuracy: 0
         evasion: 0
         critical: 0
+      statusEffects: []
       inBattleTypes: 
       abilityId: 0
-    - pokemon:
+    - battleId: 0
+      pokemon:
         pokemonName: Poison Ivy
         pokemonBase: {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
         level: 10
@@ -57,6 +61,7 @@ MonoBehaviour:
         abilityId: 3
         isMale: 1
         friendship: 0
+        equippedItem: {fileID: 0}
         moves:
         - move: {fileID: 11400000, guid: 8657c66fc60d6ba4aa5c61631003872f, type: 2}
           timesUsed: 0
@@ -74,13 +79,17 @@ MonoBehaviour:
         accuracy: 0
         evasion: 0
         critical: 0
+      statusEffects: []
       inBattleTypes: 
       abilityId: 0
     moneyPrice: 0
     teamStatus: []
+    tactics: []
+    tacticGauge: 0
   battleData:
     battleMusic: {fileID: 8300000, guid: 7ade61bc3155b484fb48c94d91872ff6, type: 3}
     battlebackground: {fileID: 1727051147952888905, guid: d8d0288b7a31e1b42b873e87bfeac93c, type: 3}
     battleType: 1
+    playerExtraTactics: []
   battleSong: {fileID: 8300000, guid: 7ade61bc3155b484fb48c94d91872ff6, type: 3}
   transition: {fileID: 724271575486075591, guid: 8f4d866f234a5be43b0a7acf934f4a62, type: 3}

@@ -64,5 +64,12 @@ public enum MoveId
     ConfuseRay = 57,
     WaterPulse = 58,
     Hypnosis = 59,
+    ThunderWave = 60,
+    ThunderShock = 61,
+    Thunderbolt = 62,
+    Discharge = 63,
+    ThunderPunch = 64,
+    ThunderFang = 65,
+    Spark = 66,
     SelfHit = 10000
 }

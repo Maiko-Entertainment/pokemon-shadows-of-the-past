@@ -3052,7 +3052,7 @@ MonoBehaviour:
         uses: 0
       - id: 59
         uses: 0
-      - id: 57
+      - id: 60
         uses: 0
       learnedMoves: []
       equipedItem: 0
@@ -3071,7 +3071,7 @@ MonoBehaviour:
   lastSaveIndex: 0
   maxSaveFiles: 5
   loadOnStart: 1
-  loadHackedData: 1
+  loadHackedData: 0
   saveElements:
   - {fileID: 11400000, guid: c5776e68895122741ae6b426447b6e69, type: 2}
   - {fileID: 11400000, guid: d8e9baac068a68b4894dc0b74e3fa038, type: 2}
@@ -3173,7 +3173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory:
   - itemData: {fileID: 11400000, guid: 8ef470661f3e7cd45b629f29dfcfec7a, type: 2}
-    amount: 1
+    amount: 0
 --- !u!114 &8952212246821983483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3248,8 +3248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bb66597fd87274e91fd82d407ee17c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffectVolume: 0.8
-  musicVolume: 0.8
+  soundEffectVolume: 0.5
+  musicVolume: 0.5
   musicSource: {fileID: 8952212246821983478}
   voiceSources:
   - {fileID: 1910084406102663911}
@@ -3266,7 +3266,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3504,6 +3504,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 92c2cd31ae03ff643abc2ec4f13c5c0b, type: 2}
   - {fileID: 11400000, guid: 3b08b0de227f54d429658f1929374e6a, type: 2}
   - {fileID: 11400000, guid: ec8adc98b52306442ab94161a141b673, type: 2}
+  - {fileID: 11400000, guid: 8fdc5d39c223db744b82e74d5da9825d, type: 2}
+  - {fileID: 11400000, guid: 665b67168a0c3a940b1050e56b58286e, type: 2}
+  - {fileID: 11400000, guid: 26937d854223c2d4f847c53d949d97f2, type: 2}
+  - {fileID: 11400000, guid: d0e5543bfea05a546ae176e7b566eef0, type: 2}
+  - {fileID: 11400000, guid: 12ea33d0ff8dc894f82bed71de55c8c7, type: 2}
+  - {fileID: 11400000, guid: db54b6c10f45193499d914952837f934, type: 2}
+  - {fileID: 11400000, guid: dca7e7bebd997cd4d94b99e916f03d0c, type: 2}
 --- !u!114 &423868467601111521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5078,6 +5085,10 @@ PrefabInstance:
     - target: {fileID: 4936433977071855279, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5353230615427530655, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
+      propertyPath: itemId
+      value: 166
       objectReference: {fileID: 0}
     - target: {fileID: 5910508692379032519, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_AnchorMax.y

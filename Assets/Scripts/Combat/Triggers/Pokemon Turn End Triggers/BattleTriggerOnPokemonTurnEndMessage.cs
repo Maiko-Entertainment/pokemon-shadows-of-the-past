@@ -14,9 +14,12 @@ public class BattleTriggerOnPokemonTurnEndMessage : BattleTriggerOnPokemonRoundE
 
     public override bool Execute(BattleEventRoundEnd battleEvent)
     {
-        BattleAnimatorMaster.GetInstance()?.AddEvent(
-            new BattleAnimatorEventNarrative(message)
-        );
+        if (!pokemon.IsFainted())
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(
+                new BattleAnimatorEventNarrative(message)
+            );
+        }
         return base.Execute(battleEvent);
     }
 

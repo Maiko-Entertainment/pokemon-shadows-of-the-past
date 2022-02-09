@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class PokemonBattleData
 {
-    public int battleId = 0;
+    [HideInInspector] public int battleId = 0;
     public PokemonCaughtData pokemon;
     // Modifier levels
     public PokemonBattleStats statsLevel = new PokemonBattleStats();

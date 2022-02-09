@@ -48,4 +48,8 @@ public class UIOptionsMenuHandler : MonoBehaviour
     {
         UIPauseMenuMaster.GetInstance().OpenItemsViewer();
     }
+    public void SaveGame()
+    {
+        SaveMaster.Instance.Save(0);
+    }
 }

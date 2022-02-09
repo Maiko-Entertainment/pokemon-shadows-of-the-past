@@ -38,10 +38,15 @@ public class BattleTeamData
         teamInstance.brain = brain;
         return teamInstance;
     }
-    public void InitiateTeam()
+    public void InitiateTeam(BattleTeamId teamId)
     {
         // SetActivePokemon(GetFirstAvailabelPokemon());
         brain?.Initialize(BattleMaster.GetInstance().GetCurrentBattle());
+        int index = 0;
+        foreach(PokemonBattleData pkmn in pokemon)
+        {
+            pkmn.battleId = (teamId == BattleTeamId.Team1 ? 0 : 100) + index;
+        }
     }
 
     public string GetTrainerTitle()

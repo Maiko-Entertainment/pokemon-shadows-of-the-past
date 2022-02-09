@@ -42,8 +42,8 @@ public class BattleManager
         participatedPokemon = new List<PokemonBattleData>();
         BattleAnimatorMaster.GetInstance()?.SetBackground(battleData.battlebackground);
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTurnStart());
-        team1.InitiateTeam();
-        team2.InitiateTeam();
+        team1.InitiateTeam(BattleTeamId.Team1);
+        team2.InitiateTeam(BattleTeamId.Team2);
         SetTeamActivePokemon(team1.GetFirstAvailabelPokemon());
         SetTeamActivePokemon(team2.GetFirstAvailabelPokemon());
 
@@ -513,6 +513,11 @@ public class BattleManager
                 case StatusEffectId.Sleep:
                     status = new StatusEffectSleep(pokemon);
                     gainStatusBlockName = "Sleep Gain";
+                    break;
+                case StatusEffectId.Paralyzed:
+                    status = new StatusEffectParalyzed(pokemon);
+                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Electric);
+                    gainStatusBlockName = "Paralyze Gain";
                     break;
             }
         }
