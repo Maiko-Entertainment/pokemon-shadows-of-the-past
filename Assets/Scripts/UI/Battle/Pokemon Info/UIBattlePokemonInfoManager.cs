@@ -6,15 +6,15 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
     public UIBattleHealthbar team1Health;
     public UIBattleHealthbar team2Health;
 
-    public void HideTeamInfo(BattleTeamId team)
+    public void HideTeamInfo(BattleTeamId team, bool instant = false)
     {
         if (team == BattleTeamId.Team1)
         {
-            team1Health.FadeOut();
+            team1Health.FadeOut(instant);
         }
         else
         {
-            team2Health.FadeOut();
+            team2Health.FadeOut(instant);
         }
     }
 

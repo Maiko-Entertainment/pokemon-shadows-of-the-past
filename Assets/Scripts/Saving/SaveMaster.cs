@@ -58,16 +58,18 @@ public class SaveMaster : MonoBehaviour
         PartyMaster.GetInstance().Load(activeSaveFile);
         InventoryMaster.GetInstance().Load(activeSaveFile);
         TacticsMaster.GetInstance().Load(activeSaveFile);
+        WorldMapMaster.GetInstance().Load(activeSaveFile);
     }
 
     public void Save(int saveIndex)
     {
         PartyMaster.GetInstance().HandleSave();
         InventoryMaster.GetInstance().HandleSave();
+        WorldMapMaster.GetInstance().HandleSave();
         SaveCurrentFile(saveIndex);
     }
 
-    private void SaveCurrentFile(int saveIndex)
+    public void SaveCurrentFile(int saveIndex)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string saveDir = GetSavePath();

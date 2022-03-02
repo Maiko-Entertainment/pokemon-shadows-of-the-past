@@ -16,6 +16,8 @@ public class BattleAnimatorEventEndBattle : BattleAnimatorEvent
         BattleAnimatorMaster.GetInstance().HandleCameraReset();
         float duration = TransitionMaster.GetInstance().ReturnToPreviousCamera();
         BattleAnimatorMaster.GetInstance().HideAll();
+        BattleAnimatorMaster.GetInstance().HidePokemonInfo(BattleTeamId.Team1, true);
+        BattleAnimatorMaster.GetInstance().HidePokemonInfo(BattleTeamId.Team2, true);
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(duration);
         AudioMaster.GetInstance().StopMusic(false);
         base.Execute();

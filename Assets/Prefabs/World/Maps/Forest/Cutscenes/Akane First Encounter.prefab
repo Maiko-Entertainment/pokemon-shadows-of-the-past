@@ -150,6 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3373085983313811167}
   - component: {fileID: 2636452325954799932}
+  - component: {fileID: 1613455758029486208}
   m_Layer: 0
   m_Name: Dante
   m_TagString: Untagged
@@ -165,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5376938303711594872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8610422478029477075}
@@ -188,7 +189,33 @@ MonoBehaviour:
   activateOnSpawn: 0
   moveBrain: {fileID: 7370910691028612844}
   flowchartPrefab: {fileID: 6184246047675452991}
-  blockName: Start
+  blockName: First Idle Talk
+--- !u!61 &1613455758029486208
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376938303711594872}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
 --- !u!1001 &3099333506412395553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -339,17 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9195649852766914778 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2900990997916848264, guid: 35e7be418c079c64b802743713ae8877, type: 3}
-  m_PrefabInstance: {fileID: 6332027142863001682}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9114684742748273829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -357,21 +373,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3373085983313811167}
     m_Modifications:
-    - target: {fileID: 81288373783365179, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4447627360321018539, guid: fa4937bbcd57de347afcc83b5b43f2c8, type: 3}
     - target: {fileID: 649504491968833654, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 649504491968833654, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 649504491968833654, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 649504491968833654, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -405,38 +417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 892097272680931856, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 9195649852766914778}
-    - target: {fileID: 2332942097710009235, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 9195649852766914778}
-    - target: {fileID: 3251287239300548253, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 9195649852766914778}
-    - target: {fileID: 3251287239300548253, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: replacedCharacter
-      value: 
-      objectReference: {fileID: 9195649852766914778}
     - target: {fileID: 5315945082171587156, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
       propertyPath: m_Name
       value: Dante
       objectReference: {fileID: 0}
-    - target: {fileID: 5342630330006446644, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 9195649852766914778}
-    - target: {fileID: 6572490875633011866, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 9195649852766914778}
-    - target: {fileID: 8619668878743022935, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
-      propertyPath: character
-      value: 
-      objectReference: {fileID: 9195649852766914778}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
 --- !u!4 &8610422478029477075 stripped

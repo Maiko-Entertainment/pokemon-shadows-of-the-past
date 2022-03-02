@@ -13,7 +13,7 @@ public class BattleEventEnterPokemon : BattleEventPokemon
     public override void Execute()
     {
         BattleAnimatorMaster.GetInstance().AddEventPokemonEnterText(pokemon);
-        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEnterPokemon(pokemon));
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEnterPokemon(pokemon.Copy()));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonEnterAnim(pokemon));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(pokemon.GetCry()));
         base.Execute();

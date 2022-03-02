@@ -13,4 +13,9 @@ public class BattleTurnDesition
     public virtual void Execute()
     {
     }
+
+    public virtual float GetTiebreakerPriority()
+    {
+        return 0;
+    }
 }

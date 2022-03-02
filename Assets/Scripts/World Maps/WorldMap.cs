@@ -7,6 +7,7 @@ public class WorldMap : MonoBehaviour
 {
     public int mapId = 0;
     public string title;
+    public int defaultSafePlacePosIndex;
     public List<Transform> spawnList = new List<Transform>();
     public AudioClip mapMusic;
     public TransitionBase titleCard;

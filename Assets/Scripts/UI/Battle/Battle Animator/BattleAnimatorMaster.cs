@@ -64,7 +64,7 @@ public class BattleAnimatorMaster : MonoBehaviour
             {
                 Destroy(p.gameObject);
             }
-
+            HidePokemonInfo(BattleTeamId.Team1);
         }
         else if (teamId == BattleTeamId.Team2)
         {
@@ -72,6 +72,7 @@ public class BattleAnimatorMaster : MonoBehaviour
             {
                 Destroy(p.gameObject);
             }
+            HidePokemonInfo(BattleTeamId.Team2);
         }
     }
 
@@ -167,7 +168,7 @@ public class BattleAnimatorMaster : MonoBehaviour
         {
             pkmnInstance.TriggerBack();
         }
-
+        LoadPokemonsInfo(pokemon, pokemon.GetPokemonCurrentHealth());
         return pkmnInstance;
     }
 
@@ -414,9 +415,9 @@ public class BattleAnimatorMaster : MonoBehaviour
     {
         battleInfoManager.UpdatePokemonInfo(pokemon);
     }
-    public void HidePokemonInfo(BattleTeamId team)
+    public void HidePokemonInfo(BattleTeamId team, bool instant = false)
     {
-        battleInfoManager.HideTeamInfo(team);
+        battleInfoManager.HideTeamInfo(team, instant);
     }
 
     public StatusEffectData GetStatusEffectData(StatusEffectId id)

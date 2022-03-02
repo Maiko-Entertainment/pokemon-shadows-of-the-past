@@ -43,6 +43,17 @@ public class WorldMapMaster : MonoBehaviour
         }
     }
 
+    public void Load(SaveFile save)
+    {
+        SpawnInMapAtPos(save.playerMapId, save.playerPos.GetVector2());
+    }
+
+    public void HandleSave()
+    {
+        SaveMaster.Instance.activeSaveFile.playerMapId = currentMap.mapId;
+        SaveMaster.Instance.activeSaveFile.playerPos = new SerializableVector2(GetPlayer().gameObject.transform.position);
+    }
+
     public void GoToMap(int mapId, int spawnIndex)
     {
         ClearPrevius();
@@ -50,16 +61,27 @@ public class WorldMapMaster : MonoBehaviour
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         Transform spawn = mapInstance.GetSpawn(spawnIndex);
         mapInstance.HandleEntrance();
-        StartCoroutine(SetPlayer(0.1f, spawn));
+        StartCoroutine(SetPlayer(0.1f, spawn.position));
         UIPauseMenuMaster.GetInstance().ShowWorldUI();
         currentMap = mapInstance;
     }
 
-    IEnumerator SetPlayer(float delay, Transform spawn)
+    public void SpawnInMapAtPos(int mapId, Vector2 position)
+    {
+        ClearPrevius();
+        WorldMap map = Getmap(mapId);
+        WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
+        mapInstance.HandleEntrance();
+        StartCoroutine(SetPlayer(0.1f, position));
+        UIPauseMenuMaster.GetInstance().ShowWorldUI();
+        currentMap = mapInstance;
+    }
+
+    IEnumerator SetPlayer(float delay, Vector2 spawn)
     {
         yield return new WaitForSeconds(delay);
         PlayerController player = GetPlayer();
-        player.transform.position = spawn.position;
+        player.transform.position = spawn;
         player.Load(currentMap);
     }
 

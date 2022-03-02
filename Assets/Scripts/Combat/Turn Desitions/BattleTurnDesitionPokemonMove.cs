@@ -20,4 +20,9 @@ public class BattleTurnDesitionPokemonMove : BattleTurnDesitionPokemon
         BattleMaster.GetInstance().GetCurrentBattle()?
             .AddMoveEvent(pokemon, move.move);
     }
+
+    public override float GetTiebreakerPriority()
+    {
+        return base.GetTiebreakerPriority() + move.move.priority;
+    }
 }

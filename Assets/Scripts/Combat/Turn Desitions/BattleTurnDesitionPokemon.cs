@@ -10,4 +10,8 @@ public class BattleTurnDesitionPokemon : BattleTurnDesition
         this.pokemon = pokemon;
     }
 
+    public override float GetTiebreakerPriority()
+    {
+        return base.GetTiebreakerPriority() + BattleMaster.GetInstance().GetCurrentBattle().GetPokemonStats(pokemon).speed / 1000000f;
+    }
 }

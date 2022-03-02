@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 2925983565030795454}
   - component: {fileID: 1910880389056270141}
   - component: {fileID: 2596445037877568473}
+  - component: {fileID: 3723240490475394620}
   m_Layer: 0
   m_Name: Rest Place Flowchart
   m_TagString: Untagged
@@ -71,7 +72,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 2925983565030795450}
   selectedCommands:
-  - {fileID: 2925983565030795454}
+  - {fileID: 3723240490475394620}
   variables: []
   description: 
   stepPause: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 3723240490475394620}
   - {fileID: 2925983565030795454}
   - {fileID: 1910880389056270141}
   - {fileID: 2925983565030795449}
@@ -357,6 +359,20 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &3723240490475394620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925983565030795442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f12f9588937b8944b4d6164068fff8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 13
+  indentLevel: 0
 --- !u!1001 &5431365809065398604
 PrefabInstance:
   m_ObjectHideFlags: 0

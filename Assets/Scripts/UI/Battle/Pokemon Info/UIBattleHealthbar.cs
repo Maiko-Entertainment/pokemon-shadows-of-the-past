@@ -60,9 +60,16 @@ public class UIBattleHealthbar : MonoBehaviour
     {
         GetComponent<TransitionFade>()?.FadeIn();
     }
-    public void FadeOut()
+    public void FadeOut(bool instant = false)
     {
-        GetComponent<TransitionFade>()?.FadeOut();
+        if (instant)
+        {
+            GetComponent<TransitionFade>()?.Hide();
+        }
+        else
+        {
+            GetComponent<TransitionFade>()?.FadeOut();
+        }
     }
 
     public void LoadStatus(List<StatusEffectData> status)

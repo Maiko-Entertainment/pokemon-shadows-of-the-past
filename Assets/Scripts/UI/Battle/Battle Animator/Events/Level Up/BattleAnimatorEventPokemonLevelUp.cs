@@ -17,7 +17,7 @@ public class BattleAnimatorEventPokemonLevelUp : BattleAnimatorEventPokemon
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         float time = 0;
         
-        if (bm.GetTeamActivePokemon(BattleTeamId.Team1) == pokemon)
+        if (bm.GetTeamActivePokemon(BattleTeamId.Team1).battleId == pokemon.battleId)
         {
             // Checks if pokemon wont level up
             if (summary.initialLevel == summary.finalLevel)

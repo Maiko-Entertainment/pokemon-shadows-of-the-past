@@ -11,6 +11,7 @@ public class Status
     public string onWarningFlowchartBlock = "";
 
     protected List<BattleTrigger> battleTriggers = new List<BattleTrigger>();
+    protected List<BattleStatsGetter> statGetters = new List<BattleStatsGetter>();
     protected int turnsLeft = 0;
     protected bool stopEscape = false;
 
@@ -48,6 +49,8 @@ public class Status
         }
         foreach (BattleTrigger bt in battleTriggers)
             BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveTrigger(bt);
+        foreach (BattleStatsGetter sg in statGetters)
+            BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveStatGetter(sg);
         turnsLeft = 0;
     }
 }

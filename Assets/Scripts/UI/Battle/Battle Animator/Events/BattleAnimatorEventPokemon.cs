@@ -4,7 +4,7 @@
 
     public BattleAnimatorEventPokemon(PokemonBattleData pokemon)
     {
-        this.pokemon = pokemon;
+        this.pokemon = pokemon.Copy();
     }
 
     public override string ToString()

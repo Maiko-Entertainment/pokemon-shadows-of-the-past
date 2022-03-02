@@ -242,8 +242,8 @@ MonoBehaviour:
   onStep: 1
   activateOnSpawn: 0
   moveBrain: {fileID: 0}
-  mapId: 3
-  spawnIndex: 2
+  mapId: 4
+  spawnIndex: 1
   changeMapTransition: {fileID: 7696546989185427502, guid: 26af85d06f0880745a6fe4ff981bf786, type: 3}
 --- !u!1 &1799994729856396533
 GameObject:
@@ -276,6 +276,7 @@ Transform:
   - {fileID: 1799994730781787617}
   - {fileID: 1799994731558779570}
   - {fileID: 8258812371994574261}
+  - {fileID: 6669019521959958186}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -292,16 +293,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapId: 0
-  title: Hollow Forest
+  title: Sunshine Woods
+  defaultSafePlacePosIndex: 2
   spawnList:
   - {fileID: 7260349631953299135}
   - {fileID: 946154553331538899}
+  - {fileID: 4356283282813921633}
   mapMusic: {fileID: 8300000, guid: baf2a37b6ef5f9b43ae0556f9a20b524, type: 3}
-  titleCard: {fileID: 7723758666767376898, guid: 86091483f959a7c4b9de99090be0c176, type: 3}
+  titleCard: {fileID: 4148846160882694555, guid: c9388f6f6c7afaf46bd5bbf465811069, type: 3}
   groundTilemap: {fileID: 1799994730214690902}
   waterTilemap: {fileID: 1799994730418487465}
   collisionTilemap: {fileID: 1799994731172269865}
-  timeOfDayEffects: []
+  timeOfDayEffects:
+  - UIEffectPrefab: {fileID: 2745366567696154353, guid: 3e5f3fff80520b045a1d81e5df1e58c0, type: 3}
+    timeOfDay: 0
 --- !u!1 &1799994730214690889
 GameObject:
   m_ObjectHideFlags: 0
@@ -43952,6 +43957,37 @@ Transform:
   m_Father: {fileID: 1799994729856396532}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2344591849473097056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6669019521959958186}
+  m_Layer: 0
+  m_Name: Notes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6669019521959958186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344591849473097056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1397286298167105553}
+  m_Father: {fileID: 1799994729856396532}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2565533474326286836
 GameObject:
   m_ObjectHideFlags: 0
@@ -44028,6 +44064,36 @@ MonoBehaviour:
   moveBrain: {fileID: 0}
   flowchartPrefab: {fileID: 7758344498895981772}
   blockName: Wood Block
+--- !u!1 &2694304189648475336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1397286298167105553}
+  m_Layer: 0
+  m_Name: Place for Grass eevee evo
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1397286298167105553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694304189648475336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.5, y: -15.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6669019521959958186}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2888677968810938461
 GameObject:
   m_ObjectHideFlags: 0
@@ -45706,6 +45772,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c92757e7fae7f2a4bb52690c04c99fb0, type: 3}
+--- !u!4 &4356283282813921633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8591256891382824048, guid: c92757e7fae7f2a4bb52690c04c99fb0, type: 3}
+  m_PrefabInstance: {fileID: 5426527555239236881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6893234575831597794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1506267554992445427, guid: c92757e7fae7f2a4bb52690c04c99fb0, type: 3}

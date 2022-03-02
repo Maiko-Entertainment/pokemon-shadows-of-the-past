@@ -14,6 +14,7 @@ public class BattleManager
     public BattleEventManager eventManager = new BattleEventManager();
 
     private List<PokemonBattleData> participatedPokemon = new List<PokemonBattleData>();
+    public List<BattleStatsGetter> battleStatsSubscribers = new List<BattleStatsGetter>();
 
     public MoveData lastUsedMove = null;
 
@@ -58,6 +59,25 @@ public class BattleManager
         return isBattleActive;
     }
 
+    public void AddStatGetter(BattleStatsGetter getter)
+    {
+        battleStatsSubscribers.Add(getter);
+    }
+    public void RemoveStatGetter(BattleStatsGetter getter)
+    {
+        battleStatsSubscribers.Remove(getter);
+    }
+
+    public PokemonBattleStats GetPokemonStats(PokemonBattleData pokemon)
+    {
+        PokemonBattleStats statsAccum = pokemon.GetBattleStats();
+        foreach(BattleStatsGetter bsg in battleStatsSubscribers)
+        {
+            statsAccum = bsg.Apply(pokemon, statsAccum);
+        }
+        return statsAccum;
+    }
+
     public void HandleTurnInput(BattleTurnDesition desition)
     {
         BattleTurnDesition AIDesition = HandleAIInput();
@@ -68,15 +88,35 @@ public class BattleManager
         int aiTacticPriority = AIDesition.tactic ? 4 : -1;
         for(int priority = 0; priority < 10; priority++)
         {
-            if (aiDesitionPriority == priority)
+            if (aiDesitionPriority == priority && aiDesitionPriority == desitionPriority)
             {
-                AIDesition.Execute();
-                AddEvent(new BattleEventDestion(AIDesition));
+                if (AIDesition.GetTiebreakerPriority() <= desition.GetTiebreakerPriority())
+                {
+                    AIDesition.Execute();
+                    AddEvent(new BattleEventDestion(AIDesition));
+                    desition.Execute();
+                    AddEvent(new BattleEventDestion(desition));
+                }
+                else
+                {
+                    desition.Execute();
+                    AddEvent(new BattleEventDestion(desition));
+                    AIDesition.Execute();
+                    AddEvent(new BattleEventDestion(AIDesition));
+                }
             }
-            if (desitionPriority == priority)
+            else
             {
-                desition.Execute();
-                AddEvent(new BattleEventDestion(desition));
+                if (aiDesitionPriority == priority)
+                {
+                    AIDesition.Execute();
+                    AddEvent(new BattleEventDestion(AIDesition));
+                }
+                if (desitionPriority == priority)
+                {
+                    desition.Execute();
+                    AddEvent(new BattleEventDestion(desition));
+                }
             }
             if (aiTacticPriority == priority)
             {
