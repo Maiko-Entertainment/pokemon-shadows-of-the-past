@@ -12,5 +12,9 @@ public enum StatusEffectId
     Charmed = 8,
     Confused = 9,
     MoveCharge = 10,
-    FireVortex = 11
+    FireVortex = 11,
+    Sunny = 12,
+    Rainy = 13,
+    Hailing = 14,
+    Charged = 15
 }

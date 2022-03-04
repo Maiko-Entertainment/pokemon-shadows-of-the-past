@@ -16,10 +16,12 @@ public class MoveData : ScriptableObject
     public MoveTarget targetType;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
+    public List<StatusBonus> conditionalBonuses = new List<StatusBonus>();
     public bool isContact;
     public float drainMultiplier = 0f;
     public int moveCritUp = 0;
     public int priority = 0;
+    public List<ItemCategory> destroyHeldItems = new List<ItemCategory>();
     public string description;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 
@@ -27,24 +29,37 @@ public class MoveData : ScriptableObject
     public virtual void Execute(BattleEventUseMove battleEvent)
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
-        HandleStatsChanges(battleEvent.pokemon);
-        HandleStatusAdds(battleEvent.pokemon);
         battleEvent.pokemon.ReduceMovePP(this);
         PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
-        if (categoryId != MoveCategoryId.status)
+        bool moveHits = bm.CheckForMoveHit(battleEvent);
+        // Self targeting moves dont usually miss
+        if (moveHits || targetType == MoveTarget.Self)
         {
-            DamageSummary damageSummary = bm.CalculateMoveDamage(battleEvent);
-            bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
-
+            HandleStatsChanges(battleEvent.pokemon);
+            HandleStatusAdds(battleEvent.pokemon);
+            HandleDestroy(pokemonTarget);
+            if (categoryId != MoveCategoryId.status)
+            {
+                DamageSummary damageSummary = bm.CalculateMoveDamage(battleEvent);
+                bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
+            }
+            bm.AddMoveSuccessEvent(battleEvent);
+            // Negative values are used for recoil
+            if (drainMultiplier != 0 && moveHits)
+            {
+                BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this, drainMultiplier));
+            }
         }
-        bm.AddMoveSuccessEvent(battleEvent);
+        // Animation Events
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
-        // Negative values are used for recoil
-        if (drainMultiplier != 0)
+        if (moveHits)
         {
-            BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this, drainMultiplier));
+            HandleAnimations(battleEvent.pokemon, pokemonTarget);
         }
-        HandleAnimations(battleEvent.pokemon, pokemonTarget);
+        else
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventMoveMiss(battleEvent));
+        }
     }
 
     public virtual void HandleStatsChanges(PokemonBattleData pokemon)
@@ -85,14 +100,81 @@ public class MoveData : ScriptableObject
         }
     }
 
+    public void HandleDestroy(PokemonBattleData target)
+    {
+        PokemonBattleDataItem item = target.heldItem;
+        if (item != null && item.equippedItem && destroyHeldItems.Contains(item.equippedItem.GetItemCategory()))
+        {
+            target.UnequipItem();
+        }
+    }
+
     // Use this in combat to get final power
     public virtual int GetPower(PokemonBattleData user)
     {
-        return power;
+        float powerMultiplier = 1f;
+        foreach(StatusBonus condition in conditionalBonuses)
+        {
+            float percentageHealth = user.GetPokemonCurrentHealth() / (float) user.GetMaxHealth();
+            if (condition.target == MoveTarget.none)
+            {
+                Status weather = BattleMaster.GetInstance().GetCurrentBattle().weather;
+                if (weather != null && weather.effectId == condition.statusToCheck && percentageHealth <= condition.lifeBelowTreshold)
+                {
+                    powerMultiplier *= condition.powerMultiplier;
+                }
+            }
+            else
+            {
+                PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
+                List<StatusEffect> status = finalTarget.GetNonPrimaryStatus();
+                StatusEffect primary = finalTarget.GetCurrentPrimaryStatus();
+                foreach (StatusEffect s in status)
+                {
+                    if (condition.statusToCheck == s.effectId || (primary != null && primary.effectId == condition.statusToCheck))
+                    {
+                        powerMultiplier *= condition.powerMultiplier;
+                    }
+                }
+            }
+        }
+        return (int)(power * powerMultiplier);
     }
+
     public virtual int GetPower()
     {
         return power;
+    }
+
+    public virtual float GetAccuracy(PokemonBattleData user)
+    {
+        float accuracyAdded = 0f;
+        foreach (StatusBonus condition in conditionalBonuses)
+        {
+            float percentageHealth = user.GetPokemonCurrentHealth() / (float)user.GetMaxHealth();
+            if (condition.target == MoveTarget.none)
+            {
+                Status weather = BattleMaster.GetInstance().GetCurrentBattle().weather;
+                if (weather != null && weather.effectId == condition.statusToCheck && percentageHealth <= condition.lifeBelowTreshold)
+                {
+                    accuracyAdded += condition.accuracyBonusAdd;
+                }
+            }
+            else
+            {
+                PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
+                List<StatusEffect> status = finalTarget.GetNonPrimaryStatus();
+                StatusEffect primary = finalTarget.GetCurrentPrimaryStatus();
+                foreach (StatusEffect s in status)
+                {
+                    if (condition.statusToCheck == s.effectId || (primary != null && primary.effectId == condition.statusToCheck))
+                    {
+                        accuracyAdded += condition.accuracyBonusAdd;
+                    }
+                }
+            }
+        }
+        return hitChance + accuracyAdded;
     }
 
     public virtual MoveCategoryId GetDefenseCategory()

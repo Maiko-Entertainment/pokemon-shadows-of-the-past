@@ -33,6 +33,10 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
                     BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount, DamageSummarySource.Move, (int)move.moveId));
                 }
             }
+            else
+            {
+                maxTriggers++;
+            }
         }
         return base.Execute(battleEvent);
     }

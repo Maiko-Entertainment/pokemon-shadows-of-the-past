@@ -211,6 +211,10 @@ public class PokemonCaughtData
     {
         return equippedItem;
     }
+    public void UnequipItem()
+    {
+        equippedItem = null;
+    }
 
     public LevelUpSummary GainExp(int exp)
     {

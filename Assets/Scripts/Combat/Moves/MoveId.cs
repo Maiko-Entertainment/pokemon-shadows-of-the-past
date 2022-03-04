@@ -71,5 +71,18 @@ public enum MoveId
     ThunderPunch = 64,
     ThunderFang = 65,
     Spark = 66,
+    WorkUp = 67,
+    Crunch = 68,
+    SandAttack = 69,
+    Swift = 70,
+    AuroraBeam = 71,
+    LavaPlume = 72,
+    CottonSpore = 73,
+    Charge = 74,
+    PowerGem = 75,
+    CottonGuard = 76,
+    ChargeBeam = 77,
+    Thunder = 78,
+    Incinerate = 79,
     SelfHit = 10000
 }

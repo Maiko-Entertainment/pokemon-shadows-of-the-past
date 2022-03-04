@@ -7,17 +7,20 @@ public class ItemDataOnPokemon : ItemData
     public bool equipable;
     public InBattleAutouseCondition autoUseCondition;
 
-    public virtual void InitiateInBattle(PokemonBattleData user)
+    public virtual List<BattleTrigger> InitiateInBattle(PokemonBattleData user)
     {
+        List<BattleTrigger> triggers = new List<BattleTrigger>();
         BattleManager battle = BattleMaster.GetInstance().GetCurrentBattle();
         switch (autoUseCondition)
         {
             case InBattleAutouseCondition.HalfHealth:
                 BattleTriggerPokemonHalfHealthUseItem trigger = new BattleTriggerPokemonHalfHealthUseItem(user, this, true);
                 trigger.maxTriggers = 1;
+                triggers.Add(trigger);
                 battle.AddTrigger(trigger);
                 break;
         }
+        return triggers;
     }
     public override ItemTargetType GetItemTargetType()
     {

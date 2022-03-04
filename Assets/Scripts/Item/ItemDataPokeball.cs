@@ -42,12 +42,16 @@ public class ItemDataPokeball : ItemData
         PlayAnimations(result);
         if (result.wasCaptured)
         {
+            bool wasAddedToparty = PartyMaster.GetInstance().AddPartyMember(result.pokemon.GetPokemonCaughtData());
             PlaySuccessAnim();
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(BattleAnimatorMaster.GetInstance().pokemonCaughtClip,1,true));
             BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartCaptureSuccessText(result.pokemon.GetName());
+            if (!wasAddedToparty)
+            {
+                BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartPokemonBoxSent(result.pokemon.GetName());
+            }
             BattleMaster.GetInstance()?.ClearBattleEvents();
             BattleMaster.GetInstance()?.GetCurrentBattle()?.HandleBattleEnd(BattleTeamId.Team1, true);
-            PartyMaster.GetInstance().AddPartyMember(result.pokemon.GetPokemonCaughtData());
         }
         else
         {

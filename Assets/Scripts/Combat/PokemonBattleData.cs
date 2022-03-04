@@ -11,6 +11,7 @@ public class PokemonBattleData
     // Works for pokemon that have moves/items that change typing
     public List<PokemonTypeId> inBattleTypes = new List<PokemonTypeId>();
     public AbilityId abilityId;
+    public PokemonBattleDataItem heldItem;
 
     public static int minMaxStatLevelChange = 6;
 
@@ -18,6 +19,7 @@ public class PokemonBattleData
     {
         this.battleId = battleId;
         this.pokemon = pokemon;
+        heldItem = new PokemonBattleDataItem(pokemon.GetEquippedItem());
         statusEffects = new List<StatusEffect>();
         inBattleTypes = new List<PokemonTypeId>();
     }
@@ -42,7 +44,7 @@ public class PokemonBattleData
     {
         inBattleTypes = pokemon.GetPokemonBaseData().types;
         abilityId = pokemon.abilityId;
-        pokemon?.equippedItem?.InitiateInBattle(this);
+        heldItem.Initiate(this);
         AbilityData ad = AbilityMaster.GetInstance().GetAbility(abilityId);
         ad.Initialize(this);
         if (statusEffects == null)
@@ -94,6 +96,18 @@ public class PokemonBattleData
             return 2f / (2f - statChangeLevel);
     }
 
+    public void UnequipItem()
+    {
+        heldItem.Remove();
+        heldItem = null;
+    }
+
+    public void EquippedItem(ItemDataOnPokemon item)
+    {
+        heldItem = new PokemonBattleDataItem(item);
+        heldItem.Initiate(this);
+    }
+
     public PokemonBattleStats GetBattleStats()
     {
         PokemonBattleStats finalStats = new PokemonBattleStats();
@@ -104,6 +118,9 @@ public class PokemonBattleData
         finalStats.spAttack = (int)(GetMainStatMultiplier(statsChangeLevel.spAttack) * baseStats.spAttack);
         finalStats.spDefense = (int)(GetMainStatMultiplier(statsChangeLevel.spDefense) * baseStats.spDefense);
         finalStats.speed = (int)(GetMainStatMultiplier(statsChangeLevel.speed) * baseStats.speed);
+        finalStats.accuracy = statsLevel.accuracy;
+        finalStats.evasion = statsLevel.evasion;
+        finalStats.critical = statsLevel.critical;
         return finalStats;
     }
     public int GetMaxHealth()

@@ -6,5 +6,6 @@ public enum MoveCategoryId
 {
     physical = 0,
     special = 1,
-    status = 2
+    status = 2,
+    none = 4
 }

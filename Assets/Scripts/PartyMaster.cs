@@ -38,6 +38,11 @@ public class PartyMaster : MonoBehaviour
             {
                 party.Add(new PokemonCaughtData(pp));
             }
+            pokemonBox = new List<PokemonCaughtData>();
+            foreach (PersistedPokemon pp in save.persistedBox)
+            {
+                pokemonBox.Add(new PokemonCaughtData(pp));
+            }
         }
     }
 
@@ -48,7 +53,13 @@ public class PartyMaster : MonoBehaviour
         {
             persistedPokemon.Add(pokemon.GetSave());
         }
+        List<PersistedPokemon> persistedBox = new List<PersistedPokemon>();
+        foreach (PokemonCaughtData pokemon in pokemonBox)
+        {
+            persistedBox.Add(pokemon.GetSave());
+        }
         SaveMaster.Instance.activeSaveFile.persistedParty = persistedPokemon;
+        SaveMaster.Instance.activeSaveFile.persistedBox = persistedBox;
     }
 
     public List<PokemonCaughtData> GetParty()
@@ -65,11 +76,18 @@ public class PartyMaster : MonoBehaviour
         party[swapedIndex] = pokemonAux;
     }
 
-    public void AddPartyMember(PokemonCaughtData newPokemon)
+    // Returns true if the pokemon was added to the party and false if it was sent to the box
+    public bool AddPartyMember(PokemonCaughtData newPokemon)
     {
         if (CanAddPartyMember())
         {
             party.Add(newPokemon);
+            return true;
+        }
+        else
+        {
+            pokemonBox.Add(newPokemon);
+            return false;
         }
     }
 

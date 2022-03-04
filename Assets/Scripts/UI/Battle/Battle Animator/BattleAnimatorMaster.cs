@@ -305,6 +305,18 @@ public class BattleAnimatorMaster : MonoBehaviour
             ))
         );
     }
+    public void AddEventBattleFlowcartPokemonBoxSent(string pokemonName)
+    {
+        AddEvent(new BattleAnimatorEventNarrative(
+            new BattleTriggerMessageData(
+                battleFlowchart,
+                "Pokemon Box Sent",
+                new Dictionary<string, string>() {
+                    { "pokemon", pokemonName },
+                }
+            ))
+        );
+    }
     public void AddEventBattleFlowcartEscapeFail(string trainer)
     {
         AddEvent(new BattleAnimatorEventNarrative(
@@ -343,6 +355,13 @@ public class BattleAnimatorMaster : MonoBehaviour
         battleFlowchart.SetStringVariable("pokemon", moveEvent.pokemon.GetName());
         battleFlowchart.SetStringVariable("move", moveEvent.move.moveName);
         battleFlowchart.ExecuteBlock("Move Use");
+    }
+    public void ExecuteMissMoveFlowchart(BattleEventUseMove moveEvent)
+    {
+        battleFlowchart.StopAllBlocks();
+        battleFlowchart.SetStringVariable("pokemon", moveEvent.pokemon.GetName());
+        battleFlowchart.SetStringVariable("move", moveEvent.move.moveName);
+        battleFlowchart.ExecuteBlock("Move Miss");
     }
 
     public void ExecuteEffectivenessFlowchart(BattleTypeAdvantageType advantageType)

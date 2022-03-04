@@ -17,10 +17,11 @@ public class PokemonBaseData : ScriptableObject
     public float captureRate;
     public float baseFriendship;
     public float baseExp = 50;
+    public string pokedexEntry;
     public List<PokemonMoveLearn> levelUpMoves;
     public List<PokemonBaseEvolution> evolutions;
     public PokemonAnimationController battleAnimation;
-    public string pokedexEntry;
+    public WorldInteractableBrainFollower overWorldPrefab;
 
     public AudioClip GetCry() { return cry; }
 
@@ -75,5 +76,10 @@ public class PokemonBaseData : ScriptableObject
     public PokemonAnimationController GetAnimatorController()
     {
         return battleAnimation;
+    }
+
+    public WorldInteractableBrainFollower GetOverWorldPrefab()
+    {
+        return overWorldPrefab;
     }
 }

@@ -20,7 +20,6 @@ public class BattleTriggerPokemonHalfHealthUseItem : BattleTriggerOnPokemonDamag
             if (maxTriggers > 0)
             {
                 BattleMaster.GetInstance().GetCurrentBattle().AddItemPokemonUseEvent(battleEvent.pokemon, (ItemDataOnPokemon) item, true);
-                battleEvent.pokemon.pokemon.equippedItem = null;
             }
         }
         else

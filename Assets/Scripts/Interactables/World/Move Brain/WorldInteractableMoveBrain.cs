@@ -33,6 +33,16 @@ public class WorldInteractableMoveBrain : MonoBehaviour
         collisionTilemap = currentMap.collisionTilemap;
         target = transform.position;
     }
+
+    public string GetIdentifier()
+    {
+        return moveIdentifier;
+    }
+
+    public void SetTarget(Vector3 newTarget)
+    {
+        target = newTarget;
+    }
     // return time it takes to complete current walk
     public float AddDirection(MoveBrainDirectionData direction)
     {
@@ -45,11 +55,11 @@ public class WorldInteractableMoveBrain : MonoBehaviour
         }
         return movesSum / speed;
     }
-    bool HasReachedTarget()
+    protected bool HasReachedTarget()
     {
         return Vector2.Distance(transform.position, target) == 0;
     }
-    Vector2 GetCurrentDirection()
+    protected Vector2 GetCurrentDirection()
     {
         if (cachedDirections.Count == 0)
             return Vector2.zero;
@@ -95,7 +105,7 @@ public class WorldInteractableMoveBrain : MonoBehaviour
         }
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (HasReachedTarget())
         {

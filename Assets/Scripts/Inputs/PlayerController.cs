@@ -17,12 +17,16 @@ public class PlayerController : MonoBehaviour
     public Sprite preview;
     public AudioClip jumpClip;
 
+    // Instanciated on play
+    public List<WorldInteractableBrainFollower> followers = new List<WorldInteractableBrainFollower>();
+
     private Controls controls;
     private bool wantsToMove = false;
     private Vector2 target;
     private Vector2 cacheDirection;
     private bool waterMode = false;
     private bool jumping = false;
+    private List<Vector3> movements = new List<Vector3>();
 
     List<MoveBrainDirectionData> storedDirections = new List<MoveBrainDirectionData>();
 
@@ -47,6 +51,7 @@ public class PlayerController : MonoBehaviour
         waterTilemap = map.waterTilemap;
         collisionTilemap = map.collisionTilemap;
         target = transform.position;
+        UpdatePokeFollower();
     }
 
     void Start()
@@ -174,8 +179,55 @@ public class PlayerController : MonoBehaviour
         return movesSum / speed;
     }
 
+    public void AddFollower(WorldInteractableBrainFollower newFollowerPrefab)
+    {
+        WorldInteractableBrainFollower newFollower = Instantiate(newFollowerPrefab);
+        followers.Add(newFollower);
+    }
+
+    public void UpdatePokeFollower()
+    {
+        List<WorldInteractableBrainFollower> newList = new List<WorldInteractableBrainFollower>();
+        foreach (WorldInteractableBrainFollower follow in followers)
+        {
+            if (follow.GetIdentifier() == "Pokefollower")
+            {
+                Destroy(follow.gameObject);
+            }
+            else
+            {
+                newList.Add(follow);
+            }
+        }
+        followers = newList;
+        PokemonCaughtData current = PartyMaster.GetInstance().GetFirstAvailablePokemon();
+        if (current != null)
+        {
+            WorldInteractableBrainFollower followerPrefab = current.GetPokemonBaseData().GetOverWorldPrefab();
+            WorldInteractableBrainFollower follower = Instantiate(followerPrefab);
+            follower.transform.position = transform.position;
+            followers.Insert(0, follower);
+        }
+    }
+
+    public void NotifyMoveToFollowers(Vector3 direction)
+    {
+        movements.Insert(0, direction);
+        // Always 1 block away from previous
+        int index = 1;
+        foreach (WorldInteractableBrainFollower follower in followers)
+        {
+            if (index < movements.Count)
+            {
+                follower.SetTarget(movements[index]);
+
+            }
+        }
+    }
+
     void Update()
     {
+        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.z;
         if (HasReachedTarget())
         {
             if (storedDirections.Count > 0)
@@ -188,7 +240,9 @@ public class PlayerController : MonoBehaviour
                 }
                 jumping = storedDirections[0].jump;
                 if (!justTurn)
+                {
                     target = transform.position + (Vector3)direction;
+                }
                 animator.SetFloat("Horizontal", GetCurrentStoredDirection().x);
                 animator.SetFloat("Vertical", GetCurrentStoredDirection().y);
                 storedDirections.RemoveAt(0);
@@ -200,6 +254,7 @@ public class PlayerController : MonoBehaviour
                 if (CanMove(cacheDirection) && !isInteractionPlaying)
                 {
                     target = transform.position + (Vector3)cacheDirection;
+                    NotifyMoveToFollowers(target);
                 }
                 else
                 {

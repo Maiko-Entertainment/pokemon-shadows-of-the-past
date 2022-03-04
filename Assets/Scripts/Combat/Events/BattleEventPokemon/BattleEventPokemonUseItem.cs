@@ -13,5 +13,10 @@
     public override void Execute()
     {
         item.UseOnPokemonBattle(pokemon, isPokemonUsingIt);
+        pokemon.UnequipItem();
+        if (item.isConsumable)
+        {
+            pokemon.GetPokemonCaughtData().UnequipItem();
+        }
     }
 }

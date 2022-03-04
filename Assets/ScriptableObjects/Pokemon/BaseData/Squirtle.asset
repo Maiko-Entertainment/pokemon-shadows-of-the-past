@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Squirtle
+  m_EditorClassIdentifier: 
+  pokemonId: 7
+  species: Squirtle
+  icon: {fileID: 3060233639268267844, guid: 095bf2f2fcf35e946a36e7e92ea3c9f6, type: 3}
+  cry: {fileID: 8300000, guid: 5fffe14d4a0353048a1f999cee76460d, type: 3}
+  baseStats:
+    health: 44
+    attack: 48
+    defense: 65
+    spAttack: 50
+    spDefense: 64
+    speed: 43
+  types: 01000000
+  abilities:
+  - abilityId: 3
+    abilityPriority: 5
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 0
+  baseFriendship: 70
+  baseExp: 50
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 3cdfe265b6824f84593561171fe9f81a, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 945c47594f933cb4590f39fa54885295, type: 2}
+    learnType: 0
+    levelRequired: 7
+  - move: {fileID: 11400000, guid: 4610f58e432cf8e4fbaebc36182e9a5c, type: 2}
+    learnType: 0
+    levelRequired: 9
+  - move: {fileID: 11400000, guid: a475836ff5a04134f9b4e40053644e25, type: 2}
+    learnType: 0
+    levelRequired: 12
+  - move: {fileID: 11400000, guid: 35390eca0b6cae24296912f5f8b94f50, type: 2}
+    learnType: 0
+    levelRequired: 54
+  evolutions:
+  - pokemonId: 8
+    evolutionData:
+      evolutionType: 0
+      value: 16
+  battleAnimation: {fileID: 8678368770092500934, guid: b74584be72e7a2748a5d84649ad910c0, type: 3}
+  pokedexEntry: It shelters itself in its shell, then strikes back with spouts of
+    water at every opportunity.

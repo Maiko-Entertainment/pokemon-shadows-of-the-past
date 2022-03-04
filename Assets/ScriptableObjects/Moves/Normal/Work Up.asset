@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
+  m_Name: Work Up
+  m_EditorClassIdentifier: 
+  moveId: 67
+  moveName: Work Up
+  power: 0
+  hitChance: 1
+  alwaysHit: 0
+  uses: 30
+  typeId: 10
+  categoryId: 2
+  targetType: 1
+  statusChances: []
+  moveStatChanges:
+  - statsAmountChange:
+      attack: 1
+      defense: 0
+      spAttack: 1
+      spDefense: 0
+      speed: 0
+      accuracy: 0
+      evasion: 0
+      critical: 0
+    changeChance: 1
+    targetType: 1
+  isContact: 0
+  drainMultiplier: 0
+  moveCritUp: 0
+  priority: 0
+  description: Raises the users attack and sp.attack by 1 stage.
+  animations:
+  - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}

@@ -468,6 +468,33 @@ public class BattleManager
         return damageSummary;
     }
 
+    public bool CheckForMoveHit(BattleEventUseMove battleEvent)
+    {
+        PokemonBattleData user = battleEvent.pokemon;
+        MoveData move = battleEvent.move;
+        float moveHitChance = move.GetAccuracy(user);
+        if (move.targetType != MoveTarget.Enemy)
+        {
+            return true;
+        }
+        else
+        {
+            PokemonBattleData enemy = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, move.targetType);
+            PokemonBattleStats enemyStats = enemy.GetBattleStats();
+            float random = Random.value;
+            float chanceToDodge = GetMultiplierForAccuracyEvasion(enemyStats.evasion, false);
+            float chanceToHit = GetMultiplierForAccuracyEvasion(user.GetBattleStatsChangeLevels().accuracy, false);
+            float finalChanceToHit = moveHitChance * chanceToHit * chanceToDodge;
+            return random < finalChanceToHit;
+        }
+    }
+
+    public float GetMultiplierForAccuracyEvasion(int stage, bool isAccuracy)
+    {
+        float multiplier = stage >= 0 ? (3f / (3 + stage)) : ((3 - stage) / 3f);
+        return isAccuracy ? 1 - multiplier : multiplier;
+    }
+
     public BattleTypeAdvantageType GetSimpleAdvantageTypeFromMult(float multiplier)
     {
         if (multiplier > 1)
@@ -558,6 +585,9 @@ public class BattleManager
                     status = new StatusEffectParalyzed(pokemon);
                     typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Electric);
                     gainStatusBlockName = "Paralyze Gain";
+                    break;
+                case StatusEffectId.Charged:
+                    status = new StatusEffectCharged(pokemon);
                     break;
             }
         }
