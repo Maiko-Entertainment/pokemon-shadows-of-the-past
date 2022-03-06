@@ -152,7 +152,11 @@ public class BattleManager
 
             return new BattleTurnDesitionPokemonMove(move, team2Pokemon, BattleTeamId.Team2);
         }
-        return null;
+        else
+        {
+            MoveEquipped struggle = new MoveEquipped(MovesMaster.Instance.GetMove(MoveId.Struggle));
+            return new BattleTurnDesitionPokemonMove(struggle, team2Pokemon, BattleTeamId.Team2);
+        }
     }
 
     public PokemonBattleData GetTeamActivePokemon(BattleTeamId teamId)
@@ -261,11 +265,26 @@ public class BattleManager
 
     }
 
+    public List<PokemonBattleData> GetAllAvailablePokemon(BattleTeamId teamId)
+    {
+        List<PokemonBattleData> available = new List<PokemonBattleData>();
+        foreach(PokemonBattleData pkmn in teamId == BattleTeamId.Team1 ? team1.pokemon : team2.pokemon)
+        {
+            if (!pkmn.IsFainted())
+            {
+                available.Add(pkmn);
+            }
+        }
+        return available;
+    }
+
     public void HandleExpGain(PokemonBattleData defeatedPokemon)
     {
+        BattleMaster bm = BattleMaster.GetInstance();
         int totalPokemon = 0;
-        int exp = BattleMaster.GetInstance().GetExperienceForDefeating(defeatedPokemon);
-        foreach (PokemonBattleData pokemonBattle in participatedPokemon)
+        int exp = bm.GetExperienceForDefeating(defeatedPokemon);
+        List<PokemonBattleData> finalPokemonList = bm.isExpShareOn ? team1.pokemon : participatedPokemon;
+        foreach (PokemonBattleData pokemonBattle in finalPokemonList)
         {
             if (!pokemonBattle.IsFainted())
             {
@@ -275,14 +294,27 @@ public class BattleManager
         }
         if (totalPokemon == 0)
             return;
-        int expGained = exp / totalPokemon;
-        foreach (PokemonBattleData pokemonBattle in participatedPokemon)
+        int expGained = bm.isExpShareOn ? exp : (int)(exp / totalPokemon * 1.25f);
+        foreach (PokemonBattleData pokemonBattle in finalPokemonList)
         {
             if (!pokemonBattle.IsFainted())
             {
-                
-                eventManager.AddEvent(new BattleEventPokemonGainExp(pokemonBattle, expGained));
+                // Checks if active pokemon is recieving
+                if (GetTeamActivePokemon(BattleTeamId.Team1).battleId == pokemonBattle.battleId)
+                {
+                    // eventManager.AddEvent(new BattleEventPokemonGainExp(pokemonBattle, (bm.isExpShareOn ? 1 : 1) * expGained));
+                }
+                else
+                {
+                    eventManager.AddEvent(new BattleEventPokemonGainExp(pokemonBattle, expGained));
+                }
             }
+        }
+        // Gives active pokemon exp at the end to not mess with animator events order
+        if (GetTeamActivePokemon(BattleTeamId.Team1) != null)
+        {
+            // If it does and it exp share active x2 it to make it 100% exp again
+            eventManager.AddEvent(new BattleEventPokemonGainExp(GetTeamActivePokemon(BattleTeamId.Team1), expGained));
         }
         eventManager.ResolveAllEventTriggers();
     }
@@ -588,6 +620,10 @@ public class BattleManager
                     break;
                 case StatusEffectId.Charged:
                     status = new StatusEffectCharged(pokemon);
+                    break;
+                case StatusEffectId.Hopeless:
+                    status = new StatusEffectHopeless(pokemon);
+                    gainStatusBlockName = "Hopeless Gain";
                     break;
             }
         }

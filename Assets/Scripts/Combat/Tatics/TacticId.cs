@@ -10,4 +10,5 @@ public enum TacticId
     ThrowStick = 100,
     Peekaboo = 101,
     GiftSeeds = 102,
+    HopelessRoar = 103,
 }

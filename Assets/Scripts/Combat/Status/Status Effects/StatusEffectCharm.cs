@@ -5,29 +5,18 @@ using UnityEngine;
 
 public class StatusEffectCharm : StatusEffect
 {
+    public BattleTriggerDamageMods mods = new BattleTriggerDamageMods(0.5f);
     public StatusEffectCharm(PokemonBattleData pokemon): base(pokemon)
     {
         effectId = StatusEffectId.Charmed;
         minTurns = 99999;
-        captureRateBonus = 60;
+        captureRateBonus = 100;
     }
     public override void Initiate()
     {
-        List<BattleAnimation> animations = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId).hitAnims;
-        BattleTrigger animTrigger = new BattleTriggerRoundEndAnimations(
-                       pokemon,
-                       pokemon,
-                       animations
-                   );
-        // Needs trigger to reduce physical attack damage
-        battleTriggers.Add(animTrigger);
-        foreach (BattleTrigger bt in battleTriggers)
-        {
-            BattleMaster.GetInstance()?
-                .GetCurrentBattle()?.AddTrigger(
-                    bt
-                );
-        }
+        BattleTriggerDamagePokemonChange reduceDamageTrigger = new BattleTriggerDamagePokemonChange(pokemon, mods);
+        // Charmed pokemon deal less damage
+        battleTriggers.Add(reduceDamageTrigger);
         base.Initiate();
     }
 }

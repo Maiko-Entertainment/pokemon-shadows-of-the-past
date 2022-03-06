@@ -15,8 +15,8 @@ public class WorldInteractableTouch : WorldInteractable
             Vector3 position = WorldMapMaster.GetInstance().GetPlayer().transform.position;
             Vector3 myPosition = transform.position;
             Vector3 dir = (position - myPosition).normalized;
-            moveBrain?.animator.SetFloat("Horizontal", dir.x);
-            moveBrain?.animator.SetFloat("Vertical", dir.y);
+            moveBrain?.animator.SetFloat("Horizontal", Mathf.Round(dir.x));
+            moveBrain?.animator.SetFloat("Vertical", Mathf.Round(dir.y));
         }
 
     }

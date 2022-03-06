@@ -194,7 +194,7 @@ public class PokemonCaughtData
     public int GetTotalExperienceToNextLevel(int level)
     {
         int amount = (int)(
-              1f   * Mathf.Pow(level, 2.5f)
+              level * 5 + Mathf.Pow(level * 15, 2.5f) / 1000
         );
         return amount;
     }

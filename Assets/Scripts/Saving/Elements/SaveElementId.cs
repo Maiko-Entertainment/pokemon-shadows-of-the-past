@@ -5,5 +5,6 @@ public enum SaveElementId
     characterModelId = 2,
     akaneFirstEncounterWon = 3,
     storyProgress = 4,
-    timeOfDay = 5
+    timeOfDay = 5,
+    TediursaHelpCompleted = 6
 }

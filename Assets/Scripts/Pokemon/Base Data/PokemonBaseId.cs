@@ -28,6 +28,8 @@ public enum PokemonBaseId
     Mareep = 179,
     Flaaffy = 180,
     Ampharos = 181,
+    Teddiursa = 216,
+    Ursaring = 217,
     Ralts = 280,
     Kirlia = 281,
     Gardevoir = 282,

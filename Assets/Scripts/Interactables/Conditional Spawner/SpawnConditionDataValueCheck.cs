@@ -6,5 +6,6 @@ public enum SpawnConditionDataValueCheck
 {
     IsEqual = 0,
     IsLessThan = 1,
-    IsMoreThan = 2
+    IsMoreThan = 2,
+    IsDifferent = 4,
 }

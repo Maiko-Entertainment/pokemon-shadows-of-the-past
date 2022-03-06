@@ -16,7 +16,7 @@ public class FungusTriggerBattleTrainer : Command
     public override void OnEnter()
     {
         TransitionMaster.GetInstance().RunTrainerBattleTransition(trainer.transition);
-        AudioMaster.GetInstance()?.PlayMusic(trainer.battleSong);
+        AudioMaster.GetInstance()?.PlayMusic(trainer.GetBattleSong());
         StartCoroutine(TriggetBattleAfter(trainer.transition.changeTime));
     }
 

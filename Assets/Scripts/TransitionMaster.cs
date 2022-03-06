@@ -71,6 +71,14 @@ public class TransitionMaster : MonoBehaviour
         Instantiate(transition.gameObject, transitions);
     }
 
+    public void ClearTransitions()
+    {
+        foreach(Transform t in transitions)
+        {
+            Destroy(t.gameObject);
+        }
+    }
+
     public void RunToWorldTransition(ViewTransition transition)
     {
         RunTransition(transition);

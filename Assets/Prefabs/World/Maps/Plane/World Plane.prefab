@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapId: 2
   title: Plane
+  defaultSafePlacePosIndex: 0
   spawnList:
   - {fileID: 7858584014811476036}
   mapMusic: {fileID: 0}
@@ -169,6 +170,7 @@ MonoBehaviour:
   groundTilemap: {fileID: 0}
   waterTilemap: {fileID: 0}
   collisionTilemap: {fileID: 0}
+  timeOfDayEffects: []
 --- !u!114 &7393409176364292487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onStep: 0
   activateOnSpawn: 1
+  moveBrain: {fileID: 0}
   flowchartPrefab: {fileID: 5417863498036220324}
   blockNames:
   - Start
@@ -273,6 +276,7 @@ GameObject:
   - component: {fileID: 1096994055391291580}
   - component: {fileID: 8694362962604847969}
   - component: {fileID: 5953714422468374619}
+  - component: {fileID: 3016711841854520021}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -321,8 +325,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 7169932335670705601}
-  selectedCommands:
-  - {fileID: 8444310829383365275}
+  selectedCommands: []
   variables:
   - {fileID: 9141452590614239774}
   - {fileID: 7682607613166805887}
@@ -781,7 +784,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 17
   indentLevel: 0
-  clip: {fileID: 8300000, guid: 8b5ed773a30757b4cb00b4dc083097f1, type: 3}
+  clip:
+    audio: {fileID: 8300000, guid: 8b5ed773a30757b4cb00b4dc083097f1, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
 --- !u!114 &5259380647362012445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,6 +1228,7 @@ MonoBehaviour:
   - {fileID: 8489359022571588111}
   - {fileID: 5953714422468374619}
   - {fileID: 8694362962604847969}
+  - {fileID: 3016711841854520021}
   - {fileID: 8444310829383365275}
   - {fileID: 7527188606888087917}
   suppressAllAutoSelections: 0
@@ -1725,7 +1734,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 48
   indentLevel: 0
-  clip: {fileID: 8300000, guid: 226ae0746a6a5974ab6c472cb363ebd6, type: 3}
+  clip:
+    audio: {fileID: 8300000, guid: 226ae0746a6a5974ab6c472cb363ebd6, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
 --- !u!114 &7008891330434104931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,7 +1808,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 51
   indentLevel: 0
-  clip: {fileID: 8300000, guid: 8b5ed773a30757b4cb00b4dc083097f1, type: 3}
+  clip:
+    audio: {fileID: 8300000, guid: 8b5ed773a30757b4cb00b4dc083097f1, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
 --- !u!114 &1449172716411248345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,6 +2170,24 @@ MonoBehaviour:
   _duration:
     floatRef: {fileID: 0}
     floatVal: 2
+  durationOLD: 0
+--- !u!114 &3016711841854520021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417863498036220248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 67
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 6
   durationOLD: 0
 --- !u!1001 &5417863496645112268
 PrefabInstance:

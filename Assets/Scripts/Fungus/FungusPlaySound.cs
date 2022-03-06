@@ -7,7 +7,7 @@ using Fungus;
 )]
 public class FungusPlaySound : Command
 {
-    public AudioClip clip;
+    public AudioOptions clip = new AudioOptions();
     public override void OnEnter()
     {
         Continue();
@@ -20,7 +20,7 @@ public class FungusPlaySound : Command
     }
     public override string GetSummary()
     {
-        string clipName = clip != null ? clip.name : "None";
+        string clipName = clip != null && clip.audio ? clip.audio.name + " - Pitch: "+clip.pitch : "None";
         return clipName;
     }
 }

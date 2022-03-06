@@ -20,11 +20,13 @@ public class BattleEndEvent
     {
         if (e.winningTeamId == BattleTeamId.Team1)
         {
-            InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, onWinBlockName));
+            if (flowchart && onWinBlockName!= "")
+                InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, onWinBlockName));
         }
         else if (e.winningTeamId == BattleTeamId.Team2)
         {
-            InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, onLoseBlockName));
+            if (flowchart && onLoseBlockName != "")
+                InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, onLoseBlockName));
         }
     }
 }

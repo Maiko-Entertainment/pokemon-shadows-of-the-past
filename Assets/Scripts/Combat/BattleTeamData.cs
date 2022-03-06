@@ -46,6 +46,7 @@ public class BattleTeamData
         foreach(PokemonBattleData pkmn in pokemon)
         {
             pkmn.battleId = (teamId == BattleTeamId.Team1 ? 0 : 100) + index;
+            index++;
         }
     }
 

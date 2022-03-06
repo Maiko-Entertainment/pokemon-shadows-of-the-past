@@ -204,9 +204,12 @@ public class PlayerController : MonoBehaviour
         if (current != null)
         {
             WorldInteractableBrainFollower followerPrefab = current.GetPokemonBaseData().GetOverWorldPrefab();
-            WorldInteractableBrainFollower follower = Instantiate(followerPrefab);
-            follower.transform.position = transform.position;
-            followers.Insert(0, follower);
+            if (followerPrefab)
+            {
+                WorldInteractableBrainFollower follower = Instantiate(followerPrefab);
+                follower.transform.position = transform.position;
+                followers.Insert(0, follower);
+            }
         }
     }
 
@@ -227,7 +230,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.z;
+        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y * -1;
         if (HasReachedTarget())
         {
             if (storedDirections.Count > 0)

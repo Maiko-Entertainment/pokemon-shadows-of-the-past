@@ -14,6 +14,7 @@ public class DamageSummary
     public BattleTypeAdvantageType advantageType;
     public PokemonBattleData pokemonSource;
     public float healOpponentByDamage = 0f;
+    public bool resistAt1Health = false;
 
     public DamageSummary(
         PokemonTypeId damageType, 
@@ -29,6 +30,13 @@ public class DamageSummary
         this.sourceId = sourceId;
         this.advantageType = advantageType;
         this.pokemonSource = pokemonSource;
+    }
+
+    public DamageSummary ApplyMods(BattleTriggerDamageMods mods)
+    {
+        damageAmount = (int)(damageAmount * mods.damageMultiplier);
+        resistAt1Health = resistAt1Health || mods.applyEndure;
+        return this;
     }
 
     public override string ToString()

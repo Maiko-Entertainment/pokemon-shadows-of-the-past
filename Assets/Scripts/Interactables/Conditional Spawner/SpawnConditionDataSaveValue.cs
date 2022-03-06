@@ -16,9 +16,11 @@ public class SpawnConditionDataSaveValue
         switch (condition)
         {
             case SpawnConditionDataValueCheck.IsLessThan:
-                return saveValue < value;
+                return saveValue <= value;
             case SpawnConditionDataValueCheck.IsMoreThan:
-                return saveValue > value;
+                return saveValue >= value;
+            case SpawnConditionDataValueCheck.IsDifferent:
+                return saveValue != value;
             default:
                 return saveValue == value;
         }

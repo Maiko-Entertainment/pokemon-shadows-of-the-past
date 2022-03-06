@@ -16,5 +16,6 @@ public enum StatusEffectId
     Sunny = 12,
     Rainy = 13,
     Hailing = 14,
-    Charged = 15
+    Charged = 15,
+    Hopeless = 16
 }

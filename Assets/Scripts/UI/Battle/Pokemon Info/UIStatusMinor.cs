@@ -14,7 +14,8 @@ public class UIStatusMinor : MonoBehaviour
     public UIStatusMinor Load(StatusEffectData status)
     {
         this.status = status;
-        icon.sprite = status.icon;
+        if (status.icon)
+            icon.sprite = status.icon;
         statusName.text = status.statusName;
         return this;
     }

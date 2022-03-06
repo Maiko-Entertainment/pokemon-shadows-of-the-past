@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class WorldInteractableMoveBrain : MonoBehaviour
+public class WorldInteractableMoveBrain : WorldInteractable
 {
     public string moveIdentifier;
 

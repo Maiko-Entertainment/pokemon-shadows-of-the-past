@@ -12,6 +12,11 @@
         }
     }
 
+    public virtual bool Execute(BattleEventPokemon battleEvent)
+    {
+        return base.Execute(battleEvent);
+    }
+
     public override string ToString()
     {
         return ""+pokemon.pokemon.pokemonName;

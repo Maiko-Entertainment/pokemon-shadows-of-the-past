@@ -16,5 +16,6 @@ public class BattleEventRoundEnd : BattleEvent
         BattleTeamData team1Data = BattleMaster.GetInstance().GetCurrentBattle().GetTeamData(BattleTeamId.Team1);
         BattleMaster.GetInstance().GetCurrentBattle().SetSelectedTactic(null);
         team1Data.IncreaseTacticGauge(1);
+        BattleMaster.GetInstance().GetCurrentBattle().turnsPassed++;
     }
 }

@@ -71,6 +71,8 @@ GameObject:
   - component: {fileID: 8538868900557355569}
   - component: {fileID: 5198712418587088369}
   - component: {fileID: 1140195350733195681}
+  - component: {fileID: 6517656624077170036}
+  - component: {fileID: 2327580458882885014}
   m_Layer: 0
   m_Name: Bob First Encouter Flowchart
   m_TagString: Untagged
@@ -119,9 +121,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 131481226648098675}
+  - {fileID: 4340097691500858817}
   selectedCommands:
-  - {fileID: 1140195350733195681}
+  - {fileID: 2327580458882885014}
   variables:
   - {fileID: 1355108208977226213}
   - {fileID: 7282840463717553547}
@@ -171,6 +173,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 6517656624077170036}
   - {fileID: 7011887521593249658}
   - {fileID: 7390296466300929566}
   - {fileID: 3054759609409733785}
@@ -178,6 +181,7 @@ MonoBehaviour:
   - {fileID: 6665995043642168743}
   - {fileID: 5689951791348936880}
   - {fileID: 8415388254048868878}
+  - {fileID: 2327580458882885014}
   - {fileID: 1958969579815934602}
   - {fileID: 1386640348433199182}
   - {fileID: 5597812538018648256}
@@ -889,7 +893,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 29
   indentLevel: 0
-  clip: {fileID: 8300000, guid: f0fd1177aee09854c8fdcf3f95350fd8, type: 3}
+  clip:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
 --- !u!114 &7028108613870569670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,6 +1549,40 @@ MonoBehaviour:
   move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
+--- !u!114 &6517656624077170036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52aa8c0a3a1dec94695e072bd19b6369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 52
+  indentLevel: 0
+  transition: {fileID: 9161319405032701798, guid: d07b3625acd17704191032e8673b7181, type: 3}
+  destroyprevious: 0
+  waitForEnd: 0
+--- !u!114 &2327580458882885014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52aa8c0a3a1dec94695e072bd19b6369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 53
+  indentLevel: 0
+  transition: {fileID: 5167105388578258930, guid: 14833ba700e72ab4fa6d19a5f940d1d2, type: 3}
+  destroyprevious: 1
+  waitForEnd: 0
 --- !u!1001 &5335595161065517666
 PrefabInstance:
   m_ObjectHideFlags: 0

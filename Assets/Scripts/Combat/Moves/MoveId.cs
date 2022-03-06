@@ -84,5 +84,12 @@ public enum MoveId
     ChargeBeam = 77,
     Thunder = 78,
     Incinerate = 79,
+    Lick = 80,
+    FakeTears = 81,
+    Howl = 82,
+    FlameWheel = 83,
+    PlayRough = 84,
+    ExtremeSpeed = 85,
+    Struggle = 10001,
     SelfHit = 10000
 }

@@ -14,7 +14,10 @@ public class PokemonBattleDataItem
 
     public void Initiate(PokemonBattleData pokemon)
     {
-        battleTriggers = equippedItem.InitiateInBattle(pokemon);
+        if (equippedItem)
+        {
+            battleTriggers = equippedItem.InitiateInBattle(pokemon);
+        }
     }
 
     public void Remove()

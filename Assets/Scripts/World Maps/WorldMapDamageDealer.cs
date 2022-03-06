@@ -19,6 +19,7 @@ public class WorldMapDamageDealer : MonoBehaviour
             DamageSummary summary = BattleMaster.GetInstance().CalculateOutOfBattleDamage(pokemon, damage);
             pokemon.ChangeHealth(summary.damageAmount * -1);
             UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
+            WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
         }
     }
 

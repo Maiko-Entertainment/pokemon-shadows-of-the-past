@@ -82,6 +82,7 @@ public class PartyMaster : MonoBehaviour
         if (CanAddPartyMember())
         {
             party.Add(newPokemon);
+            UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
             return true;
         }
         else

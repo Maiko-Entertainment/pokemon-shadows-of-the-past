@@ -6,12 +6,11 @@ public class TrainerCombatData : ScriptableObject
 {
     public BattleTeamData battleTeamData;
     public BattleData battleData;
-    public AudioClip battleSong;
     public ViewTransition transition;
     
     public AudioClip GetBattleSong()
     {
-        return battleSong;
+        return battleData.battleMusic;
     }
 
     public BattleTeamData GetTeambattleData()

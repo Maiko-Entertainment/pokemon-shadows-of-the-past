@@ -8,7 +8,7 @@ public class PokemonBaseEvolution
     {
         switch (evolutionData.evolutionType)
         {
-            default:
+            case PokemonEvolutionType.level:
                 if (pokemon.GetLevel() >= evolutionData.value)
                 {
                     return true;

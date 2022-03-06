@@ -58,6 +58,7 @@ public class ItemDataPokeball : ItemData
             PlayFailAnim();
             BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartCaptureFailText(result.pokemon.GetName());
         }
+        HandleAfterUse();
     }
 
     public void PlaySuccessAnim()

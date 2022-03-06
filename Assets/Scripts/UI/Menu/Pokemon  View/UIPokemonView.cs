@@ -91,6 +91,7 @@ public class UIPokemonView : MonoBehaviour
             if (swapingPokemon != null)
             {
                 Swap(currentPokemon);
+                WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
             }
             else
             {

@@ -8,13 +8,12 @@ public class UIPokemonInfo : MonoBehaviour
 {
     public UIStat statPrefab;
 
-    public Transform statsContainer;
-
     public Image itemSprite;
     public TextMeshProUGUI abilityName;
     public TextMeshProUGUI abilityDescription;
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
+    public TextMeshProUGUI expToNextLevel;
 
 
     public void Load(PokemonCaughtData pokemon)
@@ -37,5 +36,6 @@ public class UIPokemonInfo : MonoBehaviour
         AbilityData ability = AbilityMaster.GetInstance().GetAbility(pokemon.abilityId);
         abilityName.text = ability.GetName();
         abilityDescription.text = ability.GetDescription();
+        expToNextLevel.text = "<color=#34BAFF>"+pokemon.GetRemainingExperienceToNextLevel() + " EXP</color>"+" to next level (" +pokemon.GetExperience()+"/"+pokemon.GetTotalExperienceToNextLevel()+")";
     }
 }

@@ -6,11 +6,13 @@ using UnityEngine;
 public class TrainerBrainData : ScriptableObject
 {
     public Flowchart flowchart;
+    public List<TacticData> tacticsAvailable = new List<TacticData>();
 
     protected Flowchart flowchartInstance;
     public virtual void Initialize(BattleManager currentBattle)
     {
-        flowchartInstance = Instantiate(flowchart.gameObject).GetComponent<Flowchart>();
+        if (flowchart)
+            flowchartInstance = Instantiate(flowchart.gameObject).GetComponent<Flowchart>();
     }
 
     public virtual BattleTurnDesition GetTurnDesition(BattleManager currentBattle)

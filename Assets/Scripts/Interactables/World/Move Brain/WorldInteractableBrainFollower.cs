@@ -9,7 +9,7 @@ public class WorldInteractableBrainFollower : WorldInteractableMoveBrain
 
     protected override void Update()
     {
-        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.z;
+        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y * -1;
         if (followMode)
         {
             if (HasReachedTarget())
@@ -20,7 +20,7 @@ public class WorldInteractableBrainFollower : WorldInteractableMoveBrain
             else
             {
                 Vector3 direction = ((Vector3)target - transform.position).normalized;
-                if (!animator.GetBool("Moving")) animator.SetBool("Moving", true);
+                if (animator.GetBool("Moving")) animator.SetBool("Moving", true);
                 animator.SetFloat("Horizontal", direction.x);
                 animator.SetFloat("Vertical", direction.y);
                 float playerSpeed = WorldMapMaster.GetInstance().GetPlayer().speed;
