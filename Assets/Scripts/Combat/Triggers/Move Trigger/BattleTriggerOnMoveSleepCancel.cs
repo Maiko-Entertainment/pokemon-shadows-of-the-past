@@ -13,7 +13,7 @@ public class BattleTriggerOnMoveSleepCancel : BattleTriggerOnPokemonMove
     public override bool Execute(BattleEventUseMove battleEvent)
     {
 
-        if (pokemon == battleEvent.pokemon)
+        if (pokemon.battleId == battleEvent.pokemon.battleId)
         {
             return false;
         }

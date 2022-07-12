@@ -497,6 +497,7 @@ public class BattleManager
             GetSimpleAdvantageTypeFromMult(advantageMultiplier),
             attacker
             );
+        damageSummary.move = moveUsed;
         return damageSummary;
     }
 
@@ -516,7 +517,8 @@ public class BattleManager
             float random = Random.value;
             float chanceToDodge = GetMultiplierForAccuracyEvasion(enemyStats.evasion, false);
             float chanceToHit = GetMultiplierForAccuracyEvasion(user.GetBattleStatsChangeLevels().accuracy, false);
-            float finalChanceToHit = moveHitChance * chanceToHit * chanceToDodge;
+            float eventMods = battleEvent.moveMods.accuracyMultiplier;
+            float finalChanceToHit = moveHitChance * chanceToHit * chanceToDodge * eventMods;
             return random < finalChanceToHit;
         }
     }
@@ -586,8 +588,13 @@ public class BattleManager
                     break;
                 case StatusEffectId.Burn:
                     status = new StatusEffectBurn(pokemon);
-                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
+                     typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
                     gainStatusBlockName = "Burn Gain";
+                    break;
+                case StatusEffectId.Frostbite:
+                    status = new StatusEffectFrostbite(pokemon);
+                    gainStatusBlockName = "Frostbite Gain";
+                    typePreventsStatus = pokemon.GetTypeIds().Contains(status.inmuneTypes[0]);
                     break;
                 case StatusEffectId.LeechSeed:
                     status = new StatusEffectLeechSeed(pokemon);
@@ -625,6 +632,10 @@ public class BattleManager
                     status = new StatusEffectHopeless(pokemon);
                     gainStatusBlockName = "Hopeless Gain";
                     break;
+                case StatusEffectId.Flinch:
+                    status = new StatusEffectFlinch(pokemon);
+                    gainStatusBlockName = "Flinch Gain";
+                    break;
             }
         }
         if (isStatusAlready || status.isPrimary && alreadyHasPrimaryStatus) 
@@ -632,10 +643,13 @@ public class BattleManager
             // Cant add status due to type message
             BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
         }
-        else if (typePreventsStatus && isFromStatusMove)
+        else if (typePreventsStatus)
         {
-            // Display cant add message
-            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+            if (isFromStatusMove)
+            {
+                // Display cant add message
+                BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+            }
         }
         else
         {

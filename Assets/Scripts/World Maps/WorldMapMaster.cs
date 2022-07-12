@@ -82,6 +82,8 @@ public class WorldMapMaster : MonoBehaviour
         yield return new WaitForSeconds(delay);
         PlayerController player = GetPlayer();
         player.transform.position = spawn;
+        yield return new WaitForEndOfFrame();
+        player.ResetFollowersPosition();
         player.Load(currentMap);
     }
 
@@ -111,7 +113,7 @@ public class WorldMapMaster : MonoBehaviour
         return player;
     }
 
-    public PlayerController GetPlayer(int index)
+    public PlayerController GetPlayerPrefab(int index)
     {
         return playerPrefabs[index].gameObject.GetComponent<PlayerController>();
     }

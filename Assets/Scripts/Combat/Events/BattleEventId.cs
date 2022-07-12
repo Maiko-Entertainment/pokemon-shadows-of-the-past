@@ -21,5 +21,6 @@ public enum BattleEventId
     useItemOnPokemon = 13,
     pokemonLeaveCleanUp = 9,
     battleEnd = 15,
-    battleRun = 18
+    battleRun = 18,
+    animation = 19
 }

@@ -6,6 +6,7 @@ public class AbilityDataOnTouchEffect : AbilityData
 {
     public List<DamageSummarySource> damageSources = new List<DamageSummarySource>() { DamageSummarySource.Move };
     public bool triggerOnMoveContact = true;
+    public bool onlyTriggerOnOppositeGender = false;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
     public override void Initialize(PokemonBattleData pokemon)
@@ -15,6 +16,7 @@ public class AbilityDataOnTouchEffect : AbilityData
         trigger.damageSources = damageSources;
         trigger.isAbilitySource = true;
         trigger.requiresContact = triggerOnMoveContact;
+        trigger.workOnlyOnOppositeGender = onlyTriggerOnOppositeGender;
         BattleMaster.GetInstance().GetCurrentBattle().AddTrigger(trigger);
     }
 }

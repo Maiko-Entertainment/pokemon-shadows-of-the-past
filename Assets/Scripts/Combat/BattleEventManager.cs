@@ -77,7 +77,7 @@ public class BattleEventManager
                     keepGoing = btpf.Execute((BattleEventPokemonFaint)next);
                     break;
                 case BattleEventId.roundEnd:
-                    BattleTriggerOnPokemonRoundEnd btpte = (BattleTriggerOnPokemonRoundEnd)bt;
+                    BattleTriggerOnRoundEnd btpte = (BattleTriggerOnRoundEnd)bt;
                     keepGoing = btpte.Execute((BattleEventRoundEnd)next);
                     break;
                 case BattleEventId.pokemonUseMove:
@@ -124,6 +124,24 @@ public class BattleEventManager
         }
     }
 
+    public void RemoveEndOfRoundTriggers()
+    {
+        List<BattleEventId> keyList = new List<BattleEventId>(battleEvents.Keys);
+
+        foreach (BattleEventId key in keyList)
+        {
+            List<BattleTrigger> newList = new List<BattleTrigger>();
+            foreach(BattleTrigger bt in battleEvents[key])
+            {
+                bt.turnsLeft--;
+                if (bt.turnsLeft > 0)
+                {
+                    newList.Add(bt);
+                }
+            }
+            battleEvents[key] = newList;
+        }
+    }
     public List<BattleTrigger> GetTriggersForEvent(BattleEventId eventId)
     {
         if (battleEvents.ContainsKey(eventId))

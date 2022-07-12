@@ -11,4 +11,5 @@ public enum TacticId
     Peekaboo = 101,
     GiftSeeds = 102,
     HopelessRoar = 103,
+    Praise = 1000,
 }

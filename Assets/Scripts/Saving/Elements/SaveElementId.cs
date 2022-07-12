@@ -6,5 +6,6 @@ public enum SaveElementId
     akaneFirstEncounterWon = 3,
     storyProgress = 4,
     timeOfDay = 5,
-    TediursaHelpCompleted = 6
+    TediursaHelpCompleted = 6,
+    erikFirstEncounterResult = 7,
 }

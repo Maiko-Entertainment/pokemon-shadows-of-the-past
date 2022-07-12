@@ -7,6 +7,7 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
     public List<DamageSummarySource> damageSources = new List<DamageSummarySource>() { DamageSummarySource.Move };
     public bool requiresContact = true; // Only used for moves
     public bool isAbilitySource = false;
+    public bool workOnlyOnOppositeGender = false;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
 
@@ -22,20 +23,49 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
         DamageSummary summary = battleEvent.damageEvent.damageSummary;
         if (damageSources.Contains(summary.damageSource))
         {
-            // Checks for required contact requirement which applies only to moves
-            if (summary.damageSource == DamageSummarySource.Move)
+            if (!IsRestrictedByGender(battleEvent))
             {
-                MoveData moveData = MovesMaster.Instance.GetMove((MoveId)summary.sourceId);
-                // If requires contact but it doesnt have contact exits
-                if (requiresContact && !moveData.isContact)
+                // Checks for required contact requirement which applies only to moves
+                if (summary.damageSource == DamageSummarySource.Move)
                 {
-                    return base.Execute(battleEvent);
+                    MoveData moveData = MovesMaster.Instance.GetMove((MoveId)summary.sourceId);
+                    // If requires contact but it doesnt have contact exits
+                    if (requiresContact && !moveData.isContact)
+                    {
+                        return base.Execute(battleEvent);
+                    }
                 }
+                HandleStatsChanges(pokemon);
+                HandleStatusAdds(pokemon);
             }
-            HandleStatsChanges(pokemon);
-            HandleStatusAdds(pokemon);
         }
         return base.Execute(battleEvent);
+    }
+
+    public bool IsRestrictedByGender(BattleEventTakeDamageSuccess battleEvent)
+    {
+        if (workOnlyOnOppositeGender)
+        {
+            DamageSummary summary = battleEvent.damageEvent.damageSummary;
+            if (summary.pokemonSource != null)
+            {
+                PokemonCaughtData dealer = summary.pokemonSource.GetPokemonCaughtData();
+                if (!dealer.GetPokemonBaseData().isGenderless && dealer.isMale == battleEvent.pokemon.GetPokemonCaughtData().isMale)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public virtual void HandleStatsChanges(PokemonBattleData pokemon)

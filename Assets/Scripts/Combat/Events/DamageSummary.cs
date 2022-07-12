@@ -13,6 +13,7 @@ public class DamageSummary
     // Optional
     public BattleTypeAdvantageType advantageType;
     public PokemonBattleData pokemonSource;
+    public MoveData move;
     public float healOpponentByDamage = 0f;
     public bool resistAt1Health = false;
 

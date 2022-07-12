@@ -28,6 +28,7 @@ public enum PokemonBaseId
     Mareep = 179,
     Flaaffy = 180,
     Ampharos = 181,
+    Scizor = 212,
     Teddiursa = 216,
     Ursaring = 217,
     Ralts = 280,

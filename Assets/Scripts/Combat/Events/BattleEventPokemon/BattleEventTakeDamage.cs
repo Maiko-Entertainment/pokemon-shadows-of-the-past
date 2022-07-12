@@ -17,40 +17,48 @@ public class BattleEventTakeDamage : BattleEventPokemon
         base.Execute();
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         bool wasFaintedBefore = pokemon.IsFainted();
-        int healthBeforeDamage = pokemon.GetPokemonCurrentHealth();
-        resultingHealth = bm.ApplyDamage(this);
-        bm.AddEvent(new BattleEventTakeDamageSuccess(this));
-        if (resultingHealth <= 0 && !wasFaintedBefore)
+        if (!wasFaintedBefore)
         {
-            bm.AddPokemonFaintEvent(this);
-        }
-        if (damageSummary.healOpponentByDamage > 0)
-        {
-            BattleTeamId enemyId = bm.GetTeamId(pokemon) == BattleTeamId.Team1 ? BattleTeamId.Team2 : BattleTeamId.Team1;
-            PokemonBattleData pkmn = bm.GetTeamActivePokemon(enemyId);
-            if (!pkmn.IsFainted())
+            int healthBeforeDamage = pokemon.GetPokemonCurrentHealth();
+            resultingHealth = bm.ApplyDamage(this);
+            bm.AddEvent(new BattleEventTakeDamageSuccess(this));
+            if (resultingHealth <= 0)
             {
-                int healAmount = Mathf.Max(healthBeforeDamage - resultingHealth, 0);
-                bm.AddPokemonHealEvent(pkmn, new HealSummary(healAmount, HealSource.Move, damageSummary.sourceId));
+                bm.AddPokemonFaintEvent(this);
             }
+            // Handle All anims and events on hit
+            damageSummary?.move?.HandleAnimations(damageSummary.pokemonSource, pokemon);
+            damageSummary?.move?.HandleStatsChanges(damageSummary.pokemonSource);
+            damageSummary?.move?.HandleStatusAdds(damageSummary.pokemonSource);
+            damageSummary?.move?.HandleDestroy(pokemon);
+            if (damageSummary.healOpponentByDamage > 0)
+            {
+                BattleTeamId enemyId = bm.GetTeamId(pokemon) == BattleTeamId.Team1 ? BattleTeamId.Team2 : BattleTeamId.Team1;
+                PokemonBattleData pkmn = bm.GetTeamActivePokemon(enemyId);
+                if (!pkmn.IsFainted())
+                {
+                    int healAmount = Mathf.Max(healthBeforeDamage - resultingHealth, 0);
+                    bm.AddPokemonHealEvent(pkmn, new HealSummary(healAmount, HealSource.Move, damageSummary.sourceId));
+                }
+            }
+            switch (damageSummary.advantageType)
+            {
+                case BattleTypeAdvantageType.normal:
+                    AudioClip normalHit = BattleAnimatorMaster.GetInstance().normalClip;
+                    BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPlaySound(normalHit, 1, true));
+                    break;
+                case BattleTypeAdvantageType.superEffective:
+                    AudioClip superEffectiveClip = BattleAnimatorMaster.GetInstance().superEffectiveClip;
+                    BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPlaySound(superEffectiveClip,1,true));
+                    break;
+                case BattleTypeAdvantageType.resists:
+                    AudioClip weakClip = BattleAnimatorMaster.GetInstance().weakClip;
+                    BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPlaySound(weakClip, 1, true));
+                    break;
+            }
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTakeDamage(this, resultingHealth));
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTypeAdvantage(damageSummary.advantageType));
         }
-        switch (damageSummary.advantageType)
-        {
-            case BattleTypeAdvantageType.normal:
-                AudioClip normalHit = BattleAnimatorMaster.GetInstance().normalClip;
-                BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPlaySound(normalHit, 1, true));
-                break;
-            case BattleTypeAdvantageType.superEffective:
-                AudioClip superEffectiveClip = BattleAnimatorMaster.GetInstance().superEffectiveClip;
-                BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPlaySound(superEffectiveClip,1,true));
-                break;
-            case BattleTypeAdvantageType.resists:
-                AudioClip weakClip = BattleAnimatorMaster.GetInstance().weakClip;
-                BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPlaySound(weakClip, 1, true));
-                break;
-        }
-        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTakeDamage(this, resultingHealth));
-        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTypeAdvantage(damageSummary.advantageType));
     }
 
 }

@@ -32,16 +32,25 @@ public class MoveData : ScriptableObject
         battleEvent.pokemon.ReduceMovePP(this);
         PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
         bool moveHits = bm.CheckForMoveHit(battleEvent);
-        // Self targeting moves dont usually miss
-        if (moveHits || targetType == MoveTarget.Self)
+        // Move use anim
+        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
+        if (!moveHits)
         {
-            HandleStatsChanges(battleEvent.pokemon);
-            HandleStatusAdds(battleEvent.pokemon);
-            HandleDestroy(pokemonTarget);
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventMoveMiss(battleEvent));
+        }
+        else
+        {
             if (categoryId != MoveCategoryId.status)
             {
                 DamageSummary damageSummary = bm.CalculateMoveDamage(battleEvent);
                 bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
+            }
+            else
+            {
+                HandleAnimations(battleEvent.pokemon, pokemonTarget);
+                HandleStatsChanges(battleEvent.pokemon);
+                HandleStatusAdds(battleEvent.pokemon);
+                HandleDestroy(pokemonTarget);
             }
             bm.AddMoveSuccessEvent(battleEvent);
             // Negative values are used for recoil
@@ -49,16 +58,6 @@ public class MoveData : ScriptableObject
             {
                 BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this, drainMultiplier));
             }
-        }
-        // Animation Events
-        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
-        if (moveHits)
-        {
-            HandleAnimations(battleEvent.pokemon, pokemonTarget);
-        }
-        else
-        {
-            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventMoveMiss(battleEvent));
         }
     }
 

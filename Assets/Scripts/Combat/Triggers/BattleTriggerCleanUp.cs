@@ -13,7 +13,7 @@ public class BattleTriggerCleanUp : BattleTriggerOnPokemon
         this.removeOnLeaveTrigger = removeOnLeaveTrigger;
     }
 
-    public virtual bool Execute(BattleEventPokemon battleEvent)
+    public override bool Execute(BattleEventPokemon battleEvent)
     {
         if (battleEvent.pokemon == pokemon)
         {

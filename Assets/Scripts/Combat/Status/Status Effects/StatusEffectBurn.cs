@@ -47,7 +47,8 @@ public class StatusEffectBurn : StatusEffect
                     )
                 );
         BattleTriggerOnPokemonBurn triggerMove = new BattleTriggerOnPokemonBurn(
-            pokemon
+            pokemon,
+            MoveCategoryId.physical
            );
         // Needs trigger to reduce physical attack damage
         battleTriggers.Add(messageTrigger);

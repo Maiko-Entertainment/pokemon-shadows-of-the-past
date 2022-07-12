@@ -17,8 +17,10 @@ public class BattleEventPokemonFaint : BattleEventPokemon
         BattleAnimatorMaster.GetInstance()?.AddEvent(
             new BattleAnimatorEventPlaySound(pokemon.GetCry(), 0.75f));
         AudioClip faintSound = BattleAnimatorMaster.GetInstance().pokemonFaintClip;
+        AudioOptions options = new AudioOptions(faintSound, 1f);
+        options.volumeModifier = 1f;
         BattleAnimatorMaster.GetInstance()?.AddEvent(
-            new BattleAnimatorEventPlaySound(faintSound, 1, true));
+            new BattleAnimatorEventPlaySound(options, true));
         BattleAnimatorMaster.GetInstance()?.AddEvent(
             new BattleAnimatorEventPokemonFaint(pokemon)
             );

@@ -90,6 +90,15 @@ public enum MoveId
     FlameWheel = 83,
     PlayRough = 84,
     ExtremeSpeed = 85,
+    FuryAttack = 86,
+    DoubleKick = 87,
+    Headbutt = 88,
+    Pound = 89,
+    Flatter = 90,
+    IceFang = 91,
+    DoubleStrike = 92,
+    XScissor = 93,
+    SwordDance = 94,
     Struggle = 10001,
     SelfHit = 10000
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class WorldInteractableMoveBrain : WorldInteractable
+public class WorldInteractableMoveBrain : WorldInteractableTouch
 {
     public string moveIdentifier;
 
@@ -107,6 +107,7 @@ public class WorldInteractableMoveBrain : WorldInteractable
 
     protected virtual void Update()
     {
+        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y * -1;
         if (HasReachedTarget())
         {
             if (cachedDirections.Count > 0)

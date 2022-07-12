@@ -69,6 +69,16 @@ public class BattleTeamData
         }
         return null;
     }
+    public List<PokemonBattleData> GetAvailablePokemon()
+    {
+        List<PokemonBattleData> availableList = new List<PokemonBattleData>();
+        foreach (PokemonBattleData p in pokemon)
+        {
+            if (!p.IsFainted())
+                availableList.Add(p);
+        }
+        return availableList;
+    }
 
     public void SetActivePokemon(PokemonBattleData pokemon)
     {

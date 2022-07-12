@@ -9,4 +9,9 @@ public class BattleTriggerOnPokemonFaint : BattleTriggerOnPokemon
     {
         eventId = BattleEventId.pokemonFaint;
     }
+
+    public virtual bool Execute(BattleEventPokemonFaint faintEvent)
+    {
+        return base.Execute(faintEvent);
+    }
 }

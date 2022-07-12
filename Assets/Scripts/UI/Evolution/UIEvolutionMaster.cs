@@ -61,7 +61,7 @@ public class UIEvolutionMaster : MonoBehaviour
         evolvedPokemonImage.gameObject.SetActive(false);
         evolutionPanel.FadeIn();
         UIPauseMenuMaster.GetInstance().HideWorldUI();
-        AudioMaster.GetInstance().PlayMusic(null);
+        AudioMaster.GetInstance().StopMusic();
         PokemonAnimationController animator = pokemon.GetPokemonBaseData().GetAnimatorController();
         originalPokemon = Instantiate(animator);
 
@@ -81,7 +81,7 @@ public class UIEvolutionMaster : MonoBehaviour
         float transitionDurationFinal = evolutionTransitionDuration - finalGlowDuration;
         StartCoroutine(CreateLines(0.25f));
         InteractionsMaster.GetInstance().ExecuteNext(0.25f);
-        AudioMaster.GetInstance().PlayMusic(null);
+        AudioMaster.GetInstance().StopMusic();
         yield return new WaitForSeconds(1);
         AudioMaster.GetInstance().PlaySfx(evolutionStartSound);
         yield return new WaitForSeconds(2f);
@@ -118,7 +118,7 @@ public class UIEvolutionMaster : MonoBehaviour
         evolvedPokemon = Instantiate(evolution.GetAnimatorController());
         originalPokemonImage.gameObject.SetActive(false);
         evolvedPokemonImage.gameObject.SetActive(true);
-        AudioMaster.GetInstance().PlayMusic(null);
+        AudioMaster.GetInstance().StopMusic();
         yield return new WaitForSeconds(1f);
         finalWave= Instantiate(evolutionWaveFinalPrefab, evolutionFinalWaveContainer);
         Destroy(finalWave, finalWaveDuration);

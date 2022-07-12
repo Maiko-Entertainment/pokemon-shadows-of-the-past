@@ -10,7 +10,8 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
     {
         this.move = move;
         this.drainMultiplier = drainMultiplier;
-        maxTriggers = 1;
+        maxTriggers = 99999;
+        turnsLeft = 1;
     }
 
     public override bool Execute(BattleEventTakeDamageSuccess battleEvent)
@@ -30,7 +31,7 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
                 }
                 else
                 {
-                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount * -1, DamageSummarySource.Move, (int)move.moveId));
+                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount * -1, DamageSummarySource.Move, (int)move.moveId, ds.advantageType, pokemon));
                 }
             }
             else

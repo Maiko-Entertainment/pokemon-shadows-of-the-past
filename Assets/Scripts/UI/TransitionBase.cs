@@ -12,12 +12,14 @@ public class TransitionBase : MonoBehaviour
 
     public virtual void FadeIn()
     {
+        timePassed = 0;
         fading = true;
         speed = Mathf.Abs(speed);
     }
 
     public virtual void FadeOut()
     {
+        timePassed = 0;
         fading = true;
         speed = -1f * Mathf.Abs(speed);
     }

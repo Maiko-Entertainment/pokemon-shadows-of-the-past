@@ -10,9 +10,9 @@ public class TransitionSpriteFadeIn : TransitionBase
 
     void Update()
     {
-        timePassed += Time.deltaTime;
         if (fading)
         {
+            timePassed += Time.deltaTime;
             Color c = spriteRenderer.color;
             float alpha = Mathf.SmoothStep(startingAlpha, finalAlpha, timePassed * speed);
             spriteRenderer.color = new Color(c.r,c.g,c.b, alpha);

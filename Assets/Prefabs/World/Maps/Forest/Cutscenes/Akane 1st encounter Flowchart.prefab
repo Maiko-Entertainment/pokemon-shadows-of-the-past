@@ -82,6 +82,7 @@ GameObject:
   - component: {fileID: 6571376929940749280}
   - component: {fileID: 4433583570595986356}
   - component: {fileID: 2569224178388238059}
+  - component: {fileID: 2931725222180697393}
   m_Layer: 0
   m_Name: Akane 1st encounter Flowchart
   m_TagString: Untagged
@@ -129,10 +130,8 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks:
-  - {fileID: 4946835839507304033}
-  selectedCommands:
-  - {fileID: 564891733972222431}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -169,6 +168,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2931725222180697393}
   - {fileID: 1085130886184507221}
   - {fileID: 6571376929940749280}
   - {fileID: 5279357572832578035}
@@ -256,7 +256,7 @@ MonoBehaviour:
   storyText: "COME ONN MAAAN!\nI don\xB4t have all day!"
   description: 
   character: {fileID: 4976551191554627004}
-  portrait: {fileID: 21300000, guid: 573510a7bb6d9ae4d9e975a085e1c44d, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -283,7 +283,7 @@ MonoBehaviour:
   storyText: I already told you Akane, I'm all out of pokemon...
   description: 
   character: {fileID: 2900990997916848264}
-  portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
   storyText: What am I supposed to fight you with... My hands?
   description: 
   character: {fileID: 2900990997916848264}
-  portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -338,7 +338,7 @@ MonoBehaviour:
     are a-{w}{x}
   description: 
   character: {fileID: 4976551191554627004}
-  portrait: {fileID: 21300000, guid: 5d35e5edb7127f749bff588a2a330508, type: 3}
+  portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -551,7 +551,7 @@ MonoBehaviour:
   itemId: 23
   indentLevel: 0
   display: 2
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 4976551191554627004}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 0}
@@ -581,7 +581,7 @@ MonoBehaviour:
   itemId: 24
   indentLevel: 0
   display: 2
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 2900990997916848264}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 0}
@@ -629,7 +629,7 @@ MonoBehaviour:
   itemId: 27
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 4976551191554627004}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 4bd4a79ce53a95340a317662b08a8b18, type: 3}
@@ -659,7 +659,7 @@ MonoBehaviour:
   itemId: 28
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 2900990997916848264}
   replacedCharacter: {fileID: 4976551191554627004}
   portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
@@ -689,7 +689,7 @@ MonoBehaviour:
   itemId: 29
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 4976551191554627004}
   replacedCharacter: {fileID: 2900990997916848264}
   portrait: {fileID: 21300000, guid: 573510a7bb6d9ae4d9e975a085e1c44d, type: 3}
@@ -719,7 +719,7 @@ MonoBehaviour:
   itemId: 31
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 4976551191554627004}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 4bd4a79ce53a95340a317662b08a8b18, type: 3}
@@ -748,7 +748,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 33
   indentLevel: 0
-  clip: {fileID: 8300000, guid: 279ee83879b6ece4f9beaab6f4352160, type: 3}
+  clip:
+    audio: {fileID: 8300000, guid: 279ee83879b6ece4f9beaab6f4352160, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
 --- !u!114 &1474362062460155028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +816,7 @@ MonoBehaviour:
   itemId: 36
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 2900990997916848264}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
@@ -925,7 +930,7 @@ MonoBehaviour:
   itemId: 40
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 4976551191554627004}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 5d35e5edb7127f749bff588a2a330508, type: 3}
@@ -955,10 +960,10 @@ MonoBehaviour:
   itemId: 41
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 2900990997916848264}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -1115,7 +1120,7 @@ MonoBehaviour:
   itemId: 47
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 2900990997916848264}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 155547bc275b6df448b2223d1112a81b, type: 3}
@@ -1170,7 +1175,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 645.4949
-    y: 76.58248
+    y: 75.44612
     width: 152.2727
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1197,7 +1202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 853.4949
+    x: 854.6312
     y: 78.58248
     width: 129.54544
     height: 40
@@ -1464,7 +1469,7 @@ MonoBehaviour:
   itemId: 61
   indentLevel: 0
   display: 2
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 4976551191554627004}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 0}
@@ -1494,7 +1499,7 @@ MonoBehaviour:
   itemId: 62
   indentLevel: 0
   display: 2
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 2900990997916848264}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 0}
@@ -1567,7 +1572,7 @@ MonoBehaviour:
   itemId: 65
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 314749242191857039}
   character: {fileID: 4976551191554627004}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 4bd4a79ce53a95340a317662b08a8b18, type: 3}
@@ -1980,6 +1985,26 @@ MonoBehaviour:
   variableId: 3
   operation: 0
   value: 1
+--- !u!114 &2931725222180697393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460174479093708419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ff0f540016ff64ab1556db6fe1e10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 85
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 314749242191857039}
+  replacedStage: {fileID: 0}
+  useDefaultSettings: 1
+  fadeDuration: 0
+  waitUntilFinished: 0
 --- !u!1001 &484808790632453938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1989,7 +2014,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208385776147829436, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_Name
-      value: Stage
+      value: Stage Custom
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder
@@ -2037,11 +2062,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
---- !u!4 &314749242191857036 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
-  m_PrefabInstance: {fileID: 484808790632453938}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &314749242191857039 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 208385776147829437, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
@@ -2061,6 +2081,11 @@ RectTransform:
 --- !u!224 &314749242604328148 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 208385776548004838, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
+  m_PrefabInstance: {fileID: 484808790632453938}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &314749242191857036 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
   m_PrefabInstance: {fileID: 484808790632453938}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7102787251052923825

@@ -33,10 +33,12 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
         if (team == BattleTeamId.Team1)
         {
             team1Health.Load(pokemon);
+            team1Health.FadeIn();
         }
         else
         {
             team2Health.Load(pokemon);
+            team2Health.FadeIn();
         }
     }
 

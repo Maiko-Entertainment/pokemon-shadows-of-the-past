@@ -94,9 +94,9 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks: []
-  selectedCommands:
-  - {fileID: 6572490875633011866}
+  selectedBlocks:
+  - {fileID: 1962963935327411124}
+  selectedCommands: []
   variables:
   - {fileID: 3877639600803317930}
   - {fileID: 6570281684051097448}
@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 649504491968833654}
   - component: {fileID: 2812474008383817019}
   - component: {fileID: 7813589100821623859}
-  - component: {fileID: 1744970324690946633}
+  - component: {fileID: 8116557435195330429}
   m_Layer: 0
   m_Name: Dante
   m_TagString: Object
@@ -1661,7 +1661,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &1744970324690946633
+--- !u!114 &8116557435195330429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1670,13 +1670,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5315945082171587156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb31c5651e1b21d4d9b1e7d42d85f57a, type: 3}
+  m_Script: {fileID: 11500000, guid: d1229071c878ac24a84c3706305ea8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStep: 0
+  activateOnSpawn: 0
+  moveBrain: {fileID: 8116557435195330429}
+  flowchartPrefab: {fileID: 3147741779443446426}
+  blockName: Start
   moveIdentifier: Dante
   animator: {fileID: 2812474008383817019}
   innerTransform: {fileID: 3116967543234943481}
   speed: 3
+  followMode: 0
 --- !u!1 &7480662584489498894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,7 +1755,7 @@ SpriteRenderer:
   m_SortingLayerID: 733163873
   m_SortingLayer: -3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4447627360321018539, guid: fa4937bbcd57de347afcc83b5b43f2c8, type: 3}
+  m_Sprite: {fileID: 7108437342094438073, guid: fa4937bbcd57de347afcc83b5b43f2c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -228,6 +228,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ResetFollowersPosition()
+    {
+        movements.Clear();
+        foreach (WorldInteractableBrainFollower follower in followers)
+        {
+            follower.transform.position = transform.position;
+        }
+    }
+
     void Update()
     {
         animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y * -1;

@@ -1,13 +1,20 @@
-﻿public class BattleTriggerOnPokemonRoundEnd : BattleTriggerOnPokemon
+﻿public class BattleTriggerOnPokemonRoundEnd : BattleTriggerOnRoundEnd
 {
-
-    public BattleTriggerOnPokemonRoundEnd(PokemonBattleData pbd, bool deleteOnLeave = true) :
-        base(pbd, deleteOnLeave)
+    public PokemonBattleData pokemon;
+    public bool deleteOnLeave = true;
+    public BattleTriggerOnPokemonRoundEnd(PokemonBattleData pokemon, bool deleteOnLeave = true) :
+        base()
     {
-        eventId = BattleEventId.roundEnd;
+        this.deleteOnLeave = deleteOnLeave;
+        this.pokemon = pokemon;
+        if (deleteOnLeave)
+        {
+            BattleMaster.GetInstance().GetCurrentBattle()
+            .AddTrigger(new BattleTriggerCleanUp(pokemon, this));
+        }
     }
 
-    public virtual bool Execute(BattleEventRoundEnd battleEvent)
+    public override bool Execute(BattleEventRoundEnd battleEvent)
     {
         return base.Execute(battleEvent);
     }

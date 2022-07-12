@@ -14,9 +14,9 @@ public class TransitionSize : TransitionBase
     }
     void Update()
     {
-        timePassed += Time.deltaTime;
         if (fading)
         {
+            timePassed += Time.deltaTime;
             transform.localScale = Vector3.Lerp(initialSize, finalSize, timePassed * speed);
             if (pingPong && Vector3.Distance(transform.localScale, finalSize) < 0.001f)
             {

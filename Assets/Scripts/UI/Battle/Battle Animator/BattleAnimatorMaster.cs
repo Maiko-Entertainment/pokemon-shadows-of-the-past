@@ -22,9 +22,16 @@ public class BattleAnimatorMaster : MonoBehaviour
     public AudioClip levelUpClip;
     public AudioClip pokemonCaughtClip;
     public AudioClip pokemonFaintClip;
+    public AudioClip pokemonExitPokeballClip;
     public AudioClip superEffectiveClip;
     public AudioClip weakClip;
     public AudioClip normalClip;
+    public AudioClip pokeballThrowClip;
+
+    //Anims Common
+    public GameObject pokeballFrontReleaseAnimPrefab;
+    public GameObject pokeballBackReleaseAnimPrefab;
+    public GameObject pokeballGlow;
 
     // Utils
     public Material shadowMaterial;
@@ -110,15 +117,72 @@ public class BattleAnimatorMaster : MonoBehaviour
             return colorTrans.initialDelay;
         }
         else{
-            TransitionSize transition = teamTransform.gameObject.AddComponent<TransitionSize>();
-            transition.initialSize = Vector3.zero;
-            transition.finalSize = teamTransform.localScale;
-            transition.speed = 1.2f;
-            transition.FadeIn();
-            float time = 1 / transition.speed + 0.2f;
-            Destroy(transition, time);
+            float time = 1 / 1.2f + 0.1f;
+            StartCoroutine(HandlePokeballReleasePokemon(pokemon));
+            if (bd.battleType == BattleType.Trainer || bm.GetTeamId(pokemon) == BattleTeamId.Team1)
+            {
+                time += 1.5f;
+            }
             return time;
         }
+    }
+
+    private IEnumerator HandlePokeballReleasePokemon(PokemonBattleData pokemon)
+    {
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        BattleData bd = bm.GetBattleData();
+        Transform teamTransform = GetPokemonTeamTransform(pokemon).parent;
+        BattleTeamId pokemonTeam = bm.GetTeamId(pokemon);
+
+        TransitionSize pokemonIncreaseSize = teamTransform.gameObject.AddComponent<TransitionSize>();
+        pokemonIncreaseSize.initialSize = Vector3.zero;
+        pokemonIncreaseSize.finalSize = teamTransform.localScale;
+        pokemonIncreaseSize.speed = 1.4f;
+        teamTransform.localScale = Vector3.zero;
+
+        if (bd.battleType == BattleType.Trainer || pokemonTeam == BattleTeamId.Team1)
+        {
+            yield return new WaitForSeconds(0.5f);
+            GameObject pokeballAnim;
+            AudioMaster.GetInstance().PlaySfx(new AudioOptions(pokeballThrowClip));
+            if (bm.GetTeamId(pokemon) == BattleTeamId.Team2)
+            {
+                pokeballAnim = Instantiate(pokeballFrontReleaseAnimPrefab);
+            }
+            else
+            {
+                pokeballAnim = Instantiate(pokeballBackReleaseAnimPrefab);
+            }
+            pokeballAnim.transform.position = teamTransform.position + Vector3.up * (pokemonTeam == BattleTeamId.Team1 ? 1.5f : 0.5f);
+            TransitionSpriteFadeIn pokeballFade = pokeballAnim.AddComponent<TransitionSpriteFadeIn>();
+            pokeballFade.spriteRenderer = pokeballAnim.GetComponent<SpriteRenderer>();
+            pokeballFade.spriteRenderer.color = new Color(255, 255, 255, 0);
+            pokeballFade.speed = 3f;
+            // Add position Change to pokemon so it starts up
+            TransitionMoveGameObject transitionMoveUpDown = teamTransform.gameObject.AddComponent<TransitionMoveGameObject>();
+            transitionMoveUpDown.initialPosition = teamTransform.localPosition + Vector3.up * (pokemonTeam == BattleTeamId.Team1 ? 1f : 0.0f);
+            transitionMoveUpDown.finalPosition = teamTransform.localPosition;
+            transitionMoveUpDown.speed = 2f;
+            teamTransform.localPosition = transitionMoveUpDown.initialPosition;
+            pokeballFade.FadeIn();
+            yield return new WaitForSeconds(1f);
+            GameObject glow = Instantiate(pokeballGlow);
+            glow.transform.position = pokeballFade.transform.position;
+            pokeballFade.FadeOut();
+            AudioMaster.GetInstance().PlaySfx(new AudioOptions(pokemonExitPokeballClip));
+            yield return new WaitForSeconds(.25f);
+            pokemonIncreaseSize.FadeIn();
+            yield return new WaitForSeconds(.75f);
+            Destroy(pokeballAnim);
+            transitionMoveUpDown.FadeIn();
+            yield return new WaitForSeconds(0.5f);
+            Destroy(glow, 1f);
+        }
+        else
+        {
+            pokemonIncreaseSize.FadeIn();
+        }
+        Destroy(pokemonIncreaseSize, 1 / pokemonIncreaseSize.speed + 0.1f);
     }
 
     public float HandleCameraZoomPokemon(PokemonBattleData pokemon)
@@ -168,8 +232,16 @@ public class BattleAnimatorMaster : MonoBehaviour
         {
             pkmnInstance.TriggerBack();
         }
-        LoadPokemonsInfo(pokemon, pokemon.GetPokemonCurrentHealth());
+        BattleType battleType = BattleMaster.GetInstance().GetCurrentBattle().GetBattleData().battleType;
+        float showDelay = battleType == BattleType.Trainer || teamId == BattleTeamId.Team1 ? 2f : 1f;
+        StartCoroutine(ShowPokemonInfoAfter(pokemon, showDelay));
         return pkmnInstance;
+    }
+
+    IEnumerator ShowPokemonInfoAfter(PokemonBattleData pokemon, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UpdatePokemonInfo(pokemon);
     }
 
     public void GoToNextBattleAnim(float seconds=0)

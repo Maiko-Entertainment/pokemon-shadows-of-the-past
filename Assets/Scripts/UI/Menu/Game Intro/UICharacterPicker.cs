@@ -15,7 +15,7 @@ public class UICharacterPicker : MonoBehaviour
     public UICharacterPicker Load(int chraracterIndex)
     {
         this.chraracterIndex = chraracterIndex;
-        chracterPreview.sprite = WorldMapMaster.GetInstance().GetPlayer(chraracterIndex).preview;
+        chracterPreview.sprite = WorldMapMaster.GetInstance().GetPlayerPrefab(chraracterIndex).preview;
         return this;
     }
 

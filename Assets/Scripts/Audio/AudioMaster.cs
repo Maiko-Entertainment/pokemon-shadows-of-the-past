@@ -64,7 +64,6 @@ public class AudioMaster : MonoBehaviour
         audioSource.Play();
         Destroy(audioSource, duration);
     }
-
     public void PlayMusic(AudioClip clip)
     {
         if (musicSource.clip != clip)
@@ -74,8 +73,18 @@ public class AudioMaster : MonoBehaviour
             musicSource.Play();
         }
     }
+    public void PlayMusic(AudioOptions clip)
+    {
+        if (musicSource.clip != clip.audio)
+        {
+            musicSource.clip = clip.audio;
+            musicSource.volume = clip.volumeModifier * musicVolume;
+            musicSource.pitch = clip.pitch;
+            musicSource.Play();
+        }
+    }
 
-    public void StopMusic(bool fade)
+    public void StopMusic(bool fade = false)
     {
         musicSource.Stop();
     }
