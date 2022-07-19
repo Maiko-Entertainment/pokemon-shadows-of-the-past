@@ -15,11 +15,12 @@ public class FungusLoadBasicVariables : Command
         List<PokemonCaughtData> party = PartyMaster.GetInstance()?.GetParty();
         for(int i = 0; i < party.Count; i++)
         {
-            GetFlowchart().SetStringVariable("partyName" + i, party[i].GetName());
-            GetFlowchart().SetStringVariable("partySpecies" + i, party[i].pokemonBase.species);
+            if (GetFlowchart().GetVariable("partyName" + i)) GetFlowchart().SetStringVariable("partyName" + i, party[i].GetName());
+            if (GetFlowchart().GetVariable("partySpecies" + i)) GetFlowchart().SetStringVariable("partySpecies" + i, party[i].pokemonBase.species);
         }
+        string varPlayerName = SaveElementId.playerName.ToString();
         SaveElement playerName = SaveMaster.Instance.GetSaveElement(SaveElementId.playerName);
-        GetFlowchart().SetStringVariable(SaveElementId.playerName.ToString(), playerName.GetValue().ToString());
+        if(GetFlowchart().GetVariable(varPlayerName)) GetFlowchart().SetStringVariable(varPlayerName, playerName.GetValue().ToString());
         Continue();
     }
 

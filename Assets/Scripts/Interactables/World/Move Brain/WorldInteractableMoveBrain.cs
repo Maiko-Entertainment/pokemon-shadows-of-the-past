@@ -107,7 +107,7 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
 
     protected virtual void Update()
     {
-        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y * -1;
+        animator.GetComponentInChildren<SpriteRenderer>().sortingOrder = (int)transform.position.y * -1;
         if (HasReachedTarget())
         {
             if (cachedDirections.Count > 0)
