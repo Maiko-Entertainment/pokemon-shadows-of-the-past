@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8800649054786530012}
   - component: {fileID: 5969741619160605008}
   - component: {fileID: 8748296890111744063}
+  - component: {fileID: 4720858236900606266}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -65,8 +66,7 @@ MonoBehaviour:
     height: 0
   selectedBlocks:
   - {fileID: 5332478524842847170}
-  selectedCommands:
-  - {fileID: 8800649054786530012}
+  selectedCommands: []
   variables:
   - {fileID: 8748296890111744063}
   description: 
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 301.00003
+    x: 299.82355
     y: 87.83931
     width: 75.88235
     height: 40
@@ -107,6 +107,7 @@ MonoBehaviour:
   - {fileID: 4657471006068337795}
   - {fileID: 5969741619160605008}
   - {fileID: 8800649054786530012}
+  - {fileID: 4720858236900606266}
   suppressAllAutoSelections: 0
 --- !u!114 &4657471006068337795
 MonoBehaviour:
@@ -184,6 +185,20 @@ MonoBehaviour:
   scope: 0
   key: playerName
   value: 
+--- !u!114 &4720858236900606266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779583750869242483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 4
+  indentLevel: 0
 --- !u!1 &5980481502884496339
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +298,7 @@ MonoBehaviour:
   moveBrain: {fileID: 7753855115424200442}
   flowchartPrefab: {fileID: 9019888998235677720}
   blockName: Start
-  moveIdentifier: Dante
+  moveIdentifier: Pines
   animator: {fileID: 4341221461245525180}
   innerTransform: {fileID: 3492900681551650942}
   speed: 3

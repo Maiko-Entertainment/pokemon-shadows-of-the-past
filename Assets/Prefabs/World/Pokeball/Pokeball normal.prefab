@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6814291745217039069}
   - component: {fileID: 8596808105690003226}
   - component: {fileID: 7273279976246393423}
+  - component: {fileID: 7398177764152754668}
   m_Layer: 0
   m_Name: Pokeball normal
   m_TagString: Object
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1902242610035671507}
   - {fileID: 811626505000456398}
@@ -55,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 01c8d8fde634d174c9976554c27ed39f, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -73,10 +75,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1158920569
-  m_SortingLayer: -4
+  m_SortingLayerID: 733163873
+  m_SortingLayer: -3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 8761673915187932814, guid: 4e5fa206bcbc2d545979c4bfb523772b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e738711b205d71458f238000b10a681, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -134,6 +136,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7398177764152754668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8094545198874888827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab67ae82986fb45b8f9657585d24f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 6814291745217039069}
+  offset: 0
 --- !u!1001 &4593554560720740028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,11 +242,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
---- !u!4 &1902242610035671507 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5675727851261696339, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
-  m_PrefabInstance: {fileID: 6098476408906406016}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1074546754458965121 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6506484782910934017, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
@@ -241,3 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1902242610035671507 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5675727851261696339, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
+  m_PrefabInstance: {fileID: 6098476408906406016}
+  m_PrefabAsset: {fileID: 0}

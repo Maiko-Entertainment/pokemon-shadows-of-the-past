@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 8072550658957663502}
   - component: {fileID: 6699659537627206895}
   - component: {fileID: 7054804477233538154}
-  - component: {fileID: 8364330099951082057}
   - component: {fileID: 525366245624960971}
   - component: {fileID: 2600600912442196129}
   - component: {fileID: 8849139509757964043}
@@ -187,7 +186,6 @@ GameObject:
   - component: {fileID: 845446447746733019}
   - component: {fileID: 3380023965342765351}
   - component: {fileID: 3986748426500914152}
-  - component: {fileID: 1189410066040475800}
   - component: {fileID: 7072547340459387867}
   - component: {fileID: 1320791842925134014}
   - component: {fileID: 2672337069337506083}
@@ -199,6 +197,10 @@ GameObject:
   - component: {fileID: 6264122957695582860}
   - component: {fileID: 6804535708410813999}
   - component: {fileID: 8999967764146160067}
+  - component: {fileID: 5303163575865036866}
+  - component: {fileID: 2062730082153515281}
+  - component: {fileID: 7962361565141777182}
+  - component: {fileID: 7202474554854680727}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -239,7 +241,7 @@ MonoBehaviour:
   scrollPos: {x: -158.00003, y: 5.4505386}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 400
+  blockViewHeight: 402
   zoom: 0.9100001
   scrollViewRect:
     serializedVersion: 2
@@ -248,9 +250,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 6912517114950712666}
+  - {fileID: 8849139509757964043}
   selectedCommands:
-  - {fileID: 279741625668434788}
+  - {fileID: 7202474554854680727}
   variables:
   - {fileID: 3767241158848373601}
   description: 
@@ -772,7 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 484
+    x: 482.9011
     y: 149
     width: 160.989
     height: 40
@@ -1770,7 +1772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 881
+    x: 879.9011
     y: 135
     width: 120.329666
     height: 40
@@ -1782,7 +1784,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 525366245624960971}
-  - {fileID: 8364330099951082057}
+  - {fileID: 5303163575865036866}
   - {fileID: 9198979052481082201}
   suppressAllAutoSelections: 0
 --- !u!114 &6699659537627206895
@@ -1825,33 +1827,6 @@ MonoBehaviour:
   itemId: 54
   indentLevel: 0
   storyText: Pay close attention newby, {W} because here I {w}come!{w}{x}
-  description: 
-  character: {fileID: 3810923483201350963}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &8364330099951082057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963668545921768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 55
-  indentLevel: 0
-  storyText: Whatever! Just stay there while I kick this guys as-{w}[x}
   description: 
   character: {fileID: 3810923483201350963}
   portrait: {fileID: 0}
@@ -1933,8 +1908,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 1070.0879
-    y: 105.53845
+    x: 1071.1868
+    y: 104.43955
     width: 125.824165
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1949,8 +1924,10 @@ MonoBehaviour:
   - {fileID: 3986748426500914152}
   - {fileID: 1320791842925134014}
   - {fileID: 7072547340459387867}
-  - {fileID: 1189410066040475800}
   - {fileID: 3380023965342765351}
+  - {fileID: 7962361565141777182}
+  - {fileID: 7202474554854680727}
+  - {fileID: 2062730082153515281}
   suppressAllAutoSelections: 0
 --- !u!114 &8881330922457860811
 MonoBehaviour:
@@ -2075,20 +2052,6 @@ MonoBehaviour:
   variableId: 4
   operation: 0
   value: 100
---- !u!114 &1189410066040475800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963668545921768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 68
-  indentLevel: 0
 --- !u!114 &7072547340459387867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2335,6 +2298,77 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &5303163575865036866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 81
+  indentLevel: 0
+  storyText: Whatever!{w} Just stay there while I kick this guys as-{w}{x}
+  description: 
+  character: {fileID: 3810923483201350963}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2062730082153515281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 82
+  indentLevel: 0
+--- !u!114 &7962361565141777182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ceabee21a73eaa4e80cede4c5bc34f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 83
+  indentLevel: 0
+  agentId: Akane
+--- !u!114 &7202474554854680727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ceabee21a73eaa4e80cede4c5bc34f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 84
+  indentLevel: 0
+  agentId: Pines
 --- !u!1 &5515599232322975699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2458,7 +2492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1313774808822534641, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1313774808822534641, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2495,10 +2529,6 @@ PrefabInstance:
     - target: {fileID: 5980481502884496339, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
       propertyPath: m_Name
       value: Pines
-      objectReference: {fileID: 0}
-    - target: {fileID: 5980481502884496339, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 075d0eec470610d478111f1db83af5ee, type: 3}

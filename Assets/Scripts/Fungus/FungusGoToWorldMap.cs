@@ -23,7 +23,6 @@ public class FungusGoToWorldMap : Command
     {
         yield return new WaitForSeconds(delay);
         WorldMapMaster.GetInstance().GoToMap(mapId, spawnIndex);
-        InteractionsMaster.GetInstance()?.ExecuteNext();
         Continue();
     }
 

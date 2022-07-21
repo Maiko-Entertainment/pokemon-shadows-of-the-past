@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
         if (!isInteractionPlaying && storedDirections.Count == 0)
         {
+            touchCollider.gameObject.SetActive(true);
             if (Mathf.Abs(cacheDirection.x) > 0)
             {
                 touchCollider.transform.localPosition = Vector3.right * cacheDirection.x;
@@ -81,6 +82,10 @@ public class PlayerController : MonoBehaviour
                 touchCollider.transform.localPosition = Vector3.up * cacheDirection.y;
             }
             StartCoroutine(ResetAfterFrame());
+        }
+        else
+        {
+            touchCollider.gameObject.SetActive(false);
         }
     }
 

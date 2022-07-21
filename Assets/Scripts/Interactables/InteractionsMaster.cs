@@ -33,7 +33,7 @@ public class InteractionsMaster : MonoBehaviour
         isInteracting = true;
         if (events.Count == 1)
         {
-            ExecuteNext(0);
+            events[0].Execute();
             UIPauseMenuMaster.GetInstance().HideMenuOpener();
         }
     }
@@ -47,11 +47,18 @@ public class InteractionsMaster : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         print("Events before cheking " + events.Count);
-        if (events.Count != 0)
+        if (events.Count > 0)
         {
             print("Executing event: " + events[0]);
-            events[0].Execute();
             events.RemoveAt(0);
+            if (events.Count > 0)
+                events[0].Execute();
+            else
+            {
+                isInteracting = false;
+                if (!BattleMaster.GetInstance().IsBattleActive())
+                    UIPauseMenuMaster.GetInstance().ShowMenuOpener();
+            }
         }
         else
         {
