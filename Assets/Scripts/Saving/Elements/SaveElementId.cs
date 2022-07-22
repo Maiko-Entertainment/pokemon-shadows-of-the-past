@@ -8,4 +8,8 @@ public enum SaveElementId
     timeOfDay = 5,
     TediursaHelpCompleted = 6,
     erikFirstEncounterResult = 7,
+    akaneRelationship = 100,
+    danteRelationship = 101,
+    erikRelationship = 102,
+    tansyRelationship = 103,
 }

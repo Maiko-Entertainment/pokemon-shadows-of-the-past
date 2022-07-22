@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,6 +13,7 @@ public class UIItemsViewer : MonoBehaviour
 
     public Transform itemsContainer;
     public Transform pokemonListContainer;
+    public ScrollRect scrollRect;
 
     public Color selectedItemColor;
     public TransitionBase itemInfo;
@@ -112,6 +112,13 @@ public class UIItemsViewer : MonoBehaviour
         if (itemInfo)
         {
             itemInfo?.FadeIn();
+            foreach (RectTransform uIItem in itemsContainer)
+            {
+                if (uIItem.GetComponent<UIItemsView>().item == item)
+                {
+                    UtilsMaster.GetSnapToPositionToBringChildIntoView(scrollRect, uIItem);
+                }
+            }
             if (i.CanUse().canUse)
             {
                 useButton.FadeIn();

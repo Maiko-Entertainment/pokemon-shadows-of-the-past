@@ -16,7 +16,7 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
     protected Tilemap collisionTilemap;
 
     protected Vector2 target;
-    protected List<MoveBrainDirectionData> cachedDirections = new List<MoveBrainDirectionData>();
+    public List<MoveBrainDirectionData> cachedDirections = new List<MoveBrainDirectionData>();
     protected float jumpHeight = 0.5f;
     protected float jumpSpeed = 1f;
 

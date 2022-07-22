@@ -59,6 +59,7 @@ public class SaveMaster : MonoBehaviour
         InventoryMaster.GetInstance().Load(activeSaveFile);
         TacticsMaster.GetInstance().Load(activeSaveFile);
         WorldMapMaster.GetInstance().Load(activeSaveFile);
+        PokemonMaster.GetInstance().Load(activeSaveFile);
     }
 
     public void Save(int saveIndex)
@@ -66,6 +67,7 @@ public class SaveMaster : MonoBehaviour
         PartyMaster.GetInstance().HandleSave();
         InventoryMaster.GetInstance().HandleSave();
         WorldMapMaster.GetInstance().HandleSave();
+        PokemonMaster.GetInstance().HandleSave();
         SaveCurrentFile(saveIndex);
     }
 

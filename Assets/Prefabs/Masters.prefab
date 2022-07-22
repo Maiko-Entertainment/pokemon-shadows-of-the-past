@@ -5508,7 +5508,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveFiles:
   - persistedElements: []
-    persistedItems: []
+    persistedItems:
+    - id: 1
+      amount: 1
+    - id: 2
+      amount: 1
+    - id: 2
+      amount: 1
+    - id: 1
+      amount: 1
+    - id: 2
+      amount: 1
+    - id: 1
+      amount: 1
+    - id: 2
+      amount: 1
+    persistedPokedexPokemonData:
+    - pokemonId: 43
+      seenAmount: 1
+      caughtAmount: 0
+    - pokemonId: 92
+      seenAmount: 1
+      caughtAmount: 1
     persistedParty:
     - pokemonName: Charmander
       pokemonId: 5
@@ -5541,6 +5562,7 @@ MonoBehaviour:
   activeSaveFile:
     persistedElements: []
     persistedItems: []
+    persistedPokedexPokemonData: []
     persistedParty:
     - pokemonName: Charmander
       pokemonId: 5
@@ -5580,6 +5602,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e21915f8daca0a4aaab9b3b8f61933a, type: 2}
   - {fileID: 11400000, guid: 14d58a8b05a954f48968e55b49f9d34f, type: 2}
   - {fileID: 11400000, guid: eb7a2c569a8c3354a96a4ac178fec1d8, type: 2}
+  - {fileID: 11400000, guid: 1e33d13dda17519468885e869edc4baf, type: 2}
+  - {fileID: 11400000, guid: 9c3800d67fbf62b4787c7b91345b3dbf, type: 2}
+  - {fileID: 11400000, guid: 0951257b20661e843937c0f1dfce9d8c, type: 2}
+  - {fileID: 11400000, guid: a700feab18c824d41bac1dfbbb623956, type: 2}
 --- !u!114 &8952212246821983486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5662,11 +5688,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 558ebf5709da8784ab4b5b5903a90cea, type: 2}
   - {fileID: 11400000, guid: e97a8e86e690d75448a47a37dcb8357f, type: 2}
   - {fileID: 11400000, guid: c58fbc6cad9b87f4f9272f615bb27696, type: 2}
+  - {fileID: 11400000, guid: 266cd0dad8287d840ba6b70df26ce261, type: 2}
   - {fileID: 11400000, guid: 3d71c7fd64da446478841e005a062f9e, type: 2}
   - {fileID: 11400000, guid: 4a02676c86d4b0447ae9edafaa5c1737, type: 2}
   - {fileID: 11400000, guid: 911bebc3cf224a54aac6bf944ca14549, type: 2}
   - {fileID: 11400000, guid: b16b83c1dabe37743a527678d5f31708, type: 2}
   - {fileID: 11400000, guid: 080575cbf289c8043aff678f29cc78dd, type: 2}
+  - {fileID: 11400000, guid: 7a381fdd4fb85f64a9035eaebf7ae687, type: 2}
 --- !u!114 &8952212246821983485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5901,7 +5929,7 @@ MonoBehaviour:
   mapNameContainer: {fileID: 8128194997387600291}
   timeOfDay: 0
   forceMapLoad: 1
-  customMap: 6
+  customMap: 7
   customSpawn: 0
 --- !u!114 &1181977574091591885
 MonoBehaviour:
@@ -5935,6 +5963,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c62f270b3bc93546b809c41527055ab, type: 2}
   - {fileID: 11400000, guid: 99ae59d0cfb3af1408d3dbdc1820e986, type: 2}
   - {fileID: 11400000, guid: 13a1841cf6d3e4d40b7cd3486777eec2, type: 2}
+  - {fileID: 11400000, guid: 0b8b743a88fdcd040959a96e95742308, type: 2}
+  - {fileID: 11400000, guid: 59906cbd0c367504bb38b156688b2333, type: 2}
+  - {fileID: 11400000, guid: cd8a8256b269c2f4b95d9c2447c5deea, type: 2}
   - {fileID: 11400000, guid: 30f014181642ed7439cd980f8846924d, type: 2}
   - {fileID: 11400000, guid: f9913b01937e83d4ab2a13ecdfcb1759, type: 2}
   - {fileID: 11400000, guid: 36f1e76fe8c61e649ad93836f5b26ec5, type: 2}
@@ -6557,6 +6588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemonViewerPrefab: {fileID: 2563044015256992509, guid: 562fba2dbee03484bbfb84ed424f981b, type: 3}
   itemViewerPrefab: {fileID: 7497893302336376989, guid: 1099b70f22e8b0d449885465805f674e, type: 3}
+  pokedexViewerPrefab: {fileID: 7459525753968755007, guid: b0acbb8b387f6a3469a410237229e0e2, type: 3}
   pokemonMiniViewPrefab: {fileID: 3424210028211374005, guid: 987249feec85eb64fb60cf4dfcd7cd06, type: 3}
   dayPrefab: {fileID: 1986511171349862444, guid: f4092706aa2b3df4191a2f0d7d49450c, type: 3}
   nightPrefab: {fileID: 1967632439065720015, guid: ffab31c32b71be549b30ae6671707aa1, type: 3}
@@ -7721,6 +7753,10 @@ PrefabInstance:
     - target: {fileID: 1806747590123375661, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_Name
       value: Combat View
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806747590123375661, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1806747590351449282, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_AnchorMax.y

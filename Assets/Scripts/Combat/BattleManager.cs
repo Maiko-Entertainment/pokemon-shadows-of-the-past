@@ -191,6 +191,7 @@ public class BattleManager
         else
         {
             team2.SetActivePokemon(pokemon);
+            PokemonMaster.GetInstance().SeePokemon(pokemon.GetPokemonCaughtData().pokemonBase.pokemonId);
         }
         AddPokemonEnterEvent(pokemon);
     }

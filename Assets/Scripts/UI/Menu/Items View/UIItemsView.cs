@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class UIItemsView : MonoBehaviour
+public class UIItemsView : MonoBehaviour, ISelectHandler
 {
     public TextMeshProUGUI title;
     public Image icon;
@@ -16,7 +17,7 @@ public class UIItemsView : MonoBehaviour
     public delegate void Click(ItemInventory item);
     public event Hover onClick;
 
-    private ItemInventory item;
+    public ItemInventory item;
 
     public UIItemsView Load(ItemInventory item)
     {
@@ -39,5 +40,10 @@ public class UIItemsView : MonoBehaviour
     public void HandleHover()
     {
         onHover?.Invoke(item);
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        HandleHover();
     }
 }

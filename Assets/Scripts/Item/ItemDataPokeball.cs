@@ -42,6 +42,7 @@ public class ItemDataPokeball : ItemData
         PlayAnimations(result);
         if (result.wasCaptured)
         {
+            PokemonMaster.GetInstance().CaughtPokemon(result.pokemon.GetPokemonCaughtData().pokemonBase.pokemonId);
             bool wasAddedToparty = PartyMaster.GetInstance().AddPartyMember(result.pokemon.GetPokemonCaughtData());
             PlaySuccessAnim();
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(BattleAnimatorMaster.GetInstance().pokemonCaughtClip,1,true));

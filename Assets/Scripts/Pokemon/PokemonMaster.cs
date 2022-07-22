@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PokemonMaster : MonoBehaviour
@@ -11,15 +12,26 @@ public class PokemonMaster : MonoBehaviour
     public bool evolveFirstPartyPokemon = false;
     public PokemonBaseData forceEvolveTo;
 
+    protected Dictionary<PokemonBaseId, PokedexPokemonData> pokedexData = new Dictionary<PokemonBaseId, PokedexPokemonData>();
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            InstantiateDatabase();
         }
         else
         {
             Destroy(this);
+        }
+    }
+
+    public void InstantiateDatabase()
+    {
+        foreach (PokemonBaseData pokemonData in pokedex)
+        {
+            pokedexData.Add(pokemonData.pokemonId, new PokedexPokemonData(pokemonData));
         }
     }
 
@@ -31,6 +43,28 @@ public class PokemonMaster : MonoBehaviour
         }
     }
 
+    public void Load(SaveFile saveFile)
+    {
+        foreach(PersistedPokedexPokemonData pData in saveFile.persistedPokedexPokemonData)
+        {
+            if (pokedexData.ContainsKey(pData.pokemonId))
+            {
+                pokedexData[pData.pokemonId].seenAmount = pData.seenAmount;
+                pokedexData[pData.pokemonId].caughtAmount = pData.caughtAmount;
+            }
+        }
+    }
+
+    public void HandleSave()
+    {
+        List<PersistedPokedexPokemonData> persistedPokedexPokemon = new List<PersistedPokedexPokemonData>();
+        foreach (PokedexPokemonData pd in pokedexData.Values)
+        {
+            persistedPokedexPokemon.Add(pd.GetSave());
+        }
+        SaveMaster.Instance.activeSaveFile.persistedPokedexPokemonData = persistedPokedexPokemon;
+    }
+
     IEnumerator EvolveAfter(float after)
     {
         yield return new WaitForSeconds(after);
@@ -40,6 +74,26 @@ public class PokemonMaster : MonoBehaviour
     public static PokemonMaster GetInstance()
     {
         return Instance;
+    }
+
+    public List<PokedexPokemonData> GetPokedexList()
+    {
+        return pokedexData.Values.ToList();
+    }
+
+    public void SeePokemon(PokemonBaseId pokemonId)
+    {
+        if (pokedexData.ContainsKey(pokemonId))
+        {
+            pokedexData[pokemonId].seenAmount++;
+        }
+    }
+    public void CaughtPokemon(PokemonBaseId pokemonId)
+    {
+        if (pokedexData.ContainsKey(pokemonId))
+        {
+            pokedexData[pokemonId].caughtAmount++;
+        }
     }
 
     public PokemonBaseData GetPokemonData(PokemonBaseId id)

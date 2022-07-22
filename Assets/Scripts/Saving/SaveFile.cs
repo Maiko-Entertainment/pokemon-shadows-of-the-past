@@ -6,6 +6,7 @@ public class SaveFile
 {
     public List<PersistedSaveElement> persistedElements = new List<PersistedSaveElement>();
     public List<PersistedItem> persistedItems = new List<PersistedItem>();
+    public List<PersistedPokedexPokemonData> persistedPokedexPokemonData = new List<PersistedPokedexPokemonData>();
     public List<PersistedPokemon> persistedParty = new List<PersistedPokemon>();
     public List<PersistedPokemon> persistedBox = new List<PersistedPokemon>();
     public List<PersistedTactic> persistedTacticsEquipped = new List<PersistedTactic>();

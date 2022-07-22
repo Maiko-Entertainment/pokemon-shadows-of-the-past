@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UtilsMaster : MonoBehaviour
+public static class UtilsMaster
 {
     public static List<Selectable> LineSelectables(List<Selectable> selectables)
     {
@@ -37,5 +37,17 @@ public class UtilsMaster : MonoBehaviour
     {
         EventSystem eventSystem = EventSystem.current;
         eventSystem.SetSelectedGameObject(select, new BaseEventData(eventSystem));
+    }
+
+    public static void GetSnapToPositionToBringChildIntoView(this ScrollRect instance, RectTransform child)
+    {
+        Canvas.ForceUpdateCanvases();
+        Vector2 viewportLocalPosition = instance.viewport.localPosition;
+        Vector2 childLocalPosition = child.localPosition;
+        Vector2 result = new Vector2(
+            instance.content.localPosition.x,
+            0 - (viewportLocalPosition.y + childLocalPosition.y)
+        );
+        instance.content.localPosition = result;
     }
 }

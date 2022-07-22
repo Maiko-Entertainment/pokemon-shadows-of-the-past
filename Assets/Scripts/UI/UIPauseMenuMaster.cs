@@ -9,6 +9,7 @@ public class UIPauseMenuMaster : MonoBehaviour
 
     public UIMenuPile pokemonViewerPrefab;
     public UIMenuPile itemViewerPrefab;
+    public UIMenuPile pokedexViewerPrefab;
     public UIItemOptionsPokemon pokemonMiniViewPrefab;
     public GameObject dayPrefab;
     public GameObject nightPrefab;
@@ -110,7 +111,11 @@ public class UIPauseMenuMaster : MonoBehaviour
     {
         return openedMenus[openedMenus.Count - 1];
     }
-
+    public void OpenPokedexViewer()
+    {
+        if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
+        OpenMenu(pokedexViewerPrefab);
+    }
     public void OpenPokemonViewer()
     {
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
