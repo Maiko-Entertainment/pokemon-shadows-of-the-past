@@ -114,6 +114,7 @@ public class PartyMaster : MonoBehaviour
             FullyHeal(pkmn);
         }
         UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
+        WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
     }
     public void FullyHeal(int partyIndex)
     {

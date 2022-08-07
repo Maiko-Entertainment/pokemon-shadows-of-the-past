@@ -20,6 +20,10 @@ public class TrainerBrainData : ScriptableObject
                 dialog.Initiate(currentBattle, flowchartInstance);
             }
         }
+        foreach(BrainTacticCondition tactic in easyTactics)
+        {
+            tactic.Initialice();
+        }
     }
 
     public virtual BattleTurnDesition GetTurnDesition(BattleManager currentBattle)
@@ -32,10 +36,22 @@ public class TrainerBrainData : ScriptableObject
             List<MoveEquipped> moves = team2Pokemon.GetPokemonCaughtData().GetAvailableMoves();
             if (moves.Count > 0)
             {
+                MoveEquipped highiestPriorityMove = null;
+                int highestPriority = -99999;
+                /*
                 int randomIndex = Random.Range(0, moves.Count);
                 MoveEquipped move = moves[randomIndex];
-
-                turnDesition =  new BattleTurnDesitionPokemonMove(move, team2Pokemon, BattleTeamId.Team2);
+                */
+                foreach(MoveEquipped move in moves)
+                {
+                    int priority = move.move.GetPriority(currentBattle, BattleTeamId.Team2);
+                    if (priority > highestPriority)
+                    {
+                        highiestPriorityMove = move;
+                        highestPriority = priority;
+                    }
+                }
+                turnDesition =  new BattleTurnDesitionPokemonMove(highiestPriorityMove, team2Pokemon, BattleTeamId.Team2);
             }
             else
             {

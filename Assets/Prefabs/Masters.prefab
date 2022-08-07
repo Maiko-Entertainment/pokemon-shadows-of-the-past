@@ -5510,19 +5510,9 @@ MonoBehaviour:
   - persistedElements: []
     persistedItems:
     - id: 1
-      amount: 1
+      amount: 3
     - id: 2
-      amount: 1
-    - id: 2
-      amount: 1
-    - id: 1
-      amount: 1
-    - id: 2
-      amount: 1
-    - id: 1
-      amount: 1
-    - id: 2
-      amount: 1
+      amount: 2
     persistedPokedexPokemonData:
     - pokemonId: 43
       seenAmount: 1
@@ -5531,20 +5521,16 @@ MonoBehaviour:
       seenAmount: 1
       caughtAmount: 1
     persistedParty:
-    - pokemonName: Charmander
+    - pokemonName: Pepe 2
       pokemonId: 5
-      level: 15
+      level: 14
       experience: 0
       damageTaken: 0
       statusEffectId: 0
       natureId: 0
-      abilityId: 2
+      abilityId: 0
       moves:
       - id: 0
-        uses: 0
-      - id: 9
-        uses: 0
-      - id: 5
         uses: 0
       learnedMoves: []
       equipedItem: 0
@@ -5638,6 +5624,7 @@ MonoBehaviour:
       tacticGauge: 0
     battleData:
       battleMusic: {fileID: 0}
+      battleWonMusic: {fileID: 0}
       battlebackground: {fileID: 0}
       battleType: 0
       playerExtraTactics: []
@@ -5695,6 +5682,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b16b83c1dabe37743a527678d5f31708, type: 2}
   - {fileID: 11400000, guid: 080575cbf289c8043aff678f29cc78dd, type: 2}
   - {fileID: 11400000, guid: 7a381fdd4fb85f64a9035eaebf7ae687, type: 2}
+  - {fileID: 11400000, guid: 9bc138b928f9ebd40a79806fa0c555f0, type: 2}
 --- !u!114 &8952212246821983485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5816,7 +5804,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -5924,13 +5912,15 @@ MonoBehaviour:
   - {fileID: 2156387205309050134, guid: 16e5ccd450e7d4a4ea3374132d284a7c, type: 3}
   - {fileID: 523703273549154329, guid: c7c03f4b437eb8d4f9cdb67007281803, type: 3}
   - {fileID: 8397199699034578025, guid: 2b17b33c9e86b5b4aa5f36f284570ad3, type: 3}
+  - {fileID: 1085335537233263670, guid: fbe1a1e1b9f82d247b16f7b861c9bdad, type: 3}
+  - {fileID: 1579399199519272532, guid: 3f1509854ff65b04a8d07c78a707371d, type: 3}
   scenes: []
   sceneContainer: {fileID: 8952212248689861747}
   mapNameContainer: {fileID: 8128194997387600291}
   timeOfDay: 0
   forceMapLoad: 1
-  customMap: 7
-  customSpawn: 0
+  customMap: 8
+  customSpawn: 1
 --- !u!114 &1181977574091591885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5950,6 +5940,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 77350b92de354874c93f4bdc78a8f163, type: 2}
   - {fileID: 11400000, guid: 30db8bc8b2f24e546b5918c9491f333a, type: 2}
   - {fileID: 11400000, guid: 6a35d448cb475ba42906b45c05859b2b, type: 2}
+  - {fileID: 11400000, guid: fa26f999a0bcb6a49b6bc01ff88bc11f, type: 2}
   - {fileID: 11400000, guid: 7fba125a4f51c7740a3be50974ff9211, type: 2}
   - {fileID: 11400000, guid: 5f064ada270b8e8428dba7dda2762953, type: 2}
   - {fileID: 11400000, guid: bd5815b7c0d0a7e4da509882d5497a74, type: 2}
@@ -6090,6 +6081,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e95680557d0c444e956db0b4e5d8fa5, type: 2}
   - {fileID: 11400000, guid: e7a2d27d24f142646b984563e2b07440, type: 2}
   - {fileID: 11400000, guid: 8c719d36efd5c204b864835632148991, type: 2}
+  - {fileID: 11400000, guid: e516c956f64762340a03630d43c7de0b, type: 2}
 --- !u!114 &423868467601111521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7436,7 +7428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4910107457734986941, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: itemId
-      value: 72
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 6077996561614007800, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: nodeRect.x
@@ -7539,7 +7531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 73
+  itemId: 86
   indentLevel: 0
   storyText: You grabbed a stick and threw it really far!
   description: 
@@ -7566,7 +7558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 74
+  itemId: 87
   indentLevel: 0
   storyText: Looks like you will have to try something else...
   description: 
@@ -7593,7 +7585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 75
+  itemId: 88
   indentLevel: 0
   storyText: '{$pokemon} is looking at you confused...'
   description: 

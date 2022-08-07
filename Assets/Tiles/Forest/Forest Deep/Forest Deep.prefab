@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6964761462714912540}
   m_RootOrder: 0
@@ -481,6 +482,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741826
+  - first: {x: 3, y: 1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 31
+      m_TileSpriteIndex: 46
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 3
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741826
   - first: {x: -1, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -575,6 +586,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 67632a2d92eed7d4cac93560b60eb452, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 9efa54a5317aeb1469dc89210386fb6c, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: ae5cbc85078f5164a8425ef548dd8552, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 3b4aff25357d77b41a25b5c32a9bf204, type: 3}
@@ -668,8 +681,10 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 9a1c84fc0ec1f7f4cae876fc7a63d483, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1678917814267889741, guid: eb8cef3c229b1c14dbf30fc4194741cc, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -6994227820449472469, guid: eb8cef3c229b1c14dbf30fc4194741cc, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 47
+  - m_RefCount: 48
     m_Data:
       e00: 1
       e01: 0
@@ -688,7 +703,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 47
+  - m_RefCount: 48
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: -1.9641223e-23, g: -1.9641223e-23, b: -1.9641223e-23, a: -1.9641223e-23}
@@ -699,6 +714,8 @@ Tilemap:
     m_Data: {fileID: 4153846131373478510, guid: cd803ff0f085bfb409c7da0e17d51aa5, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 4052802359726952168, guid: 192d63dbfd5e1df4c8b8d3f9664cbf0b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 8894578755365814141, guid: af7c210740d172744b09653b33aa084a, type: 3}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -7, y: -5, z: 0}
@@ -798,6 +815,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4236040759213831733}
   m_Father: {fileID: 0}
@@ -815,7 +833,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &2221211649161187638
+--- !u!114 &4158270258601417154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

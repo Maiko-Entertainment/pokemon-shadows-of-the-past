@@ -10,5 +10,6 @@ public enum AbilityId
     CuteCharm = 6,
     FlameBody = 7,
     Swarm = 8,
-    Technician = 9
+    Technician = 9,
+    PoisonPoint = 10,
 }

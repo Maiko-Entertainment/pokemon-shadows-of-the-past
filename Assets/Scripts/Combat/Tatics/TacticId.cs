@@ -12,4 +12,5 @@ public enum TacticId
     GiftSeeds = 102,
     HopelessRoar = 103,
     Praise = 1000,
+    FlowerGroove = 1001,
 }

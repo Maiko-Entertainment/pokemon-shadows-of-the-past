@@ -198,9 +198,6 @@ GameObject:
   - component: {fileID: 6804535708410813999}
   - component: {fileID: 8999967764146160067}
   - component: {fileID: 5303163575865036866}
-  - component: {fileID: 2062730082153515281}
-  - component: {fileID: 7962361565141777182}
-  - component: {fileID: 7202474554854680727}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -251,8 +248,7 @@ MonoBehaviour:
     height: 0
   selectedBlocks:
   - {fileID: 8849139509757964043}
-  selectedCommands:
-  - {fileID: 7202474554854680727}
+  selectedCommands: []
   variables:
   - {fileID: 3767241158848373601}
   description: 
@@ -1925,9 +1921,6 @@ MonoBehaviour:
   - {fileID: 1320791842925134014}
   - {fileID: 7072547340459387867}
   - {fileID: 3380023965342765351}
-  - {fileID: 7962361565141777182}
-  - {fileID: 7202474554854680727}
-  - {fileID: 2062730082153515281}
   suppressAllAutoSelections: 0
 --- !u!114 &8881330922457860811
 MonoBehaviour:
@@ -2035,6 +2028,7 @@ MonoBehaviour:
   mapId: 7
   spawnIndex: 1
   changeMapTransition: {fileID: 7696546989185427502, guid: 26af85d06f0880745a6fe4ff981bf786, type: 3}
+  triggerNextInteractionOnEnd: 1
 --- !u!114 &3986748426500914152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2325,50 +2319,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &2062730082153515281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963668545921768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 82
-  indentLevel: 0
---- !u!114 &7962361565141777182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963668545921768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ceabee21a73eaa4e80cede4c5bc34f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 83
-  indentLevel: 0
-  agentId: Akane
---- !u!114 &7202474554854680727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963668545921768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ceabee21a73eaa4e80cede4c5bc34f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 84
-  indentLevel: 0
-  agentId: Pines
 --- !u!1 &5515599232322975699
 GameObject:
   m_ObjectHideFlags: 0

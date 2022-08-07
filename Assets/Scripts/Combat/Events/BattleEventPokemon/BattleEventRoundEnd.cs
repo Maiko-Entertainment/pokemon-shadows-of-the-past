@@ -18,5 +18,9 @@ public class BattleEventRoundEnd : BattleEvent
         team1Data.IncreaseTacticGauge(1);
         BattleMaster.GetInstance().GetCurrentBattle().eventManager.RemoveEndOfRoundTriggers();
         BattleMaster.GetInstance().GetCurrentBattle().turnsPassed++;
+        PokemonBattleData team1Pokemon = BattleMaster.GetInstance().GetCurrentBattle().GetTeamActivePokemon(BattleTeamId.Team1);
+        team1Pokemon.roundsInCombat++;
+        PokemonBattleData team2Pokemon = BattleMaster.GetInstance().GetCurrentBattle().GetTeamActivePokemon(BattleTeamId.Team2);
+        team2Pokemon.roundsInCombat++;
     }
 }

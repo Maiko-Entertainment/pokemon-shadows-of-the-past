@@ -16,6 +16,10 @@ public class BattleAnimatorEventBattleEndMessage : BattleAnimatorEvent
     {
         if (battleEvent.winningTeamId == BattleTeamId.Team1)
         {
+            if (battleEvent.finalBattleState.battleData.battleWonMusic)
+            {
+                AudioMaster.GetInstance().PlayMusic(battleEvent.finalBattleState.battleData.battleWonMusic);
+            }
             BattleAnimatorMaster.GetInstance().ExecuteEnemyTrainerDefeated(battleEvent.finalBattleState.team2.trainerTitle);
         }
         else if (battleEvent.winningTeamId == BattleTeamId.Team2)

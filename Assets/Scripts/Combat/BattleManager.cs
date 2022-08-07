@@ -182,6 +182,7 @@ public class BattleManager
     {
         BattleTeamId teamId = GetTeamId(pokemon);
 
+        pokemon.roundsInCombat = 0;
         if (teamId == BattleTeamId.Team1)
         {
             team1.SetActivePokemon(pokemon);

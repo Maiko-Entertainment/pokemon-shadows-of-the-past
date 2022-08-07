@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553145310257646560}
   - component: {fileID: 2499638063707618815}
+  - component: {fileID: 7080009657818930870}
   m_Layer: 0
   m_Name: Vine Damage
   m_TagString: Object
@@ -27,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: 24.525002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4963414825045929360}
   - {fileID: 9184070089466229151}
@@ -59,6 +61,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &7080009657818930870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683953308039177303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edab67ae82986fb45b8f9657585d24f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 1951577675319591206}
+  offset: 1
 --- !u!1 &3206310257236131273
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +104,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2824902564748120601}
   m_Father: {fileID: 553145310257646560}
@@ -130,8 +148,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 951074539
-  m_SortingLayer: -2
+  m_SortingLayerID: 733163873
+  m_SortingLayer: -3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5b893b2d105c1634dac997dc0fe10ae7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -146,7 +164,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &3708851656032781408
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -159,6 +177,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -174,6 +193,7 @@ GameObject:
   - component: {fileID: 4963414825045929360}
   - component: {fileID: 1794917678829357223}
   - component: {fileID: 4756248018058205292}
+  - component: {fileID: 1349152253801871833}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -191,6 +211,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 553145310257646560}
   m_RootOrder: 0
@@ -208,7 +229,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1, y: 0}
+  m_Offset: {x: -0.9, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -219,7 +240,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7, y: 0.7}
+  m_Size: {x: 1.5, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &4756248018058205292
 MonoBehaviour:
@@ -238,14 +259,127 @@ MonoBehaviour:
     moveCategory: 0
     type: 11
   afterDamageCooldown: 2
+  outOfBattleDamageSound:
+    audio: {fileID: 8300000, guid: 57cfc277cb79e5a40b5e0023b3b8e3c0, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 2
+    loopMusic: 0
   isDamageActive: 0
-  safeInterval: 3
-  damageInterval: 0.5
+  safeInterval: 3.9
+  damageInterval: 0.1
   intervalInitialValue: 0
-  prewarningTime: 0.6
+  prewarningTime: 0.55
   animator: {fileID: 3708851656032781408}
-  onWarningSound: {fileID: 0}
-  OnDamageActiveSound: {fileID: 0}
+  onWarningSound:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
+  OnDamageActiveSound:
+    audio: {fileID: 8300000, guid: b8938b4f057ad6f4f94ec340523a0f26, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 0.7
+    loopMusic: 0
+  audioSource: {fileID: 1349152253801871833}
+--- !u!82 &1349152253801871833
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971103232872986094}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 0
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.42777777
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &9220237591220747958
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +407,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5, y: 0.12499893, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9184070089466229151}
   m_RootOrder: 0
@@ -315,9 +450,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 733163873
-  m_SortingLayer: -3
-  m_SortingOrder: -1
+  m_SortingLayerID: -1158920569
+  m_SortingLayer: -4
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6f958de2f43a3124985cfd40c675d8ae, type: 3}
   m_Color: {r: 1, g: 0, b: 0.2987013, a: 0}
   m_FlipX: 0

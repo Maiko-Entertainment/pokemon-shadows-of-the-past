@@ -176,7 +176,7 @@ public class WorldMapMaster : MonoBehaviour
     {
         if (currentMap)
         {
-            AudioClip mapMusic = currentMap.GetMapMusic();
+            AudioOptions mapMusic = currentMap.GetMapMusic();
             AudioMaster.GetInstance().PlayMusic(mapMusic);
         }
     }

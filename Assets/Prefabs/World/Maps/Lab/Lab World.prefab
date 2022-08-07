@@ -862,7 +862,12 @@ MonoBehaviour:
   defaultSafePlacePosIndex: 0
   spawnList:
   - {fileID: 4670738684152332821}
-  mapMusic: {fileID: 8300000, guid: 1656022740b80ef469be9224c945b7b5, type: 3}
+  mapMusic:
+    audio: {fileID: 8300000, guid: 1656022740b80ef469be9224c945b7b5, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
   titleCard: {fileID: 1231276273850860507, guid: a280b4380b7f4984da40c1d675b51a04, type: 3}
   groundTilemap: {fileID: 523703273911530684}
   waterTilemap: {fileID: 523703274245350467}
@@ -2423,7 +2428,7 @@ MonoBehaviour:
   spawns:
   - spawn: {fileID: 22329966200232373, guid: e01f9709820c51041a41516176a18234, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
-    spawnAsChild: 0
+    spawnAsChild: 1
   chance: 1
 --- !u!1 &4010712474927510711
 GameObject:

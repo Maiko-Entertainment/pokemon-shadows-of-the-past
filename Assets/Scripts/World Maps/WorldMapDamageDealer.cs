@@ -6,6 +6,7 @@ public class WorldMapDamageDealer : MonoBehaviour
 {
     public OutOfCombatDamage damage;
     public float afterDamageCooldown = 1f;
+    public AudioOptions outOfBattleDamageSound;
 
     public bool isDamageActive = false;
     protected float damageCooldownTime = 0f;
@@ -18,8 +19,9 @@ public class WorldMapDamageDealer : MonoBehaviour
             PokemonCaughtData pokemon = PartyMaster.GetInstance().GetFirstAvailablePokemon();
             DamageSummary summary = BattleMaster.GetInstance().CalculateOutOfBattleDamage(pokemon, damage);
             pokemon.ChangeHealth(summary.damageAmount * -1);
-            UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
+            UIPauseMenuMaster.GetInstance().DoHitPokemonAnim();
             WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
+            if (outOfBattleDamageSound != null) AudioMaster.GetInstance().PlaySfx(outOfBattleDamageSound);
         }
     }
 

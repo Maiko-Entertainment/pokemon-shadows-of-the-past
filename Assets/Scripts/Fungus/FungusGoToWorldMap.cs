@@ -12,6 +12,7 @@ public class FungusGoToWorldMap : Command
     public int mapId = 0;
     public int spawnIndex = 0;
     public ViewTransition changeMapTransition;
+    public bool triggerNextInteractionOnEnd = true;
 
     public override void OnEnter()
     {
@@ -23,7 +24,14 @@ public class FungusGoToWorldMap : Command
     {
         yield return new WaitForSeconds(delay);
         WorldMapMaster.GetInstance().GoToMap(mapId, spawnIndex);
-        Continue();
+        if (triggerNextInteractionOnEnd)
+        {
+            InteractionsMaster.GetInstance().ExecuteNext();
+        }
+        else
+        {
+            Continue();
+        }
     }
 
     public override Color GetButtonColor()

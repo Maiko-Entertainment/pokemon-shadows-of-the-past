@@ -157,7 +157,7 @@ public class BattleMaster : MonoBehaviour
         // Damage Calc
         float randomMultiplier = 0.8f + Random.value * 0.2f;
         // Damage scales with pkmn level
-        float baseDamage = 2 + (2 * pokemon.GetLevel() + 10f) / defense * damage.damagePower;
+        float baseDamage = 2 + (2 * pokemon.GetLevel() + 10f) / defense / 4f * damage.damagePower;
         float finalDamage = baseDamage * randomMultiplier * advantageMultiplier;
 
         DamageSummary damageSummary = new DamageSummary(

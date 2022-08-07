@@ -10,8 +10,10 @@ public class WorldMapDamageDealerInterval : WorldMapDamageDealer
     public float prewarningTime = 1f;
     public Animator animator;
 
-    public AudioClip onWarningSound;
-    public AudioClip OnDamageActiveSound;
+    public AudioOptions onWarningSound;
+    public AudioOptions OnDamageActiveSound;
+
+    public AudioSource audioSource;
 
     protected float timePassed = 0;
     protected bool hasWarned = false;
@@ -45,7 +47,7 @@ public class WorldMapDamageDealerInterval : WorldMapDamageDealer
                     if (isDamageActive)
                     {
                         animator?.SetTrigger("Attack");
-                        AudioMaster.GetInstance().PlaySfx(OnDamageActiveSound);
+                        AudioMaster.GetInstance().PlaySfxInAudioSource(OnDamageActiveSound, audioSource);
                     }
                     else
                     {

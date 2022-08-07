@@ -12,6 +12,7 @@ public class PokemonBattleData
     public List<PokemonTypeId> inBattleTypes = new List<PokemonTypeId>();
     public AbilityId abilityId;
     public PokemonBattleDataItem heldItem;
+    public int roundsInCombat = 0;
 
     public static int minMaxStatLevelChange = 6;
 
@@ -35,6 +36,8 @@ public class PokemonBattleData
             statusEffectsNewInstance.Add(se.Copy(newInstance));
         }
         newInstance.abilityId = abilityId;
+        newInstance.heldItem = heldItem;
+        newInstance.roundsInCombat = roundsInCombat;
         return newInstance;
     }
 

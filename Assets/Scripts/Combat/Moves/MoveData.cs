@@ -185,4 +185,46 @@ public class MoveData : ScriptableObject
     {
         return categoryId;
     }
+
+    public virtual int GetPriority(BattleManager battleStatus, BattleTeamId myTeam)
+    {
+        PokemonBattleData myUser = battleStatus.GetTeamActivePokemon(myTeam);
+        PokemonBattleData myEnemy = battleStatus.GetTeamActivePokemon(myTeam == BattleTeamId.Team1 ? BattleTeamId.Team2 : BattleTeamId.Team1);
+        int myRoundsInCombat = myUser.roundsInCombat;
+        float myHealthPercentage = (float)myUser.GetPokemonCurrentHealth() / myUser.GetMaxHealth();
+        bool amILossingOnSpeed = myUser.GetBattleStats().speed < myEnemy.GetBattleStats().speed;
+        if (categoryId == MoveCategoryId.status)
+        {
+            float alreadyHasStatusBiasMultiplier = 1f;
+            StatusEffect enemyStatusPrimary = myEnemy.GetCurrentPrimaryStatus();
+            List<StatusEffect> enemyMinorStatuses = myEnemy.GetNonPrimaryStatus();
+            float lossingOnSpeedPow = amILossingOnSpeed ? 1.4f : 1f;
+            if (statusChances.Count > 0)
+            {
+                foreach(MoveStatusChance statusChance in statusChances)
+                {
+                    if (enemyStatusPrimary != null && enemyStatusPrimary.effectId == statusChance.effectId)
+                    {
+                        alreadyHasStatusBiasMultiplier = 0f;
+                        break;
+                    }
+                    foreach(StatusEffect se in enemyMinorStatuses)
+                    {
+                        if (se.effectId == statusChance.effectId)
+                        {
+                            alreadyHasStatusBiasMultiplier = 0f;
+                            break;
+                        }
+                    }
+                }
+            }
+            return (int)Mathf.Ceil((10f - 2 * myRoundsInCombat) * Mathf.Pow(myHealthPercentage, lossingOnSpeedPow) * alreadyHasStatusBiasMultiplier);
+        }
+        else
+        {
+            DamageSummary possibleDamage = battleStatus.CalculateMoveDamage(new BattleEventUseMove(myUser, this));
+            float percentageDamage = (float)possibleDamage.damageAmount / myUser.GetMaxHealth();
+            return (int)Mathf.Ceil((10f * (0.2f + 0.8f * percentageDamage)));
+        }
+    }
 }

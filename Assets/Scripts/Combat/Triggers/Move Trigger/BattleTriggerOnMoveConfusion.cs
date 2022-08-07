@@ -6,7 +6,7 @@ using UnityEngine;
 public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
 {
     public StatusEffectConfusion status;
-    float selfHitChange = 0.9f;
+    float selfHitChange = 0.333333f;
     public BattleTriggerOnMoveConfusion(PokemonBattleData pokemon, StatusEffectConfusion status): base(pokemon, new UseMoveMods(PokemonTypeId.Unmodify), true)
     {
         this.status = status;

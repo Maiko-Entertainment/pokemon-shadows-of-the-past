@@ -34,6 +34,7 @@ public enum PokemonBaseId
     Ralts = 280,
     Kirlia = 281,
     Gardevoir = 282,
+    Roselia = 315,
     Starly = 396,
     Buneary = 427,
     Lopunny = 428,

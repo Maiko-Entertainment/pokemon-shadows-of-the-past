@@ -34,9 +34,8 @@ public class BrainMessageCondition
                 }
                 else
                 {
-                    bm.AddTrigger(new BattleTriggerOnPokemonFaintNumberLeftDialog(
+                    bm.AddTrigger(new BattleTriggerOnRoundEndDialog(
                         new BattleTriggerMessageData(flowchart, blockName),
-                        BattleTeamId.Team1,
                         (int)value-1
                         ));
                 }

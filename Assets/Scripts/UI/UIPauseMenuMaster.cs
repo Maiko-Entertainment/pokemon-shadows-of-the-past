@@ -149,6 +149,20 @@ public class UIPauseMenuMaster : MonoBehaviour
         }
     }
 
+    public void DoHitPokemonAnim()
+    {
+        PokemonCaughtData available = PartyMaster.GetInstance().GetFirstAvailablePokemon();
+        foreach (Transform p in pokemonMiniViewList)
+        {
+            UIItemOptionsPokemon pokemonOpt = p.GetComponent<UIItemOptionsPokemon>();
+            pokemonOpt.Load(pokemonOpt.pokemon);
+            if (pokemonOpt.pokemon == available)
+            {
+                pokemonMiniViewList.GetChild(0).GetComponent<UIItemOptionsPokemon>().HandleHit();
+            }
+        }
+    }
+
     public void UpdateTimeOfDay()
     {
         foreach (Transform t in timeofDayContainer)

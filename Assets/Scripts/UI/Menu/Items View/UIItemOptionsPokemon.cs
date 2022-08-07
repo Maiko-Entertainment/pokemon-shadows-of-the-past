@@ -17,6 +17,7 @@ public class UIItemOptionsPokemon : MonoBehaviour
     public TransitionFade selectedArrow;
     public TransitionFade swapIcon;
     public Color faintedColor;
+    public Animator animator;
 
     public delegate void Hover(PokemonCaughtData pkmn);
     public event Hover onHover;
@@ -110,6 +111,11 @@ public class UIItemOptionsPokemon : MonoBehaviour
     public void HandleHover()
     {
         onHover?.Invoke(pokemon);
+    }
+
+    public void HandleHit()
+    {
+        animator?.SetTrigger("Hit");
     }
 
     private void Update()

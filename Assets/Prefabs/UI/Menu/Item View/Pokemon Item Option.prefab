@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3424210027092658061}
   m_Father: {fileID: 3424210027405284844}
@@ -104,6 +105,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3424210026898711505}
   m_RootOrder: 0
@@ -179,6 +181,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3424210028613243098}
   - {fileID: 101929993299506347}
@@ -259,15 +262,16 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3424210027405284844}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 5}
+  m_AnchoredPosition: {x: 0, y: 35}
   m_SizeDelta: {x: 200, y: 30}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &3424210027884147378
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -393,6 +397,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3666929404369386272}
   m_Father: {fileID: 3424210028211374006}
@@ -454,6 +459,7 @@ GameObject:
   - component: {fileID: 1792964929251511982}
   - component: {fileID: 3424210028211374005}
   - component: {fileID: 3217075942969296950}
+  - component: {fileID: 9135591011447874627}
   m_Layer: 5
   m_Name: Pokemon Item Option
   m_TagString: Untagged
@@ -471,6 +477,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3424210028141400190}
   - {fileID: 3424210027405284844}
@@ -572,6 +579,7 @@ MonoBehaviour:
   selectedArrow: {fileID: 3080698632824664964}
   swapIcon: {fileID: 8785199162433021388}
   faintedColor: {r: 0.83137256, g: 0, b: 0.2901961, a: 1}
+  animator: {fileID: 9135591011447874627}
   pokemon:
     pokemonName: 
     pokemonBase: {fileID: 0}
@@ -615,6 +623,26 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!95 &9135591011447874627
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3424210028211374007}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f2729fc446048649a4051b578433433, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3424210028613243099
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +671,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3424210027405284844}
   m_RootOrder: 0
@@ -777,6 +806,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1821614036709846525}
   m_RootOrder: 0
@@ -852,6 +882,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3666929404369386272}
   m_RootOrder: 0
@@ -927,6 +958,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3424210028211374006}
   m_RootOrder: 2
@@ -1004,6 +1036,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7708928423777028021}
   m_Father: {fileID: 3424210028211374006}
@@ -1109,6 +1142,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3576872078031120709}
   m_RootOrder: 0
@@ -1211,6 +1245,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3424210027405284844}
   m_RootOrder: 1
@@ -1345,6 +1380,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3666929404369386272}
   m_RootOrder: 1
@@ -1420,6 +1456,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9087992261122779297}
   - {fileID: 7646881208983775789}
@@ -1498,6 +1535,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2453925347546036904}
   m_Father: {fileID: 3424210027405284844}
@@ -1571,7 +1609,10 @@ MonoBehaviour:
   abilityPanel: {fileID: 0}
   pokemonAbilityName: {fileID: 0}
   abilitySound: {fileID: 0}
+  minorStatusList: {fileID: 0}
+  statusMinorPrefab: {fileID: 0}
   pokemon:
+    battleId: 0
     pokemon:
       pokemonName: 
       pokemonBase: {fileID: 0}
@@ -1595,8 +1636,12 @@ MonoBehaviour:
       accuracy: 0
       evasion: 0
       critical: 0
+    statusEffects: []
     inBattleTypes: 
     abilityId: 0
+    heldItem:
+      equippedItem: {fileID: 0}
+      battleTriggers: []
   targetHealth: 0
   targetExp: 0
 --- !u!1001 &2441039922856314699
@@ -1700,11 +1745,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0acf2b8386d091459814a40c4ee99c1, type: 3}
---- !u!224 &7099926144969113357 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4857222179126884422, guid: b0acf2b8386d091459814a40c4ee99c1, type: 3}
-  m_PrefabInstance: {fileID: 2441039922856314699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3080698632824664964 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 801790224201839823, guid: b0acf2b8386d091459814a40c4ee99c1, type: 3}
@@ -1716,3 +1756,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba736a6f5bbbfe438e4b80126eaddb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &7099926144969113357 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4857222179126884422, guid: b0acf2b8386d091459814a40c4ee99c1, type: 3}
+  m_PrefabInstance: {fileID: 2441039922856314699}
+  m_PrefabAsset: {fileID: 0}

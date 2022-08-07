@@ -9,7 +9,7 @@ public class WorldMap : MonoBehaviour
     public string title;
     public int defaultSafePlacePosIndex;
     public List<Transform> spawnList = new List<Transform>();
-    public AudioClip mapMusic;
+    public AudioOptions mapMusic;
     public TransitionBase titleCard;
 
     public Tilemap groundTilemap;
@@ -46,7 +46,7 @@ public class WorldMap : MonoBehaviour
         return spawnList[index];
     }
 
-    public AudioClip GetMapMusic()
+    public AudioOptions GetMapMusic()
     {
         return mapMusic;
     }
