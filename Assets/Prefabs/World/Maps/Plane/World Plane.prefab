@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7474825720222290566}
   m_Father: {fileID: 5417863496114853681}
@@ -58,6 +59,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7858584014811476036}
   m_RootOrder: 0
@@ -142,6 +144,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5417863498036220255}
   - {fileID: 7858584014811476036}
@@ -165,7 +168,12 @@ MonoBehaviour:
   defaultSafePlacePosIndex: 0
   spawnList:
   - {fileID: 7858584014811476036}
-  mapMusic: {fileID: 0}
+  mapMusic:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    loopMusic: 1
   titleCard: {fileID: 0}
   groundTilemap: {fileID: 0}
   waterTilemap: {fileID: 0}
@@ -252,7 +260,6 @@ GameObject:
   - component: {fileID: 7740727896799457501}
   - component: {fileID: 5014906266133762968}
   - component: {fileID: 8444310829383365275}
-  - component: {fileID: 7527188606888087917}
   - component: {fileID: 2905508471006850257}
   - component: {fileID: 3862008122210148800}
   - component: {fileID: 2036085197020858185}
@@ -277,6 +284,11 @@ GameObject:
   - component: {fileID: 8694362962604847969}
   - component: {fileID: 5953714422468374619}
   - component: {fileID: 3016711841854520021}
+  - component: {fileID: 8582024211479976612}
+  - component: {fileID: 2535606635515600916}
+  - component: {fileID: 6565062883690465707}
+  - component: {fileID: 3579255744279009523}
+  - component: {fileID: 1684550636613726877}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -294,6 +306,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1529603745062396652}
   m_Father: {fileID: 5417863496114853681}
@@ -325,8 +338,7 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 7169932335670705601}
-  selectedCommands:
-  - {fileID: 4676957583142346872}
+  selectedCommands: []
   variables:
   - {fileID: 9141452590614239774}
   - {fileID: 7682607613166805887}
@@ -390,6 +402,11 @@ MonoBehaviour:
   - {fileID: 5259380647362012445}
   - {fileID: 5417863498036220335}
   - {fileID: 5417863498036220328}
+  - {fileID: 8582024211479976612}
+  - {fileID: 2535606635515600916}
+  - {fileID: 6565062883690465707}
+  - {fileID: 3579255744279009523}
+  - {fileID: 1684550636613726877}
   - {fileID: 5417863498036220329}
   - {fileID: 5526521886037276815}
   - {fileID: 5417863498036220331}
@@ -798,7 +815,7 @@ MonoBehaviour:
   clip:
     audio: {fileID: 8300000, guid: 8b5ed773a30757b4cb00b4dc083097f1, type: 3}
     pitch: 1
-    customDuration: 5
+    customDuration: 3
     volumeModifier: 0.5
     loopMusic: 1
 --- !u!114 &5259380647362012445
@@ -1119,8 +1136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 30
   indentLevel: 0
-  storyText: That's why at Spem Corp we have been working night and day to finally
-    put an end to this.
+  storyText: That's why I have partner with Devon SA to finally put an end to this.
   description: 
   character: {fileID: 6939708511067802623}
   portrait: {fileID: 0}
@@ -1148,7 +1164,7 @@ MonoBehaviour:
   itemId: 31
   indentLevel: 0
   storyText: To create a world where people can finally live without fearing the
-    rise of another evil organization.
+    rise of another evil organization and their chaotic Pokemon.
   description: 
   character: {fileID: 6939708511067802623}
   portrait: {fileID: 0}
@@ -1256,7 +1272,6 @@ MonoBehaviour:
   - {fileID: 8694362962604847969}
   - {fileID: 3016711841854520021}
   - {fileID: 8444310829383365275}
-  - {fileID: 7527188606888087917}
   suppressAllAutoSelections: 0
 --- !u!114 &9141452590614239774
 MonoBehaviour:
@@ -1596,20 +1611,7 @@ MonoBehaviour:
   mapId: 3
   spawnIndex: 0
   changeMapTransition: {fileID: 8015301582545678463, guid: dafa32bf86ff8034a8db20dd3800d3d8, type: 3}
---- !u!114 &7527188606888087917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5417863498036220248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 42
-  indentLevel: 0
+  triggerNextInteractionOnEnd: 1
 --- !u!114 &2905508471006850257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2220,6 +2222,128 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 6
   durationOLD: 0
+--- !u!114 &8582024211479976612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417863498036220248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 68
+  indentLevel: 0
+  storyText: You are about to land in J Island. A place where a top secret project
+    is taking place...
+  description: 
+  character: {fileID: 6954118010999593743}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2535606635515600916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417863498036220248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 69
+  indentLevel: 0
+  storyText: You and other kids from around the world have been selected to test
+    a new system for catching pokemon.
+  description: 
+  character: {fileID: 6954118010999593743}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &6565062883690465707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417863498036220248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 70
+  indentLevel: 0
+  storyText: What this system is about is still a mystery. But the Professor Pines
+    seems to be sure it  will change the course of history as we know it...
+  description: 
+  character: {fileID: 6954118010999593743}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &3579255744279009523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417863498036220248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 71
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 1
+  durationOLD: 0
+--- !u!114 &1684550636613726877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5417863498036220248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 72
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: 8b5ed773a30757b4cb00b4dc083097f1, type: 3}
+    pitch: 1
+    customDuration: 3
+    volumeModifier: 0.5
+    loopMusic: 1
 --- !u!1001 &5417863496645112268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2277,14 +2401,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
---- !u!4 &1529603745062396652 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6776264483860599584, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
-  m_PrefabInstance: {fileID: 5417863496645112268}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6954118010999593743 stripped
+--- !u!114 &992203791394479725 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3148547588799638211, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5113021755170713505, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
   m_PrefabInstance: {fileID: 5417863496645112268}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2293,6 +2412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1529603745062396652 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6776264483860599584, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
+  m_PrefabInstance: {fileID: 5417863496645112268}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6939708511067802623 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3134173538351970867, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
@@ -2304,9 +2428,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &992203791394479725 stripped
+--- !u!114 &6954118010999593743 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5113021755170713505, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3148547588799638211, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
   m_PrefabInstance: {fileID: 5417863496645112268}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

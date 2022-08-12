@@ -9,6 +9,8 @@ public class TrainerBrainData : ScriptableObject
     public List<BrainMessageCondition> easyDialogs = new List<BrainMessageCondition>();
     public List<BrainTacticCondition> easyTactics = new List<BrainTacticCondition>();
 
+    public float priorityInfluenceMin = 1f;
+
     protected Flowchart flowchartInstance;
     public virtual void Initialize(BattleManager currentBattle)
     {
@@ -38,13 +40,9 @@ public class TrainerBrainData : ScriptableObject
             {
                 MoveEquipped highiestPriorityMove = null;
                 int highestPriority = -99999;
-                /*
-                int randomIndex = Random.Range(0, moves.Count);
-                MoveEquipped move = moves[randomIndex];
-                */
                 foreach(MoveEquipped move in moves)
                 {
-                    int priority = move.move.GetPriority(currentBattle, BattleTeamId.Team2);
+                    int priority = (int)(move.move.GetPriority(currentBattle, BattleTeamId.Team2) * Random.Range(priorityInfluenceMin, 1));
                     if (priority > highestPriority)
                     {
                         highiestPriorityMove = move;

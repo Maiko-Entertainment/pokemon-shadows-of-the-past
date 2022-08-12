@@ -29,7 +29,21 @@ public class InteractionsMaster : MonoBehaviour
     public void AddEvent(InteractionEvent intEvent)
     {
         print("Adding event: " + intEvent);
-        events.Add(intEvent);
+        bool priortyInserted = false;
+        foreach(InteractionEvent ie in events)
+        {
+            int index = events.IndexOf(ie);
+            if (index != 0 && ie.priority < intEvent.priority)
+            {
+                events.Insert(index, intEvent);
+                priortyInserted = true;
+                break;
+            }
+        }
+        if (!priortyInserted)
+        {
+            events.Add(intEvent);
+        }
         isInteracting = true;
         if (events.Count == 1)
         {

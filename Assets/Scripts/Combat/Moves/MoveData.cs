@@ -192,7 +192,7 @@ public class MoveData : ScriptableObject
         PokemonBattleData myEnemy = battleStatus.GetTeamActivePokemon(myTeam == BattleTeamId.Team1 ? BattleTeamId.Team2 : BattleTeamId.Team1);
         int myRoundsInCombat = myUser.roundsInCombat;
         float myHealthPercentage = (float)myUser.GetPokemonCurrentHealth() / myUser.GetMaxHealth();
-        bool amILossingOnSpeed = myUser.GetBattleStats().speed < myEnemy.GetBattleStats().speed;
+        bool amILossingOnSpeed = priority <= 0 && myUser.GetBattleStats().speed < myEnemy.GetBattleStats().speed;
         if (categoryId == MoveCategoryId.status)
         {
             float alreadyHasStatusBiasMultiplier = 1f;
@@ -218,13 +218,14 @@ public class MoveData : ScriptableObject
                     }
                 }
             }
-            return (int)Mathf.Ceil((10f - 2 * myRoundsInCombat) * Mathf.Pow(myHealthPercentage, lossingOnSpeedPow) * alreadyHasStatusBiasMultiplier);
+            return (int)Mathf.Ceil((6f - 1 * myRoundsInCombat) * Mathf.Pow(myHealthPercentage, lossingOnSpeedPow) * alreadyHasStatusBiasMultiplier);
         }
         else
         {
             DamageSummary possibleDamage = battleStatus.CalculateMoveDamage(new BattleEventUseMove(myUser, this));
             float percentageDamage = (float)possibleDamage.damageAmount / myUser.GetMaxHealth();
-            return (int)Mathf.Ceil((10f * (0.2f + 0.8f * percentageDamage)));
+            bool willKill = possibleDamage.damageAmount >= myUser.GetPokemonCurrentHealth();
+            return willKill && !amILossingOnSpeed ? 11 : (int)Mathf.Ceil((10f * (0.2f + 0.8f * percentageDamage)));
         }
     }
 }

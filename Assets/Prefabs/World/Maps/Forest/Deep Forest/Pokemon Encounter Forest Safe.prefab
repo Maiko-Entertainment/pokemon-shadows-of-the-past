@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,12 +50,13 @@ MonoBehaviour:
   moveBrain: {fileID: 0}
   possibleEncounters:
   - {fileID: 11400000, guid: 22ce9eb54283a204c95e92eeb0870df2, type: 2}
-  - {fileID: 11400000, guid: cb50bb0f6c3c2cc4b92f74a63c9b4a0a, type: 2}
+  - {fileID: 11400000, guid: dc24b5ad368853441ae7ce1b1f1017e2, type: 2}
   activeChance: 0.4
   retryInterval: 7
   activePrefab: {fileID: 6390779988497005388, guid: 04bd497b77073d54194e6d562bf66b94, type: 3}
   battleData:
     battleMusic: {fileID: 8300000, guid: 135db6e2dd99fe04997480380878b918, type: 3}
+    battleWonMusic: {fileID: 0}
     battlebackground: {fileID: 1727051147952888905, guid: d8d0288b7a31e1b42b873e87bfeac93c, type: 3}
     battleType: 0
     playerExtraTactics:

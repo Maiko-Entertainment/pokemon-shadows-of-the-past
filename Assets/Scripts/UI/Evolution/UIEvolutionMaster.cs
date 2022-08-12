@@ -67,7 +67,9 @@ public class UIEvolutionMaster : MonoBehaviour
 
         Dictionary<string, string> variables = new Dictionary<string, string>();
         variables.Add("pokemon", pokemon.GetName());
-        InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Start", variables));
+        InteractionEventFlowchart startEvoFlowchartEvent = new InteractionEventFlowchart(flowchart, "Start", variables);
+        startEvoFlowchartEvent.priority = 10;
+        InteractionsMaster.GetInstance().AddEvent(startEvoFlowchartEvent);
 
         StartCoroutine(InitiateEvolutionSequence(pokemon, evolution, learnedMoves));
     }
@@ -75,8 +77,8 @@ public class UIEvolutionMaster : MonoBehaviour
     IEnumerator InitiateEvolutionSequence(PokemonCaughtData pokemon, PokemonBaseData evolution, List<PokemonMoveLearn> learnedMoves = null)
     {
         float evoGlowTime = 2f;
-        float evolutionTransitionDuration = 15f;
-        float finalGlowDuration = 2f;
+        float evolutionTransitionDuration = 17.9f;
+        float finalGlowDuration = 6f;
         float finalWaveDuration = 2f;
         float transitionDurationFinal = evolutionTransitionDuration - finalGlowDuration;
         StartCoroutine(CreateLines(0.25f));
@@ -111,7 +113,7 @@ public class UIEvolutionMaster : MonoBehaviour
         // Show final glow
         GameObject finalGlow = Instantiate(evolutionGlowFinalPrefab, evolutionGlowContainer);
         Destroy(finalGlow, finalGlowDuration);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(finalWaveDuration);
         AudioMaster.GetInstance().PlaySfx(evolutionShineSound);
         yield return new WaitForSeconds(0.5f);
         // Change sprites to evolution
@@ -125,20 +127,29 @@ public class UIEvolutionMaster : MonoBehaviour
         AudioMaster.GetInstance().PlaySfx(evolution.GetCry());
         yield return new WaitForSeconds(2f);
         AudioMaster.GetInstance().PlaySfx(evolutionSuccessSound);
+
         Dictionary<string, string> variables = new Dictionary<string, string>();
         variables.Add("pokemon", pokemon.GetName());
         variables.Add("evolution", evolution.species);
-        InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Evolution", variables));
+        InteractionEventFlowchart evolutionEvent = new InteractionEventFlowchart(flowchart, "Evolution", variables);
+        evolutionEvent.priority = 10;
+        InteractionsMaster.GetInstance().AddEvent(evolutionEvent);
+        InteractionsMaster.GetInstance().ExecuteNext(0f);
+
         foreach (PokemonMoveLearn ml in learnedMoves)
         {
             Dictionary<string, string> moveVar = new Dictionary<string, string>();
             moveVar.Add("pokemon", pokemon.GetName());
             moveVar.Add("move", ml.move.moveName);
-            InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Move Learned", moveVar));
+            InteractionEventFlowchart moveLearnEvent = new InteractionEventFlowchart(flowchart, "Move Learned", moveVar);
+            moveLearnEvent.priority = 10;
+            InteractionsMaster.GetInstance().AddEvent(moveLearnEvent);
         }
         if (learnedMoves.Count > 0)
         {
-            InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Move Equip"));
+            InteractionEventFlowchart moveEquippedEvent = new InteractionEventFlowchart(flowchart, "Move Equip");
+            moveEquippedEvent.priority = 10;
+            InteractionsMaster.GetInstance().AddEvent(moveEquippedEvent);
         }
         InteractionsMaster.GetInstance().AddEvent(new InteractionEventFinishEvolution());
     }

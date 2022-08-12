@@ -22,5 +22,6 @@ public enum BattleEventId
     pokemonLeaveCleanUp = 9,
     battleEnd = 15,
     battleRun = 18,
-    animation = 19
+    animation = 19,
+    pokemonAddStatusSuccess = 21
 }

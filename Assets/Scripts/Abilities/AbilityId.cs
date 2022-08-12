@@ -12,4 +12,10 @@ public enum AbilityId
     Swarm = 8,
     Technician = 9,
     PoisonPoint = 10,
+    Limber = 11,
+    Levitate = 12,
+    VitalSpirit = 13,
+    EffectSpores = 14,
+    KeenEye = 15,
+    Synchronize = 16
 }

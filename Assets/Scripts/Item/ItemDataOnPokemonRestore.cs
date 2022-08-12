@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemDataOnPokemonRestore : ItemDataOnPokemon
 {
     public int restoreAmount = 20;
+    public int minRestoreAmount = 0;
     public bool restoresPercentage = false;
     public List<StatusEffectId> statusClears = new List<StatusEffectId>();
 
@@ -56,7 +57,7 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     public int GetHealAmount(PokemonCaughtData pokemon)
     {
         int healAmount = restoresPercentage ? (int)(pokemon.GetCurrentStats().health * restoreAmount / 100f) : restoreAmount;
-        return healAmount;
+        return Mathf.Max(healAmount, minRestoreAmount);
     }
 
     public override void Use()

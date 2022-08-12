@@ -20,7 +20,7 @@ MonoBehaviour:
       pokemon:
         pokemonName: Maya
         pokemonBase: {fileID: 11400000, guid: 13a1841cf6d3e4d40b7cd3486777eec2, type: 2}
-        level: 12
+        level: 8
         experience: 0
         damageTaken: 0
         statusEffectId: 0
@@ -55,11 +55,12 @@ MonoBehaviour:
       heldItem:
         equippedItem: {fileID: 0}
         battleTriggers: []
+      roundsInCombat: 0
     - battleId: 0
       pokemon:
         pokemonName: Hansel
         pokemonBase: {fileID: 11400000, guid: 0c62f270b3bc93546b809c41527055ab, type: 2}
-        level: 12
+        level: 10
         experience: 0
         damageTaken: 0
         statusEffectId: 0
@@ -94,12 +95,14 @@ MonoBehaviour:
       heldItem:
         equippedItem: {fileID: 0}
         battleTriggers: []
+      roundsInCombat: 0
     moneyPrice: 0
     teamStatus: []
     tactics: []
     tacticGauge: 0
   battleData:
     battleMusic: {fileID: 8300000, guid: b4f47054d9448b14b9773e44c8cb8385, type: 3}
+    battleWonMusic: {fileID: 0}
     battlebackground: {fileID: 1727051147952888905, guid: d8d0288b7a31e1b42b873e87bfeac93c, type: 3}
     battleType: 1
     playerExtraTactics:

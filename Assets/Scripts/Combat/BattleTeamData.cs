@@ -7,6 +7,7 @@ public class BattleTeamData
     public string trainerTitle = "Trainer Name";
     public TrainerBrainData brain;
     public List<PokemonBattleData> pokemon = new List<PokemonBattleData>();
+    public List<PokemonBattleDataConditional> conditionalPokemon = new List<PokemonBattleDataConditional>();
     public int moneyPrice = 200;
     // Handles status that affect the whole team such as lightscreen
     public List<Status> teamStatus = new List<Status>();
@@ -29,7 +30,7 @@ public class BattleTeamData
     public BattleTeamData Copy()
     {
         List<PokemonBattleData> pokemonNewInstance = new List<PokemonBattleData>();
-        foreach(PokemonBattleData p in pokemon)
+        foreach(PokemonBattleData p in GetTeam())
         {
             pokemonNewInstance.Add(p.Copy());
         }
@@ -43,7 +44,7 @@ public class BattleTeamData
         // SetActivePokemon(GetFirstAvailabelPokemon());
         brain?.Initialize(BattleMaster.GetInstance().GetCurrentBattle());
         int index = 0;
-        foreach(PokemonBattleData pkmn in pokemon)
+        foreach(PokemonBattleData pkmn in GetTeam())
         {
             pkmn.battleId = (teamId == BattleTeamId.Team1 ? 0 : 100) + index;
             index++;
@@ -62,7 +63,7 @@ public class BattleTeamData
 
     public PokemonBattleData GetFirstAvailabelPokemon()
     {
-        foreach (PokemonBattleData p in pokemon)
+        foreach (PokemonBattleData p in GetTeam())
         {
             if (!p.IsFainted())
                 return p;
@@ -72,12 +73,21 @@ public class BattleTeamData
     public List<PokemonBattleData> GetAvailablePokemon()
     {
         List<PokemonBattleData> availableList = new List<PokemonBattleData>();
-        foreach (PokemonBattleData p in pokemon)
+        foreach (PokemonBattleData p in GetTeam())
         {
             if (!p.IsFainted())
                 availableList.Add(p);
         }
         return availableList;
+    }
+    public List<PokemonBattleData> GetTeam()
+    {
+        List<PokemonBattleData> completeTeam = new List<PokemonBattleData>(pokemon);
+        foreach(PokemonBattleDataConditional pokeCondition in conditionalPokemon)
+        {
+            completeTeam.AddRange(pokeCondition.GetPokemon());
+        }
+        return completeTeam;
     }
 
     public void SetActivePokemon(PokemonBattleData pokemon)

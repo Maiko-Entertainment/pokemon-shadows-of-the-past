@@ -24,12 +24,16 @@ MonoBehaviour:
     spDefense: 30
     speed: 60
   types: 0a00000011000000
-  abilities: []
+  abilities:
+  - abilityId: 15
+    abilityPriority: 5
   maleChance: 0.5
   isGenderless: 0
   captureRate: 255
   baseFriendship: 70
   baseExp: 50
+  pokedexEntry: They flock in great numbers. Though small, they flap their wings
+    with great power.
   levelUpMoves:
   - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
     learnType: 0
@@ -58,6 +62,10 @@ MonoBehaviour:
   - move: {fileID: 11400000, guid: 01a1f074e0346a742a57a7470b414250, type: 2}
     learnType: 0
     levelRequired: 37
-  evolutions: []
+  evolutions:
+  - pokemonId: 397
+    evolutionData:
+      evolutionType: 0
+      value: 14
   battleAnimation: {fileID: 4472178302252832915, guid: c510af6c4d19c094b886d7f4ac5ccd0b, type: 3}
-  pokedexEntry: 
+  overWorldPrefab: {fileID: 0}

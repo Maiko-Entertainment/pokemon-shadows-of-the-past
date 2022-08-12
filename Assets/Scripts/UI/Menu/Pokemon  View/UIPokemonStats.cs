@@ -46,6 +46,6 @@ public class UIPokemonStats : MonoBehaviour
                 natureDescription.text += "Speed";
                 break;
         }
-        natureDescription.text += " equal to the pokemon's level.";
+        natureDescription.text += " equal to half the pokemon's level (Rounded up).";
     }
 }

@@ -100,6 +100,9 @@ public enum MoveId
     XScissor = 93,
     SwordDance = 94,
     MagicalLeaf = 95,
+    BugBite = 96,
+    StruggleBug = 97,
+    StringShot = 98,
     Struggle = 10001,
     SelfHit = 10000
 }

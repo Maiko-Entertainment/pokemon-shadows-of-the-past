@@ -10,7 +10,7 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
     {
         this.move = move;
         this.drainMultiplier = drainMultiplier;
-        maxTriggers = 99999;
+        maxTriggers = 1;
         turnsLeft = 1;
     }
 
@@ -29,9 +29,9 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
                 {
                     BattleMaster.GetInstance().GetCurrentBattle()?.AddPokemonHealEvent(dealer, new HealSummary(drainAmount, HealSource.Move, (int)move.moveId));
                 }
-                else
+                else if (drainAmount < 0)
                 {
-                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount * -1, DamageSummarySource.Move, (int)move.moveId, ds.advantageType, pokemon));
+                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount * -1, DamageSummarySource.MoveEffect, (int)move.moveId, ds.advantageType, pokemon));
                 }
             }
             else

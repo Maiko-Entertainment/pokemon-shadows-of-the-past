@@ -143,7 +143,7 @@ public class PokemonCaughtData
     public int GetStatValue(int level, int statBase, bool natureBoost)
     {
         float natureValue = natureBoost ? 1 * level : 0; 
-        int value = (int) Mathf.Max(5f + (0.02f * statBase) * level + natureValue, 1);
+        int value = (int) Mathf.Max(5f + (0.02f * statBase) * level + Mathf.Ceil(natureValue * 0.5f), 1);
         return value;
     }
 

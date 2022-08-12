@@ -296,7 +296,7 @@ public class BattleManager
         }
         if (totalPokemon == 0)
             return;
-        int expGained = bm.isExpShareOn ? exp : (int)(exp / totalPokemon * 1.25f);
+        int expGained = bm.isExpShareOn ? (int)(exp * 0.5f) : (int)(exp / totalPokemon * 1.25f);
         foreach (PokemonBattleData pokemonBattle in finalPokemonList)
         {
             if (!pokemonBattle.IsFainted())
@@ -316,7 +316,7 @@ public class BattleManager
         if (GetTeamActivePokemon(BattleTeamId.Team1) != null)
         {
             // If it does and it exp share active x2 it to make it 100% exp again
-            eventManager.AddEvent(new BattleEventPokemonGainExp(GetTeamActivePokemon(BattleTeamId.Team1), expGained));
+            eventManager.AddEvent(new BattleEventPokemonGainExp(GetTeamActivePokemon(BattleTeamId.Team1), expGained * 2));
         }
         eventManager.ResolveAllEventTriggers();
     }
@@ -655,6 +655,7 @@ public class BattleManager
         }
         else
         {
+            AddEvent(new BattleEventPokemonStatusAddSuccess(battleEvent));
             pokemon.AddStatusEffect(status);
             BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon));
             if (gainStatusBlockName != "")

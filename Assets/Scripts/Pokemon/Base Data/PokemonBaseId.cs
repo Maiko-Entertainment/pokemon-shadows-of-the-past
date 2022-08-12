@@ -36,10 +36,12 @@ public enum PokemonBaseId
     Gardevoir = 282,
     Roselia = 315,
     Starly = 396,
+    Staravia = 397,
     Buneary = 427,
     Lopunny = 428,
     Lillipup = 506,
     Herdier = 507,
     Stoutland = 508,
+    Swaddle = 540,
     Mimikyu = 778,
 }

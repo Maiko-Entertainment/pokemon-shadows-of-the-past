@@ -135,7 +135,7 @@ public class PokemonMaster : MonoBehaviour
         UIEvolutionMaster.GetInstance().InitiateEvolution(original, evolution, learnedMoves);
     }
 
-    public void CheckForEvolution(PokemonCaughtData pokemon)
+    public bool CheckForEvolution(PokemonCaughtData pokemon)
     {
         List<PokemonBaseEvolution> evolutions = pokemon.GetPokemonBaseData().evolutions;
         foreach(PokemonBaseEvolution evo in evolutions)
@@ -144,8 +144,9 @@ public class PokemonMaster : MonoBehaviour
             {
                 PokemonBaseData evolution = GetPokemonData(evo.pokemonId);
                 InteractionsMaster.GetInstance().AddEvent(new InteractionEventStartEvolution(pokemon, evolution));
-                break;
+                return true;
             }
         }
+        return false;
     }
 }

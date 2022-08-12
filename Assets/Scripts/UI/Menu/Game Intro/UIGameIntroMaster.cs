@@ -129,6 +129,20 @@ public class UIGameIntroMaster : MonoBehaviour
         starter.natureId = natures[Random.Range(0,4)];
         starter.CheckForLearnedMoves(starter.level);
         PartyMaster.GetInstance().AddPartyMember(starter);
+        SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.startedTypePicked);
+        SaveElementNumber sen = (SaveElementNumber)se;
+        if (starter.GetTypes().Contains(PokemonTypeId.Fire))
+        {
+            sen.SetValue(3f);
+        }
+        else if(starter.GetTypes().Contains(PokemonTypeId.Water))
+        {
+            sen.SetValue(2f);
+        }
+        else
+        {
+            sen.SetValue(1f);
+        }
         starterSelector?.FadeOut();
         AudioMaster.GetInstance().PlaySfx(submitSound);
         InteractionsMaster.GetInstance().ExecuteNext();

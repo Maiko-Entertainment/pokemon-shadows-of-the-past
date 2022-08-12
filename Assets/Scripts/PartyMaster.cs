@@ -124,5 +124,9 @@ public class PartyMaster : MonoBehaviour
     public void FullyHeal(PokemonCaughtData pkmn)
     {
         pkmn.ChangeHealth(9999);
+        foreach(MoveEquipped me in pkmn.GetMoves())
+        {
+            me.timesUsed = 0;
+        }
     }
 }

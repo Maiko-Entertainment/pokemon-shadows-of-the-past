@@ -68,6 +68,18 @@ public class BattleEventManager
                     BattleEventPokemonChangeStat bepcs = (BattleEventPokemonChangeStat)next;
                     keepGoing = btpcs.Execute(bepcs);
                 break;
+                case BattleEventId.pokemonAddStatus:
+                    BattleTriggerOnPokemonGainStatusEffect btpgse =
+                        (BattleTriggerOnPokemonGainStatusEffect)bt;
+                    BattleEventPokemonStatusAdd bepsa = (BattleEventPokemonStatusAdd)next;
+                    keepGoing = btpgse.Execute(bepsa);
+                    break;
+                case BattleEventId.pokemonAddStatusSuccess:
+                    BattleTriggerOnPokemonGainStatusEffect btpgses =
+                        (BattleTriggerOnPokemonGainStatusEffect)bt;
+                    BattleEventPokemonStatusAddSuccess bepsas = (BattleEventPokemonStatusAddSuccess)next;
+                    keepGoing = btpgses.Execute(bepsas);
+                    break;
                 case BattleEventId.pokemonEnter:
                     BattleTriggerOnPokemonEnter btpe = (BattleTriggerOnPokemonEnter)bt;
                     keepGoing = btpe.Execute((BattleEventEnterPokemon)next);
