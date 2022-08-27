@@ -9,10 +9,11 @@ public class BattleTurnDesitionCapture : BattleTurnDesition
         base(teamId)
     {
         this.pokeball = pokeball;
+        priority = 7;
     }
 
     public override void Execute()
     {
-        pokeball.UseInBattle();
+        BattleMaster.GetInstance()?.GetCurrentBattle().AddEvent(new BattleEventUsePokeball(pokeball));
     }
 }

@@ -11,6 +11,7 @@ public class BattleTriggerOnPokemonChangeStatsModify : BattleTriggerOnPokemonCha
     {
         this.instructions = instructions;
         this.showAbility = showAbility;
+        eventId = BattleEventId.pokemonChangeStats;
     }
 
     public override bool Execute(BattleEventPokemonChangeStat battleEvent)

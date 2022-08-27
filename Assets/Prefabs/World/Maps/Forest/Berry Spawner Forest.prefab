@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2049434414148315175}
   m_RootOrder: 0
@@ -48,7 +49,7 @@ MonoBehaviour:
   - spawn: {fileID: 5270948571633803190, guid: 26d2dc1d5bc10cd49b46f8006247600a, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
     spawnAsChild: 1
-  chance: 0.5
+  chance: 0.4
 --- !u!1 &6310499072009209627
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ GameObject:
   m_Layer: 0
   m_Name: Berry Spawner Forest
   m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -75,6 +76,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 25.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4868752399699830500}
   - {fileID: 5557871316437499336}
@@ -108,6 +110,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2049434414148315175}
   m_RootOrder: 1
@@ -129,4 +132,4 @@ MonoBehaviour:
   - spawn: {fileID: 7628193992614478564, guid: cb32febcd9130b847a2f81fb21d71b9b, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
     spawnAsChild: 1
-  chance: 0.25
+  chance: 0.2

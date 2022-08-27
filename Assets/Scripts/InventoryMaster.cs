@@ -66,4 +66,19 @@ public class InventoryMaster : MonoBehaviour
         newInventoryInstance.ChangeAmount(changeAmount);
         inventory.Add(newInventoryInstance);
     }
+
+    public ItemInventory GetItem(ItemId id)
+    {
+        foreach (ItemInventory i in inventory)
+        {
+            if (i.itemData.GetItemId() == id)
+            {
+                return i;
+            }
+        }
+        ItemData newInstance = ItemMaster.GetInstance().GetItem(id);
+        ItemInventory newInventoryInstance = new ItemInventory(newInstance, 0);
+        inventory.Add(newInventoryInstance);
+        return newInventoryInstance;
+    }
 }

@@ -9,6 +9,7 @@ public enum SaveElementId
     TediursaHelpCompleted = 6,
     erikFirstEncounterResult = 7,
     akaneSecondEncounterWon = 8,
+    staraptorBerriesProgress = 9,
     akaneRelationship = 100,
     danteRelationship = 101,
     erikRelationship = 102,

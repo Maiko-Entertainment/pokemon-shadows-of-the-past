@@ -59,6 +59,11 @@ public class BattleManager
         return isBattleActive;
     }
 
+    public void SetBattleActive(bool isActive)
+    {
+        isBattleActive = isActive;
+    }
+
     public void AddStatGetter(BattleStatsGetter getter)
     {
         battleStatsSubscribers.Add(getter);
@@ -83,9 +88,9 @@ public class BattleManager
         BattleTurnDesition AIDesition = HandleAIInput();
         HandleRoundEnd();
         int desitionPriority = desition.priority;
-        int tacticPriority = currentTacticSelected ? 4 : -1;
+        int tacticPriority = currentTacticSelected ? 9 : -1;
         int aiDesitionPriority = AIDesition.priority;
-        int aiTacticPriority = AIDesition.tactic ? 4 : -1;
+        int aiTacticPriority = AIDesition.tactic ? 9 : -1;
         for(int priority = 0; priority < 10; priority++)
         {
             if (aiDesitionPriority == priority && aiDesitionPriority == desitionPriority)
@@ -336,7 +341,6 @@ public class BattleManager
     public void HandleBattleEnd(BattleTeamId winningTeam, bool endNow = false)
     {
         // Add event for battle end to handle variable saving, end combat dialogue, etc
-        isBattleActive = false;
         BattleEventBattleEnd battleEndEvent = new BattleEventBattleEnd(this, winningTeam, postBattleEvent);
         eventManager.AddEvent(battleEndEvent);
         if (endNow)

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.094, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7504414292989744975}
   m_Father: {fileID: 1913122332970904069}
@@ -112,6 +113,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.028, y: -0.024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6079735401884571060}
   - {fileID: 1273989639444024202}
@@ -137,7 +139,7 @@ MonoBehaviour:
   blockName: Regular Item
   item: {fileID: 11400000, guid: a1aec8b90335158409b40a686781ea37, type: 2}
   minAmountItems: 1
-  extraRange: 2
+  extraRange: 0
   destroyOnInteract: 1
 --- !u!61 &1709897962526939615
 BoxCollider2D:
@@ -284,11 +286,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
---- !u!4 &1273989639444024202 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5675727851261696339, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
-  m_PrefabInstance: {fileID: 6875345968001733337}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &369734789400125144 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6506484782910934017, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
@@ -300,3 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1273989639444024202 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5675727851261696339, guid: 8d1ae5471aa66bd4ab92413611b30c11, type: 3}
+  m_PrefabInstance: {fileID: 6875345968001733337}
+  m_PrefabAsset: {fileID: 0}

@@ -73,6 +73,10 @@ GameObject:
   - component: {fileID: 1140195350733195681}
   - component: {fileID: 6517656624077170036}
   - component: {fileID: 2327580458882885014}
+  - component: {fileID: 7674159092067222173}
+  - component: {fileID: 3398818336445203057}
+  - component: {fileID: 956172610703147293}
+  - component: {fileID: 8859791782678711320}
   m_Layer: 0
   m_Name: Bob First Encouter Flowchart
   m_TagString: Untagged
@@ -90,6 +94,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5255562526301839580}
   - {fileID: 1231742672709522621}
@@ -110,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   scrollPos: {x: 218.134, y: -4.711336}
-  variablesScrollPos: {x: 0, y: 91}
+  variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
   zoom: 0.97
@@ -121,8 +126,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 131481226648098675}
-  selectedCommands: []
+  - {fileID: 4340097691500858817}
+  selectedCommands:
+  - {fileID: 6415040820405466224}
   variables:
   - {fileID: 1355108208977226213}
   - {fileID: 7282840463717553547}
@@ -439,13 +445,19 @@ MonoBehaviour:
   overwriteSpeed: 0
   speed: 3
   directions:
-  - direction: 0
+  - direction: 3
     justTurn: 0
     jump: 0
-  - direction: 0
+  - direction: 3
     justTurn: 0
     jump: 0
-  - direction: 0
+  - direction: 3
+    justTurn: 0
+    jump: 0
+  - direction: 3
+    justTurn: 0
+    jump: 0
+  - direction: 3
     justTurn: 0
     jump: 0
   waitUntilEnd: 1
@@ -612,6 +624,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 4199536275695608341}
   - {fileID: 6439212269311699418}
+  - {fileID: 8859791782678711320}
   - {fileID: 7702344947931552110}
   suppressAllAutoSelections: 0
 --- !u!114 &8057802096950871958
@@ -711,7 +724,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Oh, of course, you must still be in shock from the fall!
   description: 
-  character: {fileID: 1336075789241518484}
+  character: {fileID: 1231742673072543141}
   portrait: {fileID: 21300000, guid: 315c35d06b9c8d540ad5c959f3bf67fe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -738,7 +751,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Don't worry friend. I got you covered.
   description: 
-  character: {fileID: 1336075789241518484}
+  character: {fileID: 1231742673072543141}
   portrait: {fileID: 21300000, guid: 315c35d06b9c8d540ad5c959f3bf67fe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -802,8 +815,10 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 8016494638609318354}
+  - {fileID: 7674159092067222173}
   - {fileID: 8144816647339551736}
   - {fileID: 4732760607286532732}
+  - {fileID: 3398818336445203057}
   - {fileID: 7028108613870569670}
   - {fileID: 6733453997325458463}
   - {fileID: 7989268793555377027}
@@ -816,6 +831,7 @@ MonoBehaviour:
   - {fileID: 1169634763510453949}
   - {fileID: 3609293925715025013}
   - {fileID: 8248440730554246270}
+  - {fileID: 956172610703147293}
   - {fileID: 1140195350733195681}
   - {fileID: 624802872952899107}
   - {fileID: 4211317449322040821}
@@ -893,7 +909,7 @@ MonoBehaviour:
   itemId: 29
   indentLevel: 0
   clip:
-    audio: {fileID: 0}
+    audio: {fileID: 8300000, guid: f0fd1177aee09854c8fdcf3f95350fd8, type: 3}
     pitch: 1
     customDuration: -1
     volumeModifier: 1
@@ -1101,7 +1117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 38
   indentLevel: 0
-  storyText: '{$playerName}... Be good to your pokemon okay? I hope we meet again!'
+  storyText: Oh, and {$playerName}...
   description: 
   character: {fileID: 1336075789241518484}
   portrait: {fileID: 21300000, guid: 315c35d06b9c8d540ad5c959f3bf67fe, type: 3}
@@ -1190,22 +1206,19 @@ MonoBehaviour:
   overwriteSpeed: 0
   speed: 3
   directions:
-  - direction: 2
+  - direction: 1
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 1
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 1
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 1
     justTurn: 0
     jump: 0
-  - direction: 2
-    justTurn: 0
-    jump: 0
-  - direction: 2
+  - direction: 1
     justTurn: 0
     jump: 0
   waitUntilEnd: 1
@@ -1582,6 +1595,94 @@ MonoBehaviour:
   transition: {fileID: 5167105388578258930, guid: 14833ba700e72ab4fa6d19a5f940d1d2, type: 3}
   destroyprevious: 1
   waitForEnd: 0
+--- !u!114 &7674159092067222173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52aa8c0a3a1dec94695e072bd19b6369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 54
+  indentLevel: 0
+  transition: {fileID: 9161319405032701798, guid: d07b3625acd17704191032e8673b7181, type: 3}
+  destroyprevious: 1
+  waitForEnd: 0
+--- !u!114 &3398818336445203057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52aa8c0a3a1dec94695e072bd19b6369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 55
+  indentLevel: 0
+  transition: {fileID: 5167105388578258930, guid: 14833ba700e72ab4fa6d19a5f940d1d2, type: 3}
+  destroyprevious: 1
+  waitForEnd: 0
+--- !u!114 &956172610703147293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 56
+  indentLevel: 0
+  storyText: It was {punch}nice to meet you! {punch}Hee hee!
+  description: 
+  character: {fileID: 1336075789241518484}
+  portrait: {fileID: 21300000, guid: 315c35d06b9c8d540ad5c959f3bf67fe, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &8859791782678711320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 57
+  indentLevel: 0
+  storyText: You can call me Bob by the way.
+  description: 
+  character: {fileID: 1336075789241518484}
+  portrait: {fileID: 21300000, guid: 315c35d06b9c8d540ad5c959f3bf67fe, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1001 &5335595161065517666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1726,9 +1827,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6776264483860599584, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
   m_PrefabInstance: {fileID: 5697660227467462557}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1336075789241518484 stripped
+--- !u!114 &1231742673072543141 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6744305454356909577, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6776264484357673528, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
   m_PrefabInstance: {fileID: 5697660227467462557}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1737,9 +1838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1231742673072543141 stripped
+--- !u!114 &1336075789241518484 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6776264484357673528, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6744305454356909577, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
   m_PrefabInstance: {fileID: 5697660227467462557}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

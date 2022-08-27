@@ -75,8 +75,8 @@ public class BattleEventManager
                     keepGoing = btpgse.Execute(bepsa);
                     break;
                 case BattleEventId.pokemonAddStatusSuccess:
-                    BattleTriggerOnPokemonGainStatusEffect btpgses =
-                        (BattleTriggerOnPokemonGainStatusEffect)bt;
+                    BattleTriggerOnPokemonGainStatusEffectSuccess btpgses =
+                        (BattleTriggerOnPokemonGainStatusEffectSuccess)bt;
                     BattleEventPokemonStatusAddSuccess bepsas = (BattleEventPokemonStatusAddSuccess)next;
                     keepGoing = btpgses.Execute(bepsas);
                     break;

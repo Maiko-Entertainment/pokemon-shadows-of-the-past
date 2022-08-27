@@ -84,6 +84,8 @@ GameObject:
   - component: {fileID: 2569224178388238059}
   - component: {fileID: 2931725222180697393}
   - component: {fileID: 5365068855959578390}
+  - component: {fileID: 1195039493710188773}
+  - component: {fileID: 2738938235468482031}
   m_Layer: 0
   m_Name: Akane 1st encounter Flowchart
   m_TagString: Untagged
@@ -133,9 +135,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 2409420486743081640}
+  - {fileID: 4946835839507304033}
   selectedCommands:
-  - {fileID: 1015654025693065030}
+  - {fileID: 4899859177248813054}
   variables: []
   description: 
   stepPause: 0
@@ -193,6 +195,8 @@ MonoBehaviour:
   - {fileID: 2249189663595213331}
   - {fileID: 381889542096131895}
   - {fileID: 9208692363151900798}
+  - {fileID: 1195039493710188773}
+  - {fileID: 2738938235468482031}
   - {fileID: 5226817965913121136}
   - {fileID: 7431795601672508807}
   - {fileID: 7061234149726816261}
@@ -257,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   indentLevel: 0
-  storyText: "COME ONN MAAAN!\nI don\xB4t have all day!"
+  storyText: "COME ONN DANTE!\nI don\xB4t have all day!"
   description: 
   character: {fileID: 4976551191554627004}
   portrait: {fileID: 0}
@@ -338,8 +342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 8
   indentLevel: 0
-  storyText: I {punch}KNOW you have one more pokemon. You just gave up because you
-    are a-{w}{x}
+  storyText: I {punch}KNOW you have one more pokemon. Stop being so pathetic and
+    just-{w}{x}
   description: 
   character: {fileID: 4976551191554627004}
   portrait: {fileID: 0}
@@ -370,10 +374,10 @@ MonoBehaviour:
   overwriteSpeed: 0
   speed: 3
   directions:
-  - direction: 0
+  - direction: 2
     justTurn: 1
     jump: 0
-  waitUntilEnd: 1
+  waitUntilEnd: 0
 --- !u!114 &2249189663595213331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  storyText: You should run...
+  storyText: Hey...
   description: 
   character: {fileID: 2900990997916848264}
   portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
@@ -473,7 +477,7 @@ MonoBehaviour:
   overwriteSpeed: 0
   speed: 3
   directions:
-  - direction: 0
+  - direction: 2
     justTurn: 0
     jump: 0
   waitUntilEnd: 1
@@ -849,7 +853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 37
   indentLevel: 0
-  offset: {x: 0, y: -2, z: 0}
+  offset: {x: 0, y: 2, z: 0}
   waitForEnd: 1
 --- !u!114 &6555509083260727995
 MonoBehaviour:
@@ -1393,22 +1397,22 @@ MonoBehaviour:
   overwriteSpeed: 1
   speed: 4
   directions:
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
   waitUntilEnd: 1
@@ -1710,22 +1714,16 @@ MonoBehaviour:
   overwriteSpeed: 1
   speed: 4
   directions:
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
-  - direction: 2
-    justTurn: 0
-    jump: 0
-  - direction: 2
-    justTurn: 0
-    jump: 0
-  - direction: 2
+  - direction: 0
     justTurn: 0
     jump: 0
   waitUntilEnd: 1
@@ -1911,7 +1909,7 @@ MonoBehaviour:
   overwriteSpeed: 0
   speed: 3
   directions:
-  - direction: 0
+  - direction: 2
     justTurn: 1
     jump: 0
   waitUntilEnd: 0
@@ -2027,6 +2025,60 @@ MonoBehaviour:
   variableId: 100
   operation: 1
   value: -1
+--- !u!114 &1195039493710188773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460174479093708419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 152
+  indentLevel: 0
+  storyText: And also...
+  description: 
+  character: {fileID: 2900990997916848264}
+  portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2738938235468482031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460174479093708419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 153
+  indentLevel: 0
+  storyText: ' Run...'
+  description: 
+  character: {fileID: 2900990997916848264}
+  portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 1
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1001 &484808790632453938
 PrefabInstance:
   m_ObjectHideFlags: 0

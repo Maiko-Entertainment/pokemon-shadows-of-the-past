@@ -190,6 +190,10 @@ GameObject:
   - component: {fileID: 2567923212233280520}
   - component: {fileID: 5297642758619809942}
   - component: {fileID: 7865622228155418975}
+  - component: {fileID: 1402145720012467863}
+  - component: {fileID: 8423364878970864493}
+  - component: {fileID: 3483202460176687028}
+  - component: {fileID: 2146971142028865055}
   m_Layer: 0
   m_Name: Combat Flowchart
   m_TagString: Untagged
@@ -226,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 667.72064, y: 89.12966}
+  scrollPos: {x: 404.1908, y: 20.894413}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 280
@@ -237,8 +241,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 876309064416300321}
+  selectedCommands:
+  - {fileID: 1520962997271906015}
   variables:
   - {fileID: 6151006633196087580}
   - {fileID: 6151006633196087581}
@@ -2972,7 +2978,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 111
   indentLevel: 0
-  storyText: '{$pokemon} became charmed by you and will be easier to catch!'
+  storyText: '{$pokemon} became charmed. It''s attacks will deal less damage and
+    it will be easier to catch!'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -4474,6 +4481,90 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 198
+  indentLevel: 0
+--- !u!114 &1402145720012467863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151006633196087577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 653.4564
+    y: 187.34088
+    width: 118.23529
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 201
+  blockName: Charm Lose
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 8423364878970864493}
+  - {fileID: 3483202460176687028}
+  - {fileID: 2146971142028865055}
+  suppressAllAutoSelections: 0
+--- !u!114 &8423364878970864493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151006633196087577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0f4056e1b4fba4c83bd6f247a95ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 202
+  indentLevel: 0
+--- !u!114 &3483202460176687028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151006633196087577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 203
+  indentLevel: 0
+  storyText: '{$pokemon} was hit and is no longer Charmed by you!'
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2146971142028865055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151006633196087577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d85388232fa044b9df0910e6aa679b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 204
   indentLevel: 0
 --- !u!1001 &6151006633973102748
 PrefabInstance:

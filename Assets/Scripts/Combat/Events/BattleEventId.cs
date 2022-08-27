@@ -19,6 +19,7 @@ public enum BattleEventId
     roundEnd = 8,
     useTactic = 7,
     useItemOnPokemon = 13,
+    usePokeball = 22,
     pokemonLeaveCleanUp = 9,
     battleEnd = 15,
     battleRun = 18,

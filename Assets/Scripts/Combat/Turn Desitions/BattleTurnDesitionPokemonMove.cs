@@ -13,6 +13,7 @@ public class BattleTurnDesitionPokemonMove : BattleTurnDesitionPokemon
         base(pokemon, teamId)
     {
         this.move = move;
+        priority = 1;
     }
 
     public override void Execute()

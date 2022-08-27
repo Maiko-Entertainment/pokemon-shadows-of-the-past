@@ -6,11 +6,14 @@ public class BattleTriggerOnRoundEndDialog : BattleTriggerOnRoundEnd
 {
     public BattleTriggerMessageData messageData;
     public int roundNumber;
-    public BattleTriggerOnRoundEndDialog(BattleTriggerMessageData messageData, int roundNumber) :
+    public BattleTeamId teamId;
+
+    public BattleTriggerOnRoundEndDialog(BattleTriggerMessageData messageData, int roundNumber, BattleTeamId teamId = BattleTeamId.None) :
     base()
     {
         this.messageData = messageData;
         this.roundNumber = roundNumber;
+        this.teamId = teamId;
         maxTriggers = 1;
     }
 
@@ -21,11 +24,20 @@ public class BattleTriggerOnRoundEndDialog : BattleTriggerOnRoundEnd
         {
             if (maxTriggers > 0)
             {
-                BattleAnimatorMaster.GetInstance().AddEvent(
-                    new BattleAnimatorEventNarrative(
-                            messageData
-                    )
-                );
+                bool cont = true;
+                if (teamId != BattleTeamId.None)
+                {
+                    PokemonBattleData pkmn = BattleMaster.GetInstance().GetCurrentBattle().GetTeamActivePokemon(teamId);
+                    cont = pkmn != null;
+                }
+                if (cont)
+                {
+                    BattleAnimatorMaster.GetInstance().AddEvent(
+                        new BattleAnimatorEventNarrative(
+                                messageData
+                        )
+                    );
+                }
             }
         }
         else

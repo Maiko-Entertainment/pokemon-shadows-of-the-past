@@ -11,8 +11,8 @@ public class FungusTriggerNextInteraction : Command
 {
     public override void OnEnter()
     {
-        Continue();
         InteractionsMaster.GetInstance().ExecuteNext(0f);
+        Continue();
     }
 
     public override Color GetButtonColor()

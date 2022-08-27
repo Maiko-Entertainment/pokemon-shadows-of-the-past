@@ -36,7 +36,8 @@ public class BrainMessageCondition
                 {
                     bm.AddTrigger(new BattleTriggerOnRoundEndDialog(
                         new BattleTriggerMessageData(flowchart, blockName),
-                        (int)value-1
+                        (int)value-1,
+                        BattleTeamId.Team2
                         ));
                 }
                 break;
