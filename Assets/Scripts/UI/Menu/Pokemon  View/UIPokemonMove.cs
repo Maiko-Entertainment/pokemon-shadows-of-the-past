@@ -17,7 +17,7 @@ public class UIPokemonMove : MonoBehaviour
     public delegate void Click(MoveEquipped move, PokemonCaughtData pkmn);
     public event Click onClick;
 
-    private MoveEquipped move;
+    public MoveEquipped move;
     private PokemonCaughtData pokemon;
 
     public UIPokemonMove Load(MoveEquipped move, PokemonCaughtData pokemon)
@@ -46,11 +46,11 @@ public class UIPokemonMove : MonoBehaviour
     {
         if (this.move == move)
         {
-            selectedArrow.FadeIn();
+            selectedArrow?.FadeIn();
         }
         else
         {
-            selectedArrow.FadeOut();
+            selectedArrow?.FadeOut();
         }
     }
 }

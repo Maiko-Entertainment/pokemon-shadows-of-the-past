@@ -11,6 +11,7 @@ public class UIPokemonMovesViewer : MonoBehaviour
     public Sprite specialAttackIcon;
     public Sprite statusAttackIcon;
     public UIPokemonMove movePrefab;
+    public UIMenuPile swapMovePrefab;
 
     public Transform moveContainer;
 
@@ -37,16 +38,20 @@ public class UIPokemonMovesViewer : MonoBehaviour
         List<MoveEquipped> moves = pokemon.GetMoves();
         foreach(UIPokemonMove m in movesInstanced)
         {
-            m.onClick -= ViewMove;
+            m.onSelect -= ViewMove;
+            m.onClick -= HandleSwapMenu;
             Destroy(m.gameObject);
         }
-        foreach(MoveEquipped m in moves)
+        movesInstanced = new List<UIPokemonMove>();
+        foreach (MoveEquipped m in moves)
         {
             UIPokemonMove uiMove = Instantiate(movePrefab, moveContainer).GetComponent<UIPokemonMove>().Load(m, pokemon);
             movesInstanced.Add(uiMove);
             uiMove.onSelect += ViewMove;
+            uiMove.onClick += HandleSwapMenu;
         }
         UtilsMaster.LineSelectables(new List<Selectable>(moveContainer.GetComponentsInChildren<Selectable>()));
+        UtilsMaster.SetSelected(movesInstanced[0].gameObject);
     }
 
     public void HandleMoveView()
@@ -81,9 +86,10 @@ public class UIPokemonMovesViewer : MonoBehaviour
                 moveCategory.sprite = statusAttackIcon;
                 break;
         }
-        foreach (UIPokemonMove listMove in movesInstanced)
-        {
-            listMove.UpdateSelectedStatus(currentMove);
-        }
+    }
+
+    public void HandleSwapMenu(MoveEquipped move, PokemonCaughtData pkmn)
+    {
+        UIPauseMenuMaster.GetInstance().OpenMenu(swapMovePrefab, true).GetComponent<UIPokemonMoveViewSwap>().LoadPokemon(pkmn,move, this);
     }
 }

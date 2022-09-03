@@ -127,6 +127,7 @@ public class UIPokemonView : MonoBehaviour
     {
         UpdatePokemonList(PartyMaster.GetInstance().GetParty()[0]);
         LoadPokemon(currentPokemon);
+
     }
 
     public void LoadPokemon(PokemonCaughtData pkmn)
@@ -144,7 +145,6 @@ public class UIPokemonView : MonoBehaviour
         animator = Instantiate(pkmn.GetPokemonBaseData().battleAnimation);
         animator.transform.position = new Vector3(300000, 300000, 0);
         pokemonIcon.sprite = pkmn.GetPokemonBaseData().icon;
-        UpdatePokemonSelectedStatus(pkmn);
         ViewCurrentSection();
     }
 
@@ -178,21 +178,24 @@ public class UIPokemonView : MonoBehaviour
         {
             Vector2 direction = context.ReadValue<Vector2>();
             int previousIndex = currentSectionIndex;
-            if (direction.x < 0)
+            if (IsCurrentMenuActive())
             {
-                currentSectionIndex = Mathf.Max(0, currentSectionIndex - 1);
-                ReturnToPokemonSelectionList();
+                if (direction.x < 0)
+                {
+                    currentSectionIndex = Mathf.Max(0, currentSectionIndex - 1);
+                    ReturnToPokemonSelectionList();
+                }
+                else if (direction.x > 0)
+                {
+                    currentSectionIndex = Mathf.Min(sectionsListContainer.childCount-1, currentSectionIndex + 1);
+                    ReturnToPokemonSelectionList();
+                }
+                if (previousIndex != currentSectionIndex)
+                {
+                    ViewCurrentSection();
+                }
+                print("Change section from " + previousIndex + " to " + currentSectionIndex);
             }
-            else if (direction.x > 0)
-            {
-                currentSectionIndex = Mathf.Min(sectionsListContainer.childCount-1, currentSectionIndex + 1);
-                ReturnToPokemonSelectionList();
-            }
-            if (previousIndex != currentSectionIndex)
-            {
-                ViewCurrentSection();
-            }
-            print("Change section from " + previousIndex + " to " + currentSectionIndex);
         }
     }
     public void HandlePokemonPick(CallbackContext context)
@@ -238,8 +241,10 @@ public class UIPokemonView : MonoBehaviour
         }
         else
         {
-            UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+            if (IsCurrentMenuActive())
+                UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
         }
+        
     }
     public void ViewCurrentSection()
     {
@@ -277,6 +282,11 @@ public class UIPokemonView : MonoBehaviour
         Instantiate(pokemonSectionMoves, pokemonSectionContainer).GetComponent<UIPokemonMovesViewer>().Load(currentPokemon);
         currentSectionIndex = 2;
         HandleSectionChange();
+    }
+
+    public bool IsCurrentMenuActive()
+    {
+        return BattleMaster.GetInstance().IsBattleActive() || UIPauseMenuMaster.GetInstance().GetCurrentMenu() == GetComponent<UIMenuPile>();
     }
 
     private void OnDestroy()

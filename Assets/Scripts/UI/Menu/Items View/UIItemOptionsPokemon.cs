@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIItemOptionsPokemon : MonoBehaviour
+public class UIItemOptionsPokemon : MonoBehaviour, ISelectHandler
 {
     public Image pokemonIcon;
     public TextMeshProUGUI pokemonName;
@@ -87,9 +88,15 @@ public class UIItemOptionsPokemon : MonoBehaviour
     public void UpdateSelected(PokemonCaughtData pkmn)
     {
         if (pokemon == pkmn)
+        {
+            animator.SetTrigger("Highlighted");
             selectedArrow?.FadeIn();
+        }
         else
+        {
+            animator.SetTrigger("Normal");
             selectedArrow?.FadeOut();
+        }
     }
     public void UpdateSwaping(PokemonCaughtData pkmn)
     {
@@ -125,5 +132,10 @@ public class UIItemOptionsPokemon : MonoBehaviour
             float nextHealth = Mathf.MoveTowards(currentHealth, targetHealth, pokemon.GetCurrentStats().health * 0.3f * Time.deltaTime);
             UpdateHealth(nextHealth);
         }
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        HandleHover();
     }
 }

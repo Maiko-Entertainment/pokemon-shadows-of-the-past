@@ -5491,7 +5491,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveFiles:
   - persistedElements: []
-    persistedItems: []
+    persistedItems:
+    - id: 1000
+      amount: 1
+    - id: 1001
+      amount: 1
+    - id: 1002
+      amount: 1
     persistedPokedexPokemonData: []
     persistedParty:
     - pokemonName: Charizard
@@ -5509,7 +5515,13 @@ MonoBehaviour:
         uses: 0
       - id: 3
         uses: 0
-      learnedMoves: []
+      learnedMoves:
+      - id: 8
+        uses: 0
+      - id: 11
+        uses: 0
+      - id: 16
+        uses: 0
       equipedItem: 0
     - pokemonName: Spooky
       pokemonId: 92
@@ -5789,11 +5801,15 @@ MonoBehaviour:
     itemList:
     - {fileID: 11400000, guid: 17c3ccf129ca351468afe5286f5c14ab, type: 2}
     - {fileID: 11400000, guid: c661946b319e76441b2790f1bfa19de4, type: 2}
+    - {fileID: 11400000, guid: 43bcefa94a0a08e40905258df230124f, type: 2}
+    - {fileID: 11400000, guid: 963a2e0772c040f4caf597ef8389dde2, type: 2}
+    - {fileID: 11400000, guid: bb8ee9bf30c5ea247adb8eb26f77ac5d, type: 2}
   - categoryName: Berry
     category: 2
     itemList:
     - {fileID: 11400000, guid: 91d55baaae9f2af469d67ce1bca2f0cd, type: 2}
     - {fileID: 11400000, guid: a1aec8b90335158409b40a686781ea37, type: 2}
+    - {fileID: 11400000, guid: c189ce49d123ee04d9057f1f5c9dc7f1, type: 2}
   - categoryName: Pokeball
     category: 3
     itemList:
@@ -5992,7 +6008,7 @@ MonoBehaviour:
   mapNameContainer: {fileID: 8128194997387600291}
   timeOfDay: 0
   forceMapLoad: 1
-  customMap: 8
+  customMap: 4
   customSpawn: 0
 --- !u!114 &1181977574091591885
 MonoBehaviour:

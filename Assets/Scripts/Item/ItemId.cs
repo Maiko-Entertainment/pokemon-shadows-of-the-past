@@ -14,5 +14,10 @@ public enum ItemId
     Greatball = 7,
     Ultraball = 8,
     BerrySitrus = 9,
-    BerryPecha = 10
+    BerryPecha = 10,
+    BerryRawst = 11,
+    // Evo Items
+    StoneFire = 1000,
+    StoneWater = 1001,
+    StoneThunder = 1002
 }

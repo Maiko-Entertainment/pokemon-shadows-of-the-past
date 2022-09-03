@@ -13,7 +13,7 @@ public class BattleTriggerOnPokemonMove : BattleTriggerOnPokemon
 
     public virtual bool Execute(BattleEventUseMove battleEvent)
     {
-        if (battleEvent.pokemon == pokemon && maxTriggers > 0)
+        if (battleEvent.pokemon == pokemon && maxTriggers > 0 && useMoveMods != null)
         {
             battleEvent.moveMods.Implement(useMoveMods);
         }

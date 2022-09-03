@@ -45,10 +45,10 @@ public class UIPauseMenuMaster : MonoBehaviour
     }
     public static UIPauseMenuMaster GetInstance() { return Instance; }
 
-    public void OpenMenu(UIMenuPile menuPrefab)
+    public UIMenuPile OpenMenu(UIMenuPile menuPrefab, bool force = false)
     {
         bool isInteracting = InteractionsMaster.GetInstance().IsInteracting();
-        if (!isInteracting)
+        if (!isInteracting || force)
         {
             UIMenuPile instance = Instantiate(menuPrefab, submenuContainer);
             if (openedMenus.Count > 0)
@@ -59,7 +59,9 @@ public class UIPauseMenuMaster : MonoBehaviour
             instance.Open();
             HideMenuOpener();
             if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
+            return instance;
         }
+        return null;
     }
     public void ShowMenuOpener()
     {
@@ -106,6 +108,15 @@ public class UIPauseMenuMaster : MonoBehaviour
                 ShowMenuOpener();
             }
         }
+    }
+
+    public void CloseAllMenus()
+    {
+        foreach(UIMenuPile menu in openedMenus)
+        {
+            menu.Close();
+        }
+        openedMenus = new List<UIMenuPile>();
     }
     public UIMenuPile GetCurrentMenu()
     {

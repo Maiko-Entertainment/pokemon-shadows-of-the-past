@@ -80,6 +80,17 @@ public class PokemonMaster : MonoBehaviour
     {
         return pokedexData.Values.ToList();
     }
+    public PokedexPokemonData GetPokemonPokedexData(PokemonBaseId pokemonId)
+    {
+        foreach(PokedexPokemonData pokemon in pokedexData.Values.ToList())
+        {
+            if (pokemonId == pokemon.pokemon.pokemonId)
+            {
+                return pokemon;
+            }
+        }
+        return null;
+    }
 
     public void SeePokemon(PokemonBaseId pokemonId)
     {

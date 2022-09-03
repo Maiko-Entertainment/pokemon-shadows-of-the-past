@@ -62,6 +62,24 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Left Hover"",
+                    ""type"": ""Value"",
+                    ""id"": ""4299c00f-5abe-4920-a05e-95405b2ee952"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Left Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8ac63dc-b979-45b2-b0dc-4356fa1bbb26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +192,28 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6e5d97d-76a6-466d-b286-5e236d691bc9"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left Hover"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d89a1c9-c0eb-4c87-afff-1207daaac8a1"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +226,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_PlayerCharacter_Interact = m_PlayerCharacter.FindAction("Interact", throwIfNotFound: true);
         m_PlayerCharacter_Cancel = m_PlayerCharacter.FindAction("Cancel", throwIfNotFound: true);
         m_PlayerCharacter_Special = m_PlayerCharacter.FindAction("Special", throwIfNotFound: true);
+        m_PlayerCharacter_LeftHover = m_PlayerCharacter.FindAction("Left Hover", throwIfNotFound: true);
+        m_PlayerCharacter_LeftClick = m_PlayerCharacter.FindAction("Left Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +291,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerCharacter_Interact;
     private readonly InputAction m_PlayerCharacter_Cancel;
     private readonly InputAction m_PlayerCharacter_Special;
+    private readonly InputAction m_PlayerCharacter_LeftHover;
+    private readonly InputAction m_PlayerCharacter_LeftClick;
     public struct PlayerCharacterActions
     {
         private @Controls m_Wrapper;
@@ -257,6 +301,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_PlayerCharacter_Interact;
         public InputAction @Cancel => m_Wrapper.m_PlayerCharacter_Cancel;
         public InputAction @Special => m_Wrapper.m_PlayerCharacter_Special;
+        public InputAction @LeftHover => m_Wrapper.m_PlayerCharacter_LeftHover;
+        public InputAction @LeftClick => m_Wrapper.m_PlayerCharacter_LeftClick;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -278,6 +324,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Special.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSpecial;
                 @Special.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSpecial;
                 @Special.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnSpecial;
+                @LeftHover.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnLeftHover;
+                @LeftHover.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnLeftHover;
+                @LeftHover.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnLeftHover;
+                @LeftClick.started -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_PlayerCharacterActionsCallbackInterface.OnLeftClick;
             }
             m_Wrapper.m_PlayerCharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -294,6 +346,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Special.started += instance.OnSpecial;
                 @Special.performed += instance.OnSpecial;
                 @Special.canceled += instance.OnSpecial;
+                @LeftHover.started += instance.OnLeftHover;
+                @LeftHover.performed += instance.OnLeftHover;
+                @LeftHover.canceled += instance.OnLeftHover;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
             }
         }
     }
@@ -304,5 +362,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
+        void OnLeftHover(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
     }
 }

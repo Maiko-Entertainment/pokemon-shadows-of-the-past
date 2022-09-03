@@ -11,19 +11,23 @@ public class UIPokedexView : MonoBehaviour
     public UIPokedexPokemonOption pokedexPokemonPrefab;
     public UIPokedexAbility pokedexAbilityPrefab;
 
+    public UIPokedexSectionBasicData basicDataPrefab;
+
     public RectTransform pokemonListContainer;
     public RectTransform typeList;
     public RectTransform abilityList;
     public ScrollRect scrollRect;
+    public Transform sectionContainer;
+    public Transform sectionsListContainer;
 
     public TextMeshProUGUI pokemonName;
-    public TextMeshProUGUI pokedexEntry;
     public Image pokemonSprite;
     public Image pokemonIcon;
 
     public PokedexPokemonData selected;
 
     private PokemonAnimationController animator;
+    private int sectionIndex = 0;
 
     void Start()
     {
@@ -119,16 +123,9 @@ public class UIPokedexView : MonoBehaviour
             pokemonIcon.color = Color.black;
             pokemonName.text = "???";
         }
-        if (data.caughtAmount > 0)
-        {
-            pokedexEntry.text = pkmn.pokedexEntry;
-        }
-        else
-        {
-            pokedexEntry.text = "Caught this pokemon to learn more about it.";
-        }
         UpdatePokemonSelectedStatus(data);
         LayoutRebuilder.ForceRebuildLayoutImmediate(typeList);
+        ViewCurrentSection();
     }
     public void HandleClose(CallbackContext context)
     {
@@ -141,6 +138,47 @@ public class UIPokedexView : MonoBehaviour
     public void HandleClose()
     {
         UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
+    }
+
+    public void ViewCurrentSection()
+    {
+        switch (sectionIndex)
+        {
+            case 0:
+                ViewBasicData();
+                break;
+        }
+    }
+
+
+    public void ViewBasicData()
+    {
+        ClearSection();
+        Instantiate(basicDataPrefab, sectionContainer).Load(selected);
+        sectionIndex = 0;
+        HandleSectionChange();
+    }
+    public void HandleSectionChange()
+    {
+        foreach (Transform section in sectionsListContainer)
+        {
+            Transform selectedSection = sectionsListContainer.GetChild(sectionIndex);
+            if (selectedSection == section)
+            {
+                section.GetComponent<TransitionFade>().FadeIn();
+            }
+            else
+            {
+                section.GetComponent<TransitionFade>().FadeOut();
+            }
+        }
+    }
+    public void ClearSection()
+    {
+        foreach (Transform t in sectionContainer)
+        {
+            Destroy(t.gameObject);
+        }
     }
 
     private void OnDestroy()

@@ -7,15 +7,32 @@ public class Cutscene : MonoBehaviour
 {
     public Flowchart flowchart;
     public string blockName = "Start";
+    public bool onInteract = false;
 
     public List<WorldInteractable> cutsceneAgents = new List<WorldInteractable>();
     protected bool wasTriggered = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && !wasTriggered)
+        if (!onInteract && collision.tag == "Player" && !wasTriggered)
         {
             AddEvent();
+        }
+        else if (onInteract && collision.tag == "Touch" && !wasTriggered)
+        {
+            AddEvent();
+        }
+    }
+
+    private void OnCollisionEnter2D(UnityEngine.Collision2D collision)
+    {
+        bool isPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+        if (!isPlaying)
+        {
+            if (onInteract && collision.collider.tag == "Touch" && !wasTriggered)
+            {
+                AddEvent();
+            }
         }
     }
 

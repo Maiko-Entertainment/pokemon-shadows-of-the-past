@@ -14,6 +14,17 @@ public class TransitionCanvasGroup : TransitionBase
         {
             canvasGroup = gameObject.AddComponent<CanvasGroup>();
         }
+        if (fading)
+        {
+            if (speed >= 0)
+            {
+                FadeIn();
+            }
+            else
+            {
+                FadeOut();
+            }
+        }
     }
 
     public override void FadeIn()
@@ -37,7 +48,7 @@ public class TransitionCanvasGroup : TransitionBase
             canvasGroup.alpha = Mathf.Clamp(canvasGroup.alpha + speed * Time.deltaTime, min, max);
             if (destroyAfterFadeOut)
             {
-                if (canvasGroup.alpha <= 0)
+                if (canvasGroup.alpha <= min && speed < 0)
                 {
                     Destroy(gameObject);
                 }

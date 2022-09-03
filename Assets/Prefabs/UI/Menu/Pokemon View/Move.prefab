@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7042862882381387711}
   m_Father: {fileID: 6116608814590647243}
@@ -104,6 +105,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3803320800935940840}
   m_RootOrder: 0
@@ -238,6 +240,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3862219026633361351}
   m_Father: {fileID: 6116608814590647243}
@@ -314,6 +317,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7737475156773154958}
   m_RootOrder: 0
@@ -447,6 +451,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3803320800935940840}
   - {fileID: 7737475156773154958}
@@ -494,6 +499,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2971859706887180085}
   m_RootOrder: 1
@@ -556,6 +562,7 @@ GameObject:
   - component: {fileID: 6568488468793866890}
   - component: {fileID: 3663046539753008002}
   - component: {fileID: 140301717075565686}
+  - component: {fileID: 4025702539143250325}
   m_Layer: 5
   m_Name: Move
   m_TagString: Untagged
@@ -573,6 +580,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6116608814590647243}
   - {fileID: 1287156014872997327}
@@ -612,7 +620,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.7058824}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
@@ -721,7 +729,27 @@ MonoBehaviour:
   uses: {fileID: 563935615222600410}
   moveTypeIcon: {fileID: 7997836988444953652}
   typingImageBackground: {fileID: 6631577626043294098}
-  selectedArrow: {fileID: 6839843162217372461}
+  selectedArrow: {fileID: 0}
+--- !u!95 &4025702539143250325
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920927413908086553}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dab91bc499d9be44f998341691e5fa2f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6182464719643193314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,14 +852,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4857222179126884422, guid: b0acf2b8386d091459814a40c4ee99c1, type: 3}
   m_PrefabInstance: {fileID: 6182464719643193314}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6839843162217372461 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 801790224201839823, guid: b0acf2b8386d091459814a40c4ee99c1, type: 3}
-  m_PrefabInstance: {fileID: 6182464719643193314}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aba736a6f5bbbfe438e4b80126eaddb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

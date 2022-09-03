@@ -287,6 +287,12 @@ public class PokemonCaughtData
         learnedMoves = newCompleteMovesLearned;
         return newMovesLearned;
     }
+
+    public List<MoveEquipped> GetLearnedMoves()
+    {
+        return learnedMoves;
+    }
+
     public void EquipItem(ItemDataOnPokemon item)
     {
         if (equippedItem != null)
@@ -295,5 +301,17 @@ public class PokemonCaughtData
         }
         InventoryMaster.GetInstance().ChangeItemAmount(item.GetItemId(), -1);
         equippedItem = item;
+    }
+
+    public void EquipMove(MoveEquipped move, MoveEquipped swapFor)
+    {
+        int index = moves.IndexOf(swapFor);
+        int indexOfNew = moves.IndexOf(move);
+        // Swaps the new move for the swaped move if the new move is already equipped
+        if (indexOfNew > 0)
+        {
+            moves[indexOfNew] = swapFor;
+        }
+        moves[index] = move;
     }
 }

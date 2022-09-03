@@ -81,6 +81,7 @@ public class UIEvolutionMaster : MonoBehaviour
         float finalGlowDuration = 6f;
         float finalWaveDuration = 2f;
         float transitionDurationFinal = evolutionTransitionDuration - finalGlowDuration;
+        originalPokemonImage.gameObject.SetActive(true);
         StartCoroutine(CreateLines(0.25f));
         InteractionsMaster.GetInstance().ExecuteNext(0.25f);
         AudioMaster.GetInstance().StopMusic();
@@ -118,6 +119,7 @@ public class UIEvolutionMaster : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         // Change sprites to evolution
         evolvedPokemon = Instantiate(evolution.GetAnimatorController());
+        Destroy(transition);
         originalPokemonImage.gameObject.SetActive(false);
         evolvedPokemonImage.gameObject.SetActive(true);
         AudioMaster.GetInstance().StopMusic();
