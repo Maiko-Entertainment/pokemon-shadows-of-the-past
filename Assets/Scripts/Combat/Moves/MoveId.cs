@@ -103,6 +103,8 @@ public enum MoveId
     BugBite = 96,
     StruggleBug = 97,
     StringShot = 98,
+    Hex = 99,
+    Astonish = 100,
     Struggle = 10001,
     SelfHit = 10000
 }

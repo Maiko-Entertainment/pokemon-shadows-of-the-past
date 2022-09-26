@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)transform.position.y * -1;
+        animator.GetComponent<SpriteRenderer>().sortingOrder = (int)(transform.position.y * -10);
         if (HasReachedTarget())
         {
             if (storedDirections.Count > 0)

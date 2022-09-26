@@ -2226,7 +2226,7 @@ MonoBehaviour:
     value: 100
   - saveVariable: 4
     condition: 1
-    value: 10000
+    value: 199
   spawns:
   - spawn: {fileID: 6545681842882674216, guid: f8c7a9e344846d849bea297c8957adc3, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
@@ -2615,6 +2615,7 @@ Transform:
   m_Children:
   - {fileID: 6469399247361885557}
   - {fileID: 276627839869347720}
+  - {fileID: 5644273409998586690}
   m_Father: {fileID: 523703273549154334}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2918,6 +2919,62 @@ Transform:
   m_Father: {fileID: 523703273104055896}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8754819125713380953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5644273409998586690}
+  - component: {fileID: 87306888649117878}
+  m_Layer: 0
+  m_Name: Pines After First Gym Encounter Idle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5644273409998586690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754819125713380953}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6236871756344378126}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87306888649117878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8754819125713380953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2160fefdc91cf647ba1641fca662030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - saveVariable: 4
+    condition: 2
+    value: 200
+  - saveVariable: 4
+    condition: 1
+    value: 10000
+  spawns:
+  - spawn: {fileID: 5980481502884496339, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
+    spawnPostion: {x: 0, y: 0, z: 0}
+    spawnAsChild: 1
+  chance: 1
 --- !u!1001 &2641536039443948733
 PrefabInstance:
   m_ObjectHideFlags: 0

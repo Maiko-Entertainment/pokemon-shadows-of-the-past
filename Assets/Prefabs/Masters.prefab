@@ -4311,6 +4311,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &3208001552155146474
 MonoBehaviour:
@@ -4331,6 +4332,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!1 &4689772822245343181
 GameObject:
@@ -5468,8 +5470,8 @@ Transform:
   - {fileID: 8952212247491455038}
   - {fileID: 3351432764419557524}
   - {fileID: 8952212247297567497}
-  - {fileID: 2461209946276303783}
   - {fileID: 8952212248326306392}
+  - {fileID: 2461209946276303783}
   - {fileID: 1626280678188690060}
   - {fileID: 1910084406102663898}
   - {fileID: 5918239110900598578}
@@ -5558,7 +5560,7 @@ MonoBehaviour:
       learnedMoves: []
       equipedItem: 0
     - pokemonName: odo
-      pokemonId: 43
+      pokemonId: 44
       level: 20
       experience: 0
       damageTaken: 0
@@ -5575,7 +5577,7 @@ MonoBehaviour:
       learnedMoves: []
       equipedItem: 0
     - pokemonName: Raly
-      pokemonId: 280
+      pokemonId: 281
       level: 20
       experience: 0
       damageTaken: 0
@@ -5660,6 +5662,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f09319127814b9e429fc72a13973c4b4, type: 2}
   - {fileID: 11400000, guid: 12951aff63874c04b960698ed700c8db, type: 2}
   - {fileID: 11400000, guid: 0e21915f8daca0a4aaab9b3b8f61933a, type: 2}
+  - {fileID: 11400000, guid: 1e6dd4d9676e85a4f92ba718fb5318d0, type: 2}
   - {fileID: 11400000, guid: 1e33d13dda17519468885e869edc4baf, type: 2}
   - {fileID: 11400000, guid: 946e8468b31637343a0c7945e752b35d, type: 2}
   - {fileID: 11400000, guid: 45801f6e51571c7458c2c7f6908eaf21, type: 2}
@@ -5804,6 +5807,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 43bcefa94a0a08e40905258df230124f, type: 2}
     - {fileID: 11400000, guid: 963a2e0772c040f4caf597ef8389dde2, type: 2}
     - {fileID: 11400000, guid: bb8ee9bf30c5ea247adb8eb26f77ac5d, type: 2}
+    - {fileID: 11400000, guid: 1491eff7a55248042a1fcfcc0e40de26, type: 2}
   - categoryName: Berry
     category: 2
     itemList:
@@ -5867,6 +5871,22 @@ MonoBehaviour:
   voiceSources:
   - {fileID: 1910084406102663911}
   - {fileID: 6493866333343295176}
+  currentClip:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+  nextClip:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+  fadeTimeTotal: 0
+  currentFadeTime: 0
 --- !u!82 &8952212246821983478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6003,13 +6023,14 @@ MonoBehaviour:
   - {fileID: 8397199699034578025, guid: 2b17b33c9e86b5b4aa5f36f284570ad3, type: 3}
   - {fileID: 1085335537233263670, guid: fbe1a1e1b9f82d247b16f7b861c9bdad, type: 3}
   - {fileID: 8322538708968509705, guid: 7d3c1d606733b204eb8110b36850985a, type: 3}
+  - {fileID: 855064125446484216, guid: a7b551ee1aaa1dc4f838992ac5e400fb, type: 3}
+  - {fileID: 8864144785639350466, guid: 2d3f6d160ab7f644d9c0bc1e7ef33c0a, type: 3}
   scenes: []
   sceneContainer: {fileID: 8952212248689861747}
   mapNameContainer: {fileID: 8128194997387600291}
-  timeOfDay: 0
   forceMapLoad: 1
-  customMap: 4
-  customSpawn: 0
+  customMap: 3
+  customSpawn: 1
 --- !u!114 &1181977574091591885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6177,6 +6198,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8a34efefe11a1043957f42f9c8dd41b, type: 2}
   - {fileID: 11400000, guid: 0289d6acf8e070c4a8e33e85cbdfd049, type: 2}
   - {fileID: 11400000, guid: 0527eef1c45d0754e8180d9c3741ae74, type: 2}
+  - {fileID: 11400000, guid: 5f2d907dc0058e5498a9a79eb1224e54, type: 2}
+  - {fileID: 11400000, guid: ccd94878d2d267049a228941a505f0e9, type: 2}
 --- !u!114 &423868467601111521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6593,7 +6616,7 @@ RectTransform:
   - {fileID: 6964506295760511976}
   - {fileID: 5386700006465542541}
   m_Father: {fileID: 8952212246821983487}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7225,7 +7248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_LocalPosition.x

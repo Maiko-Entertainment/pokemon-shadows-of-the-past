@@ -8,6 +8,7 @@ public class AudioOptions
     public float pitch = 1f;
     public float customDuration = -1f;
     public float volumeModifier = 1f;
+    public float fadeTime = 0.5f;
     public bool loopMusic = true;
 
     public AudioOptions() { }

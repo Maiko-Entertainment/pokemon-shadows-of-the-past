@@ -11,7 +11,6 @@ public class WorldMapMaster : MonoBehaviour
     public List<SceneMap> scenes;
     public Transform sceneContainer;
     public Transform mapNameContainer;
-    public TimeOfDayType timeOfDay;
 
     public bool forceMapLoad = false;
     public int customMap = 2;
@@ -164,12 +163,14 @@ public class WorldMapMaster : MonoBehaviour
 
     public void SetTimeOfDay(TimeOfDayType type)
     {
-        timeOfDay = type;
+        SaveMaster.Instance.SetSaveElementInner(type, SaveElementId.timeOfDay);
     }
 
     public TimeOfDayType GetTimeOfDay()
     {
-        return timeOfDay;
+        SaveElement pse = SaveMaster.Instance.GetSaveElement(SaveElementId.timeOfDay);
+        TimeOfDayType day = (TimeOfDayType)(float)pse.GetValue();
+        return day;
     }
 
     public void PlayCurrentPlaceMusic()

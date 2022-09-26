@@ -476,6 +476,113 @@ Transform:
   m_Father: {fileID: 2156387203522788183}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1207390987262693790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8758218186310627995}
+  - component: {fileID: 610372681693479478}
+  m_Layer: 0
+  m_Name: Hotel Connection Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8758218186310627995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207390987262693790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.5, y: -10.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3050228687272074377}
+  m_Father: {fileID: 2156387203522788183}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610372681693479478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207390987262693790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2160fefdc91cf647ba1641fca662030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - saveVariable: 4
+    condition: 2
+    value: 210
+  spawns:
+  - spawn: {fileID: 7963070054106477453, guid: 3d72ef8a0034d2a40a10d9d25417935c, type: 3}
+    spawnPostion: {x: 0, y: 0, z: 0}
+    spawnAsChild: 1
+  chance: 1
+--- !u!1 &1232430567329425009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6138287104000952900}
+  - component: {fileID: 7500703437627532916}
+  m_Layer: 0
+  m_Name: Erik Invitation Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6138287104000952900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232430567329425009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5486587451632592385}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7500703437627532916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232430567329425009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2160fefdc91cf647ba1641fca662030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - saveVariable: 4
+    condition: 0
+    value: 200
+  spawns:
+  - spawn: {fileID: 4403917700031937593, guid: 19d6ef146079e2c40b56d80ff77e0fcf, type: 3}
+    spawnPostion: {x: 3.5, y: 0, z: 0}
+    spawnAsChild: 1
+  chance: 1
 --- !u!1 &1576289518686496747
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,6 +1020,7 @@ Transform:
   m_Children:
   - {fileID: 591855679686253110}
   - {fileID: 1045997773322592939}
+  - {fileID: 8758218186310627995}
   m_Father: {fileID: 2156387204356375556}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17765,6 +17873,7 @@ Transform:
   - {fileID: 2156387203940863694}
   - {fileID: 8396825019736767022}
   - {fileID: 2156387203522788183}
+  - {fileID: 5486587451632592385}
   m_Father: {fileID: 2156387205309050129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54086,7 +54195,6 @@ Transform:
   - {fileID: 2156387204356375556}
   - {fileID: 8613953488459185232}
   - {fileID: 6456691804285654863}
-  - {fileID: 5486587451632592385}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54109,6 +54217,7 @@ MonoBehaviour:
   - {fileID: 7123107366628958837}
   - {fileID: 1045997772517044508}
   - {fileID: 6519061549429860122}
+  - {fileID: 3050228687272074377}
   mapMusic:
     audio: {fileID: 8300000, guid: d2802ea8e5fe2264bb9f19d7909ec520, type: 3}
     pitch: 1
@@ -54119,7 +54228,9 @@ MonoBehaviour:
   groundTilemap: {fileID: 2156387204862792115}
   waterTilemap: {fileID: 2156387204663181644}
   collisionTilemap: {fileID: 2156387203940863692}
-  timeOfDayEffects: []
+  timeOfDayEffects:
+  - UIEffectPrefab: {fileID: 3956237336495831903, guid: ae6cae5edd1e14e4e920c6ea66c7af1c, type: 3}
+    timeOfDay: 1
 --- !u!1 &2338437437922399533
 GameObject:
   m_ObjectHideFlags: 0
@@ -54174,14 +54285,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2523138429121552545}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 512705782722752474}
-  m_Father: {fileID: 2156387205309050129}
-  m_RootOrder: 3
+  - {fileID: 6138287104000952900}
+  m_Father: {fileID: 2156387204356375556}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2594133099238166023
 GameObject:
@@ -54604,6 +54716,64 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6449944171623314462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3050228687272074377}
+  - component: {fileID: 4924792571893812668}
+  m_Layer: 0
+  m_Name: Hotel Exit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3050228687272074377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6449944171623314462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8758218186310627995}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4924792571893812668
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6449944171623314462}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
 --- !u!1 &6650081612820957920
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,5 +19,6 @@ public enum ItemId
     // Evo Items
     StoneFire = 1000,
     StoneWater = 1001,
-    StoneThunder = 1002
+    StoneThunder = 1002,
+    StoneDusk = 1003,
 }

@@ -142,6 +142,8 @@ GameObject:
   - component: {fileID: 1351960230348899279}
   - component: {fileID: 2286594872975338892}
   - component: {fileID: 4649589839834309939}
+  - component: {fileID: 5995919971730464063}
+  - component: {fileID: 5089908026598293209}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -193,7 +195,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 3858722273316503502}
   selectedCommands:
-  - {fileID: 8890872412487388328}
+  - {fileID: 5089908026598293209}
   variables:
   - {fileID: 6137126270242117669}
   - {fileID: 3887528637391076404}
@@ -610,6 +612,8 @@ MonoBehaviour:
   - {fileID: 2413871077582319898}
   - {fileID: 6793293102300086620}
   - {fileID: 4292886564693070984}
+  - {fileID: 5995919971730464063}
+  - {fileID: 5089908026598293209}
   - {fileID: 7892374278414283280}
   suppressAllAutoSelections: 0
 --- !u!114 &3888328492335933656
@@ -3680,6 +3684,40 @@ MonoBehaviour:
     customDuration: -1
     volumeModifier: 1
     loopMusic: 1
+--- !u!114 &5995919971730464063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317413991640584756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 165
+  indentLevel: 0
+  variableId: 4
+  operation: 0
+  value: 200
+--- !u!114 &5089908026598293209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317413991640584756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 166
+  indentLevel: 0
+  variableId: 5
+  operation: 0
+  value: 1
 --- !u!1 &5840830751274672767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,6 +4032,10 @@ PrefabInstance:
     - target: {fileID: 1313774808822534641, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603894617356809070, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
+      propertyPath: itemId
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 5980481502884496339, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
       propertyPath: m_Name

@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Misdreavus
+  m_EditorClassIdentifier: 
+  pokemonId: 200
+  species: Misdreavus
+  icon: {fileID: -316984382, guid: 036339fca6e37514296881cf7e4f4e7e, type: 3}
+  cry: {fileID: 8300000, guid: b4088b6a09e68454aa645fca54420328, type: 3}
+  baseStats:
+    health: 60
+    attack: 60
+    defense: 60
+    spAttack: 85
+    spDefense: 85
+    speed: 85
+  types: 05000000
+  abilities:
+  - abilityId: 12
+    abilityPriority: 5
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 65
+  baseFriendship: 70
+  baseExp: 50
+  pokedexEntry: It gets nourishment from fear that it absorbs into its red orbs.
+    During the daytime, it sleeps in the shadows.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: fe24dbdabdef90f4f882ed3a24d0befa, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: e25086f4f81d4b74cb530086a41f0a9c, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: ccd94878d2d267049a228941a505f0e9, type: 2}
+    learnType: 0
+    levelRequired: 10
+  - move: {fileID: 11400000, guid: 92c2cd31ae03ff643abc2ec4f13c5c0b, type: 2}
+    learnType: 0
+    levelRequired: 14
+  - move: {fileID: 11400000, guid: 5f2d907dc0058e5498a9a79eb1224e54, type: 2}
+    learnType: 0
+    levelRequired: 23
+  - move: {fileID: 11400000, guid: 1af47db21aa000148902d5f737725716, type: 2}
+    learnType: 0
+    levelRequired: 28
+  evolutions:
+  - pokemonId: 200
+    evolutionData:
+      evolutionType: 2
+      value: 0
+  battleAnimation: {fileID: 6858649040718141784, guid: 8581d7deabc8c984db32ca3db4ae5a21, type: 3}
+  overWorldPrefab: {fileID: 0}

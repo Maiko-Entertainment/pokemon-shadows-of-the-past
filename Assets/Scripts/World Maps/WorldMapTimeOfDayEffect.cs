@@ -9,7 +9,7 @@ public class WorldMapTimeOfDayEffect
     {
         TimeOfDayType currentTime = WorldMapMaster.GetInstance().GetTimeOfDay();
         TransitionMaster.GetInstance().ClearDayEffects();
-        if (currentTime == timeOfDay)
+        if (timeOfDay == TimeOfDayType.Any || currentTime == timeOfDay)
         {
             TransitionMaster.GetInstance().InitiateDayEffect(UIEffectPrefab);
         }

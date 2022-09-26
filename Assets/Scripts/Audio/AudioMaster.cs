@@ -12,6 +12,11 @@ public class AudioMaster : MonoBehaviour
     public AudioSource musicSource;
     public List<AudioSource> voiceSources = new List<AudioSource>();
 
+    public AudioOptions currentClip;
+    public AudioOptions nextClip;
+    public float fadeTimeTotal = 0;
+    public float currentFadeTime = 0;
+
     void Awake()
     {
         if (Instance)
@@ -84,7 +89,14 @@ public class AudioMaster : MonoBehaviour
     }
     public void PlayMusic(AudioOptions clip)
     {
-        if (musicSource.clip != clip.audio)
+        if (clip.fadeTime > 0)
+        {
+            nextClip = clip;
+            fadeTimeTotal = clip.fadeTime;
+            currentFadeTime = clip.fadeTime;
+            clip.fadeTime = 0;
+        }
+        else if (musicSource.clip != clip.audio)
         {
             musicSource.clip = clip.audio;
             musicSource.volume = clip.volumeModifier * musicVolume;
@@ -104,5 +116,25 @@ public class AudioMaster : MonoBehaviour
         soundEffectVolume = volume;
         foreach (AudioSource audioSource in voiceSources)
             audioSource.volume = volume;
+    }
+
+    private void Update()
+    {
+        if (currentFadeTime > 0)
+        {
+            currentFadeTime -= Time.deltaTime;
+            if (musicSource.clip)
+            {
+                musicSource.volume = musicVolume * currentClip.volumeModifier * (fadeTimeTotal - currentFadeTime) / fadeTimeTotal;
+            }
+        }
+        else
+        {
+            if (nextClip != null && nextClip.audio)
+            {
+                PlayMusic(nextClip);
+                nextClip = null;
+            }
+        }
     }
 }

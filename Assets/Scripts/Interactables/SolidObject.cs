@@ -10,7 +10,7 @@ public class SolidObject : MonoBehaviour
     {
         foreach(SpriteRenderer sp in sprites)
         {
-            sp.sortingOrder = (int)Mathf.Ceil(transform.position.y) * -1 + offset;
+            sp.sortingOrder = (int)(transform.position.y * -10f) + offset - 1;
         }
     }
 }
