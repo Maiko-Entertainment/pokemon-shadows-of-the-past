@@ -17,6 +17,7 @@ public class WorldMap : MonoBehaviour
     public Tilemap collisionTilemap;
 
     public List<WorldMapTimeOfDayEffect> timeOfDayEffects = new List<WorldMapTimeOfDayEffect>();
+    public bool noSave = false;
 
     public void HandleEntrance()
     {

@@ -12,8 +12,8 @@ public class AudioMaster : MonoBehaviour
     public AudioSource musicSource;
     public List<AudioSource> voiceSources = new List<AudioSource>();
 
-    public AudioOptions currentClip;
-    public AudioOptions nextClip;
+    protected AudioOptions currentClip;
+    protected AudioOptions nextClip;
     public float fadeTimeTotal = 0;
     public float currentFadeTime = 0;
 
@@ -91,18 +91,21 @@ public class AudioMaster : MonoBehaviour
     {
         if (clip.fadeTime > 0)
         {
-            nextClip = clip;
-            fadeTimeTotal = clip.fadeTime;
-            currentFadeTime = clip.fadeTime;
-            clip.fadeTime = 0;
+            nextClip = clip.Clone();
+            fadeTimeTotal = nextClip.fadeTime;
+            currentFadeTime = nextClip.fadeTime;
         }
-        else if (musicSource.clip != clip.audio)
+        else 
         {
-            musicSource.clip = clip.audio;
             musicSource.volume = clip.volumeModifier * musicVolume;
             musicSource.pitch = clip.pitch;
             musicSource.loop = clip.loopMusic;
-            musicSource.Play();
+            currentClip = clip;
+            if (musicSource.clip != clip.audio)
+            {
+                musicSource.clip = clip.audio;
+                musicSource.Play();
+            }
         }
     }
 
@@ -121,19 +124,29 @@ public class AudioMaster : MonoBehaviour
     private void Update()
     {
         if (currentFadeTime > 0)
+            currentFadeTime = Mathf.Max(currentFadeTime - Time.deltaTime, 0);
+        if (currentFadeTime > fadeTimeTotal / 2)
         {
-            currentFadeTime -= Time.deltaTime;
             if (musicSource.clip)
             {
-                musicSource.volume = musicVolume * currentClip.volumeModifier * (fadeTimeTotal - currentFadeTime) / fadeTimeTotal;
+                musicSource.volume = musicVolume * currentClip.volumeModifier * Mathf.Max(currentFadeTime, fadeTimeTotal / 2) / fadeTimeTotal / 2;
+            }
+            else
+            {
+                currentFadeTime = fadeTimeTotal / 2;
             }
         }
-        else
+        else if (currentFadeTime <= fadeTimeTotal / 2)
         {
-            if (nextClip != null && nextClip.audio)
+            if (nextClip != null)
             {
+                nextClip.fadeTime = 0;
                 PlayMusic(nextClip);
                 nextClip = null;
+            }
+            if (currentClip != null && currentClip.audio)
+            {
+                musicSource.volume = musicVolume * currentClip.volumeModifier * (fadeTimeTotal - currentFadeTime * 2) / fadeTimeTotal;
             }
         }
     }

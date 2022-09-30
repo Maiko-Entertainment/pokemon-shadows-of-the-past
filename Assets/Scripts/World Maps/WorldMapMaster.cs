@@ -181,4 +181,9 @@ public class WorldMapMaster : MonoBehaviour
             AudioMaster.GetInstance().PlayMusic(mapMusic);
         }
     }
+
+    public void AddInstancedFollowerToPlayer(WorldInteractableBrainFollower follower, bool repeatable)
+    {
+        GetPlayer()?.AddFollowerInstanced(follower, repeatable);
+    }
 }

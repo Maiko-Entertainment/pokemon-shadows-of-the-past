@@ -130,7 +130,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bedc0f9811d8c5a49a912c7a1f8ba8fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,6 +264,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 2
+    fadeTime: 0.5
     loopMusic: 0
   isDamageActive: 0
   safeInterval: 3.9
@@ -276,12 +277,14 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
   OnDamageActiveSound:
     audio: {fileID: 8300000, guid: b8938b4f057ad6f4f94ec340523a0f26, type: 3}
     pitch: 1
     customDuration: -1
     volumeModifier: 0.7
+    fadeTime: 0.5
     loopMusic: 0
   audioSource: {fileID: 1349152253801871833}
 --- !u!82 &1349152253801871833

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Yvysaur
+  m_EditorClassIdentifier: 
+  pokemonId: 2
+  species: Yvysaur
+  icon: {fileID: -6070661347849585838, guid: 65b75893d908e5f48923d770729f6d43, type: 3}
+  cry: {fileID: 8300000, guid: 18f20f97dc8b449429dc45c5ceda911a, type: 3}
+  baseStats:
+    health: 60
+    attack: 62
+    defense: 63
+    spAttack: 80
+    spDefense: 80
+    speed: 60
+  types: 0b00000010000000
+  abilities:
+  - abilityId: 1
+    abilityPriority: 1
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 45
+  baseFriendship: 70
+  baseExp: 140
+  pokedexEntry: The bud on its back grows by drawing energy. It gives off an aroma
+    when it is ready to bloom.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: fe24dbdabdef90f4f882ed3a24d0befa, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 8657c66fc60d6ba4aa5c61631003872f, type: 2}
+    learnType: 0
+    levelRequired: 15
+  evolutions:
+  - pokemonId: 3
+    evolutionData:
+      evolutionType: 0
+      value: 32
+  battleAnimation: {fileID: 2802100160033256048, guid: cafae38282f03ea44b600fa4cdb785f4, type: 3}
+  overWorldPrefab: {fileID: 3510666911037127267, guid: 6f6b7a90c0741e14ea776f566207cd5b, type: 3}

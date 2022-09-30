@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 4649589839834309939}
   - component: {fileID: 5995919971730464063}
   - component: {fileID: 5089908026598293209}
+  - component: {fileID: 4537644025505586993}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -195,7 +196,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 3858722273316503502}
   selectedCommands:
-  - {fileID: 5089908026598293209}
+  - {fileID: 4537644025505586993}
   variables:
   - {fileID: 6137126270242117669}
   - {fileID: 3887528637391076404}
@@ -614,6 +615,7 @@ MonoBehaviour:
   - {fileID: 4292886564693070984}
   - {fileID: 5995919971730464063}
   - {fileID: 5089908026598293209}
+  - {fileID: 4537644025505586993}
   - {fileID: 7892374278414283280}
   suppressAllAutoSelections: 0
 --- !u!114 &3888328492335933656
@@ -828,6 +830,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &6134133181192258656
 MonoBehaviour:
@@ -1197,6 +1200,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &5451741239270093941
 MonoBehaviour:
@@ -1244,6 +1248,7 @@ MonoBehaviour:
     pitch: 1.5
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &9066217056574995694
 MonoBehaviour:
@@ -2000,6 +2005,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &157981487998730045
 MonoBehaviour:
@@ -2729,6 +2735,7 @@ MonoBehaviour:
     pitch: 0.5
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &8350804433212166230
 MonoBehaviour:
@@ -2840,6 +2847,7 @@ MonoBehaviour:
     pitch: 1.5
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &1312547696922439082
 MonoBehaviour:
@@ -2882,6 +2890,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &884124245266619022
 MonoBehaviour:
@@ -3430,6 +3439,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &5656933605744435869
 MonoBehaviour:
@@ -3450,6 +3460,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &1560736130969012255
 MonoBehaviour:
@@ -3470,6 +3481,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &1579498450614036637
 MonoBehaviour:
@@ -3490,6 +3502,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &4292886564693070984
 MonoBehaviour:
@@ -3510,6 +3523,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &3827365125703445815
 MonoBehaviour:
@@ -3603,6 +3617,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &6837902387349611105
 MonoBehaviour:
@@ -3623,6 +3638,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &1351960230348899279
 MonoBehaviour:
@@ -3643,6 +3659,7 @@ MonoBehaviour:
     pitch: 1.1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &2286594872975338892
 MonoBehaviour:
@@ -3663,6 +3680,7 @@ MonoBehaviour:
     pitch: 1.1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &4649589839834309939
 MonoBehaviour:
@@ -3683,6 +3701,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &5995919971730464063
 MonoBehaviour:
@@ -3718,6 +3737,22 @@ MonoBehaviour:
   variableId: 5
   operation: 0
   value: 1
+--- !u!114 &4537644025505586993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4317413991640584756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712fdbcb63cac704ba70674a05e833ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 167
+  indentLevel: 0
+  gameObjects:
+  - {fileID: 6299509838032235855}
 --- !u!1 &5840830751274672767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3801,6 +3836,7 @@ MonoBehaviour:
   flowchart: {fileID: 8978756138120637685}
   blockName: Start
   onInteract: 1
+  repeatable: 1
   cutsceneAgents:
   - {fileID: 6003763645724727692}
   - {fileID: 3398000093155069202}

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6758159122246903780}
   m_Father: {fileID: 0}
@@ -47,10 +48,13 @@ MonoBehaviour:
   onStep: 0
   activateOnSpawn: 0
   moveBrain: {fileID: 7092018107960919054}
+  flowchartPrefab: {fileID: 0}
+  blockName: Start
   moveIdentifier: Pokefollower
   animator: {fileID: 8105769326047963829}
   innerTransform: {fileID: 6758159122246903780}
   speed: 3
+  cachedDirections: []
   followMode: 1
 --- !u!1 &8105769326047963830
 GameObject:
@@ -80,6 +84,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6758159122246903780}
   m_RootOrder: 0
@@ -104,7 +109,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bedc0f9811d8c5a49a912c7a1f8ba8fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -138,7 +143,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &8105769326047963829
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,6 +156,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -181,6 +187,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8105769326047963831}
   m_Father: {fileID: 8105769324308627921}

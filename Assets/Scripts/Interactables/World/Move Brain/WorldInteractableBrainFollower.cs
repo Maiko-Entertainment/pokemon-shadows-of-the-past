@@ -14,13 +14,13 @@ public class WorldInteractableBrainFollower : WorldInteractableMoveBrain
         {
             if (HasReachedTarget())
             {
-                if (!animator.GetBool("Moving"))
+                if (animator.GetBool("Moving"))
                     animator.SetBool("Moving", false);
             }
             else
             {
                 Vector3 direction = ((Vector3)target - transform.position).normalized;
-                if (animator.GetBool("Moving")) animator.SetBool("Moving", true);
+                animator.SetBool("Moving", true);
                 animator.SetFloat("Horizontal", direction.x);
                 animator.SetFloat("Vertical", direction.y);
                 float playerSpeed = WorldMapMaster.GetInstance().GetPlayer().speed;

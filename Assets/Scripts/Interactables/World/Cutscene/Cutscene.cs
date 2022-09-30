@@ -8,9 +8,11 @@ public class Cutscene : MonoBehaviour
     public Flowchart flowchart;
     public string blockName = "Start";
     public bool onInteract = false;
+    public bool repeatable = false;
 
     public List<WorldInteractable> cutsceneAgents = new List<WorldInteractable>();
     protected bool wasTriggered = false;
+    protected bool isInteracting = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,10 +38,23 @@ public class Cutscene : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!onInteract && collision.tag == "Player")
+        {
+            isInteracting = false;
+        }
+    }
+
     public void AddEvent()
     {
-        wasTriggered = true;
-        InteractionsMaster.GetInstance().AddEvent(new InteractionEventCutscene(this));
+        if (!repeatable)
+            wasTriggered = true;
+        if (!isInteracting || onInteract)
+        {
+            isInteracting = true;
+            InteractionsMaster.GetInstance().AddEvent(new InteractionEventCutscene(this));
+        }
     }
 
     public void Initiate()

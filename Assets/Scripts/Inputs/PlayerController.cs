@@ -184,10 +184,38 @@ public class PlayerController : MonoBehaviour
         return movesSum / speed;
     }
 
-    public void AddFollower(WorldInteractableBrainFollower newFollowerPrefab)
+    public void AddFollower(WorldInteractableBrainFollower newFollowerPrefab, bool repeatable=false)
     {
         WorldInteractableBrainFollower newFollower = Instantiate(newFollowerPrefab);
-        followers.Add(newFollower);
+        AddFollowerInstanced(newFollower, repeatable);
+    }
+
+    public void AddFollowerInstanced(WorldInteractableBrainFollower newFollower, bool repeatable = false)
+    {
+        bool alreadyFollowing = false;
+        if (!repeatable)
+        {
+            foreach (WorldInteractableBrainFollower follower in followers)
+            {
+                if (follower.moveIdentifier == newFollower.moveIdentifier)
+                {
+                    alreadyFollowing = true;
+                    break;
+                }
+            }
+        }
+        if (!alreadyFollowing || repeatable)
+        {
+            newFollower.followMode = true;
+            newFollower.gameObject.tag = "Untagged";
+            if (newFollower.GetComponent<BoxCollider2D>())
+                newFollower.GetComponent<BoxCollider2D>().isTrigger = true;
+            followers.Add(newFollower);
+        }
+        else
+        {
+            Destroy(newFollower.gameObject);
+        }
     }
 
     public void UpdatePokeFollower()
@@ -228,7 +256,7 @@ public class PlayerController : MonoBehaviour
             if (index < movements.Count)
             {
                 follower.SetTarget(movements[index]);
-
+                index++;
             }
         }
     }
@@ -259,6 +287,7 @@ public class PlayerController : MonoBehaviour
                 if (!justTurn)
                 {
                     target = transform.position + (Vector3)direction;
+                    NotifyMoveToFollowers(target);
                 }
                 animator.SetFloat("Horizontal", GetCurrentStoredDirection().x);
                 animator.SetFloat("Vertical", GetCurrentStoredDirection().y);

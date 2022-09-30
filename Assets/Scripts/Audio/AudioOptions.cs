@@ -18,4 +18,13 @@ public class AudioOptions
         this.pitch = pitch;
         this.loopMusic = loopMusic;
     }
+
+    public AudioOptions Clone()
+    {
+        AudioOptions clone = new AudioOptions(audio, pitch, loopMusic);
+        clone.customDuration = customDuration;
+        clone.volumeModifier = volumeModifier;
+        clone.fadeTime = fadeTime;
+        return clone;
+    }
 }
