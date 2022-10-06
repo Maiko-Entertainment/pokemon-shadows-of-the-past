@@ -105,6 +105,8 @@ public enum MoveId
     StringShot = 98,
     Hex = 99,
     Astonish = 100,
+    ShadowPunch = 101,
+    Frustration = 102,
     Struggle = 10001,
     SelfHit = 10000
 }

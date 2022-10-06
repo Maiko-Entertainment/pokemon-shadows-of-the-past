@@ -5502,65 +5502,8 @@ MonoBehaviour:
       amount: 1
     persistedPokedexPokemonData: []
     persistedParty:
-    - pokemonName: Charizard
-      pokemonId: 6
-      level: 36
-      experience: 0
-      damageTaken: 0
-      statusEffectId: 0
-      natureId: 0
-      abilityId: 2
-      moves:
-      - id: 0
-        uses: 0
-      - id: 1
-        uses: 0
-      - id: 3
-        uses: 0
-      learnedMoves:
-      - id: 8
-        uses: 0
-      - id: 11
-        uses: 0
-      - id: 16
-        uses: 0
-      equipedItem: 0
-    - pokemonName: Spooky
-      pokemonId: 92
-      level: 20
-      experience: 0
-      damageTaken: 0
-      statusEffectId: 0
-      natureId: 0
-      abilityId: 12
-      moves:
-      - id: 0
-        uses: 0
-      - id: 1
-        uses: 0
-      - id: 3
-        uses: 0
-      learnedMoves: []
-      equipedItem: 0
     - pokemonName: Evo
       pokemonId: 133
-      level: 20
-      experience: 0
-      damageTaken: 0
-      statusEffectId: 0
-      natureId: 0
-      abilityId: 12
-      moves:
-      - id: 0
-        uses: 0
-      - id: 1
-        uses: 0
-      - id: 3
-        uses: 0
-      learnedMoves: []
-      equipedItem: 0
-    - pokemonName: odo
-      pokemonId: 44
       level: 20
       experience: 0
       damageTaken: 0
@@ -5672,6 +5615,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a700feab18c824d41bac1dfbbb623956, type: 2}
   - {fileID: 11400000, guid: 14d58a8b05a954f48968e55b49f9d34f, type: 2}
   - {fileID: 11400000, guid: 229ecc3016e1389419dabeb76857317b, type: 2}
+  - {fileID: 11400000, guid: 3d8e9e97f7b0f8c4d9f7213e9aeb5711, type: 2}
 --- !u!114 &8952212246821983486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5871,20 +5815,6 @@ MonoBehaviour:
   voiceSources:
   - {fileID: 1910084406102663911}
   - {fileID: 6493866333343295176}
-  currentClip:
-    audio: {fileID: 0}
-    pitch: 1
-    customDuration: -1
-    volumeModifier: 1
-    fadeTime: 0.5
-    loopMusic: 1
-  nextClip:
-    audio: {fileID: 0}
-    pitch: 1
-    customDuration: -1
-    volumeModifier: 1
-    fadeTime: 0.5
-    loopMusic: 1
   fadeTimeTotal: 0
   currentFadeTime: 0
 --- !u!82 &8952212246821983478
@@ -6029,8 +5959,8 @@ MonoBehaviour:
   sceneContainer: {fileID: 8952212248689861747}
   mapNameContainer: {fileID: 8128194997387600291}
   forceMapLoad: 1
-  customMap: 8
-  customSpawn: 1
+  customMap: 11
+  customSpawn: 0
 --- !u!114 &1181977574091591885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6200,6 +6130,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0527eef1c45d0754e8180d9c3741ae74, type: 2}
   - {fileID: 11400000, guid: 5f2d907dc0058e5498a9a79eb1224e54, type: 2}
   - {fileID: 11400000, guid: ccd94878d2d267049a228941a505f0e9, type: 2}
+  - {fileID: 11400000, guid: 4ade27528c9b5424eb578f225d35a71b, type: 2}
+  - {fileID: 11400000, guid: 346fa6b89cc29fe4fa322d54901734a2, type: 2}
 --- !u!114 &423868467601111521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7863,10 +7795,6 @@ PrefabInstance:
     - target: {fileID: 1806747590123375661, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_Name
       value: Combat View
-      objectReference: {fileID: 0}
-    - target: {fileID: 1806747590123375661, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1806747590351449282, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_AnchorMax.y

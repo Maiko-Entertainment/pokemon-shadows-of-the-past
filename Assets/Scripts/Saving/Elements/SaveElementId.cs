@@ -14,5 +14,6 @@ public enum SaveElementId
     danteRelationship = 101,
     erikRelationship = 102,
     tansyRelationship = 103,
-    startedTypePicked = 1001 // 1 is grass, 2 water, 3 fire
+    startedTypePicked = 1001, // 1 is grass, 2 water, 3 fire
+    tansyProtectEachother = 1002,
 }

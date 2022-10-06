@@ -34,7 +34,7 @@ public class BrainTacticCondition
                     break;
                 case BrainMessageConditionType.roundNumber:
                     int turnsPassed = bm.turnsPassed;
-                    if (turnsPassed == (int)value - 1)
+                    if (turnsPassed == (int)value)
                     {
                         timesUsed++;
                         return true;

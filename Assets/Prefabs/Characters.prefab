@@ -163,6 +163,57 @@ MonoBehaviour:
     a salvo. Casi nunca se enoja, salvo que se trata de la seguridad del grupo. Cree
     que la mejor forma de atrapar pokemon es amigarse con ellos primero. Trata de
     mantener los esp\xEDritus en alto y deja pasar su propio bienestar.\r"
+--- !u!1 &2553926347733239959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6362909230500434254}
+  - component: {fileID: 8425119269412978757}
+  m_Layer: 0
+  m_Name: ??? - Evil
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6362909230500434254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553926347733239959}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6776264483860599584}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8425119269412978757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553926347733239959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: ???
+  nameColor: {r: 0.76108485, g: 0, b: 0.8113208, a: 1}
+  soundEffect: {fileID: 8300000, guid: e232bd0fa7d5b63409b4e6de0b99147c, type: 3}
+  portraits: []
+  portraitsFace: 0
+  setSayDialog: {fileID: 0}
+  description: 
 --- !u!1 &3857837182240067555
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +491,7 @@ Transform:
   - {fileID: 4596893165904310434}
   - {fileID: 2925160665674517341}
   - {fileID: 8604124317096246249}
+  - {fileID: 6362909230500434254}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 3515847993167527456}
   - component: {fileID: 6404826064589628790}
   - component: {fileID: 707044328649195426}
+  - component: {fileID: 4686208982911496384}
   m_Layer: 0
   m_Name: Flowchart Tactics
   m_TagString: Untagged
@@ -128,7 +129,7 @@ MonoBehaviour:
   scrollPos: {x: 657.75494, y: 4.278262}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 400
+  blockViewHeight: 399
   zoom: 0.7900002
   scrollViewRect:
     serializedVersion: 2
@@ -137,8 +138,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 7660137004177622114}
-  selectedCommands: []
+  - {fileID: 8702725029018940643}
+  selectedCommands:
+  - {fileID: 4686208982911496384}
   variables:
   - {fileID: 9131182894791565300}
   - {fileID: 8439902652808134854}
@@ -1063,6 +1065,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 4686208982911496384}
   - {fileID: 4238268634065541634}
   - {fileID: 7607975259813190154}
   suppressAllAutoSelections: 0
@@ -3291,6 +3294,20 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &4686208982911496384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623546450157281241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0f4056e1b4fba4c83bd6f247a95ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 85
+  indentLevel: 0
 --- !u!1001 &670286675272066503
 PrefabInstance:
   m_ObjectHideFlags: 0
