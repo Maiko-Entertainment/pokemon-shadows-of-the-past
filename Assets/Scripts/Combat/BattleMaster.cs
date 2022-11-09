@@ -67,7 +67,9 @@ public class BattleMaster : MonoBehaviour
         List<TacticData> finalTactics = new List<TacticData>();
         finalTactics.AddRange(TacticsMaster.GetInstance().GetEquippedTactics());
         finalTactics.AddRange(battleData.playerExtraTactics);
-        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
+        BattleTeamData team1 = new BattleTeamData(
+            (string) SaveMaster.Instance.GetSaveElement(SaveElementId.playerName).GetValue(),
+            GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
         currentBattle = newBattle;
@@ -85,7 +87,10 @@ public class BattleMaster : MonoBehaviour
         List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
         List<TacticData> finalTactics = TacticsMaster.GetInstance().GetEquippedTactics();
         finalTactics.AddRange(trainer.battleData.playerExtraTactics);
-        BattleTeamData team1 = new BattleTeamData("Player", GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics); ;
+        BattleTeamData team1 = new BattleTeamData(
+            (string)SaveMaster.Instance.GetSaveElement(SaveElementId.playerName).GetValue(),
+            GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
+        team1.allyPokemon = trainer.team1PokemonAllies;
         BattleTeamData team2 = trainer.GetTeambattleData();
         BattleManager newBattle = new BattleManager(team1, team2, trainer.battleData);
         currentBattle = newBattle;

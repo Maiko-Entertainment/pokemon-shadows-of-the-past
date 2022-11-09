@@ -35,6 +35,7 @@ public class PokemonBattleData
         {
             statusEffectsNewInstance.Add(se.Copy(newInstance));
         }
+        newInstance.statsLevel = statsLevel.Copy();
         newInstance.abilityId = abilityId;
         newInstance.heldItem = heldItem;
         newInstance.roundsInCombat = roundsInCombat;

@@ -8,6 +8,7 @@ public class BattleTeamData
     public TrainerBrainData brain;
     public List<PokemonBattleData> pokemon = new List<PokemonBattleData>();
     public List<PokemonBattleDataConditional> conditionalPokemon = new List<PokemonBattleDataConditional>();
+    public List<PokemonBattleData> allyPokemon = new List<PokemonBattleData>();
     public int moneyPrice = 200;
     // Handles status that affect the whole team such as lightscreen
     public List<Status> teamStatus = new List<Status>();
@@ -41,12 +42,18 @@ public class BattleTeamData
     }
     public void InitiateTeam(BattleTeamId teamId)
     {
-        // SetActivePokemon(GetFirstAvailabelPokemon());
         brain?.Initialize(BattleMaster.GetInstance().GetCurrentBattle());
         int index = 0;
         foreach(PokemonBattleData pkmn in GetTeam())
         {
             pkmn.battleId = (teamId == BattleTeamId.Team1 ? 0 : 100) + index;
+            index++;
+        }
+
+        index = 0;
+        foreach (PokemonBattleData pkmn in allyPokemon)
+        {
+            pkmn.battleId = (teamId == BattleTeamId.Team1 ? 200 : 300) + index;
             index++;
         }
     }

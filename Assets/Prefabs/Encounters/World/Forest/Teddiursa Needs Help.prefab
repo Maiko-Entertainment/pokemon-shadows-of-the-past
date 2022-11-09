@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 499749225674680029}
   - component: {fileID: 1171658698800819784}
   - component: {fileID: 4699832664030539441}
+  - component: {fileID: 6331323137963307248}
+  - component: {fileID: 5520350947150996501}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -168,10 +170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -87.51291, y: 42.576805}
+  scrollPos: {x: -41.943275, y: 80.55149}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 405
+  blockViewHeight: 399
   zoom: 0.7900002
   scrollViewRect:
     serializedVersion: 2
@@ -180,8 +182,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 7284398337551719318}
-  selectedCommands: []
+  - {fileID: 8171328429260563678}
+  selectedCommands:
+  - {fileID: 1052222472778102785}
   variables: []
   description: 
   stepPause: 0
@@ -1284,6 +1287,7 @@ MonoBehaviour:
   - {fileID: 4888641213153979993}
   - {fileID: 2687752895444189687}
   - {fileID: 6555155508187511727}
+  - {fileID: 6331323137963307248}
   - {fileID: 3945072198327990519}
   suppressAllAutoSelections: 0
 --- !u!114 &7284398337551719318
@@ -1312,6 +1316,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 759695410200003098}
+  - {fileID: 5520350947150996501}
   - {fileID: 8724793415910956684}
   - {fileID: 2943356522617200575}
   - {fileID: 9184263755977686513}
@@ -2801,7 +2806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 120
   indentLevel: 0
-  storyText: ... I don't want anyone else to get hurt...
+  storyText: ... I don't want anybody else to get hurt...
   description: 
   character: {fileID: 6387737817613261369}
   portrait: {fileID: 0}
@@ -3052,6 +3057,40 @@ MonoBehaviour:
   useDefaultSettings: 1
   fadeDuration: 0
   waitUntilFinished: 0
+--- !u!114 &6331323137963307248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 134
+  indentLevel: 0
+  variableId: 104
+  operation: 1
+  value: -1
+--- !u!114 &5520350947150996501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 135
+  indentLevel: 0
+  variableId: 104
+  operation: 1
+  value: 1
 --- !u!1 &5851113948233369936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,6 +3169,7 @@ MonoBehaviour:
   flowchart: {fileID: 3345686191923637353}
   blockName: Start
   onInteract: 0
+  repeatable: 0
   cutsceneAgents:
   - {fileID: 8536866743187096763}
   - {fileID: 8163431621057123828}

@@ -21,12 +21,18 @@ public class BattleEndEvent
         if (e.winningTeamId == BattleTeamId.Team1)
         {
             if (flowchart && onWinBlockName!= "")
+            {
                 InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, onWinBlockName));
+                InteractionsMaster.GetInstance().ExecuteNext();
+            }
         }
         else if (e.winningTeamId == BattleTeamId.Team2)
         {
             if (flowchart && onLoseBlockName != "")
+            {
                 InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, onLoseBlockName));
+                InteractionsMaster.GetInstance().ExecuteNext();
+            }
         }
     }
 }

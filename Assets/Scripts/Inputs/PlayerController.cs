@@ -210,12 +210,38 @@ public class PlayerController : MonoBehaviour
             newFollower.gameObject.tag = "Untagged";
             if (newFollower.GetComponent<BoxCollider2D>())
                 newFollower.GetComponent<BoxCollider2D>().isTrigger = true;
+            newFollower.transform.position = transform.position;
+            newFollower.SetTarget(transform.position);
             followers.Add(newFollower);
         }
         else
         {
             Destroy(newFollower.gameObject);
         }
+    }
+
+    public WorldInteractableBrainFollower RemoveFollower(string followerId)
+    {
+        List<WorldInteractableBrainFollower> newFollowers = new List<WorldInteractableBrainFollower>();
+        WorldInteractableBrainFollower removedFollower = null;
+        foreach (WorldInteractableBrainFollower follower in followers)
+        {
+            if (follower.moveIdentifier == followerId)
+            {
+                follower.followMode = true;
+                follower.gameObject.tag = "Object";
+                if (follower.GetComponent<BoxCollider2D>())
+                    follower.GetComponent<BoxCollider2D>().isTrigger = false;
+                follower.transform.parent = null;
+                removedFollower = follower;
+            }
+            else
+            {
+                newFollowers.Add(follower);
+            }
+        }
+        followers = newFollowers;
+        return removedFollower;
     }
 
     public void UpdatePokeFollower()

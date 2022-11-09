@@ -28,7 +28,7 @@ public class InteractionsMaster : MonoBehaviour
 
     public void AddEvent(InteractionEvent intEvent)
     {
-        print("Adding event: " + intEvent);
+          print("Adding event: " + intEvent);
         bool priortyInserted = false;
         foreach(InteractionEvent ie in events)
         {

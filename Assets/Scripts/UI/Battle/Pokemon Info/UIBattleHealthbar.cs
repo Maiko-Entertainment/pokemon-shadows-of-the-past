@@ -21,6 +21,7 @@ public class UIBattleHealthbar : MonoBehaviour
     public AudioClip abilitySound;
     public Transform minorStatusList;
     public UIStatusMinor statusMinorPrefab;
+    public UIStatChange statChangePrefab;
 
     public PokemonBattleData pokemon;
     public float targetHealth;
@@ -54,6 +55,7 @@ public class UIBattleHealthbar : MonoBehaviour
             statusDatas.Add(BattleAnimatorMaster.GetInstance().GetStatusEffectData(s.effectId));
         }
         UpdateStatus(status, statusDatas);
+        UpdateStats(pokemon);
     }
 
     public void FadeIn()
@@ -76,10 +78,13 @@ public class UIBattleHealthbar : MonoBehaviour
     {
         foreach (Transform t in minorStatusList)
         {
-            StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
-            if (!status.Contains(s))
+            if (GetComponent<UIStatusMinor>())
             {
-                Destroy(t.gameObject);
+                StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
+                if (!status.Contains(s))
+                {
+                    Destroy(t.gameObject);
+                }
             }
         }
         foreach (StatusEffectData sed in status)
@@ -87,10 +92,13 @@ public class UIBattleHealthbar : MonoBehaviour
             bool contains = false;
             foreach(Transform t in minorStatusList)
             {
-                StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
-                if (sed.statusId == s.statusId)
+                if (t.GetComponent<UIStatusMinor>())
                 {
-                    contains = true;
+                    StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
+                    if (sed.statusId == s.statusId)
+                    {
+                        contains = true;
+                    }
                 }
             }
             if (!contains)
@@ -98,6 +106,33 @@ public class UIBattleHealthbar : MonoBehaviour
                 Instantiate(statusMinorPrefab, minorStatusList).Load(sed);
                 AudioMaster.GetInstance().PlaySfx(abilitySound);
             }
+        }
+    }
+    public void UpdateStats(PokemonBattleData pokemonState)
+    {
+        foreach (Transform t in minorStatusList)
+        {
+            if (t.GetComponent<UIStatChange>())
+            {
+                Destroy(t.gameObject);
+            }
+        }
+        PokemonBattleStats battleStats = pokemonState.GetBattleStatsChangeLevels();
+        HandleStatUpDown("Atk", battleStats.attack);
+        HandleStatUpDown("Def", battleStats.defense);
+        HandleStatUpDown("Sp. Atk", battleStats.spAttack);
+        HandleStatUpDown("Sp. Def", battleStats.spDefense);
+        HandleStatUpDown("Spd", battleStats.speed);
+        HandleStatUpDown("Eva", battleStats.evasion);
+        HandleStatUpDown("Acc", battleStats.accuracy);
+        HandleStatUpDown("Crt", battleStats.critical);
+    }
+
+    public void HandleStatUpDown(string statName, int change)
+    {
+        if (change != 0)
+        {
+            Instantiate(statChangePrefab, minorStatusList).Load(statName, change);
         }
     }
 

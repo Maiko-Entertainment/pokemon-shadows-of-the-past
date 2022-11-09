@@ -32,6 +32,8 @@ public class BattleAnimatorMaster : MonoBehaviour
     public GameObject pokeballFrontReleaseAnimPrefab;
     public GameObject pokeballBackReleaseAnimPrefab;
     public GameObject pokeballGlow;
+    public List<BattleAnimation> statDown = new List<BattleAnimation>();
+    public List<BattleAnimation> statUp = new List<BattleAnimation>();
 
     // Utils
     public Material shadowMaterial;
@@ -189,7 +191,7 @@ public class BattleAnimatorMaster : MonoBehaviour
     {
         BattleTeamId pokemonTeam = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon);
         Transform position = GetPokemonTeamTransform(pokemon).parent;
-        combatCamera.SetTarget(position.position + Vector3.up * 0.5f);
+        combatCamera.SetTarget(position.position + Vector3.up * (pokemonTeam == BattleTeamId.Team1 ? 1f : 0.5f));
         combatCamera.SetSizeTarget(pokemonTeam == BattleTeamId.Team1 ? pokemonZoomValue : pokemonZoomValue * 0.7f);
         return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
     }
@@ -273,6 +275,24 @@ public class BattleAnimatorMaster : MonoBehaviour
         );
     }
 
+    public void AddStatusChangeEvent(PokemonBattleData pokemon, int change)
+    {
+        if (change > 0)
+        {
+            foreach(BattleAnimation ba in statUp)
+            {
+                AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba));
+            }
+        }
+        else if (change < 0)
+        {
+            foreach (BattleAnimation ba in statDown)
+            {
+                AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba));
+            }
+        }
+    }
+
     public void AddEventPokemonFaintText(PokemonBattleData pokemon)
     {
         AddEvent(new BattleAnimatorEventNarrative(
@@ -302,13 +322,24 @@ public class BattleAnimatorMaster : MonoBehaviour
         }
     }
 
-    public void AddEventBattleFlowcartPokemonText(string blockName, PokemonBattleData pokemon)
+    public void AddEventBattleFlowcartPokemonText(string blockName, PokemonBattleData pokemon, Dictionary<string, string> additionalVariables = null)
     {
+        Dictionary<string, string> variables= new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } };
+        if (additionalVariables != null)
+        {
+            foreach (string key in additionalVariables.Keys)
+            {
+                if (!variables.ContainsKey(key))
+                {
+                    variables.Add(key, additionalVariables[key]);
+                }
+            }
+        }
         AddEvent(new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
                 battleFlowchart,
                 blockName,
-                new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } }
+                variables
             ))
         );
     }

@@ -26,12 +26,10 @@ public class SpawnConditionData : MonoBehaviour
     public void CheckForSpawn()
     {
         float random = Random.value;
-        print("Chance: " + chance + " - Random: " + random);
         if (MeetsConditions() && chance >= random)
         {
             foreach(ConditionalSpawnData spawn in spawns)
             {
-                print("Instancing " + spawn.spawn);
                 GameObject obj = Instantiate(spawn.spawn, spawn.spawnAsChild ? transform : null);
                 if (spawn.spawnAsChild)
                 {

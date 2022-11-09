@@ -60,7 +60,7 @@ public class WorldMapMaster : MonoBehaviour
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         Transform spawn = mapInstance.GetSpawn(spawnIndex);
         mapInstance.HandleEntrance();
-        StartCoroutine(SetPlayer(0.1f, spawn.position));
+        StartCoroutine(SetPlayer(0.0f, spawn.position));
         UIPauseMenuMaster.GetInstance().ShowWorldUI();
         currentMap = mapInstance;
     }
@@ -71,7 +71,7 @@ public class WorldMapMaster : MonoBehaviour
         WorldMap map = Getmap(mapId);
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         mapInstance.HandleEntrance();
-        StartCoroutine(SetPlayer(0.1f, position));
+        StartCoroutine(SetPlayer(0.0f, position));
         UIPauseMenuMaster.GetInstance().ShowWorldUI();
         currentMap = mapInstance;
     }
@@ -185,5 +185,11 @@ public class WorldMapMaster : MonoBehaviour
     public void AddInstancedFollowerToPlayer(WorldInteractableBrainFollower follower, bool repeatable)
     {
         GetPlayer()?.AddFollowerInstanced(follower, repeatable);
+    }
+
+    public WorldInteractableBrainFollower RemoveFollowerFromPlayer(string followerId)
+    {
+        WorldInteractableBrainFollower follower = GetPlayer()?.RemoveFollower(followerId);
+        return follower;
     }
 }

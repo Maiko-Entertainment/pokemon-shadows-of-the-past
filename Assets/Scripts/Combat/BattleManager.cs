@@ -211,7 +211,21 @@ public class BattleManager
                 return BattleTeamId.Team1;
             }
         }
+        foreach (PokemonBattleData p1 in team1.allyPokemon)
+        {
+            if (p1.battleId == pokemon.battleId)
+            {
+                return BattleTeamId.Team1;
+            }
+        }
         foreach (PokemonBattleData p2 in team2.pokemon)
+        {
+            if (p2.battleId == pokemon.battleId)
+            {
+                return BattleTeamId.Team2;
+            }
+        }
+        foreach (PokemonBattleData p2 in team2.allyPokemon)
         {
             if (p2.battleId == pokemon.battleId)
             {
@@ -442,11 +456,11 @@ public class BattleManager
 
     public PokemonBattleData GetTarget(PokemonBattleData pokemon, MoveTarget target)
     {
-        PokemonBattleData pokemon1 = team1.GetActivePokemon();
+        BattleTeamId usersTeam = GetTeamId(pokemon);
         if (target == MoveTarget.Enemy)
         {
             // Pokemon is on team 1, return team's active pokemon
-            if (pokemon1 == pokemon)
+            if (usersTeam == BattleTeamId.Team1)
                 return team2.GetActivePokemon();
             else
                 return team1.GetActivePokemon();
@@ -454,7 +468,7 @@ public class BattleManager
         else if (target == MoveTarget.Self)
         {
             // Pokemon is on team 1, return self
-            if (pokemon1 == pokemon)
+            if (usersTeam == BattleTeamId.Team1)
                 return team1.GetActivePokemon();
             else
                 return team2.GetActivePokemon();

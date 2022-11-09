@@ -999,7 +999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagStartSymbol: '{stat-down}'
   tagEndSymbol: '{/stat-down}'
-  replaceTagStartWith: '{color=#63c63c}{audio=UI_Stat-Decrease}'
+  replaceTagStartWith: '{color=#219fff}'
   replaceTagEndWith: '{/color}'
 --- !u!1 &961905106
 GameObject:
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagStartSymbol: '{stat-up}'
   tagEndSymbol: '{/stat-up}'
-  replaceTagStartWith: '{color=#63c63c}{audio=UI_Stat-Increase}'
+  replaceTagStartWith: '{color=#ff214e}'
   replaceTagEndWith: '{/color}'
 --- !u!1 &1205286359
 GameObject:
@@ -5504,7 +5504,7 @@ MonoBehaviour:
     persistedParty:
     - pokemonName: Evo
       pokemonId: 133
-      level: 20
+      level: 30
       experience: 0
       damageTaken: 0
       statusEffectId: 0
@@ -5616,6 +5616,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 14d58a8b05a954f48968e55b49f9d34f, type: 2}
   - {fileID: 11400000, guid: 229ecc3016e1389419dabeb76857317b, type: 2}
   - {fileID: 11400000, guid: 3d8e9e97f7b0f8c4d9f7213e9aeb5711, type: 2}
+  - {fileID: 11400000, guid: 3c481761d2b70cf4cae8492e8d589fa9, type: 2}
 --- !u!114 &8952212246821983486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5635,6 +5636,7 @@ MonoBehaviour:
       brain: {fileID: 0}
       pokemon: []
       conditionalPokemon: []
+      allyPokemon: []
       moneyPrice: 0
       teamStatus: []
       tactics: []
@@ -5644,6 +5646,7 @@ MonoBehaviour:
       brain: {fileID: 0}
       pokemon: []
       conditionalPokemon: []
+      allyPokemon: []
       moneyPrice: 0
       teamStatus: []
       tactics: []
@@ -6112,6 +6115,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df8a52f865303a447a2d617577a64551, type: 2}
   - {fileID: 11400000, guid: f5badd01b862afa43bd149f5300ab987, type: 2}
   - {fileID: 11400000, guid: 74b684e462e5950448a9921a8c3c2dfb, type: 2}
+  - {fileID: 11400000, guid: e0a195f40da304546a58c069e0cbcba0, type: 2}
   - {fileID: 11400000, guid: 1a6273a9e63deb74faeaaa99ff0951d2, type: 2}
   - {fileID: 11400000, guid: 4cf18f7a7aad17b418b8bb5a9a26bfde, type: 2}
   - {fileID: 11400000, guid: ed36972792dd45d4899587857b1aa1c3, type: 2}
@@ -7475,6 +7479,10 @@ PrefabInstance:
     - target: {fileID: 4623546450157281241, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: m_Name
       value: Flowchart Tactics
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686208982911496384, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
+      propertyPath: itemId
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 4910107457734986941, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: itemId

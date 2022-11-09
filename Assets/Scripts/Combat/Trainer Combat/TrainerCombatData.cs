@@ -7,6 +7,8 @@ public class TrainerCombatData : ScriptableObject
     public BattleTeamData battleTeamData;
     public BattleData battleData;
     public ViewTransition transition;
+
+    public List<PokemonBattleData> team1PokemonAllies = new List<PokemonBattleData>();
     
     public AudioClip GetBattleSong()
     {
