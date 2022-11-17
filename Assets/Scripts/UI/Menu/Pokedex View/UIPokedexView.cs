@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -12,6 +13,8 @@ public class UIPokedexView : MonoBehaviour
     public UIPokedexAbility pokedexAbilityPrefab;
 
     public UIPokedexSectionBasicData basicDataPrefab;
+    public UIPokedexSectionBaseStats baseStatsPrefab;
+    public UIPokedexSectionMoves learnableMovesPrefab;
 
     public RectTransform pokemonListContainer;
     public RectTransform typeList;
@@ -147,6 +150,12 @@ public class UIPokedexView : MonoBehaviour
             case 0:
                 ViewBasicData();
                 break;
+            case 1:
+                ViewBaseStatsData();
+                break;
+            case 2:
+                ViewLearnableMoves();
+                break;
         }
     }
 
@@ -157,6 +166,54 @@ public class UIPokedexView : MonoBehaviour
         Instantiate(basicDataPrefab, sectionContainer).Load(selected);
         sectionIndex = 0;
         HandleSectionChange();
+    }
+    public void ViewBaseStatsData()
+    {
+        ClearSection();
+        Instantiate(baseStatsPrefab, sectionContainer).Load(selected);
+        sectionIndex = 1;
+        HandleSectionChange();
+    }
+    public void ViewLearnableMoves()
+    {
+        ClearSection();
+        Instantiate(learnableMovesPrefab, sectionContainer).Load(selected);
+        sectionIndex = 2;
+        HandleSectionChange();
+    }
+    public void ReturnToPokemonSelectionList()
+    {
+        foreach (Transform pokemon in pokemonListContainer)
+        {
+            if (pokemon.GetComponent<UIPokedexPokemonOption>().pokemon == selected)
+            {
+                EventSystem eventSystem = EventSystem.current;
+                eventSystem.SetSelectedGameObject(pokemon.gameObject, new BaseEventData(eventSystem));
+                break;
+            }
+        }
+    }
+    public void HandlePokedexMenuSection(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        {
+            Vector2 direction = context.ReadValue<Vector2>();
+            int previousIndex = sectionIndex;
+            if (direction.x < 0)
+            {
+                sectionIndex = Mathf.Max(0, sectionIndex - 1);
+                ReturnToPokemonSelectionList();
+            }
+            else if (direction.x > 0)
+            {
+                sectionIndex = Mathf.Min(sectionsListContainer.childCount - 1, sectionIndex + 1);
+                ReturnToPokemonSelectionList();
+            }
+            if (previousIndex != sectionIndex)
+            {
+                ViewCurrentSection();
+            }
+        }
     }
     public void HandleSectionChange()
     {
@@ -183,7 +240,7 @@ public class UIPokedexView : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(animator.gameObject);
+        Destroy(animator?.gameObject);
     }
 
     private void Update()

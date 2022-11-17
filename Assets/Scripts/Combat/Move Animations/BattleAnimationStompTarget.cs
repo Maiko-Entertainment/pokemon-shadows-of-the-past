@@ -5,9 +5,10 @@ using UnityEngine;
 public class BattleAnimationStompTarget : BattleAnimation
 {
     public Vector3 finalChange;
+    public bool targetUserInstead = false;
     public override BattleAnimation Execute(PokemonBattleData user, PokemonBattleData target)
     {
-        Stomp(target);
+        Stomp(targetUserInstead ? user : target);
         return base.Execute(user, target);
     }
     public void Stomp(PokemonBattleData target)

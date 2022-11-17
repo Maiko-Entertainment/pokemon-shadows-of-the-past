@@ -8,7 +8,7 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class UIBattleOptionsManager : MonoBehaviour
 {
-
+    public AudioClip onSelectSound;
     public TransitionFilledImage container;
     public UIBattleMovePicker movesSelector;
     public UIItemsViewer itemSelector;
@@ -32,6 +32,12 @@ public class UIBattleOptionsManager : MonoBehaviour
             options.Add(option.GetComponent<Selectable>());
         }
         UtilsMaster.LineSelectables(options);
+    }
+
+    public void PlayOnSelectSound()
+    {
+        if(BattleMaster.GetInstance().GetCurrentBattle().IsBattleActive())
+            AudioMaster.GetInstance().PlaySfx(onSelectSound);
     }
 
     public void ShowMoveSelector()

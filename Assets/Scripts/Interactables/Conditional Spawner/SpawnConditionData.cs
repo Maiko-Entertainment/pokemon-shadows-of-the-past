@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnConditionData : MonoBehaviour
 {
     public List<SpawnConditionDataSaveValue> conditions = new List<SpawnConditionDataSaveValue>();
+    public List<SpawnConditionItemInInventory> inventoryConditions = new List<SpawnConditionItemInInventory>();
     public List<ConditionalSpawnData> spawns = new List<ConditionalSpawnData>();
     public float chance = 1f;
 
@@ -16,6 +17,11 @@ public class SpawnConditionData : MonoBehaviour
     protected bool MeetsConditions()
     {
         foreach(SpawnConditionDataSaveValue con in conditions)
+        {
+            if (!con.IsTrue())
+                return false;
+        }
+        foreach (SpawnConditionItemInInventory con in inventoryConditions)
         {
             if (!con.IsTrue())
                 return false;

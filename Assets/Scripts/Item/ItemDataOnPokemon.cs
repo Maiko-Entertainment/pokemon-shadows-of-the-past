@@ -26,6 +26,7 @@ public class ItemDataOnPokemon : ItemData
     {
         return ItemTargetType.Pokemon;
     }
+
     public virtual CanUseResult CanUseOnPokemon(PokemonCaughtData pokemon)
     {
         return new CanUseResult(equipable, "");

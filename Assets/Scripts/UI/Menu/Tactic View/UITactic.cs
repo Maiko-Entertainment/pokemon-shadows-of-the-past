@@ -22,7 +22,7 @@ public class UITactic : MonoBehaviour
     public delegate void Click(TacticData tactic);
     public event Click onClick;
 
-    private TacticData tactic;
+    public TacticData tactic;
     private bool canPay = true;
 
     public UITactic Load(TacticData tactic)

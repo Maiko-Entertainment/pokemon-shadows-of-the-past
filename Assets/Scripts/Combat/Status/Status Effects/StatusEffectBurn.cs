@@ -22,7 +22,7 @@ public class StatusEffectBurn : StatusEffect
                     pokemon,
                     new DamageSummary(
                         PokemonTypeId.Undefined,
-                        (int)(pokemon.GetPokemonHealth() * porcentualDamage),
+                        Mathf.Max(1, (int)(pokemon.GetPokemonHealth() * porcentualDamage)),
                         DamageSummarySource.Status,
                         (int)effectId
                     )

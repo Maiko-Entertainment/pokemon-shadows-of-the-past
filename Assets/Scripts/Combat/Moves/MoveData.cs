@@ -21,6 +21,7 @@ public class MoveData : ScriptableObject
     public float drainMultiplier = 0f;
     public int moveCritUp = 0;
     public int priority = 0;
+    public bool stealInsteadOfDestroy = false;
     public List<ItemCategory> destroyHeldItems = new List<ItemCategory>();
     public string description;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
@@ -42,7 +43,7 @@ public class MoveData : ScriptableObject
         {
             if (categoryId != MoveCategoryId.status)
             {
-                DamageSummary damageSummary = bm.CalculateMoveDamage(battleEvent);
+                DamageSummary damageSummary = GetMoveDamageSummary(battleEvent);
                 bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
             }
             else
@@ -50,7 +51,7 @@ public class MoveData : ScriptableObject
                 HandleAnimations(battleEvent.pokemon, pokemonTarget);
                 HandleStatsChanges(battleEvent.pokemon);
                 HandleStatusAdds(battleEvent.pokemon);
-                HandleDestroy(pokemonTarget);
+                HandleDestroy(pokemonTarget, battleEvent.pokemon);
             }
             bm.AddMoveSuccessEvent(battleEvent);
             // Negative values are used for recoil
@@ -59,6 +60,13 @@ public class MoveData : ScriptableObject
                 BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this, drainMultiplier));
             }
         }
+    }
+
+    public virtual DamageSummary GetMoveDamageSummary(BattleEventUseMove battleEvent)
+    {
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        DamageSummary damageSummary = bm.CalculateMoveDamage(battleEvent);
+        return damageSummary;
     }
 
     public virtual void HandleStatsChanges(PokemonBattleData pokemon)
@@ -99,12 +107,23 @@ public class MoveData : ScriptableObject
         }
     }
 
-    public void HandleDestroy(PokemonBattleData target)
+    public void HandleDestroy(PokemonBattleData target, PokemonBattleData user)
     {
         PokemonBattleDataItem item = target.heldItem;
         if (item != null && item.equippedItem && destroyHeldItems.Contains(item.equippedItem.GetItemCategory()))
         {
-            target.UnequipItem();
+            if (stealInsteadOfDestroy)
+            {
+                if (user.heldItem != null)
+                {
+                    user.EquippedItem(item.equippedItem);
+                    target.UnequipItem();
+                }
+            }
+            else
+            {
+                target.UnequipItem();
+            }
         }
     }
 

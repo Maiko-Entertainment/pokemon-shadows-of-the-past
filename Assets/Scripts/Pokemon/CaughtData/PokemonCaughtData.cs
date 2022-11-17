@@ -290,6 +290,23 @@ public class PokemonCaughtData
 
     public List<MoveEquipped> GetLearnedMoves()
     {
+        // Add TM Moves
+        foreach(MoveData move in pokemonBase.GetTMMoves())
+        {
+            bool alreadyKnowsTmMove = false;
+            foreach(MoveEquipped me in learnedMoves)
+            {
+                if (me.move.moveId == move.moveId)
+                {
+                    alreadyKnowsTmMove = true;
+                    break;
+                }
+            }
+            if (!alreadyKnowsTmMove)
+            {
+                learnedMoves.Add(new MoveEquipped(move));
+            }
+        }
         return learnedMoves;
     }
 

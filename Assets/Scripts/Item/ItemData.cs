@@ -7,6 +7,7 @@ public class ItemData : ScriptableObject
     public ItemId itemId;
     public string itemName;
     public bool isConsumable;
+    public bool canBeUsedInBattle = true;
     public ItemCategory categoryId;
     public AudioClip useSound;
     public Sprite icon;
@@ -17,7 +18,7 @@ public class ItemData : ScriptableObject
     {
         return itemName;
     }
-    public string GetDescription()
+    public virtual string GetDescription()
     {
         return description;
     }
@@ -37,6 +38,11 @@ public class ItemData : ScriptableObject
 
     public virtual CanUseResult CanUse()
     {
+        bool isInBattle = BattleMaster.GetInstance().IsBattleActive();
+        if (isInBattle)
+        {
+            return new CanUseResult(canBeUsedInBattle, canBeUsedInBattle ? "" : "This cannot be used in battle!");
+        }
         return new CanUseResult(true, "");
     }
 

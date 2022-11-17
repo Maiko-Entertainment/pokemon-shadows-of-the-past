@@ -78,7 +78,7 @@ public class UIBattleHealthbar : MonoBehaviour
     {
         foreach (Transform t in minorStatusList)
         {
-            if (GetComponent<UIStatusMinor>())
+            if (t.GetComponent<UIStatusMinor>())
             {
                 StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
                 if (!status.Contains(s))
@@ -186,15 +186,17 @@ public class UIBattleHealthbar : MonoBehaviour
 
     public void UpdateStatus(StatusEffectData status, List<StatusEffectData> minor)
     {
-        if (status)
+         if (status)
         {
             statusSimbol.enabled = true;
             statusSimbol.sprite = status.icon;
             AudioMaster.GetInstance().PlaySfx(abilitySound);
-            return;
+        }
+        else
+        {
+            statusSimbol.enabled = false;
         }
         LoadStatus(minor);
-        statusSimbol.enabled = false;
     }
     public void UpdateLevel(int level)
     {

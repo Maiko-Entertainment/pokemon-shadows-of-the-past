@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BattleAnimationPokemonCry : BattleAnimation
 {
+    public float customPitch = 1f;
     public override BattleAnimation Execute(PokemonBattleData user, PokemonBattleData target)
     {
-        AudioMaster.GetInstance().PlaySfx(user.GetCry());
+        AudioMaster.GetInstance().PlaySfx(user.GetCry(), customPitch);
         return base.Execute(user, target);
     }
 }

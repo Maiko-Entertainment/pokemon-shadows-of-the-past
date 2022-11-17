@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.29411766}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1542,7 +1542,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3345329920979426034}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1561,6 +1561,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 819520363103907279, guid: cc2ed49906dc63c42a39bbc130f72ff6, type: 3}
   pokemonPrefab: {fileID: 3424210028211374005, guid: 987249feec85eb64fb60cf4dfcd7cd06, type: 3}
   sectionChangeSound: {fileID: 8300000, guid: 34a505442523dc94998c5967f59bf9ff, type: 3}
+  errorSound: {fileID: 8300000, guid: 7ba52e0fc8055344cb2921df74d44f25, type: 3}
   itemsContainer: {fileID: 1588536490199797909}
   pokemonListContainer: {fileID: 1941770699872263938}
   scrollRect: {fileID: 3304100220200929868}
@@ -1587,6 +1588,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 5087469611503173211}
   transition: {fileID: 7405259903372373971}
   firstSelected: {fileID: 0}
+  fadeOutWhenNotFocused: 0
 --- !u!114 &7192603802416576928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,6 +1678,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0610c658-5460-42f6-ab0a-67c36759652b
     m_ActionName: Player Character/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4299c00f-5abe-4920-a05e-95405b2ee952
+    m_ActionName: Player Character/Left Hover[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8ac63dc-b979-45b2-b0dc-4356fa1bbb26
+    m_ActionName: Player Character/Left Click[/Mouse/press]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Character
@@ -1744,7 +1754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.9411765}
+  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

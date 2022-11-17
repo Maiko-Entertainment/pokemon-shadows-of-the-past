@@ -28,12 +28,11 @@ public class PokemonBattleData
     public PokemonBattleData Copy()
     {
         PokemonBattleData newInstance = new PokemonBattleData(pokemon.Copy(), battleId);
-        List<StatusEffect> statusEffectsNewInstance = new List<StatusEffect>();
         if (statusEffects == null)
             statusEffects = new List<StatusEffect>();
         foreach (StatusEffect se in statusEffects)
         {
-            statusEffectsNewInstance.Add(se.Copy(newInstance));
+            newInstance.statusEffects.Add(se.Copy(newInstance));
         }
         newInstance.statsLevel = statsLevel.Copy();
         newInstance.abilityId = abilityId;

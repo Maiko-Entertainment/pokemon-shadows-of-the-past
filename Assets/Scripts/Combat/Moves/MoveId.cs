@@ -107,6 +107,10 @@ public enum MoveId
     Astonish = 100,
     ShadowPunch = 101,
     Frustration = 102,
+    NightShade = 103,
+    DragonBreath = 104,
+    Thief = 105,
+    BulletSeed = 106,
     Struggle = 10001,
     SelfHit = 10000
 }

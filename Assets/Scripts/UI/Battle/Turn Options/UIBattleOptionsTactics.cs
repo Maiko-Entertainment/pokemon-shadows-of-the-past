@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
@@ -7,6 +8,8 @@ using static UnityEngine.InputSystem.InputAction;
 public class UIBattleOptionsTactics : MonoBehaviour
 {
     public UITactic tacticprefab;
+
+    public TextMeshProUGUI description;
     public Transform tacticListContainer;
     private void Start()
     {
@@ -57,6 +60,7 @@ public class UIBattleOptionsTactics : MonoBehaviour
     }
     public void SetAsSelected(TacticData tactic)
     {
+        description.text = tactic.tacticDescription;
         foreach (Transform t in tacticListContainer)
         {
             t.GetComponent<UITactic>().UpdateSelectedStatus(tactic);

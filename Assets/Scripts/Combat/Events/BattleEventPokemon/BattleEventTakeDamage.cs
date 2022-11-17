@@ -30,7 +30,7 @@ public class BattleEventTakeDamage : BattleEventPokemon
             damageSummary?.move?.HandleAnimations(damageSummary.pokemonSource, pokemon);
             damageSummary?.move?.HandleStatsChanges(damageSummary.pokemonSource);
             damageSummary?.move?.HandleStatusAdds(damageSummary.pokemonSource);
-            damageSummary?.move?.HandleDestroy(pokemon);
+            damageSummary?.move?.HandleDestroy(pokemon, damageSummary.pokemonSource);
             if (damageSummary.healOpponentByDamage > 0)
             {
                 BattleTeamId enemyId = bm.GetTeamId(pokemon) == BattleTeamId.Team1 ? BattleTeamId.Team2 : BattleTeamId.Team1;

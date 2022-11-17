@@ -39,6 +39,13 @@ public static class UtilsMaster
         eventSystem.SetSelectedGameObject(select, new BaseEventData(eventSystem));
     }
 
+    public static IEnumerator SetSelectedNextFrame(GameObject select)
+    {
+        yield return new WaitForEndOfFrame();
+        EventSystem eventSystem = EventSystem.current;
+        eventSystem.SetSelectedGameObject(select, new BaseEventData(eventSystem));
+    }
+
     public static void GetSnapToPositionToBringChildIntoView(this ScrollRect instance, RectTransform child)
     {
         Canvas.ForceUpdateCanvases();

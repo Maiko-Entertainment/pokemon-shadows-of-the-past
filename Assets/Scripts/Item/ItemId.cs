@@ -21,4 +21,11 @@ public enum ItemId
     StoneWater = 1001,
     StoneThunder = 1002,
     StoneDusk = 1003,
+    // TMs
+    TMGigaDrain = 10000,
+    TMSwift = 10001,
+    TMThief = 10002,
+    TMAirSlash = 10003,
+    TMHex = 10004,
+    TMBulletSeed = 10005,
 }

@@ -11,6 +11,9 @@ public class UIPokemonView : MonoBehaviour
     public UIBattleType battleTypePrefab;
     public UIItemOptionsPokemon pokemonPrefab;
 
+    public AudioClip onSelectSound;
+    public AudioClip onSwapSound;
+
     public UIPokemonInfo pokemonSectionInfo;
     public UIPokemonStats pokemonSectionStats;
     public UIPokemonMovesViewer pokemonSectionMoves;
@@ -54,6 +57,7 @@ public class UIPokemonView : MonoBehaviour
             UIItemOptionsPokemon options = Instantiate(pokemonPrefab, pokemonListContainer).Load(pokemon);
             // options.onClick += (PokemonCaughtData p) => SelectPokemon();
             options.onHover += LoadPokemon;
+            options.onHover += (PokemonCaughtData pkmn) => AudioMaster.GetInstance()?.PlaySfx(onSelectSound);
             Button btn = options.GetComponent<Button>();
             selectables.Add(options.GetComponent<Selectable>());
             // Sets first pokemon as selected
@@ -91,7 +95,9 @@ public class UIPokemonView : MonoBehaviour
             if (swapingPokemon != null)
             {
                 Swap(currentPokemon);
+                AudioMaster.GetInstance()?.PlaySfx(onSwapSound);
                 WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
+                UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
             }
             else
             {
@@ -113,6 +119,7 @@ public class UIPokemonView : MonoBehaviour
                 }
                 UtilsMaster.LineSelectables(selectables);
                 ReturnToPokemonSelectionList();
+                AudioMaster.GetInstance()?.PlaySfx(onSelectSound);
             }
         }
     }

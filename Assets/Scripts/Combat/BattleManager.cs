@@ -691,12 +691,18 @@ public class BattleManager
     {
         float catchRate = pokeball.GetCaptureRate();
         PokemonBattleData enemy = GetTeamActivePokemon(BattleTeamId.Team2);
+        float captureRateBonus = 0;
         StatusEffect se = enemy.GetCurrentPrimaryStatus();
         int statusBonus = se != null ? se.GetCaptureRateBonus() : 0;
+        captureRateBonus += statusBonus;
+        foreach(StatusEffect mse in enemy.GetNonPrimaryStatus())
+        {
+            captureRateBonus += mse.captureRateBonus;
+        }
         float captureRate = enemy.GetCaptureRate();
         int max = enemy.GetPokemonHealth();
         int current = enemy.GetPokemonCurrentHealth();
-        float a = (3 * max - 2 * current) * captureRate * catchRate / (3 * max) + statusBonus;
+        float a = (3 * max - 2 * current) * captureRate * catchRate / (3 * max) + captureRateBonus;
         int randomValue = Random.Range(0, 255);
         bool isCaptured = randomValue <= a;
         int shakes = isCaptured ? 3 : Random.Range(1, 3);

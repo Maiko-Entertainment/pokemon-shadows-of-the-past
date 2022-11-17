@@ -19,7 +19,7 @@ public class UIPokedexSectionBasicData : MonoBehaviour
         }
         else
         {
-            pokedexEntry.text = "Caught this pokemon to learn more about it.";
+            pokedexEntry.text = "Catch this pokemon to learn more about it.";
         }
         foreach (Transform evo in evolutionList)
         {

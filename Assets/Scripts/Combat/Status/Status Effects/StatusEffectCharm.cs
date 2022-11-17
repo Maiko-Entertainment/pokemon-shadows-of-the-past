@@ -10,7 +10,7 @@ public class StatusEffectCharm : StatusEffect
     {
         effectId = StatusEffectId.Charmed;
         minTurns = 99999;
-        captureRateBonus = 150;
+        captureRateBonus = 180;
         onEndFlowchartBlock = "Charm Lose";
     }
     public override void Initiate()

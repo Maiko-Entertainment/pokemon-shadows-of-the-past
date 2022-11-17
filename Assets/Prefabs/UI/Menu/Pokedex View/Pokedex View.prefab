@@ -1756,7 +1756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.9411765}
+  m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2705,8 +2705,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 150, y: 25}
-  m_SizeDelta: {x: -340, y: -50}
+  m_AnchoredPosition: {x: 150, y: 0}
+  m_SizeDelta: {x: -340, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1043532414417148165
 CanvasRenderer:
@@ -3386,6 +3386,8 @@ MonoBehaviour:
   pokedexPokemonPrefab: {fileID: 3472455573644159553, guid: 14530b713da872c469ec817cad22243a, type: 3}
   pokedexAbilityPrefab: {fileID: 2894588754406851895, guid: 2a7d979edaa17fe4cba45071f57dd2b4, type: 3}
   basicDataPrefab: {fileID: 2359804064351203313, guid: 6e7fb174f2669d640bd70543c10aa127, type: 3}
+  baseStatsPrefab: {fileID: 4908028915909506921, guid: 428392b13af025a4db069afd4278ecc5, type: 3}
+  learnableMovesPrefab: {fileID: 4548115413766923480, guid: c2a97e1b2c7a96849be527096edf04a9, type: 3}
   pokemonListContainer: {fileID: 906103722374438984}
   typeList: {fileID: 3335382899686451894}
   abilityList: {fileID: 4141420275476075888}
@@ -3410,6 +3412,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 2998266632665430500}
   transition: {fileID: 4404631360351731889}
   firstSelected: {fileID: 0}
+  fadeOutWhenNotFocused: 0
 --- !u!225 &2998266632665430500
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3468,9 +3471,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIPokemonView, Assembly-CSharp
-        m_MethodName: HandlePokemonMenuSection
+      - m_Target: {fileID: 5156675000746717320}
+        m_TargetAssemblyTypeName: UIPokedexView, Assembly-CSharp
+        m_MethodName: HandlePokedexMenuSection
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

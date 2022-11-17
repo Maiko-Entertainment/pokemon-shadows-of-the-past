@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0.9411765}
+  m_Color: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -609,7 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.29411766}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -640,6 +640,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleTypePrefab: {fileID: 4979860745917391197, guid: 61671e87b8ccba642be88811c90c1e70, type: 3}
   pokemonPrefab: {fileID: 3424210028211374005, guid: 987249feec85eb64fb60cf4dfcd7cd06, type: 3}
+  onSelectSound: {fileID: 8300000, guid: d647677a8ccd0f14a8b832be0dc0878a, type: 3}
+  onSwapSound: {fileID: 8300000, guid: 5f22218a473b78d449a64a76cfa4b0ab, type: 3}
   pokemonSectionInfo: {fileID: 6813712353057963560, guid: c67703e84cd567c4884cdd914242e184, type: 3}
   pokemonSectionStats: {fileID: 6383135156440708467, guid: f57eeba0a3d5cf944a281c3f1b3445f0, type: 3}
   pokemonSectionMoves: {fileID: 7564192735169259232, guid: 34c7e687810ccc046a2b866a5c37b945, type: 3}
@@ -678,7 +680,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173622635733817774}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -697,6 +699,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 8700715813647088903}
   transition: {fileID: 6404594632671849615}
   firstSelected: {fileID: 0}
+  fadeOutWhenNotFocused: 0
 --- !u!114 &6180597399895176893
 MonoBehaviour:
   m_ObjectHideFlags: 0

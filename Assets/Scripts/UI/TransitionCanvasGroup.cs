@@ -8,6 +8,8 @@ public class TransitionCanvasGroup : TransitionBase
     public bool destroyAfterFadeOut = false;
     public float min = 0;
     public float max = 1;
+
+    protected bool preventDestroy = false;
     private void Start()
     {
         if (!canvasGroup)
@@ -39,6 +41,13 @@ public class TransitionCanvasGroup : TransitionBase
         base.FadeOut();
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        preventDestroy = false;
+    }
+
+    public virtual void FadeOutTemporary()
+    {
+        FadeOut();
+        preventDestroy = true;
     }
 
     void Update()
@@ -46,7 +55,7 @@ public class TransitionCanvasGroup : TransitionBase
         if (fading)
         {
             canvasGroup.alpha = Mathf.Clamp(canvasGroup.alpha + speed * Time.deltaTime, min, max);
-            if (destroyAfterFadeOut)
+            if (destroyAfterFadeOut && !preventDestroy)
             {
                 if (canvasGroup.alpha <= min && speed < 0)
                 {

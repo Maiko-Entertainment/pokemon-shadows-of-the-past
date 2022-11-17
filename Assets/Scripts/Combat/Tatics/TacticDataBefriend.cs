@@ -11,6 +11,7 @@ public class TacticDataBefriend : TacticData
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         BattleTriggerOnPokemonMove trigger = new BattleTriggerOnPokemonMove(pokemon, powerMoveMod, true);
+        PokemonBattleData teamUsersActivePokemon = bm.GetTeamActivePokemon(teamId);
         trigger.maxTriggers = 1;
         bm.AddTrigger(trigger);
         List<PokemonTypeId> types = pokemon.GetTypeIds();
@@ -39,6 +40,12 @@ public class TacticDataBefriend : TacticData
             ));
             if (contains)
             {
+                foreach (BattleAnimation anim in afterTacticTextAnims)
+                {
+                    BattleAnimatorMaster.GetInstance()?.AddEvent(
+                        new BattleAnimatorEventPokemonMoveAnimation(teamUsersActivePokemon, pokemon, anim)
+                    );
+                }
                 foreach (MoveStatusChance msc in statusAdds)
                 {
                     PokemonBattleData pokemonTarget = bm.GetTarget(pokemon, msc.targetType);

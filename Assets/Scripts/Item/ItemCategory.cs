@@ -7,5 +7,6 @@ public enum ItemCategory
     General = 0,
     Held = 1,
     Berry = 2,
-    Pokeball = 3
+    Pokeball = 3,
+    TM = 4,
 }

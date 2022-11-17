@@ -19,6 +19,7 @@ public class PokemonBaseData : ScriptableObject
     public float baseExp = 50;
     public string pokedexEntry;
     public List<PokemonMoveLearn> levelUpMoves;
+    public List<MoveData> tmMoves;
     public List<PokemonBaseEvolution> evolutions;
     public PokemonAnimationController battleAnimation;
     public WorldInteractableBrainFollower overWorldPrefab;
@@ -71,6 +72,11 @@ public class PokemonBaseData : ScriptableObject
                 levelUpMoves.Add(pml);
         }
         return levelUpMoves;
+    }
+
+    public List<MoveData> GetTMMoves()
+    {
+        return tmMoves;
     }
 
     public PokemonAnimationController GetAnimatorController()

@@ -17,6 +17,7 @@ public class StatusEffect: Status
     public virtual StatusEffect Copy(PokemonBattleData newPokeInstance)
     {
         StatusEffect newSe = new StatusEffect(newPokeInstance);
+        newSe.effectId = effectId;
         newSe.isPrimary = isPrimary;
         newSe.captureRateBonus = captureRateBonus;
         newSe.inmuneTypes.AddRange(inmuneTypes);

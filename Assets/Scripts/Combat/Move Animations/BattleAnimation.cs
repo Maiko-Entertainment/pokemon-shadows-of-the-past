@@ -9,6 +9,8 @@ public class BattleAnimation : MonoBehaviour
     public float duration; // Lets animator manager know when to go to next anim
     public float destroyAfter;
     public string triggerName = "";
+    public bool flipXForTeam2 = false;
+    public bool flipYForTeam2 = false;
 
     protected PokemonBattleData user;
     protected PokemonBattleData target;
@@ -18,6 +20,11 @@ public class BattleAnimation : MonoBehaviour
     {
         this.user = user;
         this.target = target;
+        BattleTeamId userTeam = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(user);
+        if (flipXForTeam2 && userTeam == BattleTeamId.Team2)
+        {
+            transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+        }
         if (triggerName != "" && animator != null)
             animator.SetTrigger(triggerName);
         Destroy(gameObject, destroyAfter);

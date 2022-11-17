@@ -8,6 +8,7 @@ public class UIMenuPile : MonoBehaviour
     public CanvasGroup canvasGroup;
     public TransitionCanvasGroup transition;
     public GameObject firstSelected;
+    public bool fadeOutWhenNotFocused = false;
 
     public void Open()
     {
@@ -41,6 +42,10 @@ public class UIMenuPile : MonoBehaviour
     {
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        if (fadeOutWhenNotFocused)
+        {
+            transition.FadeOutTemporary();
+        }
     }
     public void ReactivateMenu()
     {
@@ -48,6 +53,10 @@ public class UIMenuPile : MonoBehaviour
         eventSystem.SetSelectedGameObject(firstSelected, new BaseEventData(eventSystem));
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+        if (fadeOutWhenNotFocused)
+        {
+            transition.FadeIn();
+        }
     }
 
 }

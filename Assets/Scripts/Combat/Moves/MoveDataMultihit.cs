@@ -56,7 +56,7 @@ public class MoveDataMultihit : MoveData
                 {
                     HandleStatsChanges(battleEvent.pokemon);
                     HandleStatusAdds(battleEvent.pokemon);
-                    HandleDestroy(pokemonTarget);
+                    HandleDestroy(pokemonTarget, battleEvent.pokemon);
                     HandleAnimations(battleEvent.pokemon, pokemonTarget);
                 }
                 randomHits--;

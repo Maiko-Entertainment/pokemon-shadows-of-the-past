@@ -10,6 +10,7 @@ public class UIItemsViewer : MonoBehaviour
     public UIItemsView itemPrefab;
     public UIItemOptionsPokemon pokemonPrefab;
     public AudioClip sectionChangeSound;
+    public AudioClip errorSound;
 
     public Transform itemsContainer;
     public Transform pokemonListContainer;
@@ -147,12 +148,14 @@ public class UIItemsViewer : MonoBehaviour
     }
     public void ReturnToItemSelectionList()
     {
-        foreach (Transform pokemon in pokemonListContainer)
+        foreach (Transform item in itemsContainer)
         {
-            if (pokemon.GetComponent<UIItemOptionsPokemon>().pokemon == currentPokemon)
+            if (item.GetComponent<UIItemsView>().item == currentItem)
             {
+                ItemInventory i = InventoryMaster.GetInstance()?.GetItem(currentItem.itemData.itemId);
+                item.GetComponent<UIItemsView>().Load(i);
                 EventSystem eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(pokemon.gameObject, new BaseEventData(eventSystem));
+                eventSystem.SetSelectedGameObject(item.gameObject, new BaseEventData(eventSystem));
                 break;
             }
         }
@@ -212,6 +215,9 @@ public class UIItemsViewer : MonoBehaviour
             case 2:
                 ViewCategoryPokeball();
                 break;
+            case 3:
+                ViewCategoryTM();
+                break;
         }
     }
 
@@ -229,6 +235,11 @@ public class UIItemsViewer : MonoBehaviour
     {
         if (sectionChangeSound) AudioMaster.GetInstance().PlaySfx(sectionChangeSound);
         ViewCategory(ItemCategory.Pokeball);
+    }
+    public void ViewCategoryTM()
+    {
+        if (sectionChangeSound) AudioMaster.GetInstance().PlaySfx(sectionChangeSound);
+        ViewCategory(ItemCategory.TM);
     }
     public void HandleEquip(CallbackContext context)
     {
@@ -257,6 +268,10 @@ public class UIItemsViewer : MonoBehaviour
                 ViewCategory(currentCategory, true);
             }
         }
+        else
+        {
+            AudioMaster.GetInstance()?.PlaySfx(errorSound);
+        }
     }
 
     public void ActivatePokemonSelector(ItemDataOnPokemon ip, bool equipMode)
@@ -267,13 +282,12 @@ public class UIItemsViewer : MonoBehaviour
         foreach (PokemonCaughtData p in party)
         {
             UIItemOptionsPokemon pkmn = Instantiate(pokemonPrefab, pokemonListContainer).GetComponent<UIItemOptionsPokemon>().Load(p);
-            CanUseResult canUse = ip.CanUseOnPokemon(p);
             pkmn.UpdateSelected(currentPokemon);
             if (equipMode)
             {
                 pkmn.onClick += EquipCurrentItemOnPokemon;
             }
-            if (canUse.canUse)
+            else
             {
                 pkmn.onClick += UseCurrentItemOnPokemon;
             }
@@ -292,7 +306,7 @@ public class UIItemsViewer : MonoBehaviour
     public void DeactivatePokemonSelector()
     {
         LoadPokemonList();
-        itemInfo?.FadeOut();
+        ReturnToItemSelectionList();
     }
 
     public void UseCurrentItemOnPokemon(PokemonCaughtData pokemon)
@@ -301,24 +315,38 @@ public class UIItemsViewer : MonoBehaviour
         if (bm.IsBattleActive())
         {
             PokemonBattleData pbd = bm.GetPokemonFromCaughtData(pokemon);
-            BattleTeamId teamId = bm.GetTeamId(pbd);
-            BattleMaster.GetInstance().GetCurrentBattle()?
-                .HandleTurnInput(new BattleTurnDesitionItemPokemonUse(
-                    pbd,
-                    (ItemDataOnPokemon) currentItem.itemData,
-                    teamId
-                ));
-            BattleAnimatorMaster.GetInstance().HideOptions();
+            if (((ItemDataOnPokemon)currentItem.itemData).CanUseOnPokemonBattle(pbd).canUse)
+            {
+                BattleTeamId teamId = bm.GetTeamId(pbd);
+                BattleMaster.GetInstance().GetCurrentBattle()?
+                    .HandleTurnInput(new BattleTurnDesitionItemPokemonUse(
+                        pbd,
+                        (ItemDataOnPokemon)currentItem.itemData,
+                        teamId
+                    ));
+                BattleAnimatorMaster.GetInstance().HideOptions();
+            }
+            else
+            {
+                AudioMaster.GetInstance()?.PlaySfx(errorSound);
+            }
         }
         else
         {
-            ((ItemDataOnPokemon)currentItem.itemData).UseOnPokemon(currentPokemon);
-        }
-        ViewCategory(currentCategory, true);
-        UpdatePokemonsHealth();
-        if (currentItem.GetAmount() == 0)
-        {
-            DeactivatePokemonSelector();
+            if (((ItemDataOnPokemon)currentItem.itemData).CanUseOnPokemon(pokemon).canUse)
+            {
+                ((ItemDataOnPokemon)currentItem.itemData).UseOnPokemon(currentPokemon);
+                ViewCategory(currentCategory, true);
+                UpdatePokemonsHealth();
+                if (currentItem.GetAmount() == 0)
+                {
+                    DeactivatePokemonSelector();
+                }
+            }
+            else
+            {
+                AudioMaster.GetInstance()?.PlaySfx(errorSound);
+            }
         }
     }
     public void EquipCurrentItemOnPokemon(PokemonCaughtData pokemon)
