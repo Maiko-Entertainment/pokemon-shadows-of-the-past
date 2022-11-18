@@ -14,5 +14,8 @@ public class PersistedPokemon
     public List<PersistedPokemonMove> moves = new List<PersistedPokemonMove>();
     public List<PersistedPokemonMove> learnedMoves = new List<PersistedPokemonMove>();
     public ItemId equipedItem = ItemId.None;
+    public bool isShadow = false;
+    public bool isMale = false;
+    public float friendship = 0;
 
 }

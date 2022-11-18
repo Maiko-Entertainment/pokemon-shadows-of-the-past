@@ -22,7 +22,8 @@ public class BattleManager
     private TacticData currentTacticSelected;
 
     public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 10;
-
+    public static float SHADOW_REBEL_CHANCE = 0.25f;
+    public static float SHADOW_IGNORE_CHANCE = 0.1f;
 
     public BattleManager(BattleTeamData player, BattleTeamData opponent, BattleData battleData)
     {
@@ -83,8 +84,41 @@ public class BattleManager
         return statsAccum;
     }
 
+    public BattleTurnDesition PickNewRandomDesition(BattleTeamId team)
+    {
+        PokemonBattleData pkmn = GetTeamActivePokemon(team);
+        List<MoveEquipped> moves = pkmn.GetPokemonCaughtData().GetAvailableMoves();
+        if (moves.Count > 0)
+        {
+            int randomIndex = Random.Range(0, moves.Count);
+            MoveEquipped move = moves[randomIndex];
+
+            return new BattleTurnDesitionPokemonMove(move, pkmn, BattleTeamId.Team2);
+        }
+        else
+        {
+            MoveEquipped struggle = new MoveEquipped(MovesMaster.Instance.GetMove(MoveId.Struggle));
+            return new BattleTurnDesitionPokemonMove(struggle, pkmn, BattleTeamId.Team2);
+        }
+    }
+
     public void HandleTurnInput(BattleTurnDesition desition)
     {
+        PokemonBattleData team1Pkmn = GetTeamActivePokemon(BattleTeamId.Team1);
+        bool isCurrentPokemonShadow = team1Pkmn.pokemon.isShadow;
+        bool willRebel = isCurrentPokemonShadow ? Random.value < SHADOW_REBEL_CHANCE : false;
+        bool willIgnore = isCurrentPokemonShadow ? Random.value < SHADOW_IGNORE_CHANCE : false;
+        if (willIgnore)
+        {
+            MoveEquipped struggle = new MoveEquipped(MovesMaster.Instance.GetMove(MoveId.Struggle));
+            desition = new BattleTurnDesitionPokemonMove(struggle, team1Pkmn, BattleTeamId.Team2);
+            BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText("Ignore", team1Pkmn);
+        }
+        else if (willRebel)
+        {
+            desition = PickNewRandomDesition(BattleTeamId.Team1);
+            BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText("Rebel", team1Pkmn);
+        }
         BattleTurnDesition AIDesition = HandleAIInput();
         HandleRoundEnd();
         int desitionPriority = desition.priority;
@@ -148,20 +182,7 @@ public class BattleManager
         {
             return team2.brain.GetTurnDesition(this);
         }
-        PokemonBattleData team2Pokemon = team2.GetActivePokemon();
-        List<MoveEquipped> moves = team2Pokemon.GetPokemonCaughtData().GetAvailableMoves();
-        if (moves.Count > 0)
-        {
-            int randomIndex = Random.Range(0, moves.Count);
-            MoveEquipped move = moves[randomIndex];
-
-            return new BattleTurnDesitionPokemonMove(move, team2Pokemon, BattleTeamId.Team2);
-        }
-        else
-        {
-            MoveEquipped struggle = new MoveEquipped(MovesMaster.Instance.GetMove(MoveId.Struggle));
-            return new BattleTurnDesitionPokemonMove(struggle, team2Pokemon, BattleTeamId.Team2);
-        }
+        return PickNewRandomDesition(BattleTeamId.Team2);
     }
 
     public PokemonBattleData GetTeamActivePokemon(BattleTeamId teamId)
@@ -539,7 +560,7 @@ public class BattleManager
             float chanceToHit = GetMultiplierForAccuracyEvasion(user.GetBattleStatsChangeLevels().accuracy, false);
             float eventMods = battleEvent.moveMods.accuracyMultiplier;
             float finalChanceToHit = moveHitChance * chanceToHit * chanceToDodge * eventMods;
-            return random < finalChanceToHit;
+            return random <= finalChanceToHit;
         }
     }
 

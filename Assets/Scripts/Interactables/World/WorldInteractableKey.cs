@@ -4,10 +4,31 @@ using UnityEngine;
 
 public class WorldInteractableKey : WorldInteractable
 {
-    // Start is called before the first frame update
+    public float delayBetweenPresses = 1f;
+    public bool interacted = false;
+
+    private float timeLeft = 0;
     virtual public bool CanInteract()
     {
         bool isInteracting = InteractionsMaster.GetInstance().IsInteractionPlaying();
-        return !isInteracting;
+        return !isInteracting && !interacted;
+    }
+
+    public void MarkInteracted()
+    {
+        interacted = true;
+        timeLeft = delayBetweenPresses;
+    }
+
+    private void Update()
+    {
+        if (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+        }
+        else
+        {
+            interacted = false;
+        }
     }
 }

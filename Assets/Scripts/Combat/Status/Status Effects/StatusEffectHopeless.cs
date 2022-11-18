@@ -17,6 +17,12 @@ public class StatusEffectHopeless : StatusEffect
     {
         BattleTriggerBeforeDamage damageReducer = new BattleTriggerBeforeDamage(pokemon, mods);
         damageReducer.maxTriggers = 999999;
+        List<BattleAnimation> animations = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId).hitAnims;
+        foreach(BattleAnimation ba in animations)
+        {
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba));
+
+        }
         battleTriggers.Add(damageReducer);
         base.Initiate();
     }

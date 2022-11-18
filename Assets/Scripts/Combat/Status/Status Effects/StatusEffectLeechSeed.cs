@@ -50,13 +50,6 @@ public override void Initiate()
         battleTriggers.Add(messageTrigger);
         battleTriggers.Add(animTrigger);
         battleTriggers.Add(statusTrigger);
-        foreach (BattleTrigger bt in battleTriggers)
-        {
-            BattleMaster.GetInstance()?
-                .GetCurrentBattle()?.AddTrigger(
-                    bt
-                );
-        }
         base.Initiate();
     }
 }

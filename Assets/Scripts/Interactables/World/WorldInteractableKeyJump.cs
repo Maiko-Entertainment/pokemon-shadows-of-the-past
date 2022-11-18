@@ -26,6 +26,7 @@ public class WorldInteractableKeyJump : WorldInteractableKey
                     {
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
+                        MarkInteracted();
                     }
                     break;
                 case MoveBrainDirection.Left:
@@ -33,6 +34,7 @@ public class WorldInteractableKeyJump : WorldInteractableKey
                     {
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
+                        MarkInteracted();
                     }
                     break;
                 case MoveBrainDirection.Top:
@@ -40,6 +42,7 @@ public class WorldInteractableKeyJump : WorldInteractableKey
                     {
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
+                        MarkInteracted();
                     }
                     break;
                 case MoveBrainDirection.Bottom:
@@ -47,6 +50,7 @@ public class WorldInteractableKeyJump : WorldInteractableKey
                     {
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
                         WorldMapMaster.GetInstance().GetPlayer().AddDirection(move);
+                        MarkInteracted();
                     }
                     break;
             }

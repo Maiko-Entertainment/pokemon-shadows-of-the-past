@@ -111,6 +111,8 @@ public enum MoveId
     DragonBreath = 104,
     Thief = 105,
     BulletSeed = 106,
+    Toxic = 107,
+    PoisonSting = 108,
     Struggle = 10001,
     SelfHit = 10000
 }

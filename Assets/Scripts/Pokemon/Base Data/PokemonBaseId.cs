@@ -38,6 +38,7 @@ public enum PokemonBaseId
     Roselia = 315,
     Starly = 396,
     Staravia = 397,
+    Roserade = 407,
     Buneary = 427,
     Lopunny = 428,
     Mismagius = 429,

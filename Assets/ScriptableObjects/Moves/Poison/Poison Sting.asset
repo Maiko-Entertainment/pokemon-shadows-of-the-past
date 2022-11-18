@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
+  m_Name: Poison Sting
+  m_EditorClassIdentifier: 
+  moveId: 108
+  moveName: Poison Sting
+  power: 30
+  hitChance: 1
+  alwaysHit: 0
+  uses: 35
+  typeId: 16
+  categoryId: 0
+  targetType: 0
+  statusChances:
+  - effectId: 1
+    targetType: 0
+    chance: 0.2
+  moveStatChanges: []
+  conditionalBonuses: []
+  isContact: 1
+  drainMultiplier: 0
+  moveCritUp: 0
+  priority: 0
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 
+  description: The user stabs the target with a poisonous stinger. This may also
+    poison the target.
+  animations:
+  - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
+  - {fileID: 4458153337422506879, guid: 38da2bd0c16d83344ad9e239dcb07a6a, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 3531474703944891691, guid: 7116afbd55041824fa298fe624b44723, type: 3}

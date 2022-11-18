@@ -16,7 +16,7 @@ public class BattleTriggerOnPokemonMoveConditional : BattleTriggerOnPokemonMove
     public override bool Execute(BattleEventUseMove battleEvent)
     {
         MoveData move = battleEvent.move;
-        if (pokemon.battleId == battleEvent.pokemon.battleId && move.GetPower(pokemon) <= maxPower)
+        if (pokemon.battleId == battleEvent.pokemon.battleId && move.GetPower(pokemon) <= maxPower && move.GetAttackCategory() != MoveCategoryId.status)
         {
             battleEvent.moveMods.Implement(useMoveMods);
             if (showAbility)

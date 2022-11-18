@@ -26,6 +26,8 @@ public class UIPokemonView : MonoBehaviour
     public TextMeshProUGUI pokemonAbility;
     public Image pokemonSprite;
     public Image pokemonIcon;
+    public Image pokemonHeart;
+    public Image pokemonHeartShattered;
 
     private PokemonAnimationController animator;
 
@@ -152,6 +154,17 @@ public class UIPokemonView : MonoBehaviour
         animator = Instantiate(pkmn.GetPokemonBaseData().battleAnimation);
         animator.transform.position = new Vector3(300000, 300000, 0);
         pokemonIcon.sprite = pkmn.GetPokemonBaseData().icon;
+        if (pkmn.isShadow)
+        {
+            pokemonHeart.gameObject.SetActive(false);
+            pokemonHeartShattered.gameObject.SetActive(true);
+        }
+        else
+        {
+            pokemonHeart.gameObject.SetActive(true);
+            pokemonHeartShattered.gameObject.SetActive(false);
+            pokemonHeart.fillAmount = pkmn.GetFriendship() / 255f;
+        }
         ViewCurrentSection();
     }
 
@@ -244,7 +257,7 @@ public class UIPokemonView : MonoBehaviour
     {
         if (BattleMaster.GetInstance().IsBattleActive())
         {
-            BattleAnimatorMaster.GetInstance().HidePokemonSelection(true);
+            BattleAnimatorMaster.GetInstance().HidePokemonSelection(!isInPreFaintPick);
         }
         else
         {

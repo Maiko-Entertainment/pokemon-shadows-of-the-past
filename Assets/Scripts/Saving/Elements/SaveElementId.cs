@@ -10,6 +10,7 @@ public enum SaveElementId
     erikFirstEncounterResult = 7,
     akaneSecondEncounterWon = 8,
     staraptorBerriesProgress = 9,
+    roseradeAmbush = 10,
     akaneRelationship = 100,
     danteRelationship = 101,
     erikRelationship = 102,

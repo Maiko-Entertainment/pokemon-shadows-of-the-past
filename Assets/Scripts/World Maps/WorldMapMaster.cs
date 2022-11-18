@@ -55,14 +55,20 @@ public class WorldMapMaster : MonoBehaviour
 
     public void GoToMap(int mapId, int spawnIndex)
     {
+        StartCoroutine(GoToMapCourutine(mapId, spawnIndex));
+    }
+
+    public IEnumerator GoToMapCourutine(int mapId, int spawnIndex)
+    {
         ClearPrevius();
+        yield return new WaitForEndOfFrame();
         WorldMap map = Getmap(mapId);
+        Transform spawn = map.GetSpawn(spawnIndex);
+        StartCoroutine(SetPlayer(spawn.position));
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
-        Transform spawn = mapInstance.GetSpawn(spawnIndex);
-        mapInstance.HandleEntrance();
-        StartCoroutine(SetPlayer(0.0f, spawn.position));
-        UIPauseMenuMaster.GetInstance().ShowWorldUI();
         currentMap = mapInstance;
+        mapInstance.HandleEntrance();
+        UIPauseMenuMaster.GetInstance().ShowWorldUI();
     }
 
     public void SpawnInMapAtPos(int mapId, Vector2 position)
@@ -71,18 +77,18 @@ public class WorldMapMaster : MonoBehaviour
         WorldMap map = Getmap(mapId);
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         mapInstance.HandleEntrance();
-        StartCoroutine(SetPlayer(0.0f, position));
+        StartCoroutine(SetPlayer(position));
         UIPauseMenuMaster.GetInstance().ShowWorldUI();
         currentMap = mapInstance;
     }
 
-    IEnumerator SetPlayer(float delay, Vector2 spawn)
+    IEnumerator SetPlayer(Vector2 spawn)
     {
-        yield return new WaitForSeconds(delay);
         PlayerController player = GetPlayer();
         player.transform.position = spawn;
         yield return new WaitForEndOfFrame();
         player.ResetFollowersPosition();
+        player.transform.position = spawn;
         player.Load(currentMap);
     }
 

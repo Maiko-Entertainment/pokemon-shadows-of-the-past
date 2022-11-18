@@ -86,6 +86,10 @@ public class UIBattleOptionsManager : MonoBehaviour
         pokemonSelectorInstance = null;
         if (preSelect)
             UtilsMaster.SetSelected(optionsList.GetChild(1).gameObject);
+        else
+        {
+            UtilsMaster.SetSelected(null);
+        }
         isInSubmenu = false;
     }
     public void ShowItemSelector()
@@ -107,6 +111,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     public void Hide()
     {
         container.FadeOut();
+        UtilsMaster.SetSelected(null);
     }
 
     public void Show()

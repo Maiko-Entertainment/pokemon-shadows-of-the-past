@@ -16,6 +16,7 @@ public class PokemonCaughtData
     public ItemDataOnPokemon equippedItem;
     public List<MoveEquipped> moves = new List<MoveEquipped>();
     public List<MoveEquipped> learnedMoves = new List<MoveEquipped>();
+    public bool isShadow = false;
 
     public static int MAX_FRIENDSHIP = 255;
 
@@ -32,6 +33,10 @@ public class PokemonCaughtData
         statusEffectId = pkmn.statusEffectId;
         natureId = pkmn.natureId;
         abilityId = pkmn.abilityId;
+        isShadow = pkmn.isShadow;
+        friendship = pkmn.friendship;
+        isMale = pkmn.isMale;
+        friendship = pkmn.friendship;
         equippedItem = (ItemDataOnPokemon) ItemMaster.GetInstance().GetItem(pkmn.equipedItem);
         foreach(PersistedPokemonMove me in pkmn.moves)
         {
@@ -54,6 +59,9 @@ public class PokemonCaughtData
         pp.damageTaken = damageTaken;
         pp.statusEffectId = statusEffectId;
         pp.natureId = natureId;
+        pp.isShadow = isShadow;
+        pp.friendship = friendship;
+        pp.isMale = isMale;
         foreach (MoveEquipped me in moves)
         {
             pp.moves.Add(me.GetSave());
@@ -75,6 +83,7 @@ public class PokemonCaughtData
         newInsntace.statusEffectId = statusEffectId;
         newInsntace.natureId = natureId;
         newInsntace.abilityId = abilityId;
+        newInsntace.isShadow = isShadow;
         List<MoveEquipped> movesInstance = new List<MoveEquipped>();
         foreach(MoveEquipped move in moves)
         {
@@ -142,8 +151,9 @@ public class PokemonCaughtData
 
     public int GetStatValue(int level, int statBase, bool natureBoost)
     {
-        float natureValue = natureBoost ? 1 * level : 0; 
-        int value = (int) Mathf.Max(5f + (0.02f * statBase) * level + Mathf.Ceil(natureValue * 0.5f), 1);
+        float shadowBoost = isShadow ? 1.2f : 1f;
+        float natureValue = natureBoost ? 1 * level : 0;
+        int value = (int) Mathf.Max((5f + (0.02f * statBase) * level) * shadowBoost + Mathf.Ceil(natureValue * 0.5f), 1);
         return value;
     }
 
@@ -177,7 +187,7 @@ public class PokemonCaughtData
     }
     public float GetFriendship()
     {
-        return friendship;
+        return isShadow ? 0 : friendship;
     }
     public List<PokemonTypeId> GetTypes()
     {

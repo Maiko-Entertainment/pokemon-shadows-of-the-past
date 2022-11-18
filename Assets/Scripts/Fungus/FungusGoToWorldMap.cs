@@ -16,6 +16,7 @@ public class FungusGoToWorldMap : Command
 
     public override void OnEnter()
     {
+        TransitionMaster.GetInstance().ClearTransitions();
         TransitionMaster.GetInstance().RunTransition(changeMapTransition);
         StartCoroutine(RunEvent(changeMapTransition.changeTime));
     }
