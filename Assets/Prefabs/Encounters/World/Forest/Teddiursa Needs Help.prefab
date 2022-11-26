@@ -26,12 +26,9 @@ GameObject:
   - component: {fileID: 2134912296484420040}
   - component: {fileID: 6238482135101467490}
   - component: {fileID: 5189130245099314041}
-  - component: {fileID: 4906294620683673767}
   - component: {fileID: 4380306367712195868}
   - component: {fileID: 4976242182527881651}
-  - component: {fileID: 2470497004585912421}
   - component: {fileID: 7695998357199638863}
-  - component: {fileID: 8101306450527769715}
   - component: {fileID: 5375524030893920809}
   - component: {fileID: 7289248632463477748}
   - component: {fileID: 7624833272958397292}
@@ -133,6 +130,15 @@ GameObject:
   - component: {fileID: 6331323137963307248}
   - component: {fileID: 5520350947150996501}
   - component: {fileID: 4405398925544759596}
+  - component: {fileID: 7220261088111111180}
+  - component: {fileID: 8692934934784844105}
+  - component: {fileID: 5874722362219544303}
+  - component: {fileID: 2696368332637211865}
+  - component: {fileID: 126557145989101517}
+  - component: {fileID: 8083967351476401265}
+  - component: {fileID: 6171217715235074509}
+  - component: {fileID: 1687655486553883141}
+  - component: {fileID: 1949361183308685161}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -182,10 +188,13 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 8604143697568203397}
+  - {fileID: 5507343899525604156}
   selectedCommands:
-  - {fileID: 8769341751059348974}
-  variables: []
+  - {fileID: 4976242182527881651}
+  variables:
+  - {fileID: 7220261088111111180}
+  - {fileID: 1687655486553883141}
+  - {fileID: 1949361183308685161}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -429,14 +438,11 @@ MonoBehaviour:
   - {fileID: 2134912296484420040}
   - {fileID: 8015192784535553546}
   - {fileID: 6238482135101467490}
-  - {fileID: 4906294620683673767}
-  - {fileID: 8101306450527769715}
   - {fileID: 5375524030893920809}
   - {fileID: 5189130245099314041}
   - {fileID: 7624833272958397292}
   - {fileID: 4380306367712195868}
   - {fileID: 4976242182527881651}
-  - {fileID: 2470497004585912421}
   suppressAllAutoSelections: 0
 --- !u!114 &5001030934799613469
 MonoBehaviour:
@@ -585,25 +591,10 @@ MonoBehaviour:
   - direction: 2
     justTurn: 0
     jump: 0
+  - direction: 2
+    justTurn: 0
+    jump: 0
   waitUntilEnd: 0
---- !u!114 &4906294620683673767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3304181679956712525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 21
-  indentLevel: 0
-  _duration:
-    floatRef: {fileID: 0}
-    floatVal: 1
-  durationOLD: 0
 --- !u!114 &4380306367712195868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,20 +633,6 @@ MonoBehaviour:
   trainer: {fileID: 11400000, guid: 42ae7bda8bcc9574c941cf6304b4705f, type: 2}
   onWinBlock: Win
   onLoseBlock: 
---- !u!114 &2470497004585912421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3304181679956712525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 25
-  indentLevel: 0
 --- !u!114 &7695998357199638863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,28 +649,6 @@ MonoBehaviour:
   indentLevel: 0
   offset: {x: 0, y: 2, z: 0}
   waitForEnd: 1
---- !u!114 &8101306450527769715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3304181679956712525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec39367af1761d14e903c0235f0ece5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 28
-  indentLevel: 0
-  agentId: Ursaring
-  overwriteSpeed: 0
-  speed: 1
-  directions:
-  - direction: 2
-    justTurn: 0
-    jump: 0
-  waitUntilEnd: 1
 --- !u!114 &5375524030893920809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,6 +1200,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 7635774547200584180}
+  - {fileID: 6331323137963307248}
   - {fileID: 5105532484597407717}
   - {fileID: 2368013621150789016}
   - {fileID: 3396385069902746449}
@@ -1264,8 +1220,9 @@ MonoBehaviour:
   - {fileID: 4038550481966658082}
   - {fileID: 4888641213153979993}
   - {fileID: 2687752895444189687}
+  - {fileID: 2696368332637211865}
   - {fileID: 6555155508187511727}
-  - {fileID: 6331323137963307248}
+  - {fileID: 126557145989101517}
   - {fileID: 3945072198327990519}
   suppressAllAutoSelections: 0
 --- !u!114 &7284398337551719318
@@ -1303,10 +1260,12 @@ MonoBehaviour:
   - {fileID: 1466228632927510123}
   - {fileID: 3670306238762268855}
   - {fileID: 3905531307567540881}
+  - {fileID: 8083967351476401265}
   - {fileID: 7678680793659030328}
   - {fileID: 1079341747145305169}
   - {fileID: 6247921243610284863}
   - {fileID: 7900658221889667804}
+  - {fileID: 6171217715235074509}
   - {fileID: 8959639430692583730}
   - {fileID: 8611431245213707508}
   - {fileID: 8940870927040925380}
@@ -1510,7 +1469,7 @@ MonoBehaviour:
   pokemonToAdd:
     pokemonName: Ursaring
     pokemonBase: {fileID: 11400000, guid: 30db8bc8b2f24e546b5918c9491f333a, type: 2}
-    level: 30
+    level: 25
     experience: 0
     damageTaken: 0
     statusEffectId: 0
@@ -1530,6 +1489,7 @@ MonoBehaviour:
       timesUsed: 0
       disabledTurnsLeft: 0
     learnedMoves: []
+    isShadow: 1
 --- !u!114 &7074654673050008523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 72
   indentLevel: 0
-  offset: {x: -2, y: -2, z: 0}
+  offset: {x: 0, y: -2, z: 0}
   waitForEnd: 1
 --- !u!114 &4038550481966658082
 MonoBehaviour:
@@ -1710,7 +1670,7 @@ MonoBehaviour:
   overwriteSpeed: 1
   speed: 2
   directions:
-  - direction: 3
+  - direction: 2
     justTurn: 0
     jump: 0
   - direction: 3
@@ -1974,7 +1934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 84
   indentLevel: 0
-  offset: {x: 2, y: -2, z: 0}
+  offset: {x: 0, y: -2, z: 0}
   waitForEnd: 1
 --- !u!114 &3670306238762268855
 MonoBehaviour:
@@ -2017,7 +1977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 86
   indentLevel: 0
-  storyText: You got {item}Leftovers{/leftovers}!
+  storyText: You got {item}Mighty Claw{/leftovers}!
   description: 
   character: {fileID: 3354259205599411955}
   portrait: {fileID: 0}
@@ -2646,6 +2606,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 8692934934784844105}
   - {fileID: 6460858221755182478}
   - {fileID: 1052222472778102785}
   - {fileID: 4699832664030539441}
@@ -2654,6 +2615,7 @@ MonoBehaviour:
   - {fileID: 6399847851501648001}
   - {fileID: 5566616638244889860}
   - {fileID: 1171658698800819784}
+  - {fileID: 5874722362219544303}
   - {fileID: 3307171271030283471}
   suppressAllAutoSelections: 0
 --- !u!114 &3307171271030283471
@@ -2688,7 +2650,7 @@ MonoBehaviour:
   overwriteSpeed: 1
   speed: 2
   directions:
-  - direction: 3
+  - direction: 2
     justTurn: 0
     jump: 0
   - direction: 3
@@ -2703,7 +2665,13 @@ MonoBehaviour:
   - direction: 3
     justTurn: 0
     jump: 0
-  waitUntilEnd: 0
+  - direction: 3
+    justTurn: 0
+    jump: 0
+  - direction: 3
+    justTurn: 0
+    jump: 0
+  waitUntilEnd: 1
 --- !u!114 &8060509766272923655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,7 +2858,7 @@ MonoBehaviour:
   itemId: 124
   indentLevel: 0
   offset: {x: 0, y: 0, z: 0}
-  waitForEnd: 1
+  waitForEnd: 0
 --- !u!114 &6555155508187511727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3094,6 +3062,154 @@ MonoBehaviour:
     justTurn: 0
     jump: 0
   waitUntilEnd: 1
+--- !u!114 &7220261088111111180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4580f28dd8581476b810b38eea2f1316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: playerName
+  value: 
+--- !u!114 &8692934934784844105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 137
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 1
+  durationOLD: 0
+--- !u!114 &5874722362219544303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712fdbcb63cac704ba70674a05e833ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 138
+  indentLevel: 0
+  gameObjects:
+  - {fileID: 5851113948233369936}
+--- !u!114 &2696368332637211865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ceabee21a73eaa4e80cede4c5bc34f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 139
+  indentLevel: 0
+  agentId: Teddiursa
+--- !u!114 &126557145989101517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712fdbcb63cac704ba70674a05e833ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 140
+  indentLevel: 0
+  gameObjects:
+  - {fileID: 5851113948233369936}
+--- !u!114 &8083967351476401265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec39367af1761d14e903c0235f0ece5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 141
+  indentLevel: 0
+  agentId: Bob
+  overwriteSpeed: 0
+  speed: 3
+  directions:
+  - direction: 0
+    justTurn: 1
+    jump: 0
+  waitUntilEnd: 1
+--- !u!114 &6171217715235074509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb4e472a6c77aa4ab390d5bd6eb7763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 142
+  indentLevel: 0
+  variableItemId: itemId
+  variableNameAmount: amount
+--- !u!114 &1687655486553883141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb91b566ceda411bad1e9d3c3243ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: itemId
+  value: 2000
+--- !u!114 &1949361183308685161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb91b566ceda411bad1e9d3c3243ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: amount
+  value: 1
 --- !u!1 &5851113948233369936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,11 +3717,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8225573270934180095, guid: 73f0cd6a218369541ab242e54390e845, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8225573270934180095, guid: 73f0cd6a218369541ab242e54390e845, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.5
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8225573270934180095, guid: 73f0cd6a218369541ab242e54390e845, type: 3}
       propertyPath: m_LocalPosition.z

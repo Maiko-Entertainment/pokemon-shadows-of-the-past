@@ -27,6 +27,7 @@ public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
             {
                 MoveData move = MovesMaster.Instance.GetMove(MoveId.SelfHit);
                 battleEvent.move = move;
+                battleEvent.moveMods.moveTypeId = PokemonTypeId.Undefined;
             }
         }
         return base.Execute(battleEvent);

@@ -160,16 +160,15 @@ public class UIPauseMenuMaster : MonoBehaviour
         }
     }
 
-    public void DoHitPokemonAnim()
+    public void DoHitPokemonAnim(PokemonCaughtData pokemon)
     {
-        PokemonCaughtData available = PartyMaster.GetInstance().GetFirstAvailablePokemon();
         foreach (Transform p in pokemonMiniViewList)
         {
             UIItemOptionsPokemon pokemonOpt = p.GetComponent<UIItemOptionsPokemon>();
             pokemonOpt.Load(pokemonOpt.pokemon);
-            if (pokemonOpt.pokemon == available)
+            if (pokemonOpt.pokemon == pokemon)
             {
-                pokemonMiniViewList.GetChild(0).GetComponent<UIItemOptionsPokemon>().HandleHit();
+                pokemonOpt.HandleHit();
             }
         }
     }

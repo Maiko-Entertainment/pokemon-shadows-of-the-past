@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class WorldMapDamageDealer : MonoBehaviour
     public OutOfCombatDamage damage;
     public float afterDamageCooldown = 1f;
     public AudioOptions outOfBattleDamageSound;
+
+    public Flowchart onKillFlowchart;
+    public string onKillBlock = "Kill";
 
     public bool isDamageActive = false;
     protected float damageCooldownTime = 0f;
@@ -19,9 +23,18 @@ public class WorldMapDamageDealer : MonoBehaviour
             PokemonCaughtData pokemon = PartyMaster.GetInstance().GetFirstAvailablePokemon();
             DamageSummary summary = BattleMaster.GetInstance().CalculateOutOfBattleDamage(pokemon, damage);
             pokemon.ChangeHealth(summary.damageAmount * -1);
-            UIPauseMenuMaster.GetInstance().DoHitPokemonAnim();
+            UIPauseMenuMaster.GetInstance().DoHitPokemonAnim(pokemon);
+            if (pokemon.IsFainted())
+            {
+                AudioMaster.GetInstance().PlaySfx(new AudioOptions(pokemon.GetPokemonBaseData().GetCry(), 0.7f));
+            }
             WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
             if (outOfBattleDamageSound != null) AudioMaster.GetInstance().PlaySfx(outOfBattleDamageSound);
+            pokemon = PartyMaster.GetInstance().GetFirstAvailablePokemon();
+            if (onKillFlowchart && pokemon == null)
+            {
+                onKillFlowchart.ExecuteBlock(onKillBlock);
+            }
         }
     }
 

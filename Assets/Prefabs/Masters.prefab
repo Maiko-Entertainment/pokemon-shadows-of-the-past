@@ -5732,6 +5732,9 @@ MonoBehaviour:
         uses: 0
       learnedMoves: []
       equipedItem: 0
+      isShadow: 0
+      isMale: 0
+      friendship: 0
     - pokemonName: Raly
       pokemonId: 281
       level: 20
@@ -5749,6 +5752,9 @@ MonoBehaviour:
         uses: 0
       learnedMoves: []
       equipedItem: 0
+      isShadow: 0
+      isMale: 0
+      friendship: 0
     - pokemonName: Puppy
       pokemonId: 58
       level: 20
@@ -5766,6 +5772,9 @@ MonoBehaviour:
         uses: 0
       learnedMoves: []
       equipedItem: 0
+      isShadow: 0
+      isMale: 0
+      friendship: 0
     persistedBox: []
     persistedTacticsEquipped:
     - tacticId: 1
@@ -5799,6 +5808,9 @@ MonoBehaviour:
         uses: 0
       learnedMoves: []
       equipedItem: 0
+      isShadow: 0
+      isMale: 0
+      friendship: 0
     persistedBox: []
     persistedTacticsEquipped: []
     persistedTactics: []
@@ -5831,6 +5843,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d0f6c8ccae4c8a4ea570aac9d10a250, type: 2}
   - {fileID: 11400000, guid: 3d8e9e97f7b0f8c4d9f7213e9aeb5711, type: 2}
   - {fileID: 11400000, guid: 3c481761d2b70cf4cae8492e8d589fa9, type: 2}
+  - {fileID: 11400000, guid: 01e74ac6fcd7a97408f8537c4f46361a, type: 2}
+  - {fileID: 11400000, guid: 66c60c9ece8c28f4a94d7525e0ff0d60, type: 2}
+  - {fileID: 11400000, guid: 7ebb80a8db5796f4380fac1c48b32a14, type: 2}
+  - {fileID: 11400000, guid: e37dca979e397c54188bd825628f2f98, type: 2}
 --- !u!114 &8952212246821983486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5990,6 +6006,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 364818a591d5a804c942a67dab163f7d, type: 2}
     - {fileID: 11400000, guid: e53af407b01e27d4588b73000d5666a7, type: 2}
     - {fileID: 11400000, guid: c3b05ec0445db884e93ca94581e26dcf, type: 2}
+  - categoryName: Held
+    category: 1
+    itemList:
+    - {fileID: 11400000, guid: e76771e2c98564e43b2ddc54ae5eaea1, type: 2}
 --- !u!114 &8952212246821983480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6946,6 +6966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0feba27ece17a4890133cc16d85f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsList: {fileID: 0}
 --- !u!1 &8952212248689861746
 GameObject:
   m_ObjectHideFlags: 0

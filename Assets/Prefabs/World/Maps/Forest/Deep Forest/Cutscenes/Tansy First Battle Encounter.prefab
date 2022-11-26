@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 884920059450184612}
   - component: {fileID: 5167350655485039120}
   - component: {fileID: 6883710437101536137}
-  - component: {fileID: 8991350108652346695}
   - component: {fileID: 7403482548990542239}
   - component: {fileID: 8655094743024966131}
   - component: {fileID: 2265133279004024017}
@@ -183,6 +182,9 @@ GameObject:
   - component: {fileID: 4386917773870460840}
   - component: {fileID: 1064864736405736421}
   - component: {fileID: 2455877651503846189}
+  - component: {fileID: 8744234396241521530}
+  - component: {fileID: 3161419674762860048}
+  - component: {fileID: 2807020602345400804}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -220,11 +222,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 187.3455, y: -160.55653}
+  scrollPos: {x: 654.15155, y: -107.720726}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 415
-  zoom: 0.88
+  zoom: 0.70000017
   scrollViewRect:
     serializedVersion: 2
     x: 0
@@ -232,8 +234,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 5851987438390836253}
-  selectedCommands: []
+  - {fileID: 7647379980433052766}
+  selectedCommands:
+  - {fileID: 2807020602345400804}
   variables:
   - {fileID: 4103577494976808626}
   - {fileID: 8273211975782687916}
@@ -264,7 +267,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 388
     y: 126.17647
-    width: 78.40909
+    width: 78.57143
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -292,6 +295,7 @@ MonoBehaviour:
   - {fileID: 2970355581367994996}
   - {fileID: 1570626364603303163}
   - {fileID: 2107660703818299916}
+  - {fileID: 8744234396241521530}
   - {fileID: 2438965476180504606}
   - {fileID: 6282961002923101060}
   - {fileID: 7717437921311124678}
@@ -326,7 +330,7 @@ MonoBehaviour:
   itemId: 1
   indentLevel: 0
   display: 1
-  stage: {fileID: 0}
+  stage: {fileID: 3522181831643848614}
   replacedStage: {fileID: 0}
   useDefaultSettings: 1
   fadeDuration: 0
@@ -869,8 +873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 13
   indentLevel: 1
-  storyText: Akane and you are already so ahead, as if it wasn't even your first
-    time.
+  storyText: I can barely keep up, but you are doing it so effortlessly...
   description: 
   character: {fileID: 4561717602919394249}
   portrait: {fileID: 0}
@@ -913,7 +916,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 588
     y: 158
-    width: 110.22727
+    width: 112.85713
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -943,7 +946,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 584
     y: 94
-    width: 118.181816
+    width: 119.999985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1109,7 +1112,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 790
     y: 119
-    width: 115.90909
+    width: 117.14284
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1816,7 +1819,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 589.7496
     y: 226.0309
-    width: 111.36363
+    width: 111.42856
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1877,7 +1880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 61
   indentLevel: 0
-  storyText: H-{w=0.5}uh? Where did that came from, {$playerName}?
+  storyText: '{w=0.1}H-{w=0.5}uh? Where did that came from, {$playerName}?'
   description: 
   character: {fileID: 4561717602919394249}
   portrait: {fileID: 0}
@@ -2007,7 +2010,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 990.96906
     y: 145.0309
-    width: 104.545456
+    width: 104.285706
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2026,9 +2029,8 @@ MonoBehaviour:
   - {fileID: 851610030741189454}
   - {fileID: 3865581803277878856}
   - {fileID: 3429657641410812914}
-  - {fileID: 6883710437101536137}
   - {fileID: 9183953586075886282}
-  - {fileID: 8991350108652346695}
+  - {fileID: 6883710437101536137}
   suppressAllAutoSelections: 0
 --- !u!114 &3806228858295568868
 MonoBehaviour:
@@ -2210,20 +2212,6 @@ MonoBehaviour:
   trainer: {fileID: 11400000, guid: 1d4ccedf81a36694fbc5d90af42252ae, type: 2}
   onWinBlock: Win
   onLoseBlock: Lose
---- !u!114 &8991350108652346695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5296344875300084519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 75
-  indentLevel: 0
 --- !u!114 &7403482548990542239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2254,7 +2242,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 407.37762
     y: 374.7165
-    width: 71.59091
+    width: 71.428566
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2307,7 +2295,7 @@ MonoBehaviour:
   stage: {fileID: 3522181831643848614}
   character: {fileID: 4561717602919394249}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
+  portrait: {fileID: 21300000, guid: 01fa181eb025d0f4781fe36549c39495, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -2341,7 +2329,7 @@ MonoBehaviour:
   showAlways: 1
   showCount: 1
   extendPrevious: 0
-  fadeWhenDone: 1
+  fadeWhenDone: 0
   waitForClick: 1
   stopVoiceover: 1
   waitForVO: 0
@@ -2362,7 +2350,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 402.99527
     y: 481.17838
-    width: 76.13637
+    width: 77.14285
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2536,7 +2524,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 555.9707
     y: 353.86417
-    width: 113.63637
+    width: 112.85713
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2548,6 +2536,7 @@ MonoBehaviour:
   - {fileID: 6118573101325346427}
   - {fileID: 66659230054215768}
   - {fileID: 3054192389616733693}
+  - {fileID: 3161419674762860048}
   - {fileID: 192383852187921150}
   - {fileID: 2962781953132883927}
   - {fileID: 8199630019152839708}
@@ -2578,7 +2567,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 559.8757
     y: 406.42383
-    width: 105.68182
+    width: 105.71427
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2592,6 +2581,7 @@ MonoBehaviour:
   - {fileID: 4115097654888725724}
   - {fileID: 9091586139352998085}
   - {fileID: 6265780733806353031}
+  - {fileID: 2807020602345400804}
   - {fileID: 2998829297349219247}
   - {fileID: 3286365135033949284}
   - {fileID: 8791421659104034565}
@@ -2647,7 +2637,7 @@ MonoBehaviour:
   stage: {fileID: 3522181831643848614}
   character: {fileID: 4561717602919394249}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: a78f620708f757549acd0f06af53e64a, type: 3}
+  portrait: {fileID: 21300000, guid: c7ab9d600b03b6c45919c41fc1445966, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -2844,7 +2834,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 873.2312
     y: 366.17993
-    width: 84.09091
+    width: 85.71428
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3079,7 +3069,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 109
   indentLevel: 0
-  storyText: ...
+  storyText: '{w=0.1}...'
   description: 
   character: {fileID: 4561717602919394249}
   portrait: {fileID: 0}
@@ -3133,7 +3123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 111
   indentLevel: 1
-  storyText: How can you say that?
+  storyText: '{punch}How can you say that?'
   description: 
   character: {fileID: 4561717602919394249}
   portrait: {fileID: 0}
@@ -3505,7 +3495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 118
   indentLevel: 1
-  storyText: I'm... I have to go...
+  storyText: I... I have to go...
   description: 
   character: {fileID: 4561717602919394249}
   portrait: {fileID: 0}
@@ -4196,7 +4186,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 589.52625
     y: 279.52637
-    width: 122.72727
+    width: 125.714264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4339,6 +4329,81 @@ MonoBehaviour:
   indentLevel: 0
   offset: {x: 0, y: 0, z: 0}
   waitForEnd: 1
+--- !u!114 &8744234396241521530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 161
+  indentLevel: 1
+  storyText: And akane was also done in no time... I guess she is just as talented...
+  description: 
+  character: {fileID: 4561717602919394249}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &3161419674762860048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 163
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 3522181831643848614}
+  character: {fileID: 4561717602919394249}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: a78f620708f757549acd0f06af53e64a, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &2807020602345400804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 164
+  indentLevel: 1
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0.5
+  durationOLD: 0
 --- !u!1 &8211749703692887174
 GameObject:
   m_ObjectHideFlags: 0
@@ -4420,6 +4485,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowchart: {fileID: 8663698804869988808}
   blockName: Start
+  onInteract: 0
+  repeatable: 0
   cutsceneAgents:
   - {fileID: 5960726401617714067}
 --- !u!61 &8979012472265318829
@@ -4548,7 +4615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374570583618038791, guid: a422340308c6a7f40b199c549e8bcb29, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3374570583618038791, guid: a422340308c6a7f40b199c549e8bcb29, type: 3}
       propertyPath: m_LocalPosition.z

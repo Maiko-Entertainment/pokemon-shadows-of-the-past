@@ -107,9 +107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowchart: {fileID: 6748979955627473754}
   blockName: Start
+  onInteract: 0
+  repeatable: 0
   cutsceneAgents:
   - {fileID: 7014168413281611126}
-  - {fileID: 7666465492238234098}
+  - {fileID: 2655981270600735784}
 --- !u!1 &4963668545921768918
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +200,7 @@ GameObject:
   - component: {fileID: 6804535708410813999}
   - component: {fileID: 8999967764146160067}
   - component: {fileID: 5303163575865036866}
+  - component: {fileID: 5333609612683150654}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -247,8 +250,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 8277827569835193018}
-  selectedCommands: []
+  - {fileID: 8849139509757964043}
+  selectedCommands:
+  - {fileID: 3986748426500914152}
   variables:
   - {fileID: 3767241158848373601}
   description: 
@@ -1177,6 +1181,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 0
 --- !u!114 &9123114770329299657
 MonoBehaviour:
@@ -1918,6 +1923,7 @@ MonoBehaviour:
   - {fileID: 845446447746733019}
   - {fileID: 123665662694812891}
   - {fileID: 3986748426500914152}
+  - {fileID: 5333609612683150654}
   - {fileID: 1320791842925134014}
   - {fileID: 7072547340459387867}
   - {fileID: 3380023965342765351}
@@ -2010,6 +2016,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 0
 --- !u!114 &3380023965342765351
 MonoBehaviour:
@@ -2319,6 +2326,23 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &5333609612683150654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 128
+  indentLevel: 0
+  variableId: 12
+  operation: 0
+  value: 1
 --- !u!1 &5515599232322975699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,15 +2438,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1704163418944100015, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
   m_PrefabInstance: {fileID: 736373928078499770}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7666465492238234098 stripped
+--- !u!114 &2655981270600735784 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6943672737300491848, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3378773717378466706, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
   m_PrefabInstance: {fileID: 736373928078499770}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b6bc1186c8b9540a1ade17186b42fb, type: 3}
+  m_Script: {fileID: 11500000, guid: d1229071c878ac24a84c3706305ea8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &778119049172097932

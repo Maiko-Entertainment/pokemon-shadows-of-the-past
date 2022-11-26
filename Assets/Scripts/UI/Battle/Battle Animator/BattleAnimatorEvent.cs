@@ -6,6 +6,7 @@ public class BattleAnimatorEvent
 {
     public BattleAnimatorEventType eventType;
     public bool dontWait = false;
+    public float priority = 0;
 
     public BattleAnimatorEvent(bool dontWait = false)
     {

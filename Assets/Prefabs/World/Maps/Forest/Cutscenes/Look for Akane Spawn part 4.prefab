@@ -75,6 +75,10 @@ GameObject:
   - component: {fileID: 4680613859169593790}
   - component: {fileID: 2444209085446981601}
   - component: {fileID: 844450313038210531}
+  - component: {fileID: 4248669358132164723}
+  - component: {fileID: 4713326430729897764}
+  - component: {fileID: 7754288870503293252}
+  - component: {fileID: 1892968332547301427}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -126,7 +130,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 6028218074508403266}
   selectedCommands:
-  - {fileID: 844450313038210531}
+  - {fileID: 1892968332547301427}
   variables: []
   description: 
   stepPause: 0
@@ -224,6 +228,10 @@ MonoBehaviour:
   - {fileID: 4615504597428440811}
   - {fileID: 1888436733264391419}
   - {fileID: 343759170238672196}
+  - {fileID: 4713326430729897764}
+  - {fileID: 4248669358132164723}
+  - {fileID: 7754288870503293252}
+  - {fileID: 1892968332547301427}
   - {fileID: 1810113621622575753}
   - {fileID: 1868502454396774737}
   - {fileID: 7330510511513038614}
@@ -1740,6 +1748,88 @@ MonoBehaviour:
   indentLevel: 0
   offset: {x: -2, y: 2, z: 0}
   waitForEnd: 1
+--- !u!114 &4248669358132164723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860116058193869931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 73
+  indentLevel: 0
+  storyText: You let your pokedex hit the ground...
+  description: 
+  character: {fileID: 3892895003162017651}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &4713326430729897764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860116058193869931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 74
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: 70d01bd07bfc85d47bd4c1cbfd0dc666, type: 3}
+    pitch: 0.7
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &7754288870503293252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860116058193869931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 75
+  indentLevel: 0
+  variableId: 12
+  operation: 0
+  value: 0
+--- !u!114 &1892968332547301427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860116058193869931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 76
+  indentLevel: 0
+  variableId: 4
+  operation: 0
+  value: 290
 --- !u!1 &1839204949456689368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,6 +1904,7 @@ MonoBehaviour:
   flowchart: {fileID: 5862924015258122058}
   blockName: Start
   onInteract: 0
+  repeatable: 0
   cutsceneAgents:
   - {fileID: 6136142712387054986}
   - {fileID: 4040168101334701538}

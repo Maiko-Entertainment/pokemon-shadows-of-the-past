@@ -34,10 +34,13 @@ public class UIPokemonMoveViewSwap : MonoBehaviour
 
     public void LoadPokemon(PokemonCaughtData pokemon, MoveEquipped currentMove, UIPokemonMovesViewer instance)
     {
+        this.currentMove = currentMove;
+        this.instance = instance;
+        this.pokemon = pokemon;
         List<MoveEquipped> otherMoves = new List<MoveEquipped>();
         foreach (MoveEquipped move in pokemon.GetLearnedMoves())
         {
-            if (!pokemon.GetMoves().Contains(move))
+            if (currentMove.move.moveId != move.move.moveId)
             {
                 otherMoves.Add(move);
             }
@@ -59,9 +62,6 @@ public class UIPokemonMoveViewSwap : MonoBehaviour
             UtilsMaster.SetSelected(null);
         }
         LoadCurrentMove(currentMove);
-        this.currentMove = currentMove;
-        this.instance = instance;
-        this.pokemon = pokemon;
     }
 
     public void OnViewMove(MoveEquipped move, PokemonCaughtData pokemon)
@@ -113,9 +113,8 @@ public class UIPokemonMoveViewSwap : MonoBehaviour
 
     public void HandleSwap(MoveEquipped move, PokemonCaughtData pokemon)
     {
-        pokemon.EquipMove(move, currentMove);
+        pokemon.EquipMove(currentMove, move);
         HandleClose();
-        instance.Load(pokemon);
     }
 
     public void HandleClose()

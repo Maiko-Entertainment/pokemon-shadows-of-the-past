@@ -1138,6 +1138,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &8947799116786570830
 MonoBehaviour:
@@ -1472,9 +1473,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowchart: {fileID: 8407038289761502152}
   blockName: Start
+  onInteract: 0
+  repeatable: 0
   cutsceneAgents:
   - {fileID: 8708644696102790}
-  - {fileID: 2414823524708282838}
+  - {fileID: 8015312671138601996}
 --- !u!1001 &3519622634360268680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1605,22 +1608,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
---- !u!114 &2414823524708282838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6943672737300491848, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
-  m_PrefabInstance: {fileID: 4746737533497532318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b6bc1186c8b9540a1ade17186b42fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6231199827577964849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1704163418944100015, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
   m_PrefabInstance: {fileID: 4746737533497532318}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8015312671138601996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3378773717378466706, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
+  m_PrefabInstance: {fileID: 4746737533497532318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1229071c878ac24a84c3706305ea8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5169861431769263820
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class FungusCutsceneRemoveAgent : Command
         WorldInteractable wi = cs.GetAgent(agentId);
         if (wi)
         {
+            cs.cutsceneAgents.Remove(wi);
             Destroy(wi.gameObject);
         }
         Continue();

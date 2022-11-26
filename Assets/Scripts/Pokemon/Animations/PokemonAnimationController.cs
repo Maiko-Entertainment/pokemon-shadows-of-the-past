@@ -49,6 +49,7 @@ public class PokemonAnimationController : MonoBehaviour
             shadow = Instantiate(sprite, sprite.transform);
             shadow.transform.localPosition = new Vector3(0, 0.05f, 0);
             shadow.transform.localScale = new Vector3(1, 1, 1);
+            shadow.sortingOrder = -10;
             if (isBack)
             {
                 shadow.GetComponent<Animator>().SetTrigger("Back");

@@ -118,7 +118,12 @@ public class BattleAnimatorMaster : MonoBehaviour
             Destroy(colorTrans, time);
             return colorTrans.initialDelay;
         }
-        else{
+        else if (bd.battleType == BattleType.Shadow && bm.GetTeamId(pokemon) == BattleTeamId.Team2)
+        {
+            return 1f;
+        }
+        else
+        {
             float time = 1 / 1.2f + 0.1f;
             StartCoroutine(HandlePokeballReleasePokemon(pokemon));
             if (bd.battleType == BattleType.Trainer || bm.GetTeamId(pokemon) == BattleTeamId.Team1)
@@ -275,20 +280,24 @@ public class BattleAnimatorMaster : MonoBehaviour
         );
     }
 
-    public void AddStatusChangeEvent(PokemonBattleData pokemon, int change)
+    public void AddStatusChangeEvent(PokemonBattleData pokemon, int change, int priority = 0)
     {
         if (change > 0)
         {
             foreach(BattleAnimation ba in statUp)
             {
-                AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba));
+                BattleAnimatorEventPokemonMoveAnimation anim = new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba);
+                anim.priority = priority;
+                AddEvent(anim);
             }
         }
         else if (change < 0)
         {
             foreach (BattleAnimation ba in statDown)
             {
-                AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba));
+                BattleAnimatorEventPokemonMoveAnimation anim = new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba);
+                anim.priority = priority;
+                AddEvent(anim);
             }
         }
     }
@@ -322,7 +331,7 @@ public class BattleAnimatorMaster : MonoBehaviour
         }
     }
 
-    public void AddEventBattleFlowcartPokemonText(string blockName, PokemonBattleData pokemon, Dictionary<string, string> additionalVariables = null)
+    public void AddEventBattleFlowcartPokemonText(string blockName, PokemonBattleData pokemon, Dictionary<string, string> additionalVariables = null, int priority = 0)
     {
         Dictionary<string, string> variables= new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } };
         if (additionalVariables != null)
@@ -335,13 +344,14 @@ public class BattleAnimatorMaster : MonoBehaviour
                 }
             }
         }
-        AddEvent(new BattleAnimatorEventNarrative(
+        BattleAnimatorEventNarrative e = new BattleAnimatorEventNarrative(
             new BattleTriggerMessageData(
                 battleFlowchart,
                 blockName,
                 variables
-            ))
-        );
+            ));
+        e.priority = priority;
+        AddEvent(e);
     }
 
     public void AddEventBattleFlowcartTrainerItemText(string trainerTitle, string itemName)

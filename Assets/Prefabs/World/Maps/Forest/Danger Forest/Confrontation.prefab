@@ -315,7 +315,6 @@ GameObject:
   - component: {fileID: 5555536723206320769}
   - component: {fileID: 105296498423009304}
   - component: {fileID: 768111739386799698}
-  - component: {fileID: 792435649888986808}
   - component: {fileID: 3784356033866788681}
   - component: {fileID: 4171950937603746775}
   - component: {fileID: 2362775691002100936}
@@ -423,6 +422,17 @@ GameObject:
   - component: {fileID: 3948146940730843413}
   - component: {fileID: 2299102363049083627}
   - component: {fileID: 6649543055589020338}
+  - component: {fileID: 5512551938497528456}
+  - component: {fileID: 7303352464800057969}
+  - component: {fileID: 5358956264076181273}
+  - component: {fileID: 4258696686006210747}
+  - component: {fileID: 4312225679729053629}
+  - component: {fileID: 7173189821219869601}
+  - component: {fileID: 7372552069221391838}
+  - component: {fileID: 7040135262463530203}
+  - component: {fileID: 5330885863399934377}
+  - component: {fileID: 3902464057149109597}
+  - component: {fileID: 6779476070292960927}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -459,11 +469,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 385.9714, y: 7.9435534}
+  scrollPos: {x: 907.16406, y: -23.854582}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 399
-  zoom: 0.7900002
+  zoom: 0.5800004
   scrollViewRect:
     serializedVersion: 2
     x: 0
@@ -471,9 +481,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 2367511306752374140}
+  - {fileID: 5010530119215934598}
   selectedCommands:
-  - {fileID: 181216455148146928}
+  - {fileID: 1947890132433560808}
   variables:
   - {fileID: 6855616047755799078}
   - {fileID: 738901212263396893}
@@ -481,6 +491,7 @@ MonoBehaviour:
   - {fileID: 82197518145785969}
   - {fileID: 5878781499778386763}
   - {fileID: 4338653887372057263}
+  - {fileID: 7173189821219869601}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -506,8 +517,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 346.3233
-    y: 145.13791
-    width: 76.582275
+    y: 143.49857
+    width: 75.86205
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -516,6 +527,9 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 5358956264076181273}
+  - {fileID: 7372552069221391838}
+  - {fileID: 4258696686006210747}
   - {fileID: 7053144545038595130}
   - {fileID: 4194442057981433416}
   - {fileID: 3970396139453873298}
@@ -626,6 +640,7 @@ MonoBehaviour:
   - {fileID: 778345195058663921}
   - {fileID: 5152777060357085161}
   - {fileID: 8500948410095461177}
+  - {fileID: 4312225679729053629}
   suppressAllAutoSelections: 0
 --- !u!114 &7053144545038595130
 MonoBehaviour:
@@ -640,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 1
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -660,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 2
-  indentLevel: 0
+  indentLevel: 1
 --- !u!114 &6855616047755799078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 3
-  indentLevel: 0
+  indentLevel: 1
   offset: {x: 0, y: 3, z: 0}
   waitForEnd: 1
 --- !u!114 &2560288468855697667
@@ -705,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 4
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 1
@@ -723,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 5
-  indentLevel: 0
+  indentLevel: 1
   storyText: Akane, {punch=15}come on! This isn't funny!
   description: 
   character: {fileID: 4993878778898917619}
@@ -750,7 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 6
-  indentLevel: 0
+  indentLevel: 1
   storyText: ...
   description: 
   character: {fileID: 2891296985887288775}
@@ -777,7 +792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 7
-  indentLevel: 0
+  indentLevel: 1
   storyText: ...
   description: 
   character: {fileID: 2891296985887288775}
@@ -804,7 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 8
-  indentLevel: 0
+  indentLevel: 1
   storyText: ...
   description: 
   character: {fileID: 2891296985887288775}
@@ -831,7 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 9
-  indentLevel: 0
+  indentLevel: 1
   storyText: Why isn't she responding?
   description: 
   character: {fileID: 3260331307079152953}
@@ -858,7 +873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 10
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=20}AKAAAANEEEE! Let''s get out of here, {punch=15}come on!'
   description: 
   character: {fileID: 3260331307079152953}
@@ -885,7 +900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 11
-  indentLevel: 0
+  indentLevel: 1
   agentId: player
   overwriteSpeed: 0
   speed: 3
@@ -916,7 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 12
-  indentLevel: 0
+  indentLevel: 1
   offset: {x: -1, y: 1, z: 0}
   waitForEnd: 1
 --- !u!114 &5350728427248735697
@@ -932,7 +947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 13
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Guys! Thank Arceus, I was starting to get worried...'
   description: 
   character: {fileID: 3260331307079152953}
@@ -959,7 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 14
-  indentLevel: 0
+  indentLevel: 1
   storyText: Tansy, she's not responding. What do we do?
   description: 
   character: {fileID: 4993878778898917619}
@@ -986,7 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 15
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 2
@@ -1004,7 +1019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 16
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{w=0.5}Tansy?'
   description: 
   character: {fileID: 4993878778898917619}
@@ -1031,7 +1046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 17
-  indentLevel: 0
+  indentLevel: 1
   storyText: ...
   description: 
   character: {fileID: 5488870743793772916}
@@ -1058,7 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 18
-  indentLevel: 0
+  indentLevel: 1
   agentId: Dante
   overwriteSpeed: 0
   speed: 3
@@ -1080,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 19
-  indentLevel: 0
+  indentLevel: 1
   storyText: 'This is no time for panicking!
 
     We have to {x}'
@@ -1109,7 +1124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 20
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
     pitch: 0.7
@@ -1130,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 21
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 0.3
@@ -1148,7 +1163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 22
-  indentLevel: 0
+  indentLevel: 1
   display: 2
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -1168,7 +1183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 23
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
     pitch: 0.3
@@ -1189,7 +1204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 24
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 0.3
@@ -1207,7 +1222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 25
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
     pitch: 1.2
@@ -1228,7 +1243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 26
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 0.3
@@ -1246,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 27
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
     pitch: 0.7
@@ -1267,7 +1282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 28
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 0.3
@@ -1285,7 +1300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 29
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Not this again! {w=0.5}{punch=15}I can''t keep this up!'
   description: 
   character: {fileID: 4993878778898917619}
@@ -1312,7 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 30
-  indentLevel: 0
+  indentLevel: 1
   storyText: ...
   description: 
   character: {fileID: 3260331307079152953}
@@ -1339,7 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 32
-  indentLevel: 0
+  indentLevel: 1
   storyText: Watch my back please.
   description: 
   character: {fileID: 3260331307079152953}
@@ -1366,7 +1381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 33
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Huh?! Wait!{x}'
   description: 
   character: {fileID: 4993878778898917619}
@@ -1393,7 +1408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 34
-  indentLevel: 0
+  indentLevel: 1
   display: 2
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -1413,7 +1428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 35
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -1433,7 +1448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 36
-  indentLevel: 0
+  indentLevel: 1
   agentId: Erik
   overwriteSpeed: 1
   speed: 4
@@ -1461,7 +1476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 37
-  indentLevel: 0
+  indentLevel: 1
   storyText: Dante...
   description: 
   character: {fileID: 3260331307079152953}
@@ -1488,7 +1503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 38
-  indentLevel: 0
+  indentLevel: 1
   agentId: Erik
   overwriteSpeed: 1
   speed: 10
@@ -1513,7 +1528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 39
-  indentLevel: 0
+  indentLevel: 1
   _targetGameObject:
     gameObjectRef: {fileID: 0}
     gameObjectVal: {fileID: 5608348864044726833}
@@ -1534,7 +1549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 40
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 57cfc277cb79e5a40b5e0023b3b8e3c0, type: 3}
     pitch: 0.8
@@ -1555,7 +1570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 41
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
     pitch: 0.7
@@ -1576,7 +1591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 42
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Damnit, they are already here!'
   description: 
   character: {fileID: 4993878778898917619}
@@ -1603,7 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 43
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -1623,7 +1638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 44
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}!!!'
   description: 
   character: {fileID: 3260331307079152953}
@@ -1650,7 +1665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 45
-  indentLevel: 0
+  indentLevel: 1
   storyText: ... Erik...
   description: 
   character: {fileID: 5488870743793772916}
@@ -1677,7 +1692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 46
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}Haven''t I given you{w}
 
     enough warnings?{/slow}'
@@ -1706,7 +1721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 47
-  indentLevel: 0
+  indentLevel: 1
   storyText: Wh-what...? {w}Where is that coming from?
   description: 
   character: {fileID: 3260331307079152953}
@@ -1733,7 +1748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 48
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}Haven''t I been{w}
 
     more than merciful?{/slow}'
@@ -1762,7 +1777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 49
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Who are you, show yourself!'
   description: 
   character: {fileID: 4993878778898917619}
@@ -1789,7 +1804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 50
-  indentLevel: 0
+  indentLevel: 1
   _targetGameObject:
     gameObjectRef: {fileID: 0}
     gameObjectVal: {fileID: 4987935770364336497}
@@ -1810,7 +1825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 51
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
     pitch: 0.7
@@ -1831,7 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 52
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}And yet...
 
     you creatures don''t seem to understand...{/slow}'
@@ -1860,7 +1875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 53
-  indentLevel: 0
+  indentLevel: 1
   agentId: Erik
   overwriteSpeed: 1
   speed: 2
@@ -1891,7 +1906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 54
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slower}{punch}A-{w=0.5}{punch}Akane... {punch}come on... {punch}We
     are here to{x}{/slower}'
   description: 
@@ -1919,7 +1934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 55
-  indentLevel: 0
+  indentLevel: 1
   agentId: Haunter 1
   overwriteSpeed: 1
   speed: 1000
@@ -1950,7 +1965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 56
-  indentLevel: 0
+  indentLevel: 1
   display: 2
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -1970,7 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 57
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -1990,7 +2005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 58
-  indentLevel: 0
+  indentLevel: 1
   display: 2
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -2010,7 +2025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 59
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 57cfc277cb79e5a40b5e0023b3b8e3c0, type: 3}
     pitch: 0.8
@@ -2031,7 +2046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 60
-  indentLevel: 0
+  indentLevel: 1
   agentId: Erik
   overwriteSpeed: 1
   speed: 10
@@ -2062,7 +2077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 61
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}!!!'
   description: 
   character: {fileID: 3260331307079152953}
@@ -2089,7 +2104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 62
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Erik!'
   description: 
   character: {fileID: 4993878778898917619}
@@ -2116,7 +2131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 63
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}What  is wrong with you?!'
   description: 
   character: {fileID: 4993878778898917619}
@@ -2143,7 +2158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 64
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Using pokemon to hurt humans... {punch=15}You are insane!'
   description: 
   character: {fileID: 4993878778898917619}
@@ -2170,7 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 65
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}...{/slow}'
   description: 
   character: {fileID: 8895053132037829519}
@@ -2197,7 +2212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 67
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}Insane?{/slow}'
   description: 
   character: {fileID: 8895053132037829519}
@@ -2224,7 +2239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 68
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}You seem to be mistaken...{/slow}'
   description: 
   character: {fileID: 8895053132037829519}
@@ -2251,7 +2266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 69
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}What I chose was a life of peace...
 
     And you{x}{/slow}'
@@ -2280,7 +2295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 70
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{punch=15}Shut up!'
   description: 
   character: {fileID: 4993878778898917619}
@@ -2307,7 +2322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 71
-  indentLevel: 0
+  indentLevel: 1
   storyText: I'm so done with all these stupid organizations...
   description: 
   character: {fileID: 4993878778898917619}
@@ -2334,7 +2349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 72
-  indentLevel: 0
+  indentLevel: 1
   storyText: Every single one of you is the same crap over and over again...
   description: 
   character: {fileID: 4993878778898917619}
@@ -2361,7 +2376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 73
-  indentLevel: 0
+  indentLevel: 1
   display: 2
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -2381,7 +2396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 74
-  indentLevel: 0
+  indentLevel: 1
   _targetGameObject:
     gameObjectRef: {fileID: 0}
     gameObjectVal: {fileID: 4232123241970569686}
@@ -2402,7 +2417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 75
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: 70d01bd07bfc85d47bd4c1cbfd0dc666, type: 3}
     pitch: 1
@@ -2423,7 +2438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 76
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 1
@@ -2441,7 +2456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 77
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: fe5bc2202a733b642bf92e117681ae30, type: 3}
     pitch: 1
@@ -2462,7 +2477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 78
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 1
@@ -2480,7 +2495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 79
-  indentLevel: 0
+  indentLevel: 1
   storyText: 'Erik, we take the one on the left.
 
     {w=0.5}{$playerName}, you and
@@ -2510,7 +2525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 80
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -2530,7 +2545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 81
-  indentLevel: 0
+  indentLevel: 1
   storyText: ...
   description: 
   character: {fileID: 5488870743793772916}
@@ -2557,7 +2572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 82
-  indentLevel: 0
+  indentLevel: 1
   storyText: We... {w=0.5}We are gonna die aren't we?
   description: 
   character: {fileID: 5488870743793772916}
@@ -2584,7 +2599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 84
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{slow}Why is this happening...?{/slow}'
   description: 
   character: {fileID: 5488870743793772916}
@@ -2611,7 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 85
-  indentLevel: 0
+  indentLevel: 1
   storyText: '{$playerName}, snap her out of it'
   description: 
   character: {fileID: 4993878778898917619}
@@ -2641,7 +2656,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 530
     y: 222
-    width: 155.06326
+    width: 148.27579
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2681,7 +2696,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 559
     y: 150
-    width: 84.17721
+    width: 81.03446
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2709,7 +2724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 88
-  indentLevel: 0
+  indentLevel: 1
   text: '"We have to save Akane."'
   description: 
   targetBlock: {fileID: 1179836899664259541}
@@ -2734,7 +2749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 89
-  indentLevel: 0
+  indentLevel: 1
   text: '"I can do this alone."'
   description: 
   targetBlock: {fileID: 2300712697357995372}
@@ -2759,7 +2774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 90
-  indentLevel: 1
+  indentLevel: 2
   text: '"We protect eachother."'
   description: 
   targetBlock: {fileID: 5629691511422520489}
@@ -2784,7 +2799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 91
-  indentLevel: 0
+  indentLevel: 1
   anyOrAllConditions: 0
   conditions:
   - compareOperator: 1
@@ -3027,7 +3042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 92
-  indentLevel: 0
+  indentLevel: 1
 --- !u!114 &1179836899664259541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3044,7 +3059,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 557
     y: 69
-    width: 91.77214
+    width: 89.65514
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3923,7 +3938,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 757
     y: 147
-    width: 82.911385
+    width: 82.7586
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3932,6 +3947,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 5512551938497528456}
   - {fileID: 8358563683180222759}
   - {fileID: 6605568562834807512}
   - {fileID: 6936085406954753142}
@@ -4051,7 +4067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 122
-  indentLevel: 0
+  indentLevel: 1
   saveId: 103
 --- !u!114 &1318245180420901371
 MonoBehaviour:
@@ -4066,7 +4082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 123
-  indentLevel: 0
+  indentLevel: 1
   saveId: 1002
 --- !u!114 &7261209813605411283
 MonoBehaviour:
@@ -4161,7 +4177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 128
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 4993878778898917619}
@@ -4191,7 +4207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 129
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 2891296985887288775}
@@ -4221,7 +4237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 130
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 3260331307079152953}
@@ -4251,7 +4267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 131
-  indentLevel: 0
+  indentLevel: 1
   agentId: Erik
   overwriteSpeed: 0
   speed: 3
@@ -4273,7 +4289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 132
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 3260331307079152953}
@@ -4303,7 +4319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 133
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 5488870743793772916}
@@ -4333,7 +4349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 134
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 3260331307079152953}
@@ -4363,7 +4379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 135
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 5488870743793772916}
@@ -4393,7 +4409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 136
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 3260331307079152953}
@@ -4423,7 +4439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 137
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 5488870743793772916}
@@ -4480,7 +4496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 140
-  indentLevel: 0
+  indentLevel: 1
   agentId: Dante
   overwriteSpeed: 0
   speed: 3
@@ -4502,7 +4518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 141
-  indentLevel: 0
+  indentLevel: 1
   agentId: Gastly
   overwriteSpeed: 0
   speed: 2
@@ -4527,7 +4543,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 329.49506
     y: 381.74728
-    width: 71.51898
+    width: 70.68964
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4543,7 +4559,7 @@ MonoBehaviour:
   - {fileID: 905281516042181973}
   - {fileID: 105296498423009304}
   - {fileID: 768111739386799698}
-  - {fileID: 792435649888986808}
+  - {fileID: 6779476070292960927}
   - {fileID: 484935274080559561}
   - {fileID: 2362775691002100936}
   - {fileID: 3784356033866788681}
@@ -4630,7 +4646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 145
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   replacedStage: {fileID: 0}
@@ -4650,7 +4666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 146
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 1
@@ -4668,7 +4684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 148
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 1
@@ -4686,7 +4702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 149
-  indentLevel: 0
+  indentLevel: 1
   display: 1
   stage: {fileID: 8739172146004542623}
   character: {fileID: 3260331307079152953}
@@ -4716,7 +4732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 150
-  indentLevel: 0
+  indentLevel: 1
   agentId: Haunter 1
   overwriteSpeed: 1
   speed: 3
@@ -4738,7 +4754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 151
-  indentLevel: 0
+  indentLevel: 1
   clip:
     audio: {fileID: 8300000, guid: dca42af79f8c1d347aebf341283e27ce, type: 3}
     pitch: 0.5
@@ -4900,36 +4916,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 158
   indentLevel: 0
-  storyText: '{punch=15}What a nice team... We make... Ha ha...'
+  storyText: '{punch=15}What a nice team... We make...'
   description: 
   character: {fileID: 3260331307079152953}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &792435649888986808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5068316146999302855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 159
-  indentLevel: 0
-  storyText: ...
-  description: 
-  character: {fileID: 2606592140858317065}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -6641,7 +6630,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 549.7477
     y: 323.3428
-    width: 124.683525
+    width: 122.41374
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6672,7 +6661,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 554.7209
     y: 387.11374
-    width: 117.08859
+    width: 113.79306
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6709,7 +6698,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 540.54407
     y: 449.13876
-    width: 146.20251
+    width: 143.1034
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7742,7 +7731,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 789.21484
     y: 381.79736
-    width: 100.632904
+    width: 99.99997
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -8310,7 +8299,7 @@ MonoBehaviour:
   indentLevel: 0
   mapId: 3
   spawnIndex: 1
-  changeMapTransition: {fileID: 7696546989185427502, guid: 26af85d06f0880745a6fe4ff981bf786, type: 3}
+  changeMapTransition: {fileID: 9161319405032701798, guid: d07b3625acd17704191032e8673b7181, type: 3}
   triggerNextInteractionOnEnd: 1
 --- !u!114 &5590495744511660611
 MonoBehaviour:
@@ -8468,7 +8457,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 335.2228
     y: 579.809
-    width: 79.113914
+    width: 75.86205
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -8506,7 +8495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 260
-  indentLevel: 0
+  indentLevel: 1
   display: 2
   stage: {fileID: 8739172146004542623}
   character: {fileID: 2891296985887288775}
@@ -8536,7 +8525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 261
-  indentLevel: 0
+  indentLevel: 1
   display: 2
   stage: {fileID: 8739172146004542623}
   character: {fileID: 5488870743793772916}
@@ -8746,7 +8735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 270
-  indentLevel: 0
+  indentLevel: 1
   _duration:
     floatRef: {fileID: 0}
     floatVal: 0.2
@@ -8813,6 +8802,444 @@ MonoBehaviour:
   variableId: 1003
   operation: 0
   value: 1
+--- !u!114 &5512551938497528456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 274
+  indentLevel: 0
+  variableId: 4
+  operation: 0
+  value: 305
+--- !u!114 &7303352464800057969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 545.1075
+    y: -54.95772
+    width: 108.62065
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 275
+  blockName: Seen Skip
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 3902464057149109597}
+  - {fileID: 7040135262463530203}
+  - {fileID: 5330885863399934377}
+  suppressAllAutoSelections: 0
+--- !u!114 &5358956264076181273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c5622b8a80845c980954170295f292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 276
+  indentLevel: 0
+  anyOrAllConditions: 0
+  conditions:
+  - compareOperator: 5
+    anyVar:
+      variable: {fileID: 7173189821219869601}
+      data:
+        animatorData:
+          animatorRef: {fileID: 0}
+          animatorVal: {fileID: 0}
+        audioSourceData:
+          audioSourceRef: {fileID: 0}
+          audioSourceVal: {fileID: 0}
+        booleanData:
+          booleanRef: {fileID: 0}
+          booleanVal: 0
+        collectionData:
+          collectionRef: {fileID: 0}
+          collectionVal: {fileID: 0}
+        collider2DData:
+          collider2DRef: {fileID: 0}
+          collider2DVal: {fileID: 0}
+        colliderData:
+          colliderRef: {fileID: 0}
+          colliderVal: {fileID: 0}
+        colorData:
+          colorRef: {fileID: 0}
+          colorVal: {r: 0, g: 0, b: 0, a: 0}
+        floatData:
+          floatRef: {fileID: 0}
+          floatVal: 305
+        gameObjectData:
+          gameObjectRef: {fileID: 0}
+          gameObjectVal: {fileID: 0}
+        integerData:
+          integerRef: {fileID: 0}
+          integerVal: 0
+        materialData:
+          materialRef: {fileID: 0}
+          materialVal: {fileID: 0}
+        matrix4x4Data:
+          matrix4x4Ref: {fileID: 0}
+          matrix4x4Val:
+            e00: 0
+            e01: 0
+            e02: 0
+            e03: 0
+            e10: 0
+            e11: 0
+            e12: 0
+            e13: 0
+            e20: 0
+            e21: 0
+            e22: 0
+            e23: 0
+            e30: 0
+            e31: 0
+            e32: 0
+            e33: 0
+        objectData:
+          objectRef: {fileID: 0}
+          objectVal: {fileID: 0}
+        quaternionData:
+          quaternionRef: {fileID: 0}
+          quaternionVal: {x: 0, y: 0, z: 0, w: 0}
+        rigidbody2DData:
+          rigidbody2DRef: {fileID: 0}
+          rigidbody2DVal: {fileID: 0}
+        rigidbodyData:
+          rigidbodyRef: {fileID: 0}
+          rigidbodyVal: {fileID: 0}
+        spriteData:
+          spriteRef: {fileID: 0}
+          spriteVal: {fileID: 0}
+        stringData:
+          stringRef: {fileID: 0}
+          stringVal: 
+        textureData:
+          textureRef: {fileID: 0}
+          textureVal: {fileID: 0}
+        transformData:
+          transformRef: {fileID: 0}
+          transformVal: {fileID: 0}
+        vector2Data:
+          vector2Ref: {fileID: 0}
+          vector2Val: {x: 0, y: 0}
+        vector3Data:
+          vector3Ref: {fileID: 0}
+          vector3Val: {x: 0, y: 0, z: 0}
+        vector4Data:
+          vector4Ref: {fileID: 0}
+          vector4Val: {x: 0, y: 0, z: 0, w: 0}
+  compareOperator: 0
+  anyVar:
+    variable: {fileID: 0}
+    data:
+      animatorData:
+        animatorRef: {fileID: 0}
+        animatorVal: {fileID: 0}
+      audioSourceData:
+        audioSourceRef: {fileID: 0}
+        audioSourceVal: {fileID: 0}
+      booleanData:
+        booleanRef: {fileID: 0}
+        booleanVal: 0
+      collectionData:
+        collectionRef: {fileID: 0}
+        collectionVal: {fileID: 0}
+      collider2DData:
+        collider2DRef: {fileID: 0}
+        collider2DVal: {fileID: 0}
+      colliderData:
+        colliderRef: {fileID: 0}
+        colliderVal: {fileID: 0}
+      colorData:
+        colorRef: {fileID: 0}
+        colorVal: {r: 0, g: 0, b: 0, a: 0}
+      floatData:
+        floatRef: {fileID: 0}
+        floatVal: 0
+      gameObjectData:
+        gameObjectRef: {fileID: 0}
+        gameObjectVal: {fileID: 0}
+      integerData:
+        integerRef: {fileID: 0}
+        integerVal: 0
+      materialData:
+        materialRef: {fileID: 0}
+        materialVal: {fileID: 0}
+      matrix4x4Data:
+        matrix4x4Ref: {fileID: 0}
+        matrix4x4Val:
+          e00: 0
+          e01: 0
+          e02: 0
+          e03: 0
+          e10: 0
+          e11: 0
+          e12: 0
+          e13: 0
+          e20: 0
+          e21: 0
+          e22: 0
+          e23: 0
+          e30: 0
+          e31: 0
+          e32: 0
+          e33: 0
+      objectData:
+        objectRef: {fileID: 0}
+        objectVal: {fileID: 0}
+      quaternionData:
+        quaternionRef: {fileID: 0}
+        quaternionVal: {x: 0, y: 0, z: 0, w: 0}
+      rigidbody2DData:
+        rigidbody2DRef: {fileID: 0}
+        rigidbody2DVal: {fileID: 0}
+      rigidbodyData:
+        rigidbodyRef: {fileID: 0}
+        rigidbodyVal: {fileID: 0}
+      spriteData:
+        spriteRef: {fileID: 0}
+        spriteVal: {fileID: 0}
+      stringData:
+        stringRef: {fileID: 0}
+        stringVal: 
+      textureData:
+        textureRef: {fileID: 0}
+        textureVal: {fileID: 0}
+      transformData:
+        transformRef: {fileID: 0}
+        transformVal: {fileID: 0}
+      vector2Data:
+        vector2Ref: {fileID: 0}
+        vector2Val: {x: 0, y: 0}
+      vector3Data:
+        vector3Ref: {fileID: 0}
+        vector3Val: {x: 0, y: 0, z: 0}
+      vector4Data:
+        vector4Ref: {fileID: 0}
+        vector4Val: {x: 0, y: 0, z: 0, w: 0}
+  variable: {fileID: 0}
+  booleanData:
+    booleanRef: {fileID: 0}
+    booleanVal: 0
+  integerData:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  floatData:
+    floatRef: {fileID: 0}
+    floatVal: 0
+  stringData:
+    stringRef: {fileID: 0}
+    stringVal: 
+  animatorData:
+    animatorRef: {fileID: 0}
+    animatorVal: {fileID: 0}
+  audioSourceData:
+    audioSourceRef: {fileID: 0}
+    audioSourceVal: {fileID: 0}
+  colorData:
+    colorRef: {fileID: 0}
+    colorVal: {r: 0, g: 0, b: 0, a: 0}
+  gameObjectData:
+    gameObjectRef: {fileID: 0}
+    gameObjectVal: {fileID: 0}
+  materialData:
+    materialRef: {fileID: 0}
+    materialVal: {fileID: 0}
+  objectData:
+    objectRef: {fileID: 0}
+    objectVal: {fileID: 0}
+  rigidbody2DData:
+    rigidbody2DRef: {fileID: 0}
+    rigidbody2DVal: {fileID: 0}
+  spriteData:
+    spriteRef: {fileID: 0}
+    spriteVal: {fileID: 0}
+  textureData:
+    textureRef: {fileID: 0}
+    textureVal: {fileID: 0}
+  transformData:
+    transformRef: {fileID: 0}
+    transformVal: {fileID: 0}
+  vector2Data:
+    vector2Ref: {fileID: 0}
+    vector2Val: {x: 0, y: 0}
+  vector3Data:
+    vector3Ref: {fileID: 0}
+    vector3Val: {x: 0, y: 0, z: 0}
+--- !u!114 &4258696686006210747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa968f01a7f9496bb50e13dfe16760d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 277
+  indentLevel: 0
+--- !u!114 &4312225679729053629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93cb9773f2ca04e2bbf7a68ccfc23267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 278
+  indentLevel: 0
+--- !u!114 &7173189821219869601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 705fa1ac97df74e3a84ff952ffd923f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: storyProgress
+  value: 0
+--- !u!114 &7372552069221391838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 279
+  indentLevel: 1
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 7303352464800057969}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &7040135262463530203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 280
+  indentLevel: 0
+  storyText: 'Erik, we take the one on the left.
+
+    {w=0.5}{$playerName}, you and
+    tansy handle the other one!'
+  description: 
+  character: {fileID: 4993878778898917619}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &5330885863399934377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 281
+  indentLevel: 0
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 2532296630094709609}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
+--- !u!114 &3902464057149109597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ceb602615153d468b418fa33ba1ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 282
+  indentLevel: 0
+  offset: {x: -1, y: 1, z: 0}
+  waitForEnd: 0
+--- !u!114 &6779476070292960927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5068316146999302855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 283
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 1
+  durationOLD: 0
 --- !u!1001 &842213434043227205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9540,17 +9967,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51a3bd0196b6070409750270b7174035, type: 3}
---- !u!114 &2606592140858317065 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8485820454399788724, guid: 51a3bd0196b6070409750270b7174035, type: 3}
-  m_PrefabInstance: {fileID: 5904158654215561149}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2891296985887288775 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8786586960453513850, guid: 51a3bd0196b6070409750270b7174035, type: 3}

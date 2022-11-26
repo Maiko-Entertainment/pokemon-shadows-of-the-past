@@ -40,7 +40,7 @@ public class UIBattleHealthbar : MonoBehaviour
         maxHealth = pkmn.GetCurrentStats().health;
         currentExp = pkmn.GetExperience();
         pokemonName.text = pkmn.pokemonName;
-        pokemonLevel.text = "Lv. " + pkmn.GetLevel();
+        pokemonLevel.text = "Lv. " + (pokemon.hideLevel ? "???" : pkmn.GetLevel());
         pokemonAbilityName.text = AbilityMaster.GetInstance().GetAbility(pkmn.abilityId).GetName();
         UpdateHealth(currentValue);
         UpdateTarget(currentValue);

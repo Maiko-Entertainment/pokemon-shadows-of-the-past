@@ -140,7 +140,7 @@ public class BattleMaster : MonoBehaviour
     {
         int baseExp = 15; //pokemon.GetPokemonCaughtData().pokemonBase.baseExp;
         int pokemonLevel = pokemon.GetPokemonCaughtData().GetLevel();
-        int experienceGained = (int)Mathf.Pow(baseExp * pokemonLevel, 2.5f) / 1000 + 2 * baseExp;
+        int experienceGained = (int)Mathf.Pow(baseExp * pokemonLevel * 0.75f, 2.5f) / 2000 + 2 * baseExp;
         return experienceGained;
     }
 

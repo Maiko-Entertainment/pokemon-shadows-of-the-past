@@ -138,6 +138,11 @@ GameObject:
   - component: {fileID: 6414450148264881779}
   - component: {fileID: 8777568574457091384}
   - component: {fileID: 8836644820108141523}
+  - component: {fileID: 7379809062449579818}
+  - component: {fileID: 3769744404029389284}
+  - component: {fileID: 4897586574220673933}
+  - component: {fileID: 4529339060575139898}
+  - component: {fileID: 2753490990226768745}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -186,9 +191,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 9154858273131283199}
+  - {fileID: 7541241946493341344}
   selectedCommands:
-  - {fileID: 8729647290407256087}
+  - {fileID: 4671921955116653113}
   variables:
   - {fileID: 4004826568360408734}
   - {fileID: 7244388551482405328}
@@ -255,11 +260,15 @@ MonoBehaviour:
   - {fileID: 1811373493682376493}
   - {fileID: 4128240836496975953}
   - {fileID: 4567579104030157763}
+  - {fileID: 4529339060575139898}
+  - {fileID: 3769744404029389284}
+  - {fileID: 4897586574220673933}
   - {fileID: 2424238442300825070}
   - {fileID: 2768458346906402040}
   - {fileID: 3416212415419647554}
   - {fileID: 3409295521605810029}
   - {fileID: 3386506950110484013}
+  - {fileID: 2753490990226768745}
   - {fileID: 2636182282944725042}
   - {fileID: 5681093956539893698}
   - {fileID: 5251935602263979658}
@@ -550,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  storyText: Guys, I don't think I want to go out at night anymore...
+  storyText: I... don't think I want to go out at night anymore...
   description: 
   character: {fileID: 4474576443082429111}
   portrait: {fileID: 0}
@@ -604,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 13
   indentLevel: 0
-  storyText: Everyone... I'm so sorry...
+  storyText: Everyone... {w=0.5}I'm so sorry...
   description: 
   character: {fileID: 6848716374392917754}
   portrait: {fileID: 0}
@@ -658,7 +667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 15
   indentLevel: 0
-  storyText: Shut it!
+  storyText: '{punch=10}Shut it!'
   description: 
   character: {fileID: 4267185762378959433}
   portrait: {fileID: 0}
@@ -685,7 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 16
   indentLevel: 0
-  storyText: Hey!
+  storyText: '{punch=10}Hey!'
   description: 
   character: {fileID: 6226850835535122301}
   portrait: {fileID: 0}
@@ -793,7 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 20
   indentLevel: 0
-  storyText: From now on... We are {punch=15}ALL rivals...
+  storyText: From now on... We are {punch=20}ALL rivals...
   description: 
   character: {fileID: 4267185762378959433}
   portrait: {fileID: 0}
@@ -1016,7 +1025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 28
   indentLevel: 0
-  storyText: So, {punch=15}act like one and... Be brave?
+  storyText: So, {punch=15}act like one and... Be brave{w0.5}?
   description: 
   character: {fileID: 4267185762378959433}
   portrait: {fileID: 0}
@@ -1072,7 +1081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 30
   indentLevel: 0
-  storyText: So... Are we gonna talk about... You know...
+  storyText: I don't want to interrupt but... Are we gonna talk about...
   description: 
   character: {fileID: 4474576443082429111}
   portrait: {fileID: 0}
@@ -1099,7 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 31
   indentLevel: 0
-  storyText: The ghosts attacking US? The creepy voice? That messed up haunter?
+  storyText: The pokemon attacking us? The creepy voice? That messed up haunter?
   description: 
   character: {fileID: 6226850835535122301}
   portrait: {fileID: 0}
@@ -1126,7 +1135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 32
   indentLevel: 0
-  storyText: Yeah, all that!
+  storyText: Yeah.
   description: 
   character: {fileID: 4474576443082429111}
   portrait: {fileID: 0}
@@ -1180,7 +1189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 34
   indentLevel: 0
-  storyText: I mean it's not like that thing can't go through trees or something...
+  storyText: I'm not sure why that thing stopped following us but... We can't lower
+    our guard yet...
   description: 
   character: {fileID: 6226850835535122301}
   portrait: {fileID: 0}
@@ -1236,7 +1246,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: Uhm... Yeah, something like that...
   description: 
-  character: {fileID: 0}
+  character: {fileID: 6226850835535122301}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -1918,6 +1928,7 @@ MonoBehaviour:
   - {fileID: 8258422437301035027}
   - {fileID: 8786675292464023384}
   - {fileID: 1943885260982527721}
+  - {fileID: 7379809062449579818}
   - {fileID: 253400009804165438}
   - {fileID: 2385831404641512113}
   - {fileID: 3328882544545479288}
@@ -2822,7 +2833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 74
   indentLevel: 1
-  storyText: '{$playerName}, I guess by default that includes you too...'
+  storyText: '{$playerName}, I hate to say it but, we will need you too...'
   description: 
   character: {fileID: 6226850835535122301}
   portrait: {fileID: 0}
@@ -4773,6 +4784,134 @@ MonoBehaviour:
     justTurn: 0
     jump: 0
   waitUntilEnd: 0
+--- !u!114 &7379809062449579818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373041685210587940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48589ce7e68068b4fa3f13389693a0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 127
+  indentLevel: 0
+  variableId: 12
+  operation: 0
+  value: 1
+--- !u!114 &3769744404029389284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373041685210587940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 128
+  indentLevel: 0
+  storyText: I was about to...
+  description: 
+  character: {fileID: 4267185762378959433}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &4897586574220673933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373041685210587940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 129
+  indentLevel: 0
+  storyText: ...
+  description: 
+  character: {fileID: 4267185762378959433}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &4529339060575139898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373041685210587940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 130
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 7665165453817094929}
+  character: {fileID: 4267185762378959433}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: bf4c87a70895c9b4da8e59696610d36f, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 7665165452582793770}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &2753490990226768745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373041685210587940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 131
+  indentLevel: 0
+  storyText: Listen...
+  description: 
+  character: {fileID: 4267185762378959433}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &5750394265998680851
 GameObject:
   m_ObjectHideFlags: 0

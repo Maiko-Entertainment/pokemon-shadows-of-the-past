@@ -1259,6 +1259,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 5934619804195773619}
   transition: {fileID: 3615188955912527955}
   firstSelected: {fileID: 0}
+  fadeOutWhenNotFocused: 0
 --- !u!225 &5934619804195773619
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1267,9 +1268,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8428615038392904525}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &3615188955912527955
 MonoBehaviour:
@@ -1288,7 +1289,7 @@ MonoBehaviour:
   pingPong: 0
   canvasGroup: {fileID: 5934619804195773619}
   destroyAfterFadeOut: 1
-  min: 0.5
+  min: 0
   max: 1
 --- !u!114 &4529114612962601262
 MonoBehaviour:

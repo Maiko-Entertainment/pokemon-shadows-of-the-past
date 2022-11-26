@@ -59,6 +59,7 @@ public class PokemonCaughtData
         pp.damageTaken = damageTaken;
         pp.statusEffectId = statusEffectId;
         pp.natureId = natureId;
+        pp.abilityId = abilityId;
         pp.isShadow = isShadow;
         pp.friendship = friendship;
         pp.isMale = isMale;
@@ -204,7 +205,7 @@ public class PokemonCaughtData
     public int GetTotalExperienceToNextLevel(int level)
     {
         int amount = (int)(
-              level * 5 + Mathf.Pow(level * 15, 2.5f) / 1000
+              level * 5 + Mathf.Pow(level * 15, 2.5f) / 2000
         );
         return amount;
     }
@@ -332,13 +333,26 @@ public class PokemonCaughtData
 
     public void EquipMove(MoveEquipped move, MoveEquipped swapFor)
     {
-        int index = moves.IndexOf(swapFor);
-        int indexOfNew = moves.IndexOf(move);
-        // Swaps the new move for the swaped move if the new move is already equipped
-        if (indexOfNew > 0)
+        // Index of swapFor element if it already exists
+        int index = -1;
+        // Index of move element to swap for new
+        int indexOfNew = -1;
+        foreach (MoveEquipped m in moves)
         {
-            moves[indexOfNew] = swapFor;
+            if (m.move.moveId == swapFor.move.moveId)
+            {
+                index = moves.IndexOf(m);
+            }
+            else if (m.move.moveId == move.move.moveId)
+            {
+                indexOfNew = moves.IndexOf(m);
+            }
         }
-        moves[index] = move;
+        // Swaps the new move for the swaped move if the new move is already equipped
+        if (index >= 0)
+        {
+            moves[index] = move;
+        }
+        moves[indexOfNew] = swapFor;
     }
 }

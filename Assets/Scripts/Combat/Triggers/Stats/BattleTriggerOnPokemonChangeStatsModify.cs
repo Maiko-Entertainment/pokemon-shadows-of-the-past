@@ -6,6 +6,7 @@ public class BattleTriggerOnPokemonChangeStatsModify : BattleTriggerOnPokemonCha
 {
     public StatsChangeModifyInstructions instructions;
     public bool showAbility = false;
+    public ItemDataOnPokemon relatedItem = null;
     public BattleTriggerOnPokemonChangeStatsModify(PokemonBattleData pokemon, StatsChangeModifyInstructions instructions, bool showAbility) :
         base(pokemon, true)
     {
@@ -21,6 +22,10 @@ public class BattleTriggerOnPokemonChangeStatsModify : BattleTriggerOnPokemonCha
             if (showAbility)
             {
                 BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorAbility(battleEvent.pokemon));
+            }
+            if (relatedItem)
+            {
+                BattleMaster.GetInstance().GetCurrentBattle().AddItemPokemonUseEvent(battleEvent.pokemon, (ItemDataOnPokemon)relatedItem, true);
             }
             battleEvent = instructions.Apply(battleEvent);
         }

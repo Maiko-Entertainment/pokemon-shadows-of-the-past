@@ -30,7 +30,7 @@ public class UIPokemonInfo : MonoBehaviour
         {
             itemSprite.gameObject.SetActive(false);
             itemSprite.sprite = null;
-            itemName.text = "None";
+            itemName.text = "No Item";
             itemDescription.text = "To equip your pokemon with an item go to the items menu.";
         }
         AbilityData ability = AbilityMaster.GetInstance().GetAbility(pokemon.abilityId);

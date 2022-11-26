@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 4089948807379739961}
   - component: {fileID: 115203953890779872}
   - component: {fileID: 3236419063830340649}
-  - component: {fileID: 4500288826151230112}
   - component: {fileID: 8997936890360829476}
   - component: {fileID: 7088250428978901392}
   - component: {fileID: 5978634787213893521}
@@ -202,9 +201,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 8520578334564955622}
-  selectedCommands:
-  - {fileID: 8968717682922349729}
+  - {fileID: 7260529886111619847}
+  selectedCommands: []
   variables:
   - {fileID: 6620435318856959645}
   - {fileID: 1205353610751625516}
@@ -489,6 +487,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &5464271415857656743
 MonoBehaviour:
@@ -620,6 +619,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &3984661746699926010
 MonoBehaviour:
@@ -1637,7 +1637,6 @@ MonoBehaviour:
   - {fileID: 2774143800880701743}
   - {fileID: 2090302909191090094}
   - {fileID: 1546372215062241524}
-  - {fileID: 4500288826151230112}
   suppressAllAutoSelections: 0
 --- !u!114 &4733475909232377400
 MonoBehaviour:
@@ -3474,6 +3473,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &6053519941755205564
 MonoBehaviour:
@@ -3830,20 +3830,6 @@ MonoBehaviour:
   variableId: 4
   operation: 0
   value: 30
---- !u!114 &4500288826151230112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3379812167713607102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa93b3cc3a1f29b45833a9c3bcc8f1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 129
-  indentLevel: 0
 --- !u!114 &8997936890360829476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4291,6 +4277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowchart: {fileID: 8175973860915452087}
   blockName: Start
+  onInteract: 0
+  repeatable: 0
   cutsceneAgents:
   - {fileID: 2224457469235695842}
   - {fileID: 5733081537636537140}

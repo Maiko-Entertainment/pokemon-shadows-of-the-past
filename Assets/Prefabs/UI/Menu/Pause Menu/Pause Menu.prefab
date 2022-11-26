@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 8577313843446976741}
     m_SelectOnDown: {fileID: 811096766429777929}
@@ -1344,6 +1344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0feba27ece17a4890133cc16d85f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsList: {fileID: 1985981477100602707}
 --- !u!114 &756295201619436704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1358,7 +1359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 8851532578681880609}
   transition: {fileID: 2317176269490103134}
-  firstSelected: {fileID: 8219750026797967457}
+  firstSelected: {fileID: 9182163686470264246}
   fadeOutWhenNotFocused: 1
 --- !u!114 &5045579167806365247
 MonoBehaviour:
@@ -1461,7 +1462,7 @@ RectTransform:
   - {fileID: 3367451915304310942}
   - {fileID: 5535805712762291598}
   m_Father: {fileID: 1985981477100602707}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1519,7 +1520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 7405857821660306865}
     m_SelectOnDown: {fileID: 8252746639585211681}
@@ -1956,6 +1957,7 @@ GameObject:
   - component: {fileID: 919755931230772683}
   - component: {fileID: 811096766429777929}
   - component: {fileID: 4088247012883713323}
+  - component: {fileID: 7163081854033097082}
   m_Layer: 0
   m_Name: Pokedex
   m_TagString: Untagged
@@ -1978,7 +1980,7 @@ RectTransform:
   - {fileID: 8961612804678846719}
   - {fileID: 8231272778517378209}
   m_Father: {fileID: 1985981477100602707}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2036,7 +2038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 8252746639585211681}
     m_SelectOnDown: {fileID: 7405857821660306865}
@@ -2099,6 +2101,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7163081854033097082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8219750026797967457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a52fa5110db5fc41ad83ab6ae18e6e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - saveVariable: 12
+    condition: 0
+    value: 1
+  inventoryConditions: []
+  selectable: {fileID: 811096766429777929}
 --- !u!1 &8479294059419561628
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,9 +2284,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1325482256642705654}
   - {fileID: 5658293375520069069}
   - {fileID: 4926856529079375871}
+  - {fileID: 1325482256642705654}
   - {fileID: 1260205271890421634}
   m_Father: {fileID: 6974464400921820769}
   m_RootOrder: 0
@@ -2345,7 +2365,7 @@ RectTransform:
   - {fileID: 9084370824716043487}
   - {fileID: 6359502400846686383}
   m_Father: {fileID: 1985981477100602707}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2403,7 +2423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 0
     m_WrapAround: 1
     m_SelectOnUp: {fileID: 811096766429777929}
     m_SelectOnDown: {fileID: 8577313843446976741}

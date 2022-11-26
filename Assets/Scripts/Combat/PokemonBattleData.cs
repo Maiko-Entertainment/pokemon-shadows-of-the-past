@@ -13,6 +13,7 @@ public class PokemonBattleData
     public AbilityId abilityId;
     public PokemonBattleDataItem heldItem;
     public int roundsInCombat = 0;
+    public bool hideLevel = false;
 
     public static int minMaxStatLevelChange = 6;
 
@@ -38,6 +39,7 @@ public class PokemonBattleData
         newInstance.abilityId = abilityId;
         newInstance.heldItem = heldItem;
         newInstance.roundsInCombat = roundsInCombat;
+        newInstance.hideLevel = hideLevel;
         return newInstance;
     }
 

@@ -477,6 +477,60 @@ Transform:
   m_Father: {fileID: 4383849897126358691}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2695729194180026369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786585565425162655}
+  - component: {fileID: 2450980938683981670}
+  m_Layer: 0
+  m_Name: Akane Forest Moment Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1786585565425162655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695729194180026369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.5, y: -5.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8555159084216659505}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2450980938683981670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695729194180026369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2160fefdc91cf647ba1641fca662030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions:
+  - saveVariable: 4
+    condition: 0
+    value: 210
+  inventoryConditions: []
+  spawns:
+  - spawn: {fileID: 1870034753776370888, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
+    spawnPostion: {x: 0, y: 0, z: 0}
+    spawnAsChild: 1
+  chance: 1
 --- !u!1 &2735183885810741536
 GameObject:
   m_ObjectHideFlags: 0
@@ -105413,7 +105467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5456574574679224164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: -1.5, z: 0}
+  m_LocalPosition: {x: 14.5, y: 26.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105491,7 +105545,7 @@ MonoBehaviour:
   conditions:
   - saveVariable: 4
     condition: 1
-    value: 279
+    value: 259
   inventoryConditions: []
   spawns:
   - spawn: {fileID: 6888450113475048078, guid: 18ea85a07a908a44c9b0919d1c1051bf, type: 3}
@@ -105513,7 +105567,7 @@ MonoBehaviour:
   conditions:
   - saveVariable: 4
     condition: 2
-    value: 280
+    value: 259
   - saveVariable: 4
     condition: 1
     value: 309
@@ -106263,6 +106317,7 @@ Transform:
   - {fileID: 7082465382328911373}
   - {fileID: 4917105400437614700}
   - {fileID: 7080287811556897238}
+  - {fileID: 1786585565425162655}
   m_Father: {fileID: 4383849897126358691}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

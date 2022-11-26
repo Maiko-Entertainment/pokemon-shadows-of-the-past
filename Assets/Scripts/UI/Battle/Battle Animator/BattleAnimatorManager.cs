@@ -8,7 +8,21 @@ public class BattleAnimatorManager
 
     public void AddEvent(BattleAnimatorEvent newEvent)
     {
-        events.Add(newEvent);
+        bool priortyInserted = false;
+        foreach (BattleAnimatorEvent ae in events)
+        {
+            int index = events.IndexOf(ae);
+            if (index != 0 && ae.priority < newEvent.priority)
+            {
+                events.Insert(index, newEvent);
+                priortyInserted = true;
+                break;
+            }
+        }
+        if (!priortyInserted)
+        {
+            events.Add(newEvent);
+        }
     }
 
     public void TriggerNextEvent()

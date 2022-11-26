@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BattleEventPokemonAbility : BattleEventPokemon
 {
+    public int animationPriority = 0;
+
     public BattleEventPokemonAbility(PokemonBattleData pokemon): base(pokemon)
     {
         eventId = BattleEventId.pokemonAbilityUse;
@@ -12,6 +14,8 @@ public class BattleEventPokemonAbility : BattleEventPokemon
     public override void Execute()
     {
         base.Execute();
-        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorAbility(pokemon));
+        BattleAnimatorAbility aa = new BattleAnimatorAbility(pokemon);
+        aa.priority = animationPriority;
+        BattleAnimatorMaster.GetInstance().AddEvent(aa);
     }
 }

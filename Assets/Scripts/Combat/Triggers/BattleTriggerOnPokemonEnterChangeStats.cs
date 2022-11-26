@@ -21,7 +21,9 @@ public class BattleTriggerOnPokemonEnterChangeStats : BattleTriggerOnPokemonEnte
             if (pokemon == battleEvent.pokemon)
             {
                 PokemonBattleData pkmnTarget = bm.GetTarget(pokemon, target);
-                bm.AddStatChangeEvent(pkmnTarget, statsLevelChange);
+                BattleEventPokemonChangeStat be = new BattleEventPokemonChangeStat(pkmnTarget, statsLevelChange);
+                be.animationPriority = -10;
+                bm.AddEvent(be);
             }
         }
         return base.Execute(battleEvent);

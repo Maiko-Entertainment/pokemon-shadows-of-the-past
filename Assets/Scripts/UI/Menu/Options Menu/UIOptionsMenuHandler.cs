@@ -1,8 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
 public class UIOptionsMenuHandler : MonoBehaviour
 {
+    public Transform optionsList;
+
+    private void Start()
+    {
+        List<Selectable> selectables = new List<Selectable>();
+        foreach(Transform option in optionsList)
+        {
+            if (option.GetComponent<Selectable>())
+            {
+                selectables.Add(option.GetComponent<Selectable>());
+            }
+        }
+        UtilsMaster.LineSelectables(selectables);
+    }
     public void Close()
     {
         UIPauseMenuMaster.GetInstance().CloseCurrentMenu();

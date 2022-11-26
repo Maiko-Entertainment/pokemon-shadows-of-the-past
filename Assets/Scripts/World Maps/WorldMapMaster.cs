@@ -85,10 +85,9 @@ public class WorldMapMaster : MonoBehaviour
     IEnumerator SetPlayer(Vector2 spawn)
     {
         PlayerController player = GetPlayer();
-        player.transform.position = spawn;
+        player.SetPosition(spawn);
         yield return new WaitForEndOfFrame();
-        player.ResetFollowersPosition();
-        player.transform.position = spawn;
+        player.SetPosition(spawn);
         player.Load(currentMap);
     }
 

@@ -10,8 +10,10 @@ public class AbilityDataOnEnterChangeStat : AbilityData
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         if (bm!=null)
         {
-            bm.AddTrigger(new BattleTriggerOnPokemonEnterChangeStats(pokemon, levelChange, targetType));
-            bm.AddAbilityEvent(pokemon);
+            bm.AddTrigger(new BattleTriggerOnPokemonEnterChangeStats(pokemon, levelChange.Copy(), targetType));
+            BattleEventPokemonAbility e = new BattleEventPokemonAbility(pokemon);
+            e.animationPriority = - 8;
+            bm.AddEvent(e);
         }
     }
 }

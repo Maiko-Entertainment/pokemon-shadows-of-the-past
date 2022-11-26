@@ -148,15 +148,33 @@ public class UIItemsViewer : MonoBehaviour
     }
     public void ReturnToItemSelectionList()
     {
-        foreach (Transform item in itemsContainer)
+        if (currentItem.GetAmount() <= 0)
         {
-            if (item.GetComponent<UIItemsView>().item == currentItem)
+            bool foundNewSelectable = false;
+            foreach (Transform item in itemsContainer)
             {
-                ItemInventory i = InventoryMaster.GetInstance()?.GetItem(currentItem.itemData.itemId);
-                item.GetComponent<UIItemsView>().Load(i);
-                EventSystem eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(item.gameObject, new BaseEventData(eventSystem));
-                break;
+                if (item.GetComponent<UIItemsView>().item == currentItem)
+                {
+                    Destroy(item.gameObject);
+                }
+                else if (!foundNewSelectable)
+                {
+                    UtilsMaster.SetSelected(item.gameObject);
+                    foundNewSelectable = true;
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform item in itemsContainer)
+            {
+                if (item.GetComponent<UIItemsView>().item == currentItem)
+                {
+                    ItemInventory i = InventoryMaster.GetInstance()?.GetItem(currentItem.itemData.itemId);
+                    item.GetComponent<UIItemsView>().Load(i);
+                    UtilsMaster.SetSelected(item.gameObject);
+                    break;
+                }
             }
         }
     }
@@ -243,9 +261,10 @@ public class UIItemsViewer : MonoBehaviour
     }
     public void HandleEquip(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        ItemDataOnPokemon itemData = (ItemDataOnPokemon)currentItem.itemData;
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && itemData.equipable)
         {
-            ActivatePokemonSelector((ItemDataOnPokemon)currentItem.itemData, true);
+            ActivatePokemonSelector(itemData, true);
         }
     }
     public void UseItem(ItemInventory item)
@@ -351,7 +370,10 @@ public class UIItemsViewer : MonoBehaviour
     }
     public void EquipCurrentItemOnPokemon(PokemonCaughtData pokemon)
     {
-        pokemon.EquipItem((ItemDataOnPokemon)currentItem.itemData);
+        if (currentItem.amount > 0)
+        {
+            pokemon.EquipItem((ItemDataOnPokemon)currentItem.itemData);
+        }
         DeactivatePokemonSelector();
     }
     public void SetCurrentPokemon(PokemonCaughtData pokemon)

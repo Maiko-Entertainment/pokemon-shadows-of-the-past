@@ -21,7 +21,7 @@ public class BattleManager
     private bool isBattleActive = false;
     private TacticData currentTacticSelected;
 
-    public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 10;
+    public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 2;
     public static float SHADOW_REBEL_CHANCE = 0.25f;
     public static float SHADOW_IGNORE_CHANCE = 0.1f;
 
@@ -332,7 +332,6 @@ public class BattleManager
             {
                 totalPokemon += 1;
             }
-            pokemonBattle.GetPokemonCaughtData().GainFriendship(BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN);
         }
         if (totalPokemon == 0)
             return;
@@ -341,22 +340,20 @@ public class BattleManager
         {
             if (!pokemonBattle.IsFainted())
             {
-                // Checks if active pokemon is recieving
-                if (GetTeamActivePokemon(BattleTeamId.Team1).battleId == pokemonBattle.battleId)
-                {
-                    // eventManager.AddEvent(new BattleEventPokemonGainExp(pokemonBattle, (bm.isExpShareOn ? 1 : 1) * expGained));
-                }
-                else
+                // Give EXP to participating pokemon but not to active pokemon, put event for active at the end
+                if (GetTeamActivePokemon(BattleTeamId.Team1).battleId != pokemonBattle.battleId)
                 {
                     eventManager.AddEvent(new BattleEventPokemonGainExp(pokemonBattle, expGained));
+                    pokemonBattle.GetPokemonCaughtData().GainFriendship(BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN / 2);
                 }
             }
         }
         // Gives active pokemon exp at the end to not mess with animator events order
         if (GetTeamActivePokemon(BattleTeamId.Team1) != null)
         {
-            // If it does and it exp share active x2 it to make it 100% exp again
-            eventManager.AddEvent(new BattleEventPokemonGainExp(GetTeamActivePokemon(BattleTeamId.Team1), expGained * 2));
+            // If exp share is active x2 it to make it 100% exp again
+            eventManager.AddEvent(new BattleEventPokemonGainExp(GetTeamActivePokemon(BattleTeamId.Team1), bm.isExpShareOn ? expGained * 2 : expGained));
+            GetTeamActivePokemon(BattleTeamId.Team1).GetPokemonCaughtData().GainFriendship(BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN);
         }
         eventManager.ResolveAllEventTriggers();
     }

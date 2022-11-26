@@ -181,6 +181,7 @@ public class PlayerController : MonoBehaviour
             if (!d.justTurn)
                 movesSum += 1;
         }
+        ClearCache();
         return movesSum / speed;
     }
 
@@ -242,6 +243,30 @@ public class PlayerController : MonoBehaviour
         }
         followers = newFollowers;
         return removedFollower;
+    }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
+        target = position;
+        ResetFollowersPosition();
+    }
+
+    public void HideFollowers()
+    {
+        foreach (WorldInteractableBrainFollower follow in followers)
+        {
+            follow.gameObject.SetActive(false);
+        }
+    }
+
+    public void ShowFollowers()
+    {
+        foreach (WorldInteractableBrainFollower follow in followers)
+        {
+            follow.gameObject.SetActive(true);
+            ResetFollowersPosition();
+        }
     }
 
     public void UpdatePokeFollower()
@@ -317,6 +342,8 @@ public class PlayerController : MonoBehaviour
                 }
                 animator.SetFloat("Horizontal", GetCurrentStoredDirection().x);
                 animator.SetFloat("Vertical", GetCurrentStoredDirection().y);
+                // 
+                cacheDirection = direction;
                 storedDirections.RemoveAt(0);
             }
             else
