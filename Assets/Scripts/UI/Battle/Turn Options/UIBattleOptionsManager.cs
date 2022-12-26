@@ -18,7 +18,9 @@ public class UIBattleOptionsManager : MonoBehaviour
     public TextMeshProUGUI tacticGaugeValue;
     public Transform optionsList;
     public Transform subMenuContainer;
+    public TransitionCanvasGroup tacticContainer;
     public bool isInSubmenu = false;
+    public float tacticsStoryProgressNeeded = 25;
 
     private UIItemsViewer itemSelectorInstance;
     private UIPokemonView pokemonSelectorInstance;
@@ -42,9 +44,36 @@ public class UIBattleOptionsManager : MonoBehaviour
 
     public void ShowMoveSelector()
     {
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         BattleAnimatorMaster.GetInstance()?.HideOptions();
-        movesSelector.Show();
-        isInSubmenu = true;
+        PokemonBattleData pokemon = bm.GetTeamActivePokemon(BattleTeamId.Team1);
+        bool hasRepeatForce = false;
+        StatusEffectRepeatMove rm = null;
+        foreach(StatusEffect se in pokemon.GetNonPrimaryStatus())
+        {
+            if (se.effectId == StatusEffectId.RepeatMove)
+            {
+                hasRepeatForce = true;
+                rm = (StatusEffectRepeatMove)se;
+                break;
+            }
+        }
+        if (hasRepeatForce)
+        {
+            bm?.HandleTurnInput(
+                new BattleTurnDesitionPokemonMove(
+                    new MoveEquipped(rm.forceMove),
+                    bm.GetTeamActivePokemon(BattleTeamId.Team1),
+                    BattleTeamId.Team1
+                    )
+                );
+            BattleAnimatorMaster.GetInstance().HideOptions();
+        }
+        else
+        {
+            movesSelector.Show();
+            isInSubmenu = true;
+        }
     }
     public void HideMoveSelector(bool preSelect = false)
     {
@@ -119,6 +148,14 @@ public class UIBattleOptionsManager : MonoBehaviour
         container.FadeIn();
         UtilsMaster.SetSelected(optionsList.GetChild(0).gameObject);
         UpdateTacticSelectedText();
+        if (IsTacticActive())
+        {
+            tacticContainer.FadeIn();
+        }
+        else
+        {
+            tacticContainer.Hide();
+        }
     }
 
     public void UpdateTacticSelectedText()
@@ -167,10 +204,17 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
         {
-            if (!isInSubmenu)
+            if (!isInSubmenu && IsTacticActive())
             {
                 ShowTacticSelector();
             }
         }
+    }
+
+
+    public bool IsTacticActive()
+    {
+        SaveElementNumber storyProgress = (SaveElementNumber)SaveMaster.Instance.GetSaveElement(SaveElementId.storyProgress);
+        return ((float)storyProgress.GetValue() >= tacticsStoryProgressNeeded);
     }
 }

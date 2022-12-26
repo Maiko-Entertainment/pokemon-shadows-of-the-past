@@ -34,5 +34,9 @@ public class BattleEndEvent
                 InteractionsMaster.GetInstance().ExecuteNext();
             }
         }
+        else
+        {
+            InteractionsMaster.GetInstance().ExecuteNext();
+        }
     }
 }

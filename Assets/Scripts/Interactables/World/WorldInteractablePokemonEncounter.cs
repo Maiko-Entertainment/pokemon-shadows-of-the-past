@@ -64,21 +64,31 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
     {
         yield return new WaitForSeconds(delay);
         PokemonCaughtData encounterPokemon = SelectRandomEncounter();
-        PokemonBattleData battlePokemon = new PokemonBattleData(encounterPokemon, 100);
-        BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon, battleData);
-        InteractionsMaster.GetInstance()?.ExecuteNext(0);
+        if (encounterPokemon != null)
+        {
+            PokemonBattleData battlePokemon = new PokemonBattleData(encounterPokemon, 100);
+            BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon, battleData);
+            InteractionsMaster.GetInstance()?.ExecuteNext(0);
+        }
         Destroy(activeGameoBject);
     }
     public PokemonCaughtData SelectRandomEncounter()
     {
+        TimeOfDayType time = WorldMapMaster.GetInstance().GetTimeOfDay();
         int total = 0;
-        foreach (PokemonEncounter encounterPriority in possibleEncounters)
+        List<PokemonEncounter> encounters = new List<PokemonEncounter>();
+        foreach(PokemonEncounter pe in possibleEncounters)
+        {
+            if (pe.timeOfDayRequired == TimeOfDayType.Any || pe.timeOfDayRequired == time)
+                encounters.Add(pe);
+        }
+        foreach (PokemonEncounter encounterPriority in encounters)
         {
             total += encounterPriority.priority;
         }
         int neededPrioritySum = Random.Range(0, total);
         total = 0;
-        foreach (PokemonEncounter encounterPriority in possibleEncounters)
+        foreach (PokemonEncounter encounterPriority in encounters)
         {
             total += encounterPriority.priority;
             if (total >= neededPrioritySum)

@@ -2697,7 +2697,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Z
+  m_text: C
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a3fb5edf33a948459368aa40380b456, type: 2}
   m_sharedMaterial: {fileID: 7872434538031549360, guid: 4a3fb5edf33a948459368aa40380b456, type: 2}
@@ -2917,7 +2917,9 @@ MonoBehaviour:
   tacticGaugeValue: {fileID: 4462045098551186548}
   optionsList: {fileID: 7443672136920810418}
   subMenuContainer: {fileID: 3165918213979976015}
+  tacticContainer: {fileID: 3037516424192262428}
   isInSubmenu: 0
+  tacticsStoryProgressNeeded: 10
 --- !u!114 &4952830122652641176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,6 +2993,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e8ac63dc-b979-45b2-b0dc-4356fa1bbb26
     m_ActionName: Player Character/Left Click[/Mouse/press]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cf0546ef-d30f-43a7-a533-51d14dbc38cb
+    m_ActionName: Player Character/Submit[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player Character
@@ -3008,6 +3014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0feba27ece17a4890133cc16d85f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsList: {fileID: 0}
 --- !u!1 &7443672136313770749
 GameObject:
   m_ObjectHideFlags: 0

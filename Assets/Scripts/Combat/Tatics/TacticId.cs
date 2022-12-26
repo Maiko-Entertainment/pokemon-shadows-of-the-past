@@ -13,4 +13,6 @@ public enum TacticId
     HopelessRoar = 103,
     Praise = 1000,
     FlowerGroove = 1001,
+    ShowTime = 2000,
+    AggresiveStance = 2001,
 }

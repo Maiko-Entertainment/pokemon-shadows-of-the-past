@@ -15,7 +15,9 @@ public class StatusEffectFlinch : StatusEffect
     public override void Initiate()
     {
         BattleTriggerOnMoveSleepCancel cancelMoveTrigger = new BattleTriggerOnMoveSleepCancel(pokemon, new UseMoveMods(PokemonTypeId.Unmodify));
+        BattleTriggerOnPokemonRoundEndRemoveStatus remove = new BattleTriggerOnPokemonRoundEndRemoveStatus(this);
         battleTriggers.Add(cancelMoveTrigger);
+        battleTriggers.Add(remove);
         cancelMoveTrigger.turnsLeft = 1;
         base.Initiate();
     }

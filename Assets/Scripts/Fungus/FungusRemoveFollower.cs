@@ -20,6 +20,7 @@ public class FungusRemoveFollower : Command
         {
             if (addToCurrentCutscene)
             {
+                follower.followMode = false;
                 CutsceneMaster.GetInstance().GetCurrentCutscene()?.cutsceneAgents.Add(follower);
             }
             else if (alsoDestroy)

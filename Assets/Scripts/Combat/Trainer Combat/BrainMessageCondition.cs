@@ -14,11 +14,13 @@ public class BrainMessageCondition
         switch (type)
         {
             case BrainMessageConditionType.trainerPokemonsLeft:
-                bm.AddTrigger(new BattleTriggerOnPokemonFaintNumberLeftDialog(
+                BattleTriggerOnPokemonFaintNumberLeftDialog pl = new BattleTriggerOnPokemonFaintNumberLeftDialog(
                     new BattleTriggerMessageData(flowchart, blockName),
                     BattleTeamId.Team2,
-                    (int) value
-                    ));
+                    (int)value
+                    );
+                pl.priority = -3;
+                bm.AddTrigger(pl);
                 break;
             case BrainMessageConditionType.playersPokemonsLeft:
                 bm.AddTrigger(new BattleTriggerOnPokemonFaintNumberLeftDialog(
@@ -30,7 +32,9 @@ public class BrainMessageCondition
             case BrainMessageConditionType.roundNumber:
                 if (value <= 0)
                 {
-                    BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(new BattleTriggerMessageData(flowchart, blockName)));
+                    BattleAnimatorEventNarrative eventNarrative = new BattleAnimatorEventNarrative(new BattleTriggerMessageData(flowchart, blockName));
+                    eventNarrative.priority = -3;
+                    BattleAnimatorMaster.GetInstance().AddEvent(eventNarrative);
                 }
                 else
                 {

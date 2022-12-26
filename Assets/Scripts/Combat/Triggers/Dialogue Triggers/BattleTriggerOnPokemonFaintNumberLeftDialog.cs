@@ -7,6 +7,7 @@ public class BattleTriggerOnPokemonFaintNumberLeftDialog : BattleTriggerOnPokemo
     public BattleTriggerMessageData messageData;
     public BattleTeamId teamId;
     public int pokemonLeft = 0;
+    public int priority = 0;
     public BattleTriggerOnPokemonFaintNumberLeftDialog(BattleTriggerMessageData messageData, BattleTeamId teamId, int pokemonLeft) :
         base(null, true)
     {
@@ -31,11 +32,12 @@ public class BattleTriggerOnPokemonFaintNumberLeftDialog : BattleTriggerOnPokemo
                     if (pkmn != null)
                         messageData.variables.Add("pokemonFainter", pkmn.GetName());
                     messageData.variables.Add("pokemon", faintedPokemon.GetName());
-                    BattleAnimatorMaster.GetInstance().AddEvent(
+                    BattleAnimatorEventNarrative ae =
                         new BattleAnimatorEventNarrative(
                                 messageData
-                        )
-                    );
+                        );
+                    ae.priority = priority;
+                    BattleAnimatorMaster.GetInstance().AddEvent(ae);
                 }
                 else
                 {

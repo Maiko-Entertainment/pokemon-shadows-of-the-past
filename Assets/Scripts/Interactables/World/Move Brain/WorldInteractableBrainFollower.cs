@@ -9,7 +9,7 @@ public class WorldInteractableBrainFollower : WorldInteractableMoveBrain
 
     protected override void Update()
     {
-        animator.GetComponentInChildren<SpriteRenderer>().sortingOrder = (int)(transform.position.y * -10);
+        animator.GetComponentInChildren<SpriteRenderer>().sortingOrder = (int)(transform.position.y * -10 - 1 + heightOffset);
         if (followMode)
         {
             if (HasReachedTarget())

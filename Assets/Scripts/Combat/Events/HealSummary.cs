@@ -7,6 +7,7 @@ public class HealSummary
     public int amount;
     public HealSource source;
     public int sourceId;
+    public PokemonBattleData pokemonSource;
 
     public HealSummary(int amount, HealSource source, int sourceId)
     {

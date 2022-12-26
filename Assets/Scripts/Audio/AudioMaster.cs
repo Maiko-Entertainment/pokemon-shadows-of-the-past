@@ -9,6 +9,9 @@ public class AudioMaster : MonoBehaviour
     public float soundEffectVolume = 1;
     public float musicVolume = 1;
 
+    public float musicConstantVolume = 0.75f;
+    public float soundConstantVolume = 0.75f;
+
     public AudioSource musicSource;
     public List<AudioSource> voiceSources = new List<AudioSource>();
 
@@ -38,13 +41,23 @@ public class AudioMaster : MonoBehaviour
         return Instance;
     }
 
+    public float GetMusicVolume()
+    {
+        return musicVolume * musicConstantVolume;
+    }
+
+    public float GetSoundVolume()
+    {
+        return soundEffectVolume * soundConstantVolume;
+    }
+
     // Plays a sound effect once
     public void PlaySfx(AudioClip clip, float pitch=1f)
     {
         float duration = clip!=null ? clip.length : 0f;
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = soundEffectVolume;
+        audioSource.volume = GetSoundVolume();
         audioSource.pitch = pitch;
         audioSource.Play();
         Destroy(audioSource, duration + 0.5f);
@@ -55,7 +68,7 @@ public class AudioMaster : MonoBehaviour
         float duration = clip != null && sound.customDuration <= 0 ? clip.length : sound.customDuration;
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = soundEffectVolume * sound.volumeModifier;
+        audioSource.volume = GetSoundVolume() * sound.volumeModifier;
         audioSource.pitch = sound.pitch;
         audioSource.Play();
         Destroy(audioSource, duration + 0.1f);
@@ -64,7 +77,7 @@ public class AudioMaster : MonoBehaviour
     {
         AudioClip clip = sound.audio;
         customSource.clip = clip;
-        customSource.volume = soundEffectVolume * sound.volumeModifier;
+        customSource.volume = GetSoundVolume() * sound.volumeModifier;
         customSource.pitch = sound.pitch;
         customSource.Play();
     }
@@ -72,7 +85,7 @@ public class AudioMaster : MonoBehaviour
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = clip;
-        audioSource.volume = soundEffectVolume;
+        audioSource.volume = GetSoundVolume();
         audioSource.pitch = pitch;
         audioSource.Play();
         Destroy(audioSource, duration);
@@ -82,7 +95,7 @@ public class AudioMaster : MonoBehaviour
         if (musicSource.clip != clip)
         {
             musicSource.clip = clip;
-            musicSource.volume = musicVolume;
+            musicSource.volume = GetMusicVolume();
             musicSource.pitch = 1f;
             musicSource.Play();
         }
@@ -97,7 +110,7 @@ public class AudioMaster : MonoBehaviour
         }
         else 
         {
-            musicSource.volume = clip.volumeModifier * musicVolume;
+            musicSource.volume = clip.volumeModifier * GetMusicVolume();
             musicSource.pitch = clip.pitch;
             musicSource.loop = clip.loopMusic;
             currentClip = clip;
@@ -118,7 +131,7 @@ public class AudioMaster : MonoBehaviour
     {
         soundEffectVolume = volume;
         foreach (AudioSource audioSource in voiceSources)
-            audioSource.volume = volume;
+            audioSource.volume = GetSoundVolume();
     }
 
     private void Update()
@@ -129,7 +142,7 @@ public class AudioMaster : MonoBehaviour
         {
             if (musicSource.clip)
             {
-                musicSource.volume = musicVolume * currentClip.volumeModifier * Mathf.Max(currentFadeTime, fadeTimeTotal / 2) / fadeTimeTotal / 2;
+                musicSource.volume = GetMusicVolume() * currentClip.volumeModifier * Mathf.Max(currentFadeTime, fadeTimeTotal / 2) / fadeTimeTotal / 2;
             }
             else
             {
@@ -146,7 +159,7 @@ public class AudioMaster : MonoBehaviour
             }
             if (currentClip != null && currentClip.audio)
             {
-                musicSource.volume = musicVolume * currentClip.volumeModifier * (fadeTimeTotal - currentFadeTime * 2) / fadeTimeTotal;
+                musicSource.volume = GetMusicVolume() * currentClip.volumeModifier * (fadeTimeTotal - currentFadeTime * 2) / fadeTimeTotal;
             }
         }
     }

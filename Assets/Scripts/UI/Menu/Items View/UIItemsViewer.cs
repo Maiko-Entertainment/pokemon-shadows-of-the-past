@@ -97,6 +97,11 @@ public class UIItemsViewer : MonoBehaviour
             if (elements.Count > 0)
             {
                 UtilsMaster.SetSelected(elements[0].gameObject);
+                itemInfo.FadeIn();
+            }
+            else
+            {
+                itemInfo.FadeOut();
             }
         }
         currentCategory = category;
@@ -110,6 +115,7 @@ public class UIItemsViewer : MonoBehaviour
         itemDescription.text = i.GetDescription();
         itemIcon.sprite = i.icon;
         currentItem = item;
+        bool isInCombat = BattleMaster.GetInstance().IsBattleActive();
         if (itemInfo)
         {
             itemInfo?.FadeIn();
@@ -131,7 +137,7 @@ public class UIItemsViewer : MonoBehaviour
             try
             {
                 ItemDataOnPokemon ip = (ItemDataOnPokemon)item.itemData;
-                if (ip != null && ip.equipable)
+                if (ip != null && ip.equipable && !isInCombat)
                 {
                     equipButton.FadeIn();
                 }
@@ -148,21 +154,9 @@ public class UIItemsViewer : MonoBehaviour
     }
     public void ReturnToItemSelectionList()
     {
-        if (currentItem.GetAmount() <= 0)
+        if (currentItem != null && currentItem.GetAmount() <= 0)
         {
-            bool foundNewSelectable = false;
-            foreach (Transform item in itemsContainer)
-            {
-                if (item.GetComponent<UIItemsView>().item == currentItem)
-                {
-                    Destroy(item.gameObject);
-                }
-                else if (!foundNewSelectable)
-                {
-                    UtilsMaster.SetSelected(item.gameObject);
-                    foundNewSelectable = true;
-                }
-            }
+            ViewCategory(currentCategory, true);
         }
         else
         {
@@ -262,7 +256,8 @@ public class UIItemsViewer : MonoBehaviour
     public void HandleEquip(CallbackContext context)
     {
         ItemDataOnPokemon itemData = (ItemDataOnPokemon)currentItem.itemData;
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && itemData.equipable)
+        bool isInCombat = BattleMaster.GetInstance().IsBattleActive();
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && itemData.equipable && !isInCombat)
         {
             ActivatePokemonSelector(itemData, true);
         }

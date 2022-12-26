@@ -25,6 +25,8 @@ public class BattleManager
     public static float SHADOW_REBEL_CHANCE = 0.25f;
     public static float SHADOW_IGNORE_CHANCE = 0.1f;
 
+    public List<BattleFaintHistory> faintHistory = new List<BattleFaintHistory>();
+
     public BattleManager(BattleTeamData player, BattleTeamData opponent, BattleData battleData)
     {
         team1 = player;
@@ -42,6 +44,7 @@ public class BattleManager
         isBattleActive = true;
         eventManager = new BattleEventManager();
         participatedPokemon = new List<PokemonBattleData>();
+        faintHistory = new List<BattleFaintHistory>();
         BattleAnimatorMaster.GetInstance()?.SetBackground(battleData.battlebackground);
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTurnStart());
         team1.InitiateTeam(BattleTeamId.Team1);
@@ -645,6 +648,9 @@ public class BattleManager
                     break;
                 case StatusEffectId.MoveCharge:
                     status = new StatusEffectMoveCharge(pokemon, lastUsedMove);
+                    break;
+                case StatusEffectId.RepeatMove:
+                    status = new StatusEffectRepeatMove(pokemon, lastUsedMove);
                     break;
                 case StatusEffectId.FireVortex:
                     status = new StatusEffectFireVortex(pokemon);

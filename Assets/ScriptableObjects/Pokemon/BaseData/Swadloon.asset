@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Swadloon
+  m_EditorClassIdentifier: 
+  pokemonId: 541
+  species: 'Swadloon '
+  icon: {fileID: 863031011, guid: c40019314e5585b439860b471b780a41, type: 3}
+  cry: {fileID: 8300000, guid: 6901b047b8e271c4988432778dcce55d, type: 3}
+  baseStats:
+    health: 55
+    attack: 63
+    defense: 90
+    spAttack: 50
+    spDefense: 80
+    speed: 42
+  types: 020000000b000000
+  abilities:
+  - abilityId: 8
+    abilityPriority: 5
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 120
+  baseFriendship: 100
+  baseExp: 50
+  pokedexEntry: Preferring dark, damp places, it spends the entire day eating fallen
+    leaves that lie around it.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: f98696f812f1dfc438b0a0a1fcb0e7d7, type: 2}
+    learnType: 0
+    levelRequired: 0
+  tmMoves:
+  - {fileID: 11400000, guid: 1c050ae473c4e3548a6626b55fa5c81e, type: 2}
+  - {fileID: 11400000, guid: 783c925a920c974409a8ecbd60c84515, type: 2}
+  - {fileID: 11400000, guid: 2ecd598c45e7bc544998dacad1f6202f, type: 2}
+  evolutions:
+  - pokemonId: 542
+    evolutionData:
+      evolutionType: 1
+      value: 150
+  battleAnimation: {fileID: 6615495494568376505, guid: 59e867320a1f1d442bef02ef6532c912, type: 3}
+  overWorldPrefab: {fileID: 1911082464200345690, guid: 5dac6a8b7deaee2409d5eb29945e8736, type: 3}

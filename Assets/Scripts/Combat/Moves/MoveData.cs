@@ -17,6 +17,7 @@ public class MoveData : ScriptableObject
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
     public List<StatusBonus> conditionalBonuses = new List<StatusBonus>();
+    public List<MoveTags> tags = new List<MoveTags>();
     public bool isContact;
     public float drainMultiplier = 0f;
     public int moveCritUp = 0;
@@ -193,6 +194,11 @@ public class MoveData : ScriptableObject
             }
         }
         return hitChance + accuracyAdded;
+    }
+
+    public virtual int GetCritLevel()
+    {
+        return moveCritUp;
     }
 
     public virtual MoveCategoryId GetDefenseCategory()

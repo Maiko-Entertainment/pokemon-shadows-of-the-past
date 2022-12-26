@@ -17,5 +17,7 @@ public enum AbilityId
     VitalSpirit = 13,
     EffectSpores = 14,
     KeenEye = 15,
-    Synchronize = 16
+    Synchronize = 16,
+    Guts = 17,
+    Insomnia = 18,
 }

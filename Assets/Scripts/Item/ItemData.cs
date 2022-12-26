@@ -12,6 +12,7 @@ public class ItemData : ScriptableObject
     public AudioClip useSound;
     public Sprite icon;
     public string description;
+    public int price = 100;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 
     public string GetName()
@@ -61,13 +62,4 @@ public class ItemData : ScriptableObject
         }
     }
 
-    public virtual void PlayAnimations()
-    {
-        foreach (BattleAnimation anim in animations)
-        {
-            BattleAnimatorMaster.GetInstance()?.AddEvent(
-                new BattleAnimatorEventPokemonMoveAnimation(null, null, anim)
-            );
-        }
-    }
 }

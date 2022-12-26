@@ -25,7 +25,7 @@ public class InventoryMaster : MonoBehaviour
     {
         foreach (PersistedItem pi in save.persistedItems)
         {
-            inventory.Add(new ItemInventory(pi));
+            ChangeItemAmount(pi.id, pi.amount);
         }
     }
     public void HandleSave()
@@ -62,8 +62,7 @@ public class InventoryMaster : MonoBehaviour
             }
         }
         ItemData newInstance = ItemMaster.GetInstance().GetItem(id);
-        ItemInventory newInventoryInstance = new ItemInventory(newInstance, 0);
-        newInventoryInstance.ChangeAmount(changeAmount);
+        ItemInventory newInventoryInstance = new ItemInventory(newInstance, changeAmount);
         inventory.Add(newInventoryInstance);
     }
 
@@ -80,5 +79,21 @@ public class InventoryMaster : MonoBehaviour
         ItemInventory newInventoryInstance = new ItemInventory(newInstance, 0);
         inventory.Add(newInventoryInstance);
         return newInventoryInstance;
+    }
+
+    public int GetMoney()
+    {
+        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElement(SaveElementId.money);
+        float moneyAmount = (float)money.GetValue();
+        return (int)moneyAmount;
+    }
+
+    public int ChangeMoney(int change)
+    {
+        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElement(SaveElementId.money);
+        float moneyAmount = (float)money.GetValue();
+        int amountAfter = Mathf.Max(0, (int) moneyAmount + change);
+        money.SetValue((float) amountAfter);
+        return amountAfter;
     }
 }

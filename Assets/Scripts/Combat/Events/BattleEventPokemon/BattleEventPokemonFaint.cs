@@ -24,6 +24,8 @@ public class BattleEventPokemonFaint : BattleEventPokemon
         BattleAnimatorMaster.GetInstance()?.AddEvent(
             new BattleAnimatorEventPokemonFaint(pokemon)
             );
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        bm?.faintHistory.Add(new BattleFaintHistory(pokemon, bm.turnsPassed));
         base.Execute();
     }
 }

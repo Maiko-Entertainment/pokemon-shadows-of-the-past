@@ -885,6 +885,7 @@ MonoBehaviour:
   waterTilemap: {fileID: 523703274245350467}
   collisionTilemap: {fileID: 523703272685972419}
   timeOfDayEffects: []
+  noSave: 0
 --- !u!1 &523703273911530659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2239,6 +2240,7 @@ MonoBehaviour:
   - saveVariable: 4
     condition: 1
     value: 199
+  inventoryConditions: []
   spawns:
   - spawn: {fileID: 6545681842882674216, guid: f8c7a9e344846d849bea297c8957adc3, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
@@ -2493,6 +2495,7 @@ MonoBehaviour:
   - saveVariable: 4
     condition: 1
     value: 99
+  inventoryConditions: []
   spawns:
   - spawn: {fileID: 22329966200232373, guid: e01f9709820c51041a41516176a18234, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
@@ -3128,6 +3131,7 @@ MonoBehaviour:
   - saveVariable: 4
     condition: 1
     value: 10000
+  inventoryConditions: []
   spawns:
   - spawn: {fileID: 5980481502884496339, guid: 075d0eec470610d478111f1db83af5ee, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
@@ -3183,10 +3187,8 @@ MonoBehaviour:
   - saveVariable: 5
     condition: 0
     value: 0
-  spawns:
-  - spawn: {fileID: 0}
-    spawnPostion: {x: 0, y: 0, z: 0}
-    spawnAsChild: 0
+  inventoryConditions: []
+  spawns: []
   chance: 1
 --- !u!114 &9007121308299230788
 MonoBehaviour:
@@ -3204,10 +3206,8 @@ MonoBehaviour:
   - saveVariable: 5
     condition: 4
     value: 0
-  spawns:
-  - spawn: {fileID: 0}
-    spawnPostion: {x: 0, y: 0, z: 0}
-    spawnAsChild: 0
+  inventoryConditions: []
+  spawns: []
   chance: 1
 --- !u!1001 &605667865510402318
 PrefabInstance:
@@ -3470,7 +3470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1963646187185024075, guid: fe8f8d9e87a591a41b0dc8a6ebc735a4, type: 3}
       propertyPath: m_InstanceId
-      value: -194276
+      value: -55036
       objectReference: {fileID: 0}
     - target: {fileID: 4205018214626544716, guid: fe8f8d9e87a591a41b0dc8a6ebc735a4, type: 3}
       propertyPath: m_Name
@@ -3522,7 +3522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201846868702605832, guid: fe8f8d9e87a591a41b0dc8a6ebc735a4, type: 3}
       propertyPath: m_InstanceId
-      value: -194284
+      value: -55044
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe8f8d9e87a591a41b0dc8a6ebc735a4, type: 3}

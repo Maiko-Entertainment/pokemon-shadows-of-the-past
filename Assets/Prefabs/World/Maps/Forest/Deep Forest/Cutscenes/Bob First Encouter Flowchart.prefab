@@ -77,6 +77,9 @@ GameObject:
   - component: {fileID: 3398818336445203057}
   - component: {fileID: 956172610703147293}
   - component: {fileID: 8859791782678711320}
+  - component: {fileID: 7514589225401859381}
+  - component: {fileID: 6507272224749831437}
+  - component: {fileID: 1524589102102207188}
   m_Layer: 0
   m_Name: Bob First Encouter Flowchart
   m_TagString: Untagged
@@ -128,7 +131,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 4340097691500858817}
   selectedCommands:
-  - {fileID: 6415040820405466224}
+  - {fileID: 7390296466300929566}
   variables:
   - {fileID: 1355108208977226213}
   - {fileID: 7282840463717553547}
@@ -179,6 +182,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 6517656624077170036}
+  - {fileID: 1524589102102207188}
   - {fileID: 7011887521593249658}
   - {fileID: 7390296466300929566}
   - {fileID: 3054759609409733785}
@@ -189,6 +193,8 @@ MonoBehaviour:
   - {fileID: 2327580458882885014}
   - {fileID: 1958969579815934602}
   - {fileID: 1386640348433199182}
+  - {fileID: 6507272224749831437}
+  - {fileID: 7514589225401859381}
   - {fileID: 5597812538018648256}
   - {fileID: 6415040820405466224}
   - {fileID: 8538868900557355569}
@@ -375,7 +381,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: A faint light covers the deep woods, the sunlight bathes you for a moment.
   description: 
-  character: {fileID: 7251855963752328542}
+  character: {fileID: 0}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -402,7 +408,7 @@ MonoBehaviour:
   indentLevel: 0
   storyText: '{$partyName0} is hiding behind you. When did it get out?'
   description: 
-  character: {fileID: 7251855963752328542}
+  character: {fileID: 0}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -913,6 +919,7 @@ MonoBehaviour:
     pitch: 1
     customDuration: -1
     volumeModifier: 1
+    fadeTime: 0.5
     loopMusic: 1
 --- !u!114 &7028108613870569670
 MonoBehaviour:
@@ -1683,6 +1690,66 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &7514589225401859381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 58
+  indentLevel: 0
+  storyText: A faint light covers the deep woods, the sunlight bathes you for a moment.
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &6507272224749831437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 59
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 1
+  durationOLD: 0
+--- !u!114 &1524589102102207188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340097691500858816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ceabee21a73eaa4e80cede4c5bc34f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 60
+  indentLevel: 0
+  agentId: Pokefollower
 --- !u!1001 &5335595161065517666
 PrefabInstance:
   m_ObjectHideFlags: 0

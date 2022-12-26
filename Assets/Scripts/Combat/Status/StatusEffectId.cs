@@ -19,5 +19,7 @@ public enum StatusEffectId
     Charged = 15,
     Hopeless = 16,
     Flinch = 17,
-    Frostbite = 18
+    Frostbite = 18,
+    RepeatMove = 19,
+    Protected = 20,
 }

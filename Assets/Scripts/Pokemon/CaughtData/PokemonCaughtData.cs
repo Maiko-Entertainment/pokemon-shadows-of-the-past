@@ -109,6 +109,11 @@ public class PokemonCaughtData
     {
         return pokemonName != "" ? pokemonName : pokemonBase.species;
     }
+
+    public void SetName(string newName)
+    {
+        pokemonName = newName;
+    }
     public int GetLevel()
     {
         return level;
@@ -241,7 +246,7 @@ public class PokemonCaughtData
             movesLearned.AddRange(pokemonBase.GetMovesLearnedForLevel(GetLevel()));
         }
         experience = remainingExp;
-        
+        CheckForLearnedMoves(GetLevel());
         return new LevelUpSummary(initialLevel, GetLevel(), movesLearned);
     }
 

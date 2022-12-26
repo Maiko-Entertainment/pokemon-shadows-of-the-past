@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -16,6 +15,7 @@ public class SaveMaster : MonoBehaviour
 
     public bool loadOnStart = false;
     public bool loadHackedData = false;
+    public bool startNewGame = false;
 
     public List<SaveElement> saveElements = new List<SaveElement>();
 
@@ -35,7 +35,16 @@ public class SaveMaster : MonoBehaviour
     private void Start()
     {
         if (loadOnStart)
-            Load(0);
+        {
+            if (startNewGame)
+            {
+                StartNewGame();
+            }
+            else
+            {
+                LoadSaveFile(0);
+            }
+        }
     }
 
     public void LoadSaveSlots()
@@ -51,16 +60,22 @@ public class SaveMaster : MonoBehaviour
         }
     }
 
-    public void Load(int saveIndex)
+    public void LoadSaveFile(int saveIndex)
     {
         SaveFile file = saveFiles[saveIndex];
         activeSaveFile = file == null ? new SaveFile() : file;
-        PartyMaster.GetInstance().Load(activeSaveFile);
-        InventoryMaster.GetInstance().Load(activeSaveFile);
-        TacticsMaster.GetInstance().Load(activeSaveFile);
-        WorldMapMaster.GetInstance().Load(activeSaveFile);
-        PokemonMaster.GetInstance().Load(activeSaveFile);
+        Load(activeSaveFile);
     }
+
+    public void Load(SaveFile save)
+    {
+        PartyMaster.GetInstance().Load(save);
+        InventoryMaster.GetInstance().Load(save);
+        TacticsMaster.GetInstance().Load(save);
+        WorldMapMaster.GetInstance().Load(save);
+        PokemonMaster.GetInstance().Load(save);
+    }
+
 
     public void Save(int saveIndex)
     {
@@ -149,5 +164,16 @@ public class SaveMaster : MonoBehaviour
         newElement.id = id;
         newElement.value = newValue;
         activeSaveFile.persistedElements.Add(newElement);
+    }
+
+    public SaveFile GetActiveSave()
+    {
+        return activeSaveFile;
+    }
+
+    public void StartNewGame()
+    {
+        activeSaveFile = new SaveFile();
+        Load(activeSaveFile);
     }
 }

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
+  m_Name: Protect
+  m_EditorClassIdentifier: 
+  moveId: 120
+  moveName: Protect
+  power: 0
+  hitChance: 1
+  alwaysHit: 0
+  uses: 10
+  typeId: 10
+  categoryId: 2
+  targetType: 1
+  statusChances:
+  - effectId: 20
+    targetType: 1
+    chance: 1
+    removeStatusInstead: 0
+  moveStatChanges: []
+  conditionalBonuses: []
+  tags: 00000000
+  isContact: 0
+  drainMultiplier: 0
+  moveCritUp: 0
+  priority: 4
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 
+  description: This move enables the user to protect itself from all attacks. Its
+    chance of failing rises if it is used in succession.
+  animations:
+  - {fileID: 5422395266161231396, guid: 564400be45b073d4ba082ade247f115e, type: 3}
+  - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
+  - {fileID: 1898169733193189703, guid: a5e4345b621cdc6438516129570ea061, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 3531474703944891691, guid: 7116afbd55041824fa298fe624b44723, type: 3}

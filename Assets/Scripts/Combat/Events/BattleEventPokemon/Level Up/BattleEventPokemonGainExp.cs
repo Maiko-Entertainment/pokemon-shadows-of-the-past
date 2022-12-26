@@ -48,6 +48,17 @@ public class BattleEventPokemonGainExp : BattleEventPokemon
                 BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartGainLevelText(pokemon.GetName(), level);
             }
         }
+        foreach(MoveData learnedMove in summary.movesLearned)
+        {
+            BattleAnimatorEventNarrative e = new BattleAnimatorEventNarrative(
+                new BattleTriggerMessageData(
+                    BattleAnimatorMaster.GetInstance().battleFlowchart,
+                    "Learn Move",
+                    new Dictionary<string, string>() { { "pokemon", pokemon.GetName() }, { "move", learnedMove.moveName } }
+                )
+            );
+            BattleAnimatorMaster.GetInstance().AddEvent(e);
+        }
         base.Execute();
     }
 }

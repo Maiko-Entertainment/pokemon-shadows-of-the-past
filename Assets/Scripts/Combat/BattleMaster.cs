@@ -73,6 +73,11 @@ public class BattleMaster : MonoBehaviour
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
         currentBattle = newBattle;
+        currentBattle.SetOnEndEvent(new BattleEndEvent(
+            battleFlowchart,
+            "",
+            "Lose Wild Battle"
+        ));
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
     }
@@ -85,7 +90,7 @@ public class BattleMaster : MonoBehaviour
     public void RunTrainerBattle(TrainerCombatData trainer)
     {
         List<PokemonCaughtData> party = PartyMaster.GetInstance().GetParty();
-        List<TacticData> finalTactics = TacticsMaster.GetInstance().GetEquippedTactics();
+        List<TacticData> finalTactics = new List<TacticData>(TacticsMaster.GetInstance().GetEquippedTactics());
         finalTactics.AddRange(trainer.battleData.playerExtraTactics);
         BattleTeamData team1 = new BattleTeamData(
             (string)SaveMaster.Instance.GetSaveElement(SaveElementId.playerName).GetValue(),

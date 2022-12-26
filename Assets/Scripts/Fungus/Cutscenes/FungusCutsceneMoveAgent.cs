@@ -74,6 +74,6 @@ public class FungusCutsceneMoveAgent : Command
 
     public override string GetSummary()
     {
-        return base.GetSummary();
+        return base.GetSummary() + "Move "+agentId;
     }
 }

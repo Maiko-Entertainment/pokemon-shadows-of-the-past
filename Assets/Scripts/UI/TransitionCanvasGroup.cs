@@ -44,6 +44,13 @@ public class TransitionCanvasGroup : TransitionBase
         preventDestroy = false;
     }
 
+    public override void Hide()
+    {
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0;
+    }
+
     public virtual void FadeOutTemporary()
     {
         FadeOut();

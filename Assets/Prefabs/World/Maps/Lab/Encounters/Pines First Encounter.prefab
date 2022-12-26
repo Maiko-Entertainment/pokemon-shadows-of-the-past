@@ -123,10 +123,8 @@ GameObject:
   - component: {fileID: 3205212065429468099}
   - component: {fileID: 6748979955627473754}
   - component: {fileID: 8277827569835193018}
-  - component: {fileID: 8289537129814248028}
   - component: {fileID: 1298933521351501898}
   - component: {fileID: 3411888741608389530}
-  - component: {fileID: 1947818686461284857}
   - component: {fileID: 3767241158848373601}
   - component: {fileID: 4491443485684543651}
   - component: {fileID: 271380175036875738}
@@ -201,6 +199,8 @@ GameObject:
   - component: {fileID: 8999967764146160067}
   - component: {fileID: 5303163575865036866}
   - component: {fileID: 5333609612683150654}
+  - component: {fileID: 8868576949803101468}
+  - component: {fileID: 8396854097045605305}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -250,9 +250,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 8849139509757964043}
+  - {fileID: 8277827569835193018}
   selectedCommands:
-  - {fileID: 3986748426500914152}
+  - {fileID: 8396854097045605305}
   variables:
   - {fileID: 3767241158848373601}
   description: 
@@ -291,11 +291,11 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2672337069337506083}
-  - {fileID: 8289537129814248028}
+  - {fileID: 8868576949803101468}
   - {fileID: 1298933521351501898}
   - {fileID: 8101754111842830887}
   - {fileID: 7465883866136875504}
-  - {fileID: 1947818686461284857}
+  - {fileID: 8396854097045605305}
   - {fileID: 7887412047608688378}
   - {fileID: 8395044678297717442}
   - {fileID: 3411888741608389530}
@@ -315,26 +315,6 @@ MonoBehaviour:
   - {fileID: 448685865318489794}
   - {fileID: 621446101392357760}
   suppressAllAutoSelections: 0
---- !u!114 &8289537129814248028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963668545921768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1ff0f540016ff64ab1556db6fe1e10f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 1
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 1061918063236512853}
-  replacedStage: {fileID: 0}
-  useDefaultSettings: 1
-  fadeDuration: 0
-  waitUntilFinished: 0
 --- !u!114 &1298933521351501898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,34 +367,6 @@ MonoBehaviour:
   move: 1
   shiftIntoPlace: 0
   waitUntilFinished: 0
---- !u!114 &1947818686461284857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4963668545921768918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 4
-  indentLevel: 0
-  storyText: "Oh, you must be {$playerName}, I\u2019m glad you are okay, please join
-    us."
-  description: 
-  character: {fileID: 4044132563341216013}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &3767241158848373601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2343,6 +2295,54 @@ MonoBehaviour:
   variableId: 12
   operation: 0
   value: 1
+--- !u!114 &8868576949803101468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ff0f540016ff64ab1556db6fe1e10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 129
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 1061918063236512853}
+  replacedStage: {fileID: 0}
+  useDefaultSettings: 1
+  fadeDuration: 0
+  waitUntilFinished: 0
+--- !u!114 &8396854097045605305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 130
+  indentLevel: 0
+  storyText: "Oh, you must be {$playerName}, I\u2019m glad you are okay, please join
+    us."
+  description: 
+  character: {fileID: 4044132563341216013}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &5515599232322975699
 GameObject:
   m_ObjectHideFlags: 0

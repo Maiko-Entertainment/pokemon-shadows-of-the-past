@@ -53,6 +53,14 @@ public class WorldMapMaster : MonoBehaviour
         SaveMaster.Instance.activeSaveFile.playerPos = new SerializableVector2(GetPlayer().gameObject.transform.position);
     }
 
+    public void GoToMapToLatestSafePoint()
+    {
+        SaveFile sf = SaveMaster.Instance.GetActiveSave();
+        int mapId = sf.lastSafeZoneMapId;
+        int safeIndex = sf.lastSafeZoneIndex;
+        GoToMap(mapId, safeIndex);
+    }
+
     public void GoToMap(int mapId, int spawnIndex)
     {
         StartCoroutine(GoToMapCourutine(mapId, spawnIndex));

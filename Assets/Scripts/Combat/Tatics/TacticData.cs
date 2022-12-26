@@ -11,6 +11,7 @@ public class TacticData : ScriptableObject
     public UseMoveMods powerMoveMod = new UseMoveMods(PokemonTypeId.Unmodify);
     public List<StatusEffectId> statusClears = new List<StatusEffectId>();
     public List<MoveStatusChance> statusAdds = new List<MoveStatusChance>();
+    public List<MoveStatChange> statChanges = new List<MoveStatChange>();
     public List<BattleAnimation> afterTacticTextAnims = new List<BattleAnimation>();
 
     public string blockName;
@@ -62,11 +63,20 @@ public class TacticData : ScriptableObject
         }
         foreach (MoveStatusChance msc in statusAdds)
         {
-            PokemonBattleData pokemonTarget = bm.GetTarget(pokemon, msc.targetType);
+            PokemonBattleData pokemonTarget = bm.GetTarget(teamUsersActivePokemon, msc.targetType);
             float random = Random.value;
             if (random < msc.chance)
             {
                 bm.AddStatusEffectEvent(pokemonTarget, msc.effectId);
+            }
+        }
+        foreach (MoveStatChange msc in statChanges)
+        {
+            PokemonBattleData pokemonTarget = bm.GetTarget(teamUsersActivePokemon, msc.targetType);
+            float random = Random.value;
+            if (random < msc.changeChance)
+            {
+                bm.AddStatChangeEvent(pokemonTarget, msc.statsAmountChange);
             }
         }
     }

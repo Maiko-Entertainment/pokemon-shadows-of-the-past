@@ -7,7 +7,7 @@ public class TacticsMaster : MonoBehaviour
 {
     public static TacticsMaster instance;
     public List<TacticData> tactics = new List<TacticData>();
-    public List<TacticData> equippedTactics = new List<TacticData>();
+    public List<TacticData> baseTactics = new List<TacticData>();
     public List<TacticData> learntTactics = new List<TacticData>();
     public Flowchart tacticsFlochart;
     private void Awake()
@@ -24,10 +24,6 @@ public class TacticsMaster : MonoBehaviour
 
     public void Load(SaveFile save)
     {
-        foreach (PersistedTactic pt in save.persistedTacticsEquipped)
-        {
-            equippedTactics.Add(GetTactic(pt.tacticId));
-        }
         foreach (PersistedTactic pt in save.persistedTactics)
         {
             learntTactics.Add(GetTactic(pt.tacticId));
@@ -49,6 +45,6 @@ public class TacticsMaster : MonoBehaviour
     }
     public List<TacticData> GetEquippedTactics()
     {
-        return equippedTactics;
+        return baseTactics;
     }
 }

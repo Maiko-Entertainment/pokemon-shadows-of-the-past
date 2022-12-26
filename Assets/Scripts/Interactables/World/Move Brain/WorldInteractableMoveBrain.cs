@@ -10,6 +10,7 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
     public Animator animator;
     public Transform innerTransform;
     public float speed = 1;
+    public float heightOffset = 0;
 
     protected Tilemap groundTilemap;
     protected Tilemap waterTilemap;
@@ -107,7 +108,7 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
 
     protected virtual void Update()
     {
-        animator.GetComponentInChildren<SpriteRenderer>().sortingOrder = (int)(transform.position.y * -10);
+        animator.GetComponentInChildren<SpriteRenderer>().sortingOrder = (int)(transform.position.y * -10 + heightOffset);
         if (HasReachedTarget())
         {
             if (cachedDirections.Count > 0)

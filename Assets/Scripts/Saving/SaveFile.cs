@@ -11,7 +11,7 @@ public class SaveFile
     public List<PersistedPokemon> persistedBox = new List<PersistedPokemon>();
     public List<PersistedTactic> persistedTacticsEquipped = new List<PersistedTactic>();
     public List<PersistedTactic> persistedTactics = new List<PersistedTactic>();
-    public int playerMapId = 0;
+    public int playerMapId = 2;
     public SerializableVector2 playerPos = new SerializableVector2(Vector2.zero);
     public int lastSafeZoneMapId = 3;
     public int lastSafeZoneIndex = 0;

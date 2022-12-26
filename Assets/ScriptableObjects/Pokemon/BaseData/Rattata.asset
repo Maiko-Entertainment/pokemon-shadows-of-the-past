@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Rattata
+  m_EditorClassIdentifier: 
+  pokemonId: 19
+  species: Rattata
+  icon: {fileID: -685710801, guid: de1f12af2d3b95348a04ebc1edcd6080, type: 3}
+  cry: {fileID: 8300000, guid: bbeabc7fc06ba85449f2c8f3c4341fd2, type: 3}
+  baseStats:
+    health: 40
+    attack: 60
+    defense: 35
+    spAttack: 25
+    spDefense: 35
+    speed: 72
+  types: 0a000000
+  abilities:
+  - abilityId: 17
+    abilityPriority: 5
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 200
+  baseFriendship: 70
+  baseExp: 50
+  pokedexEntry: It's cautious in the extreme, and its hardy vitality lets it live
+    in any kind of environment.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: 41d52cfdf4c56544096722d0b8d4c757, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 3cdfe265b6824f84593561171fe9f81a, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: d554acc5c51af0341a0d88e9d11bf936, type: 2}
+    learnType: 0
+    levelRequired: 4
+  - move: {fileID: 11400000, guid: e0cc9ca160dab794caf3a20eafa07134, type: 2}
+    learnType: 0
+    levelRequired: 7
+  - move: {fileID: 11400000, guid: a475836ff5a04134f9b4e40053644e25, type: 2}
+    learnType: 0
+    levelRequired: 10
+  - move: {fileID: 11400000, guid: 7cd0e7db1df63e14c9e6adffcc73facc, type: 2}
+    learnType: 0
+    levelRequired: 15
+  - move: {fileID: 11400000, guid: e9ca0aa86d16227449321624ed85dffb, type: 2}
+    learnType: 0
+    levelRequired: 22
+  tmMoves: []
+  evolutions:
+  - pokemonId: 20
+    evolutionData:
+      evolutionType: 0
+      value: 20
+  battleAnimation: {fileID: 474295086967107686, guid: e1dbdf1da33781c4c9a7ab807b9bd2e0, type: 3}
+  overWorldPrefab: {fileID: 5949225488027024645, guid: 3fcd12bed2b6e5f4781169f796c135bb, type: 3}

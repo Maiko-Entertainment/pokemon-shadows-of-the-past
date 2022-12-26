@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemDataOnPokemon : ItemData
 {
     public bool equipable;
+    public bool unequipAfterBattleUse = true;
     public InBattleAutouseCondition autoUseCondition;
 
     public virtual List<BattleTrigger> InitiateInBattle(PokemonBattleData user)
@@ -18,6 +19,11 @@ public class ItemDataOnPokemon : ItemData
                 trigger.maxTriggers = 1;
                 triggers.Add(trigger);
                 battle.AddTrigger(trigger);
+                break;
+            case InBattleAutouseCondition.EndOfRound:
+                BattleTriggerEndOfRoundUseItem roundEndTrigger = new BattleTriggerEndOfRoundUseItem(user, this);
+                triggers.Add(roundEndTrigger);
+                battle.AddTrigger(roundEndTrigger);
                 break;
         }
         return triggers;
@@ -53,7 +59,7 @@ public class ItemDataOnPokemon : ItemData
         {
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(useSound, 1, true));
         }
-        PlayAnimations();
+        PlayAnimations(pokemon);
         HandleAfterUse();
     }
     public void PlayAnimations(PokemonBattleData pokemon)

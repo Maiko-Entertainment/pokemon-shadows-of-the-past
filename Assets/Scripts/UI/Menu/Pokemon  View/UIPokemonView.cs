@@ -17,17 +17,20 @@ public class UIPokemonView : MonoBehaviour
     public UIPokemonInfo pokemonSectionInfo;
     public UIPokemonStats pokemonSectionStats;
     public UIPokemonMovesViewer pokemonSectionMoves;
+    public UIPokemonSettings pokemonSettings;
 
     public Transform pokemonListContainer;
     public Transform typeList;
     public Transform pokemonSectionContainer;
     public Transform sectionsListContainer;
-    public TextMeshProUGUI pokemonName;
+    public TMP_InputField pokemonName;
     public TextMeshProUGUI pokemonAbility;
     public Image pokemonSprite;
     public Image pokemonIcon;
     public Image pokemonHeart;
     public Image pokemonHeartShattered;
+    public GameObject swapHelp;
+    public GameObject battlePickHelp;
 
     private PokemonAnimationController animator;
 
@@ -35,6 +38,8 @@ public class UIPokemonView : MonoBehaviour
     private PokemonCaughtData swapingPokemon;
     private int currentSectionIndex = 0;
     private bool isInPreFaintPick = false;
+    private bool isTyping = false;
+    private bool closing = false;
 
     private void Start()
     {
@@ -92,7 +97,7 @@ public class UIPokemonView : MonoBehaviour
     }
     public void HandleSwaping(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick)
         {
             if (swapingPokemon != null)
             {
@@ -136,14 +141,30 @@ public class UIPokemonView : MonoBehaviour
     {
         UpdatePokemonList(PartyMaster.GetInstance().GetParty()[0]);
         LoadPokemon(currentPokemon);
-
+        bool isBattleActive = BattleMaster.GetInstance().IsBattleActive();
+        if (isBattleActive)
+        {
+            battlePickHelp?.SetActive(true);
+        }
+        else
+        {
+            swapHelp?.SetActive(true);
+        }
     }
 
     public void LoadPokemon(PokemonCaughtData pkmn)
     {
         currentPokemon = pkmn;
         List<PokemonTypeId> types = pkmn.GetTypes();
-        pokemonName.text = pkmn.GetName();
+        if (pkmn.pokemonName == "")
+        {
+            pokemonName.transform.Find("Text Area").transform.Find("Placeholder").GetComponent<TMP_Text>().text = pkmn.GetName();
+            pokemonName.text = "";
+        }
+        else
+        {
+            pokemonName.text = pkmn.GetName();
+        }
         pokemonAbility.text = AbilityMaster.GetInstance().GetAbility(pkmn.abilityId).GetName();
         foreach (Transform t in typeList)
             Destroy(t.gameObject);
@@ -194,7 +215,7 @@ public class UIPokemonView : MonoBehaviour
 
     public void HandlePokemonMenuSection(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isTyping)
         {
             Vector2 direction = context.ReadValue<Vector2>();
             int previousIndex = currentSectionIndex;
@@ -220,13 +241,14 @@ public class UIPokemonView : MonoBehaviour
     }
     public void HandlePokemonPick(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isTyping && !closing)
         {
             if (BattleMaster.GetInstance().IsBattleActive())
             {
                 BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
                 PokemonBattleData pbd = bm.GetTeamActivePokemon(BattleTeamId.Team1);
-                if (!currentPokemon.IsFainted())
+                PokemonBattleData currentActivePokemonBD = bm.GetPokemonFromCaughtData(currentPokemon);
+                if (!currentPokemon.IsFainted() && pbd.battleId != currentActivePokemonBD.battleId)
                 {
                     if (pbd.IsFainted())
                     {
@@ -247,7 +269,15 @@ public class UIPokemonView : MonoBehaviour
     }
     public void HandleClose(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick && !isTyping)
+        {
+            HandleClose();
+        }
+    }
+
+    public void HandleSubmit(CallbackContext context)
+    {
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && isTyping)
         {
             HandleClose();
         }
@@ -255,6 +285,7 @@ public class UIPokemonView : MonoBehaviour
 
     public void HandleClose()
     {
+        closing = true;
         if (BattleMaster.GetInstance().IsBattleActive())
         {
             BattleAnimatorMaster.GetInstance().HidePokemonSelection(!isInPreFaintPick);
@@ -278,6 +309,9 @@ public class UIPokemonView : MonoBehaviour
                 break;
             case 2:
                 ViewPokemonMoves();
+                break;
+            case 3:
+                ViewPokemonSettings();
                 break;
         }
     }
@@ -304,9 +338,34 @@ public class UIPokemonView : MonoBehaviour
         HandleSectionChange();
     }
 
+    public void ViewPokemonSettings()
+    {
+        ClearSection();
+        Instantiate(pokemonSettings, pokemonSectionContainer).Load(this);
+        currentSectionIndex = 3;
+        HandleSectionChange();
+    }
+
     public bool IsCurrentMenuActive()
     {
         return BattleMaster.GetInstance().IsBattleActive() || UIPauseMenuMaster.GetInstance().GetCurrentMenu() == GetComponent<UIMenuPile>();
+    }
+
+    public void SetNameChanger()
+    {
+        UtilsMaster.SetSelected(pokemonName.gameObject);
+        isTyping = true;
+        pokemonName.transform.Find("Text Area").transform.Find("Placeholder").GetComponent<TMP_Text>().text = "";
+    }
+    public void SaveNameChanger()
+    {
+        UtilsMaster.SetSelected(pokemonName.gameObject);
+        isTyping = false;
+        currentPokemon.SetName(pokemonName.text);
+        pokemonName.transform.Find("Text Area").transform.Find("Placeholder").GetComponent<TMP_Text>().text = currentPokemon.GetName();
+        UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
+        UpdatePokemonList(currentPokemon);
+        ViewPokemonSettings();
     }
 
     private void OnDestroy()
