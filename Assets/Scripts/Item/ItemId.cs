@@ -24,6 +24,8 @@ public enum ItemId
     // Held Items
     MightyClaw = 2000,
     Leftovers = 2001,
+    // Key
+    SleepoverInvitation = 3000,
     // TMs
     TMGigaDrain = 10000,
     TMSwift = 10001,

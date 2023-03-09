@@ -24,6 +24,7 @@ public class MoveData : ScriptableObject
     public int priority = 0;
     public bool stealInsteadOfDestroy = false;
     public List<ItemCategory> destroyHeldItems = new List<ItemCategory>();
+    [TextArea]
     public string description;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 

@@ -30,11 +30,15 @@ public override void Initiate()
                 );
 
         List<BattleAnimation> animations = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId).hitAnims;
-        BattleTrigger animTrigger = new BattleTriggerRoundEndAnimations(
+        BattleTriggerRoundEndAnimations animTrigger = new BattleTriggerRoundEndAnimations(
                        pokemon,
                        pokemon,
                        animations
                    );
+        // This makes it so that it will select the user of the anim based on the targets
+        // opposing activate pokemon instead of a fixed pokemon
+        // For Leech Seed, the target is set as the pokemon with the condition, and the user the opposing pokemon
+        animTrigger.userIsOppositeOpposingTeamFromTarget = true;
 
         BattleTrigger messageTrigger = new BattleTriggerOnPokemonTurnEndMessage(
                     pokemon,

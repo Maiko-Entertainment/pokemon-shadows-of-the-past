@@ -21,11 +21,11 @@ public class UIBattleMovePicker : MonoBehaviour
     public TextMeshProUGUI moveAccuracy;
     public Image moveCategory;
 
-
     public Transform moveList;
     public TransitionFilledImage transition;
 
     private bool isOpen = false;
+    protected MoveEquipped lastMoveUsed;
 
     public void Show()
     {
@@ -46,31 +46,32 @@ public class UIBattleMovePicker : MonoBehaviour
         List<MoveEquipped> moves = activePokemon.GetPokemonCaughtData().GetMoves();
         List<Selectable> options = new List<Selectable>();
         int count = 0;
+        int selectedIndex = 0;
         foreach (MoveEquipped me in moves)
         {
-            UIPokemonMove bmp = CreateMove(me, activePokemon, count == 0);
+            UIPokemonMove bmp = CreateMove(me, activePokemon);
             options.Add(bmp.GetComponent<Selectable>());
             bmp.onClick += (MoveEquipped move, PokemonCaughtData pkmn) => AudioMaster.GetInstance()?.PlaySfx(onSubmitSound);
             count++;
+            if (lastMoveUsed == me)
+            {
+                selectedIndex = moves.IndexOf(me);
+            }
         }
         foreach (Transform option in moveList)
         {
             options.Add(option.GetComponent<Selectable>());
         }
         UtilsMaster.LineSelectables(options);
-        UpdateSelected(moves[0]);
+        UtilsMaster.SetSelected(options[selectedIndex].gameObject);
+        UpdateSelected(moves[selectedIndex]);
     }
 
-    private UIPokemonMove CreateMove(MoveEquipped me, PokemonBattleData pkmn, bool select)
+    private UIPokemonMove CreateMove(MoveEquipped me, PokemonBattleData pkmn)
     {
         UIPokemonMove bm = Instantiate(movePrefab, moveList).Load(me, pkmn.GetPokemonCaughtData());
         bm.onClick += UseMove;
         bm.onSelect += (MoveEquipped me, PokemonCaughtData pkmn) => UpdateSelected(me);
-        print("Child count " + moveList.childCount);
-        if (select)
-        {
-            UtilsMaster.SetSelected(bm.gameObject);
-        }
         return bm;
     }
     public void UseMove(MoveEquipped move, PokemonCaughtData pokemon)
@@ -115,6 +116,7 @@ public class UIBattleMovePicker : MonoBehaviour
                 break;
         }
         AudioMaster.GetInstance()?.PlaySfx(onSelectedSound);
+        lastMoveUsed = me;
     }
 
     private void CleanMoves()

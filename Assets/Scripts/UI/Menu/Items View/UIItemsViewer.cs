@@ -230,6 +230,9 @@ public class UIItemsViewer : MonoBehaviour
             case 3:
                 ViewCategoryTM();
                 break;
+            case 4:
+                ViewCateogotyKey();
+                break;
         }
     }
 
@@ -252,6 +255,11 @@ public class UIItemsViewer : MonoBehaviour
     {
         if (sectionChangeSound) AudioMaster.GetInstance().PlaySfx(sectionChangeSound);
         ViewCategory(ItemCategory.TM);
+    }
+    public void ViewCateogotyKey()
+    {
+        if (sectionChangeSound) AudioMaster.GetInstance().PlaySfx(sectionChangeSound);
+        ViewCategory(ItemCategory.Key);
     }
     public void HandleEquip(CallbackContext context)
     {

@@ -9,4 +9,5 @@ public enum ItemCategory
     Berry = 2,
     Pokeball = 3,
     TM = 4,
+    Key = 5,
 }

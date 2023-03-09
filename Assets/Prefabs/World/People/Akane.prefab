@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 4676924390971215405}
   - component: {fileID: 4302729773353233959}
   - component: {fileID: 2925980940411114803}
-  - component: {fileID: 1536168237697731796}
   - component: {fileID: 468391869882437964}
   - component: {fileID: 5716362182040622059}
   - component: {fileID: 6919827953853749177}
@@ -174,6 +173,8 @@ GameObject:
   - component: {fileID: 4960651429873525928}
   - component: {fileID: 5938391520998858260}
   - component: {fileID: 2960293232678586463}
+  - component: {fileID: 1949215158645963944}
+  - component: {fileID: 4580513886669696118}
   m_Layer: 0
   m_Name: Akane Flowchart
   m_TagString: Untagged
@@ -210,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 270.77725, y: 100.39595}
+  scrollPos: {x: 26.473541, y: 102.9276}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 412
@@ -222,9 +223,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 157002705195579992}
-  selectedCommands:
-  - {fileID: 5938391520998858260}
+  - {fileID: 6469087365943466222}
+  selectedCommands: []
   variables:
   - {fileID: 113405936130264470}
   - {fileID: 5593037289399772859}
@@ -636,7 +636,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 619
-    y: 68
+    y: 66.73418
     width: 137.34175
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1511,8 +1511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 24
   indentLevel: 3
-  storyText: I'm not doing this right now... Once I find the second gym and beat
-    it, I will get my revenge...
+  storyText: I'm not doing this right now... So just beat it...
   description: 
   character: {fileID: 8740873954727630252}
   portrait: {fileID: 0}
@@ -1581,7 +1580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 27
   indentLevel: 0
-  text: '"Want some help?"'
+  text: '"You should head back."'
   description: 
   targetBlock: {fileID: 5122088808993218773}
   hideIfVisited: 0
@@ -1673,7 +1672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 31
   indentLevel: 4
-  storyText: Unfortunately for you, I'm busy looking for the next gym...
+  storyText: Unfortunately for you, I'm busy making my team stronger.
   description: 
   character: {fileID: 8740873954727630252}
   portrait: {fileID: 0}
@@ -1700,8 +1699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 1048.8788
-    y: 12.340664
+    x: 1047.6129
+    y: 11.0748415
     width: 175.31642
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1717,9 +1716,10 @@ MonoBehaviour:
   - {fileID: 5716362182040622059}
   - {fileID: 4302729773353233959}
   - {fileID: 2925980940411114803}
-  - {fileID: 6919827953853749177}
+  - {fileID: 1949215158645963944}
+  - {fileID: 4580513886669696118}
   - {fileID: 9090946971795942843}
-  - {fileID: 1536168237697731796}
+  - {fileID: 6919827953853749177}
   - {fileID: 468391869882437964}
   - {fileID: 8999252707529992395}
   - {fileID: 2890655487893127595}
@@ -1881,34 +1881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 37
   indentLevel: 0
-  storyText: And for that I need to be able to do this alone.
-  description: 
-  character: {fileID: 8740873954727630252}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &1536168237697731796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3250590118494116502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 38
-  indentLevel: 0
-  storyText: It's... {w=0.5}Confusing...
+  storyText: I can't be taking breaks like you and the others.
   description: 
   character: {fileID: 8740873954727630252}
   portrait: {fileID: 0}
@@ -1982,7 +1955,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 41
   indentLevel: 0
-  storyText: So... {punch=15}Stop being so nice...
+  storyText: So... {punch=15}Stop looking at me like you are worried... Okay?
   description: 
   character: {fileID: 8740873954727630252}
   portrait: {fileID: 0}
@@ -2053,7 +2026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 44
   indentLevel: 0
-  variableId: 13
+  variableId: 14
   operation: 0
   value: 1
 --- !u!114 &2515058598138718548
@@ -3749,6 +3722,61 @@ MonoBehaviour:
   itemId: 73
   indentLevel: 0
   saveId: 100
+--- !u!114 &1949215158645963944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250590118494116502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 74
+  indentLevel: 0
+  storyText: Every battle, every new pokemon I add to my team...
+  description: 
+  character: {fileID: 8740873954727630252}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &4580513886669696118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250590118494116502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 75
+  indentLevel: 0
+  storyText: It's another step I get closer to becoming a champion, the ultimate
+    trainer.
+  description: 
+  character: {fileID: 8740873954727630252}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &5304091107577661775
 GameObject:
   m_ObjectHideFlags: 0

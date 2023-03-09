@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Spinarak
+  m_EditorClassIdentifier: 
+  pokemonId: 167
+  species: Spinarak
+  icon: {fileID: 422494538, guid: e38304b046438134781ff8e4f92ca0ef, type: 3}
+  cry: {fileID: 8300000, guid: 0b58bd2a8cd1d65439d3fdfa8a5eb661, type: 3}
+  baseStats:
+    health: 40
+    attack: 60
+    defense: 40
+    spAttack: 40
+    spDefense: 40
+    speed: 30
+  types: 0200000010000000
+  abilities:
+  - abilityId: 8
+    abilityPriority: 8
+  - abilityId: 9
+    abilityPriority: 2
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 255
+  baseFriendship: 70
+  baseExp: 50
+  pokedexEntry: It sets a trap by spinning a web with thin but strong thread. It
+    waits motionlessly for prey to arrive.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: 678829c632ed0ff41b3da1bfd06db44f, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 0527eef1c45d0754e8180d9c3741ae74, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 42258a1536b66fe4882dd070a9bc58b5, type: 2}
+    learnType: 0
+    levelRequired: 5
+  - move: {fileID: 11400000, guid: 42258a1536b66fe4882dd070a9bc58b5, type: 2}
+    learnType: 0
+    levelRequired: 5
+  - move: {fileID: 11400000, guid: ce3322e9be982ae45bc6b7db0fede9c6, type: 2}
+    learnType: 0
+    levelRequired: 12
+  - move: {fileID: 11400000, guid: 2dc8c443635bc794b84628a8012b0491, type: 2}
+    learnType: 0
+    levelRequired: 15
+  - move: {fileID: 11400000, guid: 8bdb46ad67a254444bad7a09b8386809, type: 2}
+    learnType: 0
+    levelRequired: 19
+  - move: {fileID: 11400000, guid: bed2f46570e658144a761b6393bb8a1f, type: 2}
+    learnType: 0
+    levelRequired: 22
+  tmMoves:
+  - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
+  evolutions:
+  - pokemonId: 168
+    evolutionData:
+      evolutionType: 0
+      value: 22
+  battleAnimation: {fileID: 5856957960245124099, guid: ea88c8fc0e9e9264baae8094491230bd, type: 3}
+  overWorldPrefab: {fileID: 4415021600859410756, guid: 9e89daafe64150542b87e01fda2b600c, type: 3}

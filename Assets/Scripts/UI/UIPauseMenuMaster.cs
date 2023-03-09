@@ -75,11 +75,13 @@ public class UIPauseMenuMaster : MonoBehaviour
     public void HideWorldUI()
     {
         HideMenuOpener();
+        UIQuestMaster.Instance?.HideQuest();
         pokemonMiniViewList?.gameObject.SetActive(false);
     }
     public void ShowWorldUI()
     {
         ShowMenuOpener();
+        UIQuestMaster.Instance?.ShowQuest();
         pokemonMiniViewList?.gameObject.SetActive(true);
         UpdatePartyMiniPreview();
         UpdateTimeOfDay();
