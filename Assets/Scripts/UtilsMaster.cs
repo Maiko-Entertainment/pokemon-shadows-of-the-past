@@ -32,6 +32,40 @@ public static class UtilsMaster
         }
         return selectables;
     }
+    public static List<Selectable> GridSelectables(List<Selectable> selectables, int rowSize)
+    {
+        int rows = Mathf.CeilToInt(selectables.Count / (float)rowSize);
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < rowSize && selectables.Count > (r * rowSize + c); c++)
+            {
+                Navigation nav = new Navigation();
+                nav.mode = Navigation.Mode.Explicit;
+                // Left
+                if (c > 0)
+                {
+                    nav.selectOnLeft = selectables[r * rowSize + c - 1].GetComponent<Selectable>();
+                }
+                // Right
+                if (c < rowSize - 1 && selectables.Count > (r * rowSize + c + 1))
+                {
+                    nav.selectOnRight = selectables[r * rowSize + c + 1].GetComponent<Selectable>();
+                }
+                // Down
+                if (r < (selectables.Count / (float)rowSize - 1) && selectables.Count - 1 >= ((r + 1) * rowSize + c))
+                {
+                    nav.selectOnDown = selectables[(r + 1) * rowSize + c].GetComponent<Selectable>();
+                }
+                // Up
+                if (r > 0)
+                {
+                    nav.selectOnUp = selectables[(r - 1) * rowSize + c].GetComponent<Selectable>();
+                }
+                selectables[r * rowSize + c].GetComponent<Selectable>().navigation = nav;
+            }
+        }
+        return selectables;
+    }
 
     public static void SetSelected(GameObject select)
     {

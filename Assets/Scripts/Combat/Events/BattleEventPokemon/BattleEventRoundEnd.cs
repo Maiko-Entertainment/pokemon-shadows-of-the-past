@@ -22,5 +22,16 @@ public class BattleEventRoundEnd : BattleEvent
         team1Pokemon.roundsInCombat++;
         PokemonBattleData team2Pokemon = BattleMaster.GetInstance().GetCurrentBattle().GetTeamActivePokemon(BattleTeamId.Team2);
         team2Pokemon.roundsInCombat++;
+        SaveElementNumber tacticsTuto = (SaveElementNumber) SaveMaster.Instance.GetSaveElement(SaveElementId.tacticsTutorial);
+        if ((float) tacticsTuto.GetValue() == 0f)
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventNarrative(
+                new BattleTriggerMessageData(
+                    BattleAnimatorMaster.GetInstance().battleFlowchart,
+                    "Tactics Tutorial"
+                )
+            ));
+            tacticsTuto.SetValue(1f);
+        }
     }
 }

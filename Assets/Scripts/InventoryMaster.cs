@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryMaster : MonoBehaviour
 {
     public static InventoryMaster Instance;
+    public static float sellModifier = 0.75f;
 
     public List<ItemInventory> inventory = new List<ItemInventory>();
 
@@ -79,6 +81,11 @@ public class InventoryMaster : MonoBehaviour
         ItemInventory newInventoryInstance = new ItemInventory(newInstance, 0);
         inventory.Add(newInventoryInstance);
         return newInventoryInstance;
+    }
+
+    public List<ItemInventory> GetItems()
+    {
+        return inventory.ToList();
     }
 
     public int GetMoney()

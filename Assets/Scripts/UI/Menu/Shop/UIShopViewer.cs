@@ -24,6 +24,7 @@ public class UIShopViewer : MonoBehaviour
 
     public TransitionCanvasGroup modeSelectedScreen;
     public TransitionCanvasGroup buyButton;
+    public TextMeshProUGUI buySellButton;
 
     public float minMoneyChangeSpeed = 500;
 
@@ -58,6 +59,41 @@ public class UIShopViewer : MonoBehaviour
         }
         View(currentItem);
     }
+    public void Sell(ItemData item)
+    {
+        ItemInventory ii = InventoryMaster.GetInstance().GetItem(item.GetItemId());
+        if (ii.GetAmount() > 0)
+        {
+            InventoryMaster.GetInstance().ChangeItemAmount(item.GetItemId(), -1);
+            InventoryMaster.GetInstance().ChangeMoney((int)(item.price * InventoryMaster.sellModifier));
+            AudioMaster.GetInstance().PlaySfx(buySound);
+            bool deletedSomething = false;
+            Transform previousValid = null;
+            foreach (Transform previous in itemList)
+            {
+                int amount = InventoryMaster.GetInstance().GetItem(previous.GetComponent<UIShopItem>().GetItem().GetItemId()).GetAmount();
+                if (amount == 0)
+                {
+                    Destroy(previous.gameObject);
+                    deletedSomething = true;
+                }
+                else if (!deletedSomething || !previousValid)
+                {
+                    previousValid = previous;
+                }
+                previous.GetComponent<UIShopItem>().Reload();
+            }
+            if (deletedSomething && previousValid)
+            {
+                UtilsMaster.SetSelected(previousValid.gameObject);
+            }
+        }
+        else
+        {
+            AudioMaster.GetInstance().PlaySfx(noMoneySound);
+        }
+        View(currentItem);
+    }
 
     public void View(ItemData item)
     {
@@ -72,7 +108,7 @@ public class UIShopViewer : MonoBehaviour
         {
             inventoryAmount.text = ii.GetAmount()+ "";
         }
-        if (item.price <= money)
+        if (item.price <= money || isModeSelected)
         {
             buyButton?.FadeIn();
         }
@@ -135,6 +171,39 @@ public class UIShopViewer : MonoBehaviour
         UtilsMaster.LineSelectables(selectables);
         UtilsMaster.SetSelected(selectables[0].gameObject);
         UpdateMoney();
+        if (buySellButton)
+        {
+            buySellButton.text = "Buy";
+        }
+    }
+
+    public void SetSellMode()
+    {
+        isModeSelected = true;
+        isSelling = true;
+        modeSelectedScreen.FadeIn();
+        foreach (Transform previous in itemList)
+            Destroy(previous.gameObject);
+        List<Selectable> selectables = new List<Selectable>();
+        List<ItemInventory> inventory = InventoryMaster.GetInstance().GetItems();
+        foreach (ItemInventory id in inventory)
+        {
+            if (id.GetAmount() > 0)
+            {
+                UIShopItem sp = Instantiate(shopItemPrefab, itemList).Load(id.itemData, true);
+                sp.onHover += View;
+                sp.onClick += Sell;
+                selectables.Add(sp.GetComponent<Selectable>());
+            }
+        }
+        UtilsMaster.LineSelectables(selectables);
+        if (selectables.Count > 0)
+            UtilsMaster.SetSelected(selectables[0].gameObject);
+        UpdateMoney();
+        if (buySellButton)
+        {
+            buySellButton.text = "Sell";
+        }
     }
 
     private void Update()

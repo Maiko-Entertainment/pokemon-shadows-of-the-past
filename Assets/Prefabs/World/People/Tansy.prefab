@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 7783894742412592900}
   - component: {fileID: 2215722718742688080}
   - component: {fileID: 4589206490862265167}
+  - component: {fileID: 2025268700238328446}
   m_Layer: 0
   m_Name: Tansy World Flowchart
   m_TagString: Untagged
@@ -229,11 +230,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 530.08093, y: 35.206573}
+  scrollPos: {x: 291.6802, y: 78.10637}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 399
-  zoom: 0.67000026
+  zoom: 0.7000002
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -241,9 +242,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 4996035471659011778}
+  - {fileID: 1051302590376327202}
   selectedCommands:
-  - {fileID: 496045072539922133}
+  - {fileID: 8670050250380122375}
   variables:
   - {fileID: 2597626469376873329}
   - {fileID: 539138719044045001}
@@ -275,7 +276,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 556.98724
     y: 79.81012
-    width: 127.61191
+    width: 125.714264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -414,7 +415,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 731.0124
     y: 27.683544
-    width: 199.25368
+    width: 194.28568
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -553,7 +554,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 988.0376
     y: 77.21518
-    width: 84.32835
+    width: 82.85713
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -686,6 +687,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 7772906053160606575}
   - {fileID: 6184407696199834779}
+  - {fileID: 2025268700238328446}
   - {fileID: 9184574136293289784}
   - {fileID: 8670050250380122375}
   - {fileID: 198309545841089449}
@@ -787,8 +789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 20
   indentLevel: 0
-  storyText: 'Growlithe, Lillipup and Starly can be found easily, while Mareep may
-    be a bit more shy. '
+  storyText: Whille Growlithe and Vulpix can be found in the dry grass.
   description: 
   character: {fileID: 4440155457098860018}
   portrait: {fileID: 0}
@@ -1464,7 +1465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 35
   indentLevel: 0
-  storyText: Eevee can also be found here. But it's very hard to find.
+  storyText: Eevee can also be found here. But it's very sneaky! So it may take some
+    time.
   description: 
   character: {fileID: 4440155457098860018}
   portrait: {fileID: 0}
@@ -1553,7 +1555,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 366.29144
     y: 191.41774
-    width: 78.3582
+    width: 78.57142
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2152,7 +2154,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 544.77246
     y: 272.43036
-    width: 170.89548
+    width: 168.57138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4028,6 +4030,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 81
   indentLevel: 0
+--- !u!114 &2025268700238328446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 82
+  indentLevel: 0
+  storyText: Lillipup, Mareep and Starly can be found in the green grass.
+  description: 
+  character: {fileID: 4440155457098860018}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &7931231568193519141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,6 +4139,7 @@ MonoBehaviour:
   animator: {fileID: 4613871887822806368}
   innerTransform: {fileID: 5497817790652694716}
   speed: 3
+  heightOffset: 0
   cachedDirections: []
   followMode: 0
 --- !u!1 &8632929018478371057

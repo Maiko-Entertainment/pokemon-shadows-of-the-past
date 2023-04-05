@@ -23,6 +23,7 @@ public class PokemonBaseData : ScriptableObject
     public List<PokemonBaseEvolution> evolutions;
     public PokemonAnimationController battleAnimation;
     public WorldInteractableBrainFollower overWorldPrefab;
+    public List<PokemonBaseDataAreas> encounteredIn = new List<PokemonBaseDataAreas>();
 
     public AudioClip GetCry() { return cry; }
 

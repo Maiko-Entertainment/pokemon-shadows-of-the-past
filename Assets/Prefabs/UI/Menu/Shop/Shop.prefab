@@ -1642,6 +1642,7 @@ MonoBehaviour:
   yourMoneyAmount: {fileID: 8864308462678209845}
   modeSelectedScreen: {fileID: 2013637376557200213}
   buyButton: {fileID: 2355933750868108124}
+  buySellButton: {fileID: 5971646168965977634}
   minMoneyChangeSpeed: 500
   isModeSelected: 0
   isSelling: 0
@@ -2537,7 +2538,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6835329295599059263}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3741687908590616269}
+        m_TargetAssemblyTypeName: UIShopViewer, Assembly-CSharp
+        m_MethodName: SetSellMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &8192191711179750597
 Animator:
   serializedVersion: 4
@@ -2712,6 +2725,17 @@ MonoBehaviour:
 --- !u!114 &5628284060873885248 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5548858693331572106, guid: ea25f1a3324e37642b7f73640cd21bc4, type: 3}
+  m_PrefabInstance: {fileID: 223542935587410890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5971646168965977634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5892295529076245992, guid: ea25f1a3324e37642b7f73640cd21bc4, type: 3}
   m_PrefabInstance: {fileID: 223542935587410890}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

@@ -15,7 +15,7 @@ public class UIItemsView : MonoBehaviour, ISelectHandler
     public delegate void Hover(ItemInventory item);
     public event Hover onHover;
     public delegate void Click(ItemInventory item);
-    public event Hover onClick;
+    public event Click onClick;
 
     public ItemInventory item;
 

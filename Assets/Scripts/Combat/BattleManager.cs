@@ -22,8 +22,8 @@ public class BattleManager
     private TacticData currentTacticSelected;
 
     public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 2;
-    public static float SHADOW_REBEL_CHANCE = 0.25f;
-    public static float SHADOW_IGNORE_CHANCE = 0.1f;
+    public static float SHADOW_REBEL_CHANCE = 0.5f;
+    public static float SHADOW_IGNORE_CHANCE = 0.25f;
 
     public List<BattleFaintHistory> faintHistory = new List<BattleFaintHistory>();
 

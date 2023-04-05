@@ -10,14 +10,17 @@ public class UIOptionsMenuHandler : MonoBehaviour
     private void Start()
     {
         List<Selectable> selectables = new List<Selectable>();
-        foreach(Transform option in optionsList)
+        if (optionsList)
         {
-            if (option.GetComponent<Selectable>())
+            foreach(Transform option in optionsList)
             {
-                selectables.Add(option.GetComponent<Selectable>());
+                if (option.GetComponent<Selectable>())
+                {
+                    selectables.Add(option.GetComponent<Selectable>());
+                }
             }
+            UtilsMaster.LineSelectables(selectables);
         }
-        UtilsMaster.LineSelectables(selectables);
     }
     public void Close()
     {
@@ -67,8 +70,8 @@ public class UIOptionsMenuHandler : MonoBehaviour
     {
         UIPauseMenuMaster.GetInstance().OpenItemsViewer();
     }
-    public void SaveGame()
+    public void OpenSaveFileView()
     {
-        SaveMaster.Instance.Save(0);
+        UIPauseMenuMaster.GetInstance().OpenSaveMenu();
     }
 }

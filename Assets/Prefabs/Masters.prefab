@@ -5821,9 +5821,9 @@ MonoBehaviour:
     lastSafeZoneMapId: 3
     lastSafeZoneIndex: 0
   lastSaveIndex: 0
-  maxSaveFiles: 5
+  maxSaveFiles: 20
   loadOnStart: 1
-  loadHackedData: 1
+  loadHackedData: 0
   startNewGame: 0
   saveElements:
   - {fileID: 11400000, guid: c5776e68895122741ae6b426447b6e69, type: 2}
@@ -5851,6 +5851,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ebb80a8db5796f4380fac1c48b32a14, type: 2}
   - {fileID: 11400000, guid: e37dca979e397c54188bd825628f2f98, type: 2}
   - {fileID: 11400000, guid: 2c8e12619a6597044af9e7c72eeeb4f5, type: 2}
+  - {fileID: 11400000, guid: 9b450e4dfc155a84c9014379effc53c1, type: 2}
+  - {fileID: 11400000, guid: 1b7da056daa9d9d4f809e404afef080d, type: 2}
 --- !u!114 &8952212246821983486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6215,6 +6217,7 @@ MonoBehaviour:
   - {fileID: 8322538708968509705, guid: 7d3c1d606733b204eb8110b36850985a, type: 3}
   - {fileID: 855064125446484216, guid: a7b551ee1aaa1dc4f838992ac5e400fb, type: 3}
   - {fileID: 8864144785639350466, guid: 2d3f6d160ab7f644d9c0bc1e7ef33c0a, type: 3}
+  - {fileID: 3484160372337392344, guid: a516773e869a64c4a9aa631696547077, type: 3}
   scenes: []
   sceneContainer: {fileID: 8952212248689861747}
   mapNameContainer: {fileID: 8128194997387600291}
@@ -6310,6 +6313,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 945c47594f933cb4590f39fa54885295, type: 2}
   - {fileID: 11400000, guid: 256c5bc985e855d44a0445d1e6059227, type: 2}
   - {fileID: 11400000, guid: 42258a1536b66fe4882dd070a9bc58b5, type: 2}
+  - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
+  - {fileID: 11400000, guid: 74fd427e849e2364a8eb982d06ab37fd, type: 2}
   - {fileID: 11400000, guid: 3cdfe265b6824f84593561171fe9f81a, type: 2}
   - {fileID: 11400000, guid: 74fd427e849e2364a8eb982d06ab37fd, type: 2}
   - {fileID: 11400000, guid: 74fd2a13b8c3ca347a3b737681ae48c2, type: 2}
@@ -7011,6 +7016,8 @@ MonoBehaviour:
   itemViewerPrefab: {fileID: 7497893302336376989, guid: 1099b70f22e8b0d449885465805f674e, type: 3}
   pokedexViewerPrefab: {fileID: 7459525753968755007, guid: b0acbb8b387f6a3469a410237229e0e2, type: 3}
   shopViewerPrefab: {fileID: 2112385305709802345, guid: 403c1876c90285049817fc65e620be37, type: 3}
+  pcViewerPrefab: {fileID: 1771794700418589223, guid: 458a069430888fa47ba689ff978a62e9, type: 3}
+  saveViewerPrefab: {fileID: 1090955614358420130, guid: 7fd71552df2b14f44ad03cd9e0103016, type: 3}
   pokemonMiniViewPrefab: {fileID: 3424210028211374005, guid: 987249feec85eb64fb60cf4dfcd7cd06, type: 3}
   dayPrefab: {fileID: 1986511171349862444, guid: f4092706aa2b3df4191a2f0d7d49450c, type: 3}
   nightPrefab: {fileID: 1967632439065720015, guid: ffab31c32b71be549b30ae6671707aa1, type: 3}
@@ -8007,6 +8014,10 @@ PrefabInstance:
       propertyPath: nodeRect.y
       value: 199
       objectReference: {fileID: 0}
+    - target: {fileID: 6128323492820058378, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
+      propertyPath: itemId
+      value: 122
+      objectReference: {fileID: 0}
     - target: {fileID: 6698735132010377512, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: itemId
       value: 44
@@ -8104,7 +8115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 118
+  itemId: 133
   indentLevel: 0
   storyText: You grabbed a stick and threw it really far!
   description: 
@@ -8131,7 +8142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 119
+  itemId: 134
   indentLevel: 0
   storyText: Looks like you will have to try something else...
   description: 
@@ -8158,7 +8169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 120
+  itemId: 135
   indentLevel: 0
   storyText: '{$pokemon} is looking at you confused...'
   description: 
@@ -8249,6 +8260,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1806747588937334158, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806747589427205130, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
+      propertyPath: selectedCommands.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1806747589473497006, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}

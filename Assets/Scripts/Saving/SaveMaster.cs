@@ -11,7 +11,7 @@ public class SaveMaster : MonoBehaviour
 
     public SaveFile activeSaveFile = new SaveFile();
     public int lastSaveIndex = 0;
-    public int maxSaveFiles = 5;
+    public int maxSaveFiles = 20;
 
     public bool loadOnStart = false;
     public bool loadHackedData = false;
@@ -55,7 +55,8 @@ public class SaveMaster : MonoBehaviour
             for (int i=0; i< maxSaveFiles; i++)
             {
                 SaveFile file = GetSaveFile(i);
-                saveFiles.Add(file);
+                if (file != null)
+                    saveFiles.Add(file);
             }
         }
     }
@@ -64,6 +65,7 @@ public class SaveMaster : MonoBehaviour
     {
         SaveFile file = saveFiles[saveIndex];
         activeSaveFile = file == null ? new SaveFile() : file;
+        lastSaveIndex = saveIndex;
         Load(activeSaveFile);
     }
 
@@ -83,7 +85,9 @@ public class SaveMaster : MonoBehaviour
         InventoryMaster.GetInstance().HandleSave();
         WorldMapMaster.GetInstance().HandleSave();
         PokemonMaster.GetInstance().HandleSave();
+        lastSaveIndex = saveIndex;
         SaveCurrentFile(saveIndex);
+        LoadSaveSlots();
     }
 
     public void SaveCurrentFile(int saveIndex)
@@ -169,6 +173,11 @@ public class SaveMaster : MonoBehaviour
     public SaveFile GetActiveSave()
     {
         return activeSaveFile;
+    }
+
+    public List<SaveFile> GetSaveFiles()
+    {
+        return saveFiles;
     }
 
     public void StartNewGame()

@@ -11,6 +11,8 @@ public class UIPauseMenuMaster : MonoBehaviour
     public UIMenuPile itemViewerPrefab;
     public UIMenuPile pokedexViewerPrefab;
     public UIMenuPile shopViewerPrefab;
+    public UIMenuPile pcViewerPrefab;
+    public UIMenuPile saveViewerPrefab;
     public UIItemOptionsPokemon pokemonMiniViewPrefab;
     public GameObject dayPrefab;
     public GameObject nightPrefab;
@@ -194,5 +196,13 @@ public class UIPauseMenuMaster : MonoBehaviour
     public void OpenShopMenu(List<ItemData> itemsForSale)
     {
         OpenMenu(shopViewerPrefab, true).GetComponent<UIShopViewer>().Load(itemsForSale);
+    }
+    public void OpenPcMenu()
+    {
+        OpenMenu(pcViewerPrefab, true).GetComponent<UIPokemonPC>().Load();
+    }
+    public void OpenSaveMenu()
+    {
+        OpenMenu(saveViewerPrefab, true).GetComponent<UISaveFiles>().Load();
     }
 }

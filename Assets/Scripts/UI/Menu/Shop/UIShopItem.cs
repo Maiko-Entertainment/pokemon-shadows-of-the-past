@@ -21,22 +21,24 @@ public class UIShopItem : MonoBehaviour, ISelectHandler
     public event Hover onClick;
 
     protected ItemData item;
+    protected bool isSelling = false;
 
-    public UIShopItem Load(ItemData item)
+    public UIShopItem Load(ItemData item, bool isSelling = false)
     {
+        this.isSelling = isSelling;
         int money = InventoryMaster.GetInstance().GetMoney();
-        bool canBuy = money >= item.price;
+        bool canBuy = money >= item.price || isSelling;
         this.item = item;
         title.text = item.GetName();
         icon.sprite = item.icon;
-        price.text = item.price + "$";
+        price.text = ((int)(item.price * (isSelling ? InventoryMaster.sellModifier : 1f))) + "$";
         price.color = canBuy ? canBuyColor : cantBuyColor;
         return this;
     }
 
     public UIShopItem Reload()
     {
-        return Load(item);
+        return Load(item, isSelling);
     }
 
     public void HandleClick()

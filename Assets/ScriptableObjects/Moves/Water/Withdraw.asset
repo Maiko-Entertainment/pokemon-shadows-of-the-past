@@ -25,7 +25,7 @@ MonoBehaviour:
   moveStatChanges:
   - statsAmountChange:
       attack: 0
-      defense: -1
+      defense: 1
       spAttack: 0
       spDefense: 0
       speed: 0
@@ -33,8 +33,20 @@ MonoBehaviour:
       evasion: 0
       critical: 0
     changeChance: 1
-    targetType: 0
+    targetType: 1
+  conditionalBonuses: []
+  tags: 
   isContact: 0
   drainMultiplier: 0
-  description: 
-  animations: []
+  moveCritUp: 0
+  priority: 0
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 
+  description: The user withdraws its body into its hard shell, boosting its Defense
+    stat by 1 stage.
+  animations:
+  - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
+  - {fileID: 1641687910885394641, guid: 9146f8b38da2e53488c46f28cc2c2641, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 6563272004627524207, guid: 47784bf885d032444b522ea8dfff3cce, type: 3}
+  - {fileID: 3531474703944891691, guid: 7116afbd55041824fa298fe624b44723, type: 3}

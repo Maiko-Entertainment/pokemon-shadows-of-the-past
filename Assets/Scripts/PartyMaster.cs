@@ -91,10 +91,25 @@ public class PartyMaster : MonoBehaviour
             return false;
         }
     }
+    public void SwapPokemonInParty(PokemonCaughtData pokemon, PokemonCaughtData swaping)
+    {
+        int indexOfCurrent = party.IndexOf(pokemon);
+        int indexOfSwaping = party.IndexOf(swaping);
+        if (indexOfCurrent >= 0 && indexOfSwaping >= 0)
+        {
+            party[indexOfCurrent] = swaping;
+            party[indexOfSwaping] = pokemon;
+        }
+    }
 
     public bool CanAddPartyMember()
     {
         return party.Count < maxParty;
+    }
+    public bool RemovePartyMember(PokemonCaughtData pokemon)
+    {
+        bool wasRemoved = party.Remove(pokemon);
+        return wasRemoved;
     }
 
     public PokemonCaughtData GetFirstAvailablePokemon()
@@ -105,6 +120,33 @@ public class PartyMaster : MonoBehaviour
                 return pkmn;
         }
         return null;
+    }
+    public List<PokemonCaughtData> GetPokemonInBox()
+    {
+        return new List<PokemonCaughtData>(pokemonBox);
+    }
+    public void AddPokemonToBox(PokemonCaughtData pokemon)
+    {
+        pokemonBox.Add(pokemon);
+    }
+    public void AddPokemonToBox(PokemonCaughtData pokemon, int index)
+    {
+        pokemonBox.Insert(index, pokemon);
+    }
+    public void SwapPokemonInBox(PokemonCaughtData pokemon, PokemonCaughtData swaping)
+    {
+        int indexOfCurrent = pokemonBox.IndexOf(pokemon);
+        int indexOfSwaping = pokemonBox.IndexOf(swaping);
+        if (indexOfCurrent >= 0 && indexOfSwaping >= 0)
+        {
+            pokemonBox[indexOfCurrent] = swaping;
+            pokemonBox[indexOfSwaping] = pokemon;
+        }
+    }
+    public bool RemovePokemonInBox(PokemonCaughtData pokemon)
+    {
+        bool wasRemoved = pokemonBox.Remove(pokemon);
+        return wasRemoved;
     }
 
     public void HealAll()

@@ -273,7 +273,7 @@ public class PokemonCaughtData
         foreach (PokemonMoveLearn availableMove in allMovesLearned)
         {
             bool isMoveInLearnedMoves = false;
-            foreach(MoveEquipped me in learnedMoves)
+            foreach (MoveEquipped me in learnedMoves)
             {
                 if (availableMove.move.moveId == me.move.moveId)
                 {

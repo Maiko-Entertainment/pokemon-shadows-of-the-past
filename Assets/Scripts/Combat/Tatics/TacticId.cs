@@ -15,4 +15,5 @@ public enum TacticId
     FlowerGroove = 1001,
     ShowTime = 2000,
     AggresiveStance = 2001,
+    InnerPower = 2002,
 }
