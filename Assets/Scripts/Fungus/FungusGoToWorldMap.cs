@@ -16,9 +16,14 @@ public class FungusGoToWorldMap : Command
 
     public override void OnEnter()
     {
+        float changeTime = 0;
         TransitionMaster.GetInstance().ClearTransitions();
-        TransitionMaster.GetInstance().RunTransition(changeMapTransition);
-        StartCoroutine(RunEvent(changeMapTransition.changeTime));
+        if (changeMapTransition)
+        {
+            TransitionMaster.GetInstance().RunTransition(changeMapTransition);
+            changeTime = changeMapTransition.changeTime;
+        }
+        StartCoroutine(RunEvent(changeTime));
     }
 
     IEnumerator RunEvent(float delay)

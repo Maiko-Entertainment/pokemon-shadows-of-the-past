@@ -78,6 +78,8 @@ public class BattleMaster : MonoBehaviour
             "",
             "Lose Wild Battle"
         ));
+        if (battleData.volumeProfile)
+            TransitionMaster.GetInstance().SetBattleCameraProfile(battleData.volumeProfile);
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
     }
@@ -99,6 +101,7 @@ public class BattleMaster : MonoBehaviour
         BattleTeamData team2 = trainer.GetTeambattleData();
         BattleManager newBattle = new BattleManager(team1, team2, trainer.battleData);
         currentBattle = newBattle;
+        TransitionMaster.GetInstance().SetBattleCameraProfile(trainer.battleData.volumeProfile);
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
     }

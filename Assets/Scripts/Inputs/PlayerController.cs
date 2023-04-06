@@ -315,6 +315,13 @@ public class PlayerController : MonoBehaviour
     public void ResetFollowersPosition()
     {
         movements.Clear();
+        List<WorldInteractableBrainFollower> newFollowers = new List<WorldInteractableBrainFollower>();
+        foreach (WorldInteractableBrainFollower follower in followers)
+        {
+            if (follower != null)
+                newFollowers.Add(follower);
+        }
+        followers = newFollowers;
         foreach (WorldInteractableBrainFollower follower in followers)
         {
             follower.transform.position = transform.position;

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class TransitionMaster : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TransitionMaster : MonoBehaviour
     public Camera sceneCamera;
     public Camera battleCamera;
     public Camera worldCamera;
+    public VolumeProfile defaultVolumeProfile;
 
     public SayDialog sceneDialogue;
     public SayDialog combatDialogue;
@@ -19,6 +21,9 @@ public class TransitionMaster : MonoBehaviour
 
     public Transform transitions;
     public Transform mapDayEffectsList;
+
+    public delegate void CameraChange(Camera camera);
+    public event CameraChange OnCameraChange;
 
     private bool wasInWorldBefore = false;
 
@@ -49,6 +54,7 @@ public class TransitionMaster : MonoBehaviour
         if (sceneDialogue != null)
         {
             SayDialog.ActiveSayDialog = sceneDialogue;
+            UpdateDialogCamera();
         }
     }
 
@@ -57,6 +63,7 @@ public class TransitionMaster : MonoBehaviour
         if (sceneDialogue != null)
         {
             SayDialog.ActiveSayDialog = combatDialogue;
+            UpdateDialogCamera();
         }
     }
     public void SetDialogueToEvolution()
@@ -64,7 +71,12 @@ public class TransitionMaster : MonoBehaviour
         if (sceneDialogue != null)
         {
             SayDialog.ActiveSayDialog = evolutionDialogue;
+            UpdateDialogCamera();
         }
+    }
+    public void UpdateDialogCamera()
+    {
+        SayDialog.ActiveSayDialog.GetComponent<Canvas>().worldCamera = Camera.main;
     }
     public void RunTransition(ViewTransition transition)
     {
@@ -73,7 +85,19 @@ public class TransitionMaster : MonoBehaviour
 
     public void ClearTransitions()
     {
-        foreach(Transform t in transitions)
+        List<Transform> children = new List<Transform>();
+        foreach (Transform t in transitions)
+        {
+            children.Add(t);
+        }
+        StartCoroutine(ClearRoutine(children));
+    }
+    protected IEnumerator ClearRoutine(List<Transform> transitions)
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        foreach (Transform t in transitions)
         {
             Destroy(t.gameObject);
         }
@@ -187,5 +211,29 @@ public class TransitionMaster : MonoBehaviour
     public void InitiateDayEffect(GameObject effect)
     {
         Instantiate(effect, mapDayEffectsList);
+    }
+
+    public void SetCameraProfile(VolumeProfile profile)
+    {
+        if (profile)
+            worldCamera.GetComponent<Volume>().profile = profile;
+        else
+            ResetWorldCameraProfile();
+    }
+    public void ResetWorldCameraProfile()
+    {
+        worldCamera.GetComponent<Volume>().profile = defaultVolumeProfile;
+    }
+
+    public void SetBattleCameraProfile(VolumeProfile profile)
+    {
+        if (profile)
+            battleCamera.GetComponent<Volume>().profile = profile;
+        else
+            ResetBattleCameraProfile();
+    }
+    public void ResetBattleCameraProfile()
+    {
+        battleCamera.GetComponent<Volume>().profile = defaultVolumeProfile;
     }
 }

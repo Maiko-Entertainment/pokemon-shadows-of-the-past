@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Tilemaps;
 
 public class WorldMap : MonoBehaviour
@@ -11,6 +12,7 @@ public class WorldMap : MonoBehaviour
     public List<Transform> spawnList = new List<Transform>();
     public AudioOptions mapMusic;
     public TransitionBase titleCard;
+    public VolumeProfile volumeProfile; 
 
     public Tilemap groundTilemap;
     public Tilemap waterTilemap;
@@ -25,6 +27,7 @@ public class WorldMap : MonoBehaviour
         if (titleCard != null)
             WorldMapMaster.GetInstance().CreateTitleCard(titleCard);
         CreateDayEffects();
+        TransitionMaster.GetInstance()?.SetCameraProfile(volumeProfile);
     }
 
     public void CreateDayEffects()
