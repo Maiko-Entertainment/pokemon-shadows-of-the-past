@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 752170572174616569}
   - component: {fileID: 2321557010523889102}
   - component: {fileID: 5646080755463855347}
+  - component: {fileID: 8647961488593536642}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -225,7 +226,7 @@ MonoBehaviour:
   scrollPos: {x: 240.50642, y: 54.38319}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 400
+  blockViewHeight: 360
   zoom: 0.7600002
   scrollViewRect:
     serializedVersion: 2
@@ -236,7 +237,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 7130694338816742214}
   selectedCommands:
-  - {fileID: 5646080755463855347}
+  - {fileID: 8647961488593536642}
   variables:
   - {fileID: 894175279591848123}
   - {fileID: 9219639671229118522}
@@ -916,6 +917,7 @@ MonoBehaviour:
   - {fileID: 7003837465734737590}
   - {fileID: 7752504958782385394}
   - {fileID: 8181246518978112278}
+  - {fileID: 8647961488593536642}
   - {fileID: 5431425430975971329}
   - {fileID: 2894774760092811398}
   - {fileID: 7094037056772922641}
@@ -2902,6 +2904,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 83
   indentLevel: 0
+--- !u!114 &8647961488593536642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723794000265814014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52aa8c0a3a1dec94695e072bd19b6369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 84
+  indentLevel: 0
+  transition: {fileID: 7234278562895652701, guid: 5d3274e441716ea47aa515a981efefc6, type: 3}
+  destroyprevious: 1
+  waitForEnd: 0
 --- !u!1 &8601388383399540611
 GameObject:
   m_ObjectHideFlags: 0

@@ -231,6 +231,8 @@ GameObject:
   - component: {fileID: 5136992223326603447}
   - component: {fileID: 2080900372287428718}
   - component: {fileID: 8299287130138220985}
+  - component: {fileID: 6964930993532122799}
+  - component: {fileID: 4241024101362736303}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -280,9 +282,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 1403242780854720051}
-  selectedCommands:
-  - {fileID: 1450206175455967148}
+  - {fileID: 6851886028761057480}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -1355,6 +1356,8 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 4810658084058398103}
+  - {fileID: 4241024101362736303}
+  - {fileID: 6964930993532122799}
   - {fileID: 2137921821171810116}
   - {fileID: 2675835687049557972}
   suppressAllAutoSelections: 0
@@ -2221,6 +2224,54 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 0.5
   durationOLD: 0
+--- !u!114 &6964930993532122799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483543836727946961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 156
+  indentLevel: 0
+  storyText: Akane will remember that.
+  description: 
+  character: {fileID: 879395119028325723}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &4241024101362736303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483543836727946961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 157
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: d88f63a65a5716846a92a060840bf806, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
 --- !u!1001 &3099333506412395553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2530,6 +2581,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
+--- !u!114 &879395119028325723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8235359996918608382, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}
+  m_PrefabInstance: {fileID: 9114684742748273829}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1071311906405446616 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8116557435195330429, guid: 408a56f8e79a93741ae92780077d1fd3, type: 3}

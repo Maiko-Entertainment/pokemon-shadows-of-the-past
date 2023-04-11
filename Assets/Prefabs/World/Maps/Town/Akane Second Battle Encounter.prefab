@@ -266,6 +266,8 @@ GameObject:
   - component: {fileID: 4796107057410560158}
   - component: {fileID: 770935527742119982}
   - component: {fileID: 1121520987221141472}
+  - component: {fileID: 821435862737181965}
+  - component: {fileID: 8119174940286873350}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -303,10 +305,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 714.26495, y: -136.00293}
+  scrollPos: {x: 489.67493, y: -34.363647}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 400
+  blockViewHeight: 360
   zoom: 0.6100004
   scrollViewRect:
     serializedVersion: 2
@@ -315,7 +317,7 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 4944650840581144595}
+  - {fileID: 6766288571369271287}
   selectedCommands: []
   variables:
   - {fileID: 7941843680161495952}
@@ -2497,7 +2499,6 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 8671577353591531100}
   - {fileID: 2690928823402779299}
   - {fileID: 2781286015216346970}
   - {fileID: 3907137751764535929}
@@ -2509,6 +2510,9 @@ MonoBehaviour:
   - {fileID: 4244113529438196320}
   - {fileID: 6456525918908017238}
   - {fileID: 7053645552018818684}
+  - {fileID: 821435862737181965}
+  - {fileID: 8119174940286873350}
+  - {fileID: 8671577353591531100}
   - {fileID: 5182011267596730065}
   suppressAllAutoSelections: 0
 --- !u!114 &688583510136547393
@@ -4608,6 +4612,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 239
   indentLevel: 0
+--- !u!114 &821435862737181965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383269007625151450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 240
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: d88f63a65a5716846a92a060840bf806, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &8119174940286873350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383269007625151450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 241
+  indentLevel: 0
+  storyText: Akane looks more frustrated than ever...
+  description: 
+  character: {fileID: 7784312062609627618}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1001 &3263345581808186665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4758,6 +4810,17 @@ Transform:
 --- !u!114 &6932416845139275052 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2846954112594468365, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
+  m_PrefabInstance: {fileID: 5167473522728121121}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7784312062609627618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3148547588799638211, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
   m_PrefabInstance: {fileID: 5167473522728121121}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

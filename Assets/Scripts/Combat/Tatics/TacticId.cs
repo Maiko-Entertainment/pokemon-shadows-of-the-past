@@ -16,4 +16,5 @@ public enum TacticId
     ShowTime = 2000,
     AggresiveStance = 2001,
     InnerPower = 2002,
+    NoFilter = 2003,
 }

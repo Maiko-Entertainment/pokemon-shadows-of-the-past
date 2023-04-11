@@ -337,6 +337,13 @@ GameObject:
   - component: {fileID: 5092899857996396605}
   - component: {fileID: 3945663556335632461}
   - component: {fileID: 204342876048569651}
+  - component: {fileID: 8001198016586527603}
+  - component: {fileID: 4739069798026281458}
+  - component: {fileID: 5170446007712146121}
+  - component: {fileID: 4275286798230190656}
+  - component: {fileID: 3066792525285307369}
+  - component: {fileID: 7477362048978990016}
+  - component: {fileID: 1562796536142950382}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -373,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 234.74672, y: 6.2860804}
+  scrollPos: {x: 204.896, y: -123.56463}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 346
@@ -387,16 +394,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 4173321904421328739}
   selectedCommands:
-  - {fileID: 5163842424389797589}
-  - {fileID: 5341718602268000027}
-  - {fileID: 6240173769518483201}
-  - {fileID: 5762156195326575366}
-  - {fileID: 2718304974733028079}
-  - {fileID: 5963194370622917168}
   - {fileID: 6297106357601959493}
-  - {fileID: 1619345496910927505}
-  - {fileID: 2641212778182828672}
-  - {fileID: 2892460642643640104}
   variables:
   - {fileID: 7787851897665470608}
   description: 
@@ -438,6 +436,8 @@ MonoBehaviour:
   - {fileID: 1896900979029696791}
   - {fileID: 7443328670162880043}
   - {fileID: 8370568716933735770}
+  - {fileID: 3066792525285307369}
+  - {fileID: 4275286798230190656}
   - {fileID: 6837757834461435000}
   - {fileID: 6247272194512411007}
   - {fileID: 8196386957373954442}
@@ -498,8 +498,8 @@ MonoBehaviour:
   itemId: 3
   indentLevel: 0
   agentId: Roserade
-  overwriteSpeed: 0
-  speed: 5
+  overwriteSpeed: 1
+  speed: 0.2
   directions:
   - direction: 2
     justTurn: 0
@@ -664,6 +664,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 7477362048978990016}
   - {fileID: 6327944577634906476}
   - {fileID: 9139958948581387439}
   - {fileID: 3908933869194219649}
@@ -707,6 +708,7 @@ MonoBehaviour:
   - {fileID: 5963194370622917168}
   - {fileID: 6297106357601959493}
   - {fileID: 1619345496910927505}
+  - {fileID: 1562796536142950382}
   - {fileID: 2641212778182828672}
   - {fileID: 2892460642643640104}
   suppressAllAutoSelections: 0
@@ -846,7 +848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 19
   indentLevel: 0
-  storyText: '{$playerName}... {w}Is the way your story ends?'
+  storyText: '{$playerName}... {w}Is this the way your story ends?'
   description: 
   character: {fileID: 5292287102817739716}
   portrait: {fileID: 0}
@@ -1030,6 +1032,7 @@ MonoBehaviour:
   - {fileID: 3945663556335632461}
   - {fileID: 5092899857996396605}
   - {fileID: 2954769274502031804}
+  - {fileID: 8001198016586527603}
   - {fileID: 6829744693194969107}
   - {fileID: 8827331476450608698}
   - {fileID: 8754207251413545358}
@@ -1860,6 +1863,8 @@ MonoBehaviour:
   - {fileID: 971960746007697826}
   - {fileID: 5110439570339857799}
   - {fileID: 5215362029265377808}
+  - {fileID: 4739069798026281458}
+  - {fileID: 5170446007712146121}
   - {fileID: 5256611391053009744}
   - {fileID: 3831127638336729318}
   suppressAllAutoSelections: 0
@@ -2432,6 +2437,147 @@ MonoBehaviour:
     justTurn: 1
     jump: 0
   waitUntilEnd: 0
+--- !u!114 &8001198016586527603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923152108789894703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 459
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: d88f63a65a5716846a92a060840bf806, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &4739069798026281458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923152108789894703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 465
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: 96298979e80e33342ad63887aadf861f, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &5170446007712146121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923152108789894703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 466
+  indentLevel: 0
+  storyText: A small seed was left where Roserade was.
+  description: 
+  character: {fileID: 3125101955282202552}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &4275286798230190656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923152108789894703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949822ad880cd554b8214f0906c234ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 467
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: dca42af79f8c1d347aebf341283e27ce, type: 3}
+    pitch: -0.5
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &3066792525285307369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923152108789894703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0697b68221ced88469addd8d2bd451ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 468
+  indentLevel: 0
+  profile: {fileID: 11400000, guid: 69e7e0f76030ad143b8e20c3c96fe05e, type: 2}
+  affectWorld: 1
+  affectBattle: 1
+--- !u!114 &7477362048978990016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923152108789894703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0697b68221ced88469addd8d2bd451ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 469
+  indentLevel: 0
+  profile: {fileID: 0}
+  affectWorld: 1
+  affectBattle: 1
+--- !u!114 &1562796536142950382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923152108789894703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0697b68221ced88469addd8d2bd451ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 470
+  indentLevel: 0
+  profile: {fileID: 0}
+  affectWorld: 1
+  affectBattle: 1
 --- !u!1001 &130503199591325445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4501,6 +4647,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2395284b407417e4097f103ab0acb098, type: 3}
+--- !u!114 &3125101955282202552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8250166957465432354, guid: 2395284b407417e4097f103ab0acb098, type: 3}
+  m_PrefabInstance: {fileID: 6422393143095533210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3495176812315516572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7611558649913311238, guid: 2395284b407417e4097f103ab0acb098, type: 3}

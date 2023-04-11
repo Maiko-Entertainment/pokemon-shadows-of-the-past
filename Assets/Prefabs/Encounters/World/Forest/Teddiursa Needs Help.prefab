@@ -149,6 +149,13 @@ GameObject:
   - component: {fileID: 2050191313819735117}
   - component: {fileID: 3473924677926578757}
   - component: {fileID: 4991631370905965009}
+  - component: {fileID: 6798189916353412632}
+  - component: {fileID: 1415470943246202563}
+  - component: {fileID: 6015344518520638697}
+  - component: {fileID: 539698179412055817}
+  - component: {fileID: 5241777159329222668}
+  - component: {fileID: 2060206910353393050}
+  - component: {fileID: 3143153392968899731}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -186,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 74.96318, y: 62.673893}
+  scrollPos: {x: -171.61212, y: 81.85196}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 346
@@ -198,9 +205,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 7637753993456263910}
+  - {fileID: 8171328429260563678}
   selectedCommands:
-  - {fileID: 4991631370905965009}
+  - {fileID: 3143153392968899731}
   variables:
   - {fileID: 7220261088111111180}
   - {fileID: 1687655486553883141}
@@ -447,11 +454,14 @@ MonoBehaviour:
   - {fileID: 9064902655598762919}
   - {fileID: 2134912296484420040}
   - {fileID: 8015192784535553546}
+  - {fileID: 1415470943246202563}
+  - {fileID: 6015344518520638697}
   - {fileID: 6238482135101467490}
   - {fileID: 5375524030893920809}
+  - {fileID: 539698179412055817}
+  - {fileID: 4380306367712195868}
   - {fileID: 5189130245099314041}
   - {fileID: 7624833272958397292}
-  - {fileID: 4380306367712195868}
   - {fileID: 4976242182527881651}
   suppressAllAutoSelections: 0
 --- !u!114 &5001030934799613469
@@ -574,7 +584,7 @@ MonoBehaviour:
   indentLevel: 0
   agentId: Ursaring
   overwriteSpeed: 1
-  speed: 1
+  speed: 0.5
   directions:
   - direction: 2
     justTurn: 0
@@ -675,7 +685,7 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 1
+    floatVal: 2
   durationOLD: 0
 --- !u!114 &7289248632463477748
 MonoBehaviour:
@@ -792,6 +802,7 @@ MonoBehaviour:
   - {fileID: 5785895441465684674}
   - {fileID: 6601115207387101042}
   - {fileID: 2050191313819735117}
+  - {fileID: 5241777159329222668}
   - {fileID: 3473924677926578757}
   - {fileID: 4991631370905965009}
   suppressAllAutoSelections: 0
@@ -897,9 +908,6 @@ MonoBehaviour:
   overwriteSpeed: 0
   speed: 3
   directions:
-  - direction: 1
-    justTurn: 0
-    jump: 0
   - direction: 2
     justTurn: 0
     jump: 0
@@ -1237,6 +1245,7 @@ MonoBehaviour:
   - {fileID: 358721002556219174}
   - {fileID: 4089837574947172747}
   - {fileID: 5835642577653335702}
+  - {fileID: 6798189916353412632}
   - {fileID: 4038550481966658082}
   - {fileID: 4888641213153979993}
   - {fileID: 2687752895444189687}
@@ -1270,6 +1279,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2060206910353393050}
   - {fileID: 759695410200003098}
   - {fileID: 5520350947150996501}
   - {fileID: 8724793415910956684}
@@ -2632,6 +2642,7 @@ MonoBehaviour:
   - {fileID: 4699832664030539441}
   - {fileID: 6686542739522628472}
   - {fileID: 1615255079144623743}
+  - {fileID: 3143153392968899731}
   - {fileID: 6399847851501648001}
   - {fileID: 5566616638244889860}
   - {fileID: 1171658698800819784}
@@ -3427,6 +3438,145 @@ MonoBehaviour:
   spawnIndex: 3
   changeMapTransition: {fileID: 5167105388578258930, guid: 14833ba700e72ab4fa6d19a5f940d1d2, type: 3}
   triggerNextInteractionOnEnd: 1
+--- !u!114 &6798189916353412632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 458
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: d88f63a65a5716846a92a060840bf806, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &1415470943246202563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949822ad880cd554b8214f0906c234ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 459
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: dca42af79f8c1d347aebf341283e27ce, type: 3}
+    pitch: 0.5
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &6015344518520638697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0697b68221ced88469addd8d2bd451ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 460
+  indentLevel: 0
+  profile: {fileID: 11400000, guid: 69e7e0f76030ad143b8e20c3c96fe05e, type: 2}
+  affectWorld: 1
+  affectBattle: 1
+--- !u!114 &539698179412055817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec39367af1761d14e903c0235f0ece5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 461
+  indentLevel: 0
+  agentId: Teddiursa
+  overwriteSpeed: 0
+  speed: 3
+  directions:
+  - direction: 1
+    justTurn: 0
+    jump: 0
+  - direction: 3
+    justTurn: 1
+    jump: 0
+  waitUntilEnd: 1
+--- !u!114 &5241777159329222668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0697b68221ced88469addd8d2bd451ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 462
+  indentLevel: 0
+  profile: {fileID: 0}
+  affectWorld: 1
+  affectBattle: 1
+--- !u!114 &2060206910353393050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0697b68221ced88469addd8d2bd451ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 463
+  indentLevel: 0
+  profile: {fileID: 0}
+  affectWorld: 1
+  affectBattle: 1
+--- !u!114 &3143153392968899731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304181679956712525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 464
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: 96298979e80e33342ad63887aadf861f, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
 --- !u!1 &5851113948233369936
 GameObject:
   m_ObjectHideFlags: 0

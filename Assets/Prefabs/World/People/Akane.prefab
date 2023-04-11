@@ -175,6 +175,9 @@ GameObject:
   - component: {fileID: 2960293232678586463}
   - component: {fileID: 1949215158645963944}
   - component: {fileID: 4580513886669696118}
+  - component: {fileID: 2929239631675655999}
+  - component: {fileID: 3597014550714513115}
+  - component: {fileID: 8549969840900908399}
   m_Layer: 0
   m_Name: Akane Flowchart
   m_TagString: Untagged
@@ -211,11 +214,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 26.473541, y: 102.9276}
+  scrollPos: {x: 350.59567, y: 100.37612}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 412
-  zoom: 0.7900002
+  blockViewHeight: 360
+  zoom: 0.64000034
   scrollViewRect:
     serializedVersion: 2
     x: 0
@@ -223,7 +226,7 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 6469087365943466222}
+  - {fileID: 3830709952417387940}
   selectedCommands: []
   variables:
   - {fileID: 113405936130264470}
@@ -258,7 +261,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 417.7342
     y: 115.73418
-    width: 76.582275
+    width: 78.124985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -637,7 +640,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 619
     y: 66.73418
-    width: 137.34175
+    width: 131.24995
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1554,7 +1557,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 822.50543
     y: 63.989006
-    width: 195.56958
+    width: 189.06242
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1701,7 +1704,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1047.6129
     y: 11.0748415
-    width: 175.31642
+    width: 168.74994
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1720,6 +1723,9 @@ MonoBehaviour:
   - {fileID: 4580513886669696118}
   - {fileID: 9090946971795942843}
   - {fileID: 6919827953853749177}
+  - {fileID: 3597014550714513115}
+  - {fileID: 2929239631675655999}
+  - {fileID: 8549969840900908399}
   - {fileID: 468391869882437964}
   - {fileID: 8999252707529992395}
   - {fileID: 2890655487893127595}
@@ -1742,7 +1748,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1053.4941
     y: 91.46152
-    width: 171.51895
+    width: 164.06244
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3772,6 +3778,81 @@ MonoBehaviour:
   showAlways: 1
   showCount: 1
   extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2929239631675655999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250590118494116502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 156
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: 96298979e80e33342ad63887aadf861f, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &3597014550714513115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250590118494116502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 157
+  indentLevel: 0
+  storyText: 'You are not sure but... '
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &8549969840900908399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250590118494116502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 158
+  indentLevel: 0
+  storyText: You feel like you understand Akane a little bit more...
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 1
   fadeWhenDone: 1
   waitForClick: 1
   stopVoiceover: 1

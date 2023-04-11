@@ -187,6 +187,12 @@ GameObject:
   - component: {fileID: 2807020602345400804}
   - component: {fileID: 8263351569812421055}
   - component: {fileID: 3262565103224873630}
+  - component: {fileID: 6464965630455206387}
+  - component: {fileID: 3512230296069807207}
+  - component: {fileID: 9161776537737265901}
+  - component: {fileID: 9053123630298385929}
+  - component: {fileID: 4808765583831566908}
+  - component: {fileID: 4954077622482211412}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -224,10 +230,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 598.83887, y: -127.18503}
+  scrollPos: {x: 394.15137, y: -145.93501}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 415
+  blockViewHeight: 360
   zoom: 0.6400002
   scrollViewRect:
     serializedVersion: 2
@@ -235,7 +241,8 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 3642072492938677333}
   selectedCommands: []
   variables:
   - {fileID: 4103577494976808626}
@@ -2539,6 +2546,8 @@ MonoBehaviour:
   - {fileID: 3054192389616733693}
   - {fileID: 3161419674762860048}
   - {fileID: 192383852187921150}
+  - {fileID: 3512230296069807207}
+  - {fileID: 6464965630455206387}
   - {fileID: 2962781953132883927}
   - {fileID: 8199630019152839708}
   - {fileID: 7642246654850484053}
@@ -2585,10 +2594,14 @@ MonoBehaviour:
   - {fileID: 6265780733806353031}
   - {fileID: 2807020602345400804}
   - {fileID: 2998829297349219247}
+  - {fileID: 9161776537737265901}
+  - {fileID: 9053123630298385929}
   - {fileID: 3286365135033949284}
   - {fileID: 8791421659104034565}
   - {fileID: 4584433825976743964}
   - {fileID: 6864532542574316256}
+  - {fileID: 4808765583831566908}
+  - {fileID: 4954077622482211412}
   - {fileID: 2226095624483000379}
   - {fileID: 3613857393907227263}
   - {fileID: 4753672626064376750}
@@ -4441,6 +4454,150 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 166
   indentLevel: 0
+--- !u!114 &6464965630455206387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 167
+  indentLevel: 0
+  storyText: Tansy looks happy.
+  description: 
+  character: {fileID: 8063387401425143255}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &3512230296069807207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 168
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: 96298979e80e33342ad63887aadf861f, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &9161776537737265901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 169
+  indentLevel: 1
+  clip:
+    audio: {fileID: 8300000, guid: d88f63a65a5716846a92a060840bf806, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &9053123630298385929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 170
+  indentLevel: 1
+  storyText: Tansy's eyes judge you...
+  description: 
+  character: {fileID: 8063387401425143255}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &4808765583831566908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 171
+  indentLevel: 1
+  clip:
+    audio: {fileID: 8300000, guid: d88f63a65a5716846a92a060840bf806, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &4954077622482211412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 172
+  indentLevel: 1
+  storyText: Tansy looks hurt...
+  description: 
+  character: {fileID: 8063387401425143255}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &8211749703692887174
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,6 +4875,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1229071c878ac24a84c3706305ea8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8063387401425143255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6169512288543847823, guid: a422340308c6a7f40b199c549e8bcb29, type: 3}
+  m_PrefabInstance: {fileID: 4213234702273638488}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &9007060466505838967
