@@ -16,6 +16,7 @@ public class StatusEffectFrostbite : StatusEffect
         captureRateBonus = 10;
         inmuneTypes.Add(PokemonTypeId.Ice);
         moveMods.powerMultiplier = 0.5f;
+        gainStatusBlockName = "Frostbite Gain";
     }
 
     public override void Initiate()

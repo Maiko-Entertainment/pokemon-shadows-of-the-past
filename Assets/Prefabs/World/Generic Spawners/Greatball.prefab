@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,9 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2160fefdc91cf647ba1641fca662030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditions: []
+  conditions:
+  - saveVariable: 4
+    condition: 2
+    value: 161
+  inventoryConditions: []
   spawns:
   - spawn: {fileID: 6573720176516909547, guid: 83082fc998ca94846b3084eaedec94fb, type: 3}
     spawnPostion: {x: 0, y: 0, z: 0}
     spawnAsChild: 1
-  chance: 0
+  chance: 1

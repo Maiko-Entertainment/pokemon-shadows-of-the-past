@@ -63,6 +63,7 @@ public class PokemonCaughtData
         pp.isShadow = isShadow;
         pp.friendship = friendship;
         pp.isMale = isMale;
+        pp.equipedItem = equippedItem ? equippedItem.GetItemId() : ItemId.None;
         foreach (MoveEquipped me in moves)
         {
             pp.moves.Add(me.GetSave());
@@ -85,6 +86,8 @@ public class PokemonCaughtData
         newInsntace.natureId = natureId;
         newInsntace.abilityId = abilityId;
         newInsntace.isShadow = isShadow;
+        newInsntace.isMale = isMale;
+        newInsntace.equippedItem = equippedItem;
         List<MoveEquipped> movesInstance = new List<MoveEquipped>();
         foreach(MoveEquipped move in moves)
         {
@@ -107,7 +110,7 @@ public class PokemonCaughtData
 
     public string GetName()
     {
-        return pokemonName != "" ? pokemonName : pokemonBase.species;
+        return pokemonName != "" && pokemonName != null ? pokemonName : pokemonBase.species;
     }
 
     public void SetName(string newName)

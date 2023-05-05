@@ -65,7 +65,7 @@ public class BattleAnimatorMaster : MonoBehaviour
         combatCanvas.GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
-    private void ClearTeamPokemon(BattleTeamId teamId)
+    private void ClearTeamPokemon(BattleTeamId teamId, bool instant = false)
     {
         if (teamId == BattleTeamId.Team1)
         {
@@ -73,7 +73,7 @@ public class BattleAnimatorMaster : MonoBehaviour
             {
                 Destroy(p.gameObject);
             }
-            HidePokemonInfo(BattleTeamId.Team1);
+            HidePokemonInfo(BattleTeamId.Team1, instant);
         }
         else if (teamId == BattleTeamId.Team2)
         {
@@ -81,7 +81,7 @@ public class BattleAnimatorMaster : MonoBehaviour
             {
                 Destroy(p.gameObject);
             }
-            HidePokemonInfo(BattleTeamId.Team2);
+            HidePokemonInfo(BattleTeamId.Team2, instant);
         }
     }
 
@@ -248,7 +248,7 @@ public class BattleAnimatorMaster : MonoBehaviour
     IEnumerator ShowPokemonInfoAfter(PokemonBattleData pokemon, float delay)
     {
         yield return new WaitForSeconds(delay);
-        UpdatePokemonInfo(pokemon);
+        UpdatePokemonInfo(pokemon, true);
     }
 
     public void GoToNextBattleAnim(float seconds=0)
@@ -543,9 +543,9 @@ public class BattleAnimatorMaster : MonoBehaviour
         battleInfoManager.UpdatePokemonLevel(pokemon, level);
     }
 
-    public void UpdatePokemonInfo(PokemonBattleData pokemon)
+    public void UpdatePokemonInfo(PokemonBattleData pokemon, bool showIfHidden = false)
     {
-        battleInfoManager.UpdatePokemonInfo(pokemon);
+        battleInfoManager.UpdatePokemonInfo(pokemon, showIfHidden);
     }
     public void HidePokemonInfo(BattleTeamId team, bool instant = false)
     {

@@ -13,11 +13,18 @@ public class StatusEffectPoison : StatusEffect
         minTurns = 99999;
         captureRateBonus = 10;
         inmuneTypes.Add(PokemonTypeId.Poison);
+        gainStatusBlockName = "Poison Gain";
     }
 
     public override void Initiate()
     {
         Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
+        List<BattleAnimation> animations = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId).hitAnims;
+        BattleTrigger animTrigger = new BattleTriggerRoundEndAnimations(
+                       pokemon,
+                       pokemon,
+                       animations
+                   );
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
                     pokemon,
                     new DamageSummary(
@@ -40,6 +47,7 @@ public class StatusEffectPoison : StatusEffect
                 );
         battleTriggers.Add(messageTrigger);
         battleTriggers.Add(statusTrigger);
+        battleTriggers.Add(animTrigger);
         base.Initiate();
     }
 }

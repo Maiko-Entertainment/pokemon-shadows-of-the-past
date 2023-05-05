@@ -43,6 +43,7 @@ MonoBehaviour:
           timesUsed: 0
           disabledTurnsLeft: 0
         learnedMoves: []
+        isShadow: 0
       statsLevel:
         attack: 0
         defense: 0
@@ -59,6 +60,7 @@ MonoBehaviour:
         equippedItem: {fileID: 0}
         battleTriggers: []
       roundsInCombat: 0
+      hideLevel: 0
     - battleId: 0
       pokemon:
         pokemonName: Roselia
@@ -83,6 +85,7 @@ MonoBehaviour:
           timesUsed: 0
           disabledTurnsLeft: 0
         learnedMoves: []
+        isShadow: 0
       statsLevel:
         attack: 0
         defense: 0
@@ -99,18 +102,22 @@ MonoBehaviour:
         equippedItem: {fileID: 11400000, guid: 91d55baaae9f2af469d67ce1bca2f0cd, type: 2}
         battleTriggers:
         - eventId: 17
-          maxTriggers: 1
+          maxTriggers: 0
           turnsLeft: 9999999
       roundsInCombat: 0
+      hideLevel: 0
     conditionalPokemon: []
+    allyPokemon: []
     moneyPrice: 3000
     teamStatus: []
     tactics: []
     tacticGauge: 0
   battleData:
     battleMusic: {fileID: 8300000, guid: 5b51a7c75f78a0b44bca6e21248dcc9e, type: 3}
-    battleWonMusic: {fileID: 0}
+    battleWonMusic: {fileID: 8300000, guid: 4b20f81f51bfcca44b031010ccca6ef2, type: 3}
     battlebackground: {fileID: 1727051147952888905, guid: d8d0288b7a31e1b42b873e87bfeac93c, type: 3}
+    volumeProfile: {fileID: 0}
     battleType: 1
     playerExtraTactics: []
   transition: {fileID: 2467567444132969630, guid: e633ffd3ff794e34db981fce1240a937, type: 3}
+  team1PokemonAllies: []

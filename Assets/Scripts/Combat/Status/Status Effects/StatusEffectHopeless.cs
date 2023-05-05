@@ -11,6 +11,7 @@ public class StatusEffectHopeless : StatusEffect
         effectId = StatusEffectId.Hopeless;
         stopEscape = true;
         mods = new BattleTriggerDamageMods(0.5f);
+        gainStatusBlockName = "Hopeless Gain";
     }
 
     public override void Initiate()

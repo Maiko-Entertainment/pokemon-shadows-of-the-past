@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioMaster : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class AudioMaster : MonoBehaviour
 
     public float musicConstantVolume = 0.75f;
     public float soundConstantVolume = 0.75f;
+
+    public AudioMixerGroup effectsMixer;
 
     public AudioSource musicSource;
     public List<AudioSource> voiceSources = new List<AudioSource>();
@@ -41,6 +45,12 @@ public class AudioMaster : MonoBehaviour
         return Instance;
     }
 
+    public void HandleSave()
+    {
+        SaveMaster.Instance.activeSaveFile.musicVolume = musicVolume;
+        SaveMaster.Instance.activeSaveFile.soundVolume = soundEffectVolume;
+    }
+
     public float GetMusicVolume()
     {
         return musicVolume * musicConstantVolume;
@@ -59,6 +69,7 @@ public class AudioMaster : MonoBehaviour
         audioSource.clip = clip;
         audioSource.volume = GetSoundVolume();
         audioSource.pitch = pitch;
+        audioSource.outputAudioMixerGroup = effectsMixer;
         audioSource.Play();
         Destroy(audioSource, duration + 0.5f);
     }
@@ -70,9 +81,17 @@ public class AudioMaster : MonoBehaviour
         audioSource.clip = clip;
         audioSource.volume = GetSoundVolume() * sound.volumeModifier;
         audioSource.pitch = sound.pitch;
+        audioSource.outputAudioMixerGroup = effectsMixer;
         audioSource.Play();
         Destroy(audioSource, duration + 0.1f);
     }
+
+    internal void Load(SaveFile save)
+    {
+        musicVolume = save.musicVolume;
+        soundEffectVolume = save.soundVolume;
+    }
+
     public void PlaySfxInAudioSource(AudioOptions sound, AudioSource customSource)
     {
         AudioClip clip = sound.audio;
@@ -132,6 +151,10 @@ public class AudioMaster : MonoBehaviour
         soundEffectVolume = volume;
         foreach (AudioSource audioSource in voiceSources)
             audioSource.volume = GetSoundVolume();
+    }
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
     }
 
     private void Update()

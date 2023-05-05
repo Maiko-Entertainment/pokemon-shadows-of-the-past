@@ -26,13 +26,15 @@ GameObject:
   - component: {fileID: 2412174604248794951}
   - component: {fileID: 4259166768927251993}
   - component: {fileID: 6187944346091013934}
-  - component: {fileID: 7208287494624006405}
-  - component: {fileID: 7291114179920161975}
   - component: {fileID: 6179217901656845967}
   - component: {fileID: 6460231446649483362}
   - component: {fileID: 5338417622728286053}
   - component: {fileID: 4438875851244959552}
   - component: {fileID: 5001657475590176266}
+  - component: {fileID: 2604710242239091756}
+  - component: {fileID: 7569013155065308354}
+  - component: {fileID: 2468625465777147367}
+  - component: {fileID: 3040014504180604841}
   m_Layer: 0
   m_Name: Erik First Battle Flowchart
   m_TagString: Untagged
@@ -73,7 +75,7 @@ MonoBehaviour:
   scrollPos: {x: 0, y: 0}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 454
+  blockViewHeight: 360
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -83,7 +85,8 @@ MonoBehaviour:
     height: 0
   selectedBlocks:
   - {fileID: 5632533963677880759}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 4259166768927251993}
   variables: []
   description: 
   stepPause: 0
@@ -126,6 +129,8 @@ MonoBehaviour:
   - {fileID: 6509958537691837528}
   - {fileID: 1721132417144563525}
   - {fileID: 20612831497969291}
+  - {fileID: 2604710242239091756}
+  - {fileID: 7569013155065308354}
   - {fileID: 7146697098180316001}
   - {fileID: 4740417346495761347}
   suppressAllAutoSelections: 0
@@ -306,8 +311,8 @@ MonoBehaviour:
   - {fileID: 2412174604248794951}
   - {fileID: 1887020559892094670}
   - {fileID: 4259166768927251993}
-  - {fileID: 7291114179920161975}
-  - {fileID: 7208287494624006405}
+  - {fileID: 2468625465777147367}
+  - {fileID: 3040014504180604841}
   - {fileID: 6179217901656845967}
   - {fileID: 6187944346091013934}
   suppressAllAutoSelections: 0
@@ -365,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 0
-  storyText: So. It has come down to this... Do you see me my public?
+  storyText: 'So. It has come down to this... '
   description: 
   character: {fileID: 4939998424918934459}
   portrait: {fileID: 0}
@@ -392,7 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  storyText: ... Uhm... Yeah!
+  storyText: ... Uhm... {punch}Yeah!
   description: 
   character: {fileID: 2710325523285630966}
   portrait: {fileID: 0}
@@ -419,7 +424,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 12
   indentLevel: 0
-  storyText: Are you ready to watch me shine?!
+  storyText: '{punch=10}Do you see me my public?
+
+    {punch=10}Are you ready to
+    watch me {punch=10}shine?!'
   description: 
   character: {fileID: 4939998424918934459}
   portrait: {fileID: 0}
@@ -476,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 14
   indentLevel: 0
-  storyText: Then witness {w}{x}
+  storyText: Then stay {punch}tunned for my next move! {w}{x}
   description: 
   character: {fileID: 4939998424918934459}
   portrait: {fileID: 0}
@@ -503,63 +511,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 15
   indentLevel: 0
---- !u!114 &7208287494624006405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834970321759347544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 16
-  indentLevel: 0
-  storyText: '{punch}THIS!'
-  description: 
-  character: {fileID: 4939998424918934459}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 1
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &7291114179920161975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834970321759347544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 17
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 6559133737823682900}
-  character: {fileID: 4939998424918934459}
-  replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 10bd853e9458f3549ad4c12b00a60ac9, type: 3}
-  offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 0}
-  facing: 0
-  useDefaultSettings: 1
-  fadeDuration: 0.5
-  moveDuration: 1
-  shiftOffset: {x: 0, y: 0}
-  move: 0
-  shiftIntoPlace: 0
-  waitUntilFinished: 0
 --- !u!114 &6179217901656845967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,6 +611,126 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 1
   durationOLD: 0
+--- !u!114 &2604710242239091756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834970321759347544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 23
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 6559133737823682900}
+  character: {fileID: 4939998424918934459}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &7569013155065308354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834970321759347544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 24
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 6559133737823682900}
+  character: {fileID: 2710325523285630966}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &2468625465777147367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834970321759347544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 25
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 6559133737823682900}
+  character: {fileID: 4939998424918934459}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &3040014504180604841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834970321759347544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 26
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 6559133737823682900}
+  character: {fileID: 2710325523285630966}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1001 &6476999401600177129
 PrefabInstance:
   m_ObjectHideFlags: 0

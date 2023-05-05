@@ -53,6 +53,10 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
                 bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, (int)itemId));
             }
         }
+        foreach(StatusEffectId sei in statusClears)
+        {
+            bm.AddEvent(new BattleEventPokemonStatusRemove(pokemon, sei));
+        }
     }
     public int GetHealAmount(PokemonCaughtData pokemon)
     {

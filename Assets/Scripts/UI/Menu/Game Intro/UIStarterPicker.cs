@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIStarterPicker : MonoBehaviour
+public class UIStarterPicker : MonoBehaviour, ISelectHandler
 {
-    public Color neutralColor = Color.white;
-    public Color pickedColor;
     public Image chracterPreview;
     public Image background;
     public AudioClip selectedSound;
 
     public delegate void Click(PokemonBaseData starter);
     public event Click OnClick;
+    public delegate void OnSelectStarter(PokemonBaseData starter);
+    public event OnSelectStarter onSelect;
 
     private PokemonBaseData starter;
 
@@ -23,23 +24,12 @@ public class UIStarterPicker : MonoBehaviour
 
     public void Pick()
     {
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElement(SaveElementId.starterPickedId);
-        AudioMaster.GetInstance()?.PlaySfx(selectedSound);
-        AudioMaster.GetInstance()?.PlaySfx(starter.GetCry());
-        characterPicked.SetValue((float)starter.pokemonId);
         OnClick?.Invoke(starter);
     }
 
-    private void Update()
+    public void OnSelect(BaseEventData eventData)
     {
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElement(SaveElementId.starterPickedId);
-        if ((float)starter.pokemonId == (float)characterPicked.GetValue())
-        {
-            background.color = pickedColor;
-        }
-        else
-        {
-            background.color = neutralColor;
-        }
+        AudioMaster.GetInstance()?.PlaySfx(starter.GetCry());
+        onSelect?.Invoke(starter);
     }
 }

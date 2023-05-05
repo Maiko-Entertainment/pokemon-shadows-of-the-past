@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e6d929f7e48464b8642ef2148b580b, type: 3}
+  m_Name: Herbs
+  m_EditorClassIdentifier: 
+  itemId: 14
+  itemName: Herbs
+  isConsumable: 1
+  canBeUsedInBattle: 1
+  categoryId: 2
+  useSound: {fileID: 8300000, guid: 40843949f310900448506c61f2aa22d5, type: 3}
+  icon: {fileID: 21300000, guid: abd131dbd98f8a64db87e5b55897d1bd, type: 3}
+  description: They have a sweet scent. Will heal poison and seeded status and restore
+    30% of the pokemon's health.
+  price: 1000
+  animations:
+  - {fileID: 7726894398210948630, guid: 2687db2b277e21340b1074dc024f8b6f, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 2768247979156975970, guid: a7f02945724d40d499e2d512cd15d4c7, type: 3}
+  - {fileID: 2679350634734784108, guid: 4b96e854026594f4fa83a29e66412755, type: 3}
+  equipable: 1
+  unequipAfterBattleUse: 1
+  autoUseCondition: 2
+  restoreAmount: 30
+  minRestoreAmount: 0
+  restoresPercentage: 1
+  statusClears: 010000000200000007000000

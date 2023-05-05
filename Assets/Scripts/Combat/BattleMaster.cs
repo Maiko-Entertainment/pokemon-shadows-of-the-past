@@ -40,6 +40,10 @@ public class BattleMaster : MonoBehaviour
     {
         return Instance;
     }
+    public void HandleSave()
+    {
+        SaveMaster.Instance.SetSaveElementInner(isExpShareOn ? 1f : 0f, SaveElementId.expShare);
+    }
 
     public BattleManager GetCurrentBattle()
     {
@@ -76,12 +80,26 @@ public class BattleMaster : MonoBehaviour
         currentBattle.SetOnEndEvent(new BattleEndEvent(
             battleFlowchart,
             "",
-            "Lose Wild Battle"
+            "Lose Wild Battle",
+            ""
         ));
         if (battleData.volumeProfile)
             TransitionMaster.GetInstance().SetBattleCameraProfile(battleData.volumeProfile);
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
+    }
+
+    public void Load(SaveFile save)
+    {
+        PersistedSaveElement expShare = save.persistedElements.Find((se) => se.id == SaveElementId.expShare);
+        if (expShare != null)
+        {
+            isExpShareOn = (float)expShare.value != 0f;
+        }
+        else
+        {
+            isExpShareOn = true;
+        }
     }
 
     public void SetPostBattleEvent(BattleEndEvent postBattleEvent)

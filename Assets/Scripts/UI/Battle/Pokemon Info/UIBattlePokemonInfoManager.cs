@@ -18,27 +18,19 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
         }
     }
 
-    public void UpdateInfo(BattleManager battleState)
-    {
-        PokemonBattleData team1Pokemon = battleState.GetTeamActivePokemon(BattleTeamId.Team1);
-        PokemonBattleData team2Pokemon = battleState.GetTeamActivePokemon(BattleTeamId.Team2);
-        UpdatePokemonInfo(team1Pokemon);
-        team2Health.Load(team2Pokemon);
-    }
-
-    public void UpdatePokemonInfo(PokemonBattleData pokemon)
+    public void UpdatePokemonInfo(PokemonBattleData pokemon, bool showIfHidden = false)
     {
         BattleManager battleState = BattleMaster.GetInstance().GetCurrentBattle();
         BattleTeamId team = battleState.GetTeamId(pokemon);
         if (team == BattleTeamId.Team1)
         {
             team1Health.Load(pokemon);
-            team1Health.FadeIn();
+            if (showIfHidden) team1Health.FadeIn();
         }
         else
         {
             team2Health.Load(pokemon);
-            team2Health.FadeIn();
+            if (showIfHidden) team2Health.FadeIn();
         }
     }
 
@@ -49,14 +41,14 @@ public class UIBattlePokemonInfoManager : MonoBehaviour
         if (team == BattleTeamId.Team1)
         {
             team1Health.Load(pokemon);
-            team1Health.FadeIn();
+            // team1Health.FadeIn();
             team1Health.UpdateTarget(health);
             team1Health.UpdateHealth(health);
         }
         else
         {
             team2Health.Load(pokemon);
-            team2Health.FadeIn();
+            // team2Health.FadeIn();
             team2Health.UpdateTarget(health);
             team2Health.UpdateHealth(health);
         }

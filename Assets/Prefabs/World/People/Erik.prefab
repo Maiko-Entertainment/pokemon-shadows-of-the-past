@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 2574205191509937728}
   - component: {fileID: 5652213583347989700}
   - component: {fileID: 7324909479003201535}
+  - component: {fileID: 9188950891849517693}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -335,7 +336,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 8254676443277073817}
   selectedCommands:
-  - {fileID: 8371545933117412079}
+  - {fileID: 9188950891849517693}
   variables:
   - {fileID: 1022392668855998310}
   - {fileID: 954940094479801445}
@@ -829,7 +830,6 @@ MonoBehaviour:
   - {fileID: 3061599118920620108}
   - {fileID: 8687114272155362717}
   - {fileID: 4599060182179500993}
-  - {fileID: 7742536306148567965}
   - {fileID: 8371545933117412079}
   - {fileID: 3040915973361675209}
   - {fileID: 6359423754232373895}
@@ -843,6 +843,8 @@ MonoBehaviour:
   - {fileID: 7922211261983602127}
   - {fileID: 1547546356169914377}
   - {fileID: 1051701345713952765}
+  - {fileID: 9188950891849517693}
+  - {fileID: 7742536306148567965}
   - {fileID: 6268342813379305825}
   suppressAllAutoSelections: 0
 --- !u!114 &8705421462541148086
@@ -1293,7 +1295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 27
-  indentLevel: 2
+  indentLevel: 0
   display: 2
   stage: {fileID: 3388187828592124361}
   replacedStage: {fileID: 0}
@@ -2814,6 +2816,36 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &9188950891849517693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7966523231901417807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 101
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 3388187828592124361}
+  character: {fileID: 8140806294988685769}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 3388187827343667442}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 1
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1001 &3305949038678913908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2871,6 +2903,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
+--- !u!224 &3388187827343667442 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 208385775436235654, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
+  m_PrefabInstance: {fileID: 3305949038678913908}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3388187828195597229 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 208385775751309529, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}

@@ -12,6 +12,7 @@ public class StatusEffectParalyzed : StatusEffect
         effectId = StatusEffectId.Paralyzed;
         captureRateBonus = 20;
         onWarningFlowchartBlock = "Paralyzed Warning";
+        gainStatusBlockName = "Paralyze Gain";
         isPrimary = true;
     }
 

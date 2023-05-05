@@ -13,6 +13,7 @@ public class StatusEffectLeechSeed : StatusEffect
         minTurns = 99999;
         captureRateBonus = 10;
         inmuneTypes.Add(PokemonTypeId.Grass);
+        gainStatusBlockName = "Leech Gain";
     }
 public override void Initiate()
     {

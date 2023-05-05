@@ -8,7 +8,6 @@ public class TransitionMaster : MonoBehaviour
 {
     public static TransitionMaster Instance;
 
-    public Camera sceneCamera;
     public Camera battleCamera;
     public Camera worldCamera;
     public VolumeProfile defaultVolumeProfile;
@@ -18,14 +17,15 @@ public class TransitionMaster : MonoBehaviour
     public SayDialog evolutionDialogue;
 
     public ViewTransition battleEndTransition;
+    public ViewTransition loadGameTransition;
+    public ViewTransition openGameTransition;
+    public ViewTransition closeGameTransition;
 
     public Transform transitions;
     public Transform mapDayEffectsList;
 
     public delegate void CameraChange(Camera camera);
     public event CameraChange OnCameraChange;
-
-    private bool wasInWorldBefore = false;
 
     private void Awake()
     {
@@ -80,7 +80,7 @@ public class TransitionMaster : MonoBehaviour
     }
     public void RunTransition(ViewTransition transition)
     {
-        Instantiate(transition.gameObject, transitions);
+        Instantiate(transition, transitions);
     }
 
     public void ClearTransitions()
@@ -132,20 +132,6 @@ public class TransitionMaster : MonoBehaviour
         EnableBattleCamera();
     }
 
-    public float RunSceneTransition()
-    {
-        StartCoroutine(EnableSceneCameraAfter(battleEndTransition.changeTime));
-        Instantiate(battleEndTransition, transitions);
-        return battleEndTransition.changeTime;
-    }
-    IEnumerator EnableSceneCameraAfter(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        EnableSceneCamera();
-        SetDialogueToScene();
-        UIPauseMenuMaster.GetInstance()?.ShowWorldUI();
-    }
-
     public float RunBattleToWorldTransition()
     {
         StartCoroutine(EnableWorldCameraAfter(battleEndTransition.changeTime));
@@ -163,17 +149,10 @@ public class TransitionMaster : MonoBehaviour
 
     public void DisableCameras()
     {
-        sceneCamera.enabled = false;
         battleCamera.enabled = false;
         worldCamera.enabled = false;
     }
 
-    public void EnableSceneCamera()
-    {
-        DisableCameras();
-        wasInWorldBefore = false;
-        sceneCamera.enabled = true;
-    }
     public void EnableBattleCamera()
     {
         DisableCameras();
@@ -183,7 +162,6 @@ public class TransitionMaster : MonoBehaviour
     public void EnableWorldCamera()
     {
         DisableCameras();
-        wasInWorldBefore = true;
         worldCamera.enabled = true;
         worldCamera.GetComponent<WorldCamera>().LookForPlayer();
         SetDialogueToScene();
@@ -196,10 +174,7 @@ public class TransitionMaster : MonoBehaviour
 
     public float ReturnToPreviousCamera()
     {
-        if (wasInWorldBefore)
-            return RunBattleToWorldTransition();
-        else
-            return RunSceneTransition();
+        return RunBattleToWorldTransition();
     }
     public void ClearDayEffects()
     {
@@ -235,5 +210,44 @@ public class TransitionMaster : MonoBehaviour
     public void ResetBattleCameraProfile()
     {
         battleCamera.GetComponent<Volume>().profile = defaultVolumeProfile;
+    }
+    public float TransitionToGameMenu()
+    {
+        RunTransition(openGameTransition);
+        StartCoroutine(SetGameplayUI(false, openGameTransition.changeTime));
+        return openGameTransition.changeTime;
+    }
+    public float TransitionFromMainMenuToGame()
+    {
+        RunTransition(loadGameTransition);
+        StartCoroutine(SetGameplayUI(true, loadGameTransition.changeTime));
+        return loadGameTransition.changeTime;
+    }
+    public float TransitionFromGameToMainMenu()
+    {
+        RunTransition(loadGameTransition);
+        StartCoroutine(SetGameplayUI(false, loadGameTransition.changeTime));
+        return loadGameTransition.changeTime;
+    }
+
+    public float TransitionCloseGame()
+    {
+        RunTransition(closeGameTransition);
+        return closeGameTransition.totalDuration;
+    }
+
+    public IEnumerator SetGameplayUI(bool state, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (state)
+        {
+            UIPauseMenuMaster.Instance.ShowWorldUI();
+            UIPauseMenuMaster.Instance.timeofDayContainer.parent.gameObject.SetActive(true);
+        }
+        else
+        {
+            UIPauseMenuMaster.Instance.HideWorldUI();
+            UIPauseMenuMaster.Instance.timeofDayContainer.parent.gameObject.SetActive(false);
+        }
     }
 }

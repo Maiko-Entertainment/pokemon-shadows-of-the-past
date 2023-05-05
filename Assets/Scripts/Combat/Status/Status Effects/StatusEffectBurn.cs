@@ -13,6 +13,7 @@ public class StatusEffectBurn : StatusEffect
         minTurns = 99999;
         captureRateBonus = 10;
         inmuneTypes.Add(PokemonTypeId.Fire);
+        gainStatusBlockName = "Burn Gain";
     }
 
     public override void Initiate()

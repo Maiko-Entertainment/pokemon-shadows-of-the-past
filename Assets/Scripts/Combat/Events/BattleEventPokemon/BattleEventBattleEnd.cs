@@ -18,7 +18,8 @@ public class BattleEventBattleEnd : BattleEvent
     public override void Execute()
     {
         BattleMaster.GetInstance().GetCurrentBattle().eventManager.ClearEvents();
-        InventoryMaster.GetInstance().ChangeMoney(finalBattleState.team2.moneyPrice);
+        if (winningTeamId == BattleTeamId.Team1)
+            InventoryMaster.GetInstance().ChangeMoney(finalBattleState.team2.moneyPrice);
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventBattleEndMessage(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEndBattle(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventCheckEvolution());

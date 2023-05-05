@@ -24,7 +24,7 @@ public class FungusTriggerBattleTrainer : Command
     {
         yield return new WaitForSeconds(delay);
         BattleMaster.GetInstance()?.RunTrainerBattle(trainer);
-        BattleMaster.GetInstance()?.SetPostBattleEvent(new BattleEndEvent(GetFlowchart(), onWinBlock, onLoseBlock));
+        BattleMaster.GetInstance()?.SetPostBattleEvent(new BattleEndEvent(GetFlowchart(), onWinBlock, onLoseBlock, onLoseBlock));
         Continue();
     }
 

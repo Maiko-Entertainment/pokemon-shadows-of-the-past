@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -9,7 +10,7 @@ public class SaveMaster : MonoBehaviour
 
     public List<SaveFile> saveFiles = new List<SaveFile>();
 
-    public SaveFile activeSaveFile = new SaveFile();
+    public SaveFile activeSaveFile;
     public int lastSaveIndex = 0;
     public int maxSaveFiles = 20;
 
@@ -45,6 +46,17 @@ public class SaveMaster : MonoBehaviour
                 LoadSaveFile(0);
             }
         }
+        else
+        {
+            StartCoroutine(GoToMainMenu());
+        }
+    }
+
+    public IEnumerator GoToMainMenu()
+    {
+        float delay = TransitionMaster.Instance.TransitionToGameMenu();
+        yield return new WaitForSeconds(delay);
+        WorldMapMaster.Instance.GoToMap(13, 0);
     }
 
     public void LoadSaveSlots()
@@ -76,6 +88,8 @@ public class SaveMaster : MonoBehaviour
         TacticsMaster.GetInstance().Load(save);
         WorldMapMaster.GetInstance().Load(save);
         PokemonMaster.GetInstance().Load(save);
+        AudioMaster.GetInstance().Load(save);
+        BattleMaster.GetInstance().Load(save);
     }
 
 
@@ -85,6 +99,8 @@ public class SaveMaster : MonoBehaviour
         InventoryMaster.GetInstance().HandleSave();
         WorldMapMaster.GetInstance().HandleSave();
         PokemonMaster.GetInstance().HandleSave();
+        AudioMaster.GetInstance().HandleSave();
+        BattleMaster.GetInstance().HandleSave();
         lastSaveIndex = saveIndex;
         SaveCurrentFile(saveIndex);
         LoadSaveSlots();

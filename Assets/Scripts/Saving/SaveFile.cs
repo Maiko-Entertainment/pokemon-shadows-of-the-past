@@ -15,4 +15,6 @@ public class SaveFile
     public SerializableVector2 playerPos = new SerializableVector2(Vector2.zero);
     public int lastSafeZoneMapId = 3;
     public int lastSafeZoneIndex = 0;
+    public float musicVolume = 0.5f;
+    public float soundVolume = 0.5f;
 }

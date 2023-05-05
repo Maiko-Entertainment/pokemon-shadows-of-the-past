@@ -91,4 +91,16 @@ public static class UtilsMaster
         );
         instance.content.localPosition = result;
     }
+
+    public static bool ContainsAtLeastOne<T>(List<T> array, List<T> array2)
+    {
+        foreach(T t in array2)
+        {
+            if (array.Contains(t))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

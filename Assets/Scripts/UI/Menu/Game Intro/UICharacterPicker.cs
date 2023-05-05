@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UICharacterPicker : MonoBehaviour
+public class UICharacterPicker : MonoBehaviour, ISelectHandler
 {
-    public Color neutralColor = Color.white;
-    public Color pickedColor;
     public Image chracterPreview;
-    public Image background;
     public AudioClip selectedSound;
+
+    public delegate void OnClick(float characterIndex);
+    public event OnClick onClick;
+    public delegate void OnHover(float characterIndex);
+    public event OnHover onHover;
 
     private float chraracterIndex = 0;
     public UICharacterPicker Load(int chraracterIndex)
@@ -19,23 +22,14 @@ public class UICharacterPicker : MonoBehaviour
         return this;
     }
 
-    public void Pick()
+    public void HandleClick()
     {
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElement(SaveElementId.characterModelId);
         AudioMaster.GetInstance()?.PlaySfx(selectedSound);
-        characterPicked.SetValue(chraracterIndex);
+        onClick?.Invoke(chraracterIndex);
     }
 
-    private void Update()
+    public void OnSelect(BaseEventData eventData)
     {
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElement(SaveElementId.characterModelId);
-        if (chraracterIndex == (float)characterPicked.GetValue())
-        {
-            background.color = pickedColor;
-        }
-        else
-        {
-            background.color = neutralColor;
-        }
+        onHover?.Invoke(chraracterIndex);
     }
 }

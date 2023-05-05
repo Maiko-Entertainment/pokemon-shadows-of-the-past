@@ -8,12 +8,14 @@ public class BattleEndEvent
     public Flowchart flowchart;
     public string onWinBlockName = "Win";
     public string onLoseBlockName = "Lose";
+    public string onDrawBlockName = "Draw";
 
-    public BattleEndEvent(Flowchart flowchart, string onWinBlockName, string onLoseBlockName)
+    public BattleEndEvent(Flowchart flowchart, string onWinBlockName, string onLoseBlockName, string onDrawBlockName)
     {
         this.flowchart = flowchart;
         this.onWinBlockName = onWinBlockName;
         this.onLoseBlockName = onLoseBlockName;
+        this.onDrawBlockName = onDrawBlockName;
     }
 
     public void Execute(BattleEventBattleEnd e)

@@ -18,6 +18,7 @@ public enum SaveElementId
     money = 15,
     tacticsTutorial = 16,
     shopProgress = 17,
+    expShare = 18,
     akaneRelationship = 100,
     danteRelationship = 101,
     erikRelationship = 102,
@@ -26,4 +27,5 @@ public enum SaveElementId
     startedTypePicked = 1001, // 1 is grass, 2 water, 3 fire
     tansyProtectEachother = 1002,
     tansyWasBraver = 1003,
+    danteFirstBattleGiveUp = 1004,
 }

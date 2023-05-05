@@ -15,6 +15,7 @@ public class StatusEffectFireVortex : StatusEffect
         captureRateBonus = 10;
         inmuneTypes.Add(PokemonTypeId.Fire);
         stopEscape = true;
+        gainStatusBlockName = "Fire Vortex Gain";
     }
 
     public override void Initiate()

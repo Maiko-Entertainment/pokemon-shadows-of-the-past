@@ -17,6 +17,11 @@ public class BattleTriggerOnMoveParalyzedCancel : BattleTriggerOnPokemonMove
         
         if (pokemon == battleEvent.pokemon && random < status.chance)
         {
+            StatusEffectData sed = BattleAnimatorMaster.GetInstance().GetStatusEffectData(status.effectId);
+            foreach(BattleAnimation anim in sed.hitAnims)
+            {
+                BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim));
+            }
             Flowchart flowchart = BattleAnimatorMaster.GetInstance().battleFlowchart;
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(
                 new BattleTriggerMessageData(

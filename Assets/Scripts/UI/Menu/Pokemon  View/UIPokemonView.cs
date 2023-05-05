@@ -31,6 +31,7 @@ public class UIPokemonView : MonoBehaviour
     public Image pokemonHeartShattered;
     public GameObject swapHelp;
     public GameObject battlePickHelp;
+    public UIPokemonGender genderIcon;
 
     private PokemonAnimationController animator;
 
@@ -59,6 +60,7 @@ public class UIPokemonView : MonoBehaviour
             Destroy(pokemon.gameObject);
         }
         List<Selectable> selectables = new List<Selectable>();
+        int index = 0;
         foreach (PokemonCaughtData pokemon in pokemonList)
         {
             UIItemOptionsPokemon options = Instantiate(pokemonPrefab, pokemonListContainer).Load(pokemon);
@@ -70,9 +72,10 @@ public class UIPokemonView : MonoBehaviour
             // Sets first pokemon as selected
             if (currentPokemon == null && pokemonList.IndexOf(pokemon) == 0 || currentPokemon != null && currentPokemon == pokemon)
             {
-                UtilsMaster.SetSelected(selectables[0].gameObject);
+                UtilsMaster.SetSelected(selectables[index].gameObject);
                 currentPokemon = pokemon;
             }
+            index++;
         }
         UtilsMaster.LineSelectables(selectables);
     }
@@ -185,6 +188,16 @@ public class UIPokemonView : MonoBehaviour
             pokemonHeart.gameObject.SetActive(true);
             pokemonHeartShattered.gameObject.SetActive(false);
             pokemonHeart.fillAmount = pkmn.GetFriendship() / 255f;
+        }
+        PokemonBaseData baseData = pkmn.GetPokemonBaseData();
+        if (baseData.isGenderless)
+        {
+            genderIcon.gameObject.SetActive(false);
+        }
+        else
+        {
+            genderIcon.gameObject.SetActive(true);
+            genderIcon.Load(pkmn.isMale);
         }
         ViewCurrentSection();
     }
@@ -357,11 +370,11 @@ public class UIPokemonView : MonoBehaviour
         isTyping = true;
         pokemonName.transform.Find("Text Area").transform.Find("Placeholder").GetComponent<TMP_Text>().text = "";
     }
-    public void SaveNameChanger()
+    public void SaveNameChanger(string newName)
     {
-        UtilsMaster.SetSelected(pokemonName.gameObject);
+        // UtilsMaster.SetSelected(pokemonName.gameObject);
         isTyping = false;
-        currentPokemon.SetName(pokemonName.text);
+        currentPokemon.SetName(newName);
         pokemonName.transform.Find("Text Area").transform.Find("Placeholder").GetComponent<TMP_Text>().text = currentPokemon.GetName();
         UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
         UpdatePokemonList(currentPokemon);

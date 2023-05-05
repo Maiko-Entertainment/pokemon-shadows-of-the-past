@@ -658,6 +658,7 @@ MonoBehaviour:
   pokemonHeartShattered: {fileID: 5974436282488928020}
   swapHelp: {fileID: 1028271704131770470}
   battlePickHelp: {fileID: 5035444418511610269}
+  genderIcon: {fileID: 6705378710133377779}
 --- !u!114 &6404594632671849615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,7 +686,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173622635733817774}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -704,6 +705,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 8700715813647088903}
   transition: {fileID: 6404594632671849615}
   firstSelected: {fileID: 0}
+  optionsList: {fileID: 0}
   fadeOutWhenNotFocused: 0
 --- !u!114 &6180597399895176893
 MonoBehaviour:
@@ -816,19 +818,7 @@ MonoBehaviour:
     m_ActionId: e8ac63dc-b979-45b2-b0dc-4356fa1bbb26
     m_ActionName: Player Character/Left Click[/Mouse/press]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6713284097545221843}
-        m_TargetAssemblyTypeName: UIPokemonView, Assembly-CSharp
-        m_MethodName: SaveNameChanger
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: cf0546ef-d30f-43a7-a533-51d14dbc38cb
     m_ActionName: Player Character/Submit[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
@@ -2813,6 +2803,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9091147158118652012, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091147158118652012, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091147158118652012, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6713284097545221843}
+    - target: {fileID: 9091147158118652012, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091147158118652012, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveNameChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091147158118652012, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIPokemonView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091147158118652012, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+      propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9217658516649124565, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2898,6 +2916,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6705378710133377779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4201314234351710203, guid: 31a171e3ed7279a4a99c0862e4a8c2e1, type: 3}
+  m_PrefabInstance: {fileID: 7440047053996352776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f247033a34a92041bb8a6a9534e7c6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &9015668865637436119 stripped

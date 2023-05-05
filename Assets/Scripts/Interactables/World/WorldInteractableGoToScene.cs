@@ -20,7 +20,6 @@ public class WorldInteractableGoToScene : WorldInteractable
     IEnumerator RunEvent(float delay)
     {
         yield return new WaitForSeconds(delay);
-        TransitionMaster.GetInstance().EnableSceneCamera();
         WorldMapMaster.GetInstance().GoToScene(sceneId);
         InteractionsMaster.GetInstance()?.ExecuteNext(0);
     }

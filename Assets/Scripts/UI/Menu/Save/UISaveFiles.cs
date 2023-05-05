@@ -9,31 +9,34 @@ public class UISaveFiles : MonoBehaviour
     public ViewTransition saveTransitionPrefab;
     public ViewTransition loadTransitionPrefab;
     public AudioClip selectSound;
-    
+
     public RectTransform saveFileList;
     public ScrollRect scrollRect;
     public Button newGameButton;
 
+    public List<GameObject> activeInGame = new List<GameObject>();
+    public List<GameObject> activeInMainMenu = new List<GameObject>();
+
     protected int currentSaveIndex = 0;
     protected bool disabled = false;
 
-    public void Load()
+    public void Load(bool isMainMenu = false)
     {
         List<SaveFile> saveFiles = SaveMaster.Instance.GetSaveFiles();
         bool reachedMaxSaves = saveFiles.Count >= SaveMaster.Instance.maxSaveFiles;
-        List<Selectable> selectables = new List<Selectable>{ newGameButton };
-        foreach(Transform t in saveFileList)
+        List<Selectable> selectables = new List<Selectable> { newGameButton };
+        foreach (Transform t in saveFileList)
         {
-            if (t != saveFileList.GetChild(0) || reachedMaxSaves)
+            if (t != saveFileList.GetChild(0) || reachedMaxSaves || isMainMenu)
             {
                 Destroy(t.gameObject);
             }
         }
         int index = 0;
-        foreach(SaveFile sf in saveFiles)
+        foreach (SaveFile sf in saveFiles)
         {
             UISaveFileOption sfo = Instantiate(optionPrefab, saveFileList).Load(sf, index);
-            sfo.onClick += OverrideSaveFile;
+            sfo.onClick += isMainMenu ? (SaveFile sf, int i) => LoadSaveFile(i) : OverrideSaveFile;
             sfo.onHover += (SaveFile sf, int i) => ViewSaveFile(sfo.GetComponent<RectTransform>(), i);
             selectables.Add(sfo.GetComponent<Button>());
             index++;
@@ -47,6 +50,14 @@ public class UISaveFiles : MonoBehaviour
         else
         {
             UtilsMaster.SetSelected(selectables[0].gameObject);
+        }
+        foreach (GameObject go in activeInGame)
+        {
+            go.SetActive(!isMainMenu);
+        }
+        foreach (GameObject go in activeInMainMenu)
+        {
+            go.SetActive(isMainMenu);
         }
     }
 
@@ -85,22 +96,32 @@ public class UISaveFiles : MonoBehaviour
             Load();
         }
     }
+    public void LoadSaveFile(int index)
+    {
+        if (!disabled)
+        {
+            TransitionMaster.GetInstance()?.RunTransition(loadTransitionPrefab);
+            StartCoroutine(LoadSaveAfterTransition(loadTransitionPrefab.changeTime, index));
+            disabled = true;
+        }
+    }
 
     public void LoadSelectedSave()
     {
         if (!disabled)
         {
             TransitionMaster.GetInstance()?.RunTransition(loadTransitionPrefab);
-            StartCoroutine(LoadSaveAfterTransition(loadTransitionPrefab.changeTime));
+            StartCoroutine(LoadSaveAfterTransition(loadTransitionPrefab.changeTime, currentSaveIndex));
             disabled = true;
         }
     }
 
-    protected IEnumerator LoadSaveAfterTransition(float delay)
+    protected IEnumerator LoadSaveAfterTransition(float delay, int index)
     {
         yield return new WaitForSeconds(delay);
-        SaveMaster.Instance.LoadSaveFile(currentSaveIndex);
+        SaveMaster.Instance.LoadSaveFile(index);
         UIPauseMenuMaster.GetInstance().CloseAllMenus();
+        UIPauseMenuMaster.Instance?.timeofDayContainer.parent.gameObject.SetActive(true);
     }
 
     protected IEnumerator EnableAfterDelay(float delay)

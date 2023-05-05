@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
@@ -73,5 +74,29 @@ public class UIOptionsMenuHandler : MonoBehaviour
     public void OpenSaveFileView()
     {
         UIPauseMenuMaster.GetInstance().OpenSaveMenu();
+    }
+    public void OpenSaveFileViewLoadOnly()
+    {
+        UIPauseMenuMaster.GetInstance().OpenSaveMenu(true);
+    }
+    public void OpenSettingsView()
+    {
+        UIPauseMenuMaster.GetInstance().OpenSettingsViewer();
+    }
+
+    public async void HandleNewSave()
+    {
+        float time = TransitionMaster.Instance.TransitionFromMainMenuToGame();
+        UIPauseMenuMaster.GetInstance().CloseAllMenus();
+        await Task.Delay((int) (time * 1000));
+        Close();
+        SaveMaster.Instance.StartNewGame();
+    }
+
+    public async void CloseGame()
+    {
+        float time = TransitionMaster.Instance.TransitionCloseGame();
+        await Task.Delay((int)(time * 1000));
+        Application.Quit();
     }
 }

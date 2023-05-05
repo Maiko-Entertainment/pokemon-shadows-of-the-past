@@ -36,16 +36,10 @@ public class UIGameIntroMaster : MonoBehaviour
     private PokemonBaseData pickedStarter;
     private bool isStarterMale = true;
 
-    private void Awake()
+    private void Start()
     {
-        if (Instance)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        // OpenPlayerDataPanel();
+        SubmitPlayerData();
     }
 
     public static UIGameIntroMaster GetInstance()
@@ -101,7 +95,8 @@ public class UIGameIntroMaster : MonoBehaviour
         if (animatorCheat)
             Destroy(animatorCheat.gameObject);
         animatorCheat = Instantiate(pokemon.battleAnimation);
-        foreach(Transform t in typesList)
+        animatorCheat.transform.position = new Vector3(3000, 3000);
+        foreach (Transform t in typesList)
         {
             Destroy(t.gameObject);
         }
@@ -129,6 +124,7 @@ public class UIGameIntroMaster : MonoBehaviour
         starter.natureId = natures[Random.Range(0,4)];
         starter.CheckForLearnedMoves(starter.level);
         starter.abilityId = pickedStarter.GetRandomAbility();
+        starter.friendship = pickedStarter.baseFriendship;
         PartyMaster.GetInstance().AddPartyMember(starter);
         SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.startedTypePicked);
         SaveElementNumber sen = (SaveElementNumber)se;

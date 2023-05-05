@@ -15,10 +15,16 @@ public class ItemDataOnPokemon : ItemData
         switch (autoUseCondition)
         {
             case InBattleAutouseCondition.HalfHealth:
-                BattleTriggerPokemonHalfHealthUseItem trigger = new BattleTriggerPokemonHalfHealthUseItem(user, this, true);
-                trigger.maxTriggers = 1;
-                triggers.Add(trigger);
-                battle.AddTrigger(trigger);
+                BattleTriggerPokemonHalfHealthUseItem halfHealthTrigger = new BattleTriggerPokemonHalfHealthUseItem(user, this, true);
+                halfHealthTrigger.maxTriggers = 1;
+                triggers.Add(halfHealthTrigger);
+                battle.AddTrigger(halfHealthTrigger);
+                break;
+            case InBattleAutouseCondition.OnAtLeastOneCurableStatus:
+                BattleTriggerPokemonAtLeastOneStatusUseItem statusTrigger = new BattleTriggerPokemonAtLeastOneStatusUseItem(user, this);
+                statusTrigger.maxTriggers = 1;
+                triggers.Add(statusTrigger);
+                battle.AddTrigger(statusTrigger);
                 break;
             case InBattleAutouseCondition.EndOfRound:
                 BattleTriggerEndOfRoundUseItem roundEndTrigger = new BattleTriggerEndOfRoundUseItem(user, this);

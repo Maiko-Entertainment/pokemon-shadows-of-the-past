@@ -20,6 +20,7 @@ public class UIBattleHealthbar : MonoBehaviour
     public TextMeshProUGUI pokemonAbilityName;
     public AudioClip abilitySound;
     public Transform minorStatusList;
+    public UIPokemonGender genderIcon;
     public UIStatusMinor statusMinorPrefab;
     public UIStatChange statChangePrefab;
 
@@ -53,6 +54,16 @@ public class UIBattleHealthbar : MonoBehaviour
         foreach(StatusEffect s in statusEffectsMinor)
         {
             statusDatas.Add(BattleAnimatorMaster.GetInstance().GetStatusEffectData(s.effectId));
+        }
+        PokemonBaseData baseData = pkmn.GetPokemonBaseData();
+        if (baseData.isGenderless || pokemon.hideLevel)
+        {
+            genderIcon.gameObject.SetActive(false);
+        }
+        else
+        {
+            genderIcon.gameObject.SetActive(true);
+            genderIcon.Load(pkmn.isMale);
         }
         UpdateStatus(status, statusDatas);
         UpdateStats(pokemon);

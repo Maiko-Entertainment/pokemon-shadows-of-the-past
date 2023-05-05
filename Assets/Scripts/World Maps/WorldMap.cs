@@ -20,6 +20,7 @@ public class WorldMap : MonoBehaviour
 
     public List<WorldMapTimeOfDayEffect> timeOfDayEffects = new List<WorldMapTimeOfDayEffect>();
     public bool noSave = false;
+    public bool isMainMenu = false;
 
     public void HandleEntrance()
     {

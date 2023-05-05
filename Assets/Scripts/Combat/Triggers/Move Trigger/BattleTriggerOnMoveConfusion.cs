@@ -22,6 +22,11 @@ public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
                 "Confusion Warning",
                 new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } }))
             );
+            StatusEffectData sed = BattleAnimatorMaster.GetInstance().GetStatusEffectData(status.effectId);
+            foreach (BattleAnimation anim in sed.hitAnims)
+            {
+                BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim));
+            }
             float random = Random.value;
             if (random < selfHitChange)
             {

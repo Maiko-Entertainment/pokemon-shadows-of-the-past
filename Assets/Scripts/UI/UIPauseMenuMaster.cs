@@ -13,6 +13,8 @@ public class UIPauseMenuMaster : MonoBehaviour
     public UIMenuPile shopViewerPrefab;
     public UIMenuPile pcViewerPrefab;
     public UIMenuPile saveViewerPrefab;
+    public UIMenuPile optionsViewerPrefab;
+    public UIMenuPile mainMenuPrefab;
     public UIItemOptionsPokemon pokemonMiniViewPrefab;
     public GameObject dayPrefab;
     public GameObject nightPrefab;
@@ -48,7 +50,7 @@ public class UIPauseMenuMaster : MonoBehaviour
     }
     public static UIPauseMenuMaster GetInstance() { return Instance; }
 
-    public UIMenuPile OpenMenu(UIMenuPile menuPrefab, bool force = false)
+    public UIMenuPile OpenMenu(UIMenuPile menuPrefab, bool force = false, bool noSound = false)
     {
         bool isInteracting = InteractionsMaster.GetInstance().IsInteracting();
         if (!isInteracting || force)
@@ -61,7 +63,7 @@ public class UIPauseMenuMaster : MonoBehaviour
             openedMenus.Add(instance);
             instance.Open();
             HideMenuOpener();
-            if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
+            if (menuOpenSound && !noSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
             return instance;
         }
         return null;
@@ -143,12 +145,30 @@ public class UIPauseMenuMaster : MonoBehaviour
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
         OpenMenu(itemViewerPrefab);
     }
-    
-    public void OpenSaveViewer()
+
+    public void OpenShopMenu(List<ItemData> itemsForSale)
+    {
+        OpenMenu(shopViewerPrefab, true).GetComponent<UIShopViewer>().Load(itemsForSale);
+    }
+
+    public void OpenSettingsViewer()
     {
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
-        SaveMaster.Instance.Save(0);
-        // Instantiate(itemViewerPrefab, submenuContainer);
+        OpenMenu(optionsViewerPrefab);
+    }
+    public void OpenSaveMenu(bool isMainMenu = false)
+    {
+        OpenMenu(saveViewerPrefab, true).GetComponent<UISaveFiles>().Load(isMainMenu);
+    }
+
+    public void OpenPcMenu()
+    {
+        OpenMenu(pcViewerPrefab, true).GetComponent<UIPokemonPC>().Load();
+    }
+
+    public void OpenMainMenu()
+    {
+        OpenMenu(mainMenuPrefab, true, true);
     }
 
     public bool IsMenuOpen() { return openedMenus.Count > 0; }
@@ -191,18 +211,5 @@ public class UIPauseMenuMaster : MonoBehaviour
         {
             Instantiate(nightPrefab, timeofDayContainer);
         }
-    }
-
-    public void OpenShopMenu(List<ItemData> itemsForSale)
-    {
-        OpenMenu(shopViewerPrefab, true).GetComponent<UIShopViewer>().Load(itemsForSale);
-    }
-    public void OpenPcMenu()
-    {
-        OpenMenu(pcViewerPrefab, true).GetComponent<UIPokemonPC>().Load();
-    }
-    public void OpenSaveMenu()
-    {
-        OpenMenu(saveViewerPrefab, true).GetComponent<UISaveFiles>().Load();
     }
 }

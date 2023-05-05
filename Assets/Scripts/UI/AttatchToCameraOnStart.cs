@@ -9,10 +9,11 @@ public class AttatchToCameraOnStart : MonoBehaviour
     {
         if (BattleMaster.GetInstance().IsBattleActive())
         {
-            canvas.worldCamera = TransitionMaster.GetInstance().battleCamera;
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         }
         else
         {
+            canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = TransitionMaster.GetInstance().worldCamera;
         }
     }

@@ -14,6 +14,7 @@ public class StatusEffectConfusion : StatusEffect
         addedRangeTurns = 2;
         captureRateBonus = 10;
         onEndFlowchartBlock = "Confusion Lose";
+        gainStatusBlockName = "Confusion Gain";
     }
 
     public override void Initiate()

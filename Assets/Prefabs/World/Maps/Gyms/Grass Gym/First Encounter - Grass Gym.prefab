@@ -322,6 +322,10 @@ GameObject:
   - component: {fileID: 3422280629321434743}
   - component: {fileID: 3876873168820158066}
   - component: {fileID: 2068539947034660978}
+  - component: {fileID: 6095505915274062963}
+  - component: {fileID: 3562450545164077415}
+  - component: {fileID: 4491889155923975092}
+  - component: {fileID: 1290595946235947241}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -359,11 +363,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 0, y: 0}
+  scrollPos: {x: 79.469505, y: 25.103409}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.8800001
   scrollViewRect:
     serializedVersion: 2
     x: 0
@@ -371,7 +375,7 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 4992105440711395976}
+  - {fileID: 9168297005887420190}
   selectedCommands: []
   variables:
   - {fileID: 258193498461072851}
@@ -401,7 +405,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 495
     y: 109
-    width: 77
+    width: 78.40909
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -418,6 +422,9 @@ MonoBehaviour:
   - {fileID: 5849665886695793736}
   - {fileID: 4622810411147248680}
   - {fileID: 5275452500632866714}
+  - {fileID: 4491889155923975092}
+  - {fileID: 6095505915274062963}
+  - {fileID: 3562450545164077415}
   - {fileID: 7618155424316115121}
   - {fileID: 3516049837479670392}
   - {fileID: 5970928704473965291}
@@ -436,6 +443,7 @@ MonoBehaviour:
   - {fileID: 4280818230251328602}
   - {fileID: 2227439959300415398}
   - {fileID: 96977743915649090}
+  - {fileID: 1290595946235947241}
   - {fileID: 3636607339653906491}
   - {fileID: 7933777684398702619}
   - {fileID: 8774660085176444306}
@@ -1008,7 +1016,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 635
     y: 130
-    width: 80
+    width: 80.681816
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1035,7 +1043,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 641
     y: 77
-    width: 92
+    width: 92.04545
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1087,7 +1095,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 770
     y: 98
-    width: 140
+    width: 142.04544
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1361,7 +1369,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 499
     y: 218
-    width: 86
+    width: 85.227264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1893,6 +1901,114 @@ MonoBehaviour:
     justTurn: 1
     jump: 0
   waitUntilEnd: 1
+--- !u!114 &6095505915274062963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138439269041318507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 63
+  indentLevel: 0
+  storyText: Your pokedex is receiving a call from the Professor.
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &3562450545164077415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138439269041318507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 64
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 3543963901797334701}
+  character: {fileID: 0}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 1001cfab5de876c46b6266507b4c7181, type: 3}
+  offset: 0
+  fromPosition: {fileID: 3543963902461101257}
+  toPosition: {fileID: 3543963900564860822}
+  facing: 1
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 1
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &4491889155923975092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138439269041318507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 65
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: ae83d24f45851744aa387f8d7273fc00, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+--- !u!114 &1290595946235947241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7138439269041318507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 66
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 3543963901797334701}
+  character: {fileID: 0}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 1001cfab5de876c46b6266507b4c7181, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 3543963901946216722}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1001 &3732047743244758032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1902,7 +2018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208385776147829436, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_Name
-      value: Stage Custom
+      value: Stage Custom First Grass Gym
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder
@@ -1950,6 +2066,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
+--- !u!224 &3543963900564860822 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 208385775436235654, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
+  m_PrefabInstance: {fileID: 3732047743244758032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3543963901797334701 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 208385776147829437, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}

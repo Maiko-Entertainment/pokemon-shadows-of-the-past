@@ -201,6 +201,11 @@ GameObject:
   - component: {fileID: 5333609612683150654}
   - component: {fileID: 8868576949803101468}
   - component: {fileID: 8396854097045605305}
+  - component: {fileID: 3218985192991261429}
+  - component: {fileID: 2521505174529216252}
+  - component: {fileID: 7849810771182343710}
+  - component: {fileID: 1118426562322579398}
+  - component: {fileID: 2065407318146090555}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -278,8 +283,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 349.9011
-    y: 94.9011
+    x: 348.8022
+    y: 93.8022
     width: 77.47253
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -294,6 +299,7 @@ MonoBehaviour:
   - {fileID: 1298933521351501898}
   - {fileID: 8101754111842830887}
   - {fileID: 7465883866136875504}
+  - {fileID: 3218985192991261429}
   - {fileID: 8396854097045605305}
   - {fileID: 7887412047608688378}
   - {fileID: 8395044678297717442}
@@ -310,6 +316,7 @@ MonoBehaviour:
   - {fileID: 8592561606587062231}
   - {fileID: 6804535708410813999}
   - {fileID: 2960338069694796524}
+  - {fileID: 2521505174529216252}
   - {fileID: 4273423815604357035}
   - {fileID: 448685865318489794}
   - {fileID: 621446101392357760}
@@ -653,7 +660,7 @@ MonoBehaviour:
   showAlways: 1
   showCount: 1
   extendPrevious: 0
-  fadeWhenDone: 1
+  fadeWhenDone: 0
   waitForClick: 1
   stopVoiceover: 1
   waitForVO: 0
@@ -698,7 +705,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 487
-    y: 88
+    y: 85.8022
     width: 157.69229
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -756,7 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 18
   indentLevel: 0
-  storyText: I liked them too sir!
+  storyText: '{wait=0.1}I liked them too sir!'
   description: 
   character: {fileID: 8013958098651819917}
   portrait: {fileID: 0}
@@ -783,8 +790,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 19
   indentLevel: 0
-  storyText: What your mouth kid. The Sinnoh champion made it to the league with
-    a Bidoof
+  storyText: '{wait=0.01}Watch your mouth kid. The Sinnoh champion made it to the
+    league with a Bidoof.'
   description: 
   character: {fileID: 8013958098651819917}
   portrait: {fileID: 0}
@@ -896,7 +903,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 692
-    y: 103
+    y: 101.9011
     width: 115.93406
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -906,12 +913,13 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 279741625668434788}
   - {fileID: 8281588822682729624}
+  - {fileID: 279741625668434788}
   - {fileID: 7201823083881337321}
   - {fileID: 9128119686571295051}
   - {fileID: 7551616955325374163}
   - {fileID: 8336878031579934289}
+  - {fileID: 7849810771182343710}
   - {fileID: 9123114770329299657}
   - {fileID: 2198994242117216957}
   - {fileID: 5372772494090977526}
@@ -919,10 +927,12 @@ MonoBehaviour:
   - {fileID: 684324549685872996}
   - {fileID: 4215144031976319497}
   - {fileID: 8634829663094340518}
+  - {fileID: 1118426562322579398}
   - {fileID: 7903962405930999960}
   - {fileID: 577704824114488311}
   - {fileID: 7091297444384070205}
   - {fileID: 1570413580807625897}
+  - {fileID: 2065407318146090555}
   - {fileID: 2887157465464835358}
   - {fileID: 2312612845554351388}
   - {fileID: 4782601099123340646}
@@ -1016,7 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 27
   indentLevel: 0
-  storyText: "Wait,{w} this isn\u2019t why I came here! I want my pok\xE9dex {punch}gramps!"
+  storyText: "Alright, {punch=15}enough chatting! Activate my pok\xE9dex {punch}gramps!"
   description: 
   character: {fileID: 3810923483201350963}
   portrait: {fileID: 0}
@@ -1697,7 +1707,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 882.8022
-    y: 74.8022
+    y: 73.7033
     width: 137.91208
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -2328,8 +2338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 130
   indentLevel: 0
-  storyText: "Oh, you must be {$playerName}, I\u2019m glad you are okay, please join
-    us."
+  storyText: Oh, you must be {$playerName}, please join us.
   description: 
   character: {fileID: 4044132563341216013}
   portrait: {fileID: 0}
@@ -2342,6 +2351,156 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &3218985192991261429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 131
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 1061918063236512853}
+  character: {fileID: 4044132563341216013}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: ae075afdb0395884dbc678154ef0b416, type: 3}
+  offset: 0
+  fromPosition: {fileID: 1061918062563280433}
+  toPosition: {fileID: 1061918062986937322}
+  facing: 2
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 1
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &2521505174529216252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 132
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 1061918063236512853}
+  character: {fileID: 4044132563341216013}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 4c866ff1c5b052240bcc5f0941a3ab53, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &7849810771182343710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 133
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 1061918063236512853}
+  character: {fileID: 4044132563341216013}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: ae075afdb0395884dbc678154ef0b416, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &1118426562322579398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 134
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 1061918063236512853}
+  character: {fileID: 4044132563341216013}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 4c866ff1c5b052240bcc5f0941a3ab53, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &2065407318146090555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 135
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 1061918063236512853}
+  character: {fileID: 4044132563341216013}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: ae075afdb0395884dbc678154ef0b416, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &5515599232322975699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,7 +2700,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208385776147829436, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_Name
-      value: Stage Custom
+      value: Stage Custom Pines First Encounter
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder
@@ -2592,6 +2751,11 @@ PrefabInstance:
 --- !u!224 &1061918062563280433 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 208385775751309529, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
+  m_PrefabInstance: {fileID: 889712818859896552}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1061918062986937322 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 208385775898275074, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
   m_PrefabInstance: {fileID: 889712818859896552}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1061918063236512853 stripped

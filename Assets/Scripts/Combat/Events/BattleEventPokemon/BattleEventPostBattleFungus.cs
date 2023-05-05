@@ -17,7 +17,7 @@ public class BattleEventPostBattleFungus: BattleAnimatorEvent
     {
         BattleAnimatorMaster.GetInstance().ClearEvents();
         endEvent?.Execute(e);
-        e.finalBattleState.SetBattleActive(false);
+        // e.finalBattleState.SetBattleActive(false);
         base.Execute();
     }
 }

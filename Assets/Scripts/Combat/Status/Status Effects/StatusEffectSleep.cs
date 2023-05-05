@@ -11,6 +11,7 @@ public class StatusEffectSleep : StatusEffect
         addedRangeTurns = 2;
         captureRateBonus = 30;
         onEndFlowchartBlock = "Sleep Lose";
+        gainStatusBlockName = "Sleep Gain";
         isPrimary = true;
     }
 
@@ -29,6 +30,11 @@ public class StatusEffectSleep : StatusEffect
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(
                 new BattleTriggerMessageData(battleFlow, "Sleep Warning", new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } })
             ));
+            StatusEffectData sed = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId);
+            foreach (BattleAnimation anim in sed.hitAnims)
+            {
+                BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim));
+            }
         }
         base.PassTurn();
     }

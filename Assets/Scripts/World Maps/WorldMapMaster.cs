@@ -56,9 +56,12 @@ public class WorldMapMaster : MonoBehaviour
     public void GoToMapToLatestSafePoint()
     {
         SaveFile sf = SaveMaster.Instance.GetActiveSave();
-        int mapId = sf.lastSafeZoneMapId;
-        int safeIndex = sf.lastSafeZoneIndex;
-        GoToMap(mapId, safeIndex);
+        if (sf != null)
+        {
+            int mapId = sf.lastSafeZoneMapId;
+            int safeIndex = sf.lastSafeZoneIndex;
+            GoToMap(mapId, safeIndex);
+        }
     }
 
     public void GoToMap(int mapId, int spawnIndex)
@@ -76,7 +79,16 @@ public class WorldMapMaster : MonoBehaviour
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         currentMap = mapInstance;
         mapInstance.HandleEntrance();
-        UIPauseMenuMaster.GetInstance().ShowWorldUI();
+        if (mapInstance.isMainMenu)
+        {
+            Destroy(GetPlayer().gameObject);
+            UIPauseMenuMaster.GetInstance().HideWorldUI();
+            UIPauseMenuMaster.GetInstance().OpenMainMenu();
+        }
+        else
+        {
+            UIPauseMenuMaster.GetInstance().ShowWorldUI();
+        }
     }
 
     public void SpawnInMapAtPos(int mapId, Vector2 position)
@@ -93,10 +105,13 @@ public class WorldMapMaster : MonoBehaviour
     IEnumerator SetPlayer(Vector2 spawn)
     {
         PlayerController player = GetPlayer();
-        player.SetPosition(spawn);
+        player?.SetPosition(spawn);
         yield return new WaitForEndOfFrame();
-        player.SetPosition(spawn);
-        player.Load(currentMap);
+        if (player)
+        {
+            player?.SetPosition(spawn);
+            player?.Load(currentMap);
+        }
     }
 
     public WorldMap Getmap(int mapId)

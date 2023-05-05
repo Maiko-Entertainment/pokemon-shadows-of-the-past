@@ -27,7 +27,8 @@ public class UISaveFileOption : MonoBehaviour, ISelectHandler
         this.saveFile = saveFile;
         this.index = index;
         string playerNameSaved = (string)GetPersistedElementValue(SaveElementId.playerName);
-        float playerModelId = (float)GetPersistedElementValue(SaveElementId.characterModelId);
+        object persistedModelId = GetPersistedElementValue(SaveElementId.characterModelId);
+        float playerModelId = persistedModelId != null ? (float)persistedModelId: 0;
         List<PersistedPokemon> persistedPokemon = saveFile.persistedParty;
 
         Sprite previewSprite = WorldMapMaster.GetInstance().GetPlayerPrefab((int)playerModelId).preview;

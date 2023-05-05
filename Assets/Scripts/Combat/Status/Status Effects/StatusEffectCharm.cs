@@ -12,6 +12,7 @@ public class StatusEffectCharm : StatusEffect
         minTurns = 99999;
         captureRateBonus = 180;
         onEndFlowchartBlock = "Charm Lose";
+        gainStatusBlockName = "Charm Gain";
     }
     public override void Initiate()
     {

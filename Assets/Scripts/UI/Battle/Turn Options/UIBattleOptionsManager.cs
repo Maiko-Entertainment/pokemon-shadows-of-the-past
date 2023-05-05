@@ -191,18 +191,19 @@ public class UIBattleOptionsManager : MonoBehaviour
 
     public void HandleCancel(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        bool isBattleActive = BattleMaster.GetInstance().IsBattleActive();
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && isBattleActive)
         {
             if (!isInSubmenu)
             {
-                EventSystem eventSystem = EventSystem.current;
-                eventSystem.SetSelectedGameObject(optionsList.GetChild(optionsList.childCount - 1).gameObject, new BaseEventData(eventSystem));
+                UtilsMaster.SetSelected(optionsList.GetChild(optionsList.childCount - 1).gameObject);
             }
         }
     }
     public void HandleTacticsOpen(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        bool isBattleActive = BattleMaster.GetInstance().IsBattleActive();
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && isBattleActive)
         {
             if (!isInSubmenu && IsTacticActive())
             {

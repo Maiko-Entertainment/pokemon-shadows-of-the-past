@@ -81,7 +81,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6776264483860599584}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5212300830572889613
 MonoBehaviour:
@@ -193,7 +193,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6776264483860599584}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8425119269412978757
 MonoBehaviour:
@@ -245,7 +245,7 @@ Transform:
   - {fileID: 4996982866066854308}
   - {fileID: 8771447105028329475}
   m_Father: {fileID: 6776264483860599584}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4212268178188466303
 GameObject:
@@ -394,10 +394,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: Professor
-  nameColor: {r: 0.4666667, g: 1, b: 0.6964312, a: 1}
+  nameColor: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
   soundEffect: {fileID: 8300000, guid: 239ff3c67d214b345a279de038c58b13, type: 3}
-  portraits: []
-  portraitsFace: 0
+  portraits:
+  - {fileID: 21300000, guid: ae075afdb0395884dbc678154ef0b416, type: 3}
+  - {fileID: 21300000, guid: 1001cfab5de876c46b6266507b4c7181, type: 3}
+  - {fileID: 21300000, guid: 4c866ff1c5b052240bcc5f0941a3ab53, type: 3}
+  portraitsFace: 1
   setSayDialog: {fileID: 0}
   description: 
 --- !u!1 &5555186128378807142
@@ -430,7 +433,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6776264483860599584}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8959413893880306867
 MonoBehaviour:
@@ -488,6 +491,7 @@ Transform:
   - {fileID: 2450725978415113033}
   - {fileID: 5616068329197859801}
   - {fileID: 5272886160093294489}
+  - {fileID: 9019973048072166720}
   - {fileID: 4596893165904310434}
   - {fileID: 2925160665674517341}
   - {fileID: 8604124317096246249}
@@ -551,6 +555,58 @@ MonoBehaviour:
   portraitsFace: 0
   setSayDialog: {fileID: 0}
   description: Wants to be known
+--- !u!1 &8979047683459649489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9019973048072166720}
+  - component: {fileID: 2786197724049282450}
+  m_Layer: 0
+  m_Name: Professor Glitched
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9019973048072166720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8979047683459649489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6776264483860599584}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2786197724049282450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8979047683459649489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameText: Professor
+  nameColor: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+  soundEffect: {fileID: 8300000, guid: 239ff3c67d214b345a279de038c58b13, type: 3}
+  portraits:
+  - {fileID: 21300000, guid: 1001cfab5de876c46b6266507b4c7181, type: 3}
+  portraitsFace: 1
+  setSayDialog: {fileID: 0}
+  description: Glitched Version of professor
 --- !u!1001 &4608193358679408159
 PrefabInstance:
   m_ObjectHideFlags: 0

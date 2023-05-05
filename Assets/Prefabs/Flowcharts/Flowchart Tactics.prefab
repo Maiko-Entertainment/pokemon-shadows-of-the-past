@@ -149,6 +149,12 @@ GameObject:
   - component: {fileID: 5856530930891701790}
   - component: {fileID: 7944835942927195692}
   - component: {fileID: 3842643227998819538}
+  - component: {fileID: 849745644086141385}
+  - component: {fileID: 1199983375889363032}
+  - component: {fileID: 1227527827879256318}
+  - component: {fileID: 1471891849958908027}
+  - component: {fileID: 2834503623893223686}
+  - component: {fileID: 8758889904401202223}
   m_Layer: 0
   m_Name: Flowchart Tactics
   m_TagString: Untagged
@@ -197,8 +203,10 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
-  selectedCommands: []
+  selectedBlocks:
+  - {fileID: 7660137004177622114}
+  selectedCommands:
+  - {fileID: 2734810560885278834}
   variables:
   - {fileID: 9131182894791565300}
   - {fileID: 8439902652808134854}
@@ -553,8 +561,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 751.4178
-    y: 217.98906
+    x: 761
+    y: 199
     width: 112.68654
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1343,7 +1351,7 @@ MonoBehaviour:
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 55
+  itemId: 44
   blockName: Peekaboo Fail
   description: 
   eventHandler: {fileID: 0}
@@ -1496,7 +1504,7 @@ MonoBehaviour:
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 56
+  itemId: 54
   blockName: Play Fetch Fail
   description: 
   eventHandler: {fileID: 0}
@@ -1608,7 +1616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 54
+  itemId: 60
   indentLevel: 0
   storyText: '{$pokemon} is done looking at the stick. They are not amused.'
   description: 
@@ -1737,7 +1745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c5622b8a80845c980954170295f292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 60
+  itemId: 85
   indentLevel: 0
   anyOrAllConditions: 0
   conditions:
@@ -3353,7 +3361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0f4056e1b4fba4c83bd6f247a95ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 85
+  itemId: 89
   indentLevel: 0
 --- !u!114 &1017085569902216223
 MonoBehaviour:
@@ -3384,7 +3392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 58.700012
+    x: 57.207474
     y: 156.4812
     width: 114.17908
     height: 40
@@ -3443,7 +3451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c5622b8a80845c980954170295f292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 89
+  itemId: 117
   indentLevel: 0
   anyOrAllConditions: 0
   conditions:
@@ -3784,7 +3792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 97
   indentLevel: 0
-  storyText: '{$pokemonUser} is trying to distract {$pokemon} from combat!'
+  storyText: '{$pokemonUser} is trying to distract {$pokemon}!'
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -3851,14 +3859,14 @@ MonoBehaviour:
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 10bd853e9458f3549ad4c12b00a60ac9, type: 3}
   offset: 0
-  fromPosition: {fileID: 2530098258128153491}
-  toPosition: {fileID: 2530098257314824364}
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 2530098258128153491}
   facing: 0
   useDefaultSettings: 1
   fadeDuration: 0.5
   moveDuration: 1
   shiftOffset: {x: 0, y: 0}
-  move: 1
+  move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
 --- !u!114 &9092283354390896639
@@ -3895,8 +3903,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 42.032795
-    y: 92.374084
+    x: 40.540257
+    y: 90.881546
     width: 152.98502
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -3956,14 +3964,14 @@ MonoBehaviour:
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 5d35e5edb7127f749bff588a2a330508, type: 3}
   offset: 0
-  fromPosition: {fileID: 2530098258128153491}
-  toPosition: {fileID: 2530098257314824364}
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 2530098258128153491}
   facing: 0
   useDefaultSettings: 1
   fadeDuration: 0.5
   moveDuration: 1
   shiftOffset: {x: 0, y: 0}
-  move: 1
+  move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
 --- !u!114 &4208235970241101208
@@ -4080,7 +4088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f90af69f1eeae439e46230d86c2376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 117
+  itemId: 122
   indentLevel: 0
   tacticTransition: {fileID: -5215140403403993417, guid: 5b98b3f9320ea714f8e297f7ff25c007, type: 3}
 --- !u!114 &2061936728440647431
@@ -4244,14 +4252,14 @@ MonoBehaviour:
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
   offset: 0
-  fromPosition: {fileID: 2530098258128153491}
-  toPosition: {fileID: 2530098257314824364}
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 2530098258128153491}
   facing: 0
   useDefaultSettings: 1
   fadeDuration: 0.5
   moveDuration: 1
   shiftOffset: {x: 0, y: 0}
-  move: 1
+  move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
 --- !u!114 &3558268731885455059
@@ -4386,7 +4394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 68.535995
+    x: 67.04346
     y: 283.46136
     width: 99.25371
     height: 40
@@ -4487,14 +4495,14 @@ MonoBehaviour:
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
   offset: 0
-  fromPosition: {fileID: 2530098258128153491}
-  toPosition: {fileID: 2530098257314824364}
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 2530098258128153491}
   facing: 0
   useDefaultSettings: 1
   fadeDuration: 0.5
   moveDuration: 1
   shiftOffset: {x: 0, y: 0}
-  move: 1
+  move: 0
   shiftIntoPlace: 0
   waitUntilFinished: 0
 --- !u!114 &8760428852879794321
@@ -5282,6 +5290,153 @@ MonoBehaviour:
   storyText: I'm going to erase that smirk off your face...
   description: 
   character: {fileID: 4872083907662233342}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &849745644086141385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623546450157281241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeRect:
+    serializedVersion: 2
+    x: 751
+    y: 250
+    width: 136.56712
+    height: 40
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  useCustomTint: 0
+  itemId: 38
+  blockName: Play Fetch Fail
+  description: 
+  eventHandler: {fileID: 0}
+  commandList:
+  - {fileID: 1199983375889363032}
+  - {fileID: 1471891849958908027}
+  - {fileID: 8758889904401202223}
+  - {fileID: 2834503623893223686}
+  - {fileID: 1227527827879256318}
+  suppressAllAutoSelections: 0
+--- !u!114 &1199983375889363032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623546450157281241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af5dac98b0624702b476c1eac319eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 55
+  indentLevel: 0
+  variable: {fileID: 4110189761352208184}
+  minValue:
+    integerRef: {fileID: 0}
+    integerVal: 0
+  maxValue:
+    integerRef: {fileID: 0}
+    integerVal: 1
+--- !u!114 &1227527827879256318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623546450157281241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d85388232fa044b9df0910e6aa679b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 56
+  indentLevel: 0
+--- !u!114 &1471891849958908027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623546450157281241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 156
+  indentLevel: 0
+  storyText: You grabbed a stick and threw it really far!
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &2834503623893223686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623546450157281241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 134
+  indentLevel: 0
+  storyText: Looks like you will have to try something else...
+  description: 
+  character: {fileID: 0}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &8758889904401202223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623546450157281241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 157
+  indentLevel: 0
+  storyText: '{$pokemon} is looking at you confused...'
+  description: 
+  character: {fileID: 0}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1

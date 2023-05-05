@@ -378,6 +378,7 @@ public class BattleManager
         // Add event for battle end to handle variable saving, end combat dialogue, etc
         BattleEventBattleEnd battleEndEvent = new BattleEventBattleEnd(this, winningTeam, postBattleEvent);
         eventManager.AddEvent(battleEndEvent);
+        SetBattleActive(false);
         if (endNow)
         {
             eventManager.ResolveAllEventTriggers();
@@ -424,7 +425,7 @@ public class BattleManager
 
     public void AddStatChangeEvent(PokemonBattleData target, PokemonBattleStats statLevelChange)
     {
-        eventManager.AddEvent(new BattleEventPokemonChangeStat(target, statLevelChange));
+        eventManager.AddEvent(new BattleEventPokemonChangeStat(target, statLevelChange.Copy()));
     }
 
     public void AddStatusEffectEvent(PokemonBattleData target, StatusEffectId statusId, bool isStatus=false)
@@ -603,7 +604,6 @@ public class BattleManager
     {
         PokemonBattleData pokemon = battleEvent.pokemon;
         StatusEffectId statusId = battleEvent.statusId;
-        Flowchart battleFlowchart = BattleMaster.GetInstance().GetBattleFlowchart();
         StatusEffect status = new StatusEffect(pokemon);
         bool typePreventsStatus = false;
         bool alreadyHasPrimaryStatus = pokemon.AlreadyHasPrimaryStatus();
@@ -620,67 +620,9 @@ public class BattleManager
         string gainStatusBlockName = "";
         if (!isStatusAlready)
         {
-            switch (statusId)
-            {
-                case StatusEffectId.Poison:
-                    status = new StatusEffectPoison(pokemon);
-                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Poison);
-                    gainStatusBlockName = "Poison Gain";
-                    break;
-                case StatusEffectId.Burn:
-                    status = new StatusEffectBurn(pokemon);
-                     typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Fire);
-                    gainStatusBlockName = "Burn Gain";
-                    break;
-                case StatusEffectId.Frostbite:
-                    status = new StatusEffectFrostbite(pokemon);
-                    gainStatusBlockName = "Frostbite Gain";
-                    typePreventsStatus = pokemon.GetTypeIds().Contains(status.inmuneTypes[0]);
-                    break;
-                case StatusEffectId.LeechSeed:
-                    status = new StatusEffectLeechSeed(pokemon);
-                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Grass);
-                    gainStatusBlockName = "Leech Gain";
-                    break;
-                case StatusEffectId.Charmed:
-                    status = new StatusEffectCharm(pokemon);
-                    gainStatusBlockName = "Charm Gain";
-                    break;
-                case StatusEffectId.MoveCharge:
-                    status = new StatusEffectMoveCharge(pokemon, lastUsedMove);
-                    break;
-                case StatusEffectId.RepeatMove:
-                    status = new StatusEffectRepeatMove(pokemon, lastUsedMove);
-                    break;
-                case StatusEffectId.FireVortex:
-                    status = new StatusEffectFireVortex(pokemon);
-                    gainStatusBlockName = "Fire Vortex Gain";
-                    break;
-                case StatusEffectId.Confused:
-                    status = new StatusEffectConfusion(pokemon);
-                    gainStatusBlockName = "Confusion Gain";
-                    break;
-                case StatusEffectId.Sleep:
-                    status = new StatusEffectSleep(pokemon);
-                    gainStatusBlockName = "Sleep Gain";
-                    break;
-                case StatusEffectId.Paralyzed:
-                    status = new StatusEffectParalyzed(pokemon);
-                    typePreventsStatus = pokemon.GetTypeIds().Contains(PokemonTypeId.Electric);
-                    gainStatusBlockName = "Paralyze Gain";
-                    break;
-                case StatusEffectId.Charged:
-                    status = new StatusEffectCharged(pokemon);
-                    break;
-                case StatusEffectId.Hopeless:
-                    status = new StatusEffectHopeless(pokemon);
-                    gainStatusBlockName = "Hopeless Gain";
-                    break;
-                case StatusEffectId.Flinch:
-                    status = new StatusEffectFlinch(pokemon);
-                    gainStatusBlockName = "Flinch Gain";
-                    break;
-            }
+            status = CreateStatusById(statusId, pokemon);
+            typePreventsStatus = UtilsMaster.ContainsAtLeastOne(status.inmuneTypes, pokemon.GetTypeIds());
+            gainStatusBlockName = status.gainStatusBlockName;
         }
         if (isStatusAlready || status.isPrimary && alreadyHasPrimaryStatus) 
         {
@@ -703,6 +645,57 @@ public class BattleManager
             if (gainStatusBlockName != "")
                 BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
         }
+    }
+
+    public StatusEffect CreateStatusById(StatusEffectId statusId, PokemonBattleData pokemon)
+    {
+        StatusEffect status = null;
+        switch (statusId)
+        {
+            case StatusEffectId.Poison:
+                status = new StatusEffectPoison(pokemon);
+                break;
+            case StatusEffectId.Burn:
+                status = new StatusEffectBurn(pokemon);
+                break;
+            case StatusEffectId.Frostbite:
+                status = new StatusEffectFrostbite(pokemon);
+                break;
+            case StatusEffectId.LeechSeed:
+                status = new StatusEffectLeechSeed(pokemon);
+                break;
+            case StatusEffectId.Charmed:
+                status = new StatusEffectCharm(pokemon);
+                break;
+            case StatusEffectId.MoveCharge:
+                status = new StatusEffectMoveCharge(pokemon, lastUsedMove);
+                break;
+            case StatusEffectId.RepeatMove:
+                status = new StatusEffectRepeatMove(pokemon, lastUsedMove);
+                break;
+            case StatusEffectId.FireVortex:
+                status = new StatusEffectFireVortex(pokemon);
+                break;
+            case StatusEffectId.Confused:
+                status = new StatusEffectConfusion(pokemon);
+                break;
+            case StatusEffectId.Sleep:
+                status = new StatusEffectSleep(pokemon);
+                break;
+            case StatusEffectId.Paralyzed:
+                status = new StatusEffectParalyzed(pokemon);
+                break;
+            case StatusEffectId.Charged:
+                status = new StatusEffectCharged(pokemon);
+                break;
+            case StatusEffectId.Hopeless:
+                status = new StatusEffectHopeless(pokemon);
+                break;
+            case StatusEffectId.Flinch:
+                status = new StatusEffectFlinch(pokemon);
+                break;
+        }
+        return status;
     }
 
     public int HealPokemon(PokemonBattleData pokemon, HealSummary heal)

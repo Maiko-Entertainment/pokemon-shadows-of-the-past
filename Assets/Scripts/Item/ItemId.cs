@@ -16,6 +16,9 @@ public enum ItemId
     BerrySitrus = 9,
     BerryPecha = 10,
     BerryRawst = 11,
+    PomegBerry = 12,
+    PrettyFeather = 13,
+    Herbs = 14,
     // Evo Items
     StoneFire = 1000,
     StoneWater = 1001,

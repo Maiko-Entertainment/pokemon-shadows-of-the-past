@@ -8,6 +8,7 @@ public class StatusEffect: Status
     public PokemonBattleData pokemon;
     public int captureRateBonus = 0;
     public List<PokemonTypeId> inmuneTypes = new List<PokemonTypeId>();
+    public string gainStatusBlockName;
 
     public StatusEffect(PokemonBattleData pokemon): base()
     {

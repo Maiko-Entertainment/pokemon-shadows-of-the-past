@@ -242,9 +242,15 @@ public class MoveData : ScriptableObject
                             break;
                         }
                     }
+                    PokemonBattleData target = battleStatus.GetTarget(myUser, statusChance.targetType);
+                    StatusEffect stat = battleStatus.CreateStatusById(statusChance.effectId, target);
+                    if (UtilsMaster.ContainsAtLeastOne(stat.inmuneTypes, target.GetTypeIds()))
+                    {
+                        alreadyHasStatusBiasMultiplier = 0f;
+                    }
                 }
             }
-            return (int)Mathf.Ceil((6f - 1 * myRoundsInCombat) * Mathf.Pow(myHealthPercentage, lossingOnSpeedPow) * alreadyHasStatusBiasMultiplier);
+            return (int)Mathf.Ceil((8f - 1 * myRoundsInCombat) * Mathf.Pow(myHealthPercentage, lossingOnSpeedPow) * alreadyHasStatusBiasMultiplier);
         }
         else
         {

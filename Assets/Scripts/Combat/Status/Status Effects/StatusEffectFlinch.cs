@@ -10,6 +10,7 @@ public class StatusEffectFlinch : StatusEffect
         effectId = StatusEffectId.Flinch;
         minTurns = 1;
         addedRangeTurns = 0;
+        gainStatusBlockName = "Flinch Gain";
     }
 
     public override void Initiate()

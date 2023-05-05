@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 1207601519454289393}
   - component: {fileID: 3522390890437205164}
   - component: {fileID: 4237108429719567863}
+  - component: {fileID: 9112496777654960243}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -173,7 +174,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1326421130561998572}
   selectedCommands:
-  - {fileID: 3522390890437205164}
+  - {fileID: 9112496777654960243}
   variables:
   - {fileID: 3877639600803317930}
   - {fileID: 6570281684051097448}
@@ -3384,6 +3385,7 @@ MonoBehaviour:
   - {fileID: 484913302955430660}
   - {fileID: 1946318340482756856}
   - {fileID: 1168269877474456515}
+  - {fileID: 9112496777654960243}
   - {fileID: 9052602998593151979}
   - {fileID: 4282673333420197970}
   suppressAllAutoSelections: 0
@@ -6210,6 +6212,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 121
   indentLevel: 2
+--- !u!114 &9112496777654960243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264043848450022521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 122
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 5805973828168189994}
+  character: {fileID: 1380436570578173956}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 5805973827766825550}
+  toPosition: {fileID: 5805973827377575829}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 1
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &5315945082171587156
 GameObject:
   m_ObjectHideFlags: 0
@@ -6313,6 +6345,7 @@ MonoBehaviour:
   animator: {fileID: 2812474008383817019}
   innerTransform: {fileID: 3116967543234943481}
   speed: 3
+  heightOffset: 0
   cachedDirections: []
   followMode: 0
 --- !u!1 &7480662584489498894
