@@ -203,6 +203,15 @@ GameObject:
   - component: {fileID: 3795232999329160119}
   - component: {fileID: 8204327454881375706}
   - component: {fileID: 5394435445814908849}
+  - component: {fileID: 567358443429441416}
+  - component: {fileID: 3940675219285338523}
+  - component: {fileID: 8890792831919407613}
+  - component: {fileID: 7568556255938870090}
+  - component: {fileID: 6084441427544958340}
+  - component: {fileID: 2039622756419156234}
+  - component: {fileID: 1251132175451953563}
+  - component: {fileID: 3492699547743753379}
+  - component: {fileID: 7120649755006720059}
   m_Layer: 0
   m_Name: Tansy World Flowchart
   m_TagString: Untagged
@@ -240,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 291.6802, y: 78.10637}
+  scrollPos: {x: 353.10855, y: 6.6778116}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 360
@@ -254,7 +263,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1707163347852045268}
   selectedCommands:
-  - {fileID: 7227429620125722259}
+  - {fileID: 2776141268111767603}
   variables:
   - {fileID: 2597626469376873329}
   - {fileID: 539138719044045001}
@@ -2204,10 +2213,19 @@ MonoBehaviour:
   - {fileID: 7403851834947542819}
   - {fileID: 6197987992744491157}
   - {fileID: 7795597304915260660}
+  - {fileID: 6084441427544958340}
   - {fileID: 7227429620125722259}
+  - {fileID: 8890792831919407613}
+  - {fileID: 2039622756419156234}
+  - {fileID: 567358443429441416}
+  - {fileID: 1251132175451953563}
+  - {fileID: 3940675219285338523}
+  - {fileID: 7568556255938870090}
   - {fileID: 2404647663861540781}
-  - {fileID: 6145188295004921270}
+  - {fileID: 7120649755006720059}
   - {fileID: 344471154697467216}
+  - {fileID: 3492699547743753379}
+  - {fileID: 6145188295004921270}
   - {fileID: 8713406707901473646}
   - {fileID: 9188865555022530141}
   - {fileID: 4958129261659848955}
@@ -3025,14 +3043,14 @@ MonoBehaviour:
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 02cf84c2e078f204490bf5da60a18ac8, type: 3}
   offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 0}
+  fromPosition: {fileID: 8594438856183002687}
+  toPosition: {fileID: 8594438855369678080}
   facing: 0
   useDefaultSettings: 1
   fadeDuration: 0.5
   moveDuration: 1
   shiftOffset: {x: 0, y: 0}
-  move: 0
+  move: 1
   shiftIntoPlace: 0
   waitUntilFinished: 0
 --- !u!114 &6197987992744491157
@@ -3078,7 +3096,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 62
   indentLevel: 2
-  storyText: I can't wait to get my Pokedex. This all seems so surreal.
+  storyText: These books... Is this how people view what happened with the Aether
+    Fundation in Alola?
   description: 
   character: {fileID: 4440155457098860018}
   portrait: {fileID: 0}
@@ -3104,8 +3123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 63
-  indentLevel: 1
-  storyText: Let's talk again once we both have one.
+  indentLevel: 2
+  storyText: '{$playerName}, please know that behind every evil team, every corrupted
+    organization.'
   description: 
   character: {fileID: 4440155457098860018}
   portrait: {fileID: 0}
@@ -4734,6 +4754,247 @@ MonoBehaviour:
   move: 1
   shiftIntoPlace: 0
   waitUntilFinished: 0
+--- !u!114 &567358443429441416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 93
+  indentLevel: 2
+  storyText: But the Aether Fundation did a lot of {punch}good too!
+  description: 
+  character: {fileID: 4440155457098860018}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &3940675219285338523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 94
+  indentLevel: 2
+  storyText: It's not their fault that Lusamine was hidding something terrible underneath.
+  description: 
+  character: {fileID: 4440155457098860018}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &8890792831919407613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 95
+  indentLevel: 2
+  storyText: When something like this happen people always put everyone in the same
+    box.
+  description: 
+  character: {fileID: 4440155457098860018}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &7568556255938870090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 96
+  indentLevel: 2
+  storyText: I just wish... That people knew how hard they were trying to help...
+  description: 
+  character: {fileID: 4440155457098860018}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &6084441427544958340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 97
+  indentLevel: 2
+  display: 1
+  stage: {fileID: 8594438855517899867}
+  character: {fileID: 4440155457098860018}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 01fa181eb025d0f4781fe36549c39495, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &2039622756419156234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 98
+  indentLevel: 2
+  display: 1
+  stage: {fileID: 8594438855517899867}
+  character: {fileID: 4440155457098860018}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &1251132175451953563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 99
+  indentLevel: 2
+  display: 1
+  stage: {fileID: 8594438855517899867}
+  character: {fileID: 4440155457098860018}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 01fa181eb025d0f4781fe36549c39495, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &3492699547743753379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 100
+  indentLevel: 2
+  storyText: There is always people who think they are doing well, that they are
+    changing things for the better.
+  description: 
+  character: {fileID: 4440155457098860018}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &7120649755006720059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4996035471659011789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa968f01a7f9496bb50e13dfe16760d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 101
+  indentLevel: 1
 --- !u!1 &7931231568193519141
 GameObject:
   m_ObjectHideFlags: 0

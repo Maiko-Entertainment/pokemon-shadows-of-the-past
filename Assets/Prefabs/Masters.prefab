@@ -2842,8 +2842,8 @@ Canvas:
   m_GameObject: {fileID: 1485450711406951615}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 8952212246877140688}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -7093,6 +7093,7 @@ MonoBehaviour:
   nightPrefab: {fileID: 1967632439065720015, guid: ffab31c32b71be549b30ae6671707aa1, type: 3}
   menuOpenSound: {fileID: 8300000, guid: 34a505442523dc94998c5967f59bf9ff, type: 3}
   menuPrefab: {fileID: 756295201619436704, guid: cc800214704a3fc43ab0f5471448fe0d, type: 3}
+  confirmMenuPrefab: {fileID: 8614361113942285260, guid: 82952c98874e84c4a9948c87ca924748, type: 3}
   opener: {fileID: 2801617684165305980}
   menuContainer: {fileID: 6964506295760511976}
   submenuContainer: {fileID: 5386700006465542541}
@@ -8079,6 +8080,10 @@ PrefabInstance:
     - target: {fileID: 6287610072136527133, guid: f35caa8094ba2ac40903cf938bd96c06, type: 3}
       propertyPath: m_Name
       value: Standard Dialogue 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6287610072136527133, guid: f35caa8094ba2ac40903cf938bd96c06, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6287610072136527135, guid: f35caa8094ba2ac40903cf938bd96c06, type: 3}
       propertyPath: m_Pivot.x

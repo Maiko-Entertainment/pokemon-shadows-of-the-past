@@ -22,7 +22,7 @@ public class UIBattleMovePicker : MonoBehaviour
     public Image moveCategory;
 
     public Transform moveList;
-    public TransitionFilledImage transition;
+    public TransitionCanvasGroup transition;
 
     private bool isOpen = false;
     protected MoveEquipped lastMoveUsed;

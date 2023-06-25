@@ -448,10 +448,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: Duke
-  nameColor: {r: 0.23113209, g: 0.509494, b: 1, a: 1}
+  nameColor: {r: 1, g: 0.49250463, b: 0.23137254, a: 1}
   soundEffect: {fileID: 8300000, guid: 239ff3c67d214b345a279de038c58b13, type: 3}
-  portraits: []
-  portraitsFace: 0
+  portraits:
+  - {fileID: 21300000, guid: 324ce3d1c40d38240841cf1bd48687d2, type: 3}
+  - {fileID: 21300000, guid: c109f681753f15e4ea26848b6f10eec7, type: 3}
+  portraitsFace: 1
   setSayDialog: {fileID: 0}
   description: 
 --- !u!1 &6776264483860599587
@@ -662,6 +664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ???
       objectReference: {fileID: 0}
+    - target: {fileID: 7059876015234509863, guid: b298538ca2b18c24482571d3fe53556f, type: 3}
+      propertyPath: portraits.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d8924006072e02046b3c1979e410e8c8, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b298538ca2b18c24482571d3fe53556f, type: 3}
 --- !u!4 &6776264484357673531 stripped

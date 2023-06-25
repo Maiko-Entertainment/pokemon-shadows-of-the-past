@@ -14,7 +14,7 @@ public class UIMenuPile : MonoBehaviour
     public delegate void OnActivateMenu();
     public event OnActivateMenu onActivateMenu;
 
-    public void Open()
+    public virtual void Open()
     {
         if (transition)
         {

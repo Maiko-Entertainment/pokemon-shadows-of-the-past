@@ -10,6 +10,7 @@ public class UIBattleOptionsTactics : MonoBehaviour
     public UITactic tacticprefab;
 
     public TextMeshProUGUI description;
+    public TextMeshProUGUI tacticPoints;
     public Transform tacticListContainer;
     private void Start()
     {
@@ -41,6 +42,8 @@ public class UIBattleOptionsTactics : MonoBehaviour
             uitactic.UpdatePickedStatus(currentTacticSelected);
             index++;
         }
+        if (tacticPoints)
+            tacticPoints.text = "" + tacticGauge;
         UtilsMaster.LineSelectables(selectables);
     }
 

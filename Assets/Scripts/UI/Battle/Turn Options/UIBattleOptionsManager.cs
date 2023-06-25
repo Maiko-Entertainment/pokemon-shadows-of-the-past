@@ -9,7 +9,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class UIBattleOptionsManager : MonoBehaviour
 {
     public AudioClip onSelectSound;
-    public TransitionFilledImage container;
+    public TransitionCanvasGroup container;
     public UIBattleMovePicker movesSelector;
     public UIItemsViewer itemSelector;
     public UIPokemonView pokemonSelector;
@@ -164,12 +164,12 @@ public class UIBattleOptionsManager : MonoBehaviour
         BattleTeamData data = BattleMaster.GetInstance().GetCurrentBattle().GetTeamData(BattleTeamId.Team1);
         if (tactic == null)
         {
-            selectedTacticText.text = "- None Picked.";
+            selectedTacticText.text = "Tactics";
             tacticGaugeValue.text = "" + data.tacticGauge;
         }
         else
         {
-            selectedTacticText.text = "- "+tactic.GetName();
+            selectedTacticText.text = ""+tactic.GetName();
             tacticGaugeValue.text = "" + (data.tacticGauge - tactic.GetCost());
         }
     }

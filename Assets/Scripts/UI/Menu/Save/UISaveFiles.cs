@@ -65,11 +65,17 @@ public class UISaveFiles : MonoBehaviour
     {
         if (!disabled)
         {
-            int indexOfSaveFile = SaveMaster.Instance.GetSaveFiles().IndexOf(sf);
-            SaveMaster.Instance.Save(indexOfSaveFile);
-            TransitionMaster.GetInstance()?.RunTransition(saveTransitionPrefab);
-            StartCoroutine(EnableAfterDelay(saveTransitionPrefab.totalDuration));
-            Load();
+            UIPauseMenuMaster.GetInstance()?.OpenConfirmMenu(
+                "Override Savefile?",
+                "Once a savefile is overritten it can't be recovered.",
+                () =>
+                {
+                    int indexOfSaveFile = SaveMaster.Instance.GetSaveFiles().IndexOf(sf);
+                    SaveMaster.Instance.Save(indexOfSaveFile);
+                    TransitionMaster.GetInstance()?.RunTransition(saveTransitionPrefab);
+                    StartCoroutine(EnableAfterDelay(saveTransitionPrefab.totalDuration));
+                    Load();
+                });
         }
     }
 

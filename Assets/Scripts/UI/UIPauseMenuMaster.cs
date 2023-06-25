@@ -21,6 +21,7 @@ public class UIPauseMenuMaster : MonoBehaviour
     public AudioClip menuOpenSound;
 
     public UIMenuPile menuPrefab;
+    public UIMenuConfirm confirmMenuPrefab;
     public Button opener;
 
     public Transform menuContainer;
@@ -169,6 +170,10 @@ public class UIPauseMenuMaster : MonoBehaviour
     public void OpenMainMenu()
     {
         OpenMenu(mainMenuPrefab, true, true);
+    }
+    public UIMenuConfirm OpenConfirmMenu(string title, string description, UIMenuConfirm.OnInput onConfirm, UIMenuConfirm.OnInput onDeny = null)
+    {
+        return OpenMenu(confirmMenuPrefab, true, true).GetComponent<UIMenuConfirm>().Load(title, description, onConfirm, onDeny);
     }
 
     public bool IsMenuOpen() { return openedMenus.Count > 0; }

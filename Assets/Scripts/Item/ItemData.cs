@@ -11,8 +11,9 @@ public class ItemData : ScriptableObject
     public ItemCategory categoryId;
     public AudioClip useSound;
     public Sprite icon;
-    public string description;
+    [TextArea] public string description;
     public int price = 100;
+    public bool sellable = false;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 
     public string GetName()

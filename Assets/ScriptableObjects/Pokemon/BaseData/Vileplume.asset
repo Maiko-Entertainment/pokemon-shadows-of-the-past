@@ -15,7 +15,7 @@ MonoBehaviour:
   pokemonId: 45
   species: Vileplume
   icon: {fileID: -8578524044296126551, guid: 20c276f4b24e40041bdbd892a78a28e2, type: 3}
-  cry: {fileID: 0}
+  cry: {fileID: 8300000, guid: 86f7aca497f638943b8868d0a395cb1e, type: 3}
   baseStats:
     health: 75
     attack: 80
@@ -26,6 +26,8 @@ MonoBehaviour:
   types: 0b00000010000000
   abilities:
   - abilityId: 1
+    abilityPriority: 5
+  - abilityId: 14
     abilityPriority: 5
   maleChance: 0.5
   isGenderless: 0
@@ -65,7 +67,11 @@ MonoBehaviour:
   - move: {fileID: 11400000, guid: b8aaabe00c9dde8468bcb1823de54496, type: 2}
     learnType: 0
     levelRequired: 36
-  tmMoves: []
+  tmMoves:
+  - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
+  - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
+  - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions: []
   battleAnimation: {fileID: 1080420985660484419, guid: 514811336b875de47ae2d80927a06284, type: 3}
   overWorldPrefab: {fileID: 4162222569239979945, guid: 597001cfe3fe6394eac2a855c6d6ef09, type: 3}
+  encounteredIn: []

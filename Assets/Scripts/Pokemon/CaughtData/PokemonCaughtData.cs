@@ -313,17 +313,21 @@ public class PokemonCaughtData
         foreach(MoveData move in pokemonBase.GetTMMoves())
         {
             bool alreadyKnowsTmMove = false;
-            foreach(MoveEquipped me in learnedMoves)
+            bool hasTMInInventory = InventoryMaster.GetInstance().HasTMForMove(move.moveId);
+            if (hasTMInInventory)
             {
-                if (me.move.moveId == move.moveId)
+                foreach(MoveEquipped me in learnedMoves)
                 {
-                    alreadyKnowsTmMove = true;
-                    break;
+                    if (me.move.moveId == move.moveId)
+                    {
+                        alreadyKnowsTmMove = true;
+                        break;
+                    }
                 }
-            }
-            if (!alreadyKnowsTmMove)
-            {
-                learnedMoves.Add(new MoveEquipped(move));
+                if (!alreadyKnowsTmMove)
+                {
+                    learnedMoves.Add(new MoveEquipped(move));
+                }
             }
         }
         return learnedMoves;

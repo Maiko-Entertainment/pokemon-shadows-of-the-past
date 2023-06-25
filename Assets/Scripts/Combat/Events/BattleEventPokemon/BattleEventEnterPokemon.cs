@@ -15,7 +15,8 @@ public class BattleEventEnterPokemon : BattleEventPokemon
         BattleAnimatorMaster.GetInstance().AddEventPokemonEnterText(pokemon);
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEnterPokemon(pokemon.Copy()));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonEnterAnim(pokemon));
-        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(pokemon.GetCry()));
+        bool isShadow = BattleMaster.GetInstance().GetCurrentBattle().GetBattleData().battleType == BattleType.Shadow;
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(pokemon.GetCry(), isShadow ? 0.3f : 1f));
         base.Execute();
     }
 }

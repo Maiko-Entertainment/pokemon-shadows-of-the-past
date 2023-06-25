@@ -71,7 +71,7 @@ public class AudioMaster : MonoBehaviour
         audioSource.pitch = pitch;
         audioSource.outputAudioMixerGroup = effectsMixer;
         audioSource.Play();
-        Destroy(audioSource, duration + 0.5f);
+        Destroy(audioSource, duration / pitch + 0.5f);
     }
     public void PlaySfx(AudioOptions sound)
     {
@@ -83,7 +83,7 @@ public class AudioMaster : MonoBehaviour
         audioSource.pitch = sound.pitch;
         audioSource.outputAudioMixerGroup = effectsMixer;
         audioSource.Play();
-        Destroy(audioSource, duration + 0.1f);
+        Destroy(audioSource, duration / sound.pitch + 0.1f);
     }
 
     internal void Load(SaveFile save)

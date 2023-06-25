@@ -12,4 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
   m_Name: World Camera Profile
   m_EditorClassIdentifier: 
-  components: []
+  components:
+  - {fileID: 2811738988012350627}
+--- !u!114 &2811738988012350627
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 0.13072854, y: 0.24545245, z: 1, w: 0.14423077}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 0.7564534, y: 0.86111444, z: 1, w: 0.060096156}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {x: 0.9794352, y: 0.9745252, z: 1, w: 0.1682692}
+  shadowsStart:
+    m_OverrideState: 0
+    m_Value: 0
+  shadowsEnd:
+    m_OverrideState: 0
+    m_Value: 0.3
+  highlightsStart:
+    m_OverrideState: 0
+    m_Value: 0.55
+  highlightsEnd:
+    m_OverrideState: 0
+    m_Value: 1

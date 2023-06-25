@@ -103,4 +103,24 @@ public class InventoryMaster : MonoBehaviour
         money.SetValue((float) amountAfter);
         return amountAfter;
     }
+
+    public bool HasTMForMove(MoveId moveId)
+    {
+        return inventory.Find((item =>
+        {
+            if (item.itemData.GetItemCategory() == ItemCategory.TM)
+            {
+                try
+                {
+                    ItemDataTM tmItem = (ItemDataTM)item.itemData;
+                    return tmItem.moveLearned.moveId == moveId;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return false;
+        })) != null;
+    }
 }
