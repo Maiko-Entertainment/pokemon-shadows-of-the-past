@@ -149,12 +149,8 @@ GameObject:
   - component: {fileID: 5856530930891701790}
   - component: {fileID: 7944835942927195692}
   - component: {fileID: 3842643227998819538}
-  - component: {fileID: 849745644086141385}
-  - component: {fileID: 1199983375889363032}
-  - component: {fileID: 1227527827879256318}
-  - component: {fileID: 1471891849958908027}
-  - component: {fileID: 2834503623893223686}
-  - component: {fileID: 8758889904401202223}
+  - component: {fileID: 4689576857631769646}
+  - component: {fileID: 1045760825128621520}
   m_Layer: 0
   m_Name: Flowchart Tactics
   m_TagString: Untagged
@@ -195,7 +191,7 @@ MonoBehaviour:
   scrollPos: {x: 787.8865, y: 1.5555519}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 360
+  blockViewHeight: 280
   zoom: 0.6700003
   scrollViewRect:
     serializedVersion: 2
@@ -203,10 +199,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 7660137004177622114}
-  selectedCommands:
-  - {fileID: 2734810560885278834}
+  selectedBlocks: []
+  selectedCommands: []
   variables:
   - {fileID: 9131182894791565300}
   - {fileID: 8439902652808134854}
@@ -561,8 +555,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 761
-    y: 199
+    x: 753.53735
+    y: 219.89554
     width: 112.68654
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1660,8 +1654,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 206.80232
-    y: 91.924225
+    x: 214.26501
+    y: 88.93915
     width: 85.82088
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -2653,7 +2647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 53.864002
+    x: 50.878925
     y: 346.92157
     width: 136.56712
     height: 40
@@ -3413,6 +3407,7 @@ MonoBehaviour:
   - {fileID: 3017313171864599561}
   - {fileID: 5753482380174428405}
   - {fileID: 539835765164211670}
+  - {fileID: 4689576857631769646}
   - {fileID: 9092283354390896639}
   - {fileID: 2823876331358407484}
   - {fileID: 4349320215997775521}
@@ -4178,6 +4173,7 @@ MonoBehaviour:
   - {fileID: 1040663048770898168}
   - {fileID: 5424348536751492290}
   - {fileID: 3558268731885455059}
+  - {fileID: 1045760825128621520}
   - {fileID: 5845293945737292962}
   - {fileID: 477721010717685155}
   - {fileID: 5554353486032776877}
@@ -4394,7 +4390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67.04346
+    x: 65.55092
     y: 283.46136
     width: 99.25371
     height: 40
@@ -5300,7 +5296,7 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &849745644086141385
+--- !u!114 &4689576857631769646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5309,91 +5305,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 4623546450157281241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeRect:
-    serializedVersion: 2
-    x: 751
-    y: 250
-    width: 136.56712
-    height: 40
-  tint: {r: 1, g: 1, b: 1, a: 1}
-  useCustomTint: 0
-  itemId: 38
-  blockName: Play Fetch Fail
-  description: 
-  eventHandler: {fileID: 0}
-  commandList:
-  - {fileID: 1199983375889363032}
-  - {fileID: 1471891849958908027}
-  - {fileID: 8758889904401202223}
-  - {fileID: 2834503623893223686}
-  - {fileID: 1227527827879256318}
-  suppressAllAutoSelections: 0
---- !u!114 &1199983375889363032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623546450157281241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6af5dac98b0624702b476c1eac319eab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 55
+  itemId: 158
   indentLevel: 0
-  variable: {fileID: 4110189761352208184}
-  minValue:
-    integerRef: {fileID: 0}
-    integerVal: 0
-  maxValue:
-    integerRef: {fileID: 0}
-    integerVal: 1
---- !u!114 &1227527827879256318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623546450157281241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08d85388232fa044b9df0910e6aa679b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 56
-  indentLevel: 0
---- !u!114 &1471891849958908027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623546450157281241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 156
-  indentLevel: 0
-  storyText: You grabbed a stick and threw it really far!
-  description: 
-  character: {fileID: 0}
+  display: 2
+  stage: {fileID: 2530098257732801015}
+  character: {fileID: 3165972017018217268}
+  replacedCharacter: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &2834503623893223686
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &1045760825128621520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5402,51 +5335,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 4623546450157281241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 134
+  itemId: 159
   indentLevel: 0
-  storyText: Looks like you will have to try something else...
-  description: 
-  character: {fileID: 0}
+  display: 2
+  stage: {fileID: 2530098257732801015}
+  character: {fileID: 5403385064436776825}
+  replacedCharacter: {fileID: 0}
   portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
---- !u!114 &8758889904401202223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623546450157281241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 157
-  indentLevel: 0
-  storyText: '{$pokemon} is looking at you confused...'
-  description: 
-  character: {fileID: 0}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1001 &670286675272066503
 PrefabInstance:
   m_ObjectHideFlags: 0

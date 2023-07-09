@@ -38,6 +38,10 @@ public class BattleEndEvent
         }
         else
         {
+            if (flowchart)
+            {
+                InteractionsMaster.GetInstance().AddEvent(new InteractionEventFlowchart(flowchart, "Draw"));
+            }
             InteractionsMaster.GetInstance().ExecuteNext();
         }
     }

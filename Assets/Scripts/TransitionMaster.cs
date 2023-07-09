@@ -24,6 +24,8 @@ public class TransitionMaster : MonoBehaviour
     public Transform transitions;
     public Transform mapDayEffectsList;
 
+    public bool isTransitioning = false;
+
     public delegate void CameraChange(Camera camera);
     public event CameraChange OnCameraChange;
 
@@ -140,11 +142,14 @@ public class TransitionMaster : MonoBehaviour
     }
     IEnumerator EnableWorldCameraAfter(float duration)
     {
+        isTransitioning = true;
         yield return new WaitForSeconds(duration);
         EnableWorldCamera();
         SetDialogueToScene();
         WorldMapMaster.GetInstance()?.HandleMapReturn();
         UIPauseMenuMaster.GetInstance()?.ShowWorldUI();
+        yield return new WaitForSeconds(1f);
+        isTransitioning = false;
     }
 
     public void DisableCameras()
@@ -249,5 +254,10 @@ public class TransitionMaster : MonoBehaviour
             UIPauseMenuMaster.Instance.HideWorldUI();
             UIPauseMenuMaster.Instance.timeofDayContainer.parent.gameObject.SetActive(false);
         }
+    }
+
+    public bool IsTransitioning()
+    {
+        return isTransitioning;
     }
 }

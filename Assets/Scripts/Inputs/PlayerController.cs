@@ -356,8 +356,9 @@ public class PlayerController : MonoBehaviour
             else
             {
                 bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+                bool isTransitioning = TransitionMaster.GetInstance().IsTransitioning();
                 jumping = false;
-                if (CanMove(cacheDirection) && !isInteractionPlaying)
+                if (CanMove(cacheDirection) && !isInteractionPlaying && !isTransitioning)
                 {
                     target = transform.position + (Vector3)cacheDirection;
                     NotifyMoveToFollowers(target);
@@ -374,7 +375,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Moving", true);
-            transform.position = Vector2.MoveTowards(transform.position, target, (jumping ? 1f : 1f) * speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
             animator.speed = 1;
             if (jumping)
             {

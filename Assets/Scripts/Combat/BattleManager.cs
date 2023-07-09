@@ -18,7 +18,8 @@ public class BattleManager
 
     public MoveData lastUsedMove = null;
 
-    private bool isBattleActive = false;
+    private bool isBattleActive = false; // Battle animation events are done and battle is offially over
+    private bool isBattleSetToOver = false; // Has battle end event been added
     private TacticData currentTacticSelected;
 
     public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 2;
@@ -42,6 +43,7 @@ public class BattleManager
     public void StartBattle()
     {
         isBattleActive = true;
+        isBattleSetToOver = false;
         eventManager = new BattleEventManager();
         participatedPokemon = new List<PokemonBattleData>();
         faintHistory = new List<BattleFaintHistory>();
@@ -61,6 +63,11 @@ public class BattleManager
     public bool IsBattleActive()
     {
         return isBattleActive;
+    }
+
+    public bool IsBattleSetToOver()
+    {
+        return isBattleSetToOver;
     }
 
     public void SetBattleActive(bool isActive)
@@ -375,10 +382,10 @@ public class BattleManager
 
     public void HandleBattleEnd(BattleTeamId winningTeam, bool endNow = false)
     {
+        isBattleSetToOver = true;
         // Add event for battle end to handle variable saving, end combat dialogue, etc
         BattleEventBattleEnd battleEndEvent = new BattleEventBattleEnd(this, winningTeam, postBattleEvent);
         eventManager.AddEvent(battleEndEvent);
-        SetBattleActive(false);
         if (endNow)
         {
             eventManager.ResolveAllEventTriggers();

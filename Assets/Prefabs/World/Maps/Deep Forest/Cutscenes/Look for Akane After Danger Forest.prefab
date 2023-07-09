@@ -198,7 +198,7 @@ MonoBehaviour:
   scrollPos: {x: 563.4985, y: 48.808895}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 495
+  blockViewHeight: 384
   zoom: 0.6100004
   scrollViewRect:
     serializedVersion: 2
@@ -207,9 +207,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 9154858273131283199}
+  - {fileID: 7541241946493341344}
   selectedCommands:
-  - {fileID: 6904167065538551760}
+  - {fileID: 2791353882511678541}
   variables:
   - {fileID: 4004826568360408734}
   - {fileID: 7244388551482405328}
@@ -969,10 +969,13 @@ MonoBehaviour:
   itemId: 25
   indentLevel: 0
   agentId: Akane
-  overwriteSpeed: 0
-  speed: 5
+  overwriteSpeed: 1
+  speed: 4
   directions:
   - direction: 1
+    justTurn: 0
+    jump: 0
+  - direction: 2
     justTurn: 0
     jump: 0
   - direction: 1
@@ -3481,7 +3484,7 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 4
+    floatVal: 2
   durationOLD: 0
 --- !u!114 &3075252520700957954
 MonoBehaviour:
@@ -4518,7 +4521,7 @@ MonoBehaviour:
   indentLevel: 0
   display: 1
   stage: {fileID: 7665165453817094929}
-  character: {fileID: 1077506934328887538}
+  character: {fileID: 4267185762378959433}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: 5d35e5edb7127f749bff588a2a330508, type: 3}
   offset: 0
@@ -5249,7 +5252,7 @@ MonoBehaviour:
   indentLevel: 0
   display: 1
   stage: {fileID: 7665165453817094929}
-  character: {fileID: 1077506934328887538}
+  character: {fileID: 4267185762378959433}
   replacedCharacter: {fileID: 0}
   portrait: {fileID: 21300000, guid: a9b2c43c51667594b9ab6303f43a9eb4, type: 3}
   offset: 0
@@ -5492,6 +5495,10 @@ PrefabInstance:
     - target: {fileID: 2865994456067189593, guid: 51a3bd0196b6070409750270b7174035, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929608876850928419, guid: 51a3bd0196b6070409750270b7174035, type: 3}
+      propertyPath: m_Name
+      value: Stage Custom After Danger
       objectReference: {fileID: 0}
     - target: {fileID: 6577824275998052408, guid: 51a3bd0196b6070409750270b7174035, type: 3}
       propertyPath: m_Name

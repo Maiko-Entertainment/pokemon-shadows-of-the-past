@@ -54,17 +54,6 @@ public class UIPokemonMovesViewer : MonoBehaviour
         UtilsMaster.SetSelected(movesInstanced[0].gameObject);
     }
 
-    public void HandleMoveView()
-    {
-        if (!isInsideSection)
-        {
-            EventSystem eventSystem = EventSystem.current;
-            eventSystem.SetSelectedGameObject(movesInstanced[0].gameObject, new BaseEventData(eventSystem));
-            ViewMove(pokemon.GetMoves()[0], pokemon);
-            isInsideSection = true;
-        }
-    }
-
     public void ViewMove(MoveEquipped move, PokemonCaughtData pkmn)
     {
         currentMove = move;

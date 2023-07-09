@@ -106,6 +106,8 @@ public class PokemonCaughtData
         abilityId = pokemonBase.GetRandomAbility();
         moves = encounter.GetMovesEquipped();
         friendship = encounter.pokemon.baseFriendship;
+        float random = Random.value;
+        isMale = random < encounter.pokemon.maleChance;
     }
 
     public string GetName()

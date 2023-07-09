@@ -11,6 +11,7 @@ public class BattleMaster : MonoBehaviour
     public BattleManager currentBattle;
     public bool triggerBattleOnStart = false;
     public bool isExpShareOn = true;
+    public float globalExpMultiplier = 1f;
 
     public BattleTypeAdvantageManager advantageManager = new BattleTypeAdvantageManager();
 
@@ -124,11 +125,6 @@ public class BattleMaster : MonoBehaviour
         BattleAnimatorMaster.GetInstance().ShowAll();
     }
 
-    public void AddBattleEndFlowchart()
-    {
-
-    }
-
     public static List<PokemonBattleData> GetPokemonBattleDataFromCaught(List<PokemonCaughtData> party, BattleTeamId teamId)
     {
         List<PokemonBattleData> battleParty = new List<PokemonBattleData>();
@@ -164,9 +160,9 @@ public class BattleMaster : MonoBehaviour
 
     public int GetExperienceForDefeating(PokemonBattleData pokemon)
     {
-        int baseExp = 15; //pokemon.GetPokemonCaughtData().pokemonBase.baseExp;
+        int baseExp = 15;
         int pokemonLevel = pokemon.GetPokemonCaughtData().GetLevel();
-        int experienceGained = (int)Mathf.Pow(baseExp * pokemonLevel * 0.75f, 2.5f) / 2000 + 2 * baseExp;
+        int experienceGained = (int)((Mathf.Pow(baseExp * pokemonLevel * 0.75f, 2.5f) / 2000 + 2 * baseExp) * globalExpMultiplier);
         return experienceGained;
     }
 

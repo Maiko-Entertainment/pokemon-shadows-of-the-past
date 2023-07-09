@@ -195,7 +195,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &5305411259108720284
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -212,7 +212,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5111094688564976908
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +317,9 @@ GameObject:
   - component: {fileID: 5277055411128203656}
   - component: {fileID: 2530629238326474142}
   - component: {fileID: 4782194722445461743}
+  - component: {fileID: 522915022084295505}
+  - component: {fileID: 5226181053670758080}
+  - component: {fileID: 8811971107617829785}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -356,7 +360,7 @@ MonoBehaviour:
   scrollPos: {x: 0, y: 0}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 399
+  blockViewHeight: 384
   zoom: 1
   scrollViewRect:
     serializedVersion: 2
@@ -367,7 +371,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 5536489785993434785}
   selectedCommands:
-  - {fileID: 441586269946764919}
+  - {fileID: 3478580966627943859}
   variables:
   - {fileID: 8965176593650685659}
   - {fileID: 5168975355762156697}
@@ -444,7 +448,10 @@ MonoBehaviour:
   - {fileID: 5277055411128203656}
   - {fileID: 6157634006345200019}
   - {fileID: 2530629238326474142}
+  - {fileID: 522915022084295505}
+  - {fileID: 5226181053670758080}
   - {fileID: 4782194722445461743}
+  - {fileID: 8811971107617829785}
   - {fileID: 3478580966627943859}
   - {fileID: 815863481475991312}
   - {fileID: 1262583814302862297}
@@ -1728,9 +1735,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 52
   indentLevel: 0
-  storyText: '{size=70}{s=15}THEY {punch}TOOK HER {punch}AWAY{/s}'
+  storyText: '{size=70}{s=15}{punch=15}THEY {punch}TOOK HER {punch}AWAY{/s}'
   description: 
-  character: {fileID: 7387402850260219395}
+  character: {fileID: 4168285755871829125}
   portrait: {fileID: 0}
   voiceOverClip: {fileID: 0}
   showAlways: 1
@@ -2281,7 +2288,7 @@ MonoBehaviour:
   indentLevel: 0
   _duration:
     floatRef: {fileID: 0}
-    floatVal: 1
+    floatVal: 2
   durationOLD: 0
 --- !u!114 &4782194722445461743
 MonoBehaviour:
@@ -2297,7 +2304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 77
   indentLevel: 0
-  storyText: They took her away...
+  storyText: '{s=30}They took her away...'
   description: 
   character: {fileID: 4168285755871829125}
   portrait: {fileID: 0}
@@ -2310,6 +2317,69 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &522915022084295505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5290092844862936291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 78
+  indentLevel: 0
+  storyText: ...
+  description: 
+  character: {fileID: 4168285755871829125}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
+--- !u!114 &5226181053670758080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5290092844862936291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 79
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 2
+  durationOLD: 0
+--- !u!114 &8811971107617829785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5290092844862936291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 80
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 2
+  durationOLD: 0
 --- !u!1 &6414356063526770057
 GameObject:
   m_ObjectHideFlags: 0
