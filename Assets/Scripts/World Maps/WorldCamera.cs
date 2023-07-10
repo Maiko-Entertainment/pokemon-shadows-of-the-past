@@ -41,7 +41,7 @@ public class WorldCamera : MonoBehaviour
         if (player)
         {
             currentOffset = Vector3.MoveTowards(currentOffset, offset, offsetAdjustSpeed * Time.deltaTime);
-            transform.position = player.position + currentOffset + Vector3.forward * -1;
+            transform.position = player.position + currentOffset + Vector3.forward * -2;
         }
         else
         {

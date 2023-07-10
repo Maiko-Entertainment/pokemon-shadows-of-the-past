@@ -31,9 +31,11 @@ public class WorldMapDamageDealerEnterArea : WorldMapDamageDealer
         {
             isDamageActive = false;
             animator?.SetTrigger("Warn");
-            AudioMaster.GetInstance().PlaySfx(onWarningSound);
+            if (audioSource) AudioMaster.GetInstance().PlaySfxInAudioSource(onWarningSound, audioSource);
+            else AudioMaster.GetInstance().PlaySfx(onWarningSound);
             yield return new WaitForSeconds(prewarningTime);
-            AudioMaster.GetInstance().PlaySfx(OnDamageActiveSound);
+            if (audioSource) AudioMaster.GetInstance().PlaySfxInAudioSource(OnDamageActiveSound, audioSource);
+            else AudioMaster.GetInstance().PlaySfx(OnDamageActiveSound);
             isDamageActive = true;
             yield return new WaitForSeconds(damageInterval);
             isDamageActive = false;

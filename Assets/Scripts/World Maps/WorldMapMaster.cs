@@ -73,9 +73,22 @@ public class WorldMapMaster : MonoBehaviour
     {
         ClearPrevius();
         yield return new WaitForEndOfFrame();
+        Transform spawn = Getmap(mapId).GetSpawn(spawnIndex);
+        Vector3 position = spawn.position;
+        SpawnInMapAtPos(mapId, position);
+    }
+
+    public void SpawnInMapAtPos(int mapId, Vector2 position)
+    {
+        ClearPrevius();
+        StartCoroutine(SpawnInMapPosCoroutine(mapId, position));
+    }
+
+    public IEnumerator SpawnInMapPosCoroutine(int mapId, Vector2 position)
+    {
+        yield return new WaitForEndOfFrame();
         WorldMap map = Getmap(mapId);
-        Transform spawn = map.GetSpawn(spawnIndex);
-        StartCoroutine(SetPlayer(spawn.position));
+        StartCoroutine(SetPlayer(position));
         WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
         currentMap = mapInstance;
         mapInstance.HandleEntrance();
@@ -89,17 +102,7 @@ public class WorldMapMaster : MonoBehaviour
         {
             UIPauseMenuMaster.GetInstance().ShowWorldUI();
         }
-    }
 
-    public void SpawnInMapAtPos(int mapId, Vector2 position)
-    {
-        ClearPrevius();
-        WorldMap map = Getmap(mapId);
-        WorldMap mapInstance = Instantiate(map.gameObject).GetComponent<WorldMap>();
-        mapInstance.HandleEntrance();
-        StartCoroutine(SetPlayer(position));
-        UIPauseMenuMaster.GetInstance().ShowWorldUI();
-        currentMap = mapInstance;
     }
 
     IEnumerator SetPlayer(Vector2 spawn)

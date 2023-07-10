@@ -28,6 +28,11 @@ public class UIEvolutionMaster : MonoBehaviour
     public Transform evolutionFinalWaveContainer;
     public Flowchart flowchart;
 
+    public float finalGlowDuration = 6f;
+    public float evolutionTransitionDuration = 17.9f;
+    public float evoGlowTime = 2f;
+    public float finalWaveDuration = 2f;
+
     private PokemonAnimationController originalPokemon;
     private PokemonAnimationController evolvedPokemon;
 
@@ -76,10 +81,6 @@ public class UIEvolutionMaster : MonoBehaviour
 
     IEnumerator InitiateEvolutionSequence(PokemonCaughtData pokemon, PokemonBaseData evolution, List<PokemonMoveLearn> learnedMoves = null)
     {
-        float evoGlowTime = 2f;
-        float evolutionTransitionDuration = 17.9f;
-        float finalGlowDuration = 6f;
-        float finalWaveDuration = 2f;
         float transitionDurationFinal = evolutionTransitionDuration - finalGlowDuration;
         originalPokemonImage.gameObject.SetActive(true);
         StartCoroutine(CreateLines(0.25f));
@@ -187,6 +188,7 @@ public class UIEvolutionMaster : MonoBehaviour
         Destroy(evolvedPokemon.gameObject);
         evolutionPanel.FadeOut();
         WorldMapMaster.GetInstance().PlayCurrentPlaceMusic();
+        WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
         TransitionMaster.GetInstance().SetDialogueToScene();
         UIPauseMenuMaster.GetInstance().ShowWorldUI();
         InteractionsMaster.GetInstance().ExecuteNext(1f);

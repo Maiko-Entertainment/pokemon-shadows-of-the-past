@@ -83,12 +83,12 @@ public class SaveMaster : MonoBehaviour
 
     public void Load(SaveFile save)
     {
+        AudioMaster.GetInstance().Load(save);
+        PokemonMaster.GetInstance().Load(save);
         PartyMaster.GetInstance().Load(save);
         InventoryMaster.GetInstance().Load(save);
         TacticsMaster.GetInstance().Load(save);
         WorldMapMaster.GetInstance().Load(save);
-        PokemonMaster.GetInstance().Load(save);
-        AudioMaster.GetInstance().Load(save);
         BattleMaster.GetInstance().Load(save);
     }
 

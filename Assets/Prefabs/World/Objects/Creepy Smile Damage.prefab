@@ -373,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 2310954287928220688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4086992975452306976}
@@ -500,7 +500,7 @@ AudioSource:
   m_GameObject: {fileID: 4304446978725902929}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 2e8e74a102b94db48a9d1beb0ab12801, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -605,29 +605,29 @@ MonoBehaviour:
     type: 5
   afterDamageCooldown: 1
   outOfBattleDamageSound:
-    audio: {fileID: 8300000, guid: 57cfc277cb79e5a40b5e0023b3b8e3c0, type: 3}
+    audio: {fileID: 8300000, guid: b8938b4f057ad6f4f94ec340523a0f26, type: 3}
     pitch: 1
     customDuration: -1
     volumeModifier: 1
     fadeTime: 0.5
     loopMusic: 1
-  onKillFlowchart: {fileID: 0}
+  onKillFlowchart: {fileID: 1783223361268732115}
   onKillBlock: Kill
   isDamageActive: 0
   damageInterval: 0.5
   prewarningTime: 0.5
   animator: {fileID: 4086992975452306977}
   onWarningSound:
-    audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
-    pitch: 2
-    customDuration: 0.5
-    volumeModifier: 0.8
+    audio: {fileID: 8300000, guid: 5f1836191ad524d488a947fa6db9f0d1, type: 3}
+    pitch: 1
+    customDuration: 2
+    volumeModifier: 1
     fadeTime: 0.5
     loopMusic: 1
   OnDamageActiveSound:
-    audio: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
-    pitch: 0.7
-    customDuration: -1
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: 0.3
     volumeModifier: 1
     fadeTime: 0.5
     loopMusic: 1
@@ -844,7 +844,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &4086992975452306977
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -861,7 +861,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &426490330108685460
 PrefabInstance:
   m_ObjectHideFlags: 0
