@@ -100,7 +100,7 @@ public class UIPokemonView : MonoBehaviour
     }
     public void HandleSwaping(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick && !isTyping)
         {
             if (swapingPokemon != null)
             {

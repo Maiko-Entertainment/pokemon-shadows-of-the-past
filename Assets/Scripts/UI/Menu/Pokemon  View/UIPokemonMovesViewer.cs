@@ -30,6 +30,7 @@ public class UIPokemonMovesViewer : MonoBehaviour
     public void Load(PokemonCaughtData pokemon)
     {
         this.pokemon = pokemon;
+        pokemon.CheckForLearnedMoves();
         LoadEquippedMoves();
     }
 

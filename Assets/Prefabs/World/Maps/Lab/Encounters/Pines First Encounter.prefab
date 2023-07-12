@@ -209,6 +209,8 @@ GameObject:
   - component: {fileID: 2065407318146090555}
   - component: {fileID: 3937926653698739519}
   - component: {fileID: 7459701731401971822}
+  - component: {fileID: 377207935588741880}
+  - component: {fileID: 3815254993096765145}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -258,8 +260,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 8849139509757964043}
-  selectedCommands: []
+  - {fileID: 6912517114950712666}
+  selectedCommands:
+  - {fileID: 3166587941722297946}
   variables:
   - {fileID: 3767241158848373601}
   description: 
@@ -323,6 +326,7 @@ MonoBehaviour:
   - {fileID: 2960338069694796524}
   - {fileID: 2521505174529216252}
   - {fileID: 4273423815604357035}
+  - {fileID: 377207935588741880}
   - {fileID: 448685865318489794}
   - {fileID: 621446101392357760}
   suppressAllAutoSelections: 0
@@ -947,6 +951,7 @@ MonoBehaviour:
   - {fileID: 8877147242934209776}
   - {fileID: 7742615857766277361}
   - {fileID: 3166587941722297946}
+  - {fileID: 3815254993096765145}
   - {fileID: 6699659537627206895}
   - {fileID: 2600600912442196129}
   suppressAllAutoSelections: 0
@@ -2553,6 +2558,42 @@ MonoBehaviour:
   _duration:
     floatRef: {fileID: 0}
     floatVal: 1
+  durationOLD: 0
+--- !u!114 &377207935588741880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 174
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0.1
+  durationOLD: 0
+--- !u!114 &3815254993096765145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4963668545921768918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 175
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 0.1
   durationOLD: 0
 --- !u!1 &5515599232322975699
 GameObject:

@@ -48,7 +48,8 @@ public class UICharacterCreatorModel : MonoBehaviour
 
     public void HandleGoBack(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        bool isOpen = UIPauseMenuMaster.GetInstance()?.GetCurrentMenu() == GetComponent<UIMenuPile>();
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && isOpen)
         {
             UIPauseMenuMaster.GetInstance().CloseCurrentMenu();
         }

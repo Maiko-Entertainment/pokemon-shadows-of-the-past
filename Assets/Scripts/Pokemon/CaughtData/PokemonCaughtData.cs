@@ -267,71 +267,68 @@ public class PokemonCaughtData
         level += 1;
     }
 
-    // returns a list of NEW moves the pokemon learns at certain level
-    public List<PokemonMoveLearn> CheckForLearnedMoves(int level)
+    public bool TryToLearnMove(MoveData moveData)
     {
-        List<PokemonMoveLearn> newMovesLearned = new List<PokemonMoveLearn>();
-        List<MoveEquipped> newCompleteMovesLearned = new List<MoveEquipped>();
-        List<PokemonMoveLearn> allMovesLearned = pokemonBase.GetLearntMovesByLevel(level);
-        newCompleteMovesLearned.AddRange(learnedMoves);
-
-        foreach (PokemonMoveLearn availableMove in allMovesLearned)
+        bool isMoveInLearnedMoves = false;
+        foreach (MoveEquipped me in learnedMoves)
         {
-            bool isMoveInLearnedMoves = false;
-            foreach (MoveEquipped me in learnedMoves)
+            if (moveData.moveId == me.move.moveId)
             {
-                if (availableMove.move.moveId == me.move.moveId)
+                isMoveInLearnedMoves = true;
+                break;
+            }
+        }
+        if (!isMoveInLearnedMoves)
+        {
+            MoveEquipped me = new MoveEquipped(moveData);
+            foreach (MoveEquipped move in moves)
+            {
+                if (moveData.moveId == move.move.moveId)
                 {
                     isMoveInLearnedMoves = true;
                     break;
                 }
             }
-            if (!isMoveInLearnedMoves)
+            if (moves.Count < 4 && !isMoveInLearnedMoves)
+            {
+                moves.Add(me);
+            }
+            learnedMoves.Add(me);
+            return true;
+        }
+        return false;
+    }
+
+    // returns a list of NEW moves the pokemon learns at certain level
+    public List<PokemonMoveLearn> CheckForLearnedMoves()
+    {
+        return CheckForLearnedMoves(GetLevel());
+    }
+    public List<PokemonMoveLearn> CheckForLearnedMoves(int level)
+    {
+        List<PokemonMoveLearn> newMovesLearned = new List<PokemonMoveLearn>();
+        List<PokemonMoveLearn> levelUpMoves = pokemonBase.GetLearntMovesByLevel(level);
+
+        // Add available TM Moves
+        foreach(MoveData tm in pokemonBase.GetTMMoves())
+        {
+            if (InventoryMaster.GetInstance().HasTMForMove(tm.moveId))
+                TryToLearnMove(tm);
+        }
+        // Add level up moves
+        foreach (PokemonMoveLearn availableMove in levelUpMoves)
+        {
+            bool result = TryToLearnMove(availableMove.move);
+            if (result)
             {
                 newMovesLearned.Add(availableMove);
-                MoveEquipped me = new MoveEquipped(availableMove.move);
-                newCompleteMovesLearned.Add(me);
-                foreach (MoveEquipped move in moves)
-                {
-                    if (availableMove.move.moveId == move.move.moveId)
-                    {
-                        isMoveInLearnedMoves = true;
-                        break;
-                    }
-                }
-                if (moves.Count < 4 && !isMoveInLearnedMoves)
-                {
-                    moves.Add(me);
-                }
             }
         }
-        learnedMoves = newCompleteMovesLearned;
         return newMovesLearned;
     }
 
     public List<MoveEquipped> GetLearnedMoves()
     {
-        // Add TM Moves
-        foreach(MoveData move in pokemonBase.GetTMMoves())
-        {
-            bool alreadyKnowsTmMove = false;
-            bool hasTMInInventory = InventoryMaster.GetInstance().HasTMForMove(move.moveId);
-            if (hasTMInInventory)
-            {
-                foreach(MoveEquipped me in learnedMoves)
-                {
-                    if (me.move.moveId == move.moveId)
-                    {
-                        alreadyKnowsTmMove = true;
-                        break;
-                    }
-                }
-                if (!alreadyKnowsTmMove)
-                {
-                    learnedMoves.Add(new MoveEquipped(move));
-                }
-            }
-        }
         return learnedMoves;
     }
 

@@ -131,6 +131,10 @@ public class BattleMaster : MonoBehaviour
         int id = teamId == BattleTeamId.Team1 ? 0 : 100;
         foreach(PokemonCaughtData pokemon in party)
         {
+            if (teamId == BattleTeamId.Team1)
+            {
+                pokemon.CheckForLearnedMoves();
+            }
             battleParty.Add(new PokemonBattleData(pokemon, id));
             id++;
         }

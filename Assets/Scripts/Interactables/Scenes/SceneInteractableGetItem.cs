@@ -15,7 +15,7 @@ public class SceneInteractableGetItem : WorldInteractableTouch
         values.Add("item", item.GetName());
         values.Add("itemIdString", ""+(int)item.GetItemId());
         values.Add("amountString", ""+random);
-         InteractionsMaster.GetInstance()?.AddEvent(
+        InteractionsMaster.GetInstance()?.AddEvent(
             new InteractionEventFlowchart(
                 flowchartPrefab,
                 blockName,

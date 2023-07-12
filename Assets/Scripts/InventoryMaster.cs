@@ -66,6 +66,15 @@ public class InventoryMaster : MonoBehaviour
         ItemData newInstance = ItemMaster.GetInstance().GetItem(id);
         ItemInventory newInventoryInstance = new ItemInventory(newInstance, changeAmount);
         inventory.Add(newInventoryInstance);
+
+        // Tries to add move to party if its a TM
+        if (newInstance.categoryId == ItemCategory.TM)
+        {
+            foreach (PokemonCaughtData p in PartyMaster.GetInstance().GetParty())
+            {
+                p.CheckForLearnedMoves(p.GetLevel());
+            }
+        }
     }
 
     public ItemInventory GetItem(ItemId id)
@@ -108,7 +117,7 @@ public class InventoryMaster : MonoBehaviour
     {
         return inventory.Find((item =>
         {
-            if (item.itemData.GetItemCategory() == ItemCategory.TM)
+            if (item.itemData.GetItemCategory() == ItemCategory.TM && item.amount > 0)
             {
                 try
                 {
