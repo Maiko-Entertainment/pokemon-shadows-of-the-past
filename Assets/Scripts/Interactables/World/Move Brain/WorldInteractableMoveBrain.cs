@@ -11,6 +11,7 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
     public Transform innerTransform;
     public float speed = 1;
     public float heightOffset = 0;
+    public bool disableShadow = false;
 
     protected Tilemap groundTilemap;
     protected Tilemap waterTilemap;
@@ -24,6 +25,17 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
     private void Start()
     {
         Load();
+        if (!disableShadow && animator != null)
+        {
+            GameObject shadow = WorldMapMaster.GetInstance().shadowWorldEntity;
+            SpriteRenderer sprite = animator.GetComponentInChildren<SpriteRenderer>();
+            if (sprite)
+            {
+                Bounds size = sprite.bounds;
+                SpriteRenderer shadowRenderer = Instantiate(shadow, sprite.transform).GetComponentInChildren<SpriteRenderer>();
+                shadowRenderer.bounds = size;
+            }
+        }
     }
 
     public void Load()

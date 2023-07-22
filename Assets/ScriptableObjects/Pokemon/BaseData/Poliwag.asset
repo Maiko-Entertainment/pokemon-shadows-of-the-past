@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Poliwag
+  m_EditorClassIdentifier: 
+  pokemonId: 60
+  species: Poliwag
+  icon: {fileID: -1762377265, guid: 8b7d4744071742542b533921e7146ba7, type: 3}
+  cry: {fileID: 8300000, guid: 05c1272f008b813479f1cc0d4a8d5cdb, type: 3}
+  baseStats:
+    health: 40
+    attack: 50
+    defense: 40
+    spAttack: 40
+    spDefense: 40
+    speed: 90
+  types: 01000000
+  abilities:
+  - abilityId: 3
+    abilityPriority: 5
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 255
+  baseFriendship: 70
+  baseExp: 50
+  pokedexEntry: Its slick black skin is thin and damp. A part of its internal organs
+    can be seen through the skin as a spiral pattern.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: 9a03eaa2411ec344ea1969319735e8d7, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: ec8adc98b52306442ab94161a141b673, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: e17e60739445eba41b6883c36af85990, type: 2}
+    learnType: 0
+    levelRequired: 6
+  - move: {fileID: 11400000, guid: 3b08b0de227f54d429658f1929374e6a, type: 2}
+    learnType: 0
+    levelRequired: 18
+  tmMoves:
+  - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
+  evolutions:
+  - pokemonId: 61
+    evolutionData:
+      evolutionType: 0
+      value: 25
+  battleAnimation: {fileID: 3322383916779226398, guid: 31b60ed6754ac2842919491538b6db71, type: 3}
+  overWorldPrefab: {fileID: 5701987495183995879, guid: 207d2658b9da55645a1fce3712cc3cb7, type: 3}
+  encounteredIn: []

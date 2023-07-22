@@ -201,6 +201,15 @@ public class BattleAnimatorMaster : MonoBehaviour
         return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
     }
 
+    public float HandleCameraZoomPokemon(PokemonBattleData pokemon, float sizeMultiplier)
+    {
+        BattleTeamId pokemonTeam = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon);
+        Transform position = GetPokemonTeamTransform(pokemon).parent;
+        combatCamera.SetTarget(position.position + Vector3.up * (pokemonTeam == BattleTeamId.Team1 ? 1f : 0.6f) * sizeMultiplier);
+        combatCamera.SetSizeTarget((pokemonTeam == BattleTeamId.Team1 ? pokemonZoomValue : pokemonZoomValue * 0.7f) * sizeMultiplier);
+        return Mathf.Max(combatCamera.time, combatCamera.zoomTime);
+    }
+
     public float HandleCameraReset(float delay = 0)
     {
         StartCoroutine(HandleCameraResetEnum(delay));

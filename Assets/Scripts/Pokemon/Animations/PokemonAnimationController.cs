@@ -47,14 +47,14 @@ public class PokemonAnimationController : MonoBehaviour
         {
             Material shadowMaterial = BattleAnimatorMaster.GetInstance().shadowMaterial;
             shadow = Instantiate(sprite, sprite.transform);
-            shadow.transform.localPosition = new Vector3(0, 0.05f, 0);
-            shadow.transform.localScale = new Vector3(1, 1, 1);
+            shadow.transform.localPosition = new Vector3(0, 0.15f, 0);
+            shadow.transform.localScale = new Vector3(1, 1.2f, 1);
             shadow.sortingOrder = -10;
             if (isBack)
             {
                 shadow.GetComponent<Animator>().SetTrigger("Back");
             }
-            shadow.transform.eulerAngles = new Vector3(50, 0, 20);
+            shadow.transform.eulerAngles = new Vector3(60f, 0f, 352f);
             shadow.GetComponent<Renderer>().material = shadowMaterial;
         }
     }

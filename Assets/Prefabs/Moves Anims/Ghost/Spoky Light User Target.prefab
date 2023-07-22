@@ -114,7 +114,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
 --- !u!95 &6947143114404094406
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,7 +131,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6947143114593029496
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,11 +179,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6947143114404094406}
-  duration: 0.8
-  destroyAfter: 0.8
+  duration: 1
+  destroyAfter: 1
   triggerName: 
   flipXForTeam2: 0
   flipYForTeam2: 0
+  stayInUserTime: 0
   stayInTargetTime: 0
   userOffset: {x: 0, y: 0.4}
   targetOffset: {x: 0, y: 0.4}

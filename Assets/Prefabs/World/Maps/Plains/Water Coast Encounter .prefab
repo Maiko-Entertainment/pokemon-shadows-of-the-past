@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5042684893962791520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5411166504519917108}
+  - component: {fileID: 7500244665455386921}
+  - component: {fileID: 1824219564933782132}
+  m_Layer: 0
+  m_Name: 'Water Coast Encounter '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5411166504519917108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042684893962791520}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.5, y: -12.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7500244665455386921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042684893962791520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37447c906ca143441b7a3fc1c6773516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStep: 0
+  activateOnSpawn: 0
+  moveBrain: {fileID: 0}
+  possibleEncounters:
+  - {fileID: 11400000, guid: 6fc6e6ad29cfe9041b7cef475b3e8871, type: 2}
+  - {fileID: 11400000, guid: c5fbd057cbc8df5499057bf5e34c9b75, type: 2}
+  - {fileID: 11400000, guid: efacf0d6bc22d474ab51e4feb5c0b3ea, type: 2}
+  activeChance: 0.7
+  retryInterval: 10
+  spawnWorldEntityChance: 0.2
+  spawnWorldOffset: {x: 0, y: -0.5, z: 0}
+  spawnDirection: 2
+  showActivePrefabWithWorldEntity: 0
+  activePrefab: {fileID: 8864675986616504828, guid: 4beb72c6acae0f849886696d96a8fd7d, type: 3}
+  battleData:
+    battleMusic: {fileID: 8300000, guid: 135db6e2dd99fe04997480380878b918, type: 3}
+    battleWonMusic: {fileID: 0}
+    battlebackground: {fileID: 879258729621941810, guid: ac83d71162069294b8b1b74c2d9010d5, type: 3}
+    volumeProfile: {fileID: 0}
+    battleType: 0
+    playerExtraTactics:
+    - {fileID: 11400000, guid: 0899dcd59c522ad4b9e261ba88d372c9, type: 2}
+    - {fileID: 11400000, guid: 8f4b26c06085c164aad6248b5932fbc8, type: 2}
+  transition: {fileID: 3257677269373361263, guid: 81289add4461db9449a47f72aaa12799, type: 3}
+--- !u!61 &1824219564933782132
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5042684893962791520}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.9}
+  m_EdgeRadius: 0

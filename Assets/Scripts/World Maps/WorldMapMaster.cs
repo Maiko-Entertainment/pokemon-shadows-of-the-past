@@ -11,6 +11,8 @@ public class WorldMapMaster : MonoBehaviour
     public List<SceneMap> scenes;
     public Transform sceneContainer;
     public Transform mapNameContainer;
+    public GameObject shadowWorldEntity;
+    public Material ghostlyMaterial;
 
     public bool forceMapLoad = false;
     public int customMap = 2;

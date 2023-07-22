@@ -25,9 +25,7 @@ public class FungusSpawnPokemonInParty : Command
             {
                 WorldInteractableBrainFollower agent = Instantiate(pkmn.GetPokemonBaseData().GetOverWorldPrefab(), spawnPoint);
                 agent.followMode = false;
-                MoveBrainDirectionData dir = new MoveBrainDirectionData();
-                dir.direction = faceDirection;
-                dir.justTurn = true;
+                MoveBrainDirectionData dir = new MoveBrainDirectionData(faceDirection, true);
                 agent.AddDirection(dir);
                 if (addToAgents)
                 {

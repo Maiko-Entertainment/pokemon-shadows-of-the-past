@@ -13,6 +13,7 @@ public class BattleAnimationReturnDefaultSize : BattleAnimation
     public void Reset(PokemonBattleData target)
     {
         Transform pokemonTransform = BattleAnimatorMaster.GetInstance().GetPokemonTeamTransform(target);
+        pokemonTransform.localPosition = Vector3.zero;
         TransitionSize transition = pokemonTransform.gameObject.AddComponent<TransitionSize>();
         transition.initialSize = pokemonTransform.localScale;
         transition.finalSize = Vector3.one;

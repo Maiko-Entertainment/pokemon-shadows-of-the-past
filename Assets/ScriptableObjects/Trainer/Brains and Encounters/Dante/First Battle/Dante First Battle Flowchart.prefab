@@ -51,6 +51,10 @@ GameObject:
   - component: {fileID: 3626796027721306841}
   - component: {fileID: 6580854174429022642}
   - component: {fileID: 6800859785289311710}
+  - component: {fileID: 2034414392233460504}
+  - component: {fileID: 6164316240612852864}
+  - component: {fileID: 2201101274063606209}
+  - component: {fileID: 1277711334751020777}
   m_Layer: 0
   m_Name: Dante First Battle Flowchart
   m_TagString: Untagged
@@ -100,8 +104,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 1665572289695551371}
-  selectedCommands: []
+  - {fileID: 1421942643017881526}
+  selectedCommands:
+  - {fileID: 2034414392233460504}
   variables:
   - {fileID: 1286758998418159969}
   - {fileID: 419211264105622236}
@@ -131,7 +136,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 372
     y: 119
-    width: 76.582275
+    width: 77.34177
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -144,6 +149,7 @@ MonoBehaviour:
   - {fileID: 2967078651153946046}
   - {fileID: 2967078651153946041}
   - {fileID: 2967078651153946047}
+  - {fileID: 1277711334751020777}
   - {fileID: 6657437180436314836}
   - {fileID: 2967078651153946044}
   suppressAllAutoSelections: 0
@@ -256,7 +262,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 567
     y: 62
-    width: 157.59491
+    width: 155.31644
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -271,6 +277,7 @@ MonoBehaviour:
   - {fileID: 1400743210388199949}
   - {fileID: 8609992686846357713}
   - {fileID: 2660285739329756093}
+  - {fileID: 2201101274063606209}
   - {fileID: 6506343345193315250}
   - {fileID: 8367067855940177310}
   suppressAllAutoSelections: 0
@@ -484,6 +491,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 2034414392233460504}
   - {fileID: 8954799271993882539}
   - {fileID: 2000692819424569750}
   - {fileID: 3338096495099996517}
@@ -671,6 +679,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 6164316240612852864}
   - {fileID: 4652876448017359587}
   - {fileID: 1548434808579282483}
   - {fileID: 3426133072438205574}
@@ -1454,6 +1463,96 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 106
   indentLevel: 1
+--- !u!114 &2034414392233460504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967078651153945925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaea10bd3c4d4f4e9e835b965249c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 107
+  indentLevel: 0
+  variableToLoadTo: isBattleOver
+--- !u!114 &6164316240612852864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967078651153945925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaea10bd3c4d4f4e9e835b965249c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 108
+  indentLevel: 0
+  variableToLoadTo: isBattleOver
+--- !u!114 &2201101274063606209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967078651153945925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 109
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 3155188881389531737}
+  character: {fileID: 7205028219975302087}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &1277711334751020777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967078651153945925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 110
+  indentLevel: 0
+  display: 2
+  stage: {fileID: 3155188881389531737}
+  character: {fileID: 7205028219975302087}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 0}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1001 &2967078651194286334
 PrefabInstance:
   m_ObjectHideFlags: 0

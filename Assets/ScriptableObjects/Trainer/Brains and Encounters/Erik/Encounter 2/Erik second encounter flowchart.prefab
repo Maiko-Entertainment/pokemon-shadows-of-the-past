@@ -116,8 +116,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 3139158805508585646}
-  selectedCommands: []
+  - {fileID: 8643912753392605462}
+  selectedCommands:
+  - {fileID: 6252003054687446586}
   variables:
   - {fileID: 3139158805508585557}
   - {fileID: 3139158805508585559}
@@ -147,7 +148,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 120.16455
     y: 88.98735
-    width: 76.582275
+    width: 77.34177
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1000,7 +1001,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 221.17722
     y: 87.72153
-    width: 157.59491
+    width: 155.31644
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1747,7 +1748,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 53
   indentLevel: 1
-  storyText: Wait... I'm down to my last pokemon already?
+  storyText: '{punch=15}Wait... I''m down to my last pokemon already?
+
+    No, {punch=15}it
+    can''t end yet!'
   description: 
   character: {fileID: 6287103429764157416}
   portrait: {fileID: 0}
@@ -1904,11 +1908,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 402.46805
     y: 88.08006
-    width: 196.8354
+    width: 194.81009
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 57
+  itemId: 80
   blockName: Player One Pokemon Left
   description: 
   eventHandler: {fileID: 0}
@@ -2648,7 +2652,7 @@ MonoBehaviour:
   portrait: {fileID: 21300000, guid: b8d283bc1a0567142912278bdbfcdc76, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
-  toPosition: {fileID: 0}
+  toPosition: {fileID: 232084422286591018}
   facing: 0
   useDefaultSettings: 1
   fadeDuration: 0.5
@@ -2671,7 +2675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 75
   indentLevel: 1
-  storyText: I'm almost {punch=15}there! Only {punch}one more left to win!
+  storyText: I'm almost {punch=15}there. I'm almost there.
   description: 
   character: {fileID: 6287103429764157416}
   portrait: {fileID: 0}
@@ -2834,6 +2838,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6478b25a400c642b2dee75f022ab12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &232084422286591018 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2929608876454601030, guid: 51a3bd0196b6070409750270b7174035, type: 3}
+  m_PrefabInstance: {fileID: 3139158805504533868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &889045898846047797 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2865994456067189593, guid: 51a3bd0196b6070409750270b7174035, type: 3}

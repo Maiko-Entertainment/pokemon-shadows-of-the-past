@@ -89,9 +89,9 @@ GameObject:
   - component: {fileID: 7161231614177645651}
   - component: {fileID: 8180589195638852669}
   - component: {fileID: 7218438629894684348}
-  - component: {fileID: 1318225917180141174}
-  - component: {fileID: 8253990086488121301}
   - component: {fileID: 3393575991848405714}
+  - component: {fileID: 7268978130952774175}
+  - component: {fileID: 8634783967919578812}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -141,9 +141,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 2867073951148570527}
-  selectedCommands:
-  - {fileID: 7218438629894684348}
+  - {fileID: 4318619651947478674}
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0
@@ -171,7 +170,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 307
     y: 94
-    width: 77
+    width: 77.2
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -533,7 +532,7 @@ MonoBehaviour:
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 4997689738454385614}
-  facing: 0
+  facing: 2
   useDefaultSettings: 1
   fadeDuration: 0.5
   moveDuration: 1
@@ -819,7 +818,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 464
     y: 136
-    width: 180
+    width: 183.6
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -828,7 +827,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 8253990086488121301}
+  - {fileID: 8634783967919578812}
   - {fileID: 2067819720148585724}
   - {fileID: 6357110145730240433}
   - {fileID: 6747752101941709918}
@@ -849,7 +848,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 465
     y: 76
-    width: 136
+    width: 138.8
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -858,7 +857,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 1318225917180141174}
+  - {fileID: 7268978130952774175}
   - {fileID: 2100811763031997901}
   - {fileID: 505068874876510224}
   - {fileID: 486205389649414300}
@@ -877,7 +876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 26
   indentLevel: 0
-  storyText: "Huh? Is she already heading to the gym?\u201D"
+  storyText: "{w=0.1}Huh? Is she already heading to the gym?\u201D"
   description: 
   character: {fileID: 8801167809531917801}
   portrait: {fileID: 0}
@@ -985,9 +984,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 744
-    y: 92
-    width: 101
+    x: 741
+    y: 93
+    width: 102
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1309,66 +1308,6 @@ MonoBehaviour:
   variableId: 4
   operation: 0
   value: 105
---- !u!114 &1318225917180141174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3277185362416806269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 46
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 4997689738636852337}
-  character: {fileID: 8801167809531917801}
-  replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 10bd853e9458f3549ad4c12b00a60ac9, type: 3}
-  offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 0}
-  facing: 0
-  useDefaultSettings: 1
-  fadeDuration: 0.5
-  moveDuration: 1
-  shiftOffset: {x: 0, y: 0}
-  move: 0
-  shiftIntoPlace: 0
-  waitUntilFinished: 0
---- !u!114 &8253990086488121301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3277185362416806269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 47
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 4997689738636852337}
-  character: {fileID: 8801167809531917801}
-  replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 10bd853e9458f3549ad4c12b00a60ac9, type: 3}
-  offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 0}
-  facing: 0
-  useDefaultSettings: 1
-  fadeDuration: 0.5
-  moveDuration: 1
-  shiftOffset: {x: 0, y: 0}
-  move: 0
-  shiftIntoPlace: 0
-  waitUntilFinished: 0
 --- !u!114 &3393575991848405714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1383,6 +1322,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 293
   indentLevel: 0
+--- !u!114 &7268978130952774175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277185362416806269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 294
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 4997689738636852337}
+  character: {fileID: 8801167809531917801}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 10bd853e9458f3549ad4c12b00a60ac9, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
+--- !u!114 &8634783967919578812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3277185362416806269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 295
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 4997689738636852337}
+  character: {fileID: 8801167809531917801}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 10bd853e9458f3549ad4c12b00a60ac9, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &5451810144099637649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1704163418944100015, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1704163418944100015, guid: d4b1ff877891da547a45e2e337fab451, type: 3}
       propertyPath: m_LocalPosition.z

@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 5533073878782729211}
   - component: {fileID: 5496687732292968852}
   - component: {fileID: 6838395722400653993}
-  - component: {fileID: 2146992959098329008}
   - component: {fileID: 7968822301339889554}
   - component: {fileID: 1105981607478019915}
   - component: {fileID: 6561540818538042255}
@@ -93,7 +92,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 370967199072840005}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 8348514560517539523}
   variables:
   - {fileID: 3051776966484166571}
   - {fileID: 1528421016120922647}
@@ -123,7 +123,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 203
     y: 77
-    width: 137
+    width: 139.6
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 88
     y: 76
-    width: 77
+    width: 77.2
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -282,13 +282,12 @@ MonoBehaviour:
   commandList:
   - {fileID: 4573363116861315823}
   - {fileID: 5691273009174798721}
-  - {fileID: 2146992959098329008}
   - {fileID: 6838395722400653993}
   - {fileID: 1105981607478019915}
   - {fileID: 7968822301339889554}
   - {fileID: 3774946645998504595}
-  - {fileID: 6561540818538042255}
   - {fileID: 2304432620636834371}
+  - {fileID: 6561540818538042255}
   - {fileID: 6306077234939560605}
   - {fileID: 5712158016934599370}
   - {fileID: 1780403679898938419}
@@ -322,36 +321,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &2146992959098329008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4143002596830451907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 9
-  indentLevel: 0
-  display: 1
-  stage: {fileID: 2589259065418056690}
-  character: {fileID: 3924760826712603164}
-  replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 7d68183252e99a64cb3b4a1a9851a6e6, type: 3}
-  offset: 0
-  fromPosition: {fileID: 0}
-  toPosition: {fileID: 2589259066305166413}
-  facing: 0
-  useDefaultSettings: 1
-  fadeDuration: 0.5
-  moveDuration: 1
-  shiftOffset: {x: 0, y: 0}
-  move: 0
-  shiftIntoPlace: 0
-  waitUntilFinished: 0
 --- !u!114 &7968822301339889554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,11 +645,11 @@ MonoBehaviour:
   stage: {fileID: 2589259065418056690}
   character: {fileID: 6567844941480541992}
   replacedCharacter: {fileID: 3924760826712603164}
-  portrait: {fileID: 21300000, guid: f9a804f35a1050247b46d0af57db2f4b, type: 3}
+  portrait: {fileID: 21300000, guid: 5d35e5edb7127f749bff588a2a330508, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
-  toPosition: {fileID: 0}
-  facing: 0
+  toPosition: {fileID: 2589259065546658473}
+  facing: 1
   useDefaultSettings: 1
   fadeDuration: 0.5
   moveDuration: 1
@@ -734,11 +703,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 352
     y: 72.5
-    width: 180
+    width: 183.6
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
-  itemId: 0
+  itemId: 35
   blockName: Trainer Pokemon Left 1
   description: 
   eventHandler: {fileID: 0}
@@ -987,11 +956,6 @@ RectTransform:
 --- !u!224 &2589259065823312278 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 208385775751309529, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
-  m_PrefabInstance: {fileID: 2380909574295982415}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &2589259066305166413 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 208385775898275074, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
   m_PrefabInstance: {fileID: 2380909574295982415}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8982365149751730469

@@ -610,47 +610,50 @@ public class BattleManager
     public void AddStatusEffect(BattleEventPokemonStatusAdd battleEvent, bool isFromStatusMove = false)
     {
         PokemonBattleData pokemon = battleEvent.pokemon;
-        StatusEffectId statusId = battleEvent.statusId;
-        StatusEffect status = new StatusEffect(pokemon);
-        bool typePreventsStatus = false;
-        bool alreadyHasPrimaryStatus = pokemon.AlreadyHasPrimaryStatus();
-        List<StatusEffect> nonPrimary = pokemon.GetNonPrimaryStatus();
-        bool isStatusAlready = false;
-        foreach(StatusEffect s in nonPrimary)
+        if (!pokemon.IsFainted())
         {
-            if (s.effectId == statusId)
+            StatusEffectId statusId = battleEvent.statusId;
+            StatusEffect status = new StatusEffect(pokemon);
+            bool typePreventsStatus = false;
+            bool alreadyHasPrimaryStatus = pokemon.AlreadyHasPrimaryStatus();
+            List<StatusEffect> nonPrimary = pokemon.GetNonPrimaryStatus();
+            bool isStatusAlready = false;
+            foreach(StatusEffect s in nonPrimary)
             {
-                isStatusAlready = true;
-                break;
+                if (s.effectId == statusId)
+                {
+                    isStatusAlready = true;
+                    break;
+                }
             }
-        }
-        string gainStatusBlockName = "";
-        if (!isStatusAlready)
-        {
-            status = CreateStatusById(statusId, pokemon);
-            typePreventsStatus = UtilsMaster.ContainsAtLeastOne(status.inmuneTypes, pokemon.GetTypeIds());
-            gainStatusBlockName = status.gainStatusBlockName;
-        }
-        if (isStatusAlready || status.isPrimary && alreadyHasPrimaryStatus) 
-        {
-            // Cant add status due to type message
-            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
-        }
-        else if (typePreventsStatus)
-        {
-            if (isFromStatusMove)
+            string gainStatusBlockName = "";
+            if (!isStatusAlready)
             {
-                // Display cant add message
+                status = CreateStatusById(statusId, pokemon);
+                typePreventsStatus = UtilsMaster.ContainsAtLeastOne(status.inmuneTypes, pokemon.GetTypeIds());
+                gainStatusBlockName = status.gainStatusBlockName;
+            }
+            if (isStatusAlready || status.isPrimary && alreadyHasPrimaryStatus) 
+            {
+                // Cant add status due to type message
                 BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
             }
-        }
-        else
-        {
-            AddEvent(new BattleEventPokemonStatusAddSuccess(battleEvent));
-            pokemon.AddStatusEffect(status);
-            BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon));
-            if (gainStatusBlockName != "")
-                BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
+            else if (typePreventsStatus)
+            {
+                if (isFromStatusMove)
+                {
+                    // Display cant add message
+                    BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+                }
+            }
+            else
+            {
+                AddEvent(new BattleEventPokemonStatusAddSuccess(battleEvent));
+                pokemon.AddStatusEffect(status);
+                BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon));
+                if (gainStatusBlockName != "")
+                    BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
+            }
         }
     }
 

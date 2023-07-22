@@ -13,6 +13,8 @@ public class PokemonEncounter: ScriptableObject
     public List<MoveData> moves = new List<MoveData>();
     public List<TacticData> playerExtraTactics = new List<TacticData>();
 
+    public Material entityMaterial;
+
     public PokemonCaughtData GetPokemonCaught()
     {
         PokemonCaughtData pkmn = new PokemonCaughtData(this);

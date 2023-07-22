@@ -7,12 +7,18 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
     public List<PokemonEncounter> possibleEncounters = new List<PokemonEncounter>();
     public float activeChance = 0.3f;
     public float retryInterval = 7;
+    public float spawnWorldEntityChance = 0.25f;
+    public Vector3 spawnWorldOffset = Vector3.zero;
+    public MoveBrainDirection spawnDirection = MoveBrainDirection.Bottom;
+    public bool showActivePrefabWithWorldEntity = false;
     public GameObject activePrefab;
     public BattleData battleData;
     public ViewTransition transition;
 
     protected bool isActive = false;
-    protected GameObject activeGameoBject;
+    protected GameObject activeGameObject;
+    protected WorldInteractableBrainFollower worldEntity;
+    protected PokemonEncounter currentEncounter;
     protected float timePassed = 0;
 
     private void Start()
@@ -24,15 +30,12 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
     public void TryToActivate()
     {
         float random = Random.value;
-        if (random <= activeChance && !isActive)
+        isActive = false;
+        ClearEncounter();
+        if (random <= activeChance && !isActive && IsWithinPlayerDistance())
         {
             isActive = true;
             StartCoroutine(CreateDelay(0f));
-        }
-        else
-        {
-            isActive = false;
-            Destroy(activeGameoBject);
         }
         timePassed = 0;
     }
@@ -40,7 +43,34 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
     IEnumerator CreateDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        activeGameoBject = Instantiate(activePrefab, transform);
+        float random = Random.value;
+        currentEncounter = SelectRandomEncounter();
+        PokemonCaughtData pokemon = currentEncounter.GetPokemonCaught();
+        WorldInteractableBrainFollower pokemonWorld = pokemon.GetPokemonBaseData().overWorldPrefab;
+        if (currentEncounter != null)
+        {
+            if (random < spawnWorldEntityChance && pokemonWorld)
+            {
+                worldEntity = Instantiate(pokemonWorld, transform);
+                worldEntity.transform.localPosition = spawnWorldOffset;
+                worldEntity.AddDirection(new MoveBrainDirectionData(spawnDirection, true));
+                worldEntity.followMode = false;
+                SpriteRenderer renderer = worldEntity.GetComponentInChildren<SpriteRenderer>();
+                if (currentEncounter.entityMaterial && renderer)
+                {
+                    renderer.material = currentEncounter.entityMaterial;
+                }
+                TransitionSize transition = worldEntity.gameObject.AddComponent<TransitionSize>();
+                transition.speed = 2f;
+                transition.FadeIn();
+                if (showActivePrefabWithWorldEntity)
+                    activeGameObject = Instantiate(activePrefab, transform);
+            }
+            else
+            {
+                activeGameObject = Instantiate(activePrefab, transform);
+            }
+        }
     }
 
     public override void OnInteract()
@@ -63,16 +93,34 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
     IEnumerator RunBattle(float delay)
     {
         yield return new WaitForSeconds(delay);
-        PokemonCaughtData encounterPokemon = SelectRandomEncounter();
-        if (encounterPokemon != null)
+        if (currentEncounter != null)
         {
-            PokemonBattleData battlePokemon = new PokemonBattleData(encounterPokemon, 100);
+            PokemonBattleData battlePokemon = new PokemonBattleData(currentEncounter.GetPokemonCaught(), 100);
             BattleMaster.GetInstance()?.RunPokemonBattle(battlePokemon, battleData);
             InteractionsMaster.GetInstance()?.ExecuteNext(0);
         }
-        Destroy(activeGameoBject);
+        ClearEncounter();
     }
-    public PokemonCaughtData SelectRandomEncounter()
+
+    public void ClearEncounter()
+    {
+        if (activeGameObject)
+        {
+            TransitionSize transition = activeGameObject.AddComponent<TransitionSize>();
+            transition.speed = 2f;
+            transition.FadeOut();
+            Destroy(activeGameObject, 0.5f);
+        }
+        if (worldEntity)
+        {
+            TransitionSize transition = worldEntity.gameObject.GetComponent<TransitionSize>();
+            transition.FadeOut();
+            Destroy(worldEntity.gameObject, 1 / 2f);
+        }
+        currentEncounter = null;
+    }
+
+    public PokemonEncounter SelectRandomEncounter()
     {
         TimeOfDayType time = WorldMapMaster.GetInstance().GetTimeOfDay();
         int total = 0;
@@ -92,7 +140,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
         {
             total += encounterPriority.priority;
             if (total >= neededPrioritySum)
-                return encounterPriority.GetPokemonCaught();
+                return encounterPriority;
         }
         return null;
     }
@@ -108,5 +156,12 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
                 TryToActivate();
             }
         }
+    }
+
+    public bool IsWithinPlayerDistance()
+    {
+        PlayerController player = WorldMapMaster.GetInstance().GetPlayer();
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        return 1f < distance && distance < 15f;
     }
 }

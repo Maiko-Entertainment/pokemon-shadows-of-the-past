@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Lotad
+  m_EditorClassIdentifier: 
+  pokemonId: 270
+  species: Lotad
+  icon: {fileID: 1748972450, guid: e2fb719e1e057d9478541ffd20922881, type: 3}
+  cry: {fileID: 8300000, guid: 2c830a43971664a48ac9bc42dae50df6, type: 3}
+  baseStats:
+    health: 40
+    attack: 30
+    defense: 30
+    spAttack: 40
+    spDefense: 40
+    speed: 30
+  types: 010000000b000000
+  abilities:
+  - abilityId: 1
+    abilityPriority: 5
+  - abilityId: 11
+    abilityPriority: 5
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 255
+  baseFriendship: 70
+  baseExp: 50
+  pokedexEntry: Its leaf grew too large for it to live on land. That is how it began
+    to live floating in the water.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: ccd94878d2d267049a228941a505f0e9, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: fe24dbdabdef90f4f882ed3a24d0befa, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 42258a1536b66fe4882dd070a9bc58b5, type: 2}
+    learnType: 0
+    levelRequired: 3
+  - move: {fileID: 11400000, guid: 9a03eaa2411ec344ea1969319735e8d7, type: 2}
+    learnType: 0
+    levelRequired: 6
+  - move: {fileID: 11400000, guid: edafa0e1af9986345bb258712f8b77b1, type: 2}
+    learnType: 0
+    levelRequired: 9
+  - move: {fileID: 11400000, guid: 256da59c9c1454544bf64cf6c4fec46a, type: 2}
+    learnType: 0
+    levelRequired: 12
+  - move: {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
+    learnType: 0
+    levelRequired: 28
+  tmMoves:
+  - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
+  - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
+  - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
+  evolutions:
+  - pokemonId: 271
+    evolutionData:
+      evolutionType: 0
+      value: 14
+  battleAnimation: {fileID: 7563646684170415011, guid: 3f347a72897b4c94bba87182a610a835, type: 3}
+  overWorldPrefab: {fileID: 1397424338243200405, guid: 5feb1e0fb33888d42a1e8bbfe9cd72fb, type: 3}
+  encounteredIn: []

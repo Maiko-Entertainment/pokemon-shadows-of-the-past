@@ -29,12 +29,12 @@ public class BattleAnimationFromUserToTarget : BattleAnimation
         }
         if (userTeam == BattleTeamId.Team1 && targetTeam == BattleTeamId.Team2)
         {
-            finalScaling = transform.localScale * 0.8f;
+            finalScaling = transform.localScale * 0.7f;
         }
         else if (userTeam == BattleTeamId.Team2 && targetTeam == BattleTeamId.Team1)
         {
             finalScaling = transform.localScale;
-            transform.localScale.Scale(new Vector3(.8f, .8f, 1));
+            transform.localScale = transform.localScale * 0.7f;
         }
         else
         {

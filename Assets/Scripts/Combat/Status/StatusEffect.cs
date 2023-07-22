@@ -71,7 +71,7 @@ public class StatusEffect: Status
 
     public override void Remove()
     {
-        if (onEndFlowchartBlock != "")
+        if (onEndFlowchartBlock != "" && !pokemon.IsFainted())
         {
             Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(new BattleTriggerMessageData(battleFlow, onEndFlowchartBlock, new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } })));
