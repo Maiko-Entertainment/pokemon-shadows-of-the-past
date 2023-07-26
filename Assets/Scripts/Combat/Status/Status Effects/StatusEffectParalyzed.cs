@@ -10,6 +10,7 @@ public class StatusEffectParalyzed : StatusEffect
     {
         minTurns = 99999;
         effectId = StatusEffectId.Paralyzed;
+        inmuneTypes = new List<PokemonTypeId> { PokemonTypeId.Electric };
         captureRateBonus = 20;
         onWarningFlowchartBlock = "Paralyzed Warning";
         gainStatusBlockName = "Paralyze Gain";

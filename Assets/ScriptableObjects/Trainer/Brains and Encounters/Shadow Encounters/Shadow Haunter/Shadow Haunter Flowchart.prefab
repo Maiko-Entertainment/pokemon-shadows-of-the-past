@@ -100,6 +100,11 @@ GameObject:
   - component: {fileID: 1093990358802288336}
   - component: {fileID: 7703117623209230064}
   - component: {fileID: 1252036696870707405}
+  - component: {fileID: 3956185006194224205}
+  - component: {fileID: 1645727949272070760}
+  - component: {fileID: 7393264496371770724}
+  - component: {fileID: 8787898373837913688}
+  - component: {fileID: 706496004991773191}
   m_Layer: 0
   m_Name: Shadow Haunter Flowchart
   m_TagString: Untagged
@@ -139,7 +144,7 @@ MonoBehaviour:
   scrollPos: {x: 145.23518, y: 32.117603}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 482
+  blockViewHeight: 363
   zoom: 0.85000014
   scrollViewRect:
     serializedVersion: 2
@@ -150,7 +155,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 922193113044450148}
   selectedCommands:
-  - {fileID: 4277506828972618533}
+  - {fileID: 6794554372446247761}
   variables:
   - {fileID: 1781270778190416101}
   - {fileID: 9035757636319288663}
@@ -714,6 +719,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 3956185006194224205}
   - {fileID: 1573861411954222940}
   - {fileID: 2939279058831672378}
   - {fileID: 7303743491768522109}
@@ -890,6 +896,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 1645727949272070760}
   - {fileID: 8848319390839622961}
   - {fileID: 495003990111926409}
   - {fileID: 2943531467588593732}
@@ -1037,6 +1044,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 7393264496371770724}
   - {fileID: 5293156557692018762}
   - {fileID: 8233646001768125887}
   - {fileID: 5871080483901450230}
@@ -1177,7 +1185,7 @@ MonoBehaviour:
   stage: {fileID: 1830842317294533883}
   character: {fileID: 3171608896835784976}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 3ca525f2a91d86044945ecb3a7bfc6b8, type: 3}
+  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -1227,7 +1235,7 @@ MonoBehaviour:
   stage: {fileID: 1830842317294533883}
   character: {fileID: 3171608896835784976}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 3ca525f2a91d86044945ecb3a7bfc6b8, type: 3}
+  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -1277,7 +1285,7 @@ MonoBehaviour:
   stage: {fileID: 1830842317294533883}
   character: {fileID: 3171608896835784976}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 3ca525f2a91d86044945ecb3a7bfc6b8, type: 3}
+  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -1334,6 +1342,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 8787898373837913688}
   - {fileID: 5846882539893625761}
   - {fileID: 1426536850938494500}
   - {fileID: 6912758807345028903}
@@ -1416,7 +1425,7 @@ MonoBehaviour:
   stage: {fileID: 1830842317294533883}
   character: {fileID: 3171608896835784976}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 3ca525f2a91d86044945ecb3a7bfc6b8, type: 3}
+  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -1651,6 +1660,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 706496004991773191}
   - {fileID: 1093990358802288336}
   - {fileID: 8081597677516167645}
   - {fileID: 8040564068380253350}
@@ -1733,7 +1743,7 @@ MonoBehaviour:
   stage: {fileID: 1830842317294533883}
   character: {fileID: 3171608896835784976}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 52c9b00168b6d3b49ba2c53cdb9b529e, type: 3}
+  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -1882,7 +1892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 84
   indentLevel: 0
-  anyOrAllConditions: 0
+  anyOrAllConditions: 1
   conditions:
   - compareOperator: 3
     anyVar:
@@ -2243,7 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 86
   indentLevel: 0
-  anyOrAllConditions: 0
+  anyOrAllConditions: 1
   conditions:
   - compareOperator: 3
     anyVar:
@@ -2589,7 +2599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 88
   indentLevel: 0
-  anyOrAllConditions: 0
+  anyOrAllConditions: 1
   conditions:
   - compareOperator: 3
     anyVar:
@@ -2935,7 +2945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 90
   indentLevel: 0
-  anyOrAllConditions: 0
+  anyOrAllConditions: 1
   conditions:
   - compareOperator: 3
     anyVar:
@@ -3281,7 +3291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 92
   indentLevel: 0
-  anyOrAllConditions: 0
+  anyOrAllConditions: 1
   conditions:
   - compareOperator: 3
     anyVar:
@@ -3628,6 +3638,81 @@ MonoBehaviour:
   scope: 0
   key: isBattleOver
   value: 0
+--- !u!114 &3956185006194224205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585000145200257921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaea10bd3c4d4f4e9e835b965249c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 94
+  indentLevel: 0
+  variableToLoadTo: isBattleOver
+--- !u!114 &1645727949272070760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585000145200257921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaea10bd3c4d4f4e9e835b965249c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 95
+  indentLevel: 0
+  variableToLoadTo: isBattleOver
+--- !u!114 &7393264496371770724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585000145200257921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaea10bd3c4d4f4e9e835b965249c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 96
+  indentLevel: 0
+  variableToLoadTo: isBattleOver
+--- !u!114 &8787898373837913688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585000145200257921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaea10bd3c4d4f4e9e835b965249c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 97
+  indentLevel: 0
+  variableToLoadTo: isBattleOver
+--- !u!114 &706496004991773191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585000145200257921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaea10bd3c4d4f4e9e835b965249c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 98
+  indentLevel: 0
+  variableToLoadTo: isBattleOver
 --- !u!1001 &3585000145387792345
 PrefabInstance:
   m_ObjectHideFlags: 0

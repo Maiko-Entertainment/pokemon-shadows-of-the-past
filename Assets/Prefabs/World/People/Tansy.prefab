@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &4613871887822806368
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,7 +104,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4996035471659011789
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1707163347852045268}
   selectedCommands:
-  - {fileID: 2776141268111767603}
+  - {fileID: 8890792831919407613}
   variables:
   - {fileID: 2597626469376873329}
   - {fileID: 539138719044045001}
@@ -4822,7 +4823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 95
   indentLevel: 2
-  storyText: When something like this happen people always put everyone in the same
+  storyText: When something like this happens people always put everyone in the same
     box.
   description: 
   character: {fileID: 4440155457098860018}
@@ -5078,6 +5079,7 @@ MonoBehaviour:
   innerTransform: {fileID: 5497817790652694716}
   speed: 3
   heightOffset: 0
+  disableShadow: 0
   cachedDirections: []
   followMode: 0
 --- !u!1 &8632929018478371057

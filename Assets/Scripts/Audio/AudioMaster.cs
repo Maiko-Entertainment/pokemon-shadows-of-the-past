@@ -18,6 +18,7 @@ public class AudioMaster : MonoBehaviour
 
     public AudioSource musicSource;
     public List<AudioSource> voiceSources = new List<AudioSource>();
+    public AudioSource voiceSource;
 
     protected AudioOptions currentClip;
     protected AudioOptions nextClip;
@@ -151,6 +152,10 @@ public class AudioMaster : MonoBehaviour
         soundEffectVolume = volume;
         foreach (AudioSource audioSource in voiceSources)
             audioSource.volume = GetSoundVolume();
+        if (voiceSource)
+        {
+            voiceSource.volume = 0.5f * volume;
+        }
     }
     public void SetMusicVolume(float volume)
     {

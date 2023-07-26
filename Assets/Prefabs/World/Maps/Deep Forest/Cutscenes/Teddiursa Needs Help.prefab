@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 1949361183308685161}
   - component: {fileID: 2988866405499300350}
   - component: {fileID: 8205762709298463583}
-  - component: {fileID: 4276122207129036144}
   - component: {fileID: 2327449885487339323}
   - component: {fileID: 7898979937638123201}
   - component: {fileID: 5785895441465684674}
@@ -228,9 +227,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 8604143697568203397}
+  - {fileID: 7284398337551719318}
   selectedCommands:
-  - {fileID: 8769341751059348974}
+  - {fileID: 3821260542007873222}
   variables:
   - {fileID: 7220261088111111180}
   - {fileID: 1687655486553883141}
@@ -824,7 +823,6 @@ MonoBehaviour:
   commandList:
   - {fileID: 2988866405499300350}
   - {fileID: 8205762709298463583}
-  - {fileID: 4276122207129036144}
   - {fileID: 2327449885487339323}
   - {fileID: 7898979937638123201}
   - {fileID: 5785895441465684674}
@@ -2032,7 +2030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 86
   indentLevel: 0
-  storyText: You got {item}Mighty Claw{/leftovers}!
+  storyText: You got {item}Mighty Claw{/item}!
   description: 
   character: {fileID: 3354259205599411955}
   portrait: {fileID: 0}
@@ -2259,7 +2257,7 @@ MonoBehaviour:
   stage: {fileID: 4124225614227237720}
   character: {fileID: 6387737817613261369}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: 315c35d06b9c8d540ad5c959f3bf67fe, type: 3}
+  portrait: {fileID: 21300000, guid: 8cb95710bb892fd4d80dc01e483c644a, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 4124225614091565571}
@@ -3305,33 +3303,6 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 1
   durationOLD: 0
---- !u!114 &4276122207129036144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3304181679956712525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 145
-  indentLevel: 0
-  storyText: Perish.{w=0.2}{x}
-  description: 
-  character: {fileID: 8201427613557609589}
-  portrait: {fileID: 0}
-  voiceOverClip: {fileID: 0}
-  showAlways: 1
-  showCount: 1
-  extendPrevious: 0
-  fadeWhenDone: 1
-  waitForClick: 1
-  stopVoiceover: 1
-  waitForVO: 0
-  setSayDialog: {fileID: 0}
 --- !u!114 &2327449885487339323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4199,17 +4170,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6776264483860599584, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
   m_PrefabInstance: {fileID: 377558688644633648}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8201427613557609589 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8425119269412978757, guid: 06a80baa1d4b4864199d4141037efc11, type: 3}
-  m_PrefabInstance: {fileID: 377558688644633648}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1378590949590635002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4394,7 +4354,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208385776147829436, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_Name
-      value: Stage Custom
+      value: Stage Custom 2
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder

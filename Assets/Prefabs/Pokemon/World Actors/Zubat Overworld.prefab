@@ -119,7 +119,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &7688739006409721738
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -136,7 +136,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7688739006804782319
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,5 +192,7 @@ MonoBehaviour:
   animator: {fileID: 7688739006409721738}
   innerTransform: {fileID: 5118152722066098907}
   speed: 3
+  heightOffset: 0
+  disableShadow: 0
   cachedDirections: []
   followMode: 1

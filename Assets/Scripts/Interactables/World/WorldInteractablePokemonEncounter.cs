@@ -125,7 +125,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
         TimeOfDayType time = WorldMapMaster.GetInstance().GetTimeOfDay();
         int total = 0;
         List<PokemonEncounter> encounters = new List<PokemonEncounter>();
-        foreach(PokemonEncounter pe in possibleEncounters)
+        foreach (PokemonEncounter pe in possibleEncounters)
         {
             if (pe.timeOfDayRequired == TimeOfDayType.Any || pe.timeOfDayRequired == time)
                 encounters.Add(pe);
@@ -160,8 +160,10 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
 
     public bool IsWithinPlayerDistance()
     {
+        bool isMainMenu = WorldMapMaster.GetInstance().GetCurrentMap().isMainMenu;
+        if (isMainMenu) return true;
         PlayerController player = WorldMapMaster.GetInstance().GetPlayer();
         float distance = Vector3.Distance(player.transform.position, transform.position);
-        return 1f < distance && distance < 15f;
+        return 2f < distance && distance < 15f;
     }
 }

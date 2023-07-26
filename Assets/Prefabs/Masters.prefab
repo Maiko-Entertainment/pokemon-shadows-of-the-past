@@ -6298,6 +6298,7 @@ MonoBehaviour:
   voiceSources:
   - {fileID: 1910084406102663911}
   - {fileID: 6493866333343295176}
+  voiceSource: {fileID: 3759386521222457907}
   fadeTimeTotal: 0
   currentFadeTime: 0
 --- !u!82 &8952212246821983478
@@ -6441,6 +6442,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7fba125a4f51c7740a3be50974ff9211, type: 2}
   - {fileID: 11400000, guid: 5f064ada270b8e8428dba7dda2762953, type: 2}
   - {fileID: 11400000, guid: bd5815b7c0d0a7e4da509882d5497a74, type: 2}
+  - {fileID: 11400000, guid: aff920a1f5616a043831f9d30fc1600d, type: 2}
+  - {fileID: 11400000, guid: 9a5539691474619498186bb0a5beccea, type: 2}
   - {fileID: 11400000, guid: 9cb5de0083d5da64ea7fe6b7eb0d9743, type: 2}
   - {fileID: 11400000, guid: 15e0ebe7523ad8946af6348d3bb43d81, type: 2}
   - {fileID: 11400000, guid: c54cff66f03009b4eb55df2f3c415c37, type: 2}
@@ -6470,7 +6473,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9913b01937e83d4ab2a13ecdfcb1759, type: 2}
   - {fileID: 11400000, guid: 36f1e76fe8c61e649ad93836f5b26ec5, type: 2}
   - {fileID: 11400000, guid: 796293300dd920b4f8f130bc3b7e318f, type: 2}
-  - {fileID: 11400000, guid: 46ff1cec00409fb4ab5b380ae680d458, type: 2}
   otherPokemon:
   - {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
   - {fileID: 11400000, guid: a43e7c5ddb840a14cae7835bd4998e80, type: 2}
@@ -6658,6 +6660,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0899dcd59c522ad4b9e261ba88d372c9, type: 2}
   - {fileID: 11400000, guid: 4670afc234592044a8bf67760c89dfee, type: 2}
   - {fileID: 11400000, guid: 0cc36900fce17684e93bce1ae6d98a77, type: 2}
+  - {fileID: 11400000, guid: 1d13021d77eb5c247a3b4bee14f57631, type: 2}
+  - {fileID: 11400000, guid: fcfeba71fd66bca4f98389ac5206fc41, type: 2}
   baseTactics:
   - {fileID: 11400000, guid: 551344780919a224f9b9a9a073f3be67, type: 2}
   - {fileID: 11400000, guid: f711e4aab811b4f418943a8dd209f441, type: 2}
@@ -7735,6 +7739,10 @@ PrefabInstance:
       propertyPath: selectedCommands.Array.data[0]
       value: 
       objectReference: {fileID: 5853840506884470132}
+    - target: {fileID: 3577512335974811692, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
+      propertyPath: itemId
+      value: 203
+      objectReference: {fileID: 0}
     - target: {fileID: 4623546450157281241, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: m_Name
       value: Flowchart Tactics
@@ -7964,6 +7972,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4452750477923490155, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4936433977071855279, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8022,6 +8034,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6868293040685926048, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8720210829299266198, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8992606412015034332, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
@@ -8205,6 +8221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0bbe22c246e4c78ad8e9816cbae9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &3759386521222457907 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6287610072136527138, guid: f35caa8094ba2ac40903cf938bd96c06, type: 3}
+  m_PrefabInstance: {fileID: 7164683931500316433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8952212247187939457
 PrefabInstance:
   m_ObjectHideFlags: 0

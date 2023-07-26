@@ -17,4 +17,6 @@ public enum TacticId
     AggresiveStance = 2001,
     InnerPower = 2002,
     NoFilter = 2003,
+    FullOfHeartV1 = 2004,
+    FullOfHeartV2 = 2005,
 }
