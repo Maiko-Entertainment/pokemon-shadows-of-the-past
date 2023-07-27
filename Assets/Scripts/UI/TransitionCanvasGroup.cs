@@ -49,6 +49,7 @@ public class TransitionCanvasGroup : TransitionBase
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0;
+        fading = false;
     }
 
     public virtual void FadeOutTemporary()

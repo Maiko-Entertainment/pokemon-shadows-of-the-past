@@ -19,22 +19,28 @@ public class WorldMapDamageDealer : MonoBehaviour
     {
         if (collision.tag == "Player" && isDamageActive && damageCooldownTime <= 0)
         {
-            damageCooldownTime = afterDamageCooldown;
-            PokemonCaughtData pokemon = PartyMaster.GetInstance().GetFirstAvailablePokemon();
-            DamageSummary summary = BattleMaster.GetInstance().CalculateOutOfBattleDamage(pokemon, damage);
-            pokemon.ChangeHealth(summary.damageAmount * -1);
-            UIPauseMenuMaster.GetInstance().DoHitPokemonAnim(pokemon);
-            if (pokemon.IsFainted())
-            {
-                AudioMaster.GetInstance().PlaySfx(new AudioOptions(pokemon.GetPokemonBaseData().GetCry(), 0.7f));
-            }
-            WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
-            if (outOfBattleDamageSound != null) AudioMaster.GetInstance().PlaySfx(outOfBattleDamageSound);
-            pokemon = PartyMaster.GetInstance().GetFirstAvailablePokemon();
-            if (onKillFlowchart && pokemon == null)
-            {
-                onKillFlowchart.ExecuteBlock(onKillBlock);
-            }
+            HandleHit();
+        }
+    }
+
+    public virtual void HandleHit()
+    {
+        damageCooldownTime = afterDamageCooldown;
+        PokemonCaughtData pokemon = PartyMaster.GetInstance().GetFirstAvailablePokemon();
+        DamageSummary summary = BattleMaster.GetInstance().CalculateOutOfBattleDamage(pokemon, damage);
+        pokemon.ChangeHealth(summary.damageAmount * -1);
+        UIPauseMenuMaster.GetInstance().DoHitPokemonAnim(pokemon);
+        TransitionMaster.GetInstance().RunTransition(TransitionMaster.GetInstance().damageWorldTransition);
+        if (pokemon.IsFainted())
+        {
+            AudioMaster.GetInstance().PlaySfx(new AudioOptions(pokemon.GetPokemonBaseData().GetCry(), 0.7f));
+        }
+        WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
+        if (outOfBattleDamageSound != null) AudioMaster.GetInstance().PlaySfx(outOfBattleDamageSound);
+        pokemon = PartyMaster.GetInstance().GetFirstAvailablePokemon();
+        if (onKillFlowchart && pokemon == null)
+        {
+            onKillFlowchart.ExecuteBlock(onKillBlock);
         }
     }
 

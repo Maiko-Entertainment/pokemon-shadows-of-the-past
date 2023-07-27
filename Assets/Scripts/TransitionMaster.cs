@@ -20,6 +20,7 @@ public class TransitionMaster : MonoBehaviour
     public ViewTransition loadGameTransition;
     public ViewTransition openGameTransition;
     public ViewTransition closeGameTransition;
+    public ViewTransition damageWorldTransition;
 
     public Transform transitions;
     public Transform mapDayEffectsList;
@@ -238,7 +239,7 @@ public class TransitionMaster : MonoBehaviour
     public float TransitionCloseGame()
     {
         RunTransition(closeGameTransition);
-        return closeGameTransition.totalDuration;
+        return closeGameTransition.changeTime;
     }
 
     public IEnumerator SetGameplayUI(bool state, float delay)

@@ -205,7 +205,11 @@ public class UIBattleOptionsManager : MonoBehaviour
         bool isBattleActive = BattleMaster.GetInstance().IsBattleActive();
         if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && isBattleActive)
         {
-            if (!isInSubmenu && IsTacticActive())
+            if (tacticSelectorInstance)
+            {
+                HideTacticSelector(true);
+            }
+            else if (!isInSubmenu && IsTacticActive())
             {
                 ShowTacticSelector();
             }

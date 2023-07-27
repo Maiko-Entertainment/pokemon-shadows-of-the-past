@@ -105,9 +105,6 @@ public class UIPokemonView : MonoBehaviour
             if (swapingPokemon != null)
             {
                 Swap(currentPokemon);
-                AudioMaster.GetInstance()?.PlaySfx(onSwapSound);
-                WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
-                UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
             }
             else
             {
@@ -138,6 +135,10 @@ public class UIPokemonView : MonoBehaviour
         PartyMaster.GetInstance().SwapParty(swapingPokemon, currentPokemon);
         swapingPokemon = null;
         UpdatePokemonList(currentPokemon);
+
+        AudioMaster.GetInstance()?.PlaySfx(onSwapSound);
+        WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
+        UIPauseMenuMaster.GetInstance().UpdatePartyMiniPreview();
     }
 
     public void Load()

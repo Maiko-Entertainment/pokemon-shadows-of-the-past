@@ -62,8 +62,8 @@ public class PlayerController : MonoBehaviour
     IEnumerator SetControls(float delay)
     {
         yield return new WaitForSeconds(delay);
-        controls.PlayerCharacter.Movement.started += ctx => HandleMovementStart(ctx);
-        controls.PlayerCharacter.Movement.canceled += ctx => HandleMovementStop();
+        // controls.PlayerCharacter.Movement.performed += ctx => HandleMovementStart(ctx);
+        // controls.PlayerCharacter.Movement.canceled += ctx => HandleMovementStop();
         controls.PlayerCharacter.Interact.started += ctx => Interact(ctx);
         target = transform.position;
     }
@@ -93,15 +93,6 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         touchCollider.transform.localPosition = Vector3.zero;
-    }
-
-    void HandleMovementStart(CallbackContext context)
-    {
-        bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
-        if (!isInteractionPlaying)
-        {
-            Move(context.ReadValue<Vector2>());
-        }
     }
 
     public void ClearCache()
@@ -328,11 +319,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ReadMovement()
+    {
+        bool isInteractionPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
+        if (!isInteractionPlaying)
+        {
+            Vector2 movement = controls.PlayerCharacter.Movement.ReadValue<Vector2>();
+            if (movement.y != 0 && cacheDirection.x != 0)
+            {
+                movement.x = 0;
+            }
+            if (movement.x != 0 && cacheDirection.y != 0)
+            {
+                movement.y = 0;
+            }
+            if (movement.x == 0 && movement.y == 0)
+                HandleMovementStop();
+            else
+                Move(movement);
+        }
+    }
+
     void Update()
     {
         animator.GetComponent<SpriteRenderer>().sortingOrder = (int)(transform.position.y * -10);
         if (HasReachedTarget())
         {
+            ReadMovement();
             if (storedDirections.Count > 0)
             {
                 Vector2 direction = (Vector3)GetCurrentStoredDirection();
