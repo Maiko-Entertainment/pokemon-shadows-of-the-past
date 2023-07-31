@@ -142,8 +142,9 @@ public class PokemonMaster : MonoBehaviour
         pokemon.pokemonBase = evolution;
         pokemon.abilityId = originalAbility;
         List<PokemonMoveLearn> learnedMoves = pokemon.CheckForLearnedMoves(pokemon.GetLevel());
-
         UIEvolutionMaster.GetInstance().InitiateEvolution(original, evolution, learnedMoves);
+        SeePokemon(evolution.pokemonId);
+        CaughtPokemon(evolution.pokemonId);
     }
 
     public bool CheckForEvolution(PokemonCaughtData pokemon)

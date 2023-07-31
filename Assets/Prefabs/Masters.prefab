@@ -5701,6 +5701,7 @@ GameObject:
   - component: {fileID: 1235064476615560278}
   - component: {fileID: 423868467601111521}
   - component: {fileID: 254393890830598095}
+  - component: {fileID: 2450637154365335299}
   m_Layer: 0
   m_Name: Masters
   m_TagString: Untagged
@@ -6041,6 +6042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefabs:
   - {fileID: 6914584350664270462, guid: a177ca283e9c0ea4e8a37fc5bf4350c8, type: 3}
+  - {fileID: 4092431497792476720, guid: 6d9e77318415ea2458075604d8f47251, type: 3}
   maps:
   - {fileID: 5038668357598646195, guid: a1ffb427cf248eb42967598bfebe55d2, type: 3}
   - {fileID: 5038668357598646195, guid: a1ffb427cf248eb42967598bfebe55d2, type: 3}
@@ -6292,14 +6294,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectVolume: 0.5
   musicVolume: 0.5
-  musicConstantVolume: 0.5
+  musicConstantVolume: 0.4
   soundConstantVolume: 0.5
   effectsMixer: {fileID: -3899616927974379953, guid: 46270abaee94bea469ef0b6f06d328ff, type: 2}
   musicSource: {fileID: 8952212246821983478}
   voiceSources:
-  - {fileID: 1910084406102663911}
+  - {fileID: 3759386521222457907}
   - {fileID: 6493866333343295176}
-  voiceSource: {fileID: 3759386521222457907}
   fadeTimeTotal: 0
   currentFadeTime: 0
 --- !u!82 &8952212246821983478
@@ -6668,6 +6669,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f711e4aab811b4f418943a8dd209f441, type: 2}
   learntTactics: []
   tacticsFlochart: {fileID: 7113220408818253740}
+--- !u!114 &2450637154365335299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952212246821983361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c6820b2b226bd4197ff9c6dfcdba33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8952212246877140693
 GameObject:
   m_ObjectHideFlags: 0
@@ -7342,7 +7355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7288926888551826847, guid: eca3aa7005de5e6408929a86d0caeeca, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 419.96
       objectReference: {fileID: 0}
     - target: {fileID: 7288926888551826847, guid: eca3aa7005de5e6408929a86d0caeeca, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8343,10 +8356,5 @@ PrefabInstance:
 --- !u!224 &1910084406102663898 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7403176983238722139, guid: 3280b02f5d3347e48b22279ecb4d4cc3, type: 3}
-  m_PrefabInstance: {fileID: 8952212247187939457}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1910084406102663911 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7403176983238722150, guid: 3280b02f5d3347e48b22279ecb4d4cc3, type: 3}
   m_PrefabInstance: {fileID: 8952212247187939457}
   m_PrefabAsset: {fileID: 0}
