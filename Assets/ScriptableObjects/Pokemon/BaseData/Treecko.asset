@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
+  m_Name: Treecko
+  m_EditorClassIdentifier: 
+  pokemonId: 252
+  species: Treecko
+  icon: {fileID: 1344359346, guid: 28f044db42b44e94185aa95281eb8151, type: 3}
+  cry: {fileID: 8300000, guid: e44e7e643f25b1a4fbcb364b939d8ebc, type: 3}
+  baseStats:
+    health: 40
+    attack: 45
+    defense: 35
+    spAttack: 65
+    spDefense: 55
+    speed: 70
+  types: 0b000000
+  abilities:
+  - abilityId: 1
+    abilityPriority: 5
+  maleChance: 0.5
+  isGenderless: 0
+  captureRate: 70
+  baseFriendship: 70
+  baseExp: 50
+  pokedexEntry: The soles of its feet are covered by countless tiny spikes, enabling
+    it to walk on walls and ceilings.
+  levelUpMoves:
+  - move: {fileID: 11400000, guid: e17e60739445eba41b6883c36af85990, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: 0509093e61bf1aa44ac1ccfb3977be83, type: 2}
+    learnType: 0
+    levelRequired: 0
+  - move: {fileID: 11400000, guid: f78cd84e4f4953a479ea8432d4880b7e, type: 2}
+    learnType: 0
+    levelRequired: 6
+  - move: {fileID: 11400000, guid: d554acc5c51af0341a0d88e9d11bf936, type: 2}
+    learnType: 0
+    levelRequired: 9
+  - move: {fileID: 11400000, guid: 256da59c9c1454544bf64cf6c4fec46a, type: 2}
+    learnType: 0
+    levelRequired: 12
+  - move: {fileID: 11400000, guid: 03bd9ffbb4756c144bfca26d17d268fa, type: 2}
+    learnType: 0
+    levelRequired: 18
+  tmMoves:
+  - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
+  - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
+  - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
+  evolutions:
+  - pokemonId: 253
+    evolutionData:
+      evolutionType: 0
+      value: 16
+  battleAnimation: {fileID: 7332302579056340987, guid: e681dfd42481e3f4aa5c375a3ddfbe54, type: 3}
+  overWorldPrefab: {fileID: 932050967506728078, guid: fa3a4968cd7993643b3c439a0410b320, type: 3}
+  encounteredIn: []

@@ -100,12 +100,4 @@ public class UIQuestMaster : MonoBehaviour
         exclamationAnimator?.SetTrigger("Shake");
         fading = false;
     }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

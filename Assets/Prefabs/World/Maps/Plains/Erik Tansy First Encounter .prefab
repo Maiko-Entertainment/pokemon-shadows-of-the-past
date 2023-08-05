@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: -6.7900925, y: 62.56595}
+  scrollPos: {x: -153.62552, y: 63.83177}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 360
@@ -220,7 +220,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 8520578334564955622}
   selectedCommands:
-  - {fileID: 1032818228170005512}
+  - {fileID: 3850412525289695361}
   variables:
   - {fileID: 6620435318856959645}
   - {fileID: 1205353610751625516}
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  storyText: '{punch}AWESOME!'
+  storyText: '{punch}{happy}AWESOME{/happy}!'
   description: 
   character: {fileID: 3911681670272676015}
   portrait: {fileID: 0}
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 16
   indentLevel: 0
-  storyText: Yeah, {punch}BIG time!
+  storyText: Yeah, {punch}{happy}BIG{/happy} time!
   description: 
   character: {fileID: 3911681670272676015}
   portrait: {fileID: 0}
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 22
   indentLevel: 0
-  storyText: Riolu Kid, Indiana Brock. All of them are stars now.
+  storyText: '{punch}Riolu Kid, {punch}Indiana Brock. All of them are stars now.'
   description: 
   character: {fileID: 3911681670272676015}
   portrait: {fileID: 0}
@@ -879,8 +879,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 23
   indentLevel: 0
-  storyText: Their stories captured {punch}MILLIONS of people and pokemon around
-    the globe.
+  storyText: Their stories captured {punch}{happy}MILLIONS{/happy} of people and
+    pokemon around the globe.
   description: 
   character: {fileID: 3911681670272676015}
   portrait: {fileID: 0}
@@ -934,7 +934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 26
   indentLevel: 0
-  storyText: to {punch}HERO!
+  storyText: to {punch}{happy}HERO{/happy}!
   description: 
   character: {fileID: 3911681670272676015}
   portrait: {fileID: 0}
@@ -2802,7 +2802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 88
   indentLevel: 0
-  storyText: '{punch=10,2}I BET I CAN EVEN BEAT AKANE NOW!'
+  storyText: '{punch=10,2}{angry}I BET I CAN EVEN BEAT AKANE NOW!{/angry}'
   description: 
   character: {fileID: 3911681670272676015}
   portrait: {fileID: 0}
@@ -3274,7 +3274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 107
   indentLevel: 0
-  storyText: '{punch}YES, YES! I just won my first battle!'
+  storyText: '{punch}{happy}YES, YES!{/happy} I just won my first battle!'
   description: 
   character: {fileID: 3911681670272676015}
   portrait: {fileID: 0}
@@ -5063,6 +5063,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7548221778542799819, guid: a422340308c6a7f40b199c549e8bcb29, type: 3}
+      propertyPath: cachedDirections.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548221778542799819, guid: a422340308c6a7f40b199c549e8bcb29, type: 3}
+      propertyPath: cachedDirections.Array.data[0].justTurn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548221778542799819, guid: a422340308c6a7f40b199c549e8bcb29, type: 3}
+      propertyPath: cachedDirections.Array.data[0].direction
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7931231568193519141, guid: a422340308c6a7f40b199c549e8bcb29, type: 3}
       propertyPath: m_Name
       value: Tansy
@@ -5124,6 +5136,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2537011439829147637, guid: 2635e7ec3e3ff3944ac261a0e255b9e1, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514714624259911694, guid: 2635e7ec3e3ff3944ac261a0e255b9e1, type: 3}
+      propertyPath: cachedDirections.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514714624259911694, guid: 2635e7ec3e3ff3944ac261a0e255b9e1, type: 3}
+      propertyPath: cachedDirections.Array.data[0].justTurn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514714624259911694, guid: 2635e7ec3e3ff3944ac261a0e255b9e1, type: 3}
+      propertyPath: cachedDirections.Array.data[0].direction
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7201468497549757911, guid: 2635e7ec3e3ff3944ac261a0e255b9e1, type: 3}

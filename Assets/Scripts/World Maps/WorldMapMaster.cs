@@ -103,6 +103,7 @@ public class WorldMapMaster : MonoBehaviour
         else
         {
             UIPauseMenuMaster.GetInstance().ShowWorldUI();
+            UIQuestMaster.Instance.LoadCurrentQuest();
         }
 
     }
