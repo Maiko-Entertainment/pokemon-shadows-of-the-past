@@ -130,6 +130,8 @@ public enum MoveId
     Retaliate = 123,
     FurySwipes = 124,
     ShadowSneak = 125,
+    Mudslap = 126,
+    MudShot = 127,
     Struggle = 10001,
     SelfHit = 10000
 }

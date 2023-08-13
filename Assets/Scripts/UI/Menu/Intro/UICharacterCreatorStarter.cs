@@ -14,6 +14,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
     public TextMeshProUGUI starterName;
     public TextMeshProUGUI starterDescription;
     public Transform typesList;
+    public ScrollRect scrollRect;
 
 
     public UIStarterPicker starterPickerPrefab;
@@ -41,19 +42,24 @@ public class UICharacterCreatorStarter : MonoBehaviour
         foreach (PokemonBaseData p in starterPokemon)
         {
             UIStarterPicker starter = Instantiate(starterPickerPrefab, starterList).Load(p);
-            starter.onSelect += PreviewStarter;
+            starter.onSelect += (starterData) => PreviewStarter(starterData, starter.GetComponent<RectTransform>());
             if (index == 0)
             {
-                UtilsMaster.SetSelected(starter.gameObject);
+                 PreviewStarter(starterPokemon[0], starter.GetComponent<RectTransform>());
             }
             index++;
         }
         genderViewer.Load(isStarterMale);
-        PreviewStarter(starterPokemon[0]);
     }
-    public void PreviewStarter(PokemonBaseData pokemon)
+    public void PreviewStarter(PokemonBaseData pokemon, RectTransform button)
+    {
+        StartCoroutine(ViewStarterNextFrame(pokemon, button));
+    }
+    IEnumerator ViewStarterNextFrame(PokemonBaseData pokemon, RectTransform button)
     {
         pickedStarter = pokemon;
+        UtilsMaster.SetSelected(button.gameObject);
+        yield return new WaitForEndOfFrame();
         starterName.text = pokemon.species;
         starterDescription.text = pokemon.GetPokedexEntry();
         if (animatorCheat)
@@ -68,7 +74,9 @@ public class UICharacterCreatorStarter : MonoBehaviour
         {
             Instantiate(typePrefab, typesList).Load(t);
         }
+        UtilsMaster.GetSnapToPositionToBringChildIntoView(scrollRect, button);
     }
+
     public void FlipGender()
     {
         AudioMaster.GetInstance().PlaySfx(flipGenderSound);

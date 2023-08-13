@@ -63,6 +63,8 @@ public class BattleMaster : MonoBehaviour
     public void RunTestBattle()
     {
         Debug.Log("Started test battle");
+        TransitionMaster.GetInstance().EnableBattleCamera();
+        AudioMaster.GetInstance().PlayMusic(currentBattle.GetBattleData().battleMusic);
         GetCurrentBattle().StartBattle();
     }
 

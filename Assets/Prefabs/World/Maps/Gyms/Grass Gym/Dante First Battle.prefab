@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 1394737707821273970}
   - component: {fileID: 8503187840282563533}
   - component: {fileID: 3521496808830632409}
+  - component: {fileID: 1504950093387320450}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -193,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 419.05066, y: -21.26846}
+  scrollPos: {x: 303.33646, y: 78.731514}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 291
@@ -205,9 +206,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 1625926277366001374}
+  - {fileID: 3616897319820834082}
   selectedCommands:
-  - {fileID: 2378646912430201079}
+  - {fileID: 8317961005803869839}
   variables:
   - {fileID: 1728244451128132964}
   - {fileID: 542609752630890591}
@@ -250,6 +251,7 @@ MonoBehaviour:
   - {fileID: 6740950698593314210}
   - {fileID: 4721477405211206092}
   - {fileID: 1203801238014527337}
+  - {fileID: 1504950093387320450}
   - {fileID: 5399083635281358562}
   - {fileID: 3689331940806507177}
   - {fileID: 7256994133761261325}
@@ -411,7 +413,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 501
     y: 90
-    width: 108.28569
+    width: 107.14284
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -467,7 +469,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 502
     y: 149
-    width: 151.71423
+    width: 148.57138
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -549,7 +551,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 688
     y: 101
-    width: 116.28569
+    width: 115.71426
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -965,7 +967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 28
   indentLevel: 0
-  storyText: ... Marvelous...
+  storyText: ... {happy}Marvelous{/happy}...
   description: 
   character: {fileID: 2586811659594682632}
   portrait: {fileID: 0}
@@ -1047,7 +1049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 31
   indentLevel: 0
-  storyText: '{$playerName}!'
+  storyText: '{angry}{$playerName}!{/angry}'
   description: 
   character: {fileID: 2586811659594682632}
   portrait: {fileID: 0}
@@ -1255,7 +1257,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 827
     y: 53
-    width: 96.857124
+    width: 95.714264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1913,7 +1915,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 369.9064
     y: 250.89902
-    width: 71.71428
+    width: 71.42856
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1952,7 +1954,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 377.17822
     y: 383.9236
-    width: 76.285706
+    width: 77.142845
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2189,7 +2191,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 518.4309
     y: 236.67853
-    width: 113.99997
+    width: 112.85712
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2226,7 +2228,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 527.8595
     y: 289.67853
-    width: 105.99998
+    width: 105.714264
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2910,7 +2912,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 737.8595
     y: 342.67853
-    width: 70.57142
+    width: 71.42856
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3588,6 +3590,36 @@ MonoBehaviour:
   itemId: 117
   indentLevel: 0
   saveId: 1004
+--- !u!114 &1504950093387320450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2892093658366005666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 118
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 3424655879305564684}
+  character: {fileID: 2586811659594682632}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: bba44c9f17123af46bbbd00f4aa99fe4, type: 3}
+  offset: 0
+  fromPosition: {fileID: 3424655878628419688}
+  toPosition: {fileID: 3424655879425508183}
+  facing: 1
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 1
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &8907393617551911591
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,7 +3740,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208385776147829436, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_Name
-      value: Stage Custom
+      value: Stage Custom Dante First
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder
@@ -3780,6 +3812,11 @@ MonoBehaviour:
 --- !u!4 &3424655879305564687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
+  m_PrefabInstance: {fileID: 3270325412642619569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &3424655879425508183 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 208385776548004838, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
   m_PrefabInstance: {fileID: 3270325412642619569}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4704201229655679398
