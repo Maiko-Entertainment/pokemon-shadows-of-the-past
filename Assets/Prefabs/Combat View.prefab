@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5224556690976246484}
   m_Layer: 12
   m_Name: Combat Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -641,8 +641,8 @@ Canvas:
   m_GameObject: {fileID: 1806747589412252034}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1806747589173812089}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -650,7 +650,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 1713604591
   m_SortingOrder: 6
   m_TargetDisplay: 0
 --- !u!114 &1806747589412252036
@@ -1565,6 +1565,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806747590123375648}
     m_Modifications:
+    - target: {fileID: 5517657916091108818, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517657916091108818, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517657916091108820, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1806747589173812089}
+    - target: {fileID: 5517657916091108820, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5517657916091108820, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1713604591
+      objectReference: {fileID: 0}
     - target: {fileID: 6151006633196087577, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
       propertyPath: m_Name
       value: Combat Flowchart

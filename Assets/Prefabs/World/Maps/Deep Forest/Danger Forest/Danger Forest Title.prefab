@@ -133,7 +133,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2178771266899157246}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 2178771266959648606}
   - component: {fileID: 2178771266959648600}
   - component: {fileID: 2178771266959648601}
+  - component: {fileID: 6488632577855953695}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -222,7 +223,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ?*?1(?/???%&?
+  m_text: <wiggle>?*?1(?/???%&?</wiggle>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a3fb5edf33a948459368aa40380b456, type: 2}
   m_sharedMaterial: {fileID: 7872434538031549360, guid: 4a3fb5edf33a948459368aa40380b456, type: 2}
@@ -249,7 +250,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 20.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -291,3 +292,32 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6488632577855953695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178771266959648607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterStartsAutomatically: 0
+  animationLoop: 0
+  timeScale: 0
+  _text: <wiggle>?*?1(?/???%&?</wiggle>
+  useDynamicScaling: 1
+  referenceFontSize: 10
+  isResettingTimeOnNewText: 1
+  useDefaultDatabases: 1
+  databaseBehaviors: {fileID: 11400000, guid: 9e65fd324bcd7494f9122a3b878b3739, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: 6594d7283c253b84987f580b343ea3a7, type: 2}
+  databaseActions: {fileID: 11400000, guid: 3ab74cce2e0127c4098c6af443914e8c, type: 2}
+  defaultAppearancesTags:
+  - size
+  defaultDisappearancesTags:
+  - fade
+  defaultBehaviorsTags: []
+  defaultTagsMode: 0

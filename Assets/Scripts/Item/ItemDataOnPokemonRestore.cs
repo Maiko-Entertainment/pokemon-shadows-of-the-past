@@ -12,6 +12,12 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     public override CanUseResult CanUseOnPokemon(PokemonCaughtData pokemon)
     {
         bool isFullHealth = pokemon.GetCurrentStats().health == pokemon.GetCurrentHealth();
+        bool isInBattle = BattleMaster.GetInstance().IsBattleActive();
+        int currentHealth = pokemon.GetCurrentHealth();
+        if (isInBattle && currentHealth == 0)
+        {
+            return new CanUseResult(false, "Fainted pokemon can only be healed out of battle.");
+        }
         if (restoreAmount > 0)
         {
             if (!statusClears.Contains(pokemon.statusEffectId) && isFullHealth)

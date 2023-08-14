@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 1121520987221141472}
   - component: {fileID: 821435862737181965}
   - component: {fileID: 8119174940286873350}
+  - component: {fileID: 8601741313598703829}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -305,11 +306,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 550.3306, y: 95.14447}
+  scrollPos: {x: 441.82663, y: 58.259266}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 360
-  zoom: 0.6100004
+  zoom: 0.64000034
   scrollViewRect:
     serializedVersion: 2
     x: 0
@@ -317,9 +318,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 8357885463129541650}
-  selectedCommands:
-  - {fileID: 2140456504918244278}
+  - {fileID: 6766288571369271287}
+  selectedCommands: []
   variables:
   - {fileID: 7941843680161495952}
   - {fileID: 1769846338811550936}
@@ -350,7 +350,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 417
     y: 113
-    width: 74.59015
+    width: 78.124985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1412,7 +1412,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 605.20435
     y: 37.06889
-    width: 81.14752
+    width: 81.249985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1421,6 +1421,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
+  - {fileID: 8601741313598703829}
   - {fileID: 6273759537516794156}
   - {fileID: 542337822422864874}
   suppressAllAutoSelections: 0
@@ -1440,7 +1441,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 607.26624
     y: 108.20291
-    width: 77.868835
+    width: 76.562485
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1468,7 +1469,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 610.3588
     y: 185.52248
-    width: 74.59015
+    width: 74.999985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1497,7 +1498,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 604.1733
     y: -27.083576
-    width: 90.98358
+    width: 90.62498
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1550,7 +1551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 30
   indentLevel: 0
-  storyText: '{w=0.01}{punch}Shut up!{punch=15} Shut up!{punch=20} SHUT UP!'
+  storyText: '{angry}{w=0.01}{punch}Shut up!{punch=15} Shut up!{punch=20} SHUT UP!{/angry}'
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -1632,7 +1633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 33
   indentLevel: 0
-  storyText: There's only one way to be the best, and it's to {punch=20}FIGHT!
+  storyText: There's only one way to be the best, and it's to {punch=20}{angry}FIGHT!
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -1661,7 +1662,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 808.297
     y: 58.953243
-    width: 81.14752
+    width: 82.812485
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1811,7 +1812,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 411.84445
     y: 278.31042
-    width: 71.31146
+    width: 70.312485
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1852,7 +1853,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 416.24158
     y: 430.34564
-    width: 76.22949
+    width: 74.999985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1907,7 +1908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 45
   indentLevel: 1
-  storyText: '{punch=15}No! Why does this keeps happening to me!?'
+  storyText: '{punch=15}{angry}No!{/angry} Why does this keeps happening to me!?'
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -2289,7 +2290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 52
   indentLevel: 1
-  storyText: '{punch=15}What? I lost? Against you?!'
+  storyText: '{punch=15}{angry}What? I lost? Against you?!{/angry}'
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -2449,7 +2450,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 603.5381
     y: 261.80463
-    width: 161.47534
+    width: 164.06244
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2491,7 +2492,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 602.3619
     y: 327.68686
-    width: 158.19666
+    width: 154.68744
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2611,7 +2612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 63
   indentLevel: 1
-  storyText: You are not like the others. I don't know how to explain it...
+  storyText: You are {item}not like the others{/item}. I don't know how to explain
+    it...
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -3017,7 +3019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 72
   indentLevel: 1
-  storyText: Next time, I you are going down...
+  storyText: Next time, you are going {punch}{angry}down{/angry}...
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -3133,7 +3135,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 875.87744
     y: 377.01266
-    width: 69.67212
+    width: 68.74999
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -3480,7 +3482,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 83
   indentLevel: 1
-  storyText: You are not like the others. I don't know how to explain it...
+  storyText: You are {item}not like the others{/item}. I don't know how to explain
+    it...
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -3507,7 +3510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 85
   indentLevel: 1
-  storyText: It's... As if you had done this a million times already.
+  storyText: It's... As if you had done this a {angry}million times{/angry} already.
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -3534,8 +3537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 86
   indentLevel: 1
-  storyText: But I don't care! I don't! I'm gonna take you down, no matter how many
-    times I have to try.
+  storyText: But I {punch=15}don't care! I don't! I'm gonna take you {punch=15}down,
+    no matter how many times I have to try.
   description: 
   character: {fileID: 6932416845139275052}
   portrait: {fileID: 0}
@@ -4661,6 +4664,36 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &8601741313598703829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383269007625151450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 242
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 8794750217900777003}
+  character: {fileID: 6932416845139275052}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 5d35e5edb7127f749bff588a2a330508, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1001 &3263345581808186665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4839,7 +4872,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 208385776147829436, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_Name
-      value: Stage Custom
+      value: Stage Custom Akane second battle
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder

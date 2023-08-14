@@ -54,7 +54,7 @@ public class PokemonAnimationController : MonoBehaviour
             {
                 shadow.GetComponent<Animator>().SetTrigger("Back");
             }
-            shadow.transform.eulerAngles = new Vector3(60f, 0f, 352f);
+            shadow.transform.eulerAngles = new Vector3(65, 0, 330);
             shadow.GetComponent<Renderer>().material = shadowMaterial;
         }
     }

@@ -250,6 +250,9 @@ public class BattleAnimatorMaster : MonoBehaviour
         }
         BattleType battleType = BattleMaster.GetInstance().GetCurrentBattle().GetBattleData().battleType;
         float showDelay = battleType == BattleType.Trainer || teamId == BattleTeamId.Team1 ? 2f : 1f;
+        bool isPokemonShadow = pokemon.GetPokemonCaughtData().isShadow;
+        if (isPokemonShadow)
+            pkmnInstance.GetComponentInChildren<SpriteRenderer>().material = BattleMaster.GetInstance().glitchMaterial;
         StartCoroutine(ShowPokemonInfoAfter(pokemon, showDelay));
         return pkmnInstance;
     }

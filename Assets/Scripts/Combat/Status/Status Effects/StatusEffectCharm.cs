@@ -21,6 +21,14 @@ public class StatusEffectCharm : StatusEffect
         // Charmed pokemon deal less damage
         battleTriggers.Add(reduceDamageTrigger);
         battleTriggers.Add(removeOnDamageTrigger);
+
+        List<BattleAnimation> anims = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId).hitAnims;
+        foreach (BattleAnimation anim in anims)
+        {
+            BattleAnimatorMaster.GetInstance()?.AddEvent(
+                new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim)
+            );
+        }
         base.Initiate();
     }
 }

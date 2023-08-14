@@ -132,6 +132,7 @@ public enum MoveId
     ShadowSneak = 125,
     Mudslap = 126,
     MudShot = 127,
+    Synthesis = 128,
     Struggle = 10001,
     SelfHit = 10000
 }
