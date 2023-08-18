@@ -464,6 +464,8 @@ public class BattleManager
     {
         PokemonBattleData activePokemon = GetTeamActivePokemon(GetTeamId(pokemon));
         eventManager.AddEvent(new BattleEventPokemonSwitch(activePokemon, pokemon));
+        activePokemon.ResetStatLevels();
+        activePokemon.RemoveAllStatusEffects(true);
         if (!isDesition)
         {
             eventManager.ResolveAllEventTriggers();

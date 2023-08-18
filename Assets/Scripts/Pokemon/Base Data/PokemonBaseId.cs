@@ -54,6 +54,7 @@ public enum PokemonBaseId
     Scizor = 212,
     Teddiursa = 216,
     Ursaring = 217,
+    // Gen 3
     Treecko = 252,
     Grovyle = 253,
     Sceptile = 254,
@@ -70,6 +71,16 @@ public enum PokemonBaseId
     Kirlia = 281,
     Gardevoir = 282,
     Roselia = 315,
+    // Gen 4
+    Turtwig = 387,
+    Grotle = 388,
+    Torterra = 389,
+    Chimchar = 390,
+    Monferno = 391,
+    Infernape = 392,
+    Piplup = 383,
+    Prinplup = 394,
+    Empoleon = 395,
     Starly = 396,
     Staravia = 397,
     Shinx = 403,
@@ -79,6 +90,7 @@ public enum PokemonBaseId
     Buneary = 427,
     Lopunny = 428,
     Mismagius = 429,
+    // Gen 5
     Lillipup = 506,
     Herdier = 507,
     Stoutland = 508,

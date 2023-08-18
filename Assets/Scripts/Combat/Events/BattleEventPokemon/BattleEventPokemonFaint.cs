@@ -13,6 +13,7 @@ public class BattleEventPokemonFaint : BattleEventPokemon
     public override void Execute()
     {
         pokemon.RemoveAllStatusEffects();
+        pokemon.ResetStatLevels();
         BattleAnimatorMaster.GetInstance()?.AddEventPokemonFaintText(pokemon);
 
         bool isShadow = BattleMaster.GetInstance().GetCurrentBattle().GetBattleData().battleType == BattleType.Shadow;

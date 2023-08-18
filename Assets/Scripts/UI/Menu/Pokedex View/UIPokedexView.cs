@@ -45,14 +45,33 @@ public class UIPokedexView : MonoBehaviour
     public void UpdatePokemonList()
     {
         List<PokedexPokemonData> pokemonList = PokemonMaster.GetInstance().GetPokedexList();
+        List<PokedexPokemonData> otherList = PokemonMaster.GetInstance().GetSpecialPokemon();
         foreach (Transform pokemon in pokemonListContainer)
         {
             Destroy(pokemon.gameObject);
         }
         List<Selectable> selectables = new List<Selectable>();
+        foreach (PokedexPokemonData pokemon in otherList)
+        {
+            if (pokemon.caughtAmount > 0)
+            {
+                UIPokedexPokemonOption options = Instantiate(pokedexPokemonPrefab, pokemonListContainer).Load(pokemon, "???");
+                // options.onClick += (PokemonCaughtData p) => SelectPokemon();
+                options.onHover += LoadPokemon;
+                selectables.Add(options.GetComponent<Selectable>());
+                // Sets first pokemon as selected
+                if (selected == null && pokemonList.IndexOf(pokemon) == 0 || selected != null && selected == pokemon)
+                {
+                    UtilsMaster.SetSelected(selectables[0].gameObject);
+                    LoadPokemon(pokemon);
+                    selected = pokemon;
+                }
+            }
+        }
+        int index = 1;
         foreach (PokedexPokemonData pokemon in pokemonList)
         {
-            UIPokedexPokemonOption options = Instantiate(pokedexPokemonPrefab, pokemonListContainer).Load(pokemon);
+            UIPokedexPokemonOption options = Instantiate(pokedexPokemonPrefab, pokemonListContainer).Load(pokemon, ""+ index);
             // options.onClick += (PokemonCaughtData p) => SelectPokemon();
             options.onHover += LoadPokemon;
             selectables.Add(options.GetComponent<Selectable>());
@@ -63,6 +82,7 @@ public class UIPokedexView : MonoBehaviour
                 LoadPokemon(pokemon);
                 selected = pokemon;
             }
+            index++;
         }
         UtilsMaster.LineSelectables(selectables);
     }

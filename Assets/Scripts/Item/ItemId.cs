@@ -24,6 +24,7 @@ public enum ItemId
     StoneWater = 1001,
     StoneThunder = 1002,
     StoneDusk = 1003,
+    StoneGrass = 1004,
     // Held Items
     MightyClaw = 2000,
     Leftovers = 2001,

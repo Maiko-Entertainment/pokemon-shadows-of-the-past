@@ -24,7 +24,11 @@ public class UISaveFiles : MonoBehaviour
     {
         List<SaveFile> saveFiles = SaveMaster.Instance.GetSaveFiles();
         bool reachedMaxSaves = saveFiles.Count >= SaveMaster.Instance.maxSaveFiles;
-        List<Selectable> selectables = new List<Selectable> { newGameButton };
+        List<Selectable> selectables = new List<Selectable>();
+        if (!reachedMaxSaves)
+        {
+            selectables.Add(newGameButton);
+        }
         foreach (Transform t in saveFileList)
         {
             if (t != saveFileList.GetChild(0) || reachedMaxSaves || isMainMenu)

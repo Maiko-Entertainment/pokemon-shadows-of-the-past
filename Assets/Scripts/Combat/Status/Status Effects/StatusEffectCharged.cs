@@ -9,6 +9,7 @@ public class StatusEffectCharged : StatusEffect
         effectId = StatusEffectId.Charged;
         minTurns = 1;
         addedRangeTurns = 0;
+        gainStatusBlockName = "Charged Gain";
     }
 
     public override void Initiate()

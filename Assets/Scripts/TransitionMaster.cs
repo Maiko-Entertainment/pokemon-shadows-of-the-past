@@ -66,7 +66,7 @@ public class TransitionMaster : MonoBehaviour
         if (sceneDialogue != null)
         {
             SayDialog.ActiveSayDialog = combatDialogue;
-            UpdateDialogCamera();
+            SayDialog.ActiveSayDialog.GetComponent<Canvas>().worldCamera = battleCamera;
         }
     }
     public void SetDialogueToEvolution()

@@ -58,8 +58,8 @@ public class UICharacterCreatorStarter : MonoBehaviour
     IEnumerator ViewStarterNextFrame(PokemonBaseData pokemon, RectTransform button)
     {
         pickedStarter = pokemon;
-        UtilsMaster.SetSelected(button.gameObject);
         yield return new WaitForEndOfFrame();
+        UtilsMaster.SetSelected(button.gameObject);
         starterName.text = pokemon.species;
         starterDescription.text = pokemon.GetPokedexEntry();
         if (animatorCheat)
@@ -116,6 +116,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
         {
             sen.SetValue(1f);
         }
+        PokemonMaster.GetInstance().CaughtPokemon(starter.GetPokemonBaseData().pokemonId);
         UIPauseMenuMaster.GetInstance()?.OpenMenu(nextMenu, true);
     }
 

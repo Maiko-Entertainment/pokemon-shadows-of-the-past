@@ -59,8 +59,11 @@ public class Cutscene : MonoBehaviour
 
     public void Initiate()
     {
-        CutsceneMaster.GetInstance().LoadCutscene(this);
-        flowchart.ExecuteBlock(blockName);
+        if (flowchart)
+        {
+            CutsceneMaster.GetInstance().LoadCutscene(this);
+            flowchart.ExecuteBlock(blockName);
+        }
     }
 
     public WorldInteractable GetAgent(string agentId)

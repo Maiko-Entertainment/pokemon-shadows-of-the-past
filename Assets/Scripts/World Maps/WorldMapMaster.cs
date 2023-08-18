@@ -46,6 +46,7 @@ public class WorldMapMaster : MonoBehaviour
 
     public void Load(SaveFile save)
     {
+        ReloadPlayer();
         SpawnInMapAtPos(save.playerMapId, save.playerPos.GetVector2());
     }
 
@@ -141,9 +142,22 @@ public class WorldMapMaster : MonoBehaviour
         {
             SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.characterModelId);
             int index = (int)(float)se.GetValue();
-            player = Instantiate(playerPrefabs[index].gameObject).GetComponent<PlayerController>();
+            player = Instantiate(GetPlayerPrefab(index)).GetComponent<PlayerController>();
         }
         return player;
+    }
+
+    public void ReloadPlayer()
+    {
+        if (player)
+        {
+            player.DestroyFollowers();
+            Destroy(player.gameObject);
+        }
+        SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.characterModelId);
+        int index = (int)(float)se.GetValue();
+        player = Instantiate(GetPlayerPrefab(index)).GetComponent<PlayerController>();
+        player.UpdatePokeFollower();
     }
 
     public PlayerController GetPlayerPrefab(int index)

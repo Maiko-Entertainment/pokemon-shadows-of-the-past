@@ -11,6 +11,7 @@ public class UIBattleHealthbar : MonoBehaviour
     public Image currentBar;
     public Image currentExpBar;
     public Image statusSimbol;
+    public Image caughtIcon;
     public TextMeshProUGUI currenthealth;
     public float changeSpeed = 0.2f;
     public Color healthyColor;
@@ -35,12 +36,13 @@ public class UIBattleHealthbar : MonoBehaviour
 
     public void Load(PokemonBattleData pokemon)
     {
+        bool isCaught = PokemonMaster.GetInstance().GetPokemonPokedexData(pokemon.GetPokemonCaughtData().GetPokemonBaseData().pokemonId).caughtAmount > 0;
         this.pokemon = pokemon;
         PokemonCaughtData pkmn = pokemon.GetPokemonCaughtData();
         currentValue = pkmn.GetCurrentHealth();
         maxHealth = pkmn.GetCurrentStats().health;
         currentExp = pkmn.GetExperience();
-        pokemonName.text = pkmn.pokemonName;
+        pokemonName.text = pkmn.GetName();
         pokemonLevel.text = "Lv. " + (pokemon.hideLevel ? "???" : pkmn.GetLevel());
         pokemonAbilityName.text = AbilityMaster.GetInstance().GetAbility(pkmn.abilityId).GetName();
         UpdateHealth(currentValue);
@@ -64,6 +66,10 @@ public class UIBattleHealthbar : MonoBehaviour
         {
             genderIcon.gameObject.SetActive(true);
             genderIcon.Load(pkmn.isMale);
+        }
+        if (caughtIcon)
+        {
+            caughtIcon.enabled = isCaught;
         }
         UpdateStatus(status, statusDatas);
         UpdateStats(pokemon);

@@ -83,6 +83,7 @@ MonoBehaviour:
   innerTransform: {fileID: 7054653510071576646}
   speed: 2
   heightOffset: 0
+  disableShadow: 0
   cachedDirections: []
 --- !u!1 &2308198417328622676
 GameObject:
@@ -203,7 +204,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &5038767105930725995
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -220,7 +221,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6548422797160107620
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +297,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 6548422797160107641}
   selectedCommands:
-  - {fileID: 4683281633443919687}
+  - {fileID: 764361346376940456}
   variables:
   - {fileID: 1924174228407546347}
   description: 
@@ -322,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 359
+    x: 360
     y: 104
     width: 77
     height: 40
@@ -805,6 +807,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43bcefa94a0a08e40905258df230124f, type: 2}
   - {fileID: 11400000, guid: 963a2e0772c040f4caf597ef8389dde2, type: 2}
   - {fileID: 11400000, guid: bb8ee9bf30c5ea247adb8eb26f77ac5d, type: 2}
+  - {fileID: 11400000, guid: 18592b3a18135a7439facaac6762176a, type: 2}
+  - {fileID: 11400000, guid: 1491eff7a55248042a1fcfcc0e40de26, type: 2}
 --- !u!114 &28636076347392007
 MonoBehaviour:
   m_ObjectHideFlags: 0

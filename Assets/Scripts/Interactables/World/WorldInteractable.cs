@@ -30,7 +30,6 @@ public class WorldInteractable : MonoBehaviour
         bool isPlaying = InteractionsMaster.GetInstance().IsInteractionPlaying();
         if (!isPlaying)
         {
-            print(collision.transform.position + " - " + collision.name + " touched " + gameObject.name);
             if (onStep && collision.tag == "Player")
             {
                 isPlayerInside = true;

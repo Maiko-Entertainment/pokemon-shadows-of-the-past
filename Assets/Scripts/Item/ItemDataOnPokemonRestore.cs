@@ -12,12 +12,6 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     public override CanUseResult CanUseOnPokemon(PokemonCaughtData pokemon)
     {
         bool isFullHealth = pokemon.GetCurrentStats().health == pokemon.GetCurrentHealth();
-        bool isInBattle = BattleMaster.GetInstance().IsBattleActive();
-        int currentHealth = pokemon.GetCurrentHealth();
-        if (isInBattle && currentHealth == 0)
-        {
-            return new CanUseResult(false, "Fainted pokemon can only be healed out of battle.");
-        }
         if (restoreAmount > 0)
         {
             if (!statusClears.Contains(pokemon.statusEffectId) && isFullHealth)
@@ -32,6 +26,17 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
         }
         return new CanUseResult(equipable, "");
     }
+
+    public override CanUseResult CanUseOnPokemonBattle(PokemonBattleData pokemon)
+    {
+        int currentHealth = pokemon.GetPokemonCurrentHealth();
+        if (currentHealth == 0)
+        {
+            return new CanUseResult(false, "Fainted pokemon can only be healed out of battle.");
+        }
+        return CanUseOnPokemon(pokemon.GetPokemonCaughtData());
+    }
+
     public override void UseOnPokemon(PokemonCaughtData pokemon)
     {
         int healAmount = GetHealAmount(pokemon);
@@ -48,7 +53,7 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         base.UseOnPokemonBattle(pokemon, isPokemonUsingIt);
         int healAmount = GetHealAmount(pokemon.GetPokemonCaughtData());
-        if (restoreAmount > 0)
+        if (restoreAmount > 0 && pokemon.GetPokemonCurrentHealth() > 0)
         {
             if (restoresPercentage)
             {

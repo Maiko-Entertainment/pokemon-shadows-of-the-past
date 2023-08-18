@@ -235,6 +235,13 @@ public class PlayerController : MonoBehaviour
         followers = newFollowers;
         return removedFollower;
     }
+    public void DestroyFollowers()
+    {
+        foreach (WorldInteractableBrainFollower follower in followers)
+        {
+            Destroy(follower.gameObject);
+        }
+    }
 
     public void SetPosition(Vector3 position)
     {

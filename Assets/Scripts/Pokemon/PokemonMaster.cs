@@ -29,6 +29,10 @@ public class PokemonMaster : MonoBehaviour
 
     public void InstantiateDatabase()
     {
+        foreach (PokemonBaseData pokemonData in otherPokemon)
+        {
+            pokedexData.Add(pokemonData.pokemonId, new PokedexPokemonData(pokemonData));
+        }
         foreach (PokemonBaseData pokemonData in pokedex)
         {
             pokedexData.Add(pokemonData.pokemonId, new PokedexPokemonData(pokemonData));
@@ -78,16 +82,29 @@ public class PokemonMaster : MonoBehaviour
 
     public List<PokedexPokemonData> GetPokedexList()
     {
-        return pokedexData.Values.ToList();
+        List<PokedexPokemonData> list = new List<PokedexPokemonData>();
+        foreach (PokemonBaseData pkmn in pokedex)
+        {
+            list.Add(GetPokemonPokedexData(pkmn.pokemonId));
+        }
+        return list;
     }
+
+    public List<PokedexPokemonData> GetSpecialPokemon()
+    {
+        List<PokedexPokemonData> list = new List<PokedexPokemonData>();
+        foreach (PokemonBaseData pkmn in otherPokemon)
+        {
+            list.Add(GetPokemonPokedexData(pkmn.pokemonId));
+        }
+        return list;
+    }
+
     public PokedexPokemonData GetPokemonPokedexData(PokemonBaseId pokemonId)
     {
-        foreach(PokedexPokemonData pokemon in pokedexData.Values.ToList())
+        if (pokedexData.ContainsKey(pokemonId))
         {
-            if (pokemonId == pokemon.pokemon.pokemonId)
-            {
-                return pokemon;
-            }
+            return pokedexData[pokemonId];
         }
         return null;
     }

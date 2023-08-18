@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UIPokedexPokemonOption : MonoBehaviour, ISelectHandler
 {
+    public TextMeshProUGUI pokedexNumber;
     public Image icon;
     public TextMeshProUGUI pokemonSpecies;
     public Image caughtIcon;
@@ -19,8 +20,9 @@ public class UIPokedexPokemonOption : MonoBehaviour, ISelectHandler
 
     public PokedexPokemonData pokemon;
 
-    public UIPokedexPokemonOption Load(PokedexPokemonData data)
+    public UIPokedexPokemonOption Load(PokedexPokemonData data, string index)
     {
+        if (pokedexNumber) pokedexNumber.text = index;
         pokemon = data;
         icon.sprite = data.pokemon.icon;
         if (data.seenAmount > 0)

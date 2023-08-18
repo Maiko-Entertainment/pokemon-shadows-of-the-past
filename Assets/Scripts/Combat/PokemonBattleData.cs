@@ -154,6 +154,10 @@ public class PokemonBattleData
         statsLevel.evasion = Mathf.Clamp(statsLevel.evasion + statsChange.evasion, -minMaxStatLevelChange, minMaxStatLevelChange);
         statsLevel.critical = Mathf.Clamp(statsLevel.critical + statsChange.critical, -minMaxStatLevelChange, minMaxStatLevelChange);
     }
+    public void ResetStatLevels()
+    {
+        statsLevel = new PokemonBattleStats();
+    }
 
     public PokemonBattleStats GetBattleStatsChangeLevels()
     {

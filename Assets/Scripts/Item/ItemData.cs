@@ -13,7 +13,7 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     [TextArea] public string description;
     public int price = 100;
-    public bool sellable = false;
+    public bool unsellable = false;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 
     public string GetName()
@@ -61,6 +61,11 @@ public class ItemData : ScriptableObject
         {
             InventoryMaster.GetInstance()?.ChangeItemAmount(itemId, -1);
         }
+    }
+
+    public bool CanSell()
+    {
+        return !unsellable;
     }
 
 }

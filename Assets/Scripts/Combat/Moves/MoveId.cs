@@ -133,6 +133,9 @@ public enum MoveId
     Mudslap = 126,
     MudShot = 127,
     Synthesis = 128,
+    MachPunch = 129,
+    Swagger = 130,
+    MetalClaw = 131,
     Struggle = 10001,
     SelfHit = 10000
 }

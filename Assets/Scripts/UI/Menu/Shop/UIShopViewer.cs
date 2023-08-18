@@ -62,7 +62,7 @@ public class UIShopViewer : MonoBehaviour
     public void Sell(ItemData item)
     {
         ItemInventory ii = InventoryMaster.GetInstance().GetItem(item.GetItemId());
-        if (ii.GetAmount() > 0)
+        if (ii.GetAmount() > 0 && ii.itemData.CanSell())
         {
             InventoryMaster.GetInstance().ChangeItemAmount(item.GetItemId(), -1);
             InventoryMaster.GetInstance().ChangeMoney((int)(item.price * InventoryMaster.sellModifier));
@@ -188,7 +188,7 @@ public class UIShopViewer : MonoBehaviour
         List<ItemInventory> inventory = InventoryMaster.GetInstance().GetItems();
         foreach (ItemInventory id in inventory)
         {
-            if (id.GetAmount() > 0)
+            if (id.GetAmount() > 0 && id.itemData.CanSell())
             {
                 UIShopItem sp = Instantiate(shopItemPrefab, itemList).Load(id.itemData, true);
                 sp.onHover += View;

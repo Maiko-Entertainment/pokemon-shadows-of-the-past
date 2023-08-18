@@ -1086,7 +1086,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7147057146423697777}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -1105,6 +1105,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 7876973205253697172}
   transition: {fileID: -1819181813391016388}
   firstSelected: {fileID: 0}
+  optionsList: {fileID: 0}
   fadeOutWhenNotFocused: 0
 --- !u!114 &6673410902141647012
 MonoBehaviour:
@@ -1148,7 +1149,19 @@ MonoBehaviour:
     m_ActionId: 22f5ccfd-38e1-4a03-96d2-3c32d4f729ae
     m_ActionName: Player Character/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7083514284175877454}
+        m_TargetAssemblyTypeName: UIPokemonPC, Assembly-CSharp
+        m_MethodName: HandleSwaping
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e17a1fff-eed3-48fe-aae6-46bc4425ad58
     m_ActionName: Player Character/Interact[/Keyboard/c,/Keyboard/space]
   - m_PersistentCalls:
