@@ -24,7 +24,10 @@ public class FungusTeamsAllyUseMove : Command
                 move
             );
             BattleMaster.GetInstance().GetCurrentBattle().eventManager.ResolveAllEventTriggers();
-            BattleMaster.GetInstance().GetCurrentBattle().CheckForFainted();
+            if (BattleMaster.GetInstance().GetCurrentBattle().GetTeamActivePokemon(BattleTeamId.Team2).IsFainted())
+            {
+                BattleMaster.GetInstance().GetCurrentBattle().CheckForFainted();
+            }
         }
         Continue();
     }

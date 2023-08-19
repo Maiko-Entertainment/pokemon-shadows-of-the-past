@@ -19,6 +19,6 @@
 
     public override string ToString()
     {
-        return ""+pokemon.pokemon.pokemonName;
+        return ""+pokemon?.pokemon?.pokemonName;
     }
 }

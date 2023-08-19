@@ -13,8 +13,8 @@ public class FungusEndBattle : Command
 
     public override void OnEnter()
     {
+        BattleAnimatorMaster.GetInstance().ClearEvents();
         BattleMaster.GetInstance()?.GetCurrentBattle()?.HandleBattleEnd(winnerTeam, true);
-        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(0);
         Continue();
     }
 }

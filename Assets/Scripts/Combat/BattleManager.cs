@@ -304,9 +304,12 @@ public class BattleManager
         }
         if (pokemon.IsFainted())
         {
-            PokemonBattleData newPokemon = team1.GetFirstAvailabelPokemon();
-            if (newPokemon != null)
-                BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPickPokemon());
+            if (!IsBattleSetToOver())
+            {
+                PokemonBattleData newPokemon = team1.GetFirstAvailabelPokemon();
+                if (newPokemon != null)
+                    BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPickPokemon());
+            }
         }
         else
         {
@@ -469,7 +472,7 @@ public class BattleManager
         if (!isDesition)
         {
             eventManager.ResolveAllEventTriggers();
-            // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
+            BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
         }
     }
     public List<TacticData> GetPlayerTactics()
