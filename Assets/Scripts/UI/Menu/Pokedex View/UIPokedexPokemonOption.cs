@@ -24,8 +24,8 @@ public class UIPokedexPokemonOption : MonoBehaviour, ISelectHandler
     {
         if (pokedexNumber) pokedexNumber.text = index;
         pokemon = data;
-        icon.sprite = data.pokemon.icon;
-        if (data.seenAmount > 0)
+        icon.sprite = data.pokemon.GetIcon();
+        if (data.seenAmount > 0 || data.caughtAmount > 0)
         {
             icon.color = Color.white;
             pokemonSpecies.text = data.pokemon.species;

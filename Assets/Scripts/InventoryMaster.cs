@@ -25,6 +25,7 @@ public class InventoryMaster : MonoBehaviour
     public static InventoryMaster GetInstance() { return Instance; }
     public void Load(SaveFile save)
     {
+        inventory = new List<ItemInventory>();
         foreach (PersistedItem pi in save.persistedItems)
         {
             ChangeItemAmount(pi.id, pi.amount);

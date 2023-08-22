@@ -285,10 +285,11 @@ public class PlayerController : MonoBehaviour
         PokemonCaughtData current = PartyMaster.GetInstance().GetFirstAvailablePokemon();
         if (current != null)
         {
-            WorldInteractableBrainFollower followerPrefab = current.GetPokemonBaseData().GetOverWorldPrefab();
+            WorldInteractableWorldBrainPokemon followerPrefab = WorldMapMaster.GetInstance().pokeFollowerPrefab;
             if (followerPrefab)
             {
-                WorldInteractableBrainFollower follower = Instantiate(followerPrefab);
+                WorldInteractableWorldBrainPokemon follower = Instantiate(followerPrefab);
+                follower.pokemon = current;
                 follower.transform.position = transform.position;
                 followers.Insert(0, follower);
             }

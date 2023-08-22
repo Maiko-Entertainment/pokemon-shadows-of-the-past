@@ -17,7 +17,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
 
     protected bool isActive = false;
     protected GameObject activeGameObject;
-    protected WorldInteractableBrainFollower worldEntity;
+    protected WorldInteractableWorldBrainPokemon worldEntity;
     protected PokemonEncounter currentEncounter;
     protected float timePassed = 0;
 
@@ -46,7 +46,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
         float random = Random.value;
         currentEncounter = SelectRandomEncounter();
         PokemonCaughtData pokemon = currentEncounter.GetPokemonCaught();
-        WorldInteractableBrainFollower pokemonWorld = pokemon.GetPokemonBaseData().overWorldPrefab;
+        WorldInteractableWorldBrainPokemon pokemonWorld = WorldMapMaster.GetInstance().pokeFollowerPrefab;
         if (currentEncounter != null)
         {
             if (random < spawnWorldEntityChance && pokemonWorld)
@@ -55,6 +55,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
                 worldEntity.transform.localPosition = spawnWorldOffset;
                 worldEntity.AddDirection(new MoveBrainDirectionData(spawnDirection, true));
                 worldEntity.followMode = false;
+                worldEntity.pokemon = pokemon;
                 SpriteRenderer renderer = worldEntity.GetComponentInChildren<SpriteRenderer>();
                 if (currentEncounter.entityMaterial && renderer)
                 {

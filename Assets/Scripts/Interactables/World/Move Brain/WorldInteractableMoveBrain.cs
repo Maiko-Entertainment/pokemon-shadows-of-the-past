@@ -22,7 +22,7 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
     protected float jumpHeight = 0.5f;
     protected float jumpSpeed = 1f;
 
-    private void Start()
+    protected virtual void Start()
     {
         Load();
         if (!disableShadow && animator != null)
@@ -38,7 +38,7 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
         }
     }
 
-    public void Load()
+    public virtual void Load()
     {
         WorldMap currentMap = WorldMapMaster.GetInstance().GetCurrentMap();
         groundTilemap = currentMap.groundTilemap;
@@ -129,8 +129,8 @@ public class WorldInteractableMoveBrain : WorldInteractableTouch
                 bool justTurn = cachedDirections[0].justTurn;
                 if (!justTurn)
                     target = transform.position + (Vector3)direction;
-                animator.SetFloat("Horizontal", GetCurrentDirection().x);
-                animator.SetFloat("Vertical", GetCurrentDirection().y);
+                animator.SetFloat("Horizontal", direction.x);
+                animator.SetFloat("Vertical", direction.y);
                 cachedDirections.RemoveAt(0);
             }
             else

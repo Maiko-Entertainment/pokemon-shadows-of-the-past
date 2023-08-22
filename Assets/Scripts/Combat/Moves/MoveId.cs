@@ -136,6 +136,7 @@ public enum MoveId
     MachPunch = 129,
     Swagger = 130,
     MetalClaw = 131,
+    FocusEnergy = 132,
     Struggle = 10001,
     SelfHit = 10000
 }

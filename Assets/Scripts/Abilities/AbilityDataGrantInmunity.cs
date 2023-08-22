@@ -8,12 +8,15 @@ public class AbilityDataGrantInmunity : AbilityData
     public override void Initialize(PokemonBattleData pokemon)
     {
         base.Initialize(pokemon);
+        UseMoveMods mods = new UseMoveMods(PokemonTypeId.Unmodify);
+        mods.powerMultiplier *= 0;
         BattleTriggerOnPokemonTakeMove trigger = new BattleTriggerOnPokemonTakeMove(
                 pokemon,
-                null,
+                mods,
                 inmuneTypes,
                 true
             );
+        trigger.grantsInmunite = true;
         BattleMaster.GetInstance().GetCurrentBattle().AddTrigger(trigger);
     }
 }

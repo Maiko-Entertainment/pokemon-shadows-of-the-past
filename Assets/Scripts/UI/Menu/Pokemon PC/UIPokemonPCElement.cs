@@ -21,7 +21,7 @@ public class UIPokemonPCElement : MonoBehaviour, ISelectHandler
     public UIPokemonPCElement Load(PokemonCaughtData pokemon)
     {
         this.pokemon = pokemon;
-        icon.sprite = pokemon.GetPokemonBaseData().icon;
+        icon.sprite = pokemon.GetIcon();
         return this;
     }
 

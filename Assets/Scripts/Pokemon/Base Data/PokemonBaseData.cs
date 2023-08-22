@@ -7,8 +7,8 @@ public class PokemonBaseData : ScriptableObject
 {
     public PokemonBaseId pokemonId;
     public string species;
-    public Sprite icon;
-    public AudioClip cry;
+    [SerializeField] protected Sprite icon;
+    protected AudioClip cry;
     public PokemonBaseStats baseStats;
     public List<PokemonTypeId> types;
     public List<PokemonBaseAbility> abilities;
@@ -25,7 +25,17 @@ public class PokemonBaseData : ScriptableObject
     public WorldInteractableBrainFollower overWorldPrefab;
     public List<PokemonBaseDataAreas> encounteredIn = new List<PokemonBaseDataAreas>();
 
-    public AudioClip GetCry() { return cry; }
+    public AudioClip GetCry() {
+        string path = ResourceMaster.Instance.GetBasePokemonCryPath(this);
+        AudioClip audioCry = Resources.Load<AudioClip>(path);
+        return audioCry;
+    }
+    public Sprite GetIcon()
+    {
+        string path = ResourceMaster.Instance.GetBaseIconPath(this);
+        Sprite audioCry = Resources.Load<Sprite>(path);
+        return audioCry;
+    }
 
     public List<MoveData> GetMovesLearnedForLevel(int level)
     {

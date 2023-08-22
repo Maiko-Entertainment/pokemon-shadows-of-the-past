@@ -178,7 +178,7 @@ public class UIPokemonView : MonoBehaviour
             Destroy(animator.gameObject);
         animator = Instantiate(pkmn.GetPokemonBaseData().battleAnimation);
         animator.transform.position = new Vector3(300000, 300000, 0);
-        pokemonIcon.sprite = pkmn.GetPokemonBaseData().icon;
+        pokemonIcon.sprite = pkmn.GetIcon();
         if (pkmn.isShadow)
         {
             pokemonHeart.gameObject.SetActive(false);

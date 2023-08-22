@@ -29,7 +29,7 @@ public class UIPokedexView : MonoBehaviour
 
     public PokedexPokemonData selected;
 
-    private PokemonAnimationController animator;
+    private PokemonBattleAnimator animator;
     private int sectionIndex = 0;
 
     void Start()
@@ -129,10 +129,10 @@ public class UIPokedexView : MonoBehaviour
             Destroy(t.gameObject);
         if (animator)
             Destroy(animator.gameObject);
-        animator = Instantiate(pkmn.battleAnimation);
+        animator = Instantiate(BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator).Load(pkmn);
         animator.transform.position = new Vector3(300000, 300000, 0);
-        pokemonIcon.sprite = pkmn.icon;
-        if (data.seenAmount > 0)
+        pokemonIcon.sprite = pkmn.GetIcon();
+        if (data.seenAmount > 0 || data.caughtAmount > 0)
         {
             pokemonSprite.color = Color.white;
             pokemonIcon.color = Color.white;

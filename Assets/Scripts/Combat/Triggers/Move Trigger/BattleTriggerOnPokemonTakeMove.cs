@@ -33,13 +33,13 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
             {
                 if (showAbility)
                 {
-                    BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorAbility(target));
+                    BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(target);
                 }
                 if (grantsInmunite)
                 {
                     BattleAnimatorMaster.GetInstance().AddEventInmuneTextEvent();
                 }
-                else
+                if (useMoveMods != null)
                 {
                     battleEvent.moveMods.Implement(useMoveMods);
                 }

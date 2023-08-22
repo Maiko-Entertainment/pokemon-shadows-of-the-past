@@ -7,6 +7,7 @@ public class BattleAnimatorMaster : MonoBehaviour
 {
     public static BattleAnimatorMaster Instance;
 
+    public PokemonBattleAnimator pokemonBattlerAnimator;
     public CameraFollow combatCamera;
     public float pokemonZoomValue = 1;
     public Canvas combatCanvas;
@@ -108,7 +109,7 @@ public class BattleAnimatorMaster : MonoBehaviour
             TransitionSpriteChangeColor colorTrans = teamTransform.gameObject.AddComponent<TransitionSpriteChangeColor>();
             colorTrans.initialColor = Color.black;
             colorTrans.finalColor = Color.white;
-            colorTrans.sprite = teamTransform.GetComponentInChildren<PokemonAnimationController>().sprite;
+            colorTrans.sprite = teamTransform.GetComponentInChildren<PokemonBattleAnimator>().sprite;
             colorTrans.sprite.color = colorTrans.initialColor;
             colorTrans.initialDelay = 1f;
             colorTrans.FadeIn();
@@ -238,15 +239,14 @@ public class BattleAnimatorMaster : MonoBehaviour
         battleInfoManager.UpdatePokemonData(pokemon, health, GetStatusEffectData(status!=null ? status.effectId : StatusEffectId.None), minorData);
     }
 
-    public PokemonAnimationController InstantiatePokemonAnim(PokemonBattleData pokemon, BattleTeamId teamId)
+    public PokemonBattleAnimator InstantiatePokemonAnim(PokemonBattleData pokemon, BattleTeamId teamId)
     {
-        PokemonAnimationController pkmnInstance = Instantiate(
-            pokemon.GetPokemonCaughtData().GetPokemonBaseData()
-            .battleAnimation.gameObject, teamId == BattleTeamId.Team1 ? pokemonTeam1Position : pokemonTeam2Position)
-            .GetComponent<PokemonAnimationController>();
+        PokemonBattleAnimator pkmnInstance = Instantiate(
+            pokemonBattlerAnimator,
+            teamId == BattleTeamId.Team1 ? pokemonTeam1Position : pokemonTeam2Position).Load(pokemon);
         if (teamId == BattleTeamId.Team1)
         {
-            pkmnInstance.TriggerBack();
+            pkmnInstance.SetPokemonDirection(true);
         }
         BattleType battleType = BattleMaster.GetInstance().GetCurrentBattle().GetBattleData().battleType;
         float showDelay = battleType == BattleType.Trainer || teamId == BattleTeamId.Team1 ? 2f : 1f;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine;
 public class MovesMaster : MonoBehaviour
 {
     public static MovesMaster Instance;
-    public List<MoveData> movesData = new List<MoveData>();
+
+    protected Dictionary<MoveId, MoveData> movesDictionary = new Dictionary<MoveId, MoveData>();
 
     private void Awake()
     {
@@ -16,17 +18,29 @@ public class MovesMaster : MonoBehaviour
         else
         {
             Instance = this;
+            LoadDictionary();
         }
     }
-    
+    public void LoadDictionary()
+    {
+        MoveData[] baseDatas = Resources.LoadAll<MoveData>(ResourceMaster.Instance.GetMovesDataPath());
+        foreach (MoveData ad in baseDatas)
+        {
+            try
+            {
+                movesDictionary.Add(ad.moveId, ad);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e + " \n" + ad.name + " -> "+ movesDictionary[ad.moveId].name);
+            }
+        }
+    }
     public MoveData GetMove(MoveId id)
     {
-        foreach(MoveData m in movesData)
+        if (movesDictionary.ContainsKey(id))
         {
-            if (m.moveId == id)
-            {
-                return m;
-            }
+            return movesDictionary[id];
         }
         return null;
     }

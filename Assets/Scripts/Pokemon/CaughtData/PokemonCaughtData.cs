@@ -22,6 +22,7 @@ public class PokemonCaughtData
 
     public PokemonCaughtData() { }
     public AudioClip GetCry() { return pokemonBase.GetCry(); }
+    public Sprite GetIcon() { return pokemonBase.GetIcon(); }
 
     public PokemonCaughtData(PersistedPokemon pkmn)
     {
@@ -272,10 +273,18 @@ public class PokemonCaughtData
         bool isMoveInLearnedMoves = false;
         foreach (MoveEquipped me in learnedMoves)
         {
-            if (moveData.moveId == me.move.moveId)
+            try
             {
-                isMoveInLearnedMoves = true;
-                break;
+                if (moveData.moveId == me.move.moveId)
+                {
+                    isMoveInLearnedMoves = true;
+                    break;
+                }
+            }
+            catch
+            {
+                Debug.LogError(me.move);
+                Debug.LogError(moveData);
             }
         }
         if (!isMoveInLearnedMoves)

@@ -135,7 +135,7 @@ public class UIPokemonPC : MonoBehaviour
             Destroy(animator.gameObject);
         animator = Instantiate(poke.GetPokemonBaseData().GetAnimatorController());
         animator.transform.position = new Vector3(300000, 300000, 0);
-        pokemonIcon.sprite = poke.GetPokemonBaseData().icon;
+        pokemonIcon.sprite = poke.GetIcon();
         pokemonName.text = currentPokemon.GetName();
         if (pokemonLevel)
         {

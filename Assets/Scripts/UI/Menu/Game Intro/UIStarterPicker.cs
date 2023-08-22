@@ -18,7 +18,7 @@ public class UIStarterPicker : MonoBehaviour, ISelectHandler
     public UIStarterPicker Load(PokemonBaseData starter)
     {
         this.starter = starter;
-        chracterPreview.sprite = starter.icon;
+        chracterPreview.sprite = starter.GetIcon();
         return this;
     }
 

@@ -34,7 +34,7 @@ public class UIPokedexSectionBasicData : MonoBehaviour
         foreach (PokemonBaseEvolution evo in pokemon.evolutions)
         {
             PokedexPokemonData evoBase = PokemonMaster.GetInstance().GetPokemonPokedexData(evo.pokemonId);
-            Instantiate(evolutionPrefab, evolutionList).Load(evo, pokemonData.seenAmount > 0, evoBase.seenAmount > 0);
+            Instantiate(evolutionPrefab, evolutionList).Load(evo, pokemonData.seenAmount > 0 || pokemonData.caughtAmount > 0, evoBase.seenAmount > 0 || evoBase.caughtAmount > 0);
         }
         if (foundInPrefab)
         {

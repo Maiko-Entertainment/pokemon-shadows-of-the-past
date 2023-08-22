@@ -12,7 +12,7 @@ public class UIPokemonPCSwap : MonoBehaviour
     public UIPokemonPCSwap Load(PokemonCaughtData pokemon)
     {
         this.pokemon = pokemon;
-        icon.sprite = pokemon.GetPokemonBaseData().icon;
+        icon.sprite = pokemon.GetIcon();
         return this;
     }
 

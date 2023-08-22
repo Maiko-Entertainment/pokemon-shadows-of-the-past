@@ -32,7 +32,7 @@ public class UIItemOptionsPokemon : MonoBehaviour, ISelectHandler
     public UIItemOptionsPokemon Load(PokemonCaughtData pokemon)
     {
         this.pokemon = pokemon;
-        pokemonIcon.sprite = pokemon.GetPokemonBaseData().icon;
+        pokemonIcon.sprite = pokemon.GetIcon();
         pokemonName.text = pokemon.GetName();
         pokemonName.color = pokemon.IsFainted() ? faintedColor : Color.white;
         float currentHealth = pokemon.GetCurrentHealth();

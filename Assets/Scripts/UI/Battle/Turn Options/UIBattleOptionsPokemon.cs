@@ -25,7 +25,7 @@ public class UIBattleOptionsPokemon : MonoBehaviour
 
     public UIBattleOptionsPokemon Load(PokemonCaughtData pokemon)
     {
-        pokemonIcon.sprite = pokemon.GetPokemonBaseData().icon;
+        pokemonIcon.sprite = pokemon.GetIcon();
         pokemonName.text = pokemon.GetName();
         pokemonName.color = pokemon.IsFainted() ? faintedColor : Color.white;
         float maxHealth = pokemon.GetCurrentStats().health;

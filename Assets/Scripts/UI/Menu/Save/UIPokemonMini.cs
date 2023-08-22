@@ -11,7 +11,7 @@ public class UIPokemonMini : MonoBehaviour
 
     public UIPokemonMini Load(PokemonCaughtData pokemon)
     {
-        icon.sprite = pokemon.GetPokemonBaseData().icon;
+        icon.sprite = pokemon.GetIcon();
         if (level)
         {
             level.text = "Lv. " + pokemon.GetLevel();
@@ -22,7 +22,7 @@ public class UIPokemonMini : MonoBehaviour
     public UIPokemonMini Load(PersistedPokemon pokemon)
     {
         PokemonBaseData pbd = PokemonMaster.GetInstance().GetPokemonData(pokemon.pokemonId);
-        icon.sprite = pbd.icon;
+        icon.sprite = pbd.GetIcon();
         if (level)
         {
             level.text = "Lv. " + pokemon.level;

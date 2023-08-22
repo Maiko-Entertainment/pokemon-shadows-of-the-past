@@ -117,6 +117,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
             sen.SetValue(1f);
         }
         PokemonMaster.GetInstance().CaughtPokemon(starter.GetPokemonBaseData().pokemonId);
+        PokemonMaster.GetInstance().SeePokemon(starter.GetPokemonBaseData().pokemonId);
         UIPauseMenuMaster.GetInstance()?.OpenMenu(nextMenu, true);
     }
 

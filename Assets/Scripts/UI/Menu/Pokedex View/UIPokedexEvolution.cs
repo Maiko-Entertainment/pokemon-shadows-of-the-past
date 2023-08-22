@@ -12,7 +12,7 @@ public class UIPokedexEvolution : MonoBehaviour
     public UIPokedexEvolution Load(PokemonBaseEvolution evolution, bool hasSeen, bool hasSeenEvo)
     {
         PokemonBaseData evo = PokemonMaster.GetInstance().GetPokemonData(evolution.pokemonId);
-        icon.sprite = evo.icon;
+        icon.sprite = evo.GetIcon();
         if (hasSeenEvo)
         {
             icon.color = Color.white;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,11 +25,13 @@ public class ItemMaster : MonoBehaviour
 
     public void InstantiateDatabase()
     {
-        foreach(ItemDatabaseCategory itemDatabaseCategory in itemDatabaseCategory)
+        foreach (string name in Enum.GetNames(typeof(ItemCategory)))
         {
-            foreach (ItemData item in itemDatabaseCategory.itemList)
+            string categoryPath = ResourceMaster.Instance.GetItemCategoryPath(name);
+            ItemData[] baseDatas = Resources.LoadAll<ItemData>(categoryPath);
+            foreach (ItemData itemData in baseDatas)
             {
-                itemDataBase.Add(item.GetItemId(), item);
+                itemDataBase.Add(itemData.GetItemId(), itemData);
             }
         }
     }

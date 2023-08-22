@@ -29,11 +29,8 @@ public class PokemonMaster : MonoBehaviour
 
     public void InstantiateDatabase()
     {
-        foreach (PokemonBaseData pokemonData in otherPokemon)
-        {
-            pokedexData.Add(pokemonData.pokemonId, new PokedexPokemonData(pokemonData));
-        }
-        foreach (PokemonBaseData pokemonData in pokedex)
+        PokemonBaseData[] baseDatas = Resources.LoadAll<PokemonBaseData>(ResourceMaster.Instance.GetPokemonDataPath());
+        foreach (PokemonBaseData pokemonData in baseDatas)
         {
             pokedexData.Add(pokemonData.pokemonId, new PokedexPokemonData(pokemonData));
         }
