@@ -33,8 +33,8 @@ public class UIEvolutionMaster : MonoBehaviour
     public float evoGlowTime = 2f;
     public float finalWaveDuration = 2f;
 
-    private PokemonAnimationController originalPokemon;
-    private PokemonAnimationController evolvedPokemon;
+    private PokemonBattleAnimator originalPokemon;
+    private PokemonBattleAnimator evolvedPokemon;
 
     private bool isEvolving = false;
 
@@ -67,8 +67,9 @@ public class UIEvolutionMaster : MonoBehaviour
         evolutionPanel.FadeIn();
         UIPauseMenuMaster.GetInstance().HideWorldUI();
         AudioMaster.GetInstance().StopMusic();
-        PokemonAnimationController animator = pokemon.GetPokemonBaseData().GetAnimatorController();
+        PokemonBattleAnimator animator = BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator;
         originalPokemon = Instantiate(animator);
+        originalPokemon.Load(pokemon);
 
         Dictionary<string, string> variables = new Dictionary<string, string>();
         variables.Add("pokemon", pokemon.GetName());
@@ -119,7 +120,8 @@ public class UIEvolutionMaster : MonoBehaviour
         AudioMaster.GetInstance().PlaySfx(evolutionShineSound);
         yield return new WaitForSeconds(0.5f);
         // Change sprites to evolution
-        evolvedPokemon = Instantiate(evolution.GetAnimatorController());
+        evolvedPokemon = Instantiate(BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator);
+        evolvedPokemon.Load(evolution);
         Destroy(transition);
         originalPokemonImage.gameObject.SetActive(false);
         evolvedPokemonImage.gameObject.SetActive(true);
@@ -200,11 +202,11 @@ public class UIEvolutionMaster : MonoBehaviour
     {
         if (originalPokemon)
         {
-            originalPokemonImage.sprite = originalPokemon.GetCurrentSprite();
+            originalPokemonImage.sprite = originalPokemon.GetSprite();
         }
         if (evolvedPokemon)
         {
-            evolvedPokemonImage.sprite = evolvedPokemon.GetCurrentSprite();
+            evolvedPokemonImage.sprite = evolvedPokemon.GetSprite();
         }
     }
 }

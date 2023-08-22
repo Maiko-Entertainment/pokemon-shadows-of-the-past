@@ -56,7 +56,12 @@ public class PokemonBattleAnimator : MonoBehaviour
 
     public string GetPath(PokemonBattleData pokemon, bool useBack = false)
     {
-        PokemonBaseData baseData = pokemon.GetPokemonCaughtData().GetPokemonBaseData();
+        PokemonCaughtData caughtData = pokemon.GetPokemonCaughtData();
+        return GetPath(caughtData, useBack);
+    }
+    public string GetPath(PokemonCaughtData caughtData, bool useBack = false)
+    {
+        PokemonBaseData baseData = caughtData.GetPokemonBaseData();
         return GetPath(baseData, useBack);
     }
     public string GetPath(PokemonBaseData baseData, bool useBack = false)
@@ -81,6 +86,15 @@ public class PokemonBattleAnimator : MonoBehaviour
     public PokemonBattleAnimator Load(PokemonBattleData pokemon)
     {
         this.pokemon = pokemon;
+        timePassed = 0;
+        spritesFront = Resources.LoadAll<Sprite>(GetPath(pokemon, false));
+        spritesBack = Resources.LoadAll<Sprite>(GetPath(pokemon, true));
+        AddShadow();
+        UpdateSprite();
+        return this;
+    }
+    public PokemonBattleAnimator Load(PokemonCaughtData pokemon)
+    {
         timePassed = 0;
         spritesFront = Resources.LoadAll<Sprite>(GetPath(pokemon, false));
         spritesBack = Resources.LoadAll<Sprite>(GetPath(pokemon, true));

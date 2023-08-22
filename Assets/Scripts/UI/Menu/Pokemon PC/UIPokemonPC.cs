@@ -31,7 +31,7 @@ public class UIPokemonPC : MonoBehaviour
     public Transform typeList;
     public Transform pokemonSwapContainer;
 
-    protected PokemonAnimationController animator;
+    protected PokemonBattleAnimator animator;
     private PokemonCaughtData currentPokemon;
 
     private bool isInBox = false;
@@ -133,7 +133,7 @@ public class UIPokemonPC : MonoBehaviour
         UpdateSwapingPosition(poke);
         if (animator)
             Destroy(animator.gameObject);
-        animator = Instantiate(poke.GetPokemonBaseData().GetAnimatorController());
+        animator = Instantiate(BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator).Load(poke);
         animator.transform.position = new Vector3(300000, 300000, 0);
         pokemonIcon.sprite = poke.GetIcon();
         pokemonName.text = currentPokemon.GetName();

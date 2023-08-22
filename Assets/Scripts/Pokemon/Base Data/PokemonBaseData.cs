@@ -7,8 +7,6 @@ public class PokemonBaseData : ScriptableObject
 {
     public PokemonBaseId pokemonId;
     public string species;
-    [SerializeField] protected Sprite icon;
-    protected AudioClip cry;
     public PokemonBaseStats baseStats;
     public List<PokemonTypeId> types;
     public List<PokemonBaseAbility> abilities;
@@ -21,8 +19,6 @@ public class PokemonBaseData : ScriptableObject
     public List<PokemonMoveLearn> levelUpMoves;
     public List<MoveData> tmMoves;
     public List<PokemonBaseEvolution> evolutions;
-    public PokemonAnimationController battleAnimation;
-    public WorldInteractableBrainFollower overWorldPrefab;
     public List<PokemonBaseDataAreas> encounteredIn = new List<PokemonBaseDataAreas>();
 
     public AudioClip GetCry() {
@@ -88,15 +84,5 @@ public class PokemonBaseData : ScriptableObject
     public List<MoveData> GetTMMoves()
     {
         return tmMoves;
-    }
-
-    public PokemonAnimationController GetAnimatorController()
-    {
-        return battleAnimation;
-    }
-
-    public WorldInteractableBrainFollower GetOverWorldPrefab()
-    {
-        return overWorldPrefab;
     }
 }

@@ -33,7 +33,7 @@ public class UIPokemonView : MonoBehaviour
     public GameObject battlePickHelp;
     public UIPokemonGender genderIcon;
 
-    private PokemonAnimationController animator;
+    private PokemonBattleAnimator animator;
 
     private PokemonCaughtData currentPokemon;
     private PokemonCaughtData swapingPokemon;
@@ -176,7 +176,7 @@ public class UIPokemonView : MonoBehaviour
             Instantiate(battleTypePrefab, typeList).GetComponent<UIBattleType>().Load(t);
         if (animator)
             Destroy(animator.gameObject);
-        animator = Instantiate(pkmn.GetPokemonBaseData().battleAnimation);
+        animator = Instantiate(BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator).Load(pkmn);
         animator.transform.position = new Vector3(300000, 300000, 0);
         pokemonIcon.sprite = pkmn.GetIcon();
         if (pkmn.isShadow)

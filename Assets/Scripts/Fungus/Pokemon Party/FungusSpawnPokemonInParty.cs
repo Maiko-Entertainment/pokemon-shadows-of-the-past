@@ -21,20 +21,17 @@ public class FungusSpawnPokemonInParty : Command
         if (party.Count > partyIndex)
         {
             PokemonCaughtData pkmn = party[partyIndex];
-            if (pkmn.GetPokemonBaseData().GetOverWorldPrefab())
+            WorldInteractableWorldBrainPokemon agent = Instantiate(WorldMapMaster.GetInstance().pokeFollowerPrefab, spawnPoint).Load(pkmn);
+            agent.followMode = false;
+            MoveBrainDirectionData dir = new MoveBrainDirectionData(faceDirection, true);
+            agent.AddDirection(dir);
+            if (addToAgents)
             {
-                WorldInteractableBrainFollower agent = Instantiate(pkmn.GetPokemonBaseData().GetOverWorldPrefab(), spawnPoint);
-                agent.followMode = false;
-                MoveBrainDirectionData dir = new MoveBrainDirectionData(faceDirection, true);
-                agent.AddDirection(dir);
-                if (addToAgents)
+                if (overrideAgentName != "")
                 {
-                    if (overrideAgentName != "")
-                    {
-                        agent.moveIdentifier = overrideAgentName;
-                    }
-                    CutsceneMaster.GetInstance().GetCurrentCutscene().cutsceneAgents.Add(agent);
+                    agent.moveIdentifier = overrideAgentName;
                 }
+                CutsceneMaster.GetInstance().GetCurrentCutscene().cutsceneAgents.Add(agent);
             }
         }
         Continue();

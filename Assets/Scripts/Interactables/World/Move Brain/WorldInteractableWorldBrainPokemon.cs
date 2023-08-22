@@ -40,8 +40,9 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
         return ResourceMaster.Instance.GetBaseWorldPath(pokemon.GetPokemonBaseData());
     }
 
-    public override void Load()
+    public WorldInteractableWorldBrainPokemon Load(PokemonCaughtData pokemon)
     {
+        this.pokemon = pokemon;
         Sprite[] sprites = Resources.LoadAll<Sprite>(GetPath(pokemon));
 
         spritesDown = new Sprite[columns];
@@ -54,6 +55,8 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
         Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Top), spritesUp, 0, columns);
 
         base.Load();
+
+        return this;
     }
 
     public MoveBrainDirection GetDirectionFromVector(Vector2 direction)

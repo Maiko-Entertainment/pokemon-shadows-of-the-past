@@ -51,11 +51,10 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
         {
             if (random < spawnWorldEntityChance && pokemonWorld)
             {
-                worldEntity = Instantiate(pokemonWorld, transform);
+                worldEntity = Instantiate(pokemonWorld, transform).Load(pokemon);
                 worldEntity.transform.localPosition = spawnWorldOffset;
                 worldEntity.AddDirection(new MoveBrainDirectionData(spawnDirection, true));
                 worldEntity.followMode = false;
-                worldEntity.pokemon = pokemon;
                 SpriteRenderer renderer = worldEntity.GetComponentInChildren<SpriteRenderer>();
                 if (currentEncounter.entityMaterial && renderer)
                 {

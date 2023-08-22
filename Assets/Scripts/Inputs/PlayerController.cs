@@ -288,8 +288,7 @@ public class PlayerController : MonoBehaviour
             WorldInteractableWorldBrainPokemon followerPrefab = WorldMapMaster.GetInstance().pokeFollowerPrefab;
             if (followerPrefab)
             {
-                WorldInteractableWorldBrainPokemon follower = Instantiate(followerPrefab);
-                follower.pokemon = current;
+                WorldInteractableWorldBrainPokemon follower = Instantiate(followerPrefab).Load(current);
                 follower.transform.position = transform.position;
                 followers.Insert(0, follower);
             }

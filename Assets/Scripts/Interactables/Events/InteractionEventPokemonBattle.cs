@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class InteractionEventPokemonBattle : InteractionEvent
 {
-    public SceneInteractablePokemonEncounter scene;
     public WorldInteractablePokemonEncounter worldEncounter;
-    public InteractionEventPokemonBattle(SceneInteractablePokemonEncounter scene)
-    {
-        this.scene = scene;
-    }
 
     public InteractionEventPokemonBattle(WorldInteractablePokemonEncounter worldEncounter)
     {
@@ -19,7 +14,6 @@ public class InteractionEventPokemonBattle : InteractionEvent
     public override void Execute()
     {
         base.Execute();
-        scene?.Execute();
         worldEncounter?.Execute();
     }
 }

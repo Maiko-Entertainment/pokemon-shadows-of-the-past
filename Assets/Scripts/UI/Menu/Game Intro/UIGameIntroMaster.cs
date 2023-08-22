@@ -32,7 +32,7 @@ public class UIGameIntroMaster : MonoBehaviour
     public AudioClip openMenuSound;
     public AudioClip submitSound;
 
-    private PokemonAnimationController animatorCheat;
+    private PokemonBattleAnimator animatorCheat;
     private PokemonBaseData pickedStarter;
     private bool isStarterMale = true;
 
@@ -94,7 +94,7 @@ public class UIGameIntroMaster : MonoBehaviour
         starterDescription.text = pokemon.GetPokedexEntry();
         if (animatorCheat)
             Destroy(animatorCheat.gameObject);
-        animatorCheat = Instantiate(pokemon.battleAnimation);
+        animatorCheat = Instantiate(BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator).Load(pokemon);
         animatorCheat.transform.position = new Vector3(3000, 3000);
         foreach (Transform t in typesList)
         {
