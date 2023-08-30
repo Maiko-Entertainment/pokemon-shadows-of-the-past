@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class UIVariablesList : MonoBehaviour
@@ -13,7 +14,7 @@ public class UIVariablesList : MonoBehaviour
         {
             Destroy(e.gameObject);
         }
-        List<SaveElement> elements = SaveMaster.Instance.saveElements;
+        List<SaveElement> elements = SaveMaster.Instance.saveElements.Values.ToList();
         foreach (SaveElement e in elements)
         {
             Instantiate(variablePreafb, variableList).Load(e.id);

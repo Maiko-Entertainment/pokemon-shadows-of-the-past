@@ -26,7 +26,7 @@ public class MoveDataMultihit : MoveData
         bool moveHits = bm.CheckForMoveHit(battleEvent);
 
         // Tell is using move and first anims
-        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
+        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMoveFlowchart(battleEvent));
         // Self targeting moves dont usually miss
         if (moveHits || targetType == MoveTarget.Self)
         {

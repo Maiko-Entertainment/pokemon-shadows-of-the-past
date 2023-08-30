@@ -31,13 +31,23 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
             }
             if (isApplicable)
             {
-                if (showAbility)
-                {
-                    BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(target);
-                }
                 if (grantsInmunite)
                 {
-                    BattleAnimatorMaster.GetInstance().AddEventInmuneTextEvent();
+                    BattleMaster.GetInstance()?.GetCurrentBattle()?.AddEvent(
+                        new BattleEventNarrative(
+                            new BattleTriggerMessageData(
+                                BattleAnimatorMaster.GetInstance().battleFlowchart,
+                                "Inmune"
+                            )));
+                    if (showAbility)
+                        BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(target);
+                    BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMoveFlowchart(battleEvent));
+                    maxTriggers--;
+                    return false;
+                }
+                else if (showAbility)
+                {
+                    BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(target);
                 }
                 if (useMoveMods != null)
                 {

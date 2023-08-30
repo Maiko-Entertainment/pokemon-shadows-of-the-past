@@ -10,7 +10,7 @@ public class SpawnConditionDataSaveValue
 
     public bool IsTrue()
     {
-        SaveElement elem = SaveMaster.Instance.GetSaveElement(saveVariable);
+        SaveElement elem = SaveMaster.Instance.GetSaveElementData(saveVariable);
         SaveElementNumber elemNumber = (SaveElementNumber)elem;
         float saveValue = (float)elemNumber.GetValue();
         switch (condition)

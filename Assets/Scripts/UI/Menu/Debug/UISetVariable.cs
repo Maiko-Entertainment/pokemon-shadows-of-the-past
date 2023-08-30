@@ -17,7 +17,7 @@ public class UISetVariable : MonoBehaviour
     public UISetVariable Load(SaveElementId element)
     {
         this.element = element;
-        SaveElement se = SaveMaster.Instance.GetSaveElement(element);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(element);
         varName.text = se.elementName;
         inputField.text = se.GetValue().ToString();
         return this;
@@ -25,7 +25,7 @@ public class UISetVariable : MonoBehaviour
 
     public void SetVariable(string value)
     {
-        SaveElement se = SaveMaster.Instance.GetSaveElement(element);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(element);
         switch (se.GetValueType())
         {
             case SaveValueType.number:

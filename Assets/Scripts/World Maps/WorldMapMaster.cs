@@ -141,7 +141,7 @@ public class WorldMapMaster : MonoBehaviour
     {
         if (player == null)
         {
-            SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.characterModelId);
+            SaveElement se = SaveMaster.Instance.GetSaveElementData(SaveElementId.characterModelId);
             int index = (int)(float)se.GetValue();
             player = Instantiate(GetPlayerPrefab(index)).GetComponent<PlayerController>();
         }
@@ -155,7 +155,7 @@ public class WorldMapMaster : MonoBehaviour
             player.DestroyFollowers();
             Destroy(player.gameObject);
         }
-        SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.characterModelId);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(SaveElementId.characterModelId);
         int index = (int)(float)se.GetValue();
         player = Instantiate(GetPlayerPrefab(index)).GetComponent<PlayerController>();
         player.UpdatePokeFollower();
@@ -217,7 +217,7 @@ public class WorldMapMaster : MonoBehaviour
 
     public TimeOfDayType GetTimeOfDay()
     {
-        SaveElement pse = SaveMaster.Instance.GetSaveElement(SaveElementId.timeOfDay);
+        SaveElement pse = SaveMaster.Instance.GetSaveElementData(SaveElementId.timeOfDay);
         TimeOfDayType day = (TimeOfDayType)(float)pse.GetValue();
         return day;
     }

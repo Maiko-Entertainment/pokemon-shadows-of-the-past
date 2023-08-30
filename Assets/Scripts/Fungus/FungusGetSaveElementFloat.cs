@@ -13,7 +13,7 @@ public class FungusGetSaveElementFloat : Command
     public SaveElementId saveId;
     public override void OnEnter()
     {
-        SaveElement se = SaveMaster.Instance.GetSaveElement(saveId);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(saveId);
         GetFlowchart().SetFloatVariable(saveId.ToString(), (float)se.GetValue());
         Continue();
     }

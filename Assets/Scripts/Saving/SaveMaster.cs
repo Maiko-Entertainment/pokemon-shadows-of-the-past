@@ -19,7 +19,7 @@ public class SaveMaster : MonoBehaviour
     public bool loadHackedData = false;
     public bool startNewGame = false;
 
-    public List<SaveElement> saveElements = new List<SaveElement>();
+    public Dictionary<SaveElementId, SaveElement> saveElements = new Dictionary<SaveElementId, SaveElement>();
 
     private void Awake()
     {
@@ -30,6 +30,7 @@ public class SaveMaster : MonoBehaviour
         else
         {
             Instance = this;
+            InstantiateDatabase();
             LoadSaveSlots();
         }
     }
@@ -50,6 +51,16 @@ public class SaveMaster : MonoBehaviour
         else
         {
             StartCoroutine(GoToMainMenu());
+        }
+    }
+
+    public void InstantiateDatabase()
+    {
+        string savePath = ResourceMaster.Instance.GetSaveElementsPath();
+        SaveElement[] saveElementsData = Resources.LoadAll<SaveElement>(savePath);
+        foreach (SaveElement se in saveElementsData)
+        {
+            saveElements.Add(se.id, se);
         }
     }
 
@@ -151,17 +162,14 @@ public class SaveMaster : MonoBehaviour
     {
         return GetSavePath() + "/Save" + index + ".txt";
     }
-    public SaveElement GetSaveElement(SaveElementId id)
+    public SaveElement GetSaveElementData(SaveElementId id)
     {
-        foreach(SaveElement se in saveElements)
-        {
-            if (se.id == id)
-                return se;
-        }
+        if (saveElements.ContainsKey(id))
+            return saveElements[id];
         return null;
     }
 
-    public PersistedSaveElement GetSaveElementInner(SaveElementId id)
+    public PersistedSaveElement GetSaveElementFromSavefile(SaveElementId id)
     {
         foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
         {

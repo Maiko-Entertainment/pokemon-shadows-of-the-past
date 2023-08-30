@@ -7,7 +7,6 @@ public class ItemMaster : MonoBehaviour
 {
     public static ItemMaster Instance;
 
-    public List<ItemDatabaseCategory> itemDatabaseCategory = new List<ItemDatabaseCategory>();
     private Dictionary<ItemId, ItemData> itemDataBase = new Dictionary<ItemId, ItemData>();
 
     private void Awake()

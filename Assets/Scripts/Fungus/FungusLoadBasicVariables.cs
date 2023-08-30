@@ -20,8 +20,8 @@ public class FungusLoadBasicVariables : Command
         }
         string varPlayerName = SaveElementId.playerName.ToString();
         string varStoryProgressName = SaveElementId.storyProgress.ToString();
-        SaveElement playerName = SaveMaster.Instance.GetSaveElement(SaveElementId.playerName);
-        SaveElement storyProgress = SaveMaster.Instance.GetSaveElement(SaveElementId.storyProgress);
+        SaveElement playerName = SaveMaster.Instance.GetSaveElementData(SaveElementId.playerName);
+        SaveElement storyProgress = SaveMaster.Instance.GetSaveElementData(SaveElementId.storyProgress);
         if (GetFlowchart().GetVariable(varPlayerName)) GetFlowchart().SetStringVariable(varPlayerName, playerName.GetValue().ToString());
         if (GetFlowchart().GetVariable(varStoryProgressName)) GetFlowchart().SetFloatVariable(varStoryProgressName, (float)storyProgress.GetValue());
         Continue();

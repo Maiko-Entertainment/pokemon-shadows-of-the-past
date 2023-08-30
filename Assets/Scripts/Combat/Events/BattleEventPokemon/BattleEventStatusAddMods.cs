@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class BattleEventStatusAddMods : MonoBehaviour
+[System.Serializable]
+public class BattleEventStatusAddMods
 {
     public bool forceStatus = false;
 

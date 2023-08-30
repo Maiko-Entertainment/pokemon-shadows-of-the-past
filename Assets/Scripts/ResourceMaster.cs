@@ -18,6 +18,7 @@ public class ResourceMaster : MonoBehaviour
     public string pokemonAbilityPath = "ScriptableObjects/Pokemon/Abilities";
     public string pokemonMovesPath = "ScriptableObjects/Pokemon/Moves";
     public string itemsCategoryPath = "ScriptableObjects/Items/{category}";
+    public string saveElementsPath = "ScriptableObjects/SaveElements";
 
     private void Awake()
     {
@@ -61,5 +62,9 @@ public class ResourceMaster : MonoBehaviour
     {
         string parsed = itemsCategoryPath.Replace("{category}", category);
         return parsed;
+    }
+    public string GetSaveElementsPath()
+    {
+        return saveElementsPath;
     }
 }

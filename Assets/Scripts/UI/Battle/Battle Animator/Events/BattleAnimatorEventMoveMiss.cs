@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleAnimatorEventMoveMiss : BattleAnimatorEventPokemonMove
+public class BattleAnimatorEventMoveMiss : BattleAnimatorEventPokemonMoveFlowchart
 {
     public BattleAnimatorEventMoveMiss(BattleEventUseMove be) : base(be)
     {

@@ -11,7 +11,7 @@ public class FungusGetSaveElement : Command
     public SaveElementId saveId;
     public override void OnEnter()
     {
-        SaveElement se = SaveMaster.Instance.GetSaveElement(saveId);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(saveId);
         GetFlowchart().SetStringVariable(saveId.ToString(), se.ToString());
         Continue();
     }

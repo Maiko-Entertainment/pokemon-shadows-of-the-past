@@ -89,7 +89,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
 
     public void HandleSubmit()
     {
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElement(SaveElementId.starterPickedId);
+        SaveElement characterPicked = SaveMaster.Instance.GetSaveElementData(SaveElementId.starterPickedId);
         characterPicked.SetValue((float)pickedStarter.pokemonId);
 
         PokemonCaughtData starter = new PokemonCaughtData();
@@ -102,7 +102,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
         starter.abilityId = pickedStarter.GetRandomAbility();
         starter.friendship = pickedStarter.baseFriendship;
         PartyMaster.GetInstance().AddPartyMember(starter);
-        SaveElement se = SaveMaster.Instance.GetSaveElement(SaveElementId.startedTypePicked);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(SaveElementId.startedTypePicked);
         SaveElementNumber sen = (SaveElementNumber)se;
         if (starter.GetTypes().Contains(PokemonTypeId.Fire))
         {

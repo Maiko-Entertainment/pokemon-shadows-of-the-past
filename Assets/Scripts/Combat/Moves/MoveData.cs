@@ -36,7 +36,7 @@ public class MoveData : ScriptableObject
         PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
         bool moveHits = bm.CheckForMoveHit(battleEvent) || alwaysHit;
         // Move use anim
-        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMove(battleEvent));
+        BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMoveFlowchart(battleEvent));
         if (!moveHits)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventMoveMiss(battleEvent));

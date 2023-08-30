@@ -100,14 +100,14 @@ public class InventoryMaster : MonoBehaviour
 
     public int GetMoney()
     {
-        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElement(SaveElementId.money);
+        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElementData(SaveElementId.money);
         float moneyAmount = (float)money.GetValue();
         return (int)moneyAmount;
     }
 
     public int ChangeMoney(int change)
     {
-        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElement(SaveElementId.money);
+        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElementData(SaveElementId.money);
         float moneyAmount = (float)money.GetValue();
         int amountAfter = Mathf.Max(0, (int) moneyAmount + change);
         money.SetValue((float) amountAfter);

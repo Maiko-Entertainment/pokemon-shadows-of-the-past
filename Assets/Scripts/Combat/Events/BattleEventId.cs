@@ -24,5 +24,6 @@ public enum BattleEventId
     battleEnd = 15,
     battleRun = 18,
     animation = 19,
-    pokemonAddStatusSuccess = 21
+    pokemonAddStatusSuccess = 21,
+    dialogue = 23,
 }

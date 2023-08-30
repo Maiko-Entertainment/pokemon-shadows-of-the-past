@@ -13,7 +13,7 @@ public class FungusSetSaveElement : Command
 
     public override void OnEnter()
     {
-        SaveElement se = SaveMaster.Instance.GetSaveElement(variableId);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(variableId);
         SaveElementNumber sen = (SaveElementNumber)se;
         switch (operation)
         {

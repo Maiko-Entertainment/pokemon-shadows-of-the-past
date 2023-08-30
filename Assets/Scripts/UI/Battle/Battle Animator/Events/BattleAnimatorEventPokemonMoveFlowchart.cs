@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleAnimatorEventPokemonMove : BattleAnimatorEventPokemon
+public class BattleAnimatorEventPokemonMoveFlowchart : BattleAnimatorEventPokemon
 {
     protected BattleEventUseMove moveEvent;
-    public BattleAnimatorEventPokemonMove(BattleEventUseMove battleEvent) : base(battleEvent.pokemon)
+    public BattleAnimatorEventPokemonMoveFlowchart(BattleEventUseMove battleEvent) : base(battleEvent.pokemon)
     {
         moveEvent = battleEvent;
         eventType = BattleAnimatorEventType.BattleDescriptionText;

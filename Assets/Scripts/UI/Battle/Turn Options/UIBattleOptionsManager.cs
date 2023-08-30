@@ -219,7 +219,7 @@ public class UIBattleOptionsManager : MonoBehaviour
 
     public bool IsTacticActive()
     {
-        SaveElementNumber storyProgress = (SaveElementNumber)SaveMaster.Instance.GetSaveElement(SaveElementId.storyProgress);
+        SaveElementNumber storyProgress = (SaveElementNumber)SaveMaster.Instance.GetSaveElementData(SaveElementId.storyProgress);
         return ((float)storyProgress.GetValue() >= tacticsStoryProgressNeeded);
     }
 }

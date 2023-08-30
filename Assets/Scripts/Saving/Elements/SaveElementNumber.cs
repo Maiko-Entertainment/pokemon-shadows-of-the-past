@@ -6,7 +6,7 @@ public class SaveElementNumber : SaveElement
 
     public override object GetValue()
     {
-        PersistedSaveElement se = SaveMaster.Instance.GetSaveElementInner(id);
+        PersistedSaveElement se = SaveMaster.Instance.GetSaveElementFromSavefile(id);
         if (se != null)
         {
             float value = (float)se.value;
