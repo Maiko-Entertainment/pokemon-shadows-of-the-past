@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6646990830946826405}
   - component: {fileID: 3646937748477603277}
-  - component: {fileID: 2642946830236152585}
+  - component: {fileID: 2886511288039332110}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2642946830236152585
+--- !u!114 &2886511288039332110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3882105676245632253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edab67ae82986fb45b8f9657585d24f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 97895a88846588b4798bad0b8ec42044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
@@ -154,9 +154,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc24b5ad368853441ae7ce1b1f1017e2, type: 2}
   - {fileID: 11400000, guid: 571c3c9f7539b514aa63f532e3f788a7, type: 2}
   activeChance: 0.2
+  ignoreDistanceRange: 0
   retryInterval: 7
   spawnWorldEntityChance: 0.25
   spawnWorldOffset: {x: 0, y: 0, z: 0}
+  spawnYRenderOffset: 0
   spawnDirection: 2
   showActivePrefabWithWorldEntity: 0
   activePrefab: {fileID: 6390779988497005388, guid: 1a30cad6b8a3df54fae91c8114b83dc9, type: 3}

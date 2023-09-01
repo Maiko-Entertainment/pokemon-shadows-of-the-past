@@ -5,16 +5,15 @@ using UnityEngine;
 public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
 {
     public List<PokemonTypeId> affectedTypes = new List<PokemonTypeId>();
-    public bool grantsInmunite = false;
+    public bool grantsInmunity = false;
     public bool showAbility = false;
-    public BattleTriggerOnPokemonTakeMove(PokemonBattleData pokemon, UseMoveMods moveMods = null, List<PokemonTypeId> affectedTypes = null, bool showAbility = false):
+
+    public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
+    public List<MoveStatChange> statChanges = new List<MoveStatChange>();
+    public BattleTriggerOnPokemonTakeMove(PokemonBattleData pokemon, UseMoveMods moveMods = null, bool showAbility = false):
         base(pokemon, moveMods, true)
     {
-        if (affectedTypes != null)
-        {
-            this.affectedTypes = affectedTypes;
-            this.showAbility = showAbility;
-        }
+        this.showAbility = showAbility;
     }
 
     public override bool Execute(BattleEventUseMove battleEvent)
@@ -23,6 +22,8 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
         if (target.battleId == pokemon.battleId && maxTriggers > 0)
         {
             bool isApplicable = true;
+            bool willTrigger = false;
+            bool showedAbility = !showAbility;
             if (affectedTypes.Count > 0)
             {
                 if (!affectedTypes.Contains(battleEvent.move.typeId)){
@@ -31,28 +32,34 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
             }
             if (isApplicable)
             {
-                if (grantsInmunite)
+                // Only show if any stat or status chance was met
+                willTrigger = willTrigger || HandleStatsChanges(pokemon);
+                willTrigger = willTrigger || HandleStatusAdds(pokemon);
+                if (useMoveMods != null)
                 {
+                    battleEvent.moveMods.Implement(useMoveMods);
+                    willTrigger = true;
+                }
+                if (grantsInmunity)
+                {
+                    willTrigger = true;
                     BattleMaster.GetInstance()?.GetCurrentBattle()?.AddEvent(
                         new BattleEventNarrative(
                             new BattleTriggerMessageData(
                                 BattleAnimatorMaster.GetInstance().battleFlowchart,
                                 "Inmune"
                             )));
-                    if (showAbility)
+                    if (!showedAbility)
+                    {
+                        showedAbility = true;
                         BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(target);
+                    }
                     BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMoveFlowchart(battleEvent));
                     maxTriggers--;
                     return false;
                 }
-                else if (showAbility)
-                {
+                if (!showedAbility && willTrigger)
                     BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(target);
-                }
-                if (useMoveMods != null)
-                {
-                    battleEvent.moveMods.Implement(useMoveMods);
-                }
             }
             else
             {
@@ -64,5 +71,40 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
             maxTriggers++;
         }
         return base.Execute(battleEvent);
+    }
+    public virtual bool HandleStatsChanges(PokemonBattleData pokemon)
+    {
+        bool wasTriggered = false;
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        foreach (MoveStatChange msc in statChanges)
+        {
+            PokemonBattleData pokemonTarget = bm.GetTarget(pokemon, msc.targetType);
+            float random = Random.value;
+            if (random < msc.changeChance)
+            {
+                bm.AddStatChangeEvent(pokemonTarget, msc.statsAmountChange);
+                wasTriggered = true;
+            }
+        }
+        return wasTriggered;
+    }
+
+    public virtual bool HandleStatusAdds(PokemonBattleData pokemon)
+    {
+        bool wasTriggered = false;
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        foreach (MoveStatusChance msc in statusChances)
+        {
+            PokemonBattleData pokemonTarget = bm.GetTarget(pokemon, msc.targetType);
+            float random = Random.value;
+            bool hasStatus = pokemonTarget.GetNonPrimaryStatus().Find((se) => msc.effectId == se.effectId) != null;
+            bool hasPrimaryAlready = pokemonTarget.GetCurrentPrimaryStatus() != null && pokemonTarget.GetCurrentPrimaryStatus().effectId == msc.effectId;
+            if (random < msc.chance && !hasStatus && !hasPrimaryAlready)
+            {
+                bm.AddStatusEffectEvent(pokemonTarget, msc.effectId, showAbility);
+                wasTriggered = true;
+            }
+        }
+        return wasTriggered;
     }
 }

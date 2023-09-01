@@ -15,7 +15,7 @@ public class PokemonBaseData : ScriptableObject
     public float captureRate;
     public float baseFriendship;
     public float baseExp = 50;
-    public string pokedexEntry;
+    [TextArea] public string pokedexEntry;
     public List<PokemonMoveLearn> levelUpMoves;
     public List<MoveData> tmMoves;
     public List<PokemonBaseEvolution> evolutions;

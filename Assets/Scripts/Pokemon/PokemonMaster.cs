@@ -123,16 +123,9 @@ public class PokemonMaster : MonoBehaviour
 
     public PokemonBaseData GetPokemonData(PokemonBaseId id)
     {
-        foreach (PokemonBaseData pkmn in pokedex)
-        {
-            if (pkmn.pokemonId == id)
-                return pkmn;
-        }
-        foreach (PokemonBaseData pkmn in otherPokemon)
-        {
-            if (pkmn.pokemonId == id)
-                return pkmn;
-        }
+        PokedexPokemonData data = GetPokemonPokedexData(id);
+        if (data != null && data.pokemon != null)
+            return data.pokemon;
         return null;
     }
 

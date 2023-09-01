@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4357663503606262145}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,8 +52,14 @@ MonoBehaviour:
   possibleEncounters:
   - {fileID: 11400000, guid: 8f995d0a713f95545af05f2b490a6096, type: 2}
   - {fileID: 11400000, guid: 74da5799d5005064a8a888dd7faa67c1, type: 2}
-  activeChance: 1
+  activeChance: 0.6
+  ignoreDistanceRange: 1
   retryInterval: 9999999
+  spawnWorldEntityChance: 1
+  spawnWorldOffset: {x: 0, y: -0.1, z: 0}
+  spawnYRenderOffset: 10
+  spawnDirection: 2
+  showActivePrefabWithWorldEntity: 1
   activePrefab: {fileID: 7583780634418285643, guid: 40f255cef980c4f4a95d5ae9c548836a, type: 3}
   battleData:
     battleMusic: {fileID: 8300000, guid: 135db6e2dd99fe04997480380878b918, type: 3}
@@ -90,3 +97,65 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
+--- !u!1001 &846727351497110397
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2910011990060696919}
+    m_Modifications:
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9111947011320270619, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+      propertyPath: m_Name
+      value: Pokemon Tree Cover
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+--- !u!4 &4357663503606262145 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4015427272398150396, guid: 8ccfd8a3e7387e9468fd57a8daa55361, type: 3}
+  m_PrefabInstance: {fileID: 846727351497110397}
+  m_PrefabAsset: {fileID: 0}

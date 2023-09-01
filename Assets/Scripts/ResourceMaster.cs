@@ -58,10 +58,9 @@ public class ResourceMaster : MonoBehaviour
         return pokemonMovesPath;
     }
 
-    public string GetItemCategoryPath(string category)
+    public string GetItemCategoryPath()
     {
-        string parsed = itemsCategoryPath.Replace("{category}", category);
-        return parsed;
+        return itemsCategoryPath;
     }
     public string GetSaveElementsPath()
     {

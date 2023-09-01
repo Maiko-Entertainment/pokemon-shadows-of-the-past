@@ -38,7 +38,7 @@ public class UIPokemonView : MonoBehaviour
     private PokemonCaughtData currentPokemon;
     private PokemonCaughtData swapingPokemon;
     private int currentSectionIndex = 0;
-    private bool isInPreFaintPick = false;
+    private bool isInPostFaintPick = false;
     private bool isTyping = false;
     private bool closing = false;
 
@@ -46,9 +46,9 @@ public class UIPokemonView : MonoBehaviour
     {
         Load();
     }
-    public void SetPrefaint(bool isInPreFaintPick)
+    public void SetPrefaint(bool isInPostFaintPick)
     {
-        this.isInPreFaintPick = isInPreFaintPick;
+        this.isInPostFaintPick = isInPostFaintPick;
     }
 
     public void UpdatePokemonList(PokemonCaughtData newSelected)
@@ -100,7 +100,7 @@ public class UIPokemonView : MonoBehaviour
     }
     public void HandleSwaping(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick && !isTyping)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPostFaintPick && !isTyping)
         {
             if (swapingPokemon != null)
             {
@@ -283,7 +283,7 @@ public class UIPokemonView : MonoBehaviour
     }
     public void HandleClose(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPreFaintPick && !isTyping)
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && !isInPostFaintPick && !isTyping)
         {
             HandleClose();
         }
@@ -302,7 +302,7 @@ public class UIPokemonView : MonoBehaviour
         closing = true;
         if (BattleMaster.GetInstance().IsBattleActive())
         {
-            BattleAnimatorMaster.GetInstance().HidePokemonSelection(!isInPreFaintPick);
+            BattleAnimatorMaster.GetInstance().HidePokemonSelection(!isInPostFaintPick);
         }
         else
         {

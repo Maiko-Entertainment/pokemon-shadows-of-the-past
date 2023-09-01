@@ -6,6 +6,7 @@ public class SaveElement : ScriptableObject
 {
     public SaveElementId id;
     public string elementName;
+    [TextArea] public string descriptionHelp;
 
     public virtual object GetValue()
     {

@@ -6,9 +6,11 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
 {
     public List<PokemonEncounter> possibleEncounters = new List<PokemonEncounter>();
     public float activeChance = 0.3f;
+    public bool ignoreDistanceRange = false;
     public float retryInterval = 7;
     public float spawnWorldEntityChance = 0.25f;
     public Vector3 spawnWorldOffset = Vector3.zero;
+    public float spawnYRenderOffset = 0f;
     public MoveBrainDirection spawnDirection = MoveBrainDirection.Bottom;
     public bool showActivePrefabWithWorldEntity = false;
     public GameObject activePrefab;
@@ -55,6 +57,7 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
                 worldEntity.transform.localPosition = spawnWorldOffset;
                 worldEntity.AddDirection(new MoveBrainDirectionData(spawnDirection, true));
                 worldEntity.followMode = false;
+                worldEntity.heightOffset = spawnYRenderOffset;
                 SpriteRenderer renderer = worldEntity.GetComponentInChildren<SpriteRenderer>();
                 if (currentEncounter.entityMaterial && renderer)
                 {
@@ -164,6 +167,6 @@ public class WorldInteractablePokemonEncounter : WorldInteractable
         if (isMainMenu) return true;
         PlayerController player = WorldMapMaster.GetInstance().GetPlayer();
         float distance = Vector3.Distance(player.transform.position, transform.position);
-        return 2f < distance && distance < 15f;
+        return ignoreDistanceRange || 2f < distance && distance < 15f;
     }
 }

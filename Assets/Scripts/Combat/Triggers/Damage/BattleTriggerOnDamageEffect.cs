@@ -10,6 +10,7 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
     public bool workOnlyOnOppositeGender = false;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
+    public List<PokemonTypeId> affectedMoveTypes = new List<PokemonTypeId>();
 
     public BattleTriggerOnDamageEffect(PokemonBattleData pokemon, List<MoveStatusChance> statusChances, List<MoveStatChange> moveStatChanges) : base(pokemon, true)
     {
@@ -21,6 +22,7 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
     public override bool Execute(BattleEventTakeDamageSuccess battleEvent)
     {
         DamageSummary summary = battleEvent.damageEvent.damageSummary;
+        bool wasTriggered = false;
         if (damageSources.Contains(summary.damageSource))
         {
             if (!IsRestrictedByGender(battleEvent))
@@ -29,15 +31,22 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
                 if (summary.damageSource == DamageSummarySource.Move)
                 {
                     MoveData moveData = MovesMaster.Instance.GetMove((MoveId)summary.sourceId);
+                    bool meetsMoveTypeCondition = true;
+                    if (affectedMoveTypes.Count > 0 && !affectedMoveTypes.Contains(moveData.GetMoveType()))
+                    {
+                        meetsMoveTypeCondition = false;
+                    }
                     // If requires contact but it doesnt have contact exits
-                    if (requiresContact && !moveData.isContact)
+                    if (requiresContact && !moveData.isContact || !meetsMoveTypeCondition)
                     {
                         return base.Execute(battleEvent);
                     }
                 }
-                HandleStatsChanges(pokemon);
-                HandleStatusAdds(pokemon);
+                wasTriggered = wasTriggered || HandleStatsChanges(pokemon);
+                wasTriggered = wasTriggered || HandleStatusAdds(pokemon);
             }
+            if (wasTriggered)
+                BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(pokemon);
         }
         return base.Execute(battleEvent);
     }
@@ -68,7 +77,7 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
         }
     }
 
-    public virtual void HandleStatsChanges(PokemonBattleData pokemon)
+    public virtual bool HandleStatsChanges(PokemonBattleData pokemon)
     {
         bool wasTriggered = false;
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
@@ -79,16 +88,13 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
             if (random < msc.changeChance)
             {
                 bm.AddStatChangeEvent(pokemonTarget, msc.statsAmountChange);
-                if (!wasTriggered && isAbilitySource)
-                {
-                    wasTriggered = true;
-                    BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(pokemon);
-                }
+                wasTriggered = true;
             }
         }
+        return wasTriggered;
     }
 
-    public virtual void HandleStatusAdds(PokemonBattleData pokemon)
+    public virtual bool HandleStatusAdds(PokemonBattleData pokemon)
     {
         bool wasTriggered = false;
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
@@ -101,12 +107,9 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
             if (random < msc.chance && !hasStatus && !hasPrimaryAlready)
             {
                 bm.AddStatusEffectEvent(pokemonTarget, msc.effectId, isAbilitySource);
-                if (!wasTriggered && isAbilitySource)
-                {
-                    wasTriggered = true;
-                    BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(pokemon);
-                }
+                wasTriggered = true;
             }
         }
+        return wasTriggered;
     }
 }

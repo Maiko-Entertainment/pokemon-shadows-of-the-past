@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 4808765583831566908}
   - component: {fileID: 4954077622482211412}
   - component: {fileID: 4496280798261500148}
+  - component: {fileID: 1554192828594706212}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -243,9 +244,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 1779769330358463793}
+  - {fileID: 2731936343046976305}
   selectedCommands:
-  - {fileID: 3848620532914933613}
+  - {fileID: 1554192828594706212}
   variables:
   - {fileID: 4103577494976808626}
   - {fileID: 8273211975782687916}
@@ -772,7 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 9
   indentLevel: 1
-  storyText: She was just plain mean and pushed me away...
+  storyText: She told me not to waste her time and pushed me away.
   description: 
   character: {fileID: 4561717602919394249}
   portrait: {fileID: 0}
@@ -1614,7 +1615,7 @@ MonoBehaviour:
   stage: {fileID: 3522181831643848614}
   character: {fileID: 4561717602919394249}
   replacedCharacter: {fileID: 0}
-  portrait: {fileID: 21300000, guid: c7ab9d600b03b6c45919c41fc1445966, type: 3}
+  portrait: {fileID: 21300000, guid: 01fa181eb025d0f4781fe36549c39495, type: 3}
   offset: 0
   fromPosition: {fileID: 0}
   toPosition: {fileID: 0}
@@ -2032,6 +2033,7 @@ MonoBehaviour:
   - {fileID: 5550501348351329007}
   - {fileID: 2965806499817393135}
   - {fileID: 3806228858295568868}
+  - {fileID: 1554192828594706212}
   - {fileID: 1587723586528637723}
   - {fileID: 6061950563309841974}
   - {fileID: 638411154609645487}
@@ -4628,6 +4630,36 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &1554192828594706212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296344875300084519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac5ce55bc698fa4290939ef6e426501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 174
+  indentLevel: 0
+  display: 1
+  stage: {fileID: 3522181831643848614}
+  character: {fileID: 4561717602919394249}
+  replacedCharacter: {fileID: 0}
+  portrait: {fileID: 21300000, guid: e62f1b266ca6cc64d938ddcff5df005a, type: 3}
+  offset: 0
+  fromPosition: {fileID: 0}
+  toPosition: {fileID: 0}
+  facing: 0
+  useDefaultSettings: 1
+  fadeDuration: 0.5
+  moveDuration: 1
+  shiftOffset: {x: 0, y: 0}
+  move: 0
+  shiftIntoPlace: 0
+  waitUntilFinished: 0
 --- !u!1 &8211749703692887174
 GameObject:
   m_ObjectHideFlags: 0

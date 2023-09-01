@@ -24,14 +24,11 @@ public class ItemMaster : MonoBehaviour
 
     public void InstantiateDatabase()
     {
-        foreach (string name in Enum.GetNames(typeof(ItemCategory)))
+        string categoryPath = ResourceMaster.Instance.GetItemCategoryPath();
+        ItemData[] baseDatas = Resources.LoadAll<ItemData>(categoryPath);
+        foreach (ItemData itemData in baseDatas)
         {
-            string categoryPath = ResourceMaster.Instance.GetItemCategoryPath(name);
-            ItemData[] baseDatas = Resources.LoadAll<ItemData>(categoryPath);
-            foreach (ItemData itemData in baseDatas)
-            {
-                itemDataBase.Add(itemData.GetItemId(), itemData);
-            }
+            itemDataBase.Add(itemData.GetItemId(), itemData);
         }
     }
 

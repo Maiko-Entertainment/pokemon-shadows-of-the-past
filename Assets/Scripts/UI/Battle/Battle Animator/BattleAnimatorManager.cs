@@ -6,6 +6,8 @@ public class BattleAnimatorManager
 {
     public List<BattleAnimatorEvent> events = new List<BattleAnimatorEvent>();
 
+    public bool isExecutingEvent = false;
+
     public void AddEvent(BattleAnimatorEvent newEvent)
     {
         bool priortyInserted = false;
@@ -28,18 +30,17 @@ public class BattleAnimatorManager
     public void TriggerNextEvent()
     {
         UIBattleEventDebugger.GetInstance()?.UpdateAnims();
-        if (events.Count > 0)
+        if (events.Count > 0 && events[0] != null)
         {
-            if (events[0] != null)
-            {
-                BattleAnimatorEvent animEvent = events[0];
-                events.RemoveAt(0);
-                animEvent?.Execute();
-            }
+            BattleAnimatorEvent animEvent = events[0];
+            isExecutingEvent = true;
+            events.RemoveAt(0);
+            animEvent?.Execute();
         }
         else
         {
             // Show turn selection UI
+            isExecutingEvent = false;
             BattleAnimatorMaster.GetInstance().ShowTurnOptions();
         }
     }

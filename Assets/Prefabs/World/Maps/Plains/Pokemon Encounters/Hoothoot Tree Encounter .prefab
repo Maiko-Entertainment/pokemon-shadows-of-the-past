@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1954373119567428784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6827738956282545257}
+  - component: {fileID: 6721459528664240161}
+  - component: {fileID: 5657900407909892008}
+  m_Layer: 0
+  m_Name: 'Hoothoot Tree Encounter '
+  m_TagString: Untagged
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6827738956282545257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954373119567428784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6721459528664240161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954373119567428784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37447c906ca143441b7a3fc1c6773516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStep: 0
+  activateOnSpawn: 0
+  moveBrain: {fileID: 0}
+  possibleEncounters:
+  - {fileID: 11400000, guid: 8f995d0a713f95545af05f2b490a6096, type: 2}
+  activeChance: 1
+  ignoreDistanceRange: 1
+  retryInterval: 9999999
+  spawnWorldEntityChance: 1
+  spawnWorldOffset: {x: 0, y: 0, z: 0}
+  spawnYRenderOffset: 10
+  spawnDirection: 2
+  showActivePrefabWithWorldEntity: 1
+  activePrefab: {fileID: 3433743196372866076, guid: d3ff8f476fcd360479db7476003a86c8, type: 3}
+  battleData:
+    battleMusic: {fileID: 8300000, guid: 135db6e2dd99fe04997480380878b918, type: 3}
+    battleWonMusic: {fileID: 8300000, guid: 373789833f3094242acc00df9d7c88fc, type: 3}
+    battlebackground: {fileID: 7492677999400756354, guid: 2704f817c31c42b4cb0a7de1ed5f97ba, type: 3}
+    volumeProfile: {fileID: 0}
+    battleType: 0
+    playerExtraTactics:
+    - {fileID: 11400000, guid: 0899dcd59c522ad4b9e261ba88d372c9, type: 2}
+    - {fileID: 11400000, guid: 8f4b26c06085c164aad6248b5932fbc8, type: 2}
+  transition: {fileID: 3257677269373361263, guid: 81289add4461db9449a47f72aaa12799, type: 3}
+--- !u!61 &5657900407909892008
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954373119567428784}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.9}
+  m_EdgeRadius: 0

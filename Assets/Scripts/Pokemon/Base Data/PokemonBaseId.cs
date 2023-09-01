@@ -71,6 +71,8 @@ public enum PokemonBaseId
     Kirlia = 281,
     Gardevoir = 282,
     Roselia = 315,
+    Duskull = 355,
+    Dusclops = 356,
     // Gen 4
     Turtwig = 387,
     Grotle = 388,
@@ -90,6 +92,7 @@ public enum PokemonBaseId
     Buneary = 427,
     Lopunny = 428,
     Mismagius = 429,
+    Dusknoir = 477,
     // Gen 5
     Lillipup = 506,
     Herdier = 507,

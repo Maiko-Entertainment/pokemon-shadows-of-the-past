@@ -105,7 +105,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         BattleAnimatorMaster.GetInstance()?.HideOptions();
         pokemonSelectorInstance = Instantiate(pokemonSelector, subMenuContainer);
-         pokemonSelectorInstance.SetPrefaint(!allowClose);
+        pokemonSelectorInstance.SetPrefaint(!allowClose);
         isInSubmenu = true;
     }
 

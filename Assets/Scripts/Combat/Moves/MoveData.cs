@@ -211,6 +211,10 @@ public class MoveData : ScriptableObject
     {
         return categoryId;
     }
+    public virtual PokemonTypeId GetMoveType()
+    {
+        return typeId;
+    }
 
     public virtual int GetPriority(BattleManager battleStatus, BattleTeamId myTeam)
     {

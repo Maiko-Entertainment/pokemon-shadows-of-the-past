@@ -47,6 +47,8 @@ public class BattleManager
         eventManager = new BattleEventManager();
         participatedPokemon = new List<PokemonBattleData>();
         faintHistory = new List<BattleFaintHistory>();
+        // At the start of each battle we reset the event execution flag
+        BattleAnimatorMaster.GetInstance().animatorManager.isExecutingEvent = false;
         BattleAnimatorMaster.GetInstance()?.SetBackground(battleData.battlebackground);
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTurnStart());
         team1.InitiateTeam(BattleTeamId.Team1);
@@ -57,7 +59,6 @@ public class BattleManager
         BattleAnimatorMaster.GetInstance().LoadBattle();
 
         eventManager.ResolveAllEventTriggers();
-        // BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
     }
 
     public bool IsBattleActive()
@@ -472,6 +473,7 @@ public class BattleManager
         if (!isDesition)
         {
             eventManager.ResolveAllEventTriggers();
+            // If !isDesition then it comes from an animation event and we need to move forward
             BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim();
         }
     }
@@ -569,17 +571,23 @@ public class BattleManager
             PokemonBattleData enemy = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, move.targetType);
             PokemonBattleStats enemyStats = enemy.GetBattleStats();
             float random = Random.value;
-            float chanceToDodge = GetMultiplierForAccuracyEvasion(enemyStats.evasion);
-            float chanceToHit = GetMultiplierForAccuracyEvasion(user.GetBattleStatsChangeLevels().accuracy);
+            float chanceToDodge = GetMultiplierForEvasion(enemyStats.evasion);
+            float chanceToHit = GetMultiplierForAccuracy(user.GetBattleStatsChangeLevels().accuracy);
             float eventMods = battleEvent.moveMods.accuracyMultiplier;
             float finalChanceToHit = moveHitChance * chanceToHit * chanceToDodge * eventMods;
             return random <= finalChanceToHit;
         }
     }
 
-    public float GetMultiplierForAccuracyEvasion(int stage)
+    public float GetMultiplierForEvasion(int stage)
     {
         float multiplier = stage >= 0 ? (3f / (3 + stage)) : ((3 - stage) / 3f);
+        return multiplier;
+    }
+
+    public float GetMultiplierForAccuracy(int stage)
+    {
+        float multiplier = stage >= 0 ? ((3 + stage) / 3f) : (3f / (3 - stage));
         return multiplier;
     }
 

@@ -276,7 +276,7 @@ public class BattleAnimatorMaster : MonoBehaviour
     public void AddEvent(BattleAnimatorEvent newEvent)
     {
         animatorManager.AddEvent(newEvent);
-        if (animatorManager.events.Count == 1)
+        if (animatorManager.events.Count == 1 && !animatorManager.isExecutingEvent)
         {
             GoToNextBattleAnim();
         }

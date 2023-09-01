@@ -28,4 +28,5 @@ public enum SaveElementId
     tansyProtectEachother = 1002,
     tansyWasBraver = 1003,
     danteFirstBattleGiveUp = 1004,
+    TeamPlasmaAnswer = 1005, // 0 = Team Plasma Bad, 1 = Team Plasma Good, 2 = Team Plasma Misguided
 }
