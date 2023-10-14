@@ -58,6 +58,7 @@ public class UIItemOptionsPokemon : MonoBehaviour, ISelectHandler
         targetHealth = currentHealth;
         return this;
     }
+
     public void UpdateHealth(float health)
     {
         float maxHealth = pokemon.GetCurrentStats().health;

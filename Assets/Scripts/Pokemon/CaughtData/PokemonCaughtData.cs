@@ -101,7 +101,6 @@ public class PokemonCaughtData
     public PokemonCaughtData(PokemonEncounter encounter)
     {
         pokemonBase = encounter.pokemon;
-        pokemonName = encounter.pokemon.species;
         level = encounter.baseLevel + Random.Range(0, encounter.extraLevelRange+1);
         natureId = encounter.GetRandomNature();
         abilityId = pokemonBase.GetRandomAbility();

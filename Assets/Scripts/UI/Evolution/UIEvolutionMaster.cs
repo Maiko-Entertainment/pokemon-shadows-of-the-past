@@ -71,8 +71,10 @@ public class UIEvolutionMaster : MonoBehaviour
         originalPokemon = Instantiate(animator);
         originalPokemon.Load(pokemon);
 
-        Dictionary<string, string> variables = new Dictionary<string, string>();
-        variables.Add("pokemon", pokemon.GetName());
+        Dictionary<string, string> variables = new Dictionary<string, string>
+        {
+            { "pokemon", pokemon.GetName() }
+        };
         InteractionEventFlowchart startEvoFlowchartEvent = new InteractionEventFlowchart(flowchart, "Start", variables);
         startEvoFlowchartEvent.priority = 10;
         InteractionsMaster.GetInstance().AddEvent(startEvoFlowchartEvent);
@@ -139,7 +141,6 @@ public class UIEvolutionMaster : MonoBehaviour
         InteractionEventFlowchart evolutionEvent = new InteractionEventFlowchart(flowchart, "Evolution", variables);
         evolutionEvent.priority = 10;
         InteractionsMaster.GetInstance().AddEvent(evolutionEvent);
-        InteractionsMaster.GetInstance().ExecuteNext(0f);
 
         foreach (PokemonMoveLearn ml in learnedMoves)
         {

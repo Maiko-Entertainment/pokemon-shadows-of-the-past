@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class UIPokemonPC : MonoBehaviour
 {
     public Transform pcList;
     public Transform partyList;
-    public int gridRows = 4;
+    public int gridColumns = 4;
 
     public AudioClip onSelectSound;
     public AudioClip onSwapPickSound;
@@ -19,6 +20,8 @@ public class UIPokemonPC : MonoBehaviour
     public UIItemOptionsPokemon pokemonPartyPrefab;
     public UIBattleType battleTypePrefab;
     public UIPokemonPCSwap pokemonSwapPrefab;
+    public UIPokemonPCEmpty emptySlotPrefab;
+    public Transform persistentInfo;
 
     public Image liveSprite;
     public Image pokemonIcon;
@@ -34,6 +37,9 @@ public class UIPokemonPC : MonoBehaviour
     protected PokemonBattleAnimator animator;
     private PokemonCaughtData currentPokemon;
 
+    private UIPokemonPCEmpty emptyPartySpace;
+    private UIPokemonPCEmpty emptyBoxSpace;
+
     private bool isInBox = false;
     private PokemonCaughtData swapingPokemon;
     private UIPokemonPCSwap pokemonSwapInstance;
@@ -44,7 +50,6 @@ public class UIPokemonPC : MonoBehaviour
         ClearPartyPokemon();
         List<PokemonCaughtData> pokemonPC = PartyMaster.Instance.GetPokemonInBox();
         List<PokemonCaughtData> pokemonParty = PartyMaster.Instance.GetParty();
-        List<Selectable> selectables = new List<Selectable>();
         // Render Party
         foreach (PokemonCaughtData pokemon in pokemonParty)
         {
@@ -56,11 +61,8 @@ public class UIPokemonPC : MonoBehaviour
                 UtilsMaster.SetSelected(item.gameObject);
                 isInBox = false;
             }
-            selectables.Add(item.GetComponent<Selectable>());
         }
-        UtilsMaster.LineSelectables(selectables);
         // Render PC
-        selectables = new List<Selectable>();
         foreach (PokemonCaughtData pokemon in pokemonPC)
         {
             UIPokemonPCElement item = Instantiate(pokemonPCPrefab, pcList).Load(pokemon);
@@ -71,25 +73,70 @@ public class UIPokemonPC : MonoBehaviour
                 UtilsMaster.SetSelected(item.gameObject);
                 isInBox = true;
             }
-            selectables.Add(item.GetComponent<Selectable>());
         }
-        UtilsMaster.GridSelectables(selectables, gridRows);
+        LinePartyPokemon();
+        GridBoxPokemon();
         return this;
     }
 
     public void ClearPCPokemon()
     {
-        foreach(Transform poke in partyList)
+        foreach(Transform poke in pcList)
         {
             Destroy(poke.gameObject);
         }
     }
     public void ClearPartyPokemon()
     {
-        foreach (Transform poke in pcList)
+        foreach (Transform poke in partyList)
         {
             Destroy(poke.gameObject);
         }
+    }
+
+    public async void LinePartyPokemon()
+    {
+        List<Selectable> selectables = new List<Selectable>();
+        // Wait a frame for previus children to get destroyed
+        await Task.Yield();
+        foreach (Transform poke in partyList)
+        {
+            if (poke.GetComponent<Selectable>())
+            {
+                selectables.Add(poke.GetComponent<Selectable>());
+            }
+        }
+        UtilsMaster.LineSelectables(selectables);
+    }
+
+    public async void GridBoxPokemon()
+    {
+        List<Selectable> selectables = new List<Selectable>();
+        // Wait a frame for previus children to get destroyed
+        await Task.Yield();
+        foreach (Transform poke in pcList)
+        {
+            if (poke.GetComponent<Selectable>())
+            {
+                selectables.Add(poke.GetComponent<Selectable>());
+            }
+        }
+        UtilsMaster.GridSelectables(selectables, gridColumns);
+    }
+
+    public void CreateEmptySpaces()
+    {
+        emptyBoxSpace = Instantiate(emptySlotPrefab, pcList);
+        emptyBoxSpace.onHover += HandleEmptySelect;
+        emptyPartySpace = Instantiate(emptySlotPrefab, partyList);
+        emptyPartySpace.onHover += HandleEmptySelect;
+        LinePartyPokemon();
+        GridBoxPokemon();
+    }
+
+    public void HandleEmptySelect()
+    {
+        ViewPokemonInfo(null);
     }
 
     public void UpdateSwapingPosition(PokemonCaughtData poke)
@@ -98,23 +145,37 @@ public class UIPokemonPC : MonoBehaviour
         {
             if (isInBox)
             {
-                foreach (Transform p in pcList)
+                if (poke == null)
                 {
-                    if (p.GetComponent<UIPokemonPCElement>().pokemon == poke)
+                    pokemonSwapInstance?.SetDestiny(emptyBoxSpace.transform);
+                }
+                else
+                {
+                    foreach (Transform p in pcList)
                     {
-                        pokemonSwapInstance?.SetDestiny(p);
-                        break;
+                        if (p.GetComponent<UIPokemonPCElement>() && p.GetComponent<UIPokemonPCElement>().pokemon == poke)
+                        {
+                            pokemonSwapInstance?.SetDestiny(p);
+                            break;
+                        }
                     }
                 }
             }
             else
             {
-                foreach (Transform p in partyList)
+                if (poke == null)
                 {
-                    if (p.GetComponent<UIItemOptionsPokemon>().pokemon == poke)
+                    pokemonSwapInstance?.SetDestiny(emptyPartySpace.transform);
+                }
+                else
+                {
+                    foreach (Transform p in partyList)
                     {
-                        pokemonSwapInstance?.SetDestiny(p);
-                        break;
+                        if (p.GetComponent<UIItemOptionsPokemon>() && p.GetComponent<UIItemOptionsPokemon>().pokemon == poke)
+                        {
+                            pokemonSwapInstance?.SetDestiny(p);
+                            break;
+                        }
                     }
                 }
             }
@@ -133,30 +194,38 @@ public class UIPokemonPC : MonoBehaviour
         UpdateSwapingPosition(poke);
         if (animator)
             Destroy(animator.gameObject);
-        animator = Instantiate(BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator).Load(poke);
-        animator.transform.position = new Vector3(300000, 300000, 0);
-        pokemonIcon.sprite = poke.GetIcon();
-        pokemonName.text = currentPokemon.GetName();
-        if (pokemonLevel)
+        if (currentPokemon == null)
         {
-            pokemonLevel.text = "Lv. " + currentPokemon.GetLevel();
-        }
-        pokemonAbility.text = AbilityMaster.GetInstance().GetAbility(poke.abilityId).GetName();
-        List<PokemonTypeId> types = poke.GetTypes();
-        foreach (Transform t in typeList)
-            Destroy(t.gameObject);
-        foreach (PokemonTypeId t in types)
-            Instantiate(battleTypePrefab, typeList).GetComponent<UIBattleType>().Load(t);
-        if (poke.isShadow)
-        {
-            pokemonHeart.gameObject.SetActive(false);
-            pokemonHeartShattered.gameObject.SetActive(true);
+            persistentInfo?.gameObject.SetActive(false);
         }
         else
         {
-            pokemonHeart.gameObject.SetActive(true);
-            pokemonHeartShattered.gameObject.SetActive(false);
-            pokemonHeart.fillAmount = poke.GetFriendship() / 255f;
+            persistentInfo?.gameObject.SetActive(true);
+            animator = Instantiate(BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator).Load(poke);
+            animator.transform.position = new Vector3(300000, 300000, 0);
+            pokemonIcon.sprite = poke.GetIcon();
+            pokemonName.text = currentPokemon.GetName();
+            if (pokemonLevel)
+            {
+                pokemonLevel.text = "Lv. " + currentPokemon.GetLevel();
+            }
+            pokemonAbility.text = AbilityMaster.GetInstance().GetAbility(poke.abilityId).GetName();
+            List<PokemonTypeId> types = poke.GetTypes();
+            foreach (Transform t in typeList)
+                Destroy(t.gameObject);
+            foreach (PokemonTypeId t in types)
+                Instantiate(battleTypePrefab, typeList).GetComponent<UIBattleType>().Load(t);
+            if (poke.isShadow)
+            {
+                pokemonHeart.gameObject.SetActive(false);
+                pokemonHeartShattered.gameObject.SetActive(true);
+            }
+            else
+            {
+                pokemonHeart.gameObject.SetActive(true);
+                pokemonHeartShattered.gameObject.SetActive(false);
+                pokemonHeart.fillAmount = poke.GetFriendship() / 255f;
+            }
         }
     }
 
@@ -164,7 +233,10 @@ public class UIPokemonPC : MonoBehaviour
     {
         StartCoroutine(UtilsMaster.SetSelectedNextFrame(pcList.GetChild(0).gameObject));
         isInBox = true;
-        ViewPokemonInfo(pcList.GetChild(0).GetComponent<UIPokemonPCElement>().pokemon);
+        if (PartyMaster.GetInstance().pokemonBox.Count > 0)
+            ViewPokemonInfo(pcList.GetChild(0).GetComponent<UIPokemonPCElement>().pokemon);
+        else
+            ViewPokemonInfo(null);
     }
     public void SetPartyToSelected()
     {
@@ -175,7 +247,8 @@ public class UIPokemonPC : MonoBehaviour
 
     public void HandleClose(CallbackContext context)
     {
-        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
+        bool isMenuOpen = UIPauseMenuMaster.GetInstance().GetCurrentMenu() == GetComponent<UIMenuPile>();
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && isMenuOpen)
         {
             if (swapingPokemon == null)
             {
@@ -189,6 +262,8 @@ public class UIPokemonPC : MonoBehaviour
     }
     public void HandleSectionChange(CallbackContext context)
     {
+        bool isMenuOpen = UIPauseMenuMaster.GetInstance().GetCurrentMenu() == GetComponent<UIMenuPile>();
+        if (!isMenuOpen) return;
         if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
         {
             Vector2 direction = context.ReadValue<Vector2>();
@@ -207,9 +282,9 @@ public class UIPokemonPC : MonoBehaviour
                 foreach(Transform t in pcList)
                 {
                     UIPokemonPCElement el = t.GetComponent<UIPokemonPCElement>();
-                    if (el.pokemon == currentPokemon)
+                    if (el == null && currentPokemon == null || el.pokemon == currentPokemon)
                     {
-                        if (index % 4 == 0)
+                        if (index % gridColumns == 0)
                         {
                             SetPartyToSelected();
                         }
@@ -225,6 +300,14 @@ public class UIPokemonPC : MonoBehaviour
         {
             if (swapingPokemon != null)
             {
+                // We can't allow to leave the party empty!
+                if (!IsPokemonInBox(swapingPokemon) &&
+                    PartyMaster.GetInstance().GetParty().Count <= 1 &&
+                    currentPokemon == null
+                )
+                {
+                    return;
+                }
                 Swap(currentPokemon);
                 AudioMaster.GetInstance()?.PlaySfx(onSwapSound);
                 WorldMapMaster.GetInstance().GetPlayer().UpdatePokeFollower();
@@ -242,8 +325,70 @@ public class UIPokemonPC : MonoBehaviour
                     po.UpdateSwaping(currentPokemon);
                 }
                 UpdateSwapingPosition(currentPokemon);
+                CreateEmptySpaces();
             }
         }
+    }
+
+    public void HandleRelease(CallbackContext context)
+    {
+        bool isMenuOpen = UIPauseMenuMaster.GetInstance().GetCurrentMenu() == GetComponent<UIMenuPile>();
+        if (!isMenuOpen) return;
+        bool hasEnoughToRelease = !(!IsPokemonInBox(currentPokemon) && PartyMaster.GetInstance().GetParty().Count <= 1);
+        if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started && hasEnoughToRelease)
+        {
+            bool isPokemonShadow = currentPokemon.isShadow;
+            if (!isPokemonShadow)
+            {
+                UIPauseMenuMaster.GetInstance().OpenConfirmMenu(
+                    "Release " + currentPokemon.GetName() + "?",
+                    "Once released, the pokemon will NEVER return.",
+                    ConfirmPokemonRelease
+                    );
+            }
+            else
+            {
+                UIPauseMenuMaster.GetInstance().OpenConfirmMenu(
+                    "Err0R! Da%t4 c0rRu43tt3d!",
+                    "Sy5tEm FAILURE.",
+                    () => { }
+                    );
+            }
+        }
+    }
+    protected void ConfirmPokemonRelease()
+    {
+        int boxIndex = 0;
+        int boxCount = PartyMaster.GetInstance().pokemonBox.Count - 1; ;
+        if (isInBox)
+        {
+            boxIndex = PartyMaster.GetInstance().pokemonBox.IndexOf(currentPokemon);
+            PartyMaster.GetInstance().RemovePokemonInBox(currentPokemon);
+        }
+        else
+        {
+            PartyMaster.GetInstance().RemovePartyMember(currentPokemon);
+        }
+        currentPokemon = null;
+        if (isInBox && boxCount > 0)
+        {
+            if (boxIndex < boxCount)
+            {
+                ViewPokemonInfo(PartyMaster.GetInstance().pokemonBox[boxIndex]);
+            }
+            else
+            {
+                ViewPokemonInfo(PartyMaster.GetInstance().pokemonBox[boxCount - 1]);
+            }
+        }
+        HandleCancelSwap();
+    }
+    protected void QuickMoveToPC()
+    {
+        bool wasRemoved = PartyMaster.GetInstance().RemovePartyMember(currentPokemon);
+        if (wasRemoved) // To avoid duplicating pokemon
+            PartyMaster.GetInstance().AddPokemonToBox(currentPokemon);
+        Load();
     }
 
     public void Swap(PokemonCaughtData current)
@@ -257,32 +402,64 @@ public class UIPokemonPC : MonoBehaviour
         {
             if (isSwapingPokemonFromBox)
             {
-                PartyMaster.Instance.SwapPokemonInBox(current, swapingPokemon);
+                if (current == null)
+                {
+                    bool didDelete = PartyMaster.Instance.RemovePokemonInBox(swapingPokemon);
+                    if (didDelete) PartyMaster.Instance.AddPokemonToBox(swapingPokemon);
+                }
+                else
+                {
+                    PartyMaster.Instance.SwapPokemonInBox(current, swapingPokemon);
+                }
             }
             else
             {
-                int indexFromParty = PartyMaster.Instance.GetParty().IndexOf(swapingPokemon);
-                int indexFromBox = PartyMaster.Instance.GetPokemonInBox().IndexOf(current);
-                PartyMaster.Instance.AddPokemonToBox(swapingPokemon, indexFromBox);
-                PartyMaster.Instance.GetParty().Insert(indexFromParty, current);
-                PartyMaster.Instance.RemovePartyMember(swapingPokemon);
-                PartyMaster.Instance.RemovePokemonInBox(current);
+                if (current == null)
+                {
+                    PartyMaster.Instance.AddPokemonToBox(swapingPokemon);
+                    PartyMaster.Instance.RemovePartyMember(swapingPokemon);
+                }
+                else
+                {
+                    int indexFromParty = PartyMaster.Instance.GetParty().IndexOf(swapingPokemon);
+                    int indexFromBox = PartyMaster.Instance.GetPokemonInBox().IndexOf(current);
+                    PartyMaster.Instance.AddPokemonToBox(swapingPokemon, indexFromBox);
+                    PartyMaster.Instance.GetParty().Insert(indexFromParty, current);
+                    PartyMaster.Instance.RemovePartyMember(swapingPokemon);
+                    PartyMaster.Instance.RemovePokemonInBox(current);
+                }
             }
         }
         else
         {
             if (isSwapingPokemonFromBox)
             {
-                int indexFromParty = PartyMaster.Instance.GetParty().IndexOf(current);
-                int indexFromBox = PartyMaster.Instance.GetPokemonInBox().IndexOf(swapingPokemon);
-                PartyMaster.Instance.AddPokemonToBox(current, indexFromBox);
-                PartyMaster.Instance.GetParty().Insert(indexFromParty, swapingPokemon);
-                PartyMaster.Instance.RemovePartyMember(current);
-                PartyMaster.Instance.RemovePokemonInBox(swapingPokemon);
+                if (current == null)
+                {
+                    bool didDelete = PartyMaster.Instance.RemovePokemonInBox(swapingPokemon);
+                    if (didDelete) PartyMaster.Instance.AddPartyMember(swapingPokemon);
+                }
+                else
+                {
+                    int indexFromParty = PartyMaster.Instance.GetParty().IndexOf(current);
+                    int indexFromBox = PartyMaster.Instance.GetPokemonInBox().IndexOf(swapingPokemon);
+                    PartyMaster.Instance.AddPokemonToBox(current, indexFromBox);
+                    PartyMaster.Instance.GetParty().Insert(indexFromParty, swapingPokemon);
+                    PartyMaster.Instance.RemovePartyMember(current);
+                    PartyMaster.Instance.RemovePokemonInBox(swapingPokemon);
+                }
             }
             else
             {
-                PartyMaster.Instance.SwapPokemonInParty(current, swapingPokemon);
+                if (current == null)
+                {
+                    bool didDelete = PartyMaster.Instance.RemovePartyMember(swapingPokemon);
+                    if (didDelete) PartyMaster.Instance.AddPartyMember(swapingPokemon);
+                }
+                else
+                {
+                    PartyMaster.Instance.SwapPokemonInParty(current, swapingPokemon);
+                }
             }
         }
         currentPokemon = swapingPokemon;
@@ -293,7 +470,8 @@ public class UIPokemonPC : MonoBehaviour
     {
         foreach(Transform p in partyList)
         {
-            if (p.GetComponent<UIItemOptionsPokemon>().pokemon == pokemon)
+            UIItemOptionsPokemon options = p.GetComponent<UIItemOptionsPokemon>();
+            if (options && options.pokemon == pokemon)
             {
                 return false;
             }

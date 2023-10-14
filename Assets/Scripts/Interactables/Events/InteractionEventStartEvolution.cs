@@ -15,5 +15,6 @@ public class InteractionEventStartEvolution : InteractionEvent
     public override void Execute()
     {
         PokemonMaster.GetInstance().EvolvePokemon(pokemon, evolution);
+        InteractionsMaster.GetInstance().ExecuteNext();
     }
 }

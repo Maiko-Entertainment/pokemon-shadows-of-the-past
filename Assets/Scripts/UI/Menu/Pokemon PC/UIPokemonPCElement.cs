@@ -18,10 +18,18 @@ public class UIPokemonPCElement : MonoBehaviour, ISelectHandler
 
     public PokemonCaughtData pokemon;
 
+    protected bool isEmpty = false;
+
     public UIPokemonPCElement Load(PokemonCaughtData pokemon)
     {
         this.pokemon = pokemon;
         icon.sprite = pokemon.GetIcon();
+        return this;
+    }
+    public UIPokemonPCElement LoadEmpty()
+    {
+        isEmpty = true;
+        icon.color = new Color(0, 0, 0, 0);
         return this;
     }
 
@@ -52,5 +60,9 @@ public class UIPokemonPCElement : MonoBehaviour, ISelectHandler
     public void SetCursorActive(bool value)
     {
         cursor.gameObject.SetActive(value);
+    }
+    public bool IsEmpty()
+    {
+        return isEmpty;
     }
 }

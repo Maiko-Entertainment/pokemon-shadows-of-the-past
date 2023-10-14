@@ -49,7 +49,7 @@ public class UISaveFiles : MonoBehaviour
         int activeIndexSelected = SaveMaster.Instance.lastSaveIndex;
         if (SaveMaster.Instance.saveFiles.Count > activeIndexSelected)
         {
-            UtilsMaster.SetSelected(selectables[activeIndexSelected + 1].gameObject);
+            UtilsMaster.SetSelected(selectables[activeIndexSelected].gameObject);
         }
         else
         {

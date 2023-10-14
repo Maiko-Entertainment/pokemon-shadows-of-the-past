@@ -28,7 +28,7 @@ public class InteractionsMaster : MonoBehaviour
 
     public void AddEvent(InteractionEvent intEvent)
     {
-          print("Adding event: " + intEvent);
+        print("Adding event: " + intEvent);
         bool priortyInserted = false;
         foreach(InteractionEvent ie in events)
         {
@@ -86,11 +86,13 @@ public class InteractionsMaster : MonoBehaviour
     {
         bool isBattleHappening = BattleMaster.GetInstance().IsBattleActive();
         bool isMenuOpen = UIPauseMenuMaster.GetInstance().IsMenuOpen();
-        return isInteracting || isBattleHappening || isMenuOpen;
+        bool isTransitionHappening = TransitionMaster.GetInstance().IsTransitioning();
+        return isInteracting || isBattleHappening || isMenuOpen || isTransitionHappening;
     }
     public bool IsInteracting()
     {
         bool isBattleHappening = BattleMaster.GetInstance().IsBattleActive();
-        return isInteracting || isBattleHappening;
+        bool isTransitionHappening = TransitionMaster.GetInstance().IsTransitioning();
+        return isInteracting || isBattleHappening || isTransitionHappening;
     }
 }

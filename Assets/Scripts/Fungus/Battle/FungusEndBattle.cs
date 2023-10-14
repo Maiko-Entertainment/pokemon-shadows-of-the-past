@@ -15,6 +15,7 @@ public class FungusEndBattle : Command
     {
         BattleAnimatorMaster.GetInstance().ClearEvents();
         BattleMaster.GetInstance()?.GetCurrentBattle()?.HandleBattleEnd(winnerTeam, true);
+        BattleAnimatorMaster.GetInstance().GoToNextBattleAnim();
         Continue();
     }
 }
