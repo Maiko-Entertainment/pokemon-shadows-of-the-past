@@ -18,13 +18,28 @@ public class FungusLoadBasicVariables : Command
             if (GetFlowchart().GetVariable("partyName" + i)) GetFlowchart().SetStringVariable("partyName" + i, party[i].GetName());
             if (GetFlowchart().GetVariable("partySpecies" + i)) GetFlowchart().SetStringVariable("partySpecies" + i, party[i].pokemonBase.species);
         }
-        string varPlayerName = SaveElementId.playerName.ToString();
-        string varStoryProgressName = SaveElementId.storyProgress.ToString();
-        SaveElement playerName = SaveMaster.Instance.GetSaveElementData(SaveElementId.playerName);
-        SaveElement storyProgress = SaveMaster.Instance.GetSaveElementData(SaveElementId.storyProgress);
-        if (GetFlowchart().GetVariable(varPlayerName)) GetFlowchart().SetStringVariable(varPlayerName, playerName.GetValue().ToString());
-        if (GetFlowchart().GetVariable(varStoryProgressName)) GetFlowchart().SetFloatVariable(varStoryProgressName, (float)storyProgress.GetValue());
+        LoadAllSaveVariables();
         Continue();
+    }
+
+    public void LoadAllSaveVariables()
+    {
+        SaveFile mySave = SaveMaster.Instance.GetActiveSave();
+        foreach(PersistedSaveElement pse in mySave.persistedElements)
+        {
+            if (!GetFlowchart().HasVariable(pse.GetId()))
+                continue;
+            SaveElement se = SaveMaster.Instance.GetSaveElementData(pse.GetId());
+            switch (se.GetValueType())
+            {
+                case SaveValueType.number:
+                    GetFlowchart().SetFloatVariable(se.GetId(), (float)se.GetValue());
+                    break;
+                default:
+                    GetFlowchart().SetStringVariable(se.GetId(), (string)se.GetValue());
+                    break;
+            }
+        }
     }
 
     public override Color GetButtonColor()

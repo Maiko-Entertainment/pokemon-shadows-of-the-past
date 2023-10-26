@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Flaaffy
   m_EditorClassIdentifier: 
-  pokemonId: 180
+  pokemonId: Flaaffy
   species: Flaaffy
-  icon: {fileID: -160479526218507839, guid: edcf49bd7bac3a94bbf9b34ed7599b63, type: 3}
-  cry: {fileID: 8300000, guid: 3e7167464eef7e649bb54e472dc160a5, type: 3}
   baseStats:
     health: 70
     attack: 55
@@ -77,10 +75,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 181
-    evolutionData:
-      evolutionType: 0
-      value: 30
-  battleAnimation: {fileID: 5434180094594151437, guid: 8e6d019e734c46843a077c172d30255d, type: 3}
-  overWorldPrefab: {fileID: 6980461530234961639, guid: 7bbf3378449e13346b98f8c3fcf4bf2b, type: 3}
+  - pokemon: {fileID: 11400000, guid: cd8a8256b269c2f4b95d9c2447c5deea, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 51c41ed083eba9044a9530d67c839c75, type: 2}
   encounteredIn: []

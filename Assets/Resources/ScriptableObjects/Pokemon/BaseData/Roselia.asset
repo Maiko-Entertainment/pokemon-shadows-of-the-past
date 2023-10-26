@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Roselia
   m_EditorClassIdentifier: 
-  pokemonId: 315
+  pokemonId: Roselia
   species: Roselia
-  icon: {fileID: 1377314852, guid: 318dedc54b05f024ca3a539bd3d097bb, type: 3}
-  cry: {fileID: 8300000, guid: 48512066215480d44951796d8095f847, type: 3}
   baseStats:
     health: 50
     attack: 60
@@ -59,10 +57,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 407
-    evolutionData:
-      evolutionType: 2
-      value: 1004
-  battleAnimation: {fileID: 232531923036925260, guid: 74407cd7a84e2c54d895d7a81b665cc6, type: 3}
-  overWorldPrefab: {fileID: 3691767716004900049, guid: 0ade358b7c07fa64191c72a4e0a798b3, type: 3}
+  - pokemon: {fileID: 11400000, guid: 7e016c01e4bd1974db11abc4dc48eb66, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 356e76f8559f78a4892918dd6190e775, type: 2}
   encounteredIn: []

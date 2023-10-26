@@ -26,7 +26,7 @@ public class PokemonCaughtData
 
     public PokemonCaughtData(PersistedPokemon pkmn)
     {
-        pokemonBase = PokemonMaster.GetInstance().GetPokemonData(pkmn.pokemonId);
+        pokemonBase = PokemonMaster.GetInstance().GetPokemonData(pkmn.GetId());
         pokemonName = pkmn.pokemonName;
         level = pkmn.level;
         experience = pkmn.experience;
@@ -53,7 +53,7 @@ public class PokemonCaughtData
     public PersistedPokemon GetSave()
     {
         PersistedPokemon pp = new PersistedPokemon();
-        pp.pokemonId = pokemonBase.pokemonId;
+        pp.id = pokemonBase.GetId();
         pp.pokemonName = pokemonName;
         pp.level = level;
         pp.experience = experience;

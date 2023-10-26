@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Turtwig
   m_EditorClassIdentifier: 
-  pokemonId: 387
+  pokemonId: Turtwig
   species: Turtwig
-  icon: {fileID: -291148747, guid: 434a174b583f3784499626b6fb48fe42, type: 3}
-  cry: {fileID: 8300000, guid: 9168959881b135b43b2fc16495e45a18, type: 3}
   baseStats:
     health: 55
     attack: 68
@@ -67,10 +65,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
   evolutions:
-  - pokemonId: 388
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 6013538705135599746, guid: e74153ffe851e8d4cbb2e0bd7ee77797, type: 3}
-  overWorldPrefab: {fileID: 9075577451896986603, guid: c31f6db9adaa63843be2a2ba41d72604, type: 3}
+  - pokemon: {fileID: 11400000, guid: dc7b2bb46059c6d4ba1f3ad16e9a6bf7, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 36105781bceb3314d972b72918406a6b, type: 2}
   encounteredIn: []

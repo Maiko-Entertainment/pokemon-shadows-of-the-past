@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Chikorita
   m_EditorClassIdentifier: 
-  pokemonId: 152
+  pokemonId: Chikorita
   species: Chikorita
-  icon: {fileID: 1888691079, guid: fd3bdd80eae938d4fb58d400356b74d6, type: 3}
-  cry: {fileID: 8300000, guid: 79401a840cfe22e4fb84ba6aaca12a12, type: 3}
   baseStats:
     health: 45
     attack: 49
@@ -58,10 +56,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 153
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 3257370993550104009, guid: e63b72285d8fe1044b868fc98ec3f932, type: 3}
-  overWorldPrefab: {fileID: 3236624905928704681, guid: 61e1447b53ddab44ca706fceba872690, type: 3}
+  - pokemon: {fileID: 11400000, guid: eb8164d78d7cb2048ad212d207dda6df, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

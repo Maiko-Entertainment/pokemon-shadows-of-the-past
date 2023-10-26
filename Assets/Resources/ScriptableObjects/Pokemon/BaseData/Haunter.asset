@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Haunter
   m_EditorClassIdentifier: 
-  pokemonId: 93
+  pokemonId: Haunter
   species: Haunter
-  icon: {fileID: -5527521894330675250, guid: 3a06b11d9129dae4fa03e15fb4594a4b, type: 3}
-  cry: {fileID: 8300000, guid: 2d777ea0acb8c6241bfef0213a6b92a6, type: 3}
   baseStats:
     health: 45
     attack: 50
@@ -68,10 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 94
-    evolutionData:
-      evolutionType: 0
-      value: 40
-  battleAnimation: {fileID: 2661723969371051008, guid: 66f457d93664a454ab876edfc5c61cc1, type: 3}
-  overWorldPrefab: {fileID: 1911645035437795778, guid: 3f9b5f9b1de9e9848bd7fdfe392a0f51, type: 3}
+  - pokemon: {fileID: 11400000, guid: bd5815b7c0d0a7e4da509882d5497a74, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 4e2161c6941399f478448180654216f3, type: 2}
   encounteredIn: []

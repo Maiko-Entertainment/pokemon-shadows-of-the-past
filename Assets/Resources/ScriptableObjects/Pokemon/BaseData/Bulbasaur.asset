@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Bulbasaur
   m_EditorClassIdentifier: 
-  pokemonId: 1
+  pokemonId: Bulbasaur
   species: Bulbasaur
-  icon: {fileID: -4686972337103246019, guid: da7d4363750e7314e89adf15bbf38796, type: 3}
-  cry: {fileID: 8300000, guid: aad4141d29e5b13439f80a43200d812e, type: 3}
   baseStats:
     health: 50
     attack: 49
@@ -70,10 +68,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 2
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 5661572169165770860, guid: fa6081cb051278142895c95b4211cb73, type: 3}
-  overWorldPrefab: {fileID: 1415457484217052505, guid: 205810df867896f4e9bd9ed576181036, type: 3}
+  - pokemon: {fileID: 11400000, guid: a43e7c5ddb840a14cae7835bd4998e80, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

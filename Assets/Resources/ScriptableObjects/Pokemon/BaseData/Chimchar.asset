@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Chimchar
   m_EditorClassIdentifier: 
-  pokemonId: 390
+  pokemonId: Chimchar
   species: Chimchar
-  icon: {fileID: 1256818609, guid: 900d6a50ab5e8984ea04f56796152940, type: 3}
-  cry: {fileID: 8300000, guid: 660b68004a258c24f95e84ff377a198b, type: 3}
   baseStats:
     health: 44
     attack: 58
@@ -56,10 +54,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 391
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 858887792495692603, guid: 4a43322adc0353344a0aab2bd420b274, type: 3}
-  overWorldPrefab: {fileID: 1648069225279382029, guid: 21aeca0a16abbd84e9bff1c52cc141f7, type: 3}
+  - pokemon: {fileID: 11400000, guid: deff467d28e3b584a84bd6020b7f827d, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 56e2cf1840faca64199f532ef1470cb4, type: 2}
   encounteredIn: []

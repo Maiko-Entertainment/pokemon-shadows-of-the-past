@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Duskull
   m_EditorClassIdentifier: 
-  pokemonId: 355
+  pokemonId: Duskull
   species: Duskull
   baseStats:
     health: 20
@@ -61,8 +61,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5f2d907dc0058e5498a9a79eb1224e54, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 356
-    evolutionData:
-      evolutionType: 0
-      value: 30
+  - pokemon: {fileID: 11400000, guid: 71e16c86f09758149bfcf19144181ada, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: df42e7c527868384cb40ec949be0d1f0, type: 2}
   encounteredIn: []

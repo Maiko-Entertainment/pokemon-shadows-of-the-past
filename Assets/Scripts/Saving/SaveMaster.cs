@@ -19,7 +19,7 @@ public class SaveMaster : MonoBehaviour
     public bool loadHackedData = false;
     public bool startNewGame = false;
 
-    public Dictionary<SaveElementId, SaveElement> saveElements = new Dictionary<SaveElementId, SaveElement>();
+    public Dictionary<string, SaveElement> saveElements = new Dictionary<string, SaveElement>();
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class SaveMaster : MonoBehaviour
         SaveElement[] saveElementsData = Resources.LoadAll<SaveElement>(savePath);
         foreach (SaveElement se in saveElementsData)
         {
-            saveElements.Add(se.id, se);
+            saveElements.Add(se.GetId(), se);
         }
     }
 
@@ -164,6 +164,10 @@ public class SaveMaster : MonoBehaviour
     }
     public SaveElement GetSaveElementData(SaveElementId id)
     {
+        return GetSaveElementData(id.ToString());
+    }
+    public SaveElement GetSaveElementData(string id)
+    {
         if (saveElements.ContainsKey(id))
             return saveElements[id];
         return null;
@@ -171,9 +175,13 @@ public class SaveMaster : MonoBehaviour
 
     public PersistedSaveElement GetSaveElementFromSavefile(SaveElementId id)
     {
+        return GetSaveElementFromSavefile(id);
+    }
+    public PersistedSaveElement GetSaveElementFromSavefile(string id)
+    {
         foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
         {
-            if (se.id == id)
+            if (se.GetId() == id)
                 return se;
         }
         return null;
@@ -181,17 +189,20 @@ public class SaveMaster : MonoBehaviour
 
     public void SetSaveElementInner(object newValue, SaveElementId id)
     {
+        SetSaveElementInner(newValue, id.ToString());
+    }
+
+    public void SetSaveElementInner(object newValue, string id)
+    {
         foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
         {
-            if (se.id == id)
+            if (se.GetId() == id)
             {
                 se.value = newValue;
                 return;
             }
         }
-        PersistedSaveElement newElement = new PersistedSaveElement();
-        newElement.id = id;
-        newElement.value = newValue;
+        PersistedSaveElement newElement = new PersistedSaveElement(id, newValue);
         activeSaveFile.persistedElements.Add(newElement);
     }
 

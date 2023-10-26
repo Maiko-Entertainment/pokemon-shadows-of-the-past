@@ -9,12 +9,12 @@ public class ItemDataOnPokemonEvolve : ItemDataOnPokemon
         List<PokemonBaseEvolution> evos = pokemon.GetPokemonBaseData().evolutions;
         foreach(PokemonBaseEvolution evo in evos)
         {
-            if (evo.evolutionData.evolutionType == PokemonEvolutionType.item && (ItemId)evo.evolutionData.value == itemId)
+            if (evo.CanEvolve(pokemon, this))
             {
-                return new CanUseResult(true, "The " + GetName() + " is reacting!");
+                return new CanUseResult(true, GetName() + " is reacting!");
             }
         }
-        return new CanUseResult(false, "The "+GetName()+" is not reacting...");
+        return new CanUseResult(false, GetName()+" is not reacting...");
     }
 
     public override CanUseResult CanUseOnPokemonBattle(PokemonBattleData pokemon)
@@ -27,10 +27,10 @@ public class ItemDataOnPokemonEvolve : ItemDataOnPokemon
         List<PokemonBaseEvolution> evos = pokemon.GetPokemonBaseData().evolutions;
         foreach (PokemonBaseEvolution evo in evos)
         {
-            if (evo.evolutionData.evolutionType == PokemonEvolutionType.item && (ItemId)evo.evolutionData.value == itemId)
+            if (CanUseOnPokemon(pokemon).canUse)
             {
                 UIPauseMenuMaster.GetInstance().CloseAllMenus();
-                PokemonBaseData evolution = PokemonMaster.GetInstance().GetPokemonData(evo.pokemonId);
+                PokemonBaseData evolution = evo.pokemon;
                 PokemonMaster.GetInstance().EvolvePokemon(pokemon, evolution);
             }
         }

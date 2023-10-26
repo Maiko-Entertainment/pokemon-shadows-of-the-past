@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Leavanny
   m_EditorClassIdentifier: 
-  pokemonId: 542
+  pokemonId: Leavanny
   species: Leavanny
-  icon: {fileID: -2046995511, guid: d57320e80ef5c65438da047a8553318c, type: 3}
-  cry: {fileID: 8300000, guid: d1cde1aa9dcd05849af3d8e90265f81d, type: 3}
   baseStats:
     health: 75
     attack: 103
@@ -52,7 +50,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 783c925a920c974409a8ecbd60c84515, type: 2}
   - {fileID: 11400000, guid: 2ecd598c45e7bc544998dacad1f6202f, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
-  evolutions: []
-  battleAnimation: {fileID: 2065171597441229116, guid: 310ac59878258364797778202bb1a764, type: 3}
-  overWorldPrefab: {fileID: 2412039842046388824, guid: 8699895227c05fb43a88194c3a004dc8, type: 3}
+  evolutions:
+  - pokemon: {fileID: 11400000, guid: ae34e2de2016b294ca8543425f02cb31, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 2a6f0dbd862b0ac4a87eaaa13d15fcee, type: 2}
   encounteredIn: []

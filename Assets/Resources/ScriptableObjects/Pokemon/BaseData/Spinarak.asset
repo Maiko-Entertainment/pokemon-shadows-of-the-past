@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Spinarak
   m_EditorClassIdentifier: 
-  pokemonId: 167
+  pokemonId: Spinarak
   species: Spinarak
-  icon: {fileID: 422494538, guid: e38304b046438134781ff8e4f92ca0ef, type: 3}
-  cry: {fileID: 8300000, guid: 0b58bd2a8cd1d65439d3fdfa8a5eb661, type: 3}
   baseStats:
     health: 40
     attack: 60
@@ -64,9 +62,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 168
-    evolutionData:
-      evolutionType: 0
-      value: 22
-  battleAnimation: {fileID: 5856957960245124099, guid: ea88c8fc0e9e9264baae8094491230bd, type: 3}
-  overWorldPrefab: {fileID: 4415021600859410756, guid: 9e89daafe64150542b87e01fda2b600c, type: 3}
+  - pokemon: {fileID: 11400000, guid: b0165fe17a5b8894aa58f6af7596d65d, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: df42e7c527868384cb40ec949be0d1f0, type: 2}
+  encounteredIn: []

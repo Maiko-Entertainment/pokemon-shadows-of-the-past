@@ -5,6 +5,7 @@ public class PersistedPokemon
 {
     public string pokemonName;
     public PokemonBaseId pokemonId;
+    public string id;
     public int level;
     public int experience = 0;
     public int damageTaken = 0;
@@ -17,5 +18,10 @@ public class PersistedPokemon
     public bool isShadow = false;
     public bool isMale = false;
     public float friendship = 0;
+
+    public string GetId()
+    {
+        return string.IsNullOrEmpty(id) ? pokemonId.ToString() : id;
+    }
 
 }

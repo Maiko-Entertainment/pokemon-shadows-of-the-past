@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Eevee
   m_EditorClassIdentifier: 
-  pokemonId: 133
+  pokemonId: Eevee
   species: Eevee
-  icon: {fileID: 5825859946022786482, guid: 20d081704fa53834ba39da392c488c37, type: 3}
-  cry: {fileID: 8300000, guid: 322f40b06597b5e4ba17a050caa31f2e, type: 3}
   baseStats:
     health: 55
     attack: 55
@@ -68,18 +66,13 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 134
-    evolutionData:
-      evolutionType: 2
-      value: 1001
-  - pokemonId: 135
-    evolutionData:
-      evolutionType: 2
-      value: 1002
-  - pokemonId: 136
-    evolutionData:
-      evolutionType: 2
-      value: 1000
-  battleAnimation: {fileID: 5746241249309985748, guid: 1b5bbbbeca3d2dd4dbbc26faba841276, type: 3}
-  overWorldPrefab: {fileID: 1228324865413720741, guid: 0358488f54a1881499709e7d0afff539, type: 3}
+  - pokemon: {fileID: 11400000, guid: f9913b01937e83d4ab2a13ecdfcb1759, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: a2ef1c751c74b3a4e8efcd1696b2c6ea, type: 2}
+  - pokemon: {fileID: 11400000, guid: 36f1e76fe8c61e649ad93836f5b26ec5, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 0efd220c8072d2549ad5202ac55e1bad, type: 2}
+  - pokemon: {fileID: 11400000, guid: 796293300dd920b4f8f130bc3b7e318f, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 68418761e2fa12e4f8e3f6c2e55c2b39, type: 2}
   encounteredIn: []

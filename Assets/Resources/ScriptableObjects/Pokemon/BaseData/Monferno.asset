@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Monferno
   m_EditorClassIdentifier: 
-  pokemonId: 391
+  pokemonId: Monferno
   species: Monferno
-  icon: {fileID: -1972410240, guid: 7742a71691e55754599fa162663e0117, type: 3}
-  cry: {fileID: 8300000, guid: 3e50a3dc674d0394fa51898063909ba6, type: 3}
   baseStats:
     health: 64
     attack: 78
@@ -62,10 +60,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 392
-    evolutionData:
-      evolutionType: 0
-      value: 36
-  battleAnimation: {fileID: 8323602619332691113, guid: f2b2091eb374d5f43996eda5c2753ed4, type: 3}
-  overWorldPrefab: {fileID: 2138281631622802994, guid: 97e72e90cdfdf3048acc36b62efc582f, type: 3}
+  - pokemon: {fileID: 11400000, guid: 35e457b2ef68eca41a5f343f65f4861d, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

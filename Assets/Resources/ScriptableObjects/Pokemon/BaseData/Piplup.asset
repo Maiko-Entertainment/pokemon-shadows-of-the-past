@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Piplup
   m_EditorClassIdentifier: 
-  pokemonId: 383
+  pokemonId: Piplup
   species: Piplup
-  icon: {fileID: 1015285827, guid: e8b0aa9007f43d441875660d27adfa69, type: 3}
-  cry: {fileID: 8300000, guid: 33971b29157b42341957c3483fa9cd7a, type: 3}
   baseStats:
     health: 53
     attack: 51
@@ -62,10 +60,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 394
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 3251301166486218894, guid: ec692138cce5d5349b7054b0af51eda3, type: 3}
-  overWorldPrefab: {fileID: 2157129825263942842, guid: 581084e369d92f7429bf622f79cdfec7, type: 3}
+  - pokemon: {fileID: 11400000, guid: c3d87658f1c9d9847b428a5679bc992c, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

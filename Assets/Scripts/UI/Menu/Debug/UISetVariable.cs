@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UISetVariable : MonoBehaviour
 {
-    public SaveElementId element;
+    public string element;
     public TextMeshProUGUI varName;
     public TMP_InputField inputField;
 
@@ -14,10 +14,10 @@ public class UISetVariable : MonoBehaviour
         Load(element);
     }
 
-    public UISetVariable Load(SaveElementId element)
+    public UISetVariable Load(string elementId)
     {
-        this.element = element;
-        SaveElement se = SaveMaster.Instance.GetSaveElementData(element);
+        element = elementId;
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(elementId);
         varName.text = se.elementName;
         inputField.text = se.GetValue().ToString();
         return this;

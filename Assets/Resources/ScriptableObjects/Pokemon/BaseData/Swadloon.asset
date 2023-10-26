@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Swadloon
   m_EditorClassIdentifier: 
-  pokemonId: 541
+  pokemonId: 'Swadloon '
   species: 'Swadloon '
-  icon: {fileID: 863031011, guid: c40019314e5585b439860b471b780a41, type: 3}
-  cry: {fileID: 8300000, guid: 6901b047b8e271c4988432778dcce55d, type: 3}
   baseStats:
     health: 55
     attack: 63
@@ -44,10 +42,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2ecd598c45e7bc544998dacad1f6202f, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 542
-    evolutionData:
-      evolutionType: 1
-      value: 150
-  battleAnimation: {fileID: 6615495494568376505, guid: 59e867320a1f1d442bef02ef6532c912, type: 3}
-  overWorldPrefab: {fileID: 1911082464200345690, guid: 5dac6a8b7deaee2409d5eb29945e8736, type: 3}
+  - pokemon: {fileID: 11400000, guid: 91d248664f569ed42939c8764b5182e1, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 2a6f0dbd862b0ac4a87eaaa13d15fcee, type: 2}
   encounteredIn: []

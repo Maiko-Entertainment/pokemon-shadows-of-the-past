@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Charmeleon
   m_EditorClassIdentifier: 
-  pokemonId: 5
+  pokemonId: Charmeleon
   species: Charmeleon
-  icon: {fileID: 2461246768012857610, guid: efd1b71dde5e6964484f7d33403e0525, type: 3}
-  cry: {fileID: 8300000, guid: 18ff659024f64a94ca48396a2fbc5c26, type: 3}
   baseStats:
     health: 58
     attack: 64
@@ -71,10 +69,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 6
-    evolutionData:
-      evolutionType: 0
-      value: 36
-  battleAnimation: {fileID: 7506590768689422358, guid: ca6de55f3f70aea41af600a417c90ab9, type: 3}
-  overWorldPrefab: {fileID: 6467342567953168998, guid: 01e42156d51984e47abd948c223ecbb3, type: 3}
+  - pokemon: {fileID: 11400000, guid: 84db5bff9e10d99458fd032653c85c04, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Cyndaquil
   m_EditorClassIdentifier: 
-  pokemonId: 155
+  pokemonId: Cyndaquil
   species: Cyndaquil
-  icon: {fileID: 909864757, guid: 831c832244431d34a81604a981778915, type: 3}
-  cry: {fileID: 8300000, guid: 22c7e268a53d8024683245a8d3816eb0, type: 3}
   baseStats:
     health: 39
     attack: 52
@@ -56,10 +54,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 156
-    evolutionData:
-      evolutionType: 0
-      value: 14
-  battleAnimation: {fileID: 5694939394875060055, guid: a370d0d4b88003547a8e4f48403663d0, type: 3}
-  overWorldPrefab: {fileID: 5882016222401921252, guid: eff8c56396d0998458b677a3403e3b42, type: 3}
+  - pokemon: {fileID: 11400000, guid: e19f4388259e35e45a91eb6be23eccc8, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 56e2cf1840faca64199f532ef1470cb4, type: 2}
   encounteredIn: []

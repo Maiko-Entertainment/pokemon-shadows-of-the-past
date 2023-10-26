@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Growlithe
   m_EditorClassIdentifier: 
-  pokemonId: 58
+  pokemonId: Growlithe
   species: Growlithe
   baseStats:
     health: 55
@@ -74,8 +74,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 59
-    evolutionData:
-      evolutionType: 2
-      value: 1000
+  - pokemon: {fileID: 11400000, guid: 99ae59d0cfb3af1408d3dbdc1820e986, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 68418761e2fa12e4f8e3f6c2e55c2b39, type: 2}
   encounteredIn: []

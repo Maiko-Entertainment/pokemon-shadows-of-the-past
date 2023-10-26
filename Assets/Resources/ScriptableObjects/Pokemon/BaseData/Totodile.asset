@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Totodile
   m_EditorClassIdentifier: 
-  pokemonId: 158
+  pokemonId: Totodile
   species: Totodile
-  icon: {fileID: 2079555928, guid: cd71b076165474447b2a295db5bdccaf, type: 3}
-  cry: {fileID: 8300000, guid: fbddd60397dcb4548a129efd4c1fafa0, type: 3}
   baseStats:
     health: 50
     attack: 65
@@ -56,10 +54,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 159
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 5855692499794241483, guid: c0dbefc3d2b02b04e9d2296d0dd20b18, type: 3}
-  overWorldPrefab: {fileID: 6363296285900822308, guid: fa8ce61e38f08f94bacc4311a5c9fd43, type: 3}
+  - pokemon: {fileID: 11400000, guid: 771236beb67ddf943adda72598c4195a, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 36105781bceb3314d972b72918406a6b, type: 2}
   encounteredIn: []

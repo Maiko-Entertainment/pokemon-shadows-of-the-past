@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Squirtle
   m_EditorClassIdentifier: 
-  pokemonId: 7
+  pokemonId: Squirtle
   species: Squirtle
   baseStats:
     health: 44
@@ -66,8 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 8
-    evolutionData:
-      evolutionType: 0
-      value: 16
+  - pokemon: {fileID: 11400000, guid: df9548d3d5926f14cbb37b5f9389178a, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

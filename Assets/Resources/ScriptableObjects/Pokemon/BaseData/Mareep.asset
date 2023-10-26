@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Mareep
   m_EditorClassIdentifier: 
-  pokemonId: 179
+  pokemonId: Mareep
   species: Mareep
-  icon: {fileID: -3204892623217030142, guid: b676bd5f1f185324cb3c03dd6675cd4c, type: 3}
-  cry: {fileID: 8300000, guid: 0acf760a744c67d4380583e8bad690f0, type: 3}
   baseStats:
     health: 55
     attack: 40
@@ -71,10 +69,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 180
-    evolutionData:
-      evolutionType: 0
-      value: 15
-  battleAnimation: {fileID: 6757250884213818353, guid: faab4eb4e32e9dd4d9e83818ab57dbb7, type: 3}
-  overWorldPrefab: {fileID: 4829092629407761525, guid: 1df48b02151214d45bce53eba1ed4caf, type: 3}
+  - pokemon: {fileID: 11400000, guid: 59906cbd0c367504bb38b156688b2333, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 2fd0f242195e16742950ee1cd1b45343, type: 2}
   encounteredIn: []

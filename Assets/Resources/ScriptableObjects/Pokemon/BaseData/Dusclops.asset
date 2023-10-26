@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Dusclops
   m_EditorClassIdentifier: 
-  pokemonId: 356
+  pokemonId: Dusclops
   species: Dusclops
   baseStats:
     health: 40
@@ -64,8 +64,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5f2d907dc0058e5498a9a79eb1224e54, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 477
-    evolutionData:
-      evolutionType: 0
-      value: 45
+  - pokemon: {fileID: 11400000, guid: e8fb87b38158909428bc08dc04b626e1, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 4e2161c6941399f478448180654216f3, type: 2}
   encounteredIn: []

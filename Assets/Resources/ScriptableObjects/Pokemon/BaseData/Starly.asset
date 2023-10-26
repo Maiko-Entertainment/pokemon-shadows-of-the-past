@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Starly
   m_EditorClassIdentifier: 
-  pokemonId: 396
+  pokemonId: Starly
   species: Starly
-  icon: {fileID: 6444964837376210387, guid: 8c248e379c3bfa64b99df2dff000834d, type: 3}
-  cry: {fileID: 8300000, guid: 64b2ef7b38a95e7469af54f4d88e0bce, type: 3}
   baseStats:
     health: 40
     attack: 55
@@ -65,10 +63,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 397
-    evolutionData:
-      evolutionType: 0
-      value: 14
-  battleAnimation: {fileID: 4472178302252832915, guid: c510af6c4d19c094b886d7f4ac5ccd0b, type: 3}
-  overWorldPrefab: {fileID: 5036782495632259933, guid: 91187274b35775e4eb59764273220b1d, type: 3}
+  - pokemon: {fileID: 11400000, guid: 95c6e370dddad4b4b8c1e67a1fee8ef6, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 56e2cf1840faca64199f532ef1470cb4, type: 2}
   encounteredIn: []

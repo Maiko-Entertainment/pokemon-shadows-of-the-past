@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Combusken
   m_EditorClassIdentifier: 
-  pokemonId: 256
+  pokemonId: Combusken
   species: Combusken
-  icon: {fileID: 15216819, guid: b98aeaec75fa80547bc4fd156e8de2b1, type: 3}
-  cry: {fileID: 8300000, guid: abc4036c24bf62c459d0e1d1dbab874e, type: 3}
   baseStats:
     health: 60
     attack: 85
@@ -66,10 +64,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 257
-    evolutionData:
-      evolutionType: 0
-      value: 36
-  battleAnimation: {fileID: 4115554348777664471, guid: 1f9f6981ce0a09b4a9f4cd5d14bf0664, type: 3}
-  overWorldPrefab: {fileID: 1444123198911908682, guid: ae65fc6039c854e429759340352166ae, type: 3}
+  - pokemon: {fileID: 11400000, guid: 35e457b2ef68eca41a5f343f65f4861d, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

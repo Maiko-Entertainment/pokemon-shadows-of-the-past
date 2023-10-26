@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Prinplup
   m_EditorClassIdentifier: 
-  pokemonId: 394
+  pokemonId: Prinplup
   species: Prinplup
-  icon: {fileID: 1179656174, guid: 38733d12c4435794a9485d64530b106e, type: 3}
-  cry: {fileID: 8300000, guid: 1460a94a1f4cfbc4da379830b995524c, type: 3}
   baseStats:
     health: 64
     attack: 66
@@ -65,10 +63,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 395
-    evolutionData:
-      evolutionType: 0
-      value: 36
-  battleAnimation: {fileID: 8262357880058793830, guid: ddbfbf49d8f998844acda76e440c433e, type: 3}
-  overWorldPrefab: {fileID: 1329666302488652919, guid: 1b0fed8240d2f3049974d6526113c491, type: 3}
+  - pokemon: {fileID: 11400000, guid: 9feab3ae1d111994f9e532ced5ee4c65, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

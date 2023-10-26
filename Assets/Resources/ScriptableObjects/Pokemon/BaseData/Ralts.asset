@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Ralts
   m_EditorClassIdentifier: 
-  pokemonId: 280
+  pokemonId: Ralts
   species: Ralts
-  icon: {fileID: -5272785355923041076, guid: cdd772130f8fc034dbafaeb2760dabcd, type: 3}
-  cry: {fileID: 8300000, guid: 83f3c2b13d6de5c49b44c93da0db72e8, type: 3}
   baseStats:
     health: 28
     attack: 25
@@ -68,10 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 281
-    evolutionData:
-      evolutionType: 0
-      value: 20
-  battleAnimation: {fileID: 8978121636247852969, guid: 08252016c33342d4ebaff70bf34545e6, type: 3}
-  overWorldPrefab: {fileID: 1637851968628301572, guid: 4cb2d466ce9146a46bfe47a56284f90d, type: 3}
+  - pokemon: {fileID: 11400000, guid: ff3f95ffa7bf7714886b67b3daae3771, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 93a08d8c05cb69542a6216ea83a8fb3d, type: 2}
   encounteredIn: []

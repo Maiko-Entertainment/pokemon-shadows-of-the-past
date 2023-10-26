@@ -90,7 +90,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
     public void HandleSubmit()
     {
         SaveElement characterPicked = SaveMaster.Instance.GetSaveElementData(SaveElementId.starterPickedId);
-        characterPicked.SetValue((float)pickedStarter.pokemonId);
+        characterPicked.SetValue(pickedStarter.GetId());
 
         PokemonCaughtData starter = new PokemonCaughtData();
         starter.pokemonBase = pickedStarter;

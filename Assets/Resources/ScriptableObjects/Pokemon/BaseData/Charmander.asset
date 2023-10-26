@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Charmander
   m_EditorClassIdentifier: 
-  pokemonId: 4
+  pokemonId: Charmander
   species: Charmander
-  icon: {fileID: -7647975296125992130, guid: a6391cdbeb778d44697910bdc7541d81, type: 3}
-  cry: {fileID: 8300000, guid: c588e3e4e30b39c40a90421317722933, type: 3}
   baseStats:
     health: 39
     attack: 52
@@ -71,10 +69,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 5
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 2373503024372583106, guid: 85562ec3b65395b45813a925af7df625, type: 3}
-  overWorldPrefab: {fileID: 7770891831024840605, guid: 4bb3f4f598580cf4eb4574184280a3dd, type: 3}
+  - pokemon: {fileID: 11400000, guid: 54404e1369b97ce4092c9c681bbfbd7c, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

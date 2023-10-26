@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Wartortle
   m_EditorClassIdentifier: 
-  pokemonId: 8
+  pokemonId: Wartortle
   species: Wartortle
   baseStats:
     health: 59
@@ -66,8 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 9
-    evolutionData:
-      evolutionType: 0
-      value: 36
+  - pokemon: {fileID: 11400000, guid: 2738d638e36da1045934cbf44ef8e657, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

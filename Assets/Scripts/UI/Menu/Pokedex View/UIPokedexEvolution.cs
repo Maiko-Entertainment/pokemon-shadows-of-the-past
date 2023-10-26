@@ -9,9 +9,9 @@ public class UIPokedexEvolution : MonoBehaviour
     public TextMeshProUGUI condition;
     public Image icon;
 
-    public UIPokedexEvolution Load(PokemonBaseEvolution evolution, bool hasSeen, bool hasSeenEvo)
+    public UIPokedexEvolution Load(PokemonBaseEvolution evoData, bool hasSeen, bool hasSeenEvo)
     {
-        PokemonBaseData evo = PokemonMaster.GetInstance().GetPokemonData(evolution.pokemonId);
+        PokemonBaseData evo = evoData.pokemon;
         icon.sprite = evo.GetIcon();
         if (hasSeenEvo)
         {
@@ -25,18 +25,24 @@ public class UIPokedexEvolution : MonoBehaviour
         {
             condition.text = "No Data";
         }
-        else if (evolution.evolutionData.evolutionType == PokemonEvolutionType.level)
+        else
         {
-            condition.text = "Lv " + evolution.evolutionData.value;
-        }
-        else if (evolution.evolutionData.evolutionType == PokemonEvolutionType.level)
-        {
-            condition.text = "Love " + evolution.evolutionData.value;
-        }
-        else if (evolution.evolutionData.evolutionType == PokemonEvolutionType.item)
-        {
-            ItemData item = ItemMaster.GetInstance().GetItem((ItemId)(int)evolution.evolutionData.value);
-            condition.text = "Use " + item.GetName();
+            string requirements = "";
+            int index = 0;
+            foreach(PokemonEvolutionDataRequirement req in evoData.evolutionRequirements)
+            {
+                requirements += req.GetRequirementText();
+                index++;
+                if (index + 1 < evoData.evolutionRequirements.Count)
+                {
+                    requirements += ", ";
+                }
+                else if (index < evoData.evolutionRequirements.Count)
+                {
+                    requirements += " & ";
+                }
+            }
+            condition.text = requirements;
         }
         return this;
     }

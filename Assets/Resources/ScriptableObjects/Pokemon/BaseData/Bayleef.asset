@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Bayleef
   m_EditorClassIdentifier: 
-  pokemonId: 153
+  pokemonId: Bayleef
   species: Bayleef
-  icon: {fileID: 570759660, guid: 0ffa37bf4e736c044b32161b9d1b6189, type: 3}
-  cry: {fileID: 8300000, guid: cd7f74d279eea7543a2024de0497072c, type: 3}
   baseStats:
     health: 60
     attack: 62
@@ -64,10 +62,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 154
-    evolutionData:
-      evolutionType: 0
-      value: 32
-  battleAnimation: {fileID: 2430986369520666289, guid: f2363c9347903714682505fa768d46eb, type: 3}
-  overWorldPrefab: {fileID: 6163839488064462100, guid: 2e90d3a9a2bac4c4fb9156aeff3189fd, type: 3}
+  - pokemon: {fileID: 11400000, guid: 83088eefaad189f4eb07daf6bef0e110, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: c8ba7378a857c294e969b81f539d2334, type: 2}
   encounteredIn: []

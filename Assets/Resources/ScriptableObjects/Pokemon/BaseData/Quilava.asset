@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Quilava
   m_EditorClassIdentifier: 
-  pokemonId: 156
+  pokemonId: Quilava
   species: Quilava
-  icon: {fileID: 28371001, guid: f8b2f6d6cf91f40418d8abea355fadb8, type: 3}
-  cry: {fileID: 8300000, guid: b8710bc5c6d1f3d40979f8d42e4b5eb6, type: 3}
   baseStats:
     health: 58
     attack: 64
@@ -68,10 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 157
-    evolutionData:
-      evolutionType: 0
-      value: 36
-  battleAnimation: {fileID: 1439695883290661447, guid: 49c25aed81db5084f8105693c76aa130, type: 3}
-  overWorldPrefab: {fileID: 3867792666784920974, guid: 7fe0ed216fa92a0489a51995c8c9e59e, type: 3}
+  - pokemon: {fileID: 11400000, guid: e33af79e96e8758499fb28fa412a48a7, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

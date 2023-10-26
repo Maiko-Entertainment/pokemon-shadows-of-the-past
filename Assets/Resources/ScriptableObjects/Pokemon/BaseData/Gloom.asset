@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Gloom
   m_EditorClassIdentifier: 
-  pokemonId: 44
+  pokemonId: Gloom
   species: Gloom
-  icon: {fileID: 4321630034752846552, guid: fc734ac6735940d4eabc076ed2b6d018, type: 3}
-  cry: {fileID: 8300000, guid: 1eb187622accfbd4db5dc073da6ebe7b, type: 3}
   baseStats:
     health: 60
     attack: 65
@@ -68,10 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 45
-    evolutionData:
-      evolutionType: 2
-      value: 1004
-  battleAnimation: {fileID: 6459468005614560302, guid: 2c9037b3fae9dc0479e281e6db7344ac, type: 3}
-  overWorldPrefab: {fileID: 5310132583884021085, guid: dcafe2f2118d94d43bece32b2bf0bb39, type: 3}
+  - pokemon: {fileID: 11400000, guid: c87fa5dd585898e408bfcfb88e59e62a, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 356e76f8559f78a4892918dd6190e775, type: 2}
   encounteredIn: []

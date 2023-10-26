@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Lombre
   m_EditorClassIdentifier: 
-  pokemonId: 271
+  pokemonId: Lombre
   species: Lombre
-  icon: {fileID: 1171021587, guid: 80e4b0c951b192d449df66f5d6465381, type: 3}
-  cry: {fileID: 8300000, guid: 693014e5be4d99b469ed3d6b8abe2786, type: 3}
   baseStats:
     health: 60
     attack: 50
@@ -66,10 +64,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
   evolutions:
-  - pokemonId: 272
-    evolutionData:
-      evolutionType: 2
-      value: 1001
-  battleAnimation: {fileID: 5145804006598687076, guid: 1dd60bbe5cc2e2b42add001ce8154357, type: 3}
-  overWorldPrefab: {fileID: 5266331048405794864, guid: 0352a1abb1f68f9469c9de5a16744a28, type: 3}
+  - pokemon: {fileID: 11400000, guid: db9997cf52a77864b87511b7c8d9a1fc, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: a2ef1c751c74b3a4e8efcd1696b2c6ea, type: 2}
   encounteredIn: []

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Gastly
   m_EditorClassIdentifier: 
-  pokemonId: 92
+  pokemonId: Gastly
   species: Gastly
-  icon: {fileID: 6653099771833867720, guid: 16de6d2b879e04c449380e591a8ffec5, type: 3}
-  cry: {fileID: 8300000, guid: fe5bc2202a733b642bf92e117681ae30, type: 3}
   baseStats:
     health: 30
     attack: 35
@@ -59,10 +57,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 93
-    evolutionData:
-      evolutionType: 0
-      value: 25
-  battleAnimation: {fileID: 8397314403135987209, guid: 5a8013eb67572e84880475d1ff14c892, type: 3}
-  overWorldPrefab: {fileID: 3590842171991454823, guid: e512274c4a98e084b9b98e09f65f9916, type: 3}
+  - pokemon: {fileID: 11400000, guid: 5f064ada270b8e8428dba7dda2762953, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: df42e7c527868384cb40ec949be0d1f0, type: 2}
   encounteredIn: []

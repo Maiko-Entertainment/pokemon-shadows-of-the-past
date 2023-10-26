@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Oddish
   m_EditorClassIdentifier: 
-  pokemonId: 43
+  pokemonId: Oddish
   species: Oddish
-  icon: {fileID: 9055220200842663350, guid: b2a0b20c729a9c942be738bc0d212b82, type: 3}
-  cry: {fileID: 8300000, guid: 908168a8dc2b77c41924325ff0ce757e, type: 3}
   baseStats:
     health: 45
     attack: 50
@@ -72,12 +70,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   evolutions:
-  - pokemonId: 44
-    evolutionData:
-      evolutionType: 0
-      value: 20
-  battleAnimation: {fileID: 7149549630598553544, guid: 889102f78aef2554391358c9265f6b49, type: 3}
-  overWorldPrefab: {fileID: 9033142516520549986, guid: 4cc3c92c0b1892f409ec3c5128605c11, type: 3}
+  - pokemon: {fileID: 11400000, guid: 13dbf4f0062a896419b7ef999a2ee2ca, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 93a08d8c05cb69542a6216ea83a8fb3d, type: 2}
   encounteredIn:
   - encounteredIn: {fileID: 4383849896166410161, guid: 1213a3138ad73bc45a87434598a46824, type: 3}
     environments:

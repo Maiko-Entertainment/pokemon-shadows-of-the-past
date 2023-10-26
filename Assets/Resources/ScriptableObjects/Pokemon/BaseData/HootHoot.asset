@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: HootHoot
   m_EditorClassIdentifier: 
-  pokemonId: 163
+  pokemonId: Hoothoot
   species: Hoothoot
-  icon: {fileID: -16492001, guid: 1b77e3e8897e5c644b9b9064a00c5ca1, type: 3}
-  cry: {fileID: 8300000, guid: 99fbf0ae240dd72458359ba999fa9b83, type: 3}
   baseStats:
     health: 60
     attack: 30
@@ -83,10 +81,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0690a5999f2ce364eb202e2846dcdf44, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 164
-    evolutionData:
-      evolutionType: 0
-      value: 22
-  battleAnimation: {fileID: 6065451240882784623, guid: 04adc524fecc3c940bb8a3bb53eba8c0, type: 3}
-  overWorldPrefab: {fileID: 3486765308485946911, guid: ff96579a2851a0242aebccf3fdebf59a, type: 3}
+  - pokemon: {fileID: 11400000, guid: 26772d4f55e9d824186db7789b158eb8, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 93a08d8c05cb69542a6216ea83a8fb3d, type: 2}
   encounteredIn: []

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Teddiursa
   m_EditorClassIdentifier: 
-  pokemonId: 216
+  pokemonId: Teddiursa
   species: Teddiursa
-  icon: {fileID: 3821284015707457561, guid: cc52e60475f448248b037db413e95171, type: 3}
-  cry: {fileID: 8300000, guid: e233e94f932b0bb499b734b5f7dc4207, type: 3}
   baseStats:
     health: 60
     attack: 80
@@ -67,10 +65,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 217
-    evolutionData:
-      evolutionType: 0
-      value: 30
-  battleAnimation: {fileID: 4704114975080902246, guid: 8daa3509fd8ac674eb8ce4ff549c8e57, type: 3}
-  overWorldPrefab: {fileID: 5862345531576331172, guid: 417eccbc702980c40980b9a53f5dfac0, type: 3}
+  - pokemon: {fileID: 11400000, guid: 30db8bc8b2f24e546b5918c9491f333a, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 51c41ed083eba9044a9530d67c839c75, type: 2}
   encounteredIn: []

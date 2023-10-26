@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Buneary
   m_EditorClassIdentifier: 
-  pokemonId: 427
+  pokemonId: Buneary
   species: Buneary
-  icon: {fileID: 7285732212043402446, guid: 63cb74d94fefd944e94990f624b86260, type: 3}
-  cry: {fileID: 8300000, guid: 6944f22893d960541a2bdcae8e52898d, type: 3}
   baseStats:
     health: 55
     attack: 66
@@ -69,12 +67,9 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 428
-    evolutionData:
-      evolutionType: 1
-      value: 220
-  battleAnimation: {fileID: 7006040151899922613, guid: 131fd38bf0031554c8f8beaa497c13a5, type: 3}
-  overWorldPrefab: {fileID: 4939360358685448253, guid: 79cbbf977a5e3a3469f304866f92cd3d, type: 3}
+  - pokemon: {fileID: 11400000, guid: ae34e2de2016b294ca8543425f02cb31, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 51c41ed083eba9044a9530d67c839c75, type: 2}
   encounteredIn:
   - encounteredIn: {fileID: 4383849896166410161, guid: 1213a3138ad73bc45a87434598a46824, type: 3}
     environments:

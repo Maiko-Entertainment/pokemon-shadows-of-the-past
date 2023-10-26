@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class SaveFile
 {
+    public int savefileVersion = 0;
     public List<PersistedSaveElement> persistedElements = new List<PersistedSaveElement>();
     public List<PersistedItem> persistedItems = new List<PersistedItem>();
     public List<PersistedPokedexPokemonData> persistedPokedexPokemonData = new List<PersistedPokedexPokemonData>();

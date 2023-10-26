@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Mudkip
   m_EditorClassIdentifier: 
-  pokemonId: 258
+  pokemonId: Mudkip
   species: Mudkip
-  icon: {fileID: 1407867045, guid: be3e6c2566efc4447bcd5267980edf79, type: 3}
-  cry: {fileID: 8300000, guid: 3f8a40786ba04a949b1082eae4ed854a, type: 3}
   baseStats:
     health: 50
     attack: 70
@@ -56,10 +54,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 259
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 2482667423767896327, guid: 9c9f14babc0c3e942bc2ff82176fdeb8, type: 3}
-  overWorldPrefab: {fileID: 6928295605981092596, guid: f7f86e8e2cc320d4cae3e106a37c9d9a, type: 3}
+  - pokemon: {fileID: 11400000, guid: 3513a6307bbd9ce4eab305bc11d7ca19, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Misdreavus
   m_EditorClassIdentifier: 
-  pokemonId: 200
+  pokemonId: Misdreavus
   species: Misdreavus
-  icon: {fileID: -316984382, guid: 036339fca6e37514296881cf7e4f4e7e, type: 3}
-  cry: {fileID: 8300000, guid: b4088b6a09e68454aa645fca54420328, type: 3}
   baseStats:
     health: 60
     attack: 60
@@ -56,10 +54,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 429
-    evolutionData:
-      evolutionType: 2
-      value: 0
-  battleAnimation: {fileID: 6858649040718141784, guid: 8581d7deabc8c984db32ca3db4ae5a21, type: 3}
-  overWorldPrefab: {fileID: 8586356763101244048, guid: abc7757dcd70dc9468597e2b5ea6e219, type: 3}
+  - pokemon: {fileID: 11400000, guid: 9a5539691474619498186bb0a5beccea, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: cd891589c85ec6d47bd563134a5a5adf, type: 2}
   encounteredIn: []

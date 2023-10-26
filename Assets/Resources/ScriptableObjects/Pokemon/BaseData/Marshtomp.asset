@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Marshtomp
   m_EditorClassIdentifier: 
-  pokemonId: 259
+  pokemonId: Marshtomp
   species: Marshtomp
-  icon: {fileID: 1274694857, guid: dffef7d262061604f8075b7a33870cfe, type: 3}
-  cry: {fileID: 8300000, guid: 91385dc841ffd4445855cd809f9cd1c6, type: 3}
   baseStats:
     health: 70
     attack: 85
@@ -65,10 +63,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 260
-    evolutionData:
-      evolutionType: 0
-      value: 36
-  battleAnimation: {fileID: 6529890417524051104, guid: ad8346c6576563e40a5efcee31697597, type: 3}
-  overWorldPrefab: {fileID: 477894500118773743, guid: 75a73062b9aca9540aca3794a520b37c, type: 3}
+  - pokemon: {fileID: 11400000, guid: ea1a16c5273aef0419932d5bf79ab69c, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

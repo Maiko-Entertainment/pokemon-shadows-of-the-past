@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Ivysaur
   m_EditorClassIdentifier: 
-  pokemonId: 2
+  pokemonId: Ivysaur
   species: Ivysaur
   baseStats:
     health: 60
@@ -66,8 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 3
-    evolutionData:
-      evolutionType: 0
-      value: 32
+  - pokemon: {fileID: 11400000, guid: 0b3d3b32c65e6a44ea8b8e869a2c61cd, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: c8ba7378a857c294e969b81f539d2334, type: 2}
   encounteredIn: []

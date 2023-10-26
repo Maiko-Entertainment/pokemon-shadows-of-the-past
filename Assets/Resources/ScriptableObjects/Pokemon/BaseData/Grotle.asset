@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Grotle
   m_EditorClassIdentifier: 
-  pokemonId: 388
+  pokemonId: Grotle
   species: Grotle
-  icon: {fileID: -1926484219, guid: e3a3cf17064fc554d97d2041103bd5c6, type: 3}
-  cry: {fileID: 8300000, guid: 7dde83a7e0dec52429a1b3f3f1d5f99c, type: 3}
   baseStats:
     health: 75
     attack: 89
@@ -67,10 +65,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
   evolutions:
-  - pokemonId: 389
-    evolutionData:
-      evolutionType: 0
-      value: 32
-  battleAnimation: {fileID: 1329475293369981408, guid: bf02bf6d0e4bb8a49b5172093d35a9b5, type: 3}
-  overWorldPrefab: {fileID: 266115726074735963, guid: a0797592318e3e14892865dd7c6714b0, type: 3}
+  - pokemon: {fileID: 11400000, guid: 521b804dc9e7da84c92f2cd9b86c336a, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: c8ba7378a857c294e969b81f539d2334, type: 2}
   encounteredIn: []

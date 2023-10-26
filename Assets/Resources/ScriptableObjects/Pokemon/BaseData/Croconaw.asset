@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Croconaw
   m_EditorClassIdentifier: 
-  pokemonId: 159
+  pokemonId: Croconaw
   species: Croconaw
-  icon: {fileID: 476979287, guid: 9fa24d82dc40bc4439c0d53362b52972, type: 3}
-  cry: {fileID: 8300000, guid: 01b70f584be62a449855e4f2f694e83d, type: 3}
   baseStats:
     health: 65
     attack: 80
@@ -65,10 +63,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 160
-    evolutionData:
-      evolutionType: 0
-      value: 34
-  battleAnimation: {fileID: 3429378816272030768, guid: b5ec401500ca09e4a902548b50ccc9f1, type: 3}
-  overWorldPrefab: {fileID: 5260767292666441603, guid: 4dbd6374a0579c54bac2c6c40e748eee, type: 3}
+  - pokemon: {fileID: 11400000, guid: fd153df782f3c3e49abf01408f784565, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

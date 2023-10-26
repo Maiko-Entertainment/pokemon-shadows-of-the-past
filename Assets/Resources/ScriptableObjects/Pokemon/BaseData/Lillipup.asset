@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Lillipup
   m_EditorClassIdentifier: 
-  pokemonId: 506
+  pokemonId: Lillipup
   species: Lillipup
-  icon: {fileID: -2524442827945219377, guid: f07042d3d4f00ee4faeadf2f9387717c, type: 3}
-  cry: {fileID: 8300000, guid: eeab75b7f1326b64d9ff81af8d4cfbc2, type: 3}
   baseStats:
     health: 45
     attack: 60
@@ -67,10 +65,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 507
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 562640495779642627, guid: 7635747e4db71ac4aa1d3f91145a256c, type: 3}
-  overWorldPrefab: {fileID: 456282118185653268, guid: 4ea5c843a0647b64eb51e64fbf87a19a, type: 3}
+  - pokemon: {fileID: 11400000, guid: dbff16d75d5fb654f87cb319e0821fff, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

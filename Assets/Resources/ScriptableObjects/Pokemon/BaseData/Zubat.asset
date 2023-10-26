@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Zubat
   m_EditorClassIdentifier: 
-  pokemonId: 41
+  pokemonId: Zubat
   species: Zubat
-  icon: {fileID: -1072436836, guid: 8f9a85be6b3308c48a194130ac5c1225, type: 3}
-  cry: {fileID: 8300000, guid: 6dabed0fd81f6ab48880430c0ef0de31, type: 3}
   baseStats:
     health: 40
     attack: 45
@@ -68,10 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 42
-    evolutionData:
-      evolutionType: 0
-      value: 22
-  battleAnimation: {fileID: 2507087007361240292, guid: 5f6c2a03b999cd6458c9227013ff65b8, type: 3}
-  overWorldPrefab: {fileID: 8693479751467362609, guid: 3fab72cce62e7af45a94a1914c2768dc, type: 3}
+  - pokemon: {fileID: 11400000, guid: 15e0ebe7523ad8946af6348d3bb43d81, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 93a08d8c05cb69542a6216ea83a8fb3d, type: 2}
   encounteredIn: []

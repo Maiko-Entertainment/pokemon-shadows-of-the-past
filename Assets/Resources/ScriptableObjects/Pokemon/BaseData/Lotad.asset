@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Lotad
   m_EditorClassIdentifier: 
-  pokemonId: 270
+  pokemonId: Lotad
   species: Lotad
-  icon: {fileID: 1748972450, guid: e2fb719e1e057d9478541ffd20922881, type: 3}
-  cry: {fileID: 8300000, guid: 2c830a43971664a48ac9bc42dae50df6, type: 3}
   baseStats:
     health: 40
     attack: 30
@@ -63,10 +61,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: fae2dc0847e66484ea0032b2e07e9222, type: 2}
   evolutions:
-  - pokemonId: 271
-    evolutionData:
-      evolutionType: 0
-      value: 14
-  battleAnimation: {fileID: 7563646684170415011, guid: 3f347a72897b4c94bba87182a610a835, type: 3}
-  overWorldPrefab: {fileID: 1397424338243200405, guid: 5feb1e0fb33888d42a1e8bbfe9cd72fb, type: 3}
+  - pokemon: {fileID: 11400000, guid: 8fddc572cf3a63f4d8063df63056e739, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 56e2cf1840faca64199f532ef1470cb4, type: 2}
   encounteredIn: []

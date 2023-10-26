@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Torchic
   m_EditorClassIdentifier: 
-  pokemonId: 255
+  pokemonId: Torchic
   species: Torchic
-  icon: {fileID: 2049741152, guid: 0ee4adb4980d34249b8d1cbe925b46e5, type: 3}
-  cry: {fileID: 8300000, guid: b79d8a3dd6c9a7d49a1021fac9f5f9a1, type: 3}
   baseStats:
     health: 45
     attack: 60
@@ -57,10 +55,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 256
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 3952846160981555268, guid: c341bc99ccc316e40b67dbe46acb104e, type: 3}
-  overWorldPrefab: {fileID: 7091785609774117409, guid: b146ac73b5ee2554a867b8fded19ae83, type: 3}
+  - pokemon: {fileID: 11400000, guid: 9cbfb26cd8740b94b8adeb3fab9cf54b, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

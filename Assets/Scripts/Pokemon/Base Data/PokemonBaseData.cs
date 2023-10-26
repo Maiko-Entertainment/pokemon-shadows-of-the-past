@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Pokemon/BaseData")]
 public class PokemonBaseData : ScriptableObject
 {
-    public PokemonBaseId pokemonId;
+    public string pokemonId;
     public string species;
     public PokemonBaseStats baseStats;
     public List<PokemonTypeId> types;
@@ -20,6 +20,11 @@ public class PokemonBaseData : ScriptableObject
     public List<MoveData> tmMoves;
     public List<PokemonBaseEvolution> evolutions;
     public List<PokemonBaseDataAreas> encounteredIn = new List<PokemonBaseDataAreas>();
+
+    public string GetId()
+    {
+        return pokemonId;
+    }
 
     public AudioClip GetCry() {
         string path = ResourceMaster.Instance.GetBasePokemonCryPath(this);

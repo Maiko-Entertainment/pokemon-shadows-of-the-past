@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Treecko
   m_EditorClassIdentifier: 
-  pokemonId: 252
+  pokemonId: Treecko
   species: Treecko
-  icon: {fileID: 1344359346, guid: 28f044db42b44e94185aa95281eb8151, type: 3}
-  cry: {fileID: 8300000, guid: e44e7e643f25b1a4fbcb364b939d8ebc, type: 3}
   baseStats:
     health: 40
     attack: 45
@@ -58,10 +56,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 253
-    evolutionData:
-      evolutionType: 0
-      value: 16
-  battleAnimation: {fileID: 7332302579056340987, guid: e681dfd42481e3f4aa5c375a3ddfbe54, type: 3}
-  overWorldPrefab: {fileID: 932050967506728078, guid: fa3a4968cd7993643b3c439a0410b320, type: 3}
+  - pokemon: {fileID: 11400000, guid: 0be1d93a1de3abd4981a01158c864dc5, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: aae7099dff28f124a804957bddd7c592, type: 2}
   encounteredIn: []

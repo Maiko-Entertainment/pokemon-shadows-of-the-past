@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Kirlia
   m_EditorClassIdentifier: 
-  pokemonId: 281
+  pokemonId: Kirlia
   species: Kirlia
-  icon: {fileID: 5907981266058986906, guid: 1624b42453a4bb246bd1204b660807dd, type: 3}
-  cry: {fileID: 8300000, guid: 23e4fb3e894eb764aba2c6c261842793, type: 3}
   baseStats:
     health: 38
     attack: 35
@@ -62,10 +60,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 282
-    evolutionData:
-      evolutionType: 0
-      value: 30
-  battleAnimation: {fileID: 7944247659788849282, guid: 83451c688af1e3f4b88325aa3b58195f, type: 3}
-  overWorldPrefab: {fileID: 3495775295725080087, guid: 98ca99def7b60124a908c86a20ac7185, type: 3}
+  - pokemon: {fileID: 11400000, guid: 5ebdb86488dd978468bac7aae3fbb02b, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 51c41ed083eba9044a9530d67c839c75, type: 2}
   encounteredIn: []

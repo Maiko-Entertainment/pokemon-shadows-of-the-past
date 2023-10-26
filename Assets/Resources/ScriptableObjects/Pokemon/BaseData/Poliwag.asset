@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Poliwag
   m_EditorClassIdentifier: 
-  pokemonId: 60
+  pokemonId: Poliwag
   species: Poliwag
-  icon: {fileID: -1762377265, guid: 8b7d4744071742542b533921e7146ba7, type: 3}
-  cry: {fileID: 8300000, guid: 05c1272f008b813479f1cc0d4a8d5cdb, type: 3}
   baseStats:
     health: 40
     attack: 50
@@ -50,10 +48,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 61
-    evolutionData:
-      evolutionType: 0
-      value: 25
-  battleAnimation: {fileID: 3322383916779226398, guid: 31b60ed6754ac2842919491538b6db71, type: 3}
-  overWorldPrefab: {fileID: 5701987495183995879, guid: 207d2658b9da55645a1fce3712cc3cb7, type: 3}
+  - pokemon: {fileID: 11400000, guid: ee0c84844d465a44494e13cea4aa35d7, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 93a08d8c05cb69542a6216ea83a8fb3d, type: 2}
   encounteredIn: []

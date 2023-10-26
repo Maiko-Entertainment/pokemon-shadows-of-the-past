@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Poliwhirl
   m_EditorClassIdentifier: 
-  pokemonId: 61
+  pokemonId: Poliwhirl
   species: Poliwhirl
-  icon: {fileID: 1886991792, guid: d132d42bc5791ab4e99ce2c3e5c761ff, type: 3}
-  cry: {fileID: 8300000, guid: 5bd59557fcb365e4e91c7ef639580800, type: 3}
   baseStats:
     health: 65
     attack: 65
@@ -50,10 +48,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 62
-    evolutionData:
-      evolutionType: 2
-      value: 1001
-  battleAnimation: {fileID: 217329404994003809, guid: a32dfd8e3f92bb24da51cce8ae3c9f42, type: 3}
-  overWorldPrefab: {fileID: 1055175633984301309, guid: 9144781975381c743b2ce2d81295be74, type: 3}
+  - pokemon: {fileID: 11400000, guid: 21817d1df5d4652468a84460823367ff, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: a2ef1c751c74b3a4e8efcd1696b2c6ea, type: 2}
   encounteredIn: []

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Shinx
   m_EditorClassIdentifier: 
-  pokemonId: 403
+  pokemonId: Shinx
   species: Shinx
-  icon: {fileID: -436384563, guid: 1542849e598c6f945a8bb67900967e40, type: 3}
-  cry: {fileID: 8300000, guid: 3ac7368d22f65854cad636b252a7f2d2, type: 3}
   baseStats:
     health: 45
     attack: 65
@@ -72,10 +70,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 404
-    evolutionData:
-      evolutionType: 0
-      value: 15
-  battleAnimation: {fileID: 3196852787646471386, guid: 29f7c8282d6bbfe48b7ea2c5f0ea0248, type: 3}
-  overWorldPrefab: {fileID: 3527702016473018227, guid: 3eb4a2f38da15164abc93c780537fc80, type: 3}
+  - pokemon: {fileID: 11400000, guid: 2585af1289aaad74cb06fe10a45659c8, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 2fd0f242195e16742950ee1cd1b45343, type: 2}
   encounteredIn: []

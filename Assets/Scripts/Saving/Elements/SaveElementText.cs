@@ -6,7 +6,7 @@ public class SaveElementText : SaveElement
 
     public override object GetValue()
     {
-        PersistedSaveElement se = SaveMaster.Instance.GetSaveElementFromSavefile(id);
+        PersistedSaveElement se = SaveMaster.Instance.GetSaveElementFromSavefile(GetId());
         if (se != null)
         {
             string value = (string)se.value;
@@ -20,6 +20,6 @@ public class SaveElementText : SaveElement
     }
     public override void SetValue(object newValue)
     {
-        SaveMaster.Instance.SetSaveElementInner(""+newValue, id);
+        SaveMaster.Instance.SetSaveElementInner(""+newValue, GetId());
     }
 }

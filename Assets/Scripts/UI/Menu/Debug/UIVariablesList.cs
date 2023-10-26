@@ -17,7 +17,7 @@ public class UIVariablesList : MonoBehaviour
         List<SaveElement> elements = SaveMaster.Instance.saveElements.Values.ToList();
         foreach (SaveElement e in elements)
         {
-            Instantiate(variablePreafb, variableList).Load(e.id);
+            Instantiate(variablePreafb, variableList).Load(e.GetId());
         }
     }
 

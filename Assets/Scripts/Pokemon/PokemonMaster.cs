@@ -12,7 +12,7 @@ public class PokemonMaster : MonoBehaviour
     public bool evolveFirstPartyPokemon = false;
     public PokemonBaseData forceEvolveTo;
 
-    protected Dictionary<PokemonBaseId, PokedexPokemonData> pokedexData = new Dictionary<PokemonBaseId, PokedexPokemonData>();
+    protected Dictionary<string, PokedexPokemonData> pokedexData = new Dictionary<string, PokedexPokemonData>();
 
     private void Awake()
     {
@@ -48,10 +48,10 @@ public class PokemonMaster : MonoBehaviour
     {
         foreach(PersistedPokedexPokemonData pData in saveFile.persistedPokedexPokemonData)
         {
-            if (pokedexData.ContainsKey(pData.pokemonId))
+            if (pokedexData.ContainsKey(pData.GetId()))
             {
-                pokedexData[pData.pokemonId].seenAmount = pData.seenAmount;
-                pokedexData[pData.pokemonId].caughtAmount = pData.caughtAmount;
+                pokedexData[pData.GetId()].seenAmount = pData.seenAmount;
+                pokedexData[pData.GetId()].caughtAmount = pData.caughtAmount;
             }
         }
     }
@@ -99,6 +99,10 @@ public class PokemonMaster : MonoBehaviour
 
     public PokedexPokemonData GetPokemonPokedexData(PokemonBaseId pokemonId)
     {
+        return GetPokemonPokedexData(pokemonId.ToString());
+    }
+    public PokedexPokemonData GetPokemonPokedexData(string pokemonId)
+    {
         if (pokedexData.ContainsKey(pokemonId))
         {
             return pokedexData[pokemonId];
@@ -106,14 +110,14 @@ public class PokemonMaster : MonoBehaviour
         return null;
     }
 
-    public void SeePokemon(PokemonBaseId pokemonId)
+    public void SeePokemon(string pokemonId)
     {
         if (pokedexData.ContainsKey(pokemonId))
         {
             pokedexData[pokemonId].seenAmount++;
         }
     }
-    public void CaughtPokemon(PokemonBaseId pokemonId)
+    public void CaughtPokemon(string pokemonId)
     {
         if (pokedexData.ContainsKey(pokemonId))
         {
@@ -122,6 +126,11 @@ public class PokemonMaster : MonoBehaviour
     }
 
     public PokemonBaseData GetPokemonData(PokemonBaseId id)
+    {
+        return GetPokemonData(id.ToString());
+    }
+
+    public PokemonBaseData GetPokemonData(string id)
     {
         PokedexPokemonData data = GetPokemonPokedexData(id);
         if (data != null && data.pokemon != null)
@@ -161,7 +170,7 @@ public class PokemonMaster : MonoBehaviour
         {
             if (evo.CanEvolve(pokemon))
             {
-                PokemonBaseData evolution = GetPokemonData(evo.pokemonId);
+                PokemonBaseData evolution = evo.pokemon;
                 InteractionsMaster.GetInstance().AddEvent(new InteractionEventStartEvolution(pokemon, evolution));
                 return true;
             }

@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Grovyle
   m_EditorClassIdentifier: 
-  pokemonId: 253
+  pokemonId: Grovyle
   species: Grovyle
-  icon: {fileID: 1900037923, guid: fc53e5dca7d860043bc7b0edf9537a1c, type: 3}
-  cry: {fileID: 8300000, guid: 2cd7eeb2610039e48a0d9ba1da56d34a, type: 3}
   baseStats:
     health: 50
     attack: 65
@@ -67,10 +65,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01594607f87e3df46b556d2dc9477183, type: 2}
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 254
-    evolutionData:
-      evolutionType: 0
-      value: 36
-  battleAnimation: {fileID: 5539525220214268638, guid: 154552a91762bc843b590213ff94ae83, type: 3}
-  overWorldPrefab: {fileID: 2006734482099881670, guid: 5e925de9b976f8a4684c65249d770db1, type: 3}
+  - pokemon: {fileID: 11400000, guid: 9c4b382338d3ea74c8194dec67ae4762, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 780b4e5700f3df640bf5406050611645, type: 2}
   encounteredIn: []

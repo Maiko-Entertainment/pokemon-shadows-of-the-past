@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Golbat
   m_EditorClassIdentifier: 
-  pokemonId: 42
+  pokemonId: Golbat
   species: Golbat
-  icon: {fileID: -229204962, guid: 9077ff02b73a220468c294d680277f15, type: 3}
-  cry: {fileID: 8300000, guid: 5a66f23560f89ed4fa06b7524cd92928, type: 3}
   baseStats:
     health: 75
     attack: 80
@@ -68,10 +66,7 @@ MonoBehaviour:
   tmMoves:
   - {fileID: 11400000, guid: 50bf24fb1d8bf9144a3292eca5b7e6a8, type: 2}
   evolutions:
-  - pokemonId: 169
-    evolutionData:
-      evolutionType: 1
-      value: 150
-  battleAnimation: {fileID: 6205725566428028405, guid: c3f91f288480bea498be0ea1fec9b474, type: 3}
-  overWorldPrefab: {fileID: 1681756555093854604, guid: 857a5ccb3524c324f9b89a210afce680, type: 3}
+  - pokemon: {fileID: 11400000, guid: c54cff66f03009b4eb55df2f3c415c37, type: 2}
+    evolutionRequirements:
+    - {fileID: 11400000, guid: 2a6f0dbd862b0ac4a87eaaa13d15fcee, type: 2}
   encounteredIn: []
