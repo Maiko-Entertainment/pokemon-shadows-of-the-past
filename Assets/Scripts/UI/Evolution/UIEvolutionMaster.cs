@@ -70,6 +70,8 @@ public class UIEvolutionMaster : MonoBehaviour
         PokemonBattleAnimator animator = BattleAnimatorMaster.GetInstance().pokemonBattlerAnimator;
         originalPokemon = Instantiate(animator);
         originalPokemon.Load(pokemon);
+        originalPokemonImage.sprite = originalPokemon.GetSprite();
+        originalPokemonImage.SetNativeSize();
 
         Dictionary<string, string> variables = new Dictionary<string, string>
         {
@@ -87,7 +89,7 @@ public class UIEvolutionMaster : MonoBehaviour
         float transitionDurationFinal = evolutionTransitionDuration - finalGlowDuration;
         originalPokemonImage.gameObject.SetActive(true);
         StartCoroutine(CreateLines(0.25f));
-        InteractionsMaster.GetInstance().ExecuteNext(0.25f);
+        // InteractionsMaster.GetInstance().ExecuteNext(0.25f);
         AudioMaster.GetInstance().StopMusic();
         yield return new WaitForSeconds(1);
         AudioMaster.GetInstance().PlaySfx(evolutionStartSound);
@@ -127,6 +129,8 @@ public class UIEvolutionMaster : MonoBehaviour
         Destroy(transition);
         originalPokemonImage.gameObject.SetActive(false);
         evolvedPokemonImage.gameObject.SetActive(true);
+        evolvedPokemonImage.sprite = evolvedPokemon.GetSprite();
+        evolvedPokemonImage.SetNativeSize();
         AudioMaster.GetInstance().StopMusic();
         yield return new WaitForSeconds(1f);
         finalWave= Instantiate(evolutionWaveFinalPrefab, evolutionFinalWaveContainer);
@@ -141,6 +145,7 @@ public class UIEvolutionMaster : MonoBehaviour
         InteractionEventFlowchart evolutionEvent = new InteractionEventFlowchart(flowchart, "Evolution", variables);
         evolutionEvent.priority = 10;
         InteractionsMaster.GetInstance().AddEvent(evolutionEvent);
+        InteractionsMaster.GetInstance().ExecuteNext(0.25f);
 
         foreach (PokemonMoveLearn ml in learnedMoves)
         {

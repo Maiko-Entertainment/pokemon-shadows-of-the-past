@@ -5,7 +5,7 @@ using System;
 
 public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
 {
-    public PokemonCaughtData pokemon { get; set; }
+    public PokemonCaughtData pokemon;
     public SpriteRenderer sprite;
 
     public static string basePath = "Sprites/Pokemon/";
@@ -19,6 +19,14 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
     [SerializeField] private Sprite[] spritesLeft;
     [SerializeField] private Sprite[] spritesRight;
     [SerializeField] protected Vector2 lastDirection = new Vector2();
+
+    public void Start()
+    {
+        if (pokemon != null)
+        {
+            Load(pokemon);
+        }
+    }
 
     public int GetDirectionStartingIndex(MoveBrainDirection direction)
     {

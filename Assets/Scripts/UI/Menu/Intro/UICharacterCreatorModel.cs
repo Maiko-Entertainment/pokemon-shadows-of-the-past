@@ -43,7 +43,7 @@ public class UICharacterCreatorModel : MonoBehaviour
     {
         SaveElement characterPicked = SaveMaster.Instance.GetSaveElementData(SaveElementId.characterModelId);
         characterPicked.SetValue(modeId);
-        WorldMapMaster.GetInstance().ReloadPlayer();
+        WorldMapMaster.GetInstance().DestroyPlayer();
         UIPauseMenuMaster.GetInstance()?.OpenMenu(nextMenu, true);
     }
 

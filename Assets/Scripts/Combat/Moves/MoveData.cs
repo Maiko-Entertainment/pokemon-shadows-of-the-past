@@ -46,7 +46,15 @@ public class MoveData : ScriptableObject
             if (categoryId != MoveCategoryId.status)
             {
                 DamageSummary damageSummary = GetMoveDamageSummary(battleEvent);
-                bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
+                // If the opponent isn't inmune then we deal damage, show anims, etc
+                if (damageSummary.advantageType != BattleTypeAdvantageType.inmune)
+                {
+                    bm.AddDamageDealtEvent(pokemonTarget, damageSummary);
+                }
+                else
+                {
+                    BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventTypeAdvantage(damageSummary.advantageType));
+                }
             }
             else
             {
