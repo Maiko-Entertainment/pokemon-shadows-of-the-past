@@ -31,6 +31,7 @@ public class InventoryMaster : MonoBehaviour
             ChangeItemAmount(pi.id, pi.amount);
         }
     }
+    
     public void HandleSave()
     {
         List<ItemElement> persistedItem = new List<ItemElement>();
