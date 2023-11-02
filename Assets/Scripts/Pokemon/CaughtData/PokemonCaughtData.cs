@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 [System.Serializable]
 public class PokemonCaughtData
 {
@@ -24,9 +27,9 @@ public class PokemonCaughtData
     public AudioClip GetCry() { return pokemonBase.GetCry(); }
     public Sprite GetIcon() { return pokemonBase.GetIcon(); }
 
-    public PokemonCaughtData(PersistedPokemon pkmn)
+    public PokemonCaughtData(PokemonElement pkmn)
     {
-        pokemonBase = PokemonMaster.GetInstance().GetPokemonData(pkmn.GetId());
+        pokemonBase = PokemonMaster.GetInstance().GetPokemonData(pkmn.pokemonId);
         pokemonName = pkmn.pokemonName;
         level = pkmn.level;
         experience = pkmn.experience;
@@ -39,21 +42,21 @@ public class PokemonCaughtData
         isMale = pkmn.isMale;
         friendship = pkmn.friendship;
         equippedItem = (ItemDataOnPokemon) ItemMaster.GetInstance().GetItem(pkmn.equipedItem);
-        foreach(PersistedPokemonMove me in pkmn.moves)
+        foreach(PokemonMoveElement me in pkmn.moves)
         {
             moves.Add(new MoveEquipped(me));
         }
-        foreach (PersistedPokemonMove me in pkmn.learnedMoves)
+        foreach (PokemonMoveElement me in pkmn.learnedMoves)
         {
             learnedMoves.Add(new MoveEquipped(me));
         }
         CheckForLearnedMoves(pkmn.level);
     }
 
-    public PersistedPokemon GetSave()
+    public PokemonElement GetSave()
     {
-        PersistedPokemon pp = new PersistedPokemon();
-        pp.id = pokemonBase.GetId();
+        PokemonElement pp = new PokemonElement();
+        pp.pokemonId = (PokemonBaseId) Enum.Parse(typeof(PokemonBaseId), pokemonBase.GetId());
         pp.pokemonName = pokemonName;
         pp.level = level;
         pp.experience = experience;
@@ -196,14 +199,17 @@ public class PokemonCaughtData
             natureId.Equals(PokemonNatureId.restless));
         return pokemonBaseStats;
     }
+    
     public float GetFriendship()
     {
         return isShadow ? 0 : friendship;
     }
+    
     public List<PokemonTypeId> GetTypes()
     {
         return GetPokemonBaseData().types;
     }
+    
     public int GetExperience()
     {
         return experience;
@@ -224,14 +230,17 @@ public class PokemonCaughtData
     {
         return GetRemainingExperienceToNextLevel(GetLevel());
     }
+    
     public int GetRemainingExperienceToNextLevel(int level)
     {
         return GetTotalExperienceToNextLevel(level) - experience;
     }
+    
     public ItemDataOnPokemon GetEquippedItem()
     {
         return equippedItem;
     }
+    
     public void UnequipItem()
     {
         equippedItem = null;

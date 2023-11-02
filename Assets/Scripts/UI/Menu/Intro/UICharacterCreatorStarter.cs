@@ -89,8 +89,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
 
     public void HandleSubmit()
     {
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElementData(SaveElementId.starterPickedId);
-        characterPicked.SetValue(pickedStarter.GetId());
+        SaveMaster.Instance.SaveElement("starterPickedId", pickedStarter.GetId());
 
         PokemonCaughtData starter = new PokemonCaughtData();
         starter.pokemonBase = pickedStarter;
@@ -102,19 +101,17 @@ public class UICharacterCreatorStarter : MonoBehaviour
         starter.abilityId = pickedStarter.GetRandomAbility();
         starter.friendship = pickedStarter.baseFriendship;
         PartyMaster.GetInstance().AddPartyMember(starter);
-        SaveElement se = SaveMaster.Instance.GetSaveElementData(SaveElementId.startedTypePicked);
-        SaveElementNumber sen = (SaveElementNumber)se;
-        if (starter.GetTypes().Contains(PokemonTypeId.Fire))
+        switch (starter.GetTypes()[0])
         {
-            sen.SetValue(3f);
-        }
-        else if (starter.GetTypes().Contains(PokemonTypeId.Water))
-        {
-            sen.SetValue(2f);
-        }
-        else
-        {
-            sen.SetValue(1f);
+            case PokemonTypeId.Fire:
+                SaveMaster.Instance.SaveElement("startedTypePicked", 3);
+                break;
+            case PokemonTypeId.Water:
+                SaveMaster.Instance.SaveElement("startedTypePicked", 2);
+                break;
+            case PokemonTypeId.Grass:
+                SaveMaster.Instance.SaveElement("startedTypePicked", 1);
+                break;
         }
         PokemonMaster.GetInstance().CaughtPokemon(starter.GetPokemonBaseData().pokemonId);
         PokemonMaster.GetInstance().SeePokemon(starter.GetPokemonBaseData().pokemonId);

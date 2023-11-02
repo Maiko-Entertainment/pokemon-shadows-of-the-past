@@ -83,6 +83,7 @@ MonoBehaviour:
   innerTransform: {fileID: 4412663776129708070}
   speed: 3
   heightOffset: 0
+  disableShadow: 0
   cachedDirections: []
   followMode: 0
 --- !u!1 &3250590118494116502
@@ -639,7 +640,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 619
-    y: 66.73418
+    y: 65.17168
     width: 131.24995
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1914,7 +1915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 39
   indentLevel: 0
-  variableId: 100
+  variableId: akaneRelationship
   operation: 1
   value: 1
 --- !u!114 &5716362182040622059
@@ -2032,7 +2033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 44
   indentLevel: 0
-  variableId: 14
+  variableId: akaneForestMoment
   operation: 0
   value: 1
 --- !u!114 &2515058598138718548
@@ -3893,7 +3894,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5271427619367300381
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3910,7 +3911,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7951443631753858002
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,11 +30,8 @@ public class UIQuestData : ScriptableObject
         return true;
     }
 
-
-
     public string GetTitle()
     {
         return title;
     }
-
 }

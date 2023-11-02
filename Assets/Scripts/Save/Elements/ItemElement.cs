@@ -1,5 +1,5 @@
 [System.Serializable]
-public class PersistedItem
+public class ItemElement
 {
     public ItemId id;
     public int amount = 0;

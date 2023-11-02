@@ -100,7 +100,7 @@ public class UIPokedexView : MonoBehaviour
     {
         PokemonBaseData pkmn = data.pokemon;
         selected = data;
-
+        
         List<PokemonTypeId> types = pkmn.types;
         pokemonName.text = pkmn.species;
         int totalPriorities = 0;

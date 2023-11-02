@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Fungus;
 using System.Collections.Generic;
@@ -23,20 +24,28 @@ public class FungusLoadBasicVariables : Command
     }
 
     public void LoadAllSaveVariables()
-    {
+    { ;
         SaveFile mySave = SaveMaster.Instance.GetActiveSave();
-        foreach(PersistedSaveElement pse in mySave.persistedElements)
+        foreach(ObjectElement pse in mySave.elements)
         {
-            if (!GetFlowchart().HasVariable(pse.GetId()))
-                continue;
-            SaveElement se = SaveMaster.Instance.GetSaveElementData(pse.GetId());
-            switch (se.GetValueType())
+            if (!GetFlowchart().HasVariable(pse.name))
             {
-                case SaveValueType.number:
-                    GetFlowchart().SetFloatVariable(se.GetId(), (float)se.GetValue());
+                continue;
+            }
+            dynamic se = SaveMaster.Instance.GetElement(pse.name);
+            switch (se.GetType())
+            {
+                case bool:
+                    GetFlowchart().SetBooleanVariable(pse.name, se);
                     break;
-                default:
-                    GetFlowchart().SetStringVariable(se.GetId(), (string)se.GetValue());
+                case int:
+                    GetFlowchart().SetIntegerVariable(pse.name, se);
+                    break;
+                case float:
+                    GetFlowchart().SetFloatVariable(pse.name, se);
+                    break;
+                case string:
+                    GetFlowchart().SetStringVariable(se.GetId(), se);
                     break;
             }
         }

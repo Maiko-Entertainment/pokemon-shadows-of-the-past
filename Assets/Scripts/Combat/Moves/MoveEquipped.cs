@@ -9,7 +9,7 @@ public class MoveEquipped
     {
         this.move = move;
     }
-    public MoveEquipped(PersistedPokemonMove move)
+    public MoveEquipped(PokemonMoveElement move)
     {
         this.move = MovesMaster.Instance.GetMove(move.id);
         timesUsed = move.uses;
@@ -22,9 +22,9 @@ public class MoveEquipped
         this.disabledTurnsLeft = disabledTurnsLeft;
     }
 
-    public PersistedPokemonMove GetSave()
+    public PokemonMoveElement GetSave()
     {
-        PersistedPokemonMove pe = new PersistedPokemonMove();
+        PokemonMoveElement pe = new PokemonMoveElement();
         pe.id = move.moveId;
         pe.uses = timesUsed;
         return pe;

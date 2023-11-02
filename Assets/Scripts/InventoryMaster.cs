@@ -26,19 +26,19 @@ public class InventoryMaster : MonoBehaviour
     public void Load(SaveFile save)
     {
         inventory = new List<ItemInventory>();
-        foreach (PersistedItem pi in save.persistedItems)
+        foreach (ItemElement pi in save.itemsElements)
         {
             ChangeItemAmount(pi.id, pi.amount);
         }
     }
     public void HandleSave()
     {
-        List<PersistedItem> persistedItem = new List<PersistedItem>();
+        List<ItemElement> persistedItem = new List<ItemElement>();
         foreach (ItemInventory item in inventory)
         {
             persistedItem.Add(item.GetSave());
         }
-        SaveMaster.Instance.activeSaveFile.persistedItems = persistedItem;
+        SaveMaster.Instance.activeSaveFile.itemsElements = persistedItem;
     }
 
     public List<ItemInventory> GetItemsFromCategory(ItemCategory category)
@@ -100,17 +100,14 @@ public class InventoryMaster : MonoBehaviour
 
     public int GetMoney()
     {
-        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElementData(SaveElementId.money);
-        float moneyAmount = (float)money.GetValue();
-        return (int)moneyAmount;
+        return SaveMaster.Instance.GetElementAsInt("money");
     }
 
     public int ChangeMoney(int change)
     {
-        SaveElementNumber money = (SaveElementNumber)SaveMaster.Instance.GetSaveElementData(SaveElementId.money);
-        float moneyAmount = (float)money.GetValue();
-        int amountAfter = Mathf.Max(0, (int) moneyAmount + change);
-        money.SetValue((float) amountAfter);
+        int moneyAmount = SaveMaster.Instance.GetElementAsInt("money");;
+        int amountAfter = Mathf.Max(0, moneyAmount + change);
+        SaveMaster.Instance.SaveElement("money", amountAfter);
         return amountAfter;
     }
 

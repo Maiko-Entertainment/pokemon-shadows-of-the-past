@@ -13,9 +13,9 @@ public class PokedexPokemonData
         this.pokemon = pokemon;
     }
 
-    public PersistedPokedexPokemonData GetSave()
+    public PokedexPokemonDataElement GetSave()
     {
-        PersistedPokedexPokemonData saveData = new PersistedPokedexPokemonData();
+        PokedexPokemonDataElement saveData = new PokedexPokemonDataElement();
         saveData.id = pokemon.GetId();
         saveData.caughtAmount = caughtAmount;
         saveData.seenAmount = seenAmount;

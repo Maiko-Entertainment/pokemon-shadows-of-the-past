@@ -35,7 +35,6 @@ public class UICharacterCreator : MonoBehaviour
     }
     public void SubmitPlayerData()
     {
-        SaveElement playerName = SaveMaster.Instance.GetSaveElementData(SaveElementId.playerName);
-        playerName.SetValue(nameInput.text);
+        SaveMaster.Instance.SaveElement("playerName", nameInput.text);
     }
 }

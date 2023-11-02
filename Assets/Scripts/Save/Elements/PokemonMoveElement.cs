@@ -1,5 +1,5 @@
 [System.Serializable]
-public class PersistedPokemonMove
+public class PokemonMoveElement
 {
     public MoveId id;
     public int uses;

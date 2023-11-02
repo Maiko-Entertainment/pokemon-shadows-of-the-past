@@ -10,16 +10,16 @@ public class ItemInventory
         this.itemData = itemData;
         this.amount = amount;
     }
-    public ItemInventory(PersistedItem pe)
+    public ItemInventory(ItemElement pe)
     {
         ItemData itemData = ItemMaster.GetInstance().GetItem(pe.id);
         this.itemData = itemData;
         amount = pe.amount;
     }
 
-    public PersistedItem GetSave()
+    public ItemElement GetSave()
     {
-        PersistedItem pi = new PersistedItem();
+        ItemElement pi = new ItemElement();
         pi.amount = amount;
         pi.id = itemData.itemId;
         return pi;

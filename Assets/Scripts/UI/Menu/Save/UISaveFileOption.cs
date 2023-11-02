@@ -26,32 +26,20 @@ public class UISaveFileOption : MonoBehaviour, ISelectHandler
     {
         this.saveFile = saveFile;
         this.index = index;
-        string playerNameSaved = (string)GetPersistedElementValue(SaveElementId.playerName);
-        object persistedModelId = GetPersistedElementValue(SaveElementId.characterModelId);
-        float playerModelId = persistedModelId != null ? (float)persistedModelId: 0;
-        List<PersistedPokemon> persistedPokemon = saveFile.persistedParty;
+        string playerNameSaved = SaveMaster.Instance.GetElementAsString("playerName");
+        List<PokemonElement> persistedPokemon = saveFile.partyElements;
 
-        Sprite previewSprite = WorldMapMaster.GetInstance().GetPlayerPrefab((int)playerModelId).preview;
+        Sprite previewSprite = WorldMapMaster.GetInstance().GetPlayerPrefab(SaveMaster.Instance.GetElementAsInt("characterModelId")).preview;
         playerIcon.sprite = previewSprite;
         playerName.text = playerNameSaved;
         if (saveIdendex) saveIdendex.text = "" + (index + 1)+ ".";
 
-        foreach (PersistedPokemon pp in persistedPokemon)
+        foreach (PokemonElement pp in persistedPokemon)
         {
             Instantiate(pokemonPartyPrefab, persistedPokemonList).Load(pp);
         }
 
         return this;
-    }
-
-    public object GetPersistedElementValue(SaveElementId id)
-    {
-        foreach(PersistedSaveElement pse in saveFile.persistedElements)
-        {
-            if (pse.id == id)
-                return pse.value;
-        }
-        return null;
     }
 
     public void HandleClick()

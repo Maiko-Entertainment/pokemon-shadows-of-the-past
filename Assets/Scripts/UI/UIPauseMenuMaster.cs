@@ -29,8 +29,6 @@ public class UIPauseMenuMaster : MonoBehaviour
     public Transform pokemonMiniViewList;
     public Transform timeofDayContainer;
 
-    public UIVariablesList variablesInstance;
-
     private List<UIMenuPile> openedMenus = new List<UIMenuPile>();
 
     private void Awake()

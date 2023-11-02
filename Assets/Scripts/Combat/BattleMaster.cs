@@ -44,7 +44,8 @@ public class BattleMaster : MonoBehaviour
     }
     public void HandleSave()
     {
-        SaveMaster.Instance.SetSaveElementInner(isExpShareOn ? 1f : 0f, SaveElementId.expShare);
+        SaveMaster.Instance.SaveElement("expShare", isExpShareOn);
+        //SaveMaster.Instance.SetSaveElementInner(isExpShareOn ? 1f : 0f, SaveElementId.expShare);
     }
 
     public BattleManager GetCurrentBattle()
@@ -76,7 +77,7 @@ public class BattleMaster : MonoBehaviour
         finalTactics.AddRange(TacticsMaster.GetInstance().GetEquippedTactics());
         finalTactics.AddRange(battleData.playerExtraTactics);
         BattleTeamData team1 = new BattleTeamData(
-            (string) SaveMaster.Instance.GetSaveElementData(SaveElementId.playerName).GetValue(),
+            SaveMaster.Instance.GetElementAsString("playerName"),
             GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
@@ -87,23 +88,16 @@ public class BattleMaster : MonoBehaviour
             "Lose Wild Battle",
             ""
         ));
-        if (battleData.volumeProfile)
+        if (battleData.volumeProfile) {
             TransitionMaster.GetInstance().SetBattleCameraProfile(battleData.volumeProfile);
+        }
         GetCurrentBattle().StartBattle();
         BattleAnimatorMaster.GetInstance().ShowAll();
     }
 
     public void Load(SaveFile save)
     {
-        PersistedSaveElement expShare = save.persistedElements.Find((se) => se.id == SaveElementId.expShare);
-        if (expShare != null)
-        {
-            isExpShareOn = (float)expShare.value != 0f;
-        }
-        else
-        {
-            isExpShareOn = true;
-        }
+        isExpShareOn = SaveMaster.Instance.GetElementAsBoolean("expShare");
     }
 
     public void SetPostBattleEvent(BattleEndEvent postBattleEvent)
@@ -117,7 +111,7 @@ public class BattleMaster : MonoBehaviour
         List<TacticData> finalTactics = new List<TacticData>(TacticsMaster.GetInstance().GetEquippedTactics());
         finalTactics.AddRange(trainer.battleData.playerExtraTactics);
         BattleTeamData team1 = new BattleTeamData(
-            (string)SaveMaster.Instance.GetSaveElementData(SaveElementId.playerName).GetValue(),
+            SaveMaster.Instance.GetElementAsString("playerName"),
             GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
         team1.allyPokemon = trainer.team1PokemonAllies;
         BattleTeamData team2 = trainer.GetTeambattleData();

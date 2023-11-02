@@ -7,22 +7,20 @@ using UnityEngine;
 )]
 public class FungusSetSaveElement : Command
 {
-    public SaveElementId variableId;
+    public string variableId;
     public VariableOperationType operation;
-    public float value = 1;
+    public int value = 1;
 
     public override void OnEnter()
     {
-        SaveElement se = SaveMaster.Instance.GetSaveElementData(variableId);
-        SaveElementNumber sen = (SaveElementNumber)se;
+        int se = SaveMaster.Instance.GetElementAsInt(variableId);
         switch (operation)
         {
             case VariableOperationType.change:
-                float newValue = (float)sen.GetValue() + value;
-                sen.SetValue(newValue);
+                SaveMaster.Instance.SaveElement(variableId, se + value);
                 break;
             default:
-                sen.SetValue(value);
+                SaveMaster.Instance.SaveElement(variableId, value);
                 break;
         }
         Continue();
@@ -34,6 +32,6 @@ public class FungusSetSaveElement : Command
 
     public override string GetSummary()
     {
-        return base.GetSummary() + " - " + variableId.ToString() + " -> "+operation+" "+value;
+        return base.GetSummary() + " - " + variableId + " -> "+operation+" "+value;
     }
 }

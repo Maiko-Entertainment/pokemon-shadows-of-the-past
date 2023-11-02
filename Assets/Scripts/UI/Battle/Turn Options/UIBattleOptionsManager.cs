@@ -20,7 +20,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     public Transform subMenuContainer;
     public TransitionCanvasGroup tacticContainer;
     public bool isInSubmenu = false;
-    public float tacticsStoryProgressNeeded = 25;
+    public int tacticsStoryProgressNeeded = 25;
 
     private UIItemsViewer itemSelectorInstance;
     private UIPokemonView pokemonSelectorInstance;
@@ -200,6 +200,7 @@ public class UIBattleOptionsManager : MonoBehaviour
             }
         }
     }
+    
     public void HandleTacticsOpen(CallbackContext context)
     {
         bool isBattleActive = BattleMaster.GetInstance().IsBattleActive();
@@ -219,7 +220,6 @@ public class UIBattleOptionsManager : MonoBehaviour
 
     public bool IsTacticActive()
     {
-        SaveElementNumber storyProgress = (SaveElementNumber)SaveMaster.Instance.GetSaveElementData(SaveElementId.storyProgress);
-        return ((float)storyProgress.GetValue() >= tacticsStoryProgressNeeded);
+        return (SaveMaster.Instance.GetElementAsInt("storyProgress") >= tacticsStoryProgressNeeded);
     }
 }

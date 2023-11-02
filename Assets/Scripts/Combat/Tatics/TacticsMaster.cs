@@ -24,7 +24,7 @@ public class TacticsMaster : MonoBehaviour
 
     public void Load(SaveFile save)
     {
-        foreach (PersistedTactic pt in save.persistedTactics)
+        foreach (TacticElement pt in save.tacticsElements)
         {
             learntTactics.Add(GetTactic(pt.tacticId));
         }

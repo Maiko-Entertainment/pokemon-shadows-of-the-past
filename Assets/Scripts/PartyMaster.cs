@@ -34,12 +34,12 @@ public class PartyMaster : MonoBehaviour
         if (!loadDefaultParty)
         {
             party = new List<PokemonCaughtData>();
-            foreach (PersistedPokemon pp in save.persistedParty)
+            foreach (PokemonElement pp in save.partyElements)
             {
                 party.Add(new PokemonCaughtData(pp));
             }
             pokemonBox = new List<PokemonCaughtData>();
-            foreach (PersistedPokemon pp in save.persistedBox)
+            foreach (PokemonElement pp in save.boxElements)
             {
                 pokemonBox.Add(new PokemonCaughtData(pp));
             }
@@ -48,18 +48,18 @@ public class PartyMaster : MonoBehaviour
 
     public void HandleSave()
     {
-        List<PersistedPokemon> persistedPokemon = new List<PersistedPokemon>();
+        List<PokemonElement> persistedPokemon = new List<PokemonElement>();
         foreach(PokemonCaughtData pokemon in party)
         {
             persistedPokemon.Add(pokemon.GetSave());
         }
-        List<PersistedPokemon> persistedBox = new List<PersistedPokemon>();
+        List<PokemonElement> persistedBox = new List<PokemonElement>();
         foreach (PokemonCaughtData pokemon in pokemonBox)
         {
             persistedBox.Add(pokemon.GetSave());
         }
-        SaveMaster.Instance.activeSaveFile.persistedParty = persistedPokemon;
-        SaveMaster.Instance.activeSaveFile.persistedBox = persistedBox;
+        SaveMaster.Instance.activeSaveFile.partyElements = persistedPokemon;
+        SaveMaster.Instance.activeSaveFile.boxElements = persistedBox;
     }
 
     public List<PokemonCaughtData> GetParty()

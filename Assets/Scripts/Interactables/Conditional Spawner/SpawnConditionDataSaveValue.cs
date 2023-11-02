@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 [System.Serializable]
 public class SpawnConditionDataSaveValue
 {
-    public SaveElementId saveVariable;
+    public string saveVariable;
     public SpawnConditionDataValueCheck condition;
     public float value;
 
     public bool IsTrue()
     {
-        SaveElement elem = SaveMaster.Instance.GetSaveElementData(saveVariable);
-        SaveElementNumber elemNumber = (SaveElementNumber)elem;
-        float saveValue = (float)elemNumber.GetValue();
+        float saveValue = SaveMaster.Instance.GetElementAsFloat(saveVariable);
         switch (condition)
         {
             case SpawnConditionDataValueCheck.IsLessThan:

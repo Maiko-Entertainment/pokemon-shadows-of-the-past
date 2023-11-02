@@ -46,24 +46,24 @@ public class PokemonMaster : MonoBehaviour
 
     public void Load(SaveFile saveFile)
     {
-        foreach(PersistedPokedexPokemonData pData in saveFile.persistedPokedexPokemonData)
+        foreach(PokedexPokemonDataElement pData in saveFile.pokedexPokemonDataElements)
         {
-            if (pokedexData.ContainsKey(pData.GetId()))
+            if (pokedexData.ContainsKey(pData.id))
             {
-                pokedexData[pData.GetId()].seenAmount = pData.seenAmount;
-                pokedexData[pData.GetId()].caughtAmount = pData.caughtAmount;
+                pokedexData[pData.id].seenAmount = pData.seenAmount;
+                pokedexData[pData.id].caughtAmount = pData.caughtAmount;
             }
         }
     }
 
     public void HandleSave()
     {
-        List<PersistedPokedexPokemonData> persistedPokedexPokemon = new List<PersistedPokedexPokemonData>();
+        List<PokedexPokemonDataElement> persistedPokedexPokemon = new List<PokedexPokemonDataElement>();
         foreach (PokedexPokemonData pd in pokedexData.Values)
         {
             persistedPokedexPokemon.Add(pd.GetSave());
         }
-        SaveMaster.Instance.activeSaveFile.persistedPokedexPokemonData = persistedPokedexPokemon;
+        SaveMaster.Instance.activeSaveFile.pokedexPokemonDataElements = persistedPokedexPokemon;
     }
 
     IEnumerator EvolveAfter(float after)

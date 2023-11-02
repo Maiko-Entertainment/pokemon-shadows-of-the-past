@@ -20,10 +20,10 @@ public class UIPokemonMini : MonoBehaviour
         return this;
     }
 
-    public UIPokemonMini Load(PersistedPokemon pokemon)
+    public UIPokemonMini Load(PokemonElement pokemon)
     {
         if (pokemon == null) return this;
-        PokemonBaseData pbd = PokemonMaster.GetInstance().GetPokemonData(pokemon.GetId());
+        PokemonBaseData pbd = PokemonMaster.GetInstance().GetPokemonData(pokemon.pokemonId);
         if (pbd == null) return this;
         icon.sprite = pbd.GetIcon();
         if (level)

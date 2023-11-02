@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -141,9 +142,7 @@ public class WorldMapMaster : MonoBehaviour
     {
         if (player == null)
         {
-            SaveElement se = SaveMaster.Instance.GetSaveElementData(SaveElementId.characterModelId);
-            int index = (int)(float)se.GetValue();
-            player = Instantiate(GetPlayerPrefab(index));
+            player = Instantiate(GetPlayerPrefab(SaveMaster.Instance.GetElementAsInt("characterModelId")));
         }
         return player;
     }
@@ -208,14 +207,12 @@ public class WorldMapMaster : MonoBehaviour
 
     public void SetTimeOfDay(TimeOfDayType type)
     {
-        SaveMaster.Instance.SetSaveElementInner(type, SaveElementId.timeOfDay);
+        SaveMaster.Instance.SaveElement("timeOfDay", Convert.ToInt32(type));
     }
 
     public TimeOfDayType GetTimeOfDay()
     {
-        SaveElement pse = SaveMaster.Instance.GetSaveElementData(SaveElementId.timeOfDay);
-        TimeOfDayType day = (TimeOfDayType)(float)pse.GetValue();
-        return day;
+        return (TimeOfDayType)SaveMaster.Instance.GetElementAsInt("timeOfDay");
     }
 
     public void PlayCurrentPlaceMusic()

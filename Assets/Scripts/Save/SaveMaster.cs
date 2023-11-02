@@ -1,28 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SaveMaster : MonoBehaviour
 {
     public static SaveMaster Instance;
-
     public List<SaveFile> saveFiles = new List<SaveFile>();
-
     public SaveFile activeSaveFile;
+    
     public int lastSaveIndex = 0;
     public int maxSaveFiles = 20;
-
-    public bool loadOnStart = false;
-    public bool loadHackedData = false;
-    public bool startNewGame = false;
-
-    public Dictionary<string, SaveElement> saveElements = new Dictionary<string, SaveElement>();
-
-    private void Awake()
+    
+	private void Awake()
     {
+        Debug.Log("????");
         if (Instance)
         {
             Destroy(this);
@@ -30,38 +24,13 @@ public class SaveMaster : MonoBehaviour
         else
         {
             Instance = this;
-            InstantiateDatabase();
             LoadSaveSlots();
         }
     }
 
     private void Start()
     {
-        if (loadOnStart)
-        {
-            if (startNewGame)
-            {
-                StartNewGame();
-            }
-            else
-            {
-                LoadSaveFile(0);
-            }
-        }
-        else
-        {
-            StartCoroutine(GoToMainMenu());
-        }
-    }
-
-    public void InstantiateDatabase()
-    {
-        string savePath = ResourceMaster.Instance.GetSaveElementsPath();
-        SaveElement[] saveElementsData = Resources.LoadAll<SaveElement>(savePath);
-        foreach (SaveElement se in saveElementsData)
-        {
-            saveElements.Add(se.GetId(), se);
-        }
+        StartCoroutine(GoToMainMenu());
     }
 
     public IEnumerator GoToMainMenu()
@@ -70,18 +39,15 @@ public class SaveMaster : MonoBehaviour
         yield return new WaitForSeconds(delay);
         WorldMapMaster.Instance.GoToMap(13, 0);
     }
-
+    
     public void LoadSaveSlots()
     {
-        if (!loadHackedData)
+        saveFiles = new List<SaveFile>();
+        for (int i=0; i< maxSaveFiles; i++)
         {
-            saveFiles = new List<SaveFile>();
-            for (int i=0; i< maxSaveFiles; i++)
-            {
-                SaveFile file = GetSaveFile(i);
-                if (file != null)
-                    saveFiles.Add(file);
-            }
+            SaveFile file = GetSaveFile(i);
+            if (file != null)
+                saveFiles.Add(file);
         }
     }
 
@@ -93,8 +59,7 @@ public class SaveMaster : MonoBehaviour
         Load(activeSaveFile);
     }
 
-    public void Load(SaveFile save)
-    {
+    public void Load(SaveFile save) {
         AudioMaster.GetInstance().Load(save);
         PokemonMaster.GetInstance().Load(save);
         PartyMaster.GetInstance().Load(save);
@@ -103,8 +68,7 @@ public class SaveMaster : MonoBehaviour
         WorldMapMaster.GetInstance().Load(save);
         BattleMaster.GetInstance().Load(save);
     }
-
-
+    
     public void Save(int saveIndex)
     {
         PartyMaster.GetInstance().HandleSave();
@@ -117,7 +81,7 @@ public class SaveMaster : MonoBehaviour
         SaveCurrentFile(saveIndex);
         LoadSaveSlots();
     }
-
+    
     public void SaveCurrentFile(int saveIndex)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -158,54 +122,76 @@ public class SaveMaster : MonoBehaviour
     {
         return Application.persistentDataPath + "/Saves";
     }
+    
     public string GetFilePath(int index)
     {
-        return GetSavePath() + "/Save" + index + ".txt";
-    }
-    public SaveElement GetSaveElementData(SaveElementId id)
-    {
-        return GetSaveElementData(id.ToString());
-    }
-    public SaveElement GetSaveElementData(string id)
-    {
-        if (saveElements.ContainsKey(id))
-            return saveElements[id];
-        return null;
+        return GetSavePath() + "/Save" + index + ".bin";
     }
 
-    public PersistedSaveElement GetSaveElementFromSavefile(SaveElementId id)
-    {
-        return GetSaveElementFromSavefile(id);
-    }
-    public PersistedSaveElement GetSaveElementFromSavefile(string id)
-    {
-        foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
-        {
-            if (se.GetId() == id)
-                return se;
-        }
-        return null;
-    }
-
-    public void SetSaveElementInner(object newValue, SaveElementId id)
-    {
-        SetSaveElementInner(newValue, id.ToString());
-    }
-
-    public void SetSaveElementInner(object newValue, string id)
-    {
-        foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
-        {
-            if (se.GetId() == id)
-            {
-                se.value = newValue;
+    public void SaveElement(string elementName, dynamic value) {
+        foreach (ObjectElement o in activeSaveFile.elements) {
+            if (o.name == elementName) {
+                o.value = value;
                 return;
             }
         }
-        PersistedSaveElement newElement = new PersistedSaveElement(id, newValue);
-        activeSaveFile.persistedElements.Add(newElement);
+        Debug.Log("new element " + elementName + ":" + value);
+        activeSaveFile.elements.Add(new ObjectElement(elementName, value));
     }
 
+    public string GetElementAsString(string elementName) {
+        dynamic value = GetElement(elementName);
+        if (value == null) {
+            return "";
+        }
+        return value;
+       // return (string)GetElementAsObject(elementName);
+    }
+    
+    public bool GetElementAsBoolean(string elementName) {
+        //return (bool)GetElementAsObject(elementName);
+        dynamic value = GetElement(elementName);
+        if (value == null) {
+            return false;
+        }
+        return value;
+    }
+    
+    public int GetElementAsInt(string elementName) {
+        dynamic value = GetElement(elementName);
+        if (value == null) {
+            return 0;
+        }
+        return value;
+        // return (int)GetElement(elementName);
+    }
+    
+    public float GetElementAsFloat(string elementName) {
+        dynamic value = GetElement(elementName);
+        //Debug.Log(value);
+        if (value == null) {
+            return 0;
+        }
+        return value;
+    }
+
+    public dynamic GetElement(string elementName) {
+        foreach (ObjectElement o in activeSaveFile.elements) {
+            if (o.name == elementName) {
+                Debug.Log("get element " + elementName + ":" + o.value);
+                return o.value;
+            }
+        }
+
+        foreach (ObjectElement o in activeSaveFile.elements) {
+            Debug.Log("saved element " + o.name + ":" + o.value);
+        }
+        Debug.Log("elements size " + activeSaveFile.elements.Count);
+
+        Debug.Log("empty element " + elementName);
+        return null;
+    }
+    
     public SaveFile GetActiveSave()
     {
         return activeSaveFile;
@@ -215,9 +201,10 @@ public class SaveMaster : MonoBehaviour
     {
         return saveFiles;
     }
-
+    
     public void StartNewGame()
     {
+        print("NEW SAVE");
         activeSaveFile = new SaveFile();
         Load(activeSaveFile);
     }
