@@ -21,7 +21,7 @@ public class SaveElement : ScriptableObject
 
     public virtual void SetValue(object newValue)
     {
-        SaveMaster.Instance.SetSaveElementInner(newValue, GetId());
+        SaveMaster.Instance.SetSaveElement(newValue, GetId());
     }
 
     public virtual SaveValueType GetValueType()

@@ -10,11 +10,13 @@ using UnityEngine;
 
 public class FungusGetSaveElementFloat : Command
 {
+    public string saveIdString = "";
     public SaveElementId saveId;
     public override void OnEnter()
     {
-        SaveElement se = SaveMaster.Instance.GetSaveElementData(saveId);
-        GetFlowchart().SetFloatVariable(saveId.ToString(), (float)se.GetValue());
+        string saveIdFinal = string.IsNullOrEmpty(saveIdString) ? saveId.ToString() : saveIdString;
+        float value = SaveMaster.Instance.GetSaveElementFloat(saveIdFinal);
+        GetFlowchart().SetFloatVariable(saveIdFinal, value);
         Continue();
     }
 

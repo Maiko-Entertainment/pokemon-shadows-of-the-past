@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class SaveMaster : MonoBehaviour
 {
@@ -187,12 +187,58 @@ public class SaveMaster : MonoBehaviour
         return null;
     }
 
-    public void SetSaveElementInner(object newValue, SaveElementId id)
+    public float GetSaveElementFloat(string id)
     {
-        SetSaveElementInner(newValue, id.ToString());
+        try
+        {
+            return GetSaveElementValue<float>(id);
+        }
+        catch
+        {
+            return 0f;
+        }
     }
 
-    public void SetSaveElementInner(object newValue, string id)
+    public string GetSaveElementString(string id)
+    {
+        try
+        {
+            return GetSaveElementValue<string>(id);
+        }
+        catch
+        {
+            return "";
+        }
+    }
+    public object GetSaveElement(string id)
+    {
+        try
+        {
+            return GetSaveElementValue<object>(id);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    private T GetSaveElementValue<T>(string id)
+    {
+        // Looks for save element if current savefile
+        foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
+        {
+            if (se.GetId() == id)
+                return (T)se.value;
+        }
+        // Return default value if it's not found
+        if (saveElements.ContainsKey(id))
+        {
+            return (T)saveElements[id].GetValue();
+        }
+        throw new Exception("Save Variable with id " + id + " not found");
+    }
+
+    public void SetSaveElement(object newValue, string id)
     {
         foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
         {
@@ -202,6 +248,7 @@ public class SaveMaster : MonoBehaviour
                 return;
             }
         }
+        // If it doesn't exist create a new one
         PersistedSaveElement newElement = new PersistedSaveElement(id, newValue);
         activeSaveFile.persistedElements.Add(newElement);
     }

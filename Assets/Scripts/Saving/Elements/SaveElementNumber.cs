@@ -21,6 +21,6 @@ public class SaveElementNumber : SaveElement
 
     public override void SetValue(object newValue)
     {
-        SaveMaster.Instance.SetSaveElementInner((float)newValue, GetId());
+        SaveMaster.Instance.SetSaveElement((float)newValue, GetId());
     }
 }

@@ -20,6 +20,6 @@ public class SaveElementText : SaveElement
     }
     public override void SetValue(object newValue)
     {
-        SaveMaster.Instance.SetSaveElementInner(""+newValue, GetId());
+        SaveMaster.Instance.SetSaveElement(""+newValue, GetId());
     }
 }

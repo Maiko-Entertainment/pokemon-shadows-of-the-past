@@ -10,9 +10,7 @@ public class SpawnConditionDataSaveValue
 
     public bool IsTrue()
     {
-        SaveElement elem = SaveMaster.Instance.GetSaveElementData(saveVariable);
-        SaveElementNumber elemNumber = (SaveElementNumber)elem;
-        float saveValue = (float)elemNumber.GetValue();
+        float saveValue = SaveMaster.Instance.GetSaveElementFloat(saveVariable.ToString());
         switch (condition)
         {
             case SpawnConditionDataValueCheck.IsLessThan:

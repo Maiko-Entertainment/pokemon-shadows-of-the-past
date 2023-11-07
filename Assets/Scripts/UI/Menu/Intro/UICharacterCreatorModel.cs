@@ -28,8 +28,8 @@ public class UICharacterCreatorModel : MonoBehaviour
             Destroy(t.gameObject);
         }
         int playerAmounts = WorldMapMaster.GetInstance().playerPrefabs.Count;
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElementData(SaveElementId.characterModelId);
-        int currentPick = (int)(float) characterPicked.GetValue();
+        float characterPickedId = SaveMaster.Instance.GetSaveElementFloat(SaveElementId.characterModelId.ToString());
+        int currentPick = (int)characterPickedId;
         for (int i = 0; i < playerAmounts; i++)
         {
             UICharacterPicker cPicker = Instantiate(pickerPrefab, characterList).Load(i);

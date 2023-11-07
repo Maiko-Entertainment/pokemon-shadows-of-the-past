@@ -29,15 +29,18 @@ public class FungusLoadBasicVariables : Command
         {
             if (!GetFlowchart().HasVariable(pse.GetId()))
                 continue;
-            SaveElement se = SaveMaster.Instance.GetSaveElementData(pse.GetId());
-            switch (se.GetValueType())
+
+            object se = SaveMaster.Instance.GetSaveElement(pse.GetId());
+            if (se is float)
             {
-                case SaveValueType.number:
-                    GetFlowchart().SetFloatVariable(se.GetId(), (float)se.GetValue());
-                    break;
-                default:
-                    GetFlowchart().SetStringVariable(se.GetId(), (string)se.GetValue());
-                    break;
+                GetFlowchart().SetFloatVariable(pse.GetId(), (float)se);
+            }
+            else if (se is string) {
+                GetFlowchart().SetStringVariable(pse.GetId(), (string)se);
+            }
+            else if (se is bool)
+            {
+                GetFlowchart().SetBooleanVariable(pse.GetId(), (bool)se);
             }
         }
     }
