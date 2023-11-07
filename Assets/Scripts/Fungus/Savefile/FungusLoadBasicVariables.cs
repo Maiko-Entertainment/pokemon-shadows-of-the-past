@@ -23,29 +23,18 @@ public class FungusLoadBasicVariables : Command
         Continue();
     }
 
-    public void LoadAllSaveVariables()
-    { ;
+    public void LoadAllSaveVariables() {
         SaveFile mySave = SaveMaster.Instance.GetActiveSave();
-        foreach(ObjectElement pse in mySave.elements)
-        {
-            if (!GetFlowchart().HasVariable(pse.name))
-            {
+        foreach (ObjectElement pse in mySave.elements) {
+            if (!GetFlowchart().HasVariable(pse.name)) {
                 continue;
             }
-            dynamic se = SaveMaster.Instance.GetElement(pse.name);
-            switch (se.GetType())
-            {
-                case bool:
-                    GetFlowchart().SetBooleanVariable(pse.name, se);
+            switch (pse.value.GetType().GetHashCode())  {
+                case 64118264:
+                    GetFlowchart().SetFloatVariable(pse.name, pse.value);
                     break;
-                case int:
-                    GetFlowchart().SetIntegerVariable(pse.name, se);
-                    break;
-                case float:
-                    GetFlowchart().SetFloatVariable(pse.name, se);
-                    break;
-                case string:
-                    GetFlowchart().SetStringVariable(se.GetId(), se);
+                case 64127368:
+                    GetFlowchart().SetStringVariable(pse.name, pse.value);
                     break;
             }
         }
