@@ -27,7 +27,7 @@ public class PokemonCaughtData
     public PokemonCaughtData(PersistedPokemon persistedPkmn)
     {
         pokemonBase = PokemonMaster.GetInstance().GetPokemonData(persistedPkmn.GetId());
-        pokemonName = persistedPkmn.pokemonName;
+        pokemonName = persistedPkmn.GetId();
         level = persistedPkmn.level;
         experience = persistedPkmn.experience;
         damageTaken = persistedPkmn.damageTaken;
@@ -38,7 +38,7 @@ public class PokemonCaughtData
         friendship = persistedPkmn.friendship;
         isMale = persistedPkmn.isMale;
         friendship = persistedPkmn.friendship;
-        equippedItem = ItemMaster.GetInstance().GetItem(persistedPkmn.equipedItem) as ItemDataOnPokemon;
+        equippedItem = ItemMaster.GetInstance().GetItem(persistedPkmn.GetId()) as ItemDataOnPokemon;
         foreach(PersistedPokemonMove me in persistedPkmn.moves)
         {
             moves.Add(new MoveEquipped(me));
@@ -112,7 +112,7 @@ public class PokemonCaughtData
 
     public string GetName()
     {
-        return pokemonName != "" && pokemonName != null ? pokemonName : pokemonBase.species;
+        return pokemonName != "" && pokemonName != null ? pokemonName : pokemonBase.GetId();
     }
 
     public void SetName(string newName)
@@ -274,7 +274,7 @@ public class PokemonCaughtData
         {
             try
             {
-                if (moveData.moveId == me.move.moveId)
+                if (moveData.GetId() == me.move.GetId())
                 {
                     isMoveInLearnedMoves = true;
                     break;
@@ -282,7 +282,7 @@ public class PokemonCaughtData
             }
             catch
             {
-                Debug.LogError(me.move);
+                Debug.LogError(me?.move);
                 Debug.LogError(moveData);
             }
         }
@@ -291,7 +291,7 @@ public class PokemonCaughtData
             MoveEquipped me = new MoveEquipped(moveData);
             foreach (MoveEquipped move in moves)
             {
-                if (moveData.moveId == move.move.moveId)
+                if (moveData.GetId() == move.move.GetId())
                 {
                     isMoveInLearnedMoves = true;
                     break;
@@ -320,7 +320,7 @@ public class PokemonCaughtData
         // Add available TM Moves
         foreach(MoveData tm in pokemonBase.GetTMMoves())
         {
-            if (InventoryMaster.GetInstance().HasTMForMove(tm.moveId))
+            if (InventoryMaster.GetInstance().HasTMForMove(tm.GetId()))
                 TryToLearnMove(tm);
         }
         // Add level up moves
@@ -358,11 +358,11 @@ public class PokemonCaughtData
         int indexOfNew = -1;
         foreach (MoveEquipped m in moves)
         {
-            if (m.move.moveId == swapFor.move.moveId)
+            if (m.move.GetId() == swapFor.move.GetId())
             {
                 index = moves.IndexOf(m);
             }
-            else if (m.move.moveId == move.move.moveId)
+            else if (m.move.GetId() == move.move.GetId())
             {
                 indexOfNew = moves.IndexOf(m);
             }

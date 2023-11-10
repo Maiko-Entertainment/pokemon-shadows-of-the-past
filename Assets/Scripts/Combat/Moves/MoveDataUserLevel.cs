@@ -11,7 +11,7 @@ public class MoveDataUserLevel : MoveData
             PokemonTypeId.Undefined,
             user.GetPokemonCaughtData().GetLevel(),
             DamageSummarySource.Move,
-            battleEvent.move.moveId.ToString(),
+            battleEvent.move.GetId(),
             BattleTypeAdvantageType.normal,
             user);
         summary.move = battleEvent.move;

@@ -112,7 +112,7 @@ public class InventoryMaster : MonoBehaviour
         return amountAfter;
     }
 
-    public bool HasTMForMove(MoveId moveId)
+    public bool HasTMForMove(string moveId)
     {
         return inventory.Find((item =>
         {
@@ -121,7 +121,7 @@ public class InventoryMaster : MonoBehaviour
                 try
                 {
                     ItemDataTM tmItem = (ItemDataTM)item.itemData;
-                    return tmItem.moveLearned.moveId == moveId;
+                    return tmItem.moveLearned.GetId() == moveId;
                 }
                 catch
                 {

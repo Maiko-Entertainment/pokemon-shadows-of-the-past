@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Thunderbolt
   m_EditorClassIdentifier: 
   moveId: 62
+  id: ThunderBolt
   moveName: Thunder Bolt
   power: 90
   hitChance: 1
@@ -25,12 +26,15 @@ MonoBehaviour:
   - effectId: 3
     targetType: 0
     chance: 0.1
+    removeStatusInstead: 0
   moveStatChanges: []
   conditionalBonuses: []
+  tags: 
   isContact: 0
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: A strong electric blast crashes down on the target. This may also
     leave the target with paralysis.

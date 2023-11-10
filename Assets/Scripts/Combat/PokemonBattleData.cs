@@ -238,7 +238,7 @@ public class PokemonBattleData
         List<MoveEquipped> moves = GetMoves();
         foreach(MoveEquipped m in moves)
         {
-            if (m.move.moveId == move.moveId)
+            if (m.move.GetId() == move.GetId())
                 m.ChangeTimesUsed(1);
         }
     }

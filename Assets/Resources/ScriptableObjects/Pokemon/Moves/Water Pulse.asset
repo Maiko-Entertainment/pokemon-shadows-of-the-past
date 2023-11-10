@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Water Pulse
   m_EditorClassIdentifier: 
   moveId: 58
+  id: WaterPulse
   moveName: Water Pulse
   power: 60
   hitChance: 1
@@ -25,12 +26,15 @@ MonoBehaviour:
   - effectId: 9
     targetType: 0
     chance: 0.2
+    removeStatusInstead: 0
   moveStatChanges: []
   conditionalBonuses: []
+  tags: 
   isContact: 0
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user attacks the target with a pulsing blast of water. This attack
     never misses.

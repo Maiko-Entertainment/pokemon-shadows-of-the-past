@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Thunder
   m_EditorClassIdentifier: 
   moveId: 78
+  id: Thunder
   moveName: Thunder
   power: 110
   hitChance: 0.7
@@ -25,6 +26,7 @@ MonoBehaviour:
   - effectId: 3
     targetType: 0
     chance: 0.3
+    removeStatusInstead: 0
   moveStatChanges: []
   conditionalBonuses:
   - statusToCheck: 13
@@ -37,10 +39,12 @@ MonoBehaviour:
     target: 2
     accuracyBonusAdd: -0.2
     powerMultiplier: 0
+  tags: 
   isContact: 0
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: A wicked thunderbolt is dropped on the target to inflict damage. This
     may (30%) also leave the target with paralysis.

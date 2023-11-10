@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fire Spin
   m_EditorClassIdentifier: 
   moveId: 42
+  id: FireSpin
   moveName: Fire Spin
   power: 35
   hitChance: 0.85
@@ -25,11 +26,16 @@ MonoBehaviour:
   - effectId: 11
     targetType: 0
     chance: 1
+    removeStatusInstead: 0
   moveStatChanges: []
+  conditionalBonuses: []
+  tags: 
   isContact: 0
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 
   description: The target becomes trapped within a fierce vortex of fire that rages
     for four to five turns.
   animations: []

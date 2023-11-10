@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Fury Cutter
   m_EditorClassIdentifier: 
   moveId: 41
+  id: FuryCutter
   moveName: Fury Cutter
   power: 40
   hitChance: 0.95
@@ -25,12 +26,15 @@ MonoBehaviour:
   - effectId: 10
     targetType: 1
     chance: 1
+    removeStatusInstead: 0
   moveStatChanges: []
   conditionalBonuses: []
+  tags: 
   isContact: 1
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The target is slashed with scythes or claws. This attack becomes more
     powerful if it hits in succession.

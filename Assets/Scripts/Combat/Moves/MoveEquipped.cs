@@ -25,7 +25,7 @@ public class MoveEquipped
     public PersistedPokemonMove GetSave()
     {
         PersistedPokemonMove pe = new PersistedPokemonMove();
-        pe.id = move.moveId;
+        pe.moveId = move.GetId();
         pe.uses = timesUsed;
         return pe;
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Thunder Fang
   m_EditorClassIdentifier: 
   moveId: 65
+  id: ThunderFang
   moveName: Thunder Fang
   power: 65
   hitChance: 0.95
@@ -25,15 +26,19 @@ MonoBehaviour:
   - effectId: 3
     targetType: 0
     chance: 0.1
+    removeStatusInstead: 0
   - effectId: 17
     targetType: 0
     chance: 0.1
+    removeStatusInstead: 0
   moveStatChanges: []
   conditionalBonuses: []
+  tags: 
   isContact: 1
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user bites with electrified fangs. This may (10%) also make the
     target flinch or leave it with paralysis

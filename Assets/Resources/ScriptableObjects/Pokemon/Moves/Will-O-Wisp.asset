@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Will-O-Wisp
   m_EditorClassIdentifier: 
   moveId: 5
+  id: WillOWisp
   moveName: Will-O-Wisp
   power: 0
   hitChance: 1
@@ -25,12 +26,15 @@ MonoBehaviour:
   - effectId: 6
     targetType: 0
     chance: 1
+    removeStatusInstead: 0
   moveStatChanges: []
   conditionalBonuses: []
+  tags: 
   isContact: 0
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user shoots a sinister flame at the target to inflict a burn.
   animations:

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dizzy Punch
   m_EditorClassIdentifier: 
   moveId: 31
+  id: DizzyPunch
   moveName: Dizzy Punch
   power: 70
   hitChance: 1
@@ -25,12 +26,15 @@ MonoBehaviour:
   - effectId: 9
     targetType: 0
     chance: 0.2
+    removeStatusInstead: 0
   moveStatChanges: []
   conditionalBonuses: []
+  tags: 
   isContact: 1
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The target is hit with rhythmically launched punches. This may also
     leave the target confused.

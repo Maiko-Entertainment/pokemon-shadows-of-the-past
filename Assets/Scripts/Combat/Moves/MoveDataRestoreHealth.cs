@@ -11,7 +11,7 @@ public class MoveDataRestoreHealth : MoveData
     {
         base.Execute(battleEvent);
         PokemonBattleData target = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(battleEvent.pokemon, restoreTarget);
-        HealSummary summary = new HealSummary(target.GetMaxHealth() / 2, HealSource.Move, battleEvent.move.moveId.ToString());
+        HealSummary summary = new HealSummary((int)(target.GetMaxHealth() * restorePercentage), HealSource.Move, battleEvent.move.GetId());
         summary.pokemonSource = battleEvent.pokemon;
         BattleEventPokemonHeal eventHeal = new BattleEventPokemonHeal(target, summary);
         BattleMaster.GetInstance().GetCurrentBattle().AddEvent(eventHeal);

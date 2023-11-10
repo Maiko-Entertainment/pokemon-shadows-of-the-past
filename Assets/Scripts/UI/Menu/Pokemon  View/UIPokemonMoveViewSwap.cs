@@ -40,7 +40,7 @@ public class UIPokemonMoveViewSwap : MonoBehaviour
         List<MoveEquipped> otherMoves = new List<MoveEquipped>();
         foreach (MoveEquipped move in pokemon.GetLearnedMoves())
         {
-            if (currentMove.move.moveId != move.move.moveId)
+            if (currentMove.move.GetId() != move.move.GetId())
             {
                 otherMoves.Add(move);
             }
