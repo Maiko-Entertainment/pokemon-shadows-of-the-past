@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Moves/MoveData")]
 public class MoveData : ScriptableObject
 {
-    public MoveId moveId;
     public string id;
     public string moveName = "";
     public int power;
@@ -31,7 +30,7 @@ public class MoveData : ScriptableObject
 
     public string GetId()
     {
-        return string.IsNullOrEmpty(id) ? moveId.ToString() : id;
+        return id;
     }
 
     // This will be Executed after a pokemon Move Event
