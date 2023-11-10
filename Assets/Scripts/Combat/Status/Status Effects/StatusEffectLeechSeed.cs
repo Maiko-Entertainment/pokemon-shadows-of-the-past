@@ -22,7 +22,7 @@ public override void Initiate()
                         PokemonTypeId.Undefined,
                         (int)(pokemon.GetPokemonHealth() * porcentualDamage),
                         DamageSummarySource.Status,
-                        (int)effectId
+                        effectId.ToString()
                     );
         damageSummary.healOpponentByDamage = 1;
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(

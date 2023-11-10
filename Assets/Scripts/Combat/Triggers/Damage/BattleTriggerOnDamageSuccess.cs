@@ -20,18 +20,18 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
         {
             DamageSummary ds = battleEvent.damageEvent.damageSummary;
             PokemonBattleData dealer = battleEvent.damageEvent.damageSummary.pokemonSource;
-            if (dealer == pokemon && ds.damageSource == DamageSummarySource.Move && ds.sourceId == (int)move.moveId)
+            if (dealer == pokemon && ds.damageSource == DamageSummarySource.Move && ds.sourceId == move.moveId.ToString())
             {
                 int damage = ds.damageAmount;
                 int drainAmount = (int)(drainMultiplier * damage);
                 // Negative drain is used for recoil
                 if (drainAmount > 0)
                 {
-                    BattleMaster.GetInstance().GetCurrentBattle()?.AddPokemonHealEvent(dealer, new HealSummary(drainAmount, HealSource.Move, (int)move.moveId));
+                    BattleMaster.GetInstance().GetCurrentBattle()?.AddPokemonHealEvent(dealer, new HealSummary(drainAmount, HealSource.Move, move.moveId.ToString()));
                 }
                 else if (drainAmount < 0)
                 {
-                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount * -1, DamageSummarySource.MoveEffect, (int)move.moveId, ds.advantageType, pokemon));
+                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount * -1, DamageSummarySource.MoveEffect, move.moveId.ToString(), ds.advantageType, pokemon));
                 }
             }
             else

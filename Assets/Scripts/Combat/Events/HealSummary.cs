@@ -6,10 +6,10 @@ public class HealSummary
 {
     public int amount;
     public HealSource source;
-    public int sourceId;
+    public string sourceId;
     public PokemonBattleData pokemonSource;
 
-    public HealSummary(int amount, HealSource source, int sourceId)
+    public HealSummary(int amount, HealSource source, string sourceId)
     {
         this.amount = amount;
         this.source = source;

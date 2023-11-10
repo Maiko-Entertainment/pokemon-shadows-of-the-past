@@ -57,11 +57,11 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
         {
             if (restoresPercentage)
             {
-                bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, (int)itemId));
+                bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, GetItemId()));
             }
             else
             {
-                bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, (int)itemId));
+                bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, GetItemId()));
             }
         }
         foreach(StatusEffectId sei in statusClears)

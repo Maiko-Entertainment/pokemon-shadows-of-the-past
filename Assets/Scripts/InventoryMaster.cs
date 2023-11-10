@@ -28,7 +28,7 @@ public class InventoryMaster : MonoBehaviour
         inventory = new List<ItemInventory>();
         foreach (PersistedItem pi in save.persistedItems)
         {
-            ChangeItemAmount(pi.id, pi.amount);
+            ChangeItemAmount(pi.GetId(), pi.amount);
         }
     }
     public void HandleSave()
@@ -54,7 +54,7 @@ public class InventoryMaster : MonoBehaviour
         return filtered;
     }
 
-    public void ChangeItemAmount(ItemId id, int changeAmount)
+    public void ChangeItemAmount(string id, int changeAmount)
     {
         foreach (ItemInventory i in inventory)
         {
@@ -78,7 +78,7 @@ public class InventoryMaster : MonoBehaviour
         }
     }
 
-    public ItemInventory GetItem(ItemId id)
+    public ItemInventory GetItem(string id)
     {
         foreach (ItemInventory i in inventory)
         {

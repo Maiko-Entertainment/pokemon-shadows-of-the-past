@@ -18,13 +18,10 @@ GameObject:
   - component: {fileID: 960495992832656527}
   - component: {fileID: 1758437900197106277}
   - component: {fileID: 571958506}
-  - component: {fileID: 571958505}
   - component: {fileID: 571958504}
-  - component: {fileID: 571958511}
   - component: {fileID: 571958512}
   - component: {fileID: 280862352221454196}
   - component: {fileID: 2584569850817696016}
-  - component: {fileID: 2584569850817696017}
   - component: {fileID: 2584569850817696019}
   - component: {fileID: 2584569850817696492}
   - component: {fileID: 2584569850817696493}
@@ -78,13 +75,13 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 7729036842079297161}
-  selectedCommands: []
+  - {fileID: 280862352221454196}
+  selectedCommands:
+  - {fileID: 2901857562276672091}
   variables:
   - {fileID: 1391250487297953698}
   - {fileID: 571958506}
   - {fileID: 4942938234683247425}
-  - {fileID: 571958505}
   - {fileID: 571958504}
   description: 
   stepPause: 0
@@ -112,7 +109,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 614
     y: 75
-    width: 119.512184
+    width: 118.29267
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -122,7 +119,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 8581773296023416515}
-  - {fileID: 571958511}
   - {fileID: 1758437900197106277}
   - {fileID: 571958512}
   - {fileID: 4732037970332048690}
@@ -251,21 +247,6 @@ MonoBehaviour:
   scope: 0
   key: amount
   value: 0
---- !u!114 &571958505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827796077314429395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afb91b566ceda411bad1e9d3c3243ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scope: 0
-  key: itemId
-  value: 0
 --- !u!114 &571958504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,24 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scope: 0
-  key: itemIdString
+  key: itemId
   value: 
---- !u!114 &571958511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827796077314429395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51296c2a224eea64daa8c7b9c5c644fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 5
-  indentLevel: 0
-  sourceString: {fileID: 571958504}
-  outValue: {fileID: 571958505}
 --- !u!114 &571958512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,8 +276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 6
   indentLevel: 0
-  variableItemId: itemId
-  variableNameAmount: amount
+  itemIdString: {fileID: 571958504}
+  variableAmount: {fileID: 571958506}
 --- !u!114 &280862352221454196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +294,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 800.9136
     y: 74.857376
-    width: 95.12194
+    width: 94.87804
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -339,7 +304,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 2901857562276672091}
-  - {fileID: 2584569850817696017}
   - {fileID: 2584569850817696019}
   - {fileID: 2584569850817696495}
   - {fileID: 2584569850817696493}
@@ -374,22 +338,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &2584569850817696017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827796077314429395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51296c2a224eea64daa8c7b9c5c644fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 9
-  indentLevel: 0
-  sourceString: {fileID: 571958504}
-  outValue: {fileID: 571958505}
 --- !u!114 &2584569850817696019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,8 +416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 11
   indentLevel: 0
-  variableItemId: itemId
-  variableNameAmount: amount
+  itemIdString: {fileID: 571958504}
+  variableAmount: {fileID: 571958506}
 --- !u!114 &1084429260977483327
 MonoBehaviour:
   m_ObjectHideFlags: 0

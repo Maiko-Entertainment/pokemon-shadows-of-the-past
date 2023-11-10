@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoveData : ScriptableObject
 {
     public MoveId moveId;
+    public string id;
     public string moveName = "";
     public int power;
     public float hitChance = 1f;
@@ -27,6 +28,11 @@ public class MoveData : ScriptableObject
     [TextArea]
     public string description;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
+
+    public string GetId()
+    {
+        return string.IsNullOrEmpty(id) ? moveId.ToString() : id;
+    }
 
     // This will be Executed after a pokemon Move Event
     public virtual void Execute(BattleEventUseMove battleEvent)

@@ -11,10 +11,12 @@ public class SceneInteractableGetItem : WorldInteractableTouch
     public override void OnInteract()
     {
         int random = Random.Range(minAmountItems, minAmountItems + extraRange + 1);
-        Dictionary<string, string> values = new Dictionary<string, string>();
-        values.Add("item", item.GetName());
-        values.Add("itemIdString", ""+(int)item.GetItemId());
-        values.Add("amountString", ""+random);
+        Dictionary<string, string> values = new Dictionary<string, string>
+        {
+            { "item", item.GetName() },
+            { "itemId", item.GetItemId() },
+            { "amountString", "" + random }
+        };
         InteractionsMaster.GetInstance()?.AddEvent(
             new InteractionEventFlowchart(
                 flowchartPrefab,

@@ -12,9 +12,10 @@ public class PersistedPokemon
     public StatusEffectId statusEffectId = StatusEffectId.None;
     public PokemonNatureId natureId;
     public AbilityId abilityId;
+    public string abilityIdString;
     public List<PersistedPokemonMove> moves = new List<PersistedPokemonMove>();
     public List<PersistedPokemonMove> learnedMoves = new List<PersistedPokemonMove>();
-    public ItemId equipedItem = ItemId.None;
+    public string equipedItem = "";
     public bool isShadow = false;
     public bool isMale = false;
     public float friendship = 0;
@@ -22,6 +23,11 @@ public class PersistedPokemon
     public string GetId()
     {
         return string.IsNullOrEmpty(id) ? pokemonId.ToString() : id;
+    }
+
+    public string GetAbilityId()
+    {
+        return string.IsNullOrEmpty(abilityIdString) ? abilityId.ToString() : abilityIdString;
     }
 
 }

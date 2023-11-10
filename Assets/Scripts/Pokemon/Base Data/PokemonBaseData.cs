@@ -52,7 +52,7 @@ public class PokemonBaseData : ScriptableObject
         return moves;
     }
 
-    public AbilityId GetRandomAbility()
+    public AbilityData GetRandomAbility()
     {
         int total = 0;
         foreach (PokemonBaseAbility naturePriority in abilities)
@@ -65,9 +65,9 @@ public class PokemonBaseData : ScriptableObject
         {
             total += naturePriority.abilityPriority;
             if (total >= neededPrioritySum)
-                return naturePriority.abilityId;
+                return naturePriority.ability;
         }
-        return AbilityId.Intimidate;
+        return AbilityMaster.GetInstance().GetAbility("Intimidate");
     }
 
     public string GetPokedexEntry()

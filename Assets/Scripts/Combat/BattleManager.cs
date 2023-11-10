@@ -108,7 +108,7 @@ public class BattleManager
         }
         else
         {
-            MoveEquipped struggle = new MoveEquipped(MovesMaster.Instance.GetMove(MoveId.Struggle));
+            MoveEquipped struggle = new MoveEquipped(BattleMaster.GetInstance().struggleMove);
             return new BattleTurnDesitionPokemonMove(struggle, pkmn, BattleTeamId.Team2);
         }
     }
@@ -121,7 +121,7 @@ public class BattleManager
         bool willIgnore = isCurrentPokemonShadow ? Random.value < SHADOW_IGNORE_CHANCE : false;
         if (willIgnore)
         {
-            MoveEquipped struggle = new MoveEquipped(MovesMaster.Instance.GetMove(MoveId.Struggle));
+            MoveEquipped struggle = new MoveEquipped(BattleMaster.GetInstance().struggleMove);
             desition = new BattleTurnDesitionPokemonMove(struggle, team1Pkmn, BattleTeamId.Team2);
             BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText("Ignore", team1Pkmn);
         }
@@ -549,7 +549,7 @@ public class BattleManager
             moveTypeId,
             (int) finalDamage,
             DamageSummarySource.Move,
-            (int) moveUsed.moveId,
+            moveUsed.GetId(),
             GetSimpleAdvantageTypeFromMult(advantageMultiplier),
             attacker
             );

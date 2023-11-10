@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AbilityData : ScriptableObject
 {
-    public AbilityId abilityId;
+    public string id;
     public string abilityName;
-    public string description;
+    [TextArea] public string description;
 
     // Replaced for each Ability
     public virtual void Initialize(PokemonBattleData pokemon)
@@ -21,5 +21,10 @@ public class AbilityData : ScriptableObject
     public string GetDescription()
     {
         return description;
+    }
+
+    public string GetId()
+    {
+        return id;
     }
 }

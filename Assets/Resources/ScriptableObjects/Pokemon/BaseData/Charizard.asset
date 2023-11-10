@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Charizard
   m_EditorClassIdentifier: 
-  pokemonIdLegacy: 0
   pokemonId: Charizard
   species: Charizard
   baseStats:
@@ -24,7 +23,8 @@ MonoBehaviour:
     speed: 100
   types: 0600000011000000
   abilities:
-  - abilityId: 2
+  - ability: {fileID: 11400000, guid: c58fbc6cad9b87f4f9272f615bb27696, type: 2}
+    abilityId: 2
     abilityPriority: 5
   maleChance: 0.5
   isGenderless: 0

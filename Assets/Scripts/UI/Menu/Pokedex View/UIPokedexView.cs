@@ -114,7 +114,7 @@ public class UIPokedexView : MonoBehaviour
         }
         foreach (PokemonBaseAbility ability in pkmn.abilities)
         {
-            AbilityData abilityData = AbilityMaster.GetInstance().GetAbility(ability.abilityId);
+            AbilityData abilityData = ability.ability;
             string abilityName = "???";
             string percentage = "";
             if (data.caughtAmount > 0)

@@ -142,11 +142,11 @@ public class PokemonMaster : MonoBehaviour
     {
         PokemonCaughtData original = pokemon.Copy();
 
-        AbilityId originalAbility = pokemon.abilityId;
+        AbilityData originalAbility = pokemon.ability;
         bool foundSameAbilty = false;
         foreach(PokemonBaseAbility ability in evolution.abilities)
         {
-            if (originalAbility == ability.abilityId)
+            if (originalAbility.GetId() == ability.ability.GetId())
             {
                 foundSameAbilty = true;
             }
@@ -156,7 +156,7 @@ public class PokemonMaster : MonoBehaviour
             originalAbility = evolution.GetRandomAbility();
         }
         pokemon.pokemonBase = evolution;
-        pokemon.abilityId = originalAbility;
+        pokemon.ability = originalAbility;
         List<PokemonMoveLearn> learnedMoves = pokemon.CheckForLearnedMoves(pokemon.GetLevel());
         UIEvolutionMaster.GetInstance().InitiateEvolution(original, evolution, learnedMoves);
         SeePokemon(evolution.pokemonId);

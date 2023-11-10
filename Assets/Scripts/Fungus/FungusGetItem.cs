@@ -4,19 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 [CommandInfo(
     "Game",
-    "Get Item",
-    "Adds item to players inventory."
+    "Add/Remove Item to inventory",
+    "Adds item to players inventory or removes it if negative."
 )]
 
 public class FungusGetItem : Command
 {
-    public string variableItemId = "itemId";
-    public string variableNameAmount = "amount";
+    [VariableProperty(typeof(StringVariable))]
+    [SerializeField] protected StringVariable itemIdString;
+
+    [VariableProperty(typeof(IntegerVariable))]
+    [SerializeField] protected IntegerVariable variableAmount;
     public override void OnEnter()
     {
-        ItemId item = (ItemId)GetFlowchart().GetIntegerVariable(variableItemId);
-        int amount = GetFlowchart().GetIntegerVariable(variableNameAmount);
-        InventoryMaster.GetInstance().ChangeItemAmount(item, amount);
+        InventoryMaster.GetInstance().ChangeItemAmount(itemIdString.Value, variableAmount.Value);
         Continue();
     }
 }

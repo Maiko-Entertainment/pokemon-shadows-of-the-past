@@ -10,14 +10,14 @@ using UnityEngine;
 )]
 public class FungusLoadItemInventoryAmount : Command
 {
-    public ItemId idItem;
-    public string variableName;
+    public ItemData item;
+    [VariableProperty(typeof(IntegerVariable))]
+    [SerializeField] protected IntegerVariable itemAmountVariable;
 
     public override void OnEnter()
     {
-        ItemInventory item = InventoryMaster.GetInstance().GetItem(idItem);
-        if (GetFlowchart().GetVariable(variableName))
-            GetFlowchart().SetIntegerVariable(variableName, item.amount);
+        ItemInventory itemInv = InventoryMaster.GetInstance().GetItem(item.GetItemId());
+        GetFlowchart().SetIntegerVariable(itemAmountVariable.Key, itemInv.GetAmount());
         Continue();
     }
 
@@ -28,6 +28,6 @@ public class FungusLoadItemInventoryAmount : Command
 
     public override string GetSummary()
     {
-        return "Load "+idItem+" into "+variableName;
+        return "Load "+item?.GetName()+" into "+ itemAmountVariable?.Key;
     }
 }

@@ -53,7 +53,7 @@ public class TrainerBrainData : ScriptableObject
             }
             else
             {
-                turnDesition = new BattleTurnDesitionPokemonMove(new MoveEquipped(MovesMaster.Instance.GetMove(MoveId.Struggle)), team2Pokemon, BattleTeamId.Team2);
+                turnDesition = new BattleTurnDesitionPokemonMove(new MoveEquipped(BattleMaster.GetInstance().struggleMove), team2Pokemon, BattleTeamId.Team2);
             }
         }
         turnDesition.tactic = GetTacticToUse(currentBattle);

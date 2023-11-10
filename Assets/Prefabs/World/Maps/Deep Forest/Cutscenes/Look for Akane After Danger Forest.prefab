@@ -70,8 +70,6 @@ GameObject:
   - component: {fileID: 2759402731096966552}
   - component: {fileID: 1891295084799752363}
   - component: {fileID: 1913556199954400178}
-  - component: {fileID: 7268552410855876206}
-  - component: {fileID: 1156220356027204115}
   - component: {fileID: 3734928026531016967}
   - component: {fileID: 8089965969295217465}
   - component: {fileID: 1858378124042455917}
@@ -157,7 +155,6 @@ GameObject:
   - component: {fileID: 8887129785121022944}
   - component: {fileID: 7648173603692860212}
   - component: {fileID: 5108104512885257368}
-  - component: {fileID: 2788680660184529727}
   - component: {fileID: 1943369678840701066}
   m_Layer: 0
   m_Name: Flowchart
@@ -207,8 +204,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 7541241946493341344}
-  selectedCommands: []
+  - {fileID: 8729426389165556392}
+  selectedCommands:
+  - {fileID: 8233869321113654105}
   variables:
   - {fileID: 4004826568360408734}
   - {fileID: 7244388551482405328}
@@ -240,7 +238,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 437
     y: 148.59015
-    width: 74.59015
+    width: 76.22949
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -250,9 +248,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 6539311966169628605}
-  - {fileID: 7268552410855876206}
-  - {fileID: 1156220356027204115}
-  - {fileID: 2788680660184529727}
   - {fileID: 8729647290407256087}
   - {fileID: 6159151294178048341}
   - {fileID: 7648173603692860212}
@@ -1353,7 +1348,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 652
     y: 73
-    width: 81.14752
+    width: 81.47539
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1386,7 +1381,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 652
     y: 146
-    width: 81.14752
+    width: 80.16392
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1493,7 +1488,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 648
     y: 224
-    width: 92.622925
+    width: 91.967186
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1864,6 +1859,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 52
   indentLevel: 1
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: 0951257b20661e843937c0f1dfce9d8c, type: 2}
   variableId: 102
   operation: 0
   value: 0
@@ -1883,7 +1880,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 845
     y: 125
-    width: 97.540955
+    width: 98.52456
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2277,36 +2274,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &7268552410855876206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2373041685210587940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 59
-  indentLevel: 0
-  saveId: 102
---- !u!114 &1156220356027204115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2373041685210587940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 60
-  indentLevel: 0
-  saveId: 101
 --- !u!114 &3734928026531016967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4186,6 +4153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 103
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: 0e21915f8daca0a4aaab9b3b8f61933a, type: 2}
   variableId: 4
   operation: 0
   value: 320
@@ -4776,6 +4745,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 127
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: 7ebb80a8db5796f4380fac1c48b32a14, type: 2}
   variableId: 12
   operation: 0
   value: 1
@@ -5248,21 +5219,6 @@ MonoBehaviour:
   indentLevel: 0
   offset: {x: 0, y: 0, z: 0}
   waitForEnd: 0
---- !u!114 &2788680660184529727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2373041685210587940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 149
-  indentLevel: 0
-  saveId: 103
 --- !u!114 &1943369678840701066
 MonoBehaviour:
   m_ObjectHideFlags: 0

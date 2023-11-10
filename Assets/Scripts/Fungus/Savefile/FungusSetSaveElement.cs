@@ -3,27 +3,41 @@ using UnityEngine;
 [CommandInfo(
     "Save",
     "Change a save element to a set value or +/-",
-    ""
+    "If saveIdString is empty then it uses saveElement, if it's empty it uses variableId"
 )]
 public class FungusSetSaveElement : Command
 {
     public string saveIdString = "";
+    public SaveElementNumber saveElement;
     public SaveElementId variableId;
     public VariableOperationType operation;
     public float value = 1;
 
+    public string GetId()
+    {
+        if (string.IsNullOrEmpty(saveIdString))
+        {
+            if (saveElement != null)
+            {
+                return saveElement?.GetId();
+            }
+            return variableId.ToString();
+        }
+        return saveIdString;
+    }
+
     public override void OnEnter()
     {
-        string varname = string.IsNullOrEmpty(saveIdString) ? variableId.ToString() : saveIdString;
-        float val = SaveMaster.Instance.GetSaveElementFloat(varname);
+        string varId = GetId();
+        float val = SaveMaster.Instance.GetSaveElementFloat(varId);
         switch (operation)
         {
             case VariableOperationType.change:
                 float newValue = val + value;
-                SaveMaster.Instance.SetSaveElement(newValue, varname);
+                SaveMaster.Instance.SetSaveElement(newValue, varId);
                 break;
             default:
-                SaveMaster.Instance.SetSaveElement(value, varname);
+                SaveMaster.Instance.SetSaveElement(value, varId);
                 break;
         }
         Continue();
@@ -35,6 +49,6 @@ public class FungusSetSaveElement : Command
 
     public override string GetSummary()
     {
-        return base.GetSummary() + " - " + (string.IsNullOrEmpty(saveIdString) ? variableId.ToString() : saveIdString) + " -> "+operation+" "+value;
+        return base.GetSummary() + " - " + GetId() + " -> "+operation+" "+value;
     }
 }

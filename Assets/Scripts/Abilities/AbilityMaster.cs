@@ -6,7 +6,7 @@ public class AbilityMaster : MonoBehaviour
 {
     public static AbilityMaster Instance;
 
-    protected Dictionary<AbilityId, AbilityData> abilityDictionary = new Dictionary<AbilityId, AbilityData>();
+    protected Dictionary<string, AbilityData> abilityDictionary = new Dictionary<string, AbilityData>();
 
     private void Awake()
     {
@@ -31,11 +31,11 @@ public class AbilityMaster : MonoBehaviour
         AbilityData[] baseDatas = Resources.LoadAll<AbilityData>(ResourceMaster.Instance.GetAbilityDataPath());
         foreach (AbilityData ad in baseDatas)
         {
-            abilityDictionary.Add(ad.abilityId, ad);
+            abilityDictionary.Add(ad.GetId(), ad);
         }
     }
 
-    public AbilityData GetAbility(AbilityId id)
+    public AbilityData GetAbility(string id)
     {
         return abilityDictionary[id];
     }

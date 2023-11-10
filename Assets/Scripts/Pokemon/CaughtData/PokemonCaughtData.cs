@@ -10,7 +10,7 @@ public class PokemonCaughtData
     public int damageTaken = 0;
     public StatusEffectId statusEffectId = StatusEffectId.None;
     public PokemonNatureId natureId;
-    public AbilityId abilityId;
+    public AbilityData ability;
     public bool isMale = true;
     public float friendship = 0;
     public ItemDataOnPokemon equippedItem;
@@ -24,30 +24,30 @@ public class PokemonCaughtData
     public AudioClip GetCry() { return pokemonBase.GetCry(); }
     public Sprite GetIcon() { return pokemonBase.GetIcon(); }
 
-    public PokemonCaughtData(PersistedPokemon pkmn)
+    public PokemonCaughtData(PersistedPokemon persistedPkmn)
     {
-        pokemonBase = PokemonMaster.GetInstance().GetPokemonData(pkmn.GetId());
-        pokemonName = pkmn.pokemonName;
-        level = pkmn.level;
-        experience = pkmn.experience;
-        damageTaken = pkmn.damageTaken;
-        statusEffectId = pkmn.statusEffectId;
-        natureId = pkmn.natureId;
-        abilityId = pkmn.abilityId;
-        isShadow = pkmn.isShadow;
-        friendship = pkmn.friendship;
-        isMale = pkmn.isMale;
-        friendship = pkmn.friendship;
-        equippedItem = (ItemDataOnPokemon) ItemMaster.GetInstance().GetItem(pkmn.equipedItem);
-        foreach(PersistedPokemonMove me in pkmn.moves)
+        pokemonBase = PokemonMaster.GetInstance().GetPokemonData(persistedPkmn.GetId());
+        pokemonName = persistedPkmn.pokemonName;
+        level = persistedPkmn.level;
+        experience = persistedPkmn.experience;
+        damageTaken = persistedPkmn.damageTaken;
+        statusEffectId = persistedPkmn.statusEffectId;
+        natureId = persistedPkmn.natureId;
+        ability = AbilityMaster.GetInstance().GetAbility(persistedPkmn.GetAbilityId());
+        isShadow = persistedPkmn.isShadow;
+        friendship = persistedPkmn.friendship;
+        isMale = persistedPkmn.isMale;
+        friendship = persistedPkmn.friendship;
+        equippedItem = ItemMaster.GetInstance().GetItem(persistedPkmn.equipedItem) as ItemDataOnPokemon;
+        foreach(PersistedPokemonMove me in persistedPkmn.moves)
         {
             moves.Add(new MoveEquipped(me));
         }
-        foreach (PersistedPokemonMove me in pkmn.learnedMoves)
+        foreach (PersistedPokemonMove me in persistedPkmn.learnedMoves)
         {
             learnedMoves.Add(new MoveEquipped(me));
         }
-        CheckForLearnedMoves(pkmn.level);
+        CheckForLearnedMoves(persistedPkmn.level);
     }
 
     public PersistedPokemon GetSave()
@@ -60,11 +60,11 @@ public class PokemonCaughtData
         pp.damageTaken = damageTaken;
         pp.statusEffectId = statusEffectId;
         pp.natureId = natureId;
-        pp.abilityId = abilityId;
+        pp.abilityIdString = ability.GetId();
         pp.isShadow = isShadow;
         pp.friendship = friendship;
         pp.isMale = isMale;
-        pp.equipedItem = equippedItem ? equippedItem.GetItemId() : ItemId.None;
+        pp.equipedItem = equippedItem ? equippedItem.GetItemId() : "";
         foreach (MoveEquipped me in moves)
         {
             pp.moves.Add(me.GetSave());
@@ -85,7 +85,7 @@ public class PokemonCaughtData
         newInsntace.damageTaken = damageTaken;
         newInsntace.statusEffectId = statusEffectId;
         newInsntace.natureId = natureId;
-        newInsntace.abilityId = abilityId;
+        newInsntace.ability = ability;
         newInsntace.isShadow = isShadow;
         newInsntace.isMale = isMale;
         newInsntace.equippedItem = equippedItem;
@@ -103,7 +103,7 @@ public class PokemonCaughtData
         pokemonBase = encounter.pokemon;
         level = encounter.baseLevel + Random.Range(0, encounter.extraLevelRange+1);
         natureId = encounter.GetRandomNature();
-        abilityId = pokemonBase.GetRandomAbility();
+        ability = pokemonBase.GetRandomAbility();
         moves = encounter.GetMovesEquipped();
         friendship = encounter.pokemon.baseFriendship;
         float random = Random.value;

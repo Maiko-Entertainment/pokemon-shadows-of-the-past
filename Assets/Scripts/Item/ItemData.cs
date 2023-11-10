@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Items/Basic")]
 public class ItemData : ScriptableObject
 {
-    public ItemId itemId;
+    public string itemId;
     public string itemName;
     public bool isConsumable;
     public bool canBeUsedInBattle = true;
@@ -25,7 +25,7 @@ public class ItemData : ScriptableObject
         return description;
     }
 
-    public virtual ItemId GetItemId()
+    public virtual string GetItemId()
     {
         return itemId;
     }

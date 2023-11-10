@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Ampharos
   m_EditorClassIdentifier: 
-  pokemonIdLegacy: 0
   pokemonId: Ampharos
   species: Ampharos
   baseStats:
@@ -24,7 +23,8 @@ MonoBehaviour:
     speed: 55
   types: 04000000
   abilities:
-  - abilityId: 4
+  - ability: {fileID: 11400000, guid: 4a02676c86d4b0447ae9edafaa5c1737, type: 2}
+    abilityId: 4
     abilityPriority: 5
   maleChance: 0.5
   isGenderless: 0

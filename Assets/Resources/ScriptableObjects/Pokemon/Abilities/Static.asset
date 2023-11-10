@@ -12,14 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17da9e7228706645a60c188e503fa56, type: 3}
   m_Name: Static
   m_EditorClassIdentifier: 
+  id: Static
   abilityId: 4
   abilityName: Static
   description: "This Pok\xE9mon is charged with static electricity, so contact with
     it may cause paralysis."
   damageSources: 00000000
   triggerOnMoveContact: 1
+  onlyTriggerOnOppositeGender: 0
   statusChances:
   - effectId: 3
     targetType: 0
     chance: 0.3
+    removeStatusInstead: 0
   moveStatChanges: []
+  affectedMoveTypes: 

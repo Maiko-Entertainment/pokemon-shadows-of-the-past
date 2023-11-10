@@ -25,7 +25,7 @@ public class StatusEffectBurn : StatusEffect
                         PokemonTypeId.Undefined,
                         Mathf.Max(1, (int)(pokemon.GetPokemonHealth() * porcentualDamage)),
                         DamageSummarySource.Status,
-                        (int)effectId
+                        effectId.ToString()
                     )
                 );
 

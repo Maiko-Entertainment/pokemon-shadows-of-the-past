@@ -209,7 +209,7 @@ public class UIPokemonPC : MonoBehaviour
             {
                 pokemonLevel.text = "Lv. " + currentPokemon.GetLevel();
             }
-            pokemonAbility.text = AbilityMaster.GetInstance().GetAbility(poke.abilityId).GetName();
+            pokemonAbility.text = poke.ability.GetName();
             List<PokemonTypeId> types = poke.GetTypes();
             foreach (Transform t in typeList)
                 Destroy(t.gameObject);

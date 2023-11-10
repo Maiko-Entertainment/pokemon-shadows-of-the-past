@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e17da9e7228706645a60c188e503fa56, type: 3}
   m_Name: Poison Point
   m_EditorClassIdentifier: 
+  id: PoisonPoint
   abilityId: 10
   abilityName: Poison Point
   description: "Contact with the Pok\xE9mon may poison the attacker"
@@ -22,4 +23,6 @@ MonoBehaviour:
   - effectId: 1
     targetType: 0
     chance: 0.3
+    removeStatusInstead: 0
   moveStatChanges: []
+  affectedMoveTypes: 

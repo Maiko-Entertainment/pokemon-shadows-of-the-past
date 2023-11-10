@@ -10,7 +10,7 @@ public class PokemonBattleData
     public List<StatusEffect> statusEffects = new List<StatusEffect>();
     // Works for pokemon that have moves/items that change typing
     public List<PokemonTypeId> inBattleTypes = new List<PokemonTypeId>();
-    public AbilityId abilityId;
+    public AbilityData ability;
     public PokemonBattleDataItem heldItem;
     public int roundsInCombat = 0;
     public bool hideLevel = false;
@@ -36,7 +36,7 @@ public class PokemonBattleData
             newInstance.statusEffects.Add(se.Copy(newInstance));
         }
         newInstance.statsLevel = statsLevel.Copy();
-        newInstance.abilityId = abilityId;
+        newInstance.ability = ability;
         newInstance.heldItem = heldItem;
         newInstance.roundsInCombat = roundsInCombat;
         newInstance.hideLevel = hideLevel;
@@ -48,10 +48,9 @@ public class PokemonBattleData
     public void Initiate()
     {
         inBattleTypes = pokemon.GetPokemonBaseData().types;
-        abilityId = pokemon.abilityId;
+        ability = pokemon.ability;
         heldItem.Initiate(this);
-        AbilityData ad = AbilityMaster.GetInstance().GetAbility(abilityId);
-        ad.Initialize(this);
+        ability.Initialize(this);
         if (statusEffects == null)
             statusEffects = new List<StatusEffect>();
         foreach (StatusEffect se in statusEffects)

@@ -221,6 +221,7 @@ GameObject:
   - component: {fileID: 9015914724177356027}
   - component: {fileID: 6696968222602811299}
   - component: {fileID: 1854152780052537092}
+  - component: {fileID: 8478892337260256195}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -272,7 +273,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1162772943060203094}
   selectedCommands:
-  - {fileID: 7177954320354863942}
+  - {fileID: 2501603444826282399}
   variables:
   - {fileID: 3985657164524444749}
   - {fileID: 5644805158553398306}
@@ -1411,6 +1412,7 @@ MonoBehaviour:
   - {fileID: 2232047101828809783}
   - {fileID: 7997838446450574141}
   - {fileID: 3665935760548053269}
+  - {fileID: 8478892337260256195}
   - {fileID: 7504484174899625347}
   - {fileID: 4518917008406409226}
   suppressAllAutoSelections: 0
@@ -2063,6 +2065,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 43
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: a700feab18c824d41bac1dfbbb623956, type: 2}
   variableId: 103
   operation: 1
   value: 1
@@ -2849,6 +2853,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 61
   indentLevel: 1
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: 0e21915f8daca0a4aaab9b3b8f61933a, type: 2}
   variableId: 4
   operation: 0
   value: 295
@@ -2866,6 +2872,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 62
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: a700feab18c824d41bac1dfbbb623956, type: 2}
   variableId: 103
   operation: 1
   value: -1
@@ -2997,9 +3005,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 68
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: 3d8e9e97f7b0f8c4d9f7213e9aeb5711, type: 2}
   variableId: 1002
   operation: 0
   value: 1
+--- !u!114 &8478892337260256195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498781653224662572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd53a1975863aa6478c955fe2341555e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 69
+  indentLevel: 0
+  clip:
+    audio: {fileID: 8300000, guid: d88f63a65a5716846a92a060840bf806, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
 --- !u!1001 &650609192012506187
 PrefabInstance:
   m_ObjectHideFlags: 0

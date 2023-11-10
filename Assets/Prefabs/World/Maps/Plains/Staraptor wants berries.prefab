@@ -203,7 +203,6 @@ GameObject:
   - component: {fileID: 539762187289326083}
   - component: {fileID: 7781573035524784104}
   - component: {fileID: 5255698381957384464}
-  - component: {fileID: 4211780514685286200}
   - component: {fileID: 4410547115695608821}
   - component: {fileID: 6035937943909666258}
   - component: {fileID: 4569367179366530146}
@@ -231,7 +230,6 @@ GameObject:
   - component: {fileID: 593985388690250399}
   - component: {fileID: 1403260013147771919}
   - component: {fileID: 4095871151637314545}
-  - component: {fileID: 4172914962249941475}
   - component: {fileID: 1274229733357722567}
   - component: {fileID: 864341378683966562}
   - component: {fileID: 4806195280682618935}
@@ -311,6 +309,7 @@ GameObject:
   - component: {fileID: 722401192716371159}
   - component: {fileID: 4820811052663054397}
   - component: {fileID: 8434972062959076763}
+  - component: {fileID: 4284866865226817644}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -348,11 +347,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 282.63733, y: 80.84614}
+  scrollPos: {x: 199.13335, y: 86.89008}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 330
-  zoom: 0.9100001
+  zoom: 0.8800001
   scrollViewRect:
     serializedVersion: 2
     x: 0
@@ -360,15 +359,14 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 783557302382717127}
-  selectedCommands:
-  - {fileID: 4489593225615873885}
+  - {fileID: 3775046769302783034}
+  selectedCommands: []
   variables:
   - {fileID: 3581198645905836195}
   - {fileID: 4410547115695608821}
   - {fileID: 6038400990896463686}
-  - {fileID: 4172914962249941475}
   - {fileID: 4806195280682618935}
+  - {fileID: 4284866865226817644}
   description: 
   stepPause: 0
   colorCommands: 1
@@ -395,7 +393,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 364
     y: 96
-    width: 77.47253
+    width: 76.36363
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -405,7 +403,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 5255698381957384464}
-  - {fileID: 4211780514685286200}
   - {fileID: 2103693606134835020}
   - {fileID: 6293474462086416216}
   - {fileID: 2662599681879922494}
@@ -801,21 +798,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 7
   indentLevel: 0
---- !u!114 &4211780514685286200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484156934597600854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 8
-  indentLevel: 0
-  saveId: 9
 --- !u!114 &4410547115695608821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +854,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 10
   indentLevel: 2
-  idItem: 9
+  item: {fileID: 11400000, guid: 91d55baaae9f2af469d67ce1bca2f0cd, type: 2}
+  itemAmountVariable: {fileID: 6038400990896463686}
   variableName: berryAmount
 --- !u!114 &6038400990896463686
 MonoBehaviour:
@@ -919,7 +902,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 550.9011
     y: 13.901099
-    width: 118.13186
+    width: 120.90908
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1077,7 +1060,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 564
     y: 157
-    width: 70.87912
+    width: 72.72727
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1402,6 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 20
   indentLevel: 1
+  saveIdString: 
   variableId: 9
   operation: 1
   value: 1
@@ -2043,7 +2027,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 30
   indentLevel: 2
-  idItem: 10
+  item: {fileID: 11400000, guid: a1aec8b90335158409b40a686781ea37, type: 2}
+  itemAmountVariable: {fileID: 6038400990896463686}
   variableName: berryAmount
 --- !u!114 &593985388690250399
 MonoBehaviour:
@@ -2113,23 +2098,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 33
   indentLevel: 1
-  variableItemId: itemId
-  variableNameAmount: changeAmount
---- !u!114 &4172914962249941475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484156934597600854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afb91b566ceda411bad1e9d3c3243ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scope: 2
-  key: itemId
-  value: 0
+  itemIdString: {fileID: 4284866865226817644}
+  variableAmount: {fileID: 4806195280682618935}
 --- !u!114 &1274229733357722567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,7 +2115,7 @@ MonoBehaviour:
   itemId: 34
   indentLevel: 2
   anyVar:
-    variable: {fileID: 4172914962249941475}
+    variable: {fileID: 4284866865226817644}
     data:
       animatorData:
         animatorRef: {fileID: 0}
@@ -2216,7 +2186,7 @@ MonoBehaviour:
         spriteVal: {fileID: 0}
       stringData:
         stringRef: {fileID: 0}
-        stringVal: 
+        stringVal: BerrySitrus
       textureData:
         textureRef: {fileID: 0}
         textureVal: {fileID: 0}
@@ -2297,7 +2267,7 @@ MonoBehaviour:
   itemId: 35
   indentLevel: 2
   anyVar:
-    variable: {fileID: 4172914962249941475}
+    variable: {fileID: 4284866865226817644}
     data:
       animatorData:
         animatorRef: {fileID: 0}
@@ -2368,7 +2338,7 @@ MonoBehaviour:
         spriteVal: {fileID: 0}
       stringData:
         stringRef: {fileID: 0}
-        stringVal: 
+        stringVal: BerryPecha
       textureData:
         textureRef: {fileID: 0}
         textureVal: {fileID: 0}
@@ -3248,7 +3218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 42
   indentLevel: 2
-  idItem: 11
+  item: {fileID: 11400000, guid: c189ce49d123ee04d9057f1f5c9dc7f1, type: 2}
+  itemAmountVariable: {fileID: 6038400990896463686}
   variableName: berryAmount
 --- !u!114 &5571642516385177599
 MonoBehaviour:
@@ -3265,7 +3236,7 @@ MonoBehaviour:
   itemId: 43
   indentLevel: 2
   anyVar:
-    variable: {fileID: 4172914962249941475}
+    variable: {fileID: 4284866865226817644}
     data:
       animatorData:
         animatorRef: {fileID: 0}
@@ -3336,7 +3307,7 @@ MonoBehaviour:
         spriteVal: {fileID: 0}
       stringData:
         stringRef: {fileID: 0}
-        stringVal: 
+        stringVal: BerryRawst
       textureData:
         textureRef: {fileID: 0}
         textureVal: {fileID: 0}
@@ -4531,6 +4502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 92
   indentLevel: 1
+  saveIdString: 
   saveId: 9
 --- !u!114 &4843914989514617428
 MonoBehaviour:
@@ -4887,8 +4859,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 143
   indentLevel: 2
-  variableItemId: itemId
-  variableNameAmount: amount
+  itemIdString: {fileID: 4284866865226817644}
+  variableAmount: {fileID: 3581198645905836195}
 --- !u!114 &2458906199854690519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4904,7 +4876,7 @@ MonoBehaviour:
   itemId: 146
   indentLevel: 2
   anyVar:
-    variable: {fileID: 4172914962249941475}
+    variable: {fileID: 4284866865226817644}
     data:
       animatorData:
         animatorRef: {fileID: 0}
@@ -4975,7 +4947,7 @@ MonoBehaviour:
         spriteVal: {fileID: 0}
       stringData:
         stringRef: {fileID: 0}
-        stringVal: 
+        stringVal: Leftovers
       textureData:
         textureRef: {fileID: 0}
         textureVal: {fileID: 0}
@@ -5295,6 +5267,21 @@ MonoBehaviour:
     floatRef: {fileID: 0}
     floatVal: 1
   durationOLD: 0
+--- !u!114 &4284866865226817644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484156934597600854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4580f28dd8581476b810b38eea2f1316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scope: 0
+  key: itemId
+  value: 
 --- !u!1 &8085647623172511786
 GameObject:
   m_ObjectHideFlags: 0

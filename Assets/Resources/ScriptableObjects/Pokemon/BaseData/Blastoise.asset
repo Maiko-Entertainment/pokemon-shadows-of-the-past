@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Blastoise
   m_EditorClassIdentifier: 
-  pokemonIdLegacy: 0
   pokemonId: Blastoise
   species: Blastoise
   baseStats:
@@ -24,7 +23,8 @@ MonoBehaviour:
     speed: 78
   types: 01000000
   abilities:
-  - abilityId: 3
+  - ability: {fileID: 11400000, guid: 3d71c7fd64da446478841e005a062f9e, type: 2}
+    abilityId: 3
     abilityPriority: 5
   maleChance: 0.5
   isGenderless: 0

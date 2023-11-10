@@ -8,6 +8,7 @@ public class BattleMaster : MonoBehaviour
     public static BattleMaster Instance { get; set; }
     public Flowchart battleFlowchart;
     public Material glitchMaterial;
+    public MoveData struggleMove;
 
     public BattleManager currentBattle;
     public bool triggerBattleOnStart = false;
@@ -198,7 +199,7 @@ public class BattleMaster : MonoBehaviour
            0,
            (int)finalDamage,
            DamageSummarySource.Move,
-           0,
+           "",
            GetSimpleAdvantageTypeFromMult(advantageMultiplier),
            null
            );

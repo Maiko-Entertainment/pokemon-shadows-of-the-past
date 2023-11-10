@@ -12,7 +12,7 @@ public class ItemInventory
     }
     public ItemInventory(PersistedItem pe)
     {
-        ItemData itemData = ItemMaster.GetInstance().GetItem(pe.id);
+        ItemData itemData = ItemMaster.GetInstance().GetItem(pe.GetId());
         this.itemData = itemData;
         amount = pe.amount;
     }
@@ -21,7 +21,7 @@ public class ItemInventory
     {
         PersistedItem pi = new PersistedItem();
         pi.amount = amount;
-        pi.id = itemData.itemId;
+        pi.itemId = itemData.itemId;
         return pi;
     }
 

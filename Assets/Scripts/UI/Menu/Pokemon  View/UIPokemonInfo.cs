@@ -33,7 +33,7 @@ public class UIPokemonInfo : MonoBehaviour
             itemName.text = "No Item";
             itemDescription.text = "To equip your pokemon with an item go to the items menu.";
         }
-        AbilityData ability = AbilityMaster.GetInstance().GetAbility(pokemon.abilityId);
+        AbilityData ability = pokemon.ability;
         abilityName.text = ability.GetName();
         abilityDescription.text = ability.GetDescription();
         expToNextLevel.text = "<color=#34BAFF>"+pokemon.GetRemainingExperienceToNextLevel() + " EXP</color>"+" to next level (" +pokemon.GetExperience()+"/"+pokemon.GetTotalExperienceToNextLevel()+")";

@@ -49,7 +49,7 @@ public class StatusEffectFrostbite : StatusEffect
                 PokemonTypeId.Undefined,
                 (int)(pokemon.GetPokemonHealth() * porcentualDamage),
                 DamageSummarySource.Status,
-                (int)effectId
+                effectId.ToString()
             )
         );
         battleTriggers.Add(triggerMove);

@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &7948305274123010148
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,7 +104,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8486391608922116150
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +590,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 8
   indentLevel: 0
-  saveId: 12
+  saveIdString: 
+  saveElement: {fileID: 0}
 --- !u!114 &4186542794195645612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,8 +693,8 @@ GameObject:
   m_Component:
   - component: {fileID: 509473200640493583}
   - component: {fileID: 7360514444869463016}
-  - component: {fileID: 6843725773936063728}
   - component: {fileID: 7200099294800572550}
+  - component: {fileID: 2661614125916516744}
   m_Layer: 0
   m_Name: Computer
   m_TagString: Object
@@ -743,21 +745,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &6843725773936063728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8801302980146216340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edab67ae82986fb45b8f9657585d24f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 8704171375541998486}
-  offset: 0
 --- !u!114 &7200099294800572550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,7 +767,23 @@ MonoBehaviour:
   innerTransform: {fileID: 6904991712552139162}
   speed: 1
   heightOffset: 0
+  disableShadow: 0
   cachedDirections: []
+--- !u!114 &2661614125916516744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801302980146216340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97895a88846588b4798bad0b8ec42044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 8704171375541998486}
+  offset: 0
 --- !u!1001 &1113393512462833554
 PrefabInstance:
   m_ObjectHideFlags: 0

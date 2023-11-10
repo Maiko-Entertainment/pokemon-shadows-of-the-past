@@ -7,7 +7,7 @@ public class MovesMaster : MonoBehaviour
 {
     public static MovesMaster Instance;
 
-    protected Dictionary<MoveId, MoveData> movesDictionary = new Dictionary<MoveId, MoveData>();
+    protected Dictionary<string, MoveData> movesDictionary = new Dictionary<string, MoveData>();
 
     private void Awake()
     {
@@ -28,15 +28,15 @@ public class MovesMaster : MonoBehaviour
         {
             try
             {
-                movesDictionary.Add(ad.moveId, ad);
+                movesDictionary.Add(ad.GetId(), ad);
             }
             catch (Exception e)
             {
-                Debug.LogError(e + " \n" + ad.name + " -> "+ movesDictionary[ad.moveId].name);
+                Debug.LogError(e + " \n" + ad.name + " -> "+ movesDictionary[ad.GetId()].name);
             }
         }
     }
-    public MoveData GetMove(MoveId id)
+    public MoveData GetMove(string id)
     {
         if (movesDictionary.ContainsKey(id))
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 public class FungusStaticItemChange : Command
 {
     public int changeAmount = 1;
-    public ItemId idItem;
+    public string idItem;
 
     public override void OnEnter()
     {

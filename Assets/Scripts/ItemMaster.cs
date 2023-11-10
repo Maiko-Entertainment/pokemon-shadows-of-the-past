@@ -7,7 +7,7 @@ public class ItemMaster : MonoBehaviour
 {
     public static ItemMaster Instance;
 
-    private Dictionary<ItemId, ItemData> itemDataBase = new Dictionary<ItemId, ItemData>();
+    private Dictionary<string, ItemData> itemDataBase = new Dictionary<string, ItemData>();
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class ItemMaster : MonoBehaviour
 
     public static ItemMaster GetInstance() { return Instance; }
 
-    public ItemData GetItem(ItemId id)
+    public ItemData GetItem(string id)
     {
         if (itemDataBase.ContainsKey(id))
         {

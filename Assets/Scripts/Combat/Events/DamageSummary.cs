@@ -9,7 +9,7 @@ public class DamageSummary
     public DamageSummarySource damageSource;
     // Used to identify the ID of the source, 
     // for instace moveID, abilityId, StatusID
-    public int sourceId;
+    public string sourceId;
     // Optional
     public BattleTypeAdvantageType advantageType;
     public PokemonBattleData pokemonSource;
@@ -21,7 +21,7 @@ public class DamageSummary
         PokemonTypeId damageType, 
         int damageAmount,
         DamageSummarySource damageSource, 
-        int sourceId,
+        string sourceId,
         BattleTypeAdvantageType advantageType = BattleTypeAdvantageType.normal,
         PokemonBattleData pokemonSource=null)
     {

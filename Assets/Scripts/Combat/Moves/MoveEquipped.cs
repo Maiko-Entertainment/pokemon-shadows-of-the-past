@@ -11,7 +11,7 @@ public class MoveEquipped
     }
     public MoveEquipped(PersistedPokemonMove move)
     {
-        this.move = MovesMaster.Instance.GetMove(move.id);
+        this.move = MovesMaster.Instance.GetMove(move.GetId());
         timesUsed = move.uses;
     }
 

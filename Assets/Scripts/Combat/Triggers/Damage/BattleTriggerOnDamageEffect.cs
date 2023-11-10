@@ -30,7 +30,7 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
                 // Checks for required contact requirement which applies only to moves
                 if (summary.damageSource == DamageSummarySource.Move)
                 {
-                    MoveData moveData = MovesMaster.Instance.GetMove((MoveId)summary.sourceId);
+                    MoveData moveData = MovesMaster.Instance.GetMove(summary.sourceId);
                     bool meetsMoveTypeCondition = true;
                     if (affectedMoveTypes.Count > 0 && !affectedMoveTypes.Contains(moveData.GetMoveType()))
                     {

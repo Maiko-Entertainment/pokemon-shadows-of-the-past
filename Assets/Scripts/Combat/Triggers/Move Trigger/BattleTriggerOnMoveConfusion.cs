@@ -6,6 +6,7 @@ using UnityEngine;
 public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
 {
     public StatusEffectConfusion status;
+    public string selfHitMoveId = "SelfHit";
     float selfHitChange = 0.333333f;
     public BattleTriggerOnMoveConfusion(PokemonBattleData pokemon, StatusEffectConfusion status): base(pokemon, new UseMoveMods(PokemonTypeId.Unmodify), true)
     {
@@ -30,7 +31,7 @@ public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
             float random = Random.value;
             if (random < selfHitChange)
             {
-                MoveData move = MovesMaster.Instance.GetMove(MoveId.SelfHit);
+                MoveData move = MovesMaster.Instance.GetMove(selfHitMoveId);
                 battleEvent.move = move;
                 battleEvent.moveMods.moveTypeId = PokemonTypeId.Undefined;
             }

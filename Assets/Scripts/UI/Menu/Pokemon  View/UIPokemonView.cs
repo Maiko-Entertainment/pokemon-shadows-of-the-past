@@ -169,7 +169,7 @@ public class UIPokemonView : MonoBehaviour
         {
             pokemonName.text = pkmn.GetName();
         }
-        pokemonAbility.text = AbilityMaster.GetInstance().GetAbility(pkmn.abilityId).GetName();
+        pokemonAbility.text = pkmn.ability.GetName();
         foreach (Transform t in typeList)
             Destroy(t.gameObject);
         foreach (PokemonTypeId t in types)

@@ -163,12 +163,10 @@ GameObject:
   - component: {fileID: 8878998889023893471}
   - component: {fileID: 5403453870295636241}
   - component: {fileID: 1891134458329820490}
-  - component: {fileID: 8274432864006766875}
   - component: {fileID: 7294138448813311505}
   - component: {fileID: 8178056704007478277}
   - component: {fileID: 4786671582811102369}
   - component: {fileID: 6818231649203987633}
-  - component: {fileID: 1993884209916724397}
   - component: {fileID: 8340601126171094487}
   - component: {fileID: 1074527498178319088}
   - component: {fileID: 3691957511725903940}
@@ -252,7 +250,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 4762236327575322167}
   selectedCommands:
-  - {fileID: 1389166578859920684}
+  - {fileID: 8041168282814954514}
   variables:
   - {fileID: 1891134458329820490}
   - {fileID: 6324561533335090938}
@@ -283,7 +281,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 345
     y: 138
-    width: 77
+    width: 77.2
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -293,8 +291,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 7294138448813311505}
-  - {fileID: 8274432864006766875}
-  - {fileID: 1993884209916724397}
   - {fileID: 9030618000896800422}
   - {fileID: 4397680747764526721}
   - {fileID: 2639776668599930252}
@@ -449,21 +445,6 @@ MonoBehaviour:
   scope: 0
   key: erikRelationship
   value: 0
---- !u!114 &8274432864006766875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6031263215045373334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 5
-  indentLevel: 0
-  saveId: 102
 --- !u!114 &7294138448813311505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,21 +743,6 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
---- !u!114 &1993884209916724397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6031263215045373334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 11
-  indentLevel: 0
-  saveId: 101
 --- !u!114 &8340601126171094487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2274,6 +2240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 36
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 11400000, guid: 0e21915f8daca0a4aaab9b3b8f61933a, type: 2}
   variableId: 4
   operation: 0
   value: 280

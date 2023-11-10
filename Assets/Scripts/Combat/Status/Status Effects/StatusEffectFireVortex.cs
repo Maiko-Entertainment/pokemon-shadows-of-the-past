@@ -27,7 +27,7 @@ public class StatusEffectFireVortex : StatusEffect
                         PokemonTypeId.Undefined,
                         (int)(pokemon.GetPokemonHealth() * porcentualDamage),
                         DamageSummarySource.Status,
-                        (int)effectId
+                        effectId.ToString()
                     )
                 );
         List<BattleAnimation> animations = BattleAnimatorMaster.GetInstance().GetStatusEffectData(effectId).hitAnims;

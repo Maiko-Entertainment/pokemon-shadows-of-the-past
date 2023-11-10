@@ -99,7 +99,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
         List<PokemonNatureId> natures = new List<PokemonNatureId>() { PokemonNatureId.careful, PokemonNatureId.cunning, PokemonNatureId.reserved, PokemonNatureId.restless, PokemonNatureId.ruthless };
         starter.natureId = natures[Random.Range(0, 4)];
         starter.CheckForLearnedMoves(starter.level);
-        starter.abilityId = pickedStarter.GetRandomAbility();
+        starter.ability = pickedStarter.GetRandomAbility();
         starter.friendship = pickedStarter.baseFriendship;
         PartyMaster.GetInstance().AddPartyMember(starter);
         SaveElement se = SaveMaster.Instance.GetSaveElementData(SaveElementId.startedTypePicked);

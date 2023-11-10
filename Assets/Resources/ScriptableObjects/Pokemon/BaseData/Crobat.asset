@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Crobat
   m_EditorClassIdentifier: 
-  pokemonIdLegacy: 0
   pokemonId: Crobat
   species: Crobat
   baseStats:
@@ -24,7 +23,8 @@ MonoBehaviour:
     speed: 130
   types: 1000000011000000
   abilities:
-  - abilityId: 11
+  - ability: {fileID: 11400000, guid: eddd5a45d60d0324c91f1b647945cb9e, type: 2}
+    abilityId: 11
     abilityPriority: 5
   maleChance: 0.5
   isGenderless: 0

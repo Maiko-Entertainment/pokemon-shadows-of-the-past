@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be516da5995b9f42a6b27c3bc32255d, type: 3}
   m_Name: Ariados
   m_EditorClassIdentifier: 
-  pokemonIdLegacy: 0
   pokemonId: Ariados
   species: Ariados
   baseStats:
@@ -24,9 +23,11 @@ MonoBehaviour:
     speed: 60
   types: 0200000010000000
   abilities:
-  - abilityId: 8
+  - ability: {fileID: 11400000, guid: 266cd0dad8287d840ba6b70df26ce261, type: 2}
+    abilityId: 8
     abilityPriority: 5
-  - abilityId: 9
+  - ability: {fileID: 11400000, guid: 7a381fdd4fb85f64a9035eaebf7ae687, type: 2}
+    abilityId: 9
     abilityPriority: 5
   maleChance: 0.5
   isGenderless: 0

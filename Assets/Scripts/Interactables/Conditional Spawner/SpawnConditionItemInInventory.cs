@@ -4,14 +4,14 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnConditionItemInInventory
 {
-    public ItemId itemId;
+    public ItemData item;
     public SpawnConditionDataValueCheck condition;
     public int amount;
 
     public bool IsTrue()
     {
-        ItemInventory item = InventoryMaster.GetInstance().GetItem(itemId);
-        int currentAmount = item.GetAmount();
+        ItemInventory itemInventory = InventoryMaster.GetInstance().GetItem(item.GetItemId());
+        int currentAmount = itemInventory.GetAmount();
         switch (condition)
         {
             case SpawnConditionDataValueCheck.IsLessThan:
