@@ -9,8 +9,7 @@ public class UICharacterCreatorName : MonoBehaviour
     {
         if (characterName != "")
         {
-            SaveElement playerName = SaveMaster.Instance.GetSaveElementData(SaveElementId.playerName);
-            playerName.SetValue(characterName);
+            SaveMaster.Instance.SetSaveElement(characterName, CommonSaveElements.playerName);
             UIPauseMenuMaster.GetInstance()?.OpenMenu(nextMenu, true);
         }
     }

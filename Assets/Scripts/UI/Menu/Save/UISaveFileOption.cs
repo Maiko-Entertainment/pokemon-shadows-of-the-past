@@ -26,9 +26,8 @@ public class UISaveFileOption : MonoBehaviour, ISelectHandler
     {
         this.saveFile = saveFile;
         this.index = index;
-        string playerNameSaved = (string)GetPersistedElementValue(SaveElementId.playerName);
-        object persistedModelId = GetPersistedElementValue(SaveElementId.characterModelId);
-        float playerModelId = persistedModelId != null ? (float)persistedModelId: 0;
+        string playerNameSaved = (string) GetPersistedElementValue(CommonSaveElements.playerName);
+        float playerModelId = (float) GetPersistedElementValue(CommonSaveElements.characterModelId);
         List<PersistedPokemon> persistedPokemon = saveFile.persistedParty;
 
         Sprite previewSprite = WorldMapMaster.GetInstance().GetPlayerPrefab((int)playerModelId).preview;
@@ -44,11 +43,11 @@ public class UISaveFileOption : MonoBehaviour, ISelectHandler
         return this;
     }
 
-    public object GetPersistedElementValue(SaveElementId id)
+    public object GetPersistedElementValue(string id)
     {
         foreach(PersistedSaveElement pse in saveFile.persistedElements)
         {
-            if (pse.id == id)
+            if (pse.GetId() == id)
                 return pse.value;
         }
         return null;

@@ -28,8 +28,8 @@ public class BattleEventRoundEnd : BattleEvent
         team2Pokemon.roundsInCombat++;
 
         //Tactics Tutorial Activation
-        float tacticsTuto = SaveMaster.Instance.GetSaveElementFloat(SaveElementId.tacticsTutorial.ToString());
-        float storyProgress = SaveMaster.Instance.GetSaveElementFloat(SaveElementId.storyProgress.ToString());
+        float tacticsTuto = SaveMaster.Instance.GetSaveElementFloat(CommonSaveElements.tacticsTutorial);
+        float storyProgress = SaveMaster.Instance.GetSaveElementFloat(CommonSaveElements.storyProgress);
         if (tacticsTuto == 0f && storyProgress >= 10)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventNarrative(
@@ -38,7 +38,7 @@ public class BattleEventRoundEnd : BattleEvent
                     "Tactics Tutorial"
                 )
             ));
-            SaveMaster.Instance.SetSaveElement(1f, SaveElementId.tacticsTutorial.ToString());
+            SaveMaster.Instance.SetSaveElement(1f, CommonSaveElements.tacticsTutorial);
         }
     }
 }

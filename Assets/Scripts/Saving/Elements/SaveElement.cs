@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class SaveElement : ScriptableObject
 {
-    public SaveElementId idLegacy;
     [SerializeField] protected string id;
     public string elementName;
     [TextArea] public string descriptionHelp;
 
     public string GetId()
     {
-        return string.IsNullOrEmpty(id) ? idLegacy.ToString() : id;
+        return id;
     }
 
     public virtual object GetValue()

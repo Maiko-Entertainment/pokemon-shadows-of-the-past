@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class UISetTextToVariable : MonoBehaviour
 {
-    public SaveElementId id;
+    public SaveElement saveElement;
     public TextMeshProUGUI text;
 
     private void Start()
     {
         if (text)
         {
-            SaveElementNumber se = (SaveElementNumber) SaveMaster.Instance.GetSaveElementData(id);
-            text.text = ""+se.GetValue();
+            SaveElementNumber se = (SaveElementNumber) SaveMaster.Instance.GetSaveElement(saveElement.GetId());
+            text.text = ""+se.GetValue().ToString();
         }
     }
 }

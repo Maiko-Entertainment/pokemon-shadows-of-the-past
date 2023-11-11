@@ -141,7 +141,7 @@ public class WorldMapMaster : MonoBehaviour
     {
         if (player == null)
         {
-            float modelId = SaveMaster.Instance.GetSaveElementFloat(SaveElementId.characterModelId.ToString());
+            float modelId = SaveMaster.Instance.GetSaveElementFloat(CommonSaveElements.characterModelId);
             int index = (int)modelId;
             player = Instantiate(GetPlayerPrefab(index));
         }
@@ -208,12 +208,12 @@ public class WorldMapMaster : MonoBehaviour
 
     public void SetTimeOfDay(TimeOfDayType type)
     {
-        SaveMaster.Instance.SetSaveElement(type, SaveElementId.timeOfDay.ToString());
+        SaveMaster.Instance.SetSaveElement(type, CommonSaveElements.timeOfDay);
     }
 
     public TimeOfDayType GetTimeOfDay()
     {
-        float pse = SaveMaster.Instance.GetSaveElementFloat(SaveElementId.timeOfDay.ToString());
+        float pse = SaveMaster.Instance.GetSaveElementFloat(CommonSaveElements.timeOfDay);
         TimeOfDayType day = (TimeOfDayType)pse;
         return day;
     }

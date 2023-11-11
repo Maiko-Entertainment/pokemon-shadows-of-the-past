@@ -45,7 +45,7 @@ public class BattleMaster : MonoBehaviour
     }
     public void HandleSave()
     {
-        SaveMaster.Instance.SetSaveElement(isExpShareOn ? 1f : 0f, SaveElementId.expShare.ToString());
+        SaveMaster.Instance.SetSaveElement(isExpShareOn ? 1f : 0f, CommonSaveElements.expShare);
     }
 
     public BattleManager GetCurrentBattle()
@@ -77,7 +77,7 @@ public class BattleMaster : MonoBehaviour
         finalTactics.AddRange(TacticsMaster.GetInstance().GetEquippedTactics());
         finalTactics.AddRange(battleData.playerExtraTactics);
         BattleTeamData team1 = new BattleTeamData(
-            SaveMaster.Instance.GetSaveElementString(SaveElementId.playerName.ToString()),
+            SaveMaster.Instance.GetSaveElementString(CommonSaveElements.playerName),
             GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
         BattleTeamData team2 = new BattleTeamData(pokemon.GetName(), new List<PokemonBattleData>() { pokemon }, 0);
         BattleManager newBattle = new BattleManager(team1, team2, battleData);
@@ -96,15 +96,7 @@ public class BattleMaster : MonoBehaviour
 
     public void Load(SaveFile save)
     {
-        PersistedSaveElement expShare = save.persistedElements.Find((se) => se.id == SaveElementId.expShare);
-        if (expShare != null)
-        {
-            isExpShareOn = (float)expShare.value != 0f;
-        }
-        else
-        {
-            isExpShareOn = true;
-        }
+        isExpShareOn = SaveMaster.Instance.GetSaveElementFloat(CommonSaveElements.expShare) == 1f;
     }
 
     public void SetPostBattleEvent(BattleEndEvent postBattleEvent)
@@ -118,7 +110,7 @@ public class BattleMaster : MonoBehaviour
         List<TacticData> finalTactics = new List<TacticData>(TacticsMaster.GetInstance().GetEquippedTactics());
         finalTactics.AddRange(trainer.battleData.playerExtraTactics);
         BattleTeamData team1 = new BattleTeamData(
-            SaveMaster.Instance.GetSaveElementString(SaveElementId.playerName.ToString()),
+            SaveMaster.Instance.GetSaveElementString(CommonSaveElements.playerName),
             GetPokemonBattleDataFromCaught(party, BattleTeamId.Team1), 0, finalTactics);
         team1.allyPokemon = trainer.team1PokemonAllies;
         BattleTeamData team2 = trainer.GetTeambattleData();

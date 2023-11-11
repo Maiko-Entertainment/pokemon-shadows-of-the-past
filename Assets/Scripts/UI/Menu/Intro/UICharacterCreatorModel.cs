@@ -28,7 +28,7 @@ public class UICharacterCreatorModel : MonoBehaviour
             Destroy(t.gameObject);
         }
         int playerAmounts = WorldMapMaster.GetInstance().playerPrefabs.Count;
-        float characterPickedId = SaveMaster.Instance.GetSaveElementFloat(SaveElementId.characterModelId.ToString());
+        float characterPickedId = SaveMaster.Instance.GetSaveElementFloat(CommonSaveElements.characterModelId);
         int currentPick = (int)characterPickedId;
         for (int i = 0; i < playerAmounts; i++)
         {
@@ -41,7 +41,7 @@ public class UICharacterCreatorModel : MonoBehaviour
 
     public void OnPick(float modeId)
     {
-        SaveElement characterPicked = SaveMaster.Instance.GetSaveElementData(SaveElementId.characterModelId);
+        SaveElement characterPicked = SaveMaster.Instance.GetSaveElementData(CommonSaveElements.characterModelId);
         characterPicked.SetValue(modeId);
         WorldMapMaster.GetInstance().DestroyPlayer();
         UIPauseMenuMaster.GetInstance()?.OpenMenu(nextMenu, true);

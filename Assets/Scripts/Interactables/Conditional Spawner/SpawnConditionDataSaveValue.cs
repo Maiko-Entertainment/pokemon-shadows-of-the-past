@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class SpawnConditionDataSaveValue
 {
-    public SaveElementId saveVariable;
+    public SaveElementId saveVariable; // TODO: Delete after proper test
     public string saveElementId;
     public SaveElementNumber saveElement;
     public SpawnConditionDataValueCheck condition;

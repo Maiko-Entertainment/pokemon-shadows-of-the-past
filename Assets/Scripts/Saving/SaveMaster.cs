@@ -88,13 +88,14 @@ public class SaveMaster : MonoBehaviour
     public void LoadSaveFile(int saveIndex)
     {
         SaveFile file = saveFiles[saveIndex];
-        activeSaveFile = file == null ? new SaveFile() : file;
+        SaveFile saveFileToUse = file == null ? new SaveFile() : file;
         lastSaveIndex = saveIndex;
-        Load(activeSaveFile);
+        Load(saveFileToUse);
     }
 
     public void Load(SaveFile save)
     {
+        activeSaveFile = save;
         AudioMaster.GetInstance().Load(save);
         PokemonMaster.GetInstance().Load(save);
         PartyMaster.GetInstance().Load(save);
@@ -162,10 +163,7 @@ public class SaveMaster : MonoBehaviour
     {
         return GetSavePath() + "/Save" + index + ".txt";
     }
-    public SaveElement GetSaveElementData(SaveElementId id)
-    {
-        return GetSaveElementData(id.ToString());
-    }
+
     public SaveElement GetSaveElementData(string id)
     {
         if (saveElements.ContainsKey(id))
@@ -173,10 +171,6 @@ public class SaveMaster : MonoBehaviour
         return null;
     }
 
-    public PersistedSaveElement GetSaveElementFromSavefile(SaveElementId id)
-    {
-        return GetSaveElementFromSavefile(id);
-    }
     public PersistedSaveElement GetSaveElementFromSavefile(string id)
     {
         foreach (PersistedSaveElement se in activeSaveFile.persistedElements)
@@ -265,7 +259,6 @@ public class SaveMaster : MonoBehaviour
 
     public void StartNewGame()
     {
-        activeSaveFile = new SaveFile();
-        Load(activeSaveFile);
+        Load(new SaveFile());
     }
 }

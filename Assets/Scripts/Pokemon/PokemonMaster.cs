@@ -97,10 +97,6 @@ public class PokemonMaster : MonoBehaviour
         return list;
     }
 
-    public PokedexPokemonData GetPokemonPokedexData(PokemonBaseId pokemonId)
-    {
-        return GetPokemonPokedexData(pokemonId.ToString());
-    }
     public PokedexPokemonData GetPokemonPokedexData(string pokemonId)
     {
         if (pokedexData.ContainsKey(pokemonId))
@@ -123,11 +119,6 @@ public class PokemonMaster : MonoBehaviour
         {
             pokedexData[pokemonId].caughtAmount++;
         }
-    }
-
-    public PokemonBaseData GetPokemonData(PokemonBaseId id)
-    {
-        return GetPokemonData(id.ToString());
     }
 
     public PokemonBaseData GetPokemonData(string id)

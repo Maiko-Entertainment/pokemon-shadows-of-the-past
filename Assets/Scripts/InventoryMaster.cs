@@ -100,7 +100,7 @@ public class InventoryMaster : MonoBehaviour
 
     public int GetMoney()
     {
-        float money = SaveMaster.Instance.GetSaveElementFloat(SaveElementId.money.ToString());
+        float money = SaveMaster.Instance.GetSaveElementFloat(CommonSaveElements.money);
         return (int)money;
     }
 
@@ -108,7 +108,7 @@ public class InventoryMaster : MonoBehaviour
     {
         int moneyAmount = GetMoney();
         int amountAfter = Mathf.Max(0, moneyAmount + change);
-        SaveMaster.Instance.SetSaveElement((float)amountAfter, SaveElementId.money.ToString());
+        SaveMaster.Instance.SetSaveElement((float)amountAfter, CommonSaveElements.money);
         return amountAfter;
     }
 

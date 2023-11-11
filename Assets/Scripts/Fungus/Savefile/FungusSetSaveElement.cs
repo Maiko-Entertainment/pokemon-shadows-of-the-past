@@ -9,7 +9,7 @@ public class FungusSetSaveElement : Command
 {
     public string saveIdString = "";
     public SaveElementNumber saveElement;
-    public SaveElementId variableId;
+    public SaveElementId variableId; // TODO: Remove after testing
     public VariableOperationType operation;
     public float value = 1;
 

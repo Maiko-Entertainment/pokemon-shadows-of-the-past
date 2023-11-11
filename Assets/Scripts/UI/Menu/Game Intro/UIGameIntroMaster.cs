@@ -69,8 +69,8 @@ public class UIGameIntroMaster : MonoBehaviour
 
     public void SubmitPlayerData()
     {
-        SaveElement playerName = SaveMaster.Instance.GetSaveElementData(SaveElementId.playerName);
-        playerName.SetValue(nameInput.text);
+        string playerName = SaveMaster.Instance.GetSaveElementString(CommonSaveElements.playerName);
+        SaveMaster.Instance.SetSaveElement(nameInput.text, CommonSaveElements.playerName);
         characterData?.FadeOut();
         AudioMaster.GetInstance().PlaySfx(submitSound);
         starterSelector?.FadeIn();
@@ -126,7 +126,7 @@ public class UIGameIntroMaster : MonoBehaviour
         starter.ability = pickedStarter.GetRandomAbility();
         starter.friendship = pickedStarter.baseFriendship;
         PartyMaster.GetInstance().AddPartyMember(starter);
-        SaveElement se = SaveMaster.Instance.GetSaveElementData(SaveElementId.startedTypePicked);
+        SaveElement se = SaveMaster.Instance.GetSaveElementData(CommonSaveElements.startedTypePicked);
         SaveElementNumber sen = (SaveElementNumber)se;
         if (starter.GetTypes().Contains(PokemonTypeId.Fire))
         {
