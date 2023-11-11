@@ -124,11 +124,11 @@ GameObject:
   - component: {fileID: 4803303634426114709}
   - component: {fileID: 7159934203868045214}
   - component: {fileID: 6537270515036844244}
-  - component: {fileID: 2020734202178944232}
   - component: {fileID: 4186542794195645612}
   - component: {fileID: 1073658164974056141}
   - component: {fileID: 4626312445249987872}
   - component: {fileID: 5478714063579938759}
+  - component: {fileID: 4968238042536120877}
   m_Layer: 0
   m_Name: Computer Flowchart
   m_TagString: Untagged
@@ -179,7 +179,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 6035567778885654856}
   selectedCommands:
-  - {fileID: 5479687944715318790}
+  - {fileID: 2403234592711398727}
   variables:
   - {fileID: 4186542794195645612}
   description: 
@@ -208,7 +208,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 355
     y: 114
-    width: 77
+    width: 77.2
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 0}
   commandList:
-  - {fileID: 2020734202178944232}
+  - {fileID: 4968238042536120877}
   - {fileID: 2403234592711398727}
   - {fileID: 7507052169183008733}
   - {fileID: 4803303634426114709}
@@ -576,22 +576,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 7
   indentLevel: 0
---- !u!114 &2020734202178944232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8486391608922116150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 8
-  indentLevel: 0
-  saveIdString: 
-  saveElement: {fileID: 0}
 --- !u!114 &4186542794195645612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,6 +667,20 @@ MonoBehaviour:
     volumeModifier: 1
     fadeTime: 0.5
     loopMusic: 1
+--- !u!114 &4968238042536120877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486391608922116150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1c7846ca4120e47b85445a78753e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 12
+  indentLevel: 0
 --- !u!1 &8801302980146216340
 GameObject:
   m_ObjectHideFlags: 0

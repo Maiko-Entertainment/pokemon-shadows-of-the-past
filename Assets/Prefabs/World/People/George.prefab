@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 1327812440837182765}
   - component: {fileID: 4368309370460162038}
   - component: {fileID: 6020968071687231510}
-  - component: {fileID: 2316008573886346657}
   - component: {fileID: 2503286231799433920}
   - component: {fileID: 1825102653844060198}
   - component: {fileID: 6155058741957058540}
@@ -247,8 +246,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 6736114512194233702}
-  selectedCommands: []
+  - {fileID: 3659970078874271897}
+  selectedCommands:
+  - {fileID: 752170572174616569}
   variables:
   - {fileID: 894175279591848123}
   - {fileID: 9219639671229118522}
@@ -279,7 +279,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 340.6245
     y: 92.29339
-    width: 76.31578
+    width: 78.42104
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -289,7 +289,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 3368040294019014073}
-  - {fileID: 2316008573886346657}
   - {fileID: 5967755184102638953}
   - {fileID: 6883412993371820670}
   - {fileID: 1327812440837182765}
@@ -615,7 +614,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 484.66953
     y: 51.80234
-    width: 102.63156
+    width: 107.894714
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -747,7 +746,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 640.6245
     y: 45.901638
-    width: 81.57893
+    width: 84.73683
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -791,7 +790,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 637.8166
     y: 112.91193
-    width: 98.6842
+    width: 103.68419
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -915,7 +914,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 800.1334
     y: 18.35144
-    width: 69.73683
+    width: 71.05263
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1196,7 +1195,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 800.8309
     y: 109.819214
-    width: 76.31578
+    width: 78.42104
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1302,7 +1301,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 928.04736
     y: 129.40686
-    width: 124.99998
+    width: 132.10524
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1380,7 +1379,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 931.55194
     y: 74.48291
-    width: 143.42102
+    width: 152.10522
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -1601,6 +1600,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 59
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 0}
   variableId: 4
   operation: 0
   value: 140
@@ -1641,7 +1642,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 478.76904
     y: 191.26247
-    width: 149.99997
+    width: 158.42102
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2023,21 +2024,6 @@ MonoBehaviour:
   scope: 0
   key: grassGymLoses
   value: 0
---- !u!114 &2316008573886346657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6723794000265814014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 72
-  indentLevel: 0
-  saveId: 13
 --- !u!114 &2503286231799433920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2052,6 +2038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 73
   indentLevel: 0
+  saveIdString: 
+  saveElement: {fileID: 0}
   variableId: 13
   operation: 1
   value: 1
@@ -2880,7 +2868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 81
   indentLevel: 1
-  storyText: I hope you have a different strategy this time hommie.
+  storyText: I hope you have a different strategy this time homie.
   description: 
   character: {fileID: 808382003289253859}
   portrait: {fileID: 0}

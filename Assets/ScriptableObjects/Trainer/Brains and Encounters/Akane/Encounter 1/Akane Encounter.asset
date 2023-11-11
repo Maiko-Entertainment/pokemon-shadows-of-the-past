@@ -25,7 +25,7 @@ MonoBehaviour:
         damageTaken: 5
         statusEffectId: 0
         natureId: 0
-        abilityId: 0
+        ability: {fileID: 11400000, guid: 558ebf5709da8784ab4b5b5903a90cea, type: 2}
         isMale: 1
         friendship: 0
         equippedItem: {fileID: 0}
@@ -52,7 +52,7 @@ MonoBehaviour:
         critical: 0
       statusEffects: []
       inBattleTypes: 
-      abilityId: 0
+      ability: {fileID: 0}
       heldItem:
         equippedItem: {fileID: 0}
         battleTriggers: []
@@ -69,7 +69,7 @@ MonoBehaviour:
           damageTaken: 8
           statusEffectId: 0
           natureId: 0
-          abilityId: 2
+          ability: {fileID: 0}
           isMale: 1
           friendship: 0
           equippedItem: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
           critical: 0
         statusEffects: []
         inBattleTypes: 
-        abilityId: 2
+        ability: {fileID: 0}
         heldItem:
           equippedItem: {fileID: 0}
           battleTriggers: []
@@ -104,6 +104,8 @@ MonoBehaviour:
         hideLevel: 0
       conditions:
       - saveVariable: 1001
+        saveElementId: 
+        saveElement: {fileID: 11400000, guid: f09319127814b9e429fc72a13973c4b4, type: 2}
         condition: 0
         value: 1
     - pokemon:
@@ -116,7 +118,7 @@ MonoBehaviour:
           damageTaken: 8
           statusEffectId: 0
           natureId: 0
-          abilityId: 3
+          ability: {fileID: 0}
           isMale: 1
           friendship: 0
           equippedItem: {fileID: 0}
@@ -143,7 +145,7 @@ MonoBehaviour:
           critical: 0
         statusEffects: []
         inBattleTypes: 
-        abilityId: 3
+        ability: {fileID: 0}
         heldItem:
           equippedItem: {fileID: 0}
           battleTriggers: []
@@ -151,6 +153,8 @@ MonoBehaviour:
         hideLevel: 0
       conditions:
       - saveVariable: 1001
+        saveElementId: 
+        saveElement: {fileID: 11400000, guid: f09319127814b9e429fc72a13973c4b4, type: 2}
         condition: 0
         value: 3
     - pokemon:
@@ -163,7 +167,7 @@ MonoBehaviour:
           damageTaken: 8
           statusEffectId: 0
           natureId: 0
-          abilityId: 1
+          ability: {fileID: 0}
           isMale: 1
           friendship: 0
           equippedItem: {fileID: 0}
@@ -190,7 +194,7 @@ MonoBehaviour:
           critical: 0
         statusEffects: []
         inBattleTypes: 
-        abilityId: 1
+        ability: {fileID: 0}
         heldItem:
           equippedItem: {fileID: 0}
           battleTriggers: []
@@ -198,6 +202,8 @@ MonoBehaviour:
         hideLevel: 0
       conditions:
       - saveVariable: 1001
+        saveElementId: 
+        saveElement: {fileID: 11400000, guid: f09319127814b9e429fc72a13973c4b4, type: 2}
         condition: 0
         value: 2
     allyPokemon: []
@@ -209,6 +215,7 @@ MonoBehaviour:
     battleMusic: {fileID: 8300000, guid: 7ade61bc3155b484fb48c94d91872ff6, type: 3}
     battleWonMusic: {fileID: 8300000, guid: 1d003951fac7d6b408ab10b87eb25c13, type: 3}
     battlebackground: {fileID: 2923370818416433951, guid: 0d0a5d7bbbbdd6b43b4d53d4551d7ee4, type: 3}
+    volumeProfile: {fileID: 0}
     battleType: 1
     playerExtraTactics: []
   transition: {fileID: 724271575486075591, guid: 8f4d866f234a5be43b0a7acf934f4a62, type: 3}

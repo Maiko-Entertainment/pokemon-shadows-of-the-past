@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &946854788648238252
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,7 +104,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2119834209432484882
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +221,7 @@ MonoBehaviour:
   innerTransform: {fileID: 5994093016796117410}
   speed: 3
   heightOffset: 0
+  disableShadow: 0
   cachedDirections: []
   followMode: 0
 --- !u!1 &7966523231901417807
@@ -266,7 +268,6 @@ GameObject:
   - component: {fileID: 8687114272155362717}
   - component: {fileID: 7992665338567952280}
   - component: {fileID: 3061599118920620108}
-  - component: {fileID: 1283933576721544962}
   - component: {fileID: 91234060933696230}
   - component: {fileID: 2690386670203121719}
   - component: {fileID: 1547546356169914377}
@@ -334,9 +335,8 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 8254676443277073817}
-  selectedCommands:
-  - {fileID: 9188950891849517693}
+  - {fileID: 6168149283013493493}
+  selectedCommands: []
   variables:
   - {fileID: 1022392668855998310}
   - {fileID: 954940094479801445}
@@ -368,7 +368,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 398
     y: 95
-    width: 78.35819
+    width: 76.26865
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -378,7 +378,6 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 4358508664936975118}
-  - {fileID: 1283933576721544962}
   - {fileID: 5961242442196859680}
   - {fileID: 7770024066200494626}
   - {fileID: 8705421462541148086}
@@ -802,7 +801,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 588
     y: 70
-    width: 112.68653
+    width: 112.08952
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -2001,21 +2000,6 @@ MonoBehaviour:
   move: 1
   shiftIntoPlace: 0
   waitUntilFinished: 0
---- !u!114 &1283933576721544962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7966523231901417807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 81
-  indentLevel: 0
-  saveId: 102
 --- !u!114 &91234060933696230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2743,7 +2727,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 983.8089
     y: 74.47921
-    width: 84.32834
+    width: 83.432816
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
