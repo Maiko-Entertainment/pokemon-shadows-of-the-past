@@ -9,7 +9,7 @@ public class SaveElementText : SaveElement
         PersistedSaveElement se = SaveMaster.Instance.GetSaveElementFromSavefile(GetId());
         if (se != null)
         {
-            string value = (string)se.value;
+            string value = se.value.ToString();
             return value;
         }
         return defaultValue;

@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - saveVariable: 9
+    saveElementId: 
+    saveElement: {fileID: 11400000, guid: 229ecc3016e1389419dabeb76857317b, type: 2}
     condition: 2
     value: 1
   inventoryConditions: []
@@ -70,6 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - saveVariable: 9
+    saveElementId: 
+    saveElement: {fileID: 11400000, guid: 229ecc3016e1389419dabeb76857317b, type: 2}
     condition: 2
     value: 2
   inventoryConditions: []
@@ -92,6 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditions:
   - saveVariable: 9
+    saveElementId: 
+    saveElement: {fileID: 11400000, guid: 229ecc3016e1389419dabeb76857317b, type: 2}
     condition: 2
     value: 3
   inventoryConditions: []
@@ -283,7 +289,6 @@ GameObject:
   - component: {fileID: 1331600116299183981}
   - component: {fileID: 750320705905154354}
   - component: {fileID: 3282781476484704371}
-  - component: {fileID: 8613744313725905965}
   - component: {fileID: 4843914989514617428}
   - component: {fileID: 2159265699109682352}
   - component: {fileID: 787874248892904624}
@@ -359,8 +364,9 @@ MonoBehaviour:
     width: 0
     height: 0
   selectedBlocks:
-  - {fileID: 3775046769302783034}
-  selectedCommands: []
+  - {fileID: 623841701701129845}
+  selectedCommands:
+  - {fileID: 1535841482868041506}
   variables:
   - {fileID: 3581198645905836195}
   - {fileID: 4410547115695608821}
@@ -856,7 +862,6 @@ MonoBehaviour:
   indentLevel: 2
   item: {fileID: 11400000, guid: 91d55baaae9f2af469d67ce1bca2f0cd, type: 2}
   itemAmountVariable: {fileID: 6038400990896463686}
-  variableName: berryAmount
 --- !u!114 &6038400990896463686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,7 +919,6 @@ MonoBehaviour:
   - {fileID: 2978811968746206238}
   - {fileID: 4095871151637314545}
   - {fileID: 7321478330255998872}
-  - {fileID: 8613744313725905965}
   - {fileID: 1535841482868041506}
   - {fileID: 63177731246407325}
   - {fileID: 1403260013147771919}
@@ -1386,6 +1390,7 @@ MonoBehaviour:
   itemId: 20
   indentLevel: 1
   saveIdString: 
+  saveElement: {fileID: 0}
   variableId: 9
   operation: 1
   value: 1
@@ -2029,7 +2034,6 @@ MonoBehaviour:
   indentLevel: 2
   item: {fileID: 11400000, guid: a1aec8b90335158409b40a686781ea37, type: 2}
   itemAmountVariable: {fileID: 6038400990896463686}
-  variableName: berryAmount
 --- !u!114 &593985388690250399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2462,7 +2466,7 @@ MonoBehaviour:
           colorVal: {r: 0, g: 0, b: 0, a: 0}
         floatData:
           floatRef: {fileID: 0}
-          floatVal: 1
+          floatVal: 0
         gameObjectData:
           gameObjectRef: {fileID: 0}
           gameObjectVal: {fileID: 0}
@@ -2705,7 +2709,7 @@ MonoBehaviour:
           colorVal: {r: 0, g: 0, b: 0, a: 0}
         floatData:
           floatRef: {fileID: 0}
-          floatVal: 2
+          floatVal: 1
         gameObjectData:
           gameObjectRef: {fileID: 0}
           gameObjectVal: {fileID: 0}
@@ -3220,7 +3224,6 @@ MonoBehaviour:
   indentLevel: 2
   item: {fileID: 11400000, guid: c189ce49d123ee04d9057f1f5c9dc7f1, type: 2}
   itemAmountVariable: {fileID: 6038400990896463686}
-  variableName: berryAmount
 --- !u!114 &5571642516385177599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3443,7 +3446,7 @@ MonoBehaviour:
           colorVal: {r: 0, g: 0, b: 0, a: 0}
         floatData:
           floatRef: {fileID: 0}
-          floatVal: 3
+          floatVal: 2
         gameObjectData:
           gameObjectRef: {fileID: 0}
           gameObjectVal: {fileID: 0}
@@ -4488,22 +4491,6 @@ MonoBehaviour:
   indentLevel: 2
   gameObjects:
   - {fileID: 3350286952704864543}
---- !u!114 &8613744313725905965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7484156934597600854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7949256d3a85ee94397c827444e3b9cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 92
-  indentLevel: 1
-  saveIdString: 
-  saveId: 9
 --- !u!114 &4843914989514617428
 MonoBehaviour:
   m_ObjectHideFlags: 0

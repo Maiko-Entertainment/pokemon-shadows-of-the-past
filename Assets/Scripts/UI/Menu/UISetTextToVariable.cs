@@ -12,8 +12,8 @@ public class UISetTextToVariable : MonoBehaviour
     {
         if (text)
         {
-            SaveElementNumber se = (SaveElementNumber) SaveMaster.Instance.GetSaveElement(saveElement.GetId());
-            text.text = ""+se.GetValue().ToString();
+            object value = SaveMaster.Instance.GetSaveElement(saveElement.GetId());
+            text.text = value.ToString();
         }
     }
 }

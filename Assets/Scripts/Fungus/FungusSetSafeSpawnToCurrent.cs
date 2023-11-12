@@ -15,7 +15,6 @@ public class FungusSetSafeSpawnToCurrent : Command
         WorldMap map = WorldMapMaster.GetInstance().GetCurrentMap();
         SaveMaster.Instance.activeSaveFile.lastSafeZoneMapId = map.mapId;
         SaveMaster.Instance.activeSaveFile.lastSafeZoneIndex = map.defaultSafePlacePosIndex;
-        SaveMaster.Instance.SaveCurrentFile(0);
         Continue();
         base.OnEnter();
     }
