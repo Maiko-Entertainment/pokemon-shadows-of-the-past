@@ -8,9 +8,8 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
     public PokemonCaughtData pokemon;
     public SpriteRenderer sprite;
 
-    public static string basePath = "Sprites/Pokemon/";
     public static float intervalBetweenSpriteChange = 15f / 60;
-    public static int columns = 4;
+    public static int spriteSheetColumns = 4;
 
     [SerializeField] float timePassed = 0f;
     [SerializeField] int frameIndex = 0;
@@ -20,9 +19,9 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
     [SerializeField] private Sprite[] spritesRight;
     [SerializeField] protected Vector2 lastDirection = new Vector2();
 
-    public void Start()
+    protected override void Start()
     {
-        if (pokemon != null)
+        if (pokemon != null && pokemon.GetPokemonBaseData())
         {
             Load(pokemon);
         }
@@ -35,11 +34,11 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
             default:
                 return 0;
             case MoveBrainDirection.Left:
-                return columns * 1;
+                return spriteSheetColumns * 1;
             case MoveBrainDirection.Right:
-                return columns * 2;
+                return spriteSheetColumns * 2;
             case MoveBrainDirection.Top:
-                return columns * 3;
+                return spriteSheetColumns * 3;
         }
     }
 
@@ -53,17 +52,17 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
         this.pokemon = pokemon;
         Sprite[] sprites = Resources.LoadAll<Sprite>(GetPath(pokemon));
 
-        spritesDown = new Sprite[columns];
-        spritesLeft = new Sprite[columns];
-        spritesRight = new Sprite[columns];
-        spritesUp = new Sprite[columns];
+        spritesDown = new Sprite[spriteSheetColumns];
+        spritesLeft = new Sprite[spriteSheetColumns];
+        spritesRight = new Sprite[spriteSheetColumns];
+        spritesUp = new Sprite[spriteSheetColumns];
         if (sprites.Length == 0)
             Debug.LogError(pokemon.GetPokemonBaseData().species + " has no sprites for world");
-        Array.Copy(sprites, 0, spritesDown, 0, columns);
-        Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Left), spritesLeft, 0, columns);
-        Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Right), spritesRight, 0, columns);
-        Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Top), spritesUp, 0, columns);
-
+        Array.Copy(sprites, 0, spritesDown, 0, spriteSheetColumns);
+        Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Left), spritesLeft, 0, spriteSheetColumns);
+        Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Right), spritesRight, 0, spriteSheetColumns);
+        Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Top), spritesUp, 0, spriteSheetColumns);
+        HandleAnimator(true);
         base.Load();
 
         return this;
@@ -92,7 +91,7 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
     public Sprite GetSprite()
     {
         Vector2 direction = lastDirection;
-        frameIndex = frameIndex % columns;
+        frameIndex = frameIndex % spriteSheetColumns;
         switch (GetDirectionFromVector(direction))
         {
             case MoveBrainDirection.Left:

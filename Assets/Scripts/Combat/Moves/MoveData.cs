@@ -26,6 +26,8 @@ public class MoveData : ScriptableObject
     public List<ItemCategory> destroyHeldItems = new List<ItemCategory>();
     [TextArea]
     public string description;
+    // If you want the sound to started delayed you need to create a prefab that plays the sound and put it inside the animations list in the moment you want
+    public AudioOptions soundEffect;
     public List<BattleAnimation> animations = new List<BattleAnimation>();
 
     public string GetId()
@@ -114,6 +116,7 @@ public class MoveData : ScriptableObject
 
     public void HandleAnimations(PokemonBattleData user, PokemonBattleData target)
     {
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(soundEffect));
         foreach(BattleAnimation anim in animations)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(
