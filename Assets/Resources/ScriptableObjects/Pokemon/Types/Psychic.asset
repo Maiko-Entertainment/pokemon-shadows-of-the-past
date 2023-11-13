@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b00800feb6d07fb4b8e1de5593c563e4, type: 3}
-  m_Name: Pychic
+  m_Name: Psychic
   m_EditorClassIdentifier: 
+  id: Psychic
   typeName: Psychic
-  typeId: 12
   color: {r: 0.972549, g: 0.34509805, b: 0.53333336, a: 1}
   icon: {fileID: 21300000, guid: d514e1746c322b54a9b8c4b9f04cb78c, type: 3}
-  typesRelations:
-  - type: 9
+  effectivenessAgainstTypes:
+  - typeData: {fileID: 11400000, guid: 7d810b4c237ca094aaaf936ac3f7279b, type: 2}
+    advantageType: 1
+  - typeData: {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
+    advantageType: 1
+  - typeData: {fileID: 11400000}
     advantageType: 2
-  - type: 2
-    advantageType: 1
-  - type: 5
-    advantageType: 1
-  - type: 12
+  - typeData: {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
     advantageType: 2
-  - type: 14
-    advantageType: 1
+  - typeData: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
+    advantageType: 3

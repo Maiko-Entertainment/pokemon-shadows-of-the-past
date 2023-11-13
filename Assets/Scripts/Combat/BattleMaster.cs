@@ -15,8 +15,6 @@ public class BattleMaster : MonoBehaviour
     public bool isExpShareOn = true;
     public float globalExpMultiplier = 1f;
 
-    public BattleTypeAdvantageManager advantageManager = new BattleTypeAdvantageManager();
-
 
     private void Awake()
     {
@@ -137,20 +135,20 @@ public class BattleMaster : MonoBehaviour
         return battleParty;
     }
 
-    public float GetAdvantageMultiplier(PokemonTypeId damageType, List<PokemonTypeId> targetTypes)
+    public float GetAdvantageMultiplier(TypeData damageType, List<TypeData> targetTypeIds)
     {
         float multiplier = 1;
-        foreach(PokemonTypeId targetType in targetTypes)
+        foreach(TypeData targetType in targetTypeIds)
         {
-            BattleTypeAdvantageType adv = advantageManager.GetTypeRelation(damageType, targetType);
-            multiplier *= advantageManager.GetAdvantageMultiplier(adv);
+            BattleTypeAdvantageType adv = TypesMaster.Instance.GetTypeRelation(damageType.GetId(), targetType.GetId());
+            multiplier *= TypesMaster.Instance.GetAdvantageMultiplier(adv);
         }
         return multiplier;
     }
 
-    public TypeData GetTypeData(PokemonTypeId type)
+    public TypeData GetTypeData(string typeId)
     {
-        return advantageManager.GetTypeData(type);
+        return TypesMaster.Instance.GetTypeData(typeId);
     }
 
     public Flowchart GetBattleFlowchart()
@@ -173,7 +171,7 @@ public class BattleMaster : MonoBehaviour
 
     public DamageSummary CalculateOutOfBattleDamage(PokemonCaughtData pokemon, OutOfCombatDamage damage)
     {
-        List<PokemonTypeId> targetTypes = pokemon.GetTypes();
+        List<TypeData> targetTypes = pokemon.GetTypes();
         // Effectiveness
         float advantageMultiplier = GetAdvantageMultiplier(damage.type, targetTypes);
         // Stats

@@ -17,6 +17,7 @@ public class ResourceMaster : MonoBehaviour
     public string pokemonDataPath = "ScriptableObjects/Pokemon/BaseData";
     public string pokemonAbilityPath = "ScriptableObjects/Pokemon/Abilities";
     public string pokemonMovesPath = "ScriptableObjects/Pokemon/Moves";
+    public string pokemonTypesPath = "ScriptableObjects/Pokemon/Types";
     public string itemsCategoryPath = "ScriptableObjects/Items/{category}";
     public string saveElementsPath = "ScriptableObjects/SaveElements";
 
@@ -65,5 +66,10 @@ public class ResourceMaster : MonoBehaviour
     public string GetSaveElementsPath()
     {
         return saveElementsPath;
+    }
+
+    public string GetPokemonTypesPath()
+    {
+        return pokemonTypesPath;
     }
 }

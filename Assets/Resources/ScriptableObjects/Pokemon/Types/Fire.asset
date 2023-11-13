@@ -12,26 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00800feb6d07fb4b8e1de5593c563e4, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
+  id: Fire
   typeName: Fire
-  typeId: 6
   color: {r: 0.9411765, g: 0.5019608, b: 0.1882353, a: 1}
   icon: {fileID: 21300000, guid: 5d986f6c4efb4074babb96e65af2da2f, type: 3}
-  typesRelations:
-  - type: 15
+  effectivenessAgainstTypes:
+  - typeData: {fileID: 11400000}
+    advantageType: 2
+  - typeData: {fileID: 11400000, guid: b05d1f80523ecbd46a3f2c4144f63161, type: 2}
+    advantageType: 2
+  - typeData: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
     advantageType: 1
-  - type: 13
+  - typeData: {fileID: 11400000, guid: a877c8119d5abef47aab0a20e0ee4e4e, type: 2}
     advantageType: 1
-  - type: 2
-    advantageType: 2
-  - type: 0
-    advantageType: 2
-  - type: 6
-    advantageType: 2
-  - type: 1
+  - typeData: {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
     advantageType: 1
-  - type: 11
+  - typeData: {fileID: 11400000, guid: 68fc6ca41f6522943b962a707d7f61de, type: 2}
     advantageType: 2
-  - type: 8
-    advantageType: 2
-  - type: 7
+  - typeData: {fileID: 11400000, guid: 1bcc01e818cba2b4fb0fd73ee9c3ee6c, type: 2}
     advantageType: 2

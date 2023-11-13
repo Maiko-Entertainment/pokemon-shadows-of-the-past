@@ -159,7 +159,7 @@ public class UIPokemonView : MonoBehaviour
     public void LoadPokemon(PokemonCaughtData pkmn)
     {
         currentPokemon = pkmn;
-        List<PokemonTypeId> types = pkmn.GetTypes();
+        List<TypeData> types = pkmn.GetTypes();
         if (pkmn.pokemonName == "")
         {
             pokemonName.transform.Find("Text Area").transform.Find("Placeholder").GetComponent<TMP_Text>().text = pkmn.GetName();
@@ -172,7 +172,7 @@ public class UIPokemonView : MonoBehaviour
         pokemonAbility.text = pkmn.ability.GetName();
         foreach (Transform t in typeList)
             Destroy(t.gameObject);
-        foreach (PokemonTypeId t in types)
+        foreach (TypeData t in types)
             Instantiate(battleTypePrefab, typeList).GetComponent<UIBattleType>().Load(t);
         if (animator)
             Destroy(animator.gameObject);

@@ -101,7 +101,7 @@ public class UIPokedexView : MonoBehaviour
         PokemonBaseData pkmn = data.pokemon;
         selected = data;
 
-        List<PokemonTypeId> types = pkmn.types;
+        List<TypeData> types = pkmn.GetTypes();
         pokemonName.text = pkmn.species;
         int totalPriorities = 0;
         foreach (Transform ability in abilityList)
@@ -137,7 +137,7 @@ public class UIPokedexView : MonoBehaviour
             pokemonSprite.color = Color.white;
             pokemonIcon.color = Color.white;
             pokemonName.text = pkmn.species;
-            foreach (PokemonTypeId t in types)
+            foreach (TypeData t in types)
                 Instantiate(battleTypePrefab, typeList).GetComponent<UIBattleType>().Load(t);
         }
         else

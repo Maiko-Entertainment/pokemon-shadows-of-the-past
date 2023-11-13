@@ -70,7 +70,7 @@ public class UICharacterCreatorStarter : MonoBehaviour
         {
             Destroy(t.gameObject);
         }
-        foreach (PokemonTypeId t in pokemon.types)
+        foreach (TypeData t in pokemon.GetTypes())
         {
             Instantiate(typePrefab, typesList).Load(t);
         }
@@ -103,11 +103,11 @@ public class UICharacterCreatorStarter : MonoBehaviour
         PartyMaster.GetInstance().AddPartyMember(starter);
         SaveElement se = SaveMaster.Instance.GetSaveElementData(CommonSaveElements.startedTypePicked);
         SaveElementNumber sen = (SaveElementNumber)se;
-        if (starter.GetTypes().Contains(PokemonTypeId.Fire))
+        if (starter.GetTypes().Contains(TypesMaster.Instance.GetTypeData("Fire")))
         {
             sen.SetValue(3f);
         }
-        else if (starter.GetTypes().Contains(PokemonTypeId.Water))
+        else if (starter.GetTypes().Contains(TypesMaster.Instance.GetTypeData("Water")))
         {
             sen.SetValue(2f);
         }

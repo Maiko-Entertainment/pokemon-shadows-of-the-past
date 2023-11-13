@@ -76,7 +76,7 @@ public class UIBattlePokemonPickerManager : MonoBehaviour
         {
             Destroy(types.gameObject);
         }
-        foreach (PokemonTypeId types in pokemon.GetPokemonCaughtData().GetTypes())
+        foreach (TypeData types in pokemon.GetPokemonCaughtData().GetTypes())
         {
             Instantiate(typePrefab.gameObject, pokemonTypesList).GetComponent<UIBattleType>().Load(types);
         }

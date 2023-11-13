@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class BattleStatsGetter
 {
     public float speedMultiplier = 1f;
-    public List<PokemonTypeId> affectedTypes = new List<PokemonTypeId>();
+    public List<TypeData> affectedTypes = new List<TypeData>();
 
     public PokemonBattleStats GetPokemonBattleStats(PokemonBattleData pkmn, PokemonBattleStats modifiedStats)
     {
@@ -20,7 +20,7 @@ public class BattleStatsGetter
 
     public virtual bool IsApplicable(PokemonBattleData pkmn, PokemonBattleStats stats)
     {
-        foreach(PokemonTypeId type in pkmn.GetTypeIds())
+        foreach(TypeData type in pkmn.GetTypes())
         {
             if (affectedTypes.Contains(type))
             {

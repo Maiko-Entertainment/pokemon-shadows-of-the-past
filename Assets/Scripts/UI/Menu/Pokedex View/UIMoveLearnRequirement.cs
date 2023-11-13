@@ -24,7 +24,7 @@ public class UIMoveLearnRequirement : MonoBehaviour
         MoveData move = moveLearn.move;
         int levelRequirement = moveLearn.levelRequired;
 
-        TypeData type = BattleMaster.GetInstance().GetTypeData(move.typeId);
+        TypeData type = BattleMaster.GetInstance().GetTypeData(move.typeId.ToString()); // TODO: complete when move type data is migrated
         background.color = type.color;
         icon.sprite = type.icon;
         moveName.text = move.moveName;

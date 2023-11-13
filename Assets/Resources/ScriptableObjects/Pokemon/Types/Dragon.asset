@@ -10,22 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b00800feb6d07fb4b8e1de5593c563e4, type: 3}
-  m_Name: Dark
+  m_Name: Dragon
   m_EditorClassIdentifier: 
-  typeName: Dark
-  typeId: 14
-  color: {r: 0.4392157, g: 0.34509805, b: 0.28235295, a: 1}
-  icon: {fileID: 21300000, guid: 2ca34fc0df5ad36479846498439a73d7, type: 3}
-  typesRelations:
-  - type: 9
+  id: Dragon
+  typeName: Dragon
+  color: {r: 0.4392157, g: 0.21960784, b: 0.972549, a: 1}
+  icon: {fileID: 21300000, guid: 97acf18829831214b8bcccf78232c5e5, type: 3}
+  effectivenessAgainstTypes:
+  - typeData: {fileID: 11400000}
     advantageType: 1
-  - type: 2
-    advantageType: 1
-  - type: 5
-    advantageType: 2
-  - type: 12
+  - typeData: {fileID: 11400000, guid: 9227b2c9f0867a4428721ed588c6e386, type: 2}
     advantageType: 3
-  - type: 14
+  - typeData: {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
     advantageType: 2
-  - type: 7
-    advantageType: 1

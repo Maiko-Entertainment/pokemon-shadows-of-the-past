@@ -200,9 +200,9 @@ public class PokemonCaughtData
     {
         return isShadow ? 0 : friendship;
     }
-    public List<PokemonTypeId> GetTypes()
+    public List<TypeData> GetTypes()
     {
-        return GetPokemonBaseData().types;
+        return GetPokemonBaseData().GetTypes();
     }
     public int GetExperience()
     {

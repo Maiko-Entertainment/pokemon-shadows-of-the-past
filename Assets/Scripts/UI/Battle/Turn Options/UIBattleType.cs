@@ -8,9 +8,8 @@ public class UIBattleType : MonoBehaviour
     public Image icon;
     public Image background;
 
-    public UIBattleType Load(PokemonTypeId type)
+    public UIBattleType Load(TypeData typeData)
     {
-        TypeData typeData = BattleMaster.GetInstance().GetTypeData(type);
         typeName.text = typeData.typeName;
         icon.sprite = typeData.icon;
         background.color = typeData.color;

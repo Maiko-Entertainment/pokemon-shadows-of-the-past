@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00800feb6d07fb4b8e1de5593c563e4, type: 3}
   m_Name: Ghost
   m_EditorClassIdentifier: 
+  id: Ghost
   typeName: Ghost
-  typeId: 5
   color: {r: 0.4392157, g: 0.34509805, b: 0.59607846, a: 1}
   icon: {fileID: 21300000, guid: 4feceb4be28e4db4f96aa2c8f555ce2c, type: 3}
-  typesRelations:
-  - type: 10
-    advantageType: 3
-  - type: 9
-    advantageType: 3
-  - type: 2
+  effectivenessAgainstTypes:
+  - typeData: {fileID: 11400000, guid: c6692acc6552ff74cab83be512180958, type: 2}
+    advantageType: 1
+  - typeData: {fileID: 11400000}
+    advantageType: 1
+  - typeData: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
     advantageType: 2
-  - type: 5
-    advantageType: 1
-  - type: 14
-    advantageType: 1
+  - typeData: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
+    advantageType: 3

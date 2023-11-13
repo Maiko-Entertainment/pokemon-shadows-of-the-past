@@ -9,7 +9,7 @@ public class PokemonBattleData
     public PokemonBattleStats statsLevel = new PokemonBattleStats();
     public List<StatusEffect> statusEffects = new List<StatusEffect>();
     // Works for pokemon that have moves/items that change typing
-    public List<PokemonTypeId> inBattleTypes = new List<PokemonTypeId>();
+    public List<TypeData> inBattleTypes = new List<TypeData>();
     public AbilityData ability;
     public PokemonBattleDataItem heldItem;
     public int roundsInCombat = 0;
@@ -23,7 +23,7 @@ public class PokemonBattleData
         this.pokemon = pokemon;
         heldItem = new PokemonBattleDataItem(pokemon.GetEquippedItem());
         statusEffects = new List<StatusEffect>();
-        inBattleTypes = new List<PokemonTypeId>();
+        inBattleTypes = new List<TypeData>();
     }
 
     public PokemonBattleData Copy()
@@ -47,7 +47,7 @@ public class PokemonBattleData
     // before the pokemon enters
     public void Initiate()
     {
-        inBattleTypes = pokemon.GetPokemonBaseData().types;
+        inBattleTypes = pokemon.GetPokemonBaseData().GetTypes();
         ability = pokemon.ability;
         heldItem.Initiate(this);
         ability.Initialize(this);
@@ -72,7 +72,7 @@ public class PokemonBattleData
         return pokemon.GetPokemonBaseData().captureRate;
     }
 
-    public List<PokemonTypeId> GetTypeIds()
+    public List<TypeData> GetTypes()
     {
         return inBattleTypes;
     }

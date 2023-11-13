@@ -27,7 +27,7 @@ public class UIPokemonMove : MonoBehaviour
 
         moveName.text = move.move.moveName;
         uses.text = (move.move.uses - move.timesUsed) + "/" + move.move.uses;
-        TypeData type = BattleMaster.GetInstance().GetTypeData(move.move.typeId);
+        TypeData type = BattleMaster.GetInstance().GetTypeData(move.move.GetMoveType().ToString()); // TODO: Update once moves use TypeData
         typingImageBackground.color = type.color;
         moveTypeIcon.sprite = type.icon;
         return this;

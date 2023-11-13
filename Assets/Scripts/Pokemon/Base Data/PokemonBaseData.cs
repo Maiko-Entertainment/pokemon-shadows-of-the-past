@@ -8,7 +8,7 @@ public class PokemonBaseData : ScriptableObject
     public string pokemonId;
     public string species;
     public PokemonBaseStats baseStats;
-    public List<PokemonTypeId> types;
+    public List<TypeData> typesData;
     public List<PokemonBaseAbility> abilities;
     public float maleChance = 0.5f;
     public bool isGenderless = false;
@@ -36,6 +36,11 @@ public class PokemonBaseData : ScriptableObject
         string path = ResourceMaster.Instance.GetBaseIconPath(this);
         Sprite audioCry = Resources.Load<Sprite>(path);
         return audioCry;
+    }
+
+    public List<TypeData> GetTypes()
+    {
+        return new List<TypeData>(typesData);
     }
 
     public List<MoveData> GetMovesLearnedForLevel(int level)

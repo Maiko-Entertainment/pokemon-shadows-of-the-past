@@ -1,5 +1,6 @@
 ﻿using Fungus;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 [System.Serializable]
 public class BattleManager
@@ -520,7 +521,8 @@ public class BattleManager
         UseMoveMods moveMods = finalEvent.moveMods;
         // Target and Pokemon Types
         PokemonTypeId moveTypeId = moveMods.moveTypeId;
-        List<PokemonTypeId> targetTypes = target.inBattleTypes;
+        TypeData moveType = TypesMaster.Instance.GetTypeData(moveTypeId.ToString()); // TODO: Update when moves use TypeData instead of enum
+        List<TypeData> targetTypes = target.inBattleTypes;
         // Categories
         MoveCategoryId attackerAttackCategory = moveUsed.GetAttackCategory();
         MoveCategoryId targetDefenseCategory = moveUsed.GetAttackCategory();
@@ -529,7 +531,7 @@ public class BattleManager
         PokemonBattleStats targetStats = target.GetBattleStats();
         // Type Advantages
         float advantageMultiplier = BattleMaster.GetInstance()
-            .GetAdvantageMultiplier(moveTypeId, targetTypes);
+            .GetAdvantageMultiplier(moveType, targetTypes);
         // Formula Variables
         int attackerLevel = attacker.GetPokemonCaughtData().GetLevel();
         int attack =
@@ -540,7 +542,7 @@ public class BattleManager
             targetStats.defense : targetStats.spDefense;
         int movePower = finalEvent.move.GetPower(attacker);
         float randomMultiplier = 0.8f + Random.value * 0.2f;
-        float stabBonus = attacker.GetTypeIds().Contains(moveTypeId) ? 1.5f : 1f;
+        float stabBonus = attacker.GetTypes().Contains(moveType) ? 1.5f : 1f;
         // Final calculations
         float baseDamage = 2 + (2 * attackerLevel + 10) / 250f * attack / defense * movePower;
         float finalDamage = baseDamage * randomMultiplier * advantageMultiplier * stabBonus * moveMods.powerMultiplier;
@@ -643,7 +645,8 @@ public class BattleManager
             if (!isStatusAlready)
             {
                 status = CreateStatusById(statusId, pokemon);
-                typePreventsStatus = UtilsMaster.ContainsAtLeastOne(status.inmuneTypes, pokemon.GetTypeIds());
+                // TODO: Update once status get reworked into ScriptableObjects
+                typePreventsStatus = UtilsMaster.ContainsAtLeastOne(status.inmuneTypes.Select(it => it.ToString()).ToList(), pokemon.GetTypes().Select(t => t.GetId()).ToList());
                 gainStatusBlockName = status.gainStatusBlockName;
             }
             if (isStatusAlready || status.isPrimary && alreadyHasPrimaryStatus) 

@@ -1633,7 +1633,7 @@ Transform:
   m_Children:
   - {fileID: 1205286360}
   m_Father: {fileID: 8952212246821983487}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1807452389
 GameObject:
@@ -2324,6 +2324,50 @@ Transform:
   m_Father: {fileID: 1205286360}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &675998072799842044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1160519321869333487}
+  - component: {fileID: 6325199113073623723}
+  m_Layer: 0
+  m_Name: Moves Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160519321869333487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675998072799842044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7470325338968056435}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6325199113073623723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675998072799842044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d448083dd5af749b278f3c67c8a57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &838496073047672594
 GameObject:
   m_ObjectHideFlags: 0
@@ -2691,7 +2735,7 @@ RectTransform:
   m_Children:
   - {fileID: 256081446873235987}
   m_Father: {fileID: 8952212246821983487}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2759,6 +2803,94 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1847851012503395314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656952413924444335}
+  - component: {fileID: 2256245449526818178}
+  m_Layer: 0
+  m_Name: Battle Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &656952413924444335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847851012503395314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7470325338968056435}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2256245449526818178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847851012503395314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6e32e58ee37c247bae0f3ee9015eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleFlowchart: {fileID: 4886601668064002564}
+  glitchMaterial: {fileID: 2100000, guid: df187fb649c0e3f478e6598378002a36, type: 2}
+  struggleMove: {fileID: 11400000, guid: e4883074889bed24da73824b57fd9b21, type: 2}
+  currentBattle:
+    team1:
+      trainerTitle: 
+      brain: {fileID: 0}
+      pokemon: []
+      conditionalPokemon: []
+      allyPokemon: []
+      moneyPrice: 0
+      teamStatus: []
+      tactics: []
+      tacticGauge: 0
+    team2:
+      trainerTitle: 
+      brain: {fileID: 0}
+      pokemon: []
+      conditionalPokemon: []
+      allyPokemon: []
+      moneyPrice: 0
+      teamStatus: []
+      tactics: []
+      tacticGauge: 0
+    battleData:
+      battleMusic: {fileID: 0}
+      battleWonMusic: {fileID: 0}
+      battlebackground: {fileID: 0}
+      volumeProfile: {fileID: 0}
+      battleType: 0
+      playerExtraTactics: []
+    weather:
+      effectId: 0
+      minTurns: 1
+      addedRangeTurns: 3
+      onEndFlowchartBlock: 
+      onWarningFlowchartBlock: 
+    turnsPassed: 0
+    battleStatsSubscribers: []
+    lastUsedMove: {fileID: 0}
+    faintHistory: []
+  triggerBattleOnStart: 0
+  isExpShareOn: 1
+  globalExpMultiplier: 1
 --- !u!1 &2331256853620169574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,6 +3178,216 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3266589114179517780}
   m_CullTransparentMesh: 1
+--- !u!1 &3371780209155574104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8074130629061083500}
+  - component: {fileID: 3943917017262417895}
+  - component: {fileID: 6981838619496000240}
+  m_Layer: 0
+  m_Name: Item Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8074130629061083500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371780209155574104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7470325338968056435}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3943917017262417895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371780209155574104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6e4542465bd094fb2b315ad221800b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6981838619496000240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371780209155574104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 006d236fbf197b8489bb5278d179843d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
+--- !u!1 &4660659755822138113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6685915970960381064}
+  - component: {fileID: 1479089159698468695}
+  - component: {fileID: 2809069213407914165}
+  m_Layer: 0
+  m_Name: Pokemon Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6685915970960381064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660659755822138113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7470325338968056435}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479089159698468695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660659755822138113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31b0cb835ed92a44ac4be0ccdd6b61c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokedex:
+  - {fileID: 11400000, guid: c4ad943425aa3224397ea7576d5d89be, type: 2}
+  - {fileID: 11400000, guid: 6f9b7439bd4400d47bcf9241103c1d8b, type: 2}
+  - {fileID: 11400000, guid: 91d248664f569ed42939c8764b5182e1, type: 2}
+  - {fileID: 11400000, guid: 679345ae12bbd3140b5b7b5e39ebd3ae, type: 2}
+  - {fileID: 11400000, guid: ff3f95ffa7bf7714886b67b3daae3771, type: 2}
+  - {fileID: 11400000, guid: 5ebdb86488dd978468bac7aae3fbb02b, type: 2}
+  - {fileID: 11400000, guid: 3a63b788787fb89449c78b165b982140, type: 2}
+  - {fileID: 11400000, guid: 13dbf4f0062a896419b7ef999a2ee2ca, type: 2}
+  - {fileID: 11400000, guid: c87fa5dd585898e408bfcfb88e59e62a, type: 2}
+  - {fileID: 11400000, guid: 77350b92de354874c93f4bdc78a8f163, type: 2}
+  - {fileID: 11400000, guid: 30db8bc8b2f24e546b5918c9491f333a, type: 2}
+  - {fileID: 11400000, guid: 6a35d448cb475ba42906b45c05859b2b, type: 2}
+  - {fileID: 11400000, guid: 95c6e370dddad4b4b8c1e67a1fee8ef6, type: 2}
+  - {fileID: 11400000, guid: fa26f999a0bcb6a49b6bc01ff88bc11f, type: 2}
+  - {fileID: 11400000, guid: 7e016c01e4bd1974db11abc4dc48eb66, type: 2}
+  - {fileID: 11400000, guid: 7fba125a4f51c7740a3be50974ff9211, type: 2}
+  - {fileID: 11400000, guid: 5f064ada270b8e8428dba7dda2762953, type: 2}
+  - {fileID: 11400000, guid: bd5815b7c0d0a7e4da509882d5497a74, type: 2}
+  - {fileID: 11400000, guid: aff920a1f5616a043831f9d30fc1600d, type: 2}
+  - {fileID: 11400000, guid: 9a5539691474619498186bb0a5beccea, type: 2}
+  - {fileID: 11400000, guid: 8fcff1f8111609448b9be3268e0209f6, type: 2}
+  - {fileID: 11400000, guid: 71e16c86f09758149bfcf19144181ada, type: 2}
+  - {fileID: 11400000, guid: e8fb87b38158909428bc08dc04b626e1, type: 2}
+  - {fileID: 11400000, guid: 9cb5de0083d5da64ea7fe6b7eb0d9743, type: 2}
+  - {fileID: 11400000, guid: 15e0ebe7523ad8946af6348d3bb43d81, type: 2}
+  - {fileID: 11400000, guid: c54cff66f03009b4eb55df2f3c415c37, type: 2}
+  - {fileID: 11400000, guid: 34dcd3c7a344af4438a272751d26f442, type: 2}
+  - {fileID: 11400000, guid: b0165fe17a5b8894aa58f6af7596d65d, type: 2}
+  - {fileID: 11400000, guid: 195a8b0e4e70b8748a1e2b89d98d674a, type: 2}
+  - {fileID: 11400000, guid: ae34e2de2016b294ca8543425f02cb31, type: 2}
+  - {fileID: 11400000, guid: e2ec1db054361cb48b564ef846faabad, type: 2}
+  - {fileID: 11400000, guid: 3e4db4416d16bc649bb8df91f1cb653a, type: 2}
+  - {fileID: 11400000, guid: 2585af1289aaad74cb06fe10a45659c8, type: 2}
+  - {fileID: 11400000, guid: 0e197706a77c2fd49bbfc02aedc9e727, type: 2}
+  - {fileID: 11400000, guid: 8fddc572cf3a63f4d8063df63056e739, type: 2}
+  - {fileID: 11400000, guid: db9997cf52a77864b87511b7c8d9a1fc, type: 2}
+  - {fileID: 11400000, guid: b77b46f51d977a142be65d72d57cdc12, type: 2}
+  - {fileID: 11400000, guid: ee0c84844d465a44494e13cea4aa35d7, type: 2}
+  - {fileID: 11400000, guid: 21817d1df5d4652468a84460823367ff, type: 2}
+  - {fileID: 11400000, guid: 0c62f270b3bc93546b809c41527055ab, type: 2}
+  - {fileID: 11400000, guid: 99ae59d0cfb3af1408d3dbdc1820e986, type: 2}
+  - {fileID: 11400000, guid: 13a1841cf6d3e4d40b7cd3486777eec2, type: 2}
+  - {fileID: 11400000, guid: dbff16d75d5fb654f87cb319e0821fff, type: 2}
+  - {fileID: 11400000, guid: d5b3302a6c0b959448d7c15a79d6aacc, type: 2}
+  - {fileID: 11400000, guid: 26772d4f55e9d824186db7789b158eb8, type: 2}
+  - {fileID: 11400000, guid: 0b8b743a88fdcd040959a96e95742308, type: 2}
+  - {fileID: 11400000, guid: 59906cbd0c367504bb38b156688b2333, type: 2}
+  - {fileID: 11400000, guid: cd8a8256b269c2f4b95d9c2447c5deea, type: 2}
+  - {fileID: 11400000, guid: 30f014181642ed7439cd980f8846924d, type: 2}
+  - {fileID: 11400000, guid: f9913b01937e83d4ab2a13ecdfcb1759, type: 2}
+  - {fileID: 11400000, guid: 36f1e76fe8c61e649ad93836f5b26ec5, type: 2}
+  - {fileID: 11400000, guid: 796293300dd920b4f8f130bc3b7e318f, type: 2}
+  otherPokemon:
+  - {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
+  - {fileID: 11400000, guid: a43e7c5ddb840a14cae7835bd4998e80, type: 2}
+  - {fileID: 11400000, guid: 0b3d3b32c65e6a44ea8b8e869a2c61cd, type: 2}
+  - {fileID: 11400000, guid: 1569aa02690b8934d8958cbd4b633e0b, type: 2}
+  - {fileID: 11400000, guid: 54404e1369b97ce4092c9c681bbfbd7c, type: 2}
+  - {fileID: 11400000, guid: 84db5bff9e10d99458fd032653c85c04, type: 2}
+  - {fileID: 11400000, guid: 276093c97db932847959e68c4de41ac8, type: 2}
+  - {fileID: 11400000, guid: df9548d3d5926f14cbb37b5f9389178a, type: 2}
+  - {fileID: 11400000, guid: 2738d638e36da1045934cbf44ef8e657, type: 2}
+  - {fileID: 11400000, guid: 27d06d49dc4fd0b4880e1a79ef6770f5, type: 2}
+  - {fileID: 11400000, guid: 0be1d93a1de3abd4981a01158c864dc5, type: 2}
+  - {fileID: 11400000, guid: 9c4b382338d3ea74c8194dec67ae4762, type: 2}
+  - {fileID: 11400000, guid: ef9d23ef14646fc4d9817e85737fa34f, type: 2}
+  - {fileID: 11400000, guid: 9cbfb26cd8740b94b8adeb3fab9cf54b, type: 2}
+  - {fileID: 11400000, guid: 70f61c5fb98453b4697dcbfdce977332, type: 2}
+  - {fileID: 11400000, guid: 9cf01b37186530e45b2892fa350c4042, type: 2}
+  - {fileID: 11400000, guid: 3513a6307bbd9ce4eab305bc11d7ca19, type: 2}
+  - {fileID: 11400000, guid: ea1a16c5273aef0419932d5bf79ab69c, type: 2}
+  - {fileID: 11400000, guid: 19d13025b90feef40bfdaa20c5b8bbd8, type: 2}
+  - {fileID: 11400000, guid: eb8164d78d7cb2048ad212d207dda6df, type: 2}
+  - {fileID: 11400000, guid: 83088eefaad189f4eb07daf6bef0e110, type: 2}
+  - {fileID: 11400000, guid: 34f4705f4c129474bb5f5f2df3276cc7, type: 2}
+  - {fileID: 11400000, guid: e19f4388259e35e45a91eb6be23eccc8, type: 2}
+  - {fileID: 11400000, guid: e33af79e96e8758499fb28fa412a48a7, type: 2}
+  - {fileID: 11400000, guid: 4d6d8dbe8b84d4d4fbaf502bb0fbe966, type: 2}
+  - {fileID: 11400000, guid: 771236beb67ddf943adda72598c4195a, type: 2}
+  - {fileID: 11400000, guid: f51b7b7a6d51226448595cd426087910, type: 2}
+  - {fileID: 11400000, guid: dc7b2bb46059c6d4ba1f3ad16e9a6bf7, type: 2}
+  - {fileID: 11400000, guid: 521b804dc9e7da84c92f2cd9b86c336a, type: 2}
+  - {fileID: 11400000, guid: 8de93ec4dbb1639448cb1e87720e0b12, type: 2}
+  - {fileID: 11400000, guid: deff467d28e3b584a84bd6020b7f827d, type: 2}
+  - {fileID: 11400000, guid: 35e457b2ef68eca41a5f343f65f4861d, type: 2}
+  - {fileID: 11400000, guid: e3b954ae1766fd645a23c938cf3b6087, type: 2}
+  - {fileID: 11400000, guid: c3d87658f1c9d9847b428a5679bc992c, type: 2}
+  - {fileID: 11400000, guid: 9feab3ae1d111994f9e532ced5ee4c65, type: 2}
+  - {fileID: 11400000, guid: e46c5815db9eb284bba174da25e6b949, type: 2}
+  evolveFirstPartyPokemon: 0
+  forceEvolveTo: {fileID: 11400000, guid: 54404e1369b97ce4092c9c681bbfbd7c, type: 2}
+--- !u!114 &2809069213407914165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660659755822138113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9686f2f8b41bac6468685f38b3739a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party: []
+  pokemonBox: []
+  loadDefaultParty: 0
 --- !u!1 &4689772822245343181
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,6 +3865,87 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7281642825587501332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7470325338968056435}
+  m_Layer: 0
+  m_Name: Masters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7470325338968056435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7281642825587501332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7568510644085583612}
+  - {fileID: 8074130629061083500}
+  - {fileID: 6685915970960381064}
+  - {fileID: 1160519321869333487}
+  - {fileID: 656952413924444335}
+  - {fileID: 5154324708346966706}
+  m_Father: {fileID: 8952212246821983487}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7393093619422435177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5154324708346966706}
+  - component: {fileID: 6404863942857075576}
+  m_Layer: 0
+  m_Name: Type Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5154324708346966706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393093619422435177}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7470325338968056435}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6404863942857075576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7393093619422435177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738e7628e4485fb489a3f23a91fa5a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8013711904165161438
 GameObject:
   m_ObjectHideFlags: 0
@@ -3615,6 +4038,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8126209338916309447}
   m_CullTransparentMesh: 1
+--- !u!1 &8138800318892832327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7568510644085583612}
+  - component: {fileID: 6688398666517810818}
+  m_Layer: 0
+  m_Name: Ability Master
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7568510644085583612
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138800318892832327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7470325338968056435}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6688398666517810818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138800318892832327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2b9f11b26a50146987e5a6b565c51a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8791528556450836678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3703,23 +4170,16 @@ GameObject:
   - component: {fileID: 8952212246821983487}
   - component: {fileID: 4307764375145798937}
   - component: {fileID: 8952212246821983476}
-  - component: {fileID: 8952212246821983486}
-  - component: {fileID: 8952212246821983484}
-  - component: {fileID: 8952212246821983485}
-  - component: {fileID: 8952212246821983483}
   - component: {fileID: 8952212246821983480}
   - component: {fileID: 8952212246821983481}
   - component: {fileID: 8952212246821983482}
   - component: {fileID: 8952212246821983478}
-  - component: {fileID: 8952212246821983479}
-  - component: {fileID: 1181977574091591885}
-  - component: {fileID: 1235064476615560278}
   - component: {fileID: 423868467601111521}
   - component: {fileID: 254393890830598095}
   - component: {fileID: 2450637154365335299}
   - component: {fileID: 2487865612775774345}
   m_Layer: 0
-  m_Name: Masters
+  m_Name: Game Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3737,6 +4197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7470325338968056435}
   - {fileID: 4886601668894628398}
   - {fileID: 8952212246877140689}
   - {fileID: 3351432764419557524}
@@ -4106,119 +4567,6 @@ MonoBehaviour:
   forceMapLoad: 0
   customMap: 3
   customSpawn: 0
---- !u!114 &8952212246821983486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952212246821983361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6e32e58ee37c247bae0f3ee9015eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleFlowchart: {fileID: 4886601668064002564}
-  glitchMaterial: {fileID: 2100000, guid: df187fb649c0e3f478e6598378002a36, type: 2}
-  struggleMove: {fileID: 11400000, guid: e4883074889bed24da73824b57fd9b21, type: 2}
-  currentBattle:
-    team1:
-      trainerTitle: 
-      brain: {fileID: 0}
-      pokemon: []
-      conditionalPokemon: []
-      allyPokemon: []
-      moneyPrice: 0
-      teamStatus: []
-      tactics: []
-      tacticGauge: 0
-    team2:
-      trainerTitle: 
-      brain: {fileID: 0}
-      pokemon: []
-      conditionalPokemon: []
-      allyPokemon: []
-      moneyPrice: 0
-      teamStatus: []
-      tactics: []
-      tacticGauge: 0
-    battleData:
-      battleMusic: {fileID: 0}
-      battleWonMusic: {fileID: 0}
-      battlebackground: {fileID: 0}
-      volumeProfile: {fileID: 0}
-      battleType: 0
-      playerExtraTactics: []
-    weather:
-      effectId: 0
-      minTurns: 1
-      addedRangeTurns: 3
-      onEndFlowchartBlock: 
-      onWarningFlowchartBlock: 
-    turnsPassed: 0
-    battleStatsSubscribers: []
-    lastUsedMove: {fileID: 0}
-    faintHistory: []
-  triggerBattleOnStart: 0
-  isExpShareOn: 1
-  globalExpMultiplier: 1
-  advantageManager:
-    advantages:
-    - {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
-    - {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
-    - {fileID: 11400000, guid: 1bcc01e818cba2b4fb0fd73ee9c3ee6c, type: 2}
-    - {fileID: 11400000, guid: 4f9e03ca4f6cf26449a9de14bdfed0df, type: 2}
-    - {fileID: 11400000, guid: 9227b2c9f0867a4428721ed588c6e386, type: 2}
-    - {fileID: 11400000, guid: 7d810b4c237ca094aaaf936ac3f7279b, type: 2}
-    - {fileID: 11400000, guid: 2afc142f5ecadf249860dcfb25befa04, type: 2}
-    - {fileID: 11400000, guid: e5e02d9e5bd3a7e479e995e333b59807, type: 2}
-    - {fileID: 11400000, guid: 3ef7845cdd809524998cfb8ba8509868, type: 2}
-    - {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
-    - {fileID: 11400000, guid: f081c465cb8c37545b569a03625ee6c4, type: 2}
-    - {fileID: 11400000, guid: a877c8119d5abef47aab0a20e0ee4e4e, type: 2}
-    - {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
-    - {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
-    - {fileID: 11400000, guid: c6692acc6552ff74cab83be512180958, type: 2}
-    - {fileID: 11400000, guid: 68fc6ca41f6522943b962a707d7f61de, type: 2}
-    - {fileID: 11400000, guid: b05d1f80523ecbd46a3f2c4144f63161, type: 2}
-    - {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
---- !u!114 &8952212246821983484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952212246821983361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2b9f11b26a50146987e5a6b565c51a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8952212246821983485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952212246821983361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 006d236fbf197b8489bb5278d179843d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: []
---- !u!114 &8952212246821983483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952212246821983361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e6e4542465bd094fb2b315ad221800b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8952212246821983480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4375,137 +4723,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8952212246821983479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952212246821983361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9686f2f8b41bac6468685f38b3739a6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  party: []
-  pokemonBox: []
-  loadDefaultParty: 0
---- !u!114 &1181977574091591885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952212246821983361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31b0cb835ed92a44ac4be0ccdd6b61c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokedex:
-  - {fileID: 11400000, guid: c4ad943425aa3224397ea7576d5d89be, type: 2}
-  - {fileID: 11400000, guid: 6f9b7439bd4400d47bcf9241103c1d8b, type: 2}
-  - {fileID: 11400000, guid: 91d248664f569ed42939c8764b5182e1, type: 2}
-  - {fileID: 11400000, guid: 679345ae12bbd3140b5b7b5e39ebd3ae, type: 2}
-  - {fileID: 11400000, guid: ff3f95ffa7bf7714886b67b3daae3771, type: 2}
-  - {fileID: 11400000, guid: 5ebdb86488dd978468bac7aae3fbb02b, type: 2}
-  - {fileID: 11400000, guid: 3a63b788787fb89449c78b165b982140, type: 2}
-  - {fileID: 11400000, guid: 13dbf4f0062a896419b7ef999a2ee2ca, type: 2}
-  - {fileID: 11400000, guid: c87fa5dd585898e408bfcfb88e59e62a, type: 2}
-  - {fileID: 11400000, guid: 77350b92de354874c93f4bdc78a8f163, type: 2}
-  - {fileID: 11400000, guid: 30db8bc8b2f24e546b5918c9491f333a, type: 2}
-  - {fileID: 11400000, guid: 6a35d448cb475ba42906b45c05859b2b, type: 2}
-  - {fileID: 11400000, guid: 95c6e370dddad4b4b8c1e67a1fee8ef6, type: 2}
-  - {fileID: 11400000, guid: fa26f999a0bcb6a49b6bc01ff88bc11f, type: 2}
-  - {fileID: 11400000, guid: 7e016c01e4bd1974db11abc4dc48eb66, type: 2}
-  - {fileID: 11400000, guid: 7fba125a4f51c7740a3be50974ff9211, type: 2}
-  - {fileID: 11400000, guid: 5f064ada270b8e8428dba7dda2762953, type: 2}
-  - {fileID: 11400000, guid: bd5815b7c0d0a7e4da509882d5497a74, type: 2}
-  - {fileID: 11400000, guid: aff920a1f5616a043831f9d30fc1600d, type: 2}
-  - {fileID: 11400000, guid: 9a5539691474619498186bb0a5beccea, type: 2}
-  - {fileID: 11400000, guid: 8fcff1f8111609448b9be3268e0209f6, type: 2}
-  - {fileID: 11400000, guid: 71e16c86f09758149bfcf19144181ada, type: 2}
-  - {fileID: 11400000, guid: e8fb87b38158909428bc08dc04b626e1, type: 2}
-  - {fileID: 11400000, guid: 9cb5de0083d5da64ea7fe6b7eb0d9743, type: 2}
-  - {fileID: 11400000, guid: 15e0ebe7523ad8946af6348d3bb43d81, type: 2}
-  - {fileID: 11400000, guid: c54cff66f03009b4eb55df2f3c415c37, type: 2}
-  - {fileID: 11400000, guid: 34dcd3c7a344af4438a272751d26f442, type: 2}
-  - {fileID: 11400000, guid: b0165fe17a5b8894aa58f6af7596d65d, type: 2}
-  - {fileID: 11400000, guid: 195a8b0e4e70b8748a1e2b89d98d674a, type: 2}
-  - {fileID: 11400000, guid: ae34e2de2016b294ca8543425f02cb31, type: 2}
-  - {fileID: 11400000, guid: e2ec1db054361cb48b564ef846faabad, type: 2}
-  - {fileID: 11400000, guid: 3e4db4416d16bc649bb8df91f1cb653a, type: 2}
-  - {fileID: 11400000, guid: 2585af1289aaad74cb06fe10a45659c8, type: 2}
-  - {fileID: 11400000, guid: 0e197706a77c2fd49bbfc02aedc9e727, type: 2}
-  - {fileID: 11400000, guid: 8fddc572cf3a63f4d8063df63056e739, type: 2}
-  - {fileID: 11400000, guid: db9997cf52a77864b87511b7c8d9a1fc, type: 2}
-  - {fileID: 11400000, guid: b77b46f51d977a142be65d72d57cdc12, type: 2}
-  - {fileID: 11400000, guid: ee0c84844d465a44494e13cea4aa35d7, type: 2}
-  - {fileID: 11400000, guid: 21817d1df5d4652468a84460823367ff, type: 2}
-  - {fileID: 11400000, guid: 0c62f270b3bc93546b809c41527055ab, type: 2}
-  - {fileID: 11400000, guid: 99ae59d0cfb3af1408d3dbdc1820e986, type: 2}
-  - {fileID: 11400000, guid: 13a1841cf6d3e4d40b7cd3486777eec2, type: 2}
-  - {fileID: 11400000, guid: dbff16d75d5fb654f87cb319e0821fff, type: 2}
-  - {fileID: 11400000, guid: d5b3302a6c0b959448d7c15a79d6aacc, type: 2}
-  - {fileID: 11400000, guid: 26772d4f55e9d824186db7789b158eb8, type: 2}
-  - {fileID: 11400000, guid: 0b8b743a88fdcd040959a96e95742308, type: 2}
-  - {fileID: 11400000, guid: 59906cbd0c367504bb38b156688b2333, type: 2}
-  - {fileID: 11400000, guid: cd8a8256b269c2f4b95d9c2447c5deea, type: 2}
-  - {fileID: 11400000, guid: 30f014181642ed7439cd980f8846924d, type: 2}
-  - {fileID: 11400000, guid: f9913b01937e83d4ab2a13ecdfcb1759, type: 2}
-  - {fileID: 11400000, guid: 36f1e76fe8c61e649ad93836f5b26ec5, type: 2}
-  - {fileID: 11400000, guid: 796293300dd920b4f8f130bc3b7e318f, type: 2}
-  otherPokemon:
-  - {fileID: 11400000, guid: 1a36ebfca0aa5114887757e9bb6c8ea1, type: 2}
-  - {fileID: 11400000, guid: a43e7c5ddb840a14cae7835bd4998e80, type: 2}
-  - {fileID: 11400000, guid: 0b3d3b32c65e6a44ea8b8e869a2c61cd, type: 2}
-  - {fileID: 11400000, guid: 1569aa02690b8934d8958cbd4b633e0b, type: 2}
-  - {fileID: 11400000, guid: 54404e1369b97ce4092c9c681bbfbd7c, type: 2}
-  - {fileID: 11400000, guid: 84db5bff9e10d99458fd032653c85c04, type: 2}
-  - {fileID: 11400000, guid: 276093c97db932847959e68c4de41ac8, type: 2}
-  - {fileID: 11400000, guid: df9548d3d5926f14cbb37b5f9389178a, type: 2}
-  - {fileID: 11400000, guid: 2738d638e36da1045934cbf44ef8e657, type: 2}
-  - {fileID: 11400000, guid: 27d06d49dc4fd0b4880e1a79ef6770f5, type: 2}
-  - {fileID: 11400000, guid: 0be1d93a1de3abd4981a01158c864dc5, type: 2}
-  - {fileID: 11400000, guid: 9c4b382338d3ea74c8194dec67ae4762, type: 2}
-  - {fileID: 11400000, guid: ef9d23ef14646fc4d9817e85737fa34f, type: 2}
-  - {fileID: 11400000, guid: 9cbfb26cd8740b94b8adeb3fab9cf54b, type: 2}
-  - {fileID: 11400000, guid: 70f61c5fb98453b4697dcbfdce977332, type: 2}
-  - {fileID: 11400000, guid: 9cf01b37186530e45b2892fa350c4042, type: 2}
-  - {fileID: 11400000, guid: 3513a6307bbd9ce4eab305bc11d7ca19, type: 2}
-  - {fileID: 11400000, guid: ea1a16c5273aef0419932d5bf79ab69c, type: 2}
-  - {fileID: 11400000, guid: 19d13025b90feef40bfdaa20c5b8bbd8, type: 2}
-  - {fileID: 11400000, guid: eb8164d78d7cb2048ad212d207dda6df, type: 2}
-  - {fileID: 11400000, guid: 83088eefaad189f4eb07daf6bef0e110, type: 2}
-  - {fileID: 11400000, guid: 34f4705f4c129474bb5f5f2df3276cc7, type: 2}
-  - {fileID: 11400000, guid: e19f4388259e35e45a91eb6be23eccc8, type: 2}
-  - {fileID: 11400000, guid: e33af79e96e8758499fb28fa412a48a7, type: 2}
-  - {fileID: 11400000, guid: 4d6d8dbe8b84d4d4fbaf502bb0fbe966, type: 2}
-  - {fileID: 11400000, guid: 771236beb67ddf943adda72598c4195a, type: 2}
-  - {fileID: 11400000, guid: f51b7b7a6d51226448595cd426087910, type: 2}
-  - {fileID: 11400000, guid: dc7b2bb46059c6d4ba1f3ad16e9a6bf7, type: 2}
-  - {fileID: 11400000, guid: 521b804dc9e7da84c92f2cd9b86c336a, type: 2}
-  - {fileID: 11400000, guid: 8de93ec4dbb1639448cb1e87720e0b12, type: 2}
-  - {fileID: 11400000, guid: deff467d28e3b584a84bd6020b7f827d, type: 2}
-  - {fileID: 11400000, guid: 35e457b2ef68eca41a5f343f65f4861d, type: 2}
-  - {fileID: 11400000, guid: e3b954ae1766fd645a23c938cf3b6087, type: 2}
-  - {fileID: 11400000, guid: c3d87658f1c9d9847b428a5679bc992c, type: 2}
-  - {fileID: 11400000, guid: 9feab3ae1d111994f9e532ced5ee4c65, type: 2}
-  - {fileID: 11400000, guid: e46c5815db9eb284bba174da25e6b949, type: 2}
-  evolveFirstPartyPokemon: 0
-  forceEvolveTo: {fileID: 11400000, guid: 54404e1369b97ce4092c9c681bbfbd7c, type: 2}
---- !u!114 &1235064476615560278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952212246821983361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21d448083dd5af749b278f3c67c8a57f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &423868467601111521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4579,6 +4796,7 @@ MonoBehaviour:
   pokemonDataPath: ScriptableObjects/Pokemon/BaseData
   pokemonAbilityPath: ScriptableObjects/Pokemon/Abilities
   pokemonMovesPath: ScriptableObjects/Pokemon/Moves
+  pokemonTypesPath: ScriptableObjects/Pokemon/Types
   itemsCategoryPath: ScriptableObjects/Items
   saveElementsPath: ScriptableObjects/SaveElements
 --- !u!1 &8952212246877140693
@@ -4617,7 +4835,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8952212246821983487}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -1, y: 0, z: 0}
 --- !u!20 &8952212246877140688
 Camera:
@@ -4849,7 +5067,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8952212246821983487}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4955,7 +5173,7 @@ RectTransform:
   - {fileID: 6964506295760511976}
   - {fileID: 5386700006465542541}
   m_Father: {fileID: 8952212246821983487}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5375,7 +5593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 208385776147829438, guid: d38b1e3c1ef63264ea082748ddf910e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5547,7 +5765,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1692179289757304495, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1692179289757304495, guid: 43033ca5544db8b4fbf620802d448f33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5716,7 +5934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1806747590123375648, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1806747590123375648, guid: f1dfea86f78511940b6dc3efb80470cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6076,7 +6294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8510794689685117343, guid: 76c0b43ff6ec7c844800f75d548936e5, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8510794689685117343, guid: 76c0b43ff6ec7c844800f75d548936e5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6193,7 +6411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6287610072136527135, guid: f35caa8094ba2ac40903cf938bd96c06, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6287610072136527135, guid: f35caa8094ba2ac40903cf938bd96c06, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6323,7 +6541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7403176983238722139, guid: 3280b02f5d3347e48b22279ecb4d4cc3, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7403176983238722139, guid: 3280b02f5d3347e48b22279ecb4d4cc3, type: 3}
       propertyPath: m_AnchorMax.x

@@ -4,7 +4,12 @@ using UnityEngine;
 [System.Serializable]
 public class BattleTypeAdvantageRelation
 {
-    public PokemonTypeId type;
+    public TypeData typeData;
     public BattleTypeAdvantageType advantageType;
+
+    public string GetTypeId()
+    {
+        return typeData.GetId();
+    }
 
 }

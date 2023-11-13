@@ -6,5 +6,5 @@ public class OutOfCombatDamage
 {
     public int damagePower;
     public MoveCategoryId moveCategory;
-    public PokemonTypeId type = PokemonTypeId.Normal;
+    public TypeData type;
 }

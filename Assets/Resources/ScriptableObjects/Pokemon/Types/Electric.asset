@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00800feb6d07fb4b8e1de5593c563e4, type: 3}
   m_Name: Electric
   m_EditorClassIdentifier: 
+  id: Electric
   typeName: Electric
-  typeId: 4
   color: {r: 1, g: 0.74682754, b: 0, a: 1}
   icon: {fileID: 21300000, guid: e7d33267fcf76cc41bbd7738ce583cd1, type: 3}
-  typesRelations:
-  - type: 17
-    advantageType: 2
-  - type: 15
+  effectivenessAgainstTypes:
+  - typeData: {fileID: 11400000, guid: b05d1f80523ecbd46a3f2c4144f63161, type: 2}
     advantageType: 1
-  - type: 0
+  - typeData: {fileID: 11400000}
     advantageType: 2
-  - type: 4
+  - typeData: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
+    advantageType: 2
+  - typeData: {fileID: 11400000, guid: f081c465cb8c37545b569a03625ee6c4, type: 2}
+    advantageType: 3
+  - typeData: {fileID: 11400000, guid: e5e02d9e5bd3a7e479e995e333b59807, type: 2}
+    advantageType: 1
+  - typeData: {fileID: 11400000, guid: 1bcc01e818cba2b4fb0fd73ee9c3ee6c, type: 2}
     advantageType: 2

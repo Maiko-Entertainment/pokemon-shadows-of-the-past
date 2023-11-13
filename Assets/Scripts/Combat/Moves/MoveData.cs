@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Moves/MoveData")]
@@ -264,7 +265,8 @@ public class MoveData : ScriptableObject
                     }
                     PokemonBattleData target = battleStatus.GetTarget(myUser, statusChance.targetType);
                     StatusEffect stat = battleStatus.CreateStatusById(statusChance.effectId, target);
-                    if (UtilsMaster.ContainsAtLeastOne(stat.inmuneTypes, target.GetTypeIds()))
+                    // TODO: Remove once Status Effects gets rewritten to Scriptable Objects
+                    if (UtilsMaster.ContainsAtLeastOne(stat.inmuneTypes.Select(it => it.ToString()).ToList(), target.GetTypes().Select((td) => td.GetId()).ToList()))
                     {
                         alreadyHasStatusBiasMultiplier = 0f;
                     }

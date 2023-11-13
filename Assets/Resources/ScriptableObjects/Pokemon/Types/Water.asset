@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00800feb6d07fb4b8e1de5593c563e4, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
+  id: Water
   typeName: Water
-  typeId: 1
   color: {r: 0.2028302, g: 0.7304534, b: 1, a: 1}
   icon: {fileID: 21300000, guid: ec772cb0e42826842a2a3cea93b105f9, type: 3}
-  typesRelations:
-  - type: 0
-    advantageType: 2
-  - type: 6
-    advantageType: 2
-  - type: 1
-    advantageType: 2
-  - type: 11
+  effectivenessAgainstTypes:
+  - typeData: {fileID: 11400000, guid: 2afc142f5ecadf249860dcfb25befa04, type: 2}
     advantageType: 1
-  - type: 4
+  - typeData: {fileID: 11400000, guid: f081c465cb8c37545b569a03625ee6c4, type: 2}
     advantageType: 1
-  - type: 8
+  - typeData: {fileID: 11400000, guid: 68fc6ca41f6522943b962a707d7f61de, type: 2}
+    advantageType: 1
+  - typeData: {fileID: 11400000}
+    advantageType: 2
+  - typeData: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
+    advantageType: 2
+  - typeData: {fileID: 11400000, guid: 1bcc01e818cba2b4fb0fd73ee9c3ee6c, type: 2}
     advantageType: 2

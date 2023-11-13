@@ -210,10 +210,10 @@ public class UIPokemonPC : MonoBehaviour
                 pokemonLevel.text = "Lv. " + currentPokemon.GetLevel();
             }
             pokemonAbility.text = poke.ability.GetName();
-            List<PokemonTypeId> types = poke.GetTypes();
+            List<TypeData> types = poke.GetTypes();
             foreach (Transform t in typeList)
                 Destroy(t.gameObject);
-            foreach (PokemonTypeId t in types)
+            foreach (TypeData t in types)
                 Instantiate(battleTypePrefab, typeList).GetComponent<UIBattleType>().Load(t);
             if (poke.isShadow)
             {

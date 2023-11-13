@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Tactics/Befriend")]
 public class TacticDataBefriend : TacticData
 {
-    public List<PokemonTypeId> workingTypes = new List<PokemonTypeId>();
+    public List<TypeData> workingTypes = new List<TypeData>();
     public string failBlockName;
 
     public override void HandlePostExecute(BattleTeamId teamId, PokemonBattleData pokemon)
@@ -14,9 +14,9 @@ public class TacticDataBefriend : TacticData
         PokemonBattleData teamUsersActivePokemon = bm.GetTeamActivePokemon(teamId);
         trigger.maxTriggers = 1;
         bm.AddTrigger(trigger);
-        List<PokemonTypeId> types = pokemon.GetTypeIds();
+        List<TypeData> types = pokemon.GetTypes();
         bool contains = false;
-        foreach (PokemonTypeId type in types)
+        foreach (TypeData type in types)
         {
             if (workingTypes.Contains(type))
             {

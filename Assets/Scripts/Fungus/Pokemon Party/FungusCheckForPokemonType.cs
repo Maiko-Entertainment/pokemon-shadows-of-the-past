@@ -7,7 +7,7 @@ using Fungus;
                 "Check if the first party member has at least 1 of the required types.")]
 public class FungusCheckForPokemonType : Command
 {
-    public List<PokemonTypeId> possibleTypes = new List<PokemonTypeId>();
+    public List<TypeData> possibleTypes = new List<TypeData>();
     [Tooltip("Boolean variable to set result")]
     [VariableProperty(typeof(BooleanVariable))]
     [SerializeField] protected BooleanVariable variable;
@@ -19,7 +19,7 @@ public class FungusCheckForPokemonType : Command
         if (party.Count > 0)
         {
             PokemonCaughtData pokemon = party[0];
-            foreach(PokemonTypeId type in possibleTypes)
+            foreach(TypeData type in possibleTypes)
             {
                 if (pokemon.GetTypes().Contains(type))
                 {
