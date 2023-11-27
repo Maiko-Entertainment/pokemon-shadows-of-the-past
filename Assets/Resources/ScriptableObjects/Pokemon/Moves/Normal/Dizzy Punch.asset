@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Dizzy Punch
   m_EditorClassIdentifier: 
-  moveId: 31
   id: DizzyPunch
   moveName: Dizzy Punch
   power: 70
   hitChance: 1
   alwaysHit: 0
   uses: 10
-  typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 9
+    effectData: {fileID: 11400000, guid: 23f2256b267e27d4581cc701bbd43c4f, type: 2}
     targetType: 0
     chance: 0.2
     removeStatusInstead: 0
@@ -38,4 +38,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is hit with rhythmically launched punches. This may also
     leave the target confused.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []

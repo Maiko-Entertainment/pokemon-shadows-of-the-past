@@ -52,7 +52,7 @@ public class TacticDataBefriend : TacticData
                     float random = Random.value;
                     if (random < msc.chance)
                     {
-                        bm.AddStatusEffectEvent(pokemonTarget, msc.effectId, true);
+                        bm.AddStatusEffectEvent(pokemonTarget, msc.effectData, true);
                     }
                 }
             }

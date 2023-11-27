@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de397844a680ce1489db9094ec48b8ca, type: 3}
   m_Name: Synthesis
   m_EditorClassIdentifier: 
-  moveId: 128
   id: Synthesis
   moveName: Synthesis
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 5
   typeId: 11
+  moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 2
   targetType: 1
   statusChances: []
@@ -33,6 +33,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: Restores HP. The amount varies with the weather.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 7928087694987731890, guid: c0d50011fbaf31b418c4a91ca971b126, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

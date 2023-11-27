@@ -7,23 +7,23 @@ public class Status
     public StatusEffectId effectId;
     public int minTurns = 1;
     public int addedRangeTurns = 3;
+    public string gainStatusBlockName = "";
     public string onEndFlowchartBlock = "";
     public string onWarningFlowchartBlock = "";
 
     protected List<BattleTrigger> battleTriggers = new List<BattleTrigger>();
     protected List<BattleStatsGetter> statGetters = new List<BattleStatsGetter>();
     protected int turnsLeft = 0;
+    protected int initialTurnsDuration = 0;
     protected bool stopEscape = false;
+    protected Flowchart flowchartInstance = null;
 
-    public Status()
-    {
-    }
+    public Status(){ }
+
     public virtual void Initiate()
     {
-        // TO DO
-        // Sets turns that the status will last and 
-        // adds BattleTriggers to BattleEventManager
         turnsLeft = minTurns + Random.Range(0, addedRangeTurns);
+        initialTurnsDuration = turnsLeft;
     }
 
     public virtual bool IsOver()
@@ -52,5 +52,10 @@ public class Status
         foreach (BattleStatsGetter sg in statGetters)
             BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveStatGetter(sg);
         turnsLeft = 0;
+    }
+
+    public int GetTurnsPassed()
+    {
+        return initialTurnsDuration - turnsLeft;
     }
 }

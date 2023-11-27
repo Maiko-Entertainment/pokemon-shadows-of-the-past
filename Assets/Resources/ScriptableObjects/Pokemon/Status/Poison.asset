@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a334137c6afbb84b878e95df7afbaa3, type: 3}
+  m_Name: Poison
+  m_EditorClassIdentifier: 
+  id: Poisoned
+  statusName: Poisoned
+  icon: {fileID: 21300000, guid: 89d881319b27f2b47af417d9847dd8bb, type: 3}
+  flowchart: {fileID: 6151006633196087579, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+  onStartStatusBlockName: Poison Gain
+  onTriggerFlowchartBlock: Poison Damage
+  onEndFlowchartBlock: 
+  minTurnDuration: 9999
+  extraTurnRange: 0
+  percentageDamagePerRound: 0.125
+  healOpponentsFromDamage: 0
+  multiplyDamageEachTurn: 1
+  isPrimary: 1
+  hitAnims:
+  - {fileID: 9138697049564351032, guid: a70c8646058837e4a8d5dc3a4eb3221c, type: 3}
+  - {fileID: 6693565728200948145, guid: a406d13d88fd6c445bc4e62389cf0ffc, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  captureRateBonus: 10
+  inmuneTypes:
+  - {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
+  - {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
+  cancelMoveChance: 0
+  replaceMoveInsteadOfCancel: {fileID: 0}

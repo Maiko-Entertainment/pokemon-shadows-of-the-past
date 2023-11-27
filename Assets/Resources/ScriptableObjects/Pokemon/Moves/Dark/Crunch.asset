@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Crunch
   m_EditorClassIdentifier: 
-  moveId: 68
   id: Crunch
   moveName: Crunch
   power: 80
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 14
+  moveType: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -44,6 +44,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user unleashes a ferocious bite at the target. May lower its defese.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 5682818999221045459, guid: 8b98ffcd67c84f44fb2426514b6f9123, type: 3}

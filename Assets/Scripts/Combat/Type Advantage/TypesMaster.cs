@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class TypesMaster: MonoBehaviour
 {
+    public TypeData nullType;
     public static TypesMaster Instance { get; set; }
 
     protected Dictionary<string, TypeData> typesData = new Dictionary<string, TypeData>();
@@ -59,5 +60,10 @@ public class TypesMaster: MonoBehaviour
         if (typesData.ContainsKey(typeId))
             return typesData[typeId];
         return null;
+    }
+
+    public TypeData GetTypeDataNone()
+    {
+        return nullType;
     }
 }

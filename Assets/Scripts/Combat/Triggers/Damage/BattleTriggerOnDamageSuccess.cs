@@ -31,7 +31,17 @@ public class BattleTriggerDrainOnMoveDamage : BattleTriggerOnPokemonDamage
                 }
                 else if (drainAmount < 0)
                 {
-                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(dealer, new DamageSummary(PokemonTypeId.Undefined, drainAmount * -1, DamageSummarySource.MoveEffect, move.GetId(), ds.advantageType, pokemon));
+                    BattleMaster.GetInstance().GetCurrentBattle()?.AddDamageDealtEvent(
+                        dealer,
+                        new DamageSummary(
+                            TypesMaster.Instance.GetTypeDataNone(),
+                            drainAmount * -1,
+                            DamageSummarySource.MoveEffect,
+                            move.GetId(),
+                            ds.advantageType,
+                            pokemon
+                        )
+                    );
                 }
             }
             else

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd995bf1d94cf3643966fe2b6edbe2c5, type: 3}
   m_Name: Night Shade
   m_EditorClassIdentifier: 
-  moveId: 103
   id: NightShade
   moveName: Night Shade
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 5
+  moveType: {fileID: 11400000, guid: 3ef7845cdd809524998cfb8ba8509868, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user makes the target see a frightening mirage. It inflicts damage
     equal to the user's level.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2386081889705371532, guid: b061514cb5bbc6e48bac1d17819650be, type: 3}
   - {fileID: 1187131975814898932, guid: 2f425f9628c0d854dad7fdf51b769a1a, type: 3}

@@ -6,20 +6,19 @@ public class StatusEffectParalyzed : StatusEffect
 {
     public float chance = .25f;
     public float speedMod = 0.5f;
-    public StatusEffectParalyzed(PokemonBattleData pokemon) : base(pokemon)
+    public StatusEffectParalyzed(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         minTurns = 99999;
         effectId = StatusEffectId.Paralyzed;
-        inmuneTypes = new List<PokemonTypeId> { PokemonTypeId.Electric };
-        captureRateBonus = 20;
+        // InmuneTypes = new List<TypeData> { TypesMaster.Instance.GetTypeData("Electric") };
         onWarningFlowchartBlock = "Paralyzed Warning";
         gainStatusBlockName = "Paralyze Gain";
-        isPrimary = true;
+        // IsPrimary = true;
     }
 
     public override void Initiate()
     {
-        BattleTriggerOnMoveParalyzedCancel sleepMoveCancelTrigger = new BattleTriggerOnMoveParalyzedCancel(pokemon, this);
+        BattleTriggerOnMoveCancelChance sleepMoveCancelTrigger = new BattleTriggerOnMoveCancelChance(pokemon, chance);
         battleTriggers.Add(sleepMoveCancelTrigger);
         base.Initiate();
     }

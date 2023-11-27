@@ -2,26 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
-public class StatusEffect: Status
+public class StatusEffect : Status
 {
-    public bool isPrimary;
     public PokemonBattleData pokemon;
-    public int captureRateBonus = 0;
-    public List<PokemonTypeId> inmuneTypes = new List<PokemonTypeId>();
-    public string gainStatusBlockName;
+    public StatusEffectData effectData;
+    public List<TypeData> InmuneTypes {
+        get { return effectData?.GetInmuneTypes() ?? new List<TypeData>(); }
+    }
+    public bool IsPrimary {
+        get { return effectData?.isPrimary ?? false; }
+    }
+    protected bool tickDownAtEndOfRound = false;
 
-    public StatusEffect(PokemonBattleData pokemon): base()
+    public StatusEffect(PokemonBattleData pokemon, StatusEffectData effectData, Flowchart flowchartInstance) : base()
     {
         this.pokemon = pokemon;
+        this.effectData = effectData;
+        this.flowchartInstance = flowchartInstance;
     }
 
     public virtual StatusEffect Copy(PokemonBattleData newPokeInstance)
     {
-        StatusEffect newSe = new StatusEffect(newPokeInstance);
+        StatusEffect newSe = new StatusEffect(newPokeInstance, effectData, flowchartInstance);
         newSe.effectId = effectId;
-        newSe.isPrimary = isPrimary;
-        newSe.captureRateBonus = captureRateBonus;
-        newSe.inmuneTypes.AddRange(inmuneTypes);
+        newSe.InmuneTypes.AddRange(InmuneTypes);
         newSe.minTurns = minTurns;
         newSe.addedRangeTurns = addedRangeTurns;
         newSe.stopEscape = stopEscape;
@@ -30,10 +34,13 @@ public class StatusEffect: Status
 
     public override void Initiate()
     {
-        turnsLeft = minTurns + Random.Range(0, addedRangeTurns);
+        base.Initiate();
         // Add trigger to handle status turns left reduction
         // Statuses that inherited from this should repeat this behaviour
-        BattleTrigger btDrop = new BattleTriggerOnDesitionStatusDrop(
+        // Some status tick down at the end of the round instead of after a the pokemons turn
+        BattleTrigger btDrop = effectData.tickDownAtEndOfRoundInstead ?
+            new BattleTriggerOnRoundEndStatusDrop(this) : 
+            new BattleTriggerOnDesitionStatusDrop(
                 this,
                 BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon)
             );
@@ -46,16 +53,17 @@ public class StatusEffect: Status
                     bt
                 );
         }
+        effectData.HandleVisualStart(this);
     }
 
     public virtual void HandleOwnRemove()
     {
-        BattleMaster.GetInstance().GetCurrentBattle().AddEvent(new BattleEventPokemonStatusRemove(pokemon, effectId));
+        BattleMaster.GetInstance().GetCurrentBattle().AddEvent(new BattleEventPokemonStatusRemove(pokemon, effectData));
     }
 
     public int GetCaptureRateBonus()
     {
-        return captureRateBonus;
+        return effectData.captureRateBonus;
     }
     public override void PassTurn()
     {
@@ -73,12 +81,17 @@ public class StatusEffect: Status
     {
         if (onEndFlowchartBlock != "" && !pokemon.IsFainted())
         {
-            Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
-            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(new BattleTriggerMessageData(battleFlow, onEndFlowchartBlock, new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } })));
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(new BattleTriggerMessageData(flowchartInstance, onEndFlowchartBlock, new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } })));
+            // TODO: Create event that destroys flowchart at the end of the animation
         }
         foreach (BattleTrigger bt in battleTriggers)
             BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveTrigger(bt);
         turnsLeft = 0;
+    }
+
+    public void AddBattleTrigger(BattleTrigger bt)
+    {
+        battleTriggers.Add(bt);
     }
 
     public override string ToString()

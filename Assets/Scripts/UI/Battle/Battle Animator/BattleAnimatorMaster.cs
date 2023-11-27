@@ -233,7 +233,7 @@ public class BattleAnimatorMaster : MonoBehaviour
         List<StatusEffectData> minorData = new List<StatusEffectData>();
         foreach (StatusEffect s in pokemon.GetNonPrimaryStatus())
         {
-            minorData.Add(GetStatusEffectData(s.effectId));
+            minorData.Add(s.effectData);
         }
         StatusEffect status = pokemon.GetCurrentPrimaryStatus();
         battleInfoManager.UpdatePokemonData(pokemon, health, GetStatusEffectData(status!=null ? status.effectId : StatusEffectId.None), minorData);
@@ -535,14 +535,9 @@ public class BattleAnimatorMaster : MonoBehaviour
         return battleInfoManager.UpdateHealthbar(pokemon, target);
     }
 
-    public void UpdatePokemonStatus(PokemonBattleData pokemon, StatusEffectId primary, List<StatusEffectId> minor)
+    public void UpdatePokemonStatus(PokemonBattleData pokemon, StatusEffectData primary, List<StatusEffectData> minor)
     {
-        List<StatusEffectData> minorData = new List<StatusEffectData>();
-        foreach(StatusEffectId m in minor)
-        {
-            minorData.Add(GetStatusEffectData(m));
-        }
-        battleInfoManager.UpdateStatus(pokemon, GetStatusEffectData(primary), minorData);
+        battleInfoManager.UpdateStatus(pokemon, primary, minor);
     }
 
     public float UpdateExpBar(PokemonBattleData pokemon, int target, int max)
@@ -568,7 +563,7 @@ public class BattleAnimatorMaster : MonoBehaviour
     {
         foreach (StatusEffectData se in statusEffectData)
         {
-            if (se.statusId == id)
+            if (se.GetId() == id.ToString())
             {
                 return se;
             }

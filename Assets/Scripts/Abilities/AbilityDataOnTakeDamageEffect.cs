@@ -9,7 +9,7 @@ public class AbilityDataOnTakeDamageEffect : AbilityData
     public bool onlyTriggerOnOppositeGender = false;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
-    public List<PokemonTypeId> affectedMoveTypes = new List<PokemonTypeId>();
+    public List<TypeData> affectedMoveTypes = new List<TypeData>();
     public override void Initialize(PokemonBattleData pokemon)
     {
         base.Initialize(pokemon);

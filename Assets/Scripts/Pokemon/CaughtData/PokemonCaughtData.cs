@@ -8,7 +8,7 @@ public class PokemonCaughtData
     public int level;
     public int experience = 0;
     public int damageTaken = 0;
-    public StatusEffectId statusEffectId = StatusEffectId.None;
+    public StatusEffectData statusEffect;
     public PokemonNatureId natureId;
     public AbilityData ability;
     public bool isMale = true;
@@ -31,7 +31,7 @@ public class PokemonCaughtData
         level = persistedPkmn.level;
         experience = persistedPkmn.experience;
         damageTaken = persistedPkmn.damageTaken;
-        statusEffectId = persistedPkmn.statusEffectId;
+        // statusEffect = persistedPkmn.statusEffect;
         natureId = persistedPkmn.natureId;
         ability = AbilityMaster.GetInstance().GetAbility(persistedPkmn.GetAbilityId());
         isShadow = persistedPkmn.isShadow;
@@ -58,7 +58,7 @@ public class PokemonCaughtData
         pp.level = level;
         pp.experience = experience;
         pp.damageTaken = damageTaken;
-        pp.statusEffectId = statusEffectId;
+        // pp.statusEffectId = statusEffectId;
         pp.natureId = natureId;
         pp.abilityIdString = ability.GetId();
         pp.isShadow = isShadow;
@@ -83,7 +83,7 @@ public class PokemonCaughtData
         newInsntace.level = level;
         newInsntace.experience = experience;
         newInsntace.damageTaken = damageTaken;
-        newInsntace.statusEffectId = statusEffectId;
+        newInsntace.statusEffect = statusEffect;
         newInsntace.natureId = natureId;
         newInsntace.ability = ability;
         newInsntace.isShadow = isShadow;

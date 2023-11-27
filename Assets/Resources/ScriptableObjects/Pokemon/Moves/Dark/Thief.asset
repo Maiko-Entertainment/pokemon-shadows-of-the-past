@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Thief
   m_EditorClassIdentifier: 
-  moveId: 105
   id: Thief
   moveName: Thief
   power: 60
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 25
   typeId: 14
+  moveType: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 00000000010000000200000003000000
   description: The user attacks and steals the target's held item simultaneously.
     The user can't steal anything if it already holds an item.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3063766743168247840, guid: 2ded9d93ff68a634dabd4a4a0fd08c75, type: 3}
   - {fileID: 8642206886045826576, guid: 79474bc52dd0e0b48ae7c3685931587e, type: 3}

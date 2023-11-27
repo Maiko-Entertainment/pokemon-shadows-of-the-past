@@ -8,7 +8,7 @@ public class TacticData : ScriptableObject
     public TacticId tacticId;
     public MoveTarget targets;
     public int cost = 2;
-    public UseMoveMods powerMoveMod = new UseMoveMods(PokemonTypeId.Unmodify);
+    public UseMoveMods powerMoveMod = new UseMoveMods(null);
     public List<StatusEffectId> statusClears = new List<StatusEffectId>();
     public List<MoveStatusChance> statusAdds = new List<MoveStatusChance>();
     public List<MoveStatChange> statChanges = new List<MoveStatChange>();
@@ -67,7 +67,7 @@ public class TacticData : ScriptableObject
             float random = Random.value;
             if (random < msc.chance)
             {
-                bm.AddStatusEffectEvent(pokemonTarget, msc.effectId);
+                bm.AddStatusEffectEvent(pokemonTarget, msc.effectData);
             }
         }
         foreach (MoveStatChange msc in statChanges)

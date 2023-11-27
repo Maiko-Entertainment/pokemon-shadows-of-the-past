@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Draining Kiss
   m_EditorClassIdentifier: 
-  moveId: 54
   id: DrainingKiss
   moveName: Draining Kiss
   power: 50
   hitChance: 1
   alwaysHit: 0
   uses: 10
-  typeId: 7
+  moveType: {fileID: 11400000, guid: 9227b2c9f0867a4428721ed588c6e386, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -34,6 +33,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user steals the target's HP with a kiss. The user's HP is restored
     by over half of the damage taken by the target.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 7192018481969620676, guid: d12830958ce4800478486f1c690e75b3, type: 3}

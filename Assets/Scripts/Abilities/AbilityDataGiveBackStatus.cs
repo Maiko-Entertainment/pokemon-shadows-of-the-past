@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Copy Status Back")]
 public class AbilityDataGiveBackStatus : AbilityData
 {
-    public List<StatusEffectId> applicableStatus;
+    public List<StatusEffectData> applicableStatus;
     public override void Initialize(PokemonBattleData pokemon)
     {
         BattleTriggerOnPokemonStatusGiveBack trigger = new BattleTriggerOnPokemonStatusGiveBack(pokemon, applicableStatus, true);

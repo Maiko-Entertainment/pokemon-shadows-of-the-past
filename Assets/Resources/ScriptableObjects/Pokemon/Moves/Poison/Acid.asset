@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Acid
   m_EditorClassIdentifier: 
-  moveId: 122
   id: Acid
   moveName: Acid
   power: 40
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 30
   typeId: 16
+  moveType: {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -45,6 +45,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: "Opposing Pok\xE9mon are attacked with a spray of harsh acid. This
     may (20%) also lower their Sp. Def stats."
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
   - {fileID: 5038981475560466656, guid: 968fb46d720fb344a85e5244ff7f6654, type: 3}

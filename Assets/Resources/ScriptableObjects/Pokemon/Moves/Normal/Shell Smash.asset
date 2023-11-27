@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Shell Smash
   m_EditorClassIdentifier: 
-  moveId: 12
   id: ShellSmash
   moveName: Shell Smash
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 35
   typeId: 0
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 2
   targetType: 0
   statusChances: []
@@ -45,4 +45,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user breaks its shell, which lowers its Defense and Sp. Def stats
     but sharply boosts its Attack, Sp. Atk, and Speed stats.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []

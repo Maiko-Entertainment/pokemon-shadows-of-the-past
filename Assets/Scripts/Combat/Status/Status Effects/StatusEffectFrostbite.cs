@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class StatusEffectFrostbite : StatusEffect
 {
-    public UseMoveMods moveMods = new UseMoveMods(PokemonTypeId.Unmodify);
+    public UseMoveMods moveMods = new UseMoveMods(null);
     public float porcentualDamage = 0.0625f;
-    public StatusEffectFrostbite(PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectFrostbite(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         // Only for Sp Attack
         effectId = StatusEffectId.Frostbite;
-        isPrimary = true;
+        // IsPrimary = true;
         minTurns = 99999;
-        captureRateBonus = 10;
-        inmuneTypes.Add(PokemonTypeId.Ice);
+        // CaptureRateBonus = 10;
+        InmuneTypes.Add(TypesMaster.Instance.GetTypeData("Ice"));
         moveMods.powerMultiplier = 0.5f;
         gainStatusBlockName = "Frostbite Gain";
     }
@@ -39,15 +39,18 @@ public class StatusEffectFrostbite : StatusEffect
                  }
              )
          );
-        BattleTriggerOnPokemonBurn triggerMove = new BattleTriggerOnPokemonBurn(
+        UseMoveMods mods = new UseMoveMods(null);
+        mods.powerMultiplier = 0.5f;
+        BattleTriggerOnPokemonMoveCategory triggerMove = new BattleTriggerOnPokemonMoveCategory(
             pokemon,
-            MoveCategoryId.special
+            MoveCategoryId.special,
+            mods
            );
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
             pokemon,
             new DamageSummary(
-                PokemonTypeId.Undefined,
-                (int)(pokemon.GetPokemonHealth() * porcentualDamage),
+                TypesMaster.Instance.GetTypeDataNone(),
+                (int)(pokemon.GetMaxHealth() * porcentualDamage),
                 DamageSummarySource.Status,
                 effectId.ToString()
             )

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640037e4acb12bc4d843266be0c11a2a, type: 3}
   m_Name: Retaliate
   m_EditorClassIdentifier: 
-  moveId: 123
   id: Retaliate
   moveName: Retaliate
   power: 70
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 5
   typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: 'The user gets revenge for a fainted ally. If an ally fainted in the
     previous turn, this move''s power is increased. '
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 5401023961716057236, guid: a10b07bfed5323f43adc2fc8c2eb87f1, type: 3}
   - {fileID: 1122879976169921065, guid: 0847c00ebdd70b04bbbf5ff517e9ec84, type: 3}

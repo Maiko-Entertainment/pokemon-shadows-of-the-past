@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Hydro Pump
   m_EditorClassIdentifier: 
-  moveId: 13
   id: HydroPump
   moveName: Hydro Pump
   power: 120
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 5
   typeId: 1
+  moveType: {fileID: 11400000, guid: b05d1f80523ecbd46a3f2c4144f63161, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -34,4 +34,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is blasted by a huge volume of water launched under great
     pressure.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []

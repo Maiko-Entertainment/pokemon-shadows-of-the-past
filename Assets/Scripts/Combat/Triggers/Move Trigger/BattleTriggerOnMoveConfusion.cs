@@ -8,7 +8,7 @@ public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
     public StatusEffectConfusion status;
     public string selfHitMoveId = "SelfHit";
     float selfHitChange = 0.333333f;
-    public BattleTriggerOnMoveConfusion(PokemonBattleData pokemon, StatusEffectConfusion status): base(pokemon, new UseMoveMods(PokemonTypeId.Unmodify), true)
+    public BattleTriggerOnMoveConfusion(PokemonBattleData pokemon, StatusEffectConfusion status): base(pokemon, new UseMoveMods(null), true)
     {
         this.status = status;
     }
@@ -33,7 +33,7 @@ public class BattleTriggerOnMoveConfusion : BattleTriggerOnPokemonMove
             {
                 MoveData move = MovesMaster.Instance.GetMove(selfHitMoveId);
                 battleEvent.move = move;
-                battleEvent.moveMods.moveTypeId = PokemonTypeId.Undefined;
+                battleEvent.moveMods.moveType = TypesMaster.Instance.GetTypeData("None");
             }
         }
         return base.Execute(battleEvent);

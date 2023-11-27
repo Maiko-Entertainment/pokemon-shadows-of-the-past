@@ -50,12 +50,12 @@ public class UIBattleHealthbar : MonoBehaviour
         UpdateExp(currentExp);
         UpdateTargetExp(currentExp, pkmn.GetTotalExperienceToNextLevel());
         StatusEffect currenStatus = pokemon.GetCurrentPrimaryStatus();
-        StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
+        StatusEffectData status = currenStatus !=null ? currenStatus.effectData : null;
         List<StatusEffect> statusEffectsMinor = pokemon.GetNonPrimaryStatus();
         List<StatusEffectData> statusDatas = new List<StatusEffectData>();
         foreach(StatusEffect s in statusEffectsMinor)
         {
-            statusDatas.Add(BattleAnimatorMaster.GetInstance().GetStatusEffectData(s.effectId));
+            statusDatas.Add(s.effectData);
         }
         PokemonBaseData baseData = pkmn.GetPokemonBaseData();
         if (baseData.isGenderless || pokemon.hideLevel)
@@ -112,7 +112,7 @@ public class UIBattleHealthbar : MonoBehaviour
                 if (t.GetComponent<UIStatusMinor>())
                 {
                     StatusEffectData s = t.GetComponent<UIStatusMinor>().status;
-                    if (sed.statusId == s.statusId)
+                    if (sed == s)
                     {
                         contains = true;
                     }

@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Bite
   m_EditorClassIdentifier: 
-  moveId: 11
   id: Bite
   moveName: Bite
   power: 60
   hitChance: 1
   alwaysHit: 0
   uses: 25
-  typeId: 14
+  moveType: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 17
+    effectData: {fileID: 11400000, guid: 0a1e57880a79a574cac5a77ee22623ad, type: 2}
     targetType: 0
     chance: 0.3
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is bitten with viciously sharp fangs. This may (30%) also
     make the target flinch.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 5682818999221045459, guid: 8b98ffcd67c84f44fb2426514b6f9123, type: 3}

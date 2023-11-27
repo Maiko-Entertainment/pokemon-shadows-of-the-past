@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Items/Restore")]
 public class ItemDataOnPokemonRestore : ItemDataOnPokemon
@@ -7,20 +8,20 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     public int restoreAmount = 20;
     public int minRestoreAmount = 0;
     public bool restoresPercentage = false;
-    public List<StatusEffectId> statusClears = new List<StatusEffectId>();
+    public List<StatusEffectData> statusClears = new List<StatusEffectData>();
 
     public override CanUseResult CanUseOnPokemon(PokemonCaughtData pokemon)
     {
         bool isFullHealth = pokemon.GetCurrentStats().health == pokemon.GetCurrentHealth();
         if (restoreAmount > 0)
         {
-            if (!statusClears.Contains(pokemon.statusEffectId) && isFullHealth)
+            if (!statusClears.Contains(pokemon.statusEffect) && isFullHealth)
             {
                 return new CanUseResult(false, "It wouldn't have any effect.");
             }
             return new CanUseResult(true, "");
         }
-        if (!statusClears.Contains(pokemon.statusEffectId))
+        if (!statusClears.Contains(pokemon.statusEffect))
         {
             return new CanUseResult(false, "It wouldn't have any effect.");
         }
@@ -41,9 +42,9 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
     {
         int healAmount = GetHealAmount(pokemon);
         pokemon.ChangeHealth(healAmount);
-        if (statusClears.Contains(pokemon.statusEffectId))
+        if (statusClears.Contains(pokemon.statusEffect))
         {
-            pokemon.statusEffectId = StatusEffectId.None;
+            pokemon.statusEffect = null;
         }
         base.UseOnPokemon(pokemon);
     }
@@ -64,7 +65,7 @@ public class ItemDataOnPokemonRestore : ItemDataOnPokemon
                 bm.AddPokemonHealEvent(pokemon, new HealSummary(healAmount, HealSource.Item, GetItemId()));
             }
         }
-        foreach(StatusEffectId sei in statusClears)
+        foreach(StatusEffectData sei in statusClears)
         {
             bm.AddEvent(new BattleEventPokemonStatusRemove(pokemon, sei));
         }

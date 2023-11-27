@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Sand Attack
   m_EditorClassIdentifier: 
-  moveId: 69
   id: SandAttack
   moveName: Sand Attack
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 15
+  moveType: {fileID: 11400000, guid: f081c465cb8c37545b569a03625ee6c4, type: 2}
   categoryId: 2
   targetType: 0
   statusChances: []
@@ -44,6 +44,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: Sand is hurled in the target's face, reducing the target's accuracy.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 5179996902966466159, guid: b0bbfcbdfbb1dea46aa71c58808cecd7, type: 3}
   - {fileID: 8642206886045826576, guid: 79474bc52dd0e0b48ae7c3685931587e, type: 3}

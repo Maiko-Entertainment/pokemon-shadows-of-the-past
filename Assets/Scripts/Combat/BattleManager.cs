@@ -440,9 +440,16 @@ public class BattleManager
         eventManager.AddEvent(new BattleEventPokemonChangeStat(target, statLevelChange.Copy()));
     }
 
-    public void AddStatusEffectEvent(PokemonBattleData target, StatusEffectId statusId, bool isStatus=false)
+    public void AddStatusEffectEvent(PokemonBattleData target, StatusEffectData status, bool isStatus=false)
     {
-        eventManager.AddEvent(new BattleEventPokemonStatusAdd(target, statusId, isStatus));
+        eventManager.AddEvent(new BattleEventPokemonStatusAdd(target, status, isStatus));
+    }
+
+    public void AddStatusEffectEvent(PokemonBattleData target, StatusEffectData status, MoveData moveSource, bool isStatus = false)
+    {
+        BattleEventPokemonStatusAdd statusAddEvent = new BattleEventPokemonStatusAdd(target, status, isStatus);
+        statusAddEvent.moveSource = moveSource;
+        eventManager.AddEvent(statusAddEvent);
     }
 
     public void AddPokemonEnterEvent(PokemonBattleData target)
@@ -520,8 +527,7 @@ public class BattleManager
         MoveData moveUsed = finalEvent.move;
         UseMoveMods moveMods = finalEvent.moveMods;
         // Target and Pokemon Types
-        PokemonTypeId moveTypeId = moveMods.moveTypeId;
-        TypeData moveType = TypesMaster.Instance.GetTypeData(moveTypeId.ToString()); // TODO: Update when moves use TypeData instead of enum
+        TypeData moveType = moveMods.moveType;
         List<TypeData> targetTypes = target.inBattleTypes;
         // Categories
         MoveCategoryId attackerAttackCategory = moveUsed.GetAttackCategory();
@@ -548,7 +554,7 @@ public class BattleManager
         float finalDamage = baseDamage * randomMultiplier * advantageMultiplier * stabBonus * moveMods.powerMultiplier;
         
         DamageSummary damageSummary = new DamageSummary(
-            moveTypeId,
+            moveType,
             (int) finalDamage,
             DamageSummarySource.Move,
             moveUsed.GetId(),
@@ -627,15 +633,15 @@ public class BattleManager
         PokemonBattleData pokemon = battleEvent.pokemon;
         if (!pokemon.IsFainted())
         {
-            StatusEffectId statusId = battleEvent.statusId;
-            StatusEffect status = new StatusEffect(pokemon);
+            StatusEffectData statusData = battleEvent.status;
+            StatusEffect status = null;
             bool typePreventsStatus = false;
             bool alreadyHasPrimaryStatus = pokemon.AlreadyHasPrimaryStatus();
             List<StatusEffect> nonPrimary = pokemon.GetNonPrimaryStatus();
             bool isStatusAlready = false;
             foreach(StatusEffect s in nonPrimary)
             {
-                if (s.effectId == statusId)
+                if (s.effectData == statusData)
                 {
                     isStatusAlready = true;
                     break;
@@ -644,12 +650,11 @@ public class BattleManager
             string gainStatusBlockName = "";
             if (!isStatusAlready)
             {
-                status = CreateStatusById(statusId, pokemon);
-                // TODO: Update once status get reworked into ScriptableObjects
-                typePreventsStatus = UtilsMaster.ContainsAtLeastOne(status.inmuneTypes.Select(it => it.ToString()).ToList(), pokemon.GetTypes().Select(t => t.GetId()).ToList());
-                gainStatusBlockName = status.gainStatusBlockName;
+                status = statusData.CreateStatusInstance(pokemon, battleEvent.moveSource);
+                typePreventsStatus = UtilsMaster.ContainsAtLeastOne(statusData.GetInmuneTypes(), pokemon.GetTypes());
+                gainStatusBlockName = statusData.onStartStatusBlockName;
             }
-            if (isStatusAlready || status.isPrimary && alreadyHasPrimaryStatus) 
+            if (isStatusAlready || status.IsPrimary && alreadyHasPrimaryStatus) 
             {
                 // Cant add status due to type message
                 BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
@@ -667,61 +672,10 @@ public class BattleManager
                 AddEvent(new BattleEventPokemonStatusAddSuccess(battleEvent));
                 pokemon.AddStatusEffect(status);
                 BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon));
-                if (gainStatusBlockName != "")
+                if (string.IsNullOrEmpty(gainStatusBlockName))
                     BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
             }
         }
-    }
-
-    public StatusEffect CreateStatusById(StatusEffectId statusId, PokemonBattleData pokemon)
-    {
-        StatusEffect status = null;
-        switch (statusId)
-        {
-            case StatusEffectId.Poison:
-                status = new StatusEffectPoison(pokemon);
-                break;
-            case StatusEffectId.Burn:
-                status = new StatusEffectBurn(pokemon);
-                break;
-            case StatusEffectId.Frostbite:
-                status = new StatusEffectFrostbite(pokemon);
-                break;
-            case StatusEffectId.LeechSeed:
-                status = new StatusEffectLeechSeed(pokemon);
-                break;
-            case StatusEffectId.Charmed:
-                status = new StatusEffectCharm(pokemon);
-                break;
-            case StatusEffectId.MoveCharge:
-                status = new StatusEffectMoveCharge(pokemon, lastUsedMove);
-                break;
-            case StatusEffectId.RepeatMove:
-                status = new StatusEffectRepeatMove(pokemon, lastUsedMove);
-                break;
-            case StatusEffectId.FireVortex:
-                status = new StatusEffectFireVortex(pokemon);
-                break;
-            case StatusEffectId.Confused:
-                status = new StatusEffectConfusion(pokemon);
-                break;
-            case StatusEffectId.Sleep:
-                status = new StatusEffectSleep(pokemon);
-                break;
-            case StatusEffectId.Paralyzed:
-                status = new StatusEffectParalyzed(pokemon);
-                break;
-            case StatusEffectId.Charged:
-                status = new StatusEffectCharged(pokemon);
-                break;
-            case StatusEffectId.Hopeless:
-                status = new StatusEffectHopeless(pokemon);
-                break;
-            case StatusEffectId.Flinch:
-                status = new StatusEffectFlinch(pokemon);
-                break;
-        }
-        return status;
     }
 
     public int HealPokemon(PokemonBattleData pokemon, HealSummary heal)
@@ -740,10 +694,10 @@ public class BattleManager
         captureRateBonus += statusBonus;
         foreach(StatusEffect mse in enemy.GetNonPrimaryStatus())
         {
-            captureRateBonus += mse.captureRateBonus;
+            captureRateBonus += mse.GetCaptureRateBonus();
         }
         float captureRate = enemy.GetCaptureRate();
-        int max = enemy.GetPokemonHealth();
+        int max = enemy.GetMaxHealth();
         int current = enemy.GetPokemonCurrentHealth();
         float a = (3 * max - 2 * current) * captureRate * catchRate / (3 * max) + captureRateBonus;
         int randomValue = Random.Range(0, 255);

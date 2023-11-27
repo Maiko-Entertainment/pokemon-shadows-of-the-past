@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Leer
   m_EditorClassIdentifier: 
-  moveId: 40
   id: Leer
   moveName: Leer
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 30
   typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 2
   targetType: 0
   statusChances: []
@@ -44,6 +44,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user gives the target a menancing look, lowering it's defemse.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 6496299076131441326, guid: d8a23428b08350f4d9c342340ea061a5, type: 3}
   - {fileID: 7192018481969620676, guid: d12830958ce4800478486f1c690e75b3, type: 3}

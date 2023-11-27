@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Rapid Spin
   m_EditorClassIdentifier: 
-  moveId: 118
   id: RapidSpin
   moveName: Rapid Spin
   power: 50
   hitChance: 1
   alwaysHit: 0
   uses: 30
-  typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 7
+    effectData: {fileID: 11400000, guid: 275a8dae935730047b4b50d745c287c9, type: 2}
     targetType: 1
     chance: 1
     removeStatusInstead: 1
@@ -50,6 +50,13 @@ MonoBehaviour:
   description: The user performs a spin attack that can also eliminate the effects
     of such moves as Bind, Wrap, and Leech Seed. This also boosts the user's Speed
     stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1539916310361099806, guid: 89cb4faeb55a4b6439e4371280b643de, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

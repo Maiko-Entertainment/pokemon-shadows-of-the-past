@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Aurora Beam
   m_EditorClassIdentifier: 
-  moveId: 71
   id: AuroraBeam
   moveName: Aurora Beam
   power: 60
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 20
   typeId: 8
+  moveType: {fileID: 11400000, guid: a877c8119d5abef47aab0a20e0ee4e4e, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -45,4 +45,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is hit with a rainbow-colored beam. This may (10%) also
     lower the target's Attack stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []

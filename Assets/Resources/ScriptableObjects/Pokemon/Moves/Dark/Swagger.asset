@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Swagger
   m_EditorClassIdentifier: 
-  moveId: 130
   id: Swagger
   moveName: Swagger
   power: 0
   hitChance: 1
   alwaysHit: 0
   uses: 15
-  typeId: 14
+  moveType: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
   - effectId: 9
+    effectData: {fileID: 11400000, guid: 23f2256b267e27d4581cc701bbd43c4f, type: 2}
     targetType: 0
     chance: 1
     removeStatusInstead: 0
@@ -49,6 +49,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user enrages and confuses the target. However, this also sharply
     raises the target's Attack stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1921499225271778967, guid: 3f0e8a3847c1ace40a7071466852b5b6, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

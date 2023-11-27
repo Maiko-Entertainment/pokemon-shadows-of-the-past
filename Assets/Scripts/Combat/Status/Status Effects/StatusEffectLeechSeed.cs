@@ -6,21 +6,21 @@ using UnityEngine;
 public class StatusEffectLeechSeed : StatusEffect
 {
     public float porcentualDamage = 0.0625f;
-    public StatusEffectLeechSeed(PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectLeechSeed(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         effectId = StatusEffectId.LeechSeed;
-        isPrimary = false;
+        // IsPrimary = false;
         minTurns = 99999;
-        captureRateBonus = 10;
-        inmuneTypes.Add(PokemonTypeId.Grass);
+        // CaptureRateBonus = 10;
+        InmuneTypes.Add(TypesMaster.Instance.GetTypeData("Grass"));
         gainStatusBlockName = "Leech Gain";
     }
 public override void Initiate()
     {
         Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
         DamageSummary damageSummary = new DamageSummary(
-                        PokemonTypeId.Undefined,
-                        (int)(pokemon.GetPokemonHealth() * porcentualDamage),
+                        TypesMaster.Instance.GetTypeDataNone(),
+                        (int)(pokemon.GetMaxHealth() * porcentualDamage),
                         DamageSummarySource.Status,
                         effectId.ToString()
                     );

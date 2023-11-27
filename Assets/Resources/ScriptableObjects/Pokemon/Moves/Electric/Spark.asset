@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Spark
   m_EditorClassIdentifier: 
-  moveId: 66
   id: Spark
   moveName: Spark
   power: 65
   hitChance: 1
   alwaysHit: 0
   uses: 20
-  typeId: 4
+  moveType: {fileID: 11400000, guid: 4f9e03ca4f6cf26449a9de14bdfed0df, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 3
+    effectData: {fileID: 11400000, guid: db7c12ea5403c9e47a9f08d421f9faf0, type: 2}
     targetType: 0
     chance: 0.3
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user throws an electrically charged tackle at the target. This
     may also leave the target with paralysis.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2746529860363845708, guid: c0397454147331c4d8d95ae6a6dfc2fb, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

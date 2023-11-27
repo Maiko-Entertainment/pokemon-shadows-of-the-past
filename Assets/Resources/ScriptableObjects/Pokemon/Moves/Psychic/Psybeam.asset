@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Psybeam
   m_EditorClassIdentifier: 
-  moveId: 51
   id: Psybeam
   moveName: Psybeam
   power: 65
   hitChance: 1
   alwaysHit: 0
   uses: 20
-  typeId: 12
+  moveType: {fileID: 11400000, guid: c6692acc6552ff74cab83be512180958, type: 2}
   categoryId: 1
   targetType: 0
   statusChances:
   - effectId: 9
+    effectData: {fileID: 11400000, guid: 23f2256b267e27d4581cc701bbd43c4f, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is attacked with a peculiar ray. This may also leave the
     target confused.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 8643195966860713439, guid: a47847dcaef3a654c843e14a16d1115b, type: 3}

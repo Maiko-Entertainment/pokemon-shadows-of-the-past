@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class BattleTriggerOnPokemonMoveDangerTypeMod : BattleTriggerOnPokemonMove
 {
-    public PokemonTypeId moveType;
+    public List<TypeData> moveTypes;
     public float healthTarget = 0.3f;
     bool showAbility = false;
 
-    public BattleTriggerOnPokemonMoveDangerTypeMod(PokemonBattleData pokemon, UseMoveMods useMoveMods, PokemonTypeId moveType, bool showAbility) : base(pokemon, useMoveMods, true)
+    public BattleTriggerOnPokemonMoveDangerTypeMod(PokemonBattleData pokemon, UseMoveMods useMoveMods, List<TypeData> moveTypes, bool showAbility) : base(pokemon, useMoveMods, true)
     {
-        this.moveType = moveType;
+        this.moveTypes = moveTypes;
         eventId = BattleEventId.pokemonUseMove;
         this.showAbility = showAbility;
     }
 
     public override bool Execute(BattleEventUseMove battleEvent)
     {
-        float healthPercentage = pokemon.GetPokemonCurrentHealth() / (float)pokemon.GetPokemonHealth();
-        Debug.Log(pokemon.GetName() + " - cheking for power up for " + moveType.ToString() + " moves.");
-        if (pokemon == battleEvent.pokemon && battleEvent.move.GetAttackCategory() != MoveCategoryId.status && healthPercentage <= healthTarget && battleEvent.moveMods.moveTypeId == moveType)
+        float healthPercentage = pokemon.GetPokemonCurrentHealth() / (float)pokemon.GetMaxHealth();
+        if (pokemon == battleEvent.pokemon && 
+            battleEvent.move.GetAttackCategory() != MoveCategoryId.status && 
+            healthPercentage <= healthTarget &&
+            moveTypes.Contains(battleEvent.moveMods.moveType
+        ))
         {
-            Debug.Log(pokemon.GetName() + " - is having it's " + moveType.ToString() + " moves power up.");
             battleEvent.moveMods.Implement(useMoveMods);
             if (showAbility)
             {

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Metal Claw
   m_EditorClassIdentifier: 
-  moveId: 131
   id: MetalClaw
   moveName: Metal Claw
   power: 50
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 20
   typeId: 0
+  moveType: {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -45,6 +45,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is raked with steel claws. This may (10%) also boost the
     user's Attack stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 6297248095190224228, guid: 236884480d61f9245afd959c8fad6252, type: 3}
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}

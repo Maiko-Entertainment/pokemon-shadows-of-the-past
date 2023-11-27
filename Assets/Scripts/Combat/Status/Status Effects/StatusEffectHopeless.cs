@@ -5,7 +5,7 @@ using UnityEngine;
 public class StatusEffectHopeless : StatusEffect
 {
     public BattleTriggerDamageMods mods;
-    public StatusEffectHopeless(PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectHopeless(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         minTurns = 999999;
         effectId = StatusEffectId.Hopeless;

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Vine Whip
   m_EditorClassIdentifier: 
-  moveId: 23
   id: VineWhip
   moveName: Vine Whip
   power: 45
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 25
   typeId: 11
+  moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is struck with slender, whiplike vines to inflict damage.
     Critical hits land more easily.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2308960053695467597, guid: d9145ffe5322efd42bed4e7b37456ba0, type: 3}
   - {fileID: 8642206886045826576, guid: 79474bc52dd0e0b48ae7c3685931587e, type: 3}

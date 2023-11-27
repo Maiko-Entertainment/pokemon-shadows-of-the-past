@@ -5,14 +5,14 @@ public class StatusEffectPoison : StatusEffect
 {
     public float porcentualDamage = 0.125f;
 
-    public StatusEffectPoison(PokemonBattleData pokemon) : 
-        base(pokemon)
+    public StatusEffectPoison(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         effectId = StatusEffectId.Poison;
-        isPrimary = true;
+        // IsPrimary = true;
         minTurns = 99999;
-        captureRateBonus = 10;
-        inmuneTypes.Add(PokemonTypeId.Poison);
+        // CaptureRateBonus = 10;
+        InmuneTypes.Add(TypesMaster.Instance.GetTypeData("Poison"));
+        InmuneTypes.Add(TypesMaster.Instance.GetTypeData("Steel"));
         gainStatusBlockName = "Poison Gain";
     }
 
@@ -28,8 +28,8 @@ public class StatusEffectPoison : StatusEffect
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
                     pokemon,
                     new DamageSummary(
-                        PokemonTypeId.Undefined,
-                        (int)(pokemon.GetPokemonHealth() * porcentualDamage),
+                        TypesMaster.Instance.GetTypeDataNone(),
+                        (int)(pokemon.GetMaxHealth() * porcentualDamage),
                         DamageSummarySource.Status,
                         effectId.ToString()
                     )

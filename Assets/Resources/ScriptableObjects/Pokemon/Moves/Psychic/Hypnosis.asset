@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Hypnosis
   m_EditorClassIdentifier: 
-  moveId: 59
   id: Hypnosis
   moveName: Hypnosis
   power: 0
   hitChance: 0.6
   alwaysHit: 0
   uses: 35
-  typeId: 12
+  moveType: {fileID: 11400000, guid: c6692acc6552ff74cab83be512180958, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
   - effectId: 4
+    effectData: {fileID: 11400000, guid: f9156d371e0052944838275aed48a95e, type: 2}
     targetType: 0
     chance: 1
     removeStatusInstead: 0
@@ -37,6 +37,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user employs hypnotic suggestion to make the target fall asleep.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 4780009964009380981, guid: d433d8193a78214478c07008e373834d, type: 3}

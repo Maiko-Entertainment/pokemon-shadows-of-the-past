@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Shadow Punch
   m_EditorClassIdentifier: 
-  moveId: 101
   id: ShadowPunch
   moveName: Shadow Punch
   power: 60
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 1
   uses: 20
   typeId: 5
+  moveType: {fileID: 11400000, guid: 3ef7845cdd809524998cfb8ba8509868, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -33,6 +33,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user throws a punch from the shadows. This attack never misses.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 8642206886045826576, guid: 79474bc52dd0e0b48ae7c3685931587e, type: 3}
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}

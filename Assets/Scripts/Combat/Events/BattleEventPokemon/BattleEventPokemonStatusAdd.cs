@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class BattleEventPokemonStatusAdd : BattleEventPokemon
 {
-    public StatusEffectId statusId;
+    public StatusEffectData status;
     public BattleEventStatusAddMods mods;
+
+    // Possible Sources
+    public MoveData moveSource;
+
     bool isStatus = false;
-    public BattleEventPokemonStatusAdd(PokemonBattleData pokemon, StatusEffectId statusId, bool isStatus=false, BattleEventStatusAddMods mods=null):
+    public BattleEventPokemonStatusAdd(PokemonBattleData pokemon, StatusEffectData status, bool isStatus=false, BattleEventStatusAddMods mods=null):
         base(pokemon)
     {
         eventId = BattleEventId.pokemonAddStatus;
-        this.statusId = statusId;
+        this.status = status;
         this.mods = mods;
         this.isStatus = isStatus;
     }

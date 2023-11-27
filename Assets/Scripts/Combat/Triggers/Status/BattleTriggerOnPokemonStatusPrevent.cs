@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BattleTriggerOnPokemonStatusPrevent : BattleTriggerOnPokemonGainStatusEffect
 {
-    public List<StatusEffectId> preventableStatuses = new List<StatusEffectId>();
+    public List<StatusEffectData> preventableStatuses = new List<StatusEffectData>();
     public bool showAbility;
 
-    public BattleTriggerOnPokemonStatusPrevent(PokemonBattleData pokemon, List<StatusEffectId> preventableStatuses, bool showAbility = false):
+    public BattleTriggerOnPokemonStatusPrevent(PokemonBattleData pokemon, List<StatusEffectData> preventableStatuses, bool showAbility = false):
         base(pokemon)
     {
         this.preventableStatuses = preventableStatuses;
@@ -17,7 +17,7 @@ public class BattleTriggerOnPokemonStatusPrevent : BattleTriggerOnPokemonGainSta
     public override bool Execute(BattleEventPokemonStatusAdd battleEvent)
     {
         if (
-            preventableStatuses.Contains(battleEvent.statusId) &&
+            preventableStatuses.Contains(battleEvent.status) &&
             pokemon.battleId == battleEvent.pokemon.battleId &&
             maxTriggers > 0
            )

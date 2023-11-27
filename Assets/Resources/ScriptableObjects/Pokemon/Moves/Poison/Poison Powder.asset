@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Poison Powder
   m_EditorClassIdentifier: 
-  moveId: 2
   id: PoisonPowder
   moveName: Poison Powder
   power: 0
   hitChance: 1
   alwaysHit: 0
   uses: 25
-  typeId: 16
+  moveType: {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
   - effectId: 1
+    effectData: {fileID: 11400000, guid: cf1ccc72d052f214eb1ea9d1a26282ee, type: 2}
     targetType: 0
     chance: 1
     removeStatusInstead: 0
@@ -37,6 +37,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: 'The user scatters a cloud of poisonous dust that poisons the target. '
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 7700331709234056011, guid: a70f93ce4f8c4c343971739d15a4f2de, type: 3}

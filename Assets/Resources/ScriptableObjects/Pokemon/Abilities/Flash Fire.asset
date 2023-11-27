@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Flash Fire
   m_EditorClassIdentifier: 
   id: FlashFire
-  abilityId: 5
   abilityName: Flash Fire
   description: "If hit by a Fire-type move, the Pok\xE9mon absorbs the flames and
     uses them to power up its offensive stats."
-  affectedTypes: 06000000
+  affectedTypes:
+  - {fileID: 11400000, guid: 2afc142f5ecadf249860dcfb25befa04, type: 2}
   grantsInmunity: 1
   moveMods:
     powerMultiplier: 1
     accuracyMultiplier: 1
     criticalLevelChange: 0
-    moveTypeId: 19
+    moveType: {fileID: 0}
   statusChances: []
   statChanges:
   - statsAmountChange:

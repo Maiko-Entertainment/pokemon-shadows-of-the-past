@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageSummary
 {
-    public PokemonTypeId damageType;
+    public TypeData damageType;
     public int damageAmount;
     public DamageSummarySource damageSource;
     // Used to identify the ID of the source, 
@@ -18,7 +18,7 @@ public class DamageSummary
     public bool resistAt1Health = false;
 
     public DamageSummary(
-        PokemonTypeId damageType, 
+        TypeData damageType, 
         int damageAmount,
         DamageSummarySource damageSource, 
         string sourceId,

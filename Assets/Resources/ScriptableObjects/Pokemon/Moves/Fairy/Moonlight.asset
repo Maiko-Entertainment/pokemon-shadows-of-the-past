@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de397844a680ce1489db9094ec48b8ca, type: 3}
   m_Name: Moonlight
   m_EditorClassIdentifier: 
-  moveId: 113
   id: Moonlight
   moveName: Moonlight
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 1
   uses: 10
   typeId: 7
+  moveType: {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
   categoryId: 2
   targetType: 1
   statusChances: []
@@ -33,6 +33,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: 'The user restores its own HP. '
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2386081889705371532, guid: b061514cb5bbc6e48bac1d17819650be, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

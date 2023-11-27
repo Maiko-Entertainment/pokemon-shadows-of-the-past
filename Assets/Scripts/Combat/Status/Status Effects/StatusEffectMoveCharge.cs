@@ -8,7 +8,7 @@ public class StatusEffectMoveCharge : StatusEffect
     public MoveData move;
     public float currentMultiplier = 1;
 
-    public StatusEffectMoveCharge(PokemonBattleData pkmn, MoveData move): base(pkmn)
+    public StatusEffectMoveCharge(PokemonBattleData pkmn, MoveData move, StatusEffectData seData): base(pkmn, seData, null)
     {
         this.move = move;
         effectId = StatusEffectId.MoveCharge;
@@ -23,7 +23,7 @@ public class StatusEffectMoveCharge : StatusEffect
 
     public override void Initiate()
     {
-        BattleTrigger statusTrigger = new BattleTriggerOnPokemonMoveRepeatMove(pokemon, new UseMoveMods(PokemonTypeId.Unmodify), this);
+        BattleTrigger statusTrigger = new BattleTriggerOnPokemonMoveRepeatMove(pokemon, new UseMoveMods(null), move);
 
         // Needs trigger to reduce physical attack damage
         battleTriggers.Add(statusTrigger);

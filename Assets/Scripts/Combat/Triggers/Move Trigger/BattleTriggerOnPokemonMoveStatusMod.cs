@@ -5,8 +5,8 @@ using UnityEngine;
 public class BattleTriggerOnPokemonMoveStatusMod : BattleTriggerOnPokemonMove
 {
     public bool showAbility = false;
-    public List<StatusEffectId> includedStatus = new List<StatusEffectId>();
-    public BattleTriggerOnPokemonMoveStatusMod(PokemonBattleData pokemon, UseMoveMods moveMods, List<StatusEffectId> includedStatus, bool showAbility=false): base(pokemon, moveMods, true)
+    public List<StatusEffectData> includedStatus = new List<StatusEffectData>();
+    public BattleTriggerOnPokemonMoveStatusMod(PokemonBattleData pokemon, UseMoveMods moveMods, List<StatusEffectData> includedStatus, bool showAbility=false): base(pokemon, moveMods, true)
     {
         this.showAbility = showAbility;
         this.includedStatus = includedStatus;
@@ -15,11 +15,11 @@ public class BattleTriggerOnPokemonMoveStatusMod : BattleTriggerOnPokemonMove
     {
         if (pokemon.battleId == battleEvent.pokemon.battleId && maxTriggers > 0)
         {
-            bool includesPrimary = pokemon.GetCurrentPrimaryStatus() != null ? includedStatus.Contains(pokemon.GetCurrentPrimaryStatus().effectId) : false;
+            bool includesPrimary = pokemon.GetCurrentPrimaryStatus() != null ? includedStatus.Contains(pokemon.GetCurrentPrimaryStatus().effectData) : false;
             bool includesOthers = false;
             foreach(StatusEffect se in pokemon.GetNonPrimaryStatus())
             {
-                if (includedStatus.Contains(se.effectId))
+                if (includedStatus.Contains(se.effectData))
                 {
                     includesOthers = true;
                     break;

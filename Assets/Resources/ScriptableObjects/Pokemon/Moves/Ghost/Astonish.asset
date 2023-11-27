@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Astonish
   m_EditorClassIdentifier: 
-  moveId: 100
   id: Astonsh
   moveName: Astonsh
   power: 40
   hitChance: 1
   alwaysHit: 0
   uses: 30
-  typeId: 5
+  moveType: {fileID: 11400000, guid: 3ef7845cdd809524998cfb8ba8509868, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 17
+    effectData: {fileID: 11400000, guid: 0a1e57880a79a574cac5a77ee22623ad, type: 2}
     targetType: 0
     chance: 0.3
     removeStatusInstead: 0
@@ -37,6 +37,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user attacks the target while crying out in a startling fashion.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2649632935763573628, guid: f7ad4828f12fbb74bb14ef7fe2abb852, type: 3}
   - {fileID: 7700162772526085419, guid: 6c9f01d22ed17c2439c95a5954cbb106, type: 3}

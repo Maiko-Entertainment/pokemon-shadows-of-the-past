@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BattleEventPokemonStatusRemove : BattleEventPokemon
 {
-    public StatusEffectId id;
-    public BattleEventPokemonStatusRemove(PokemonBattleData pokemon, StatusEffectId id): base(pokemon)
+    public StatusEffectData statusEffect;
+    public BattleEventPokemonStatusRemove(PokemonBattleData pokemon, StatusEffectData se): base(pokemon)
     {
-        this.id = id;
+        statusEffect = se;
         eventId = BattleEventId.pokemonRemoveStatus;
     }
 
     public override void Execute()
     {
-        pokemon.RemoveStatusEffect(id);
+        pokemon.RemoveStatusEffect(statusEffect);
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonGainStatus(pokemon));
     }
 }

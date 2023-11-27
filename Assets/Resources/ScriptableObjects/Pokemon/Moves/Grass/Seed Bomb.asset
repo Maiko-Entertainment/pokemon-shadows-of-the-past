@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Seed Bomb
   m_EditorClassIdentifier: 
-  moveId: 27
   id: SeedBomb
   moveName: Seed Bomb
   power: 80
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 11
+  moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user slams a barrage of hard-shelled seeds down on the target
     from above.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
   - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}

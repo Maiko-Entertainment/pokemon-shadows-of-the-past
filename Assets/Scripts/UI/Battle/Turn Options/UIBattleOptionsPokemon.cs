@@ -23,33 +23,14 @@ public class UIBattleOptionsPokemon : MonoBehaviour
 
     private PokemonBattleData pokemon;
 
-    public UIBattleOptionsPokemon Load(PokemonCaughtData pokemon)
-    {
-        pokemonIcon.sprite = pokemon.GetIcon();
-        pokemonName.text = pokemon.GetName();
-        pokemonName.color = pokemon.IsFainted() ? faintedColor : Color.white;
-        float maxHealth = pokemon.GetCurrentStats().health;
-        float currentHealth = pokemon.GetCurrentHealth();
-        healthbar.fillAmount = currentHealth / maxHealth;
-        healthValue.text = currentHealth + "/"+ maxHealth;
-        level.text = "Lv " + pokemon.level;
-        if (exphbar)
-            exphbar.fillAmount = ((float)pokemon.GetExperience()) / pokemon.GetTotalExperienceToNextLevel();
-        if (statusSimbol)
-        {
-            StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(pokemon.statusEffectId);
-            UpdateStatus(status);
-        }
-        return this;
-    }
     public UIBattleOptionsPokemon Load(PokemonBattleData pokemon)
     {
         this.pokemon = pokemon;
-        return Load(pokemon.GetPokemonCaughtData());
+        return Load(pokemon);
     }
     public void UpdateStatus(StatusEffect currenStatus)
     {
-        StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
+        StatusEffectData status = currenStatus.effectData;
         UpdateStatus(status);
     }
     public void UpdateStatus(StatusEffectData status)

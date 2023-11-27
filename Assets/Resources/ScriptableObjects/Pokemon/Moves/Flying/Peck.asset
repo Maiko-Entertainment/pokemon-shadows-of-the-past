@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Peck
   m_EditorClassIdentifier: 
-  moveId: 109
   id: Peck
   moveName: Peck
   power: 35
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 35
   typeId: 17
+  moveType: {fileID: 11400000, guid: e5e02d9e5bd3a7e479e995e333b59807, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is jabbed with a sharply pointed beak or horn to inflict
     damage.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 2308960053695467597, guid: d9145ffe5322efd42bed4e7b37456ba0, type: 3}

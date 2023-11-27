@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Guts
   m_EditorClassIdentifier: 
   id: Guts
-  abilityId: 17
   abilityName: Guts
   description: "When the Pok\xE9mon is affected by a bad status condition, like poison
     or a burn, the power of its physical moves goes up."
-  includedStatus: 01000000020000000300000006000000
+  includedStatus:
+  - {fileID: 11400000, guid: cf1ccc72d052f214eb1ea9d1a26282ee, type: 2}
+  - {fileID: 11400000, guid: db7c12ea5403c9e47a9f08d421f9faf0, type: 2}
+  - {fileID: 11400000, guid: 58239aac66acd8d4291dc0766e8e6ab1, type: 2}
+  - {fileID: 11400000, guid: 75fe1fb1e50ae6f4baecafaab368bd7b, type: 2}
   mods:
     powerMultiplier: 1.5
     accuracyMultiplier: 1
     criticalLevelChange: 0
-    moveTypeId: 19
+    moveType: {fileID: 0}

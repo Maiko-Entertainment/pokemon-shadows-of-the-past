@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Effect Spores
   m_EditorClassIdentifier: 
   id: EffectSpores
-  abilityId: 14
   abilityName: Effect Spores
   description: Contact may poison or cause paralysis or sleep (10% per each).
   damageSources: 00000000
@@ -21,16 +20,19 @@ MonoBehaviour:
   onlyTriggerOnOppositeGender: 0
   statusChances:
   - effectId: 1
+    effectData: {fileID: 11400000, guid: cf1ccc72d052f214eb1ea9d1a26282ee, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
   - effectId: 3
+    effectData: {fileID: 11400000, guid: db7c12ea5403c9e47a9f08d421f9faf0, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
   - effectId: 4
+    effectData: {fileID: 11400000, guid: f9156d371e0052944838275aed48a95e, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
   moveStatChanges: []
-  affectedMoveTypes: 
+  affectedMoveTypes: []

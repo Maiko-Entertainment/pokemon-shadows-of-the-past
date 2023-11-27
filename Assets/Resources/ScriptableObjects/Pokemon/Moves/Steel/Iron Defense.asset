@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Iron Defense
   m_EditorClassIdentifier: 
-  moveId: 45
   id: IronDefense
   moveName: Iron Defense
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 35
   typeId: 0
+  moveType: {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
   categoryId: 2
   targetType: 1
   statusChances: []
@@ -45,6 +45,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user hardens its body's surface like iron, sharply raising its
     Defense stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 5862684350153514886, guid: 6f97937d0d6466d409dd9716096ac5ff, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

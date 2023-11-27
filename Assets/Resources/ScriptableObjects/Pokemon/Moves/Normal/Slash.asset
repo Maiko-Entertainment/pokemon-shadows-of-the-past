@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: 
-  moveId: 18
   id: Slash
   moveName: Slash
   power: 70
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 20
   typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is attacked with a slash of claws, scythes, or the like.
     This move has a heightened chance of landing a critical hit.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 9213985426046017393, guid: b27a9cd6376e3944b9e6ec5aac68e40b, type: 3}

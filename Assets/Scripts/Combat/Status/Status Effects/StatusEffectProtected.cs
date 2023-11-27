@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatusEffectProtected : StatusEffect
 {
-    public StatusEffectProtected(PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectProtected(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         effectId = StatusEffectId.Protected;
     }
@@ -17,7 +17,7 @@ public class StatusEffectProtected : StatusEffect
         cancelProtect.chance = 0.5f;
         cancelProtect.moveTags = new List<MoveTags>() { MoveTags.Protect };
         cancel.blockName = "Move Miss";
-        BattleTriggerOnPokemonRoundEndRemoveStatus remove = new BattleTriggerOnPokemonRoundEndRemoveStatus(this);
+        BattleTriggerOnRoundEndStatusDrop remove = new BattleTriggerOnRoundEndStatusDrop(this);
         battleTriggers.Add(cancel);
         battleTriggers.Add(remove);
         base.Initiate();

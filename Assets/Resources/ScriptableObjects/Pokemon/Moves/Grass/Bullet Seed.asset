@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334dcf0c1f2f6e149b484324437b93f0, type: 3}
   m_Name: Bullet Seed
   m_EditorClassIdentifier: 
-  moveId: 106
   id: BulletSeed
   moveName: Bullet Seed
   power: 25
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 30
   typeId: 11
+  moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user forcefully shoots seeds at the target two to five times in
     a row.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 1260036711026969005, guid: 4c1e751a03b1d2248aaf8a0431d70c9f, type: 3}

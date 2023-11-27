@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Charm
   m_EditorClassIdentifier: 
-  moveId: 32
   id: Charm
   moveName: Charm
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 20
   typeId: 7
+  moveType: {fileID: 11400000, guid: 9227b2c9f0867a4428721ed588c6e386, type: 2}
   categoryId: 2
   targetType: 0
   statusChances: []
@@ -45,6 +45,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user gazes at the target rather charmingly, making it less wary.
     This harshly lowers the target's Attack stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
   - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}

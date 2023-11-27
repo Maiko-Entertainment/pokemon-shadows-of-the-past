@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Flame Body
   m_EditorClassIdentifier: 
   id: FlameBody
-  abilityId: 7
   abilityName: Flame Body
   description: "Contact with the Pok\xE9mon may (30%) burn the attacker."
   damageSources: 00000000
@@ -21,8 +20,10 @@ MonoBehaviour:
   onlyTriggerOnOppositeGender: 0
   statusChances:
   - effectId: 6
+    effectData: {fileID: 11400000, guid: 58239aac66acd8d4291dc0766e8e6ab1, type: 2}
     targetType: 0
     chance: 0.3
     removeStatusInstead: 0
   moveStatChanges: []
-  affectedMoveTypes: 
+  affectedMoveTypes:
+  - {fileID: 0}

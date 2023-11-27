@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Struggle Bug
   m_EditorClassIdentifier: 
-  moveId: 97
   id: StruggleBug
   moveName: Struggle Bug
   power: 50
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 20
   typeId: 2
+  moveType: {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -45,6 +45,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: "While resisting, the user attacks the opposing Pok\xE9mon. This lowers
     the Sp. Atk stat of those hit."
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3533123888825108463, guid: 80c84fbfee25fcb408db7f3e093feb20, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

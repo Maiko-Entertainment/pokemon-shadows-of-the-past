@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Wing Attack
   m_EditorClassIdentifier: 
-  moveId: 35
   id: WingAttack
   moveName: Wing Attack
   power: 60
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 35
   typeId: 17
+  moveType: {fileID: 11400000, guid: e5e02d9e5bd3a7e479e995e333b59807, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The target is struck with large, imposing wings spread wide to inflict
     damage.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 8642206886045826576, guid: 79474bc52dd0e0b48ae7c3685931587e, type: 3}
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}

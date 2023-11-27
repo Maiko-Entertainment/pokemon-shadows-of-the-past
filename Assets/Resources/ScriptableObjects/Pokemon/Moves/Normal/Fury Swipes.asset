@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334dcf0c1f2f6e149b484324437b93f0, type: 3}
   m_Name: Fury Swipes
   m_EditorClassIdentifier: 
-  moveId: 124
   id: FurySwipes
   moveName: Fury Swipes
   power: 18
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user attacks by raking the target with claws, scythes, or the
     like. This move hits two to five times in a row.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 5336929976764402587, guid: 900bb860df527dc4582faf988634d403, type: 3}
   - {fileID: 4101007813887327778, guid: 16256133edaac1640b0acafdf68d0d61, type: 3}

@@ -7,11 +7,11 @@ public class MoveDataEmpowerByFaint : MoveData
     public int passedTurnsRange = 1;
     public List<BattleTeamId> teams = new List<BattleTeamId>();
     public int maxMatches = 1;
-    public UseMoveMods modsPerMatch = new UseMoveMods(PokemonTypeId.Unmodify);
+    public UseMoveMods modsPerMatch = new UseMoveMods(null);
 
     public UseMoveMods GetFinalMods()
     {
-        UseMoveMods modsPerMatchFinal = new UseMoveMods(PokemonTypeId.Unmodify);
+        UseMoveMods modsPerMatchFinal = new UseMoveMods(null);
         List<BattleFaintHistory> history = BattleMaster.GetInstance().GetCurrentBattle().faintHistory;
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         int currentTurn = bm.turnsPassed;

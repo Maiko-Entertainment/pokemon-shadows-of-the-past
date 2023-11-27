@@ -5,7 +5,7 @@ using UnityEngine;
 public class StatusEffectRepeatMove : StatusEffect
 {
     public MoveData forceMove;
-    public StatusEffectRepeatMove(PokemonBattleData pokemon, MoveData forceMove): base(pokemon)
+    public StatusEffectRepeatMove(PokemonBattleData pokemon, MoveData forceMove): base(pokemon, null, null)
     {
         this.forceMove = forceMove;
         effectId = StatusEffectId.RepeatMove;
@@ -17,7 +17,7 @@ public class StatusEffectRepeatMove : StatusEffect
     {
         BattleTriggerOnPokemonChangeMoveUsed chageMoveEvent = new BattleTriggerOnPokemonChangeMoveUsed(
                 pokemon,
-                new UseMoveMods(PokemonTypeId.Unmodify),
+                new UseMoveMods(null),
                 forceMove
             );
         battleTriggers.Add(chageMoveEvent);

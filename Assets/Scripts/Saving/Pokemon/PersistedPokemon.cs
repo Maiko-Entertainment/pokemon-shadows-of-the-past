@@ -9,7 +9,7 @@ public class PersistedPokemon
     public int level;
     public int experience = 0;
     public int damageTaken = 0;
-    public StatusEffectId statusEffectId = StatusEffectId.None;
+    public string statusEffectId = "";
     public PokemonNatureId natureId;
     public AbilityId abilityId;
     public string abilityIdString;

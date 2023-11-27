@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/Prevent Status Effects")]
 public class AbilityDataPreventStatusEffect : AbilityData
 {
-    public List<StatusEffectId> statusPrevented = new List<StatusEffectId>();
+    public List<StatusEffectData> statusPrevented = new List<StatusEffectData>();
 
     public override void Initialize(PokemonBattleData pokemon)
     {

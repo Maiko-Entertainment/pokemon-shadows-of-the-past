@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a0b2c9d902a0f4288e2bd4361b1030, type: 3}
   m_Name: Frustration
   m_EditorClassIdentifier: 
-  moveId: 102
   id: Frustration
   moveName: Frustration
   power: 100
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 20
   typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -33,6 +33,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user let's out all it's gathered hate.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2386081889705371532, guid: b061514cb5bbc6e48bac1d17819650be, type: 3}
   - {fileID: 4324485298865359154, guid: 8d428db9315763e45b575f2921c6db64, type: 3}

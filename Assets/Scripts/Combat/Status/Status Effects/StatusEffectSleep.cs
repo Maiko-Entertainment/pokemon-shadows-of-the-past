@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 public class StatusEffectSleep : StatusEffect
 {
-    public StatusEffectSleep(PokemonBattleData pokemon) : base(pokemon)
+    public StatusEffectSleep(PokemonBattleData pokemon) : base(pokemon, null, null)
     {
         effectId = StatusEffectId.Sleep;
         minTurns = 1;
         addedRangeTurns = 2;
-        captureRateBonus = 30;
+        // captureRateBonus = 30;
         onEndFlowchartBlock = "Sleep Lose";
         gainStatusBlockName = "Sleep Gain";
-        isPrimary = true;
+        // isPrimary = true;
     }
 
     public override void Initiate()
     {
-        BattleTriggerOnMoveSleepCancel sleepMoveCancelTrigger = new BattleTriggerOnMoveSleepCancel(pokemon, new UseMoveMods(PokemonTypeId.Unmodify));
+        BattleTriggerOnMoveSleepCancel sleepMoveCancelTrigger = new BattleTriggerOnMoveSleepCancel(pokemon, new UseMoveMods(null));
         battleTriggers.Add(sleepMoveCancelTrigger);
         base.Initiate();
     }

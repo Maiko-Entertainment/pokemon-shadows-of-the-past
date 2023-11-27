@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Quick Attack
   m_EditorClassIdentifier: 
-  moveId: 30
   id: QuickAttack
   moveName: Quick Attack
   power: 40
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 30
   typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user lunges at the target to inflict damage, moving at blinding
     speed. This move always goes first.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2327359564266580390, guid: 3c6b0bc552d81034c9c1665c0ab91acb, type: 3}
   - {fileID: 1122879976169921065, guid: 0847c00ebdd70b04bbbf5ff517e9ec84, type: 3}

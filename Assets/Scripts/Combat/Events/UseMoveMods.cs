@@ -8,11 +8,11 @@ public class UseMoveMods
     public float powerMultiplier = 1f;
     public float accuracyMultiplier = 1f;
     public int criticalLevelChange = 0;
-    public PokemonTypeId moveTypeId;
+    public TypeData moveType;
 
-    public UseMoveMods(PokemonTypeId moveTypeId)
+    public UseMoveMods(TypeData moveType)
     {
-        this.moveTypeId = moveTypeId;
+        this.moveType = moveType;
     }
 
     public void Implement(UseMoveMods mod)
@@ -20,6 +20,16 @@ public class UseMoveMods
         powerMultiplier *= mod.powerMultiplier;
         accuracyMultiplier *= mod.accuracyMultiplier;
         criticalLevelChange += mod.criticalLevelChange;
-        moveTypeId = mod.moveTypeId == PokemonTypeId.Unmodify ? moveTypeId : mod.moveTypeId;
+        // null means it doesnt modify it
+        moveType = mod.moveType == null ? moveType : mod.moveType;
+    }
+
+    public UseMoveMods Clone()
+    {
+        UseMoveMods copy = new UseMoveMods(moveType);
+        copy.powerMultiplier = powerMultiplier;
+        copy.accuracyMultiplier = accuracyMultiplier;
+        copy.criticalLevelChange = criticalLevelChange;
+        return copy;
     }
 }

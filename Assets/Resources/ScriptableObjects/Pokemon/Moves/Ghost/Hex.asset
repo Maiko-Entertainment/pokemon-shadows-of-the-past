@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Hex
   m_EditorClassIdentifier: 
-  moveId: 99
   id: Hex
   moveName: Hex
   power: 65
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 5
+  moveType: {fileID: 11400000, guid: 3ef7845cdd809524998cfb8ba8509868, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -64,6 +64,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user attacks with relentless intensity. This move's power is doubled
     if the target has a status condition.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2386081889705371532, guid: b061514cb5bbc6e48bac1d17819650be, type: 3}
   - {fileID: 8388501901500465465, guid: 23229b7edc91cd942b50e1f9defe0dbd, type: 3}

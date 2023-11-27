@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Poison Point
   m_EditorClassIdentifier: 
   id: PoisonPoint
-  abilityId: 10
   abilityName: Poison Point
   description: "Contact with the Pok\xE9mon may poison the attacker"
   damageSources: 00000000
@@ -21,8 +20,9 @@ MonoBehaviour:
   onlyTriggerOnOppositeGender: 0
   statusChances:
   - effectId: 1
+    effectData: {fileID: 11400000, guid: cf1ccc72d052f214eb1ea9d1a26282ee, type: 2}
     targetType: 0
     chance: 0.3
     removeStatusInstead: 0
   moveStatChanges: []
-  affectedMoveTypes: 
+  affectedMoveTypes: []

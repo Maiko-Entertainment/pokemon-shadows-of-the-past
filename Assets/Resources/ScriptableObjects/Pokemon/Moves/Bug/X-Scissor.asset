@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: X-Scissor
   m_EditorClassIdentifier: 
-  moveId: 93
   id: XScissor
   moveName: X-Scissor
   power: 80
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 2
+  moveType: {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user slashes at the target by crossing its scythes or claws as
     if they were a pair of scissors.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 4838901474843240278, guid: b87230da3db08a94bbaa7c27f9e381b3, type: 3}

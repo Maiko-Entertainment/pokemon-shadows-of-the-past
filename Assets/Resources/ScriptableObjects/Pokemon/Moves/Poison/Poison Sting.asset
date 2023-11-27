@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Poison Sting
   m_EditorClassIdentifier: 
-  moveId: 108
   id: PoisonSting
   moveName: Poison Sting
   power: 35
   hitChance: 1
   alwaysHit: 0
   uses: 35
-  typeId: 16
+  moveType: {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 1
+    effectData: {fileID: 11400000, guid: cf1ccc72d052f214eb1ea9d1a26282ee, type: 2}
     targetType: 0
     chance: 0.2
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user stabs the target with a poisonous stinger. This may also
     poison the target.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 7145141578023008551, guid: 47c5cf7965678bd4e9a76c3dbef61830, type: 3}
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}

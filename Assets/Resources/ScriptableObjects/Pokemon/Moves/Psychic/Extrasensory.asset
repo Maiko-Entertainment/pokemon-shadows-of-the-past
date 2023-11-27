@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Extrasensory
   m_EditorClassIdentifier: 
-  moveId: 111
   id: Extrasensory
   moveName: Extrasensory
   power: 80
   hitChance: 1
   alwaysHit: 0
   uses: 20
-  typeId: 12
+  moveType: {fileID: 11400000, guid: c6692acc6552ff74cab83be512180958, type: 2}
   categoryId: 1
   targetType: 0
   statusChances:
   - effectId: 17
+    effectData: {fileID: 11400000, guid: 0a1e57880a79a574cac5a77ee22623ad, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
@@ -37,6 +37,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user attacks with an odd, unseeable power. May (10%) flinch.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 2386081889705371532, guid: b061514cb5bbc6e48bac1d17819650be, type: 3}
   - {fileID: 2665739827224143227, guid: bc3157d6125093042abe10fb4c63b520, type: 3}

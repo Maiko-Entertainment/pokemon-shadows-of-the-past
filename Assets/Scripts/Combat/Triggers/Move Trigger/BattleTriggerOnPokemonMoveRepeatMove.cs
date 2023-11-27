@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class BattleTriggerOnPokemonMoveRepeatMove : BattleTriggerOnPokemonMove
 {
-    public StatusEffectMoveCharge status;
-    public BattleTriggerOnPokemonMoveRepeatMove(PokemonBattleData pokemon, UseMoveMods mods, StatusEffectMoveCharge status): base(pokemon, mods, true)
+    public MoveData move;
+    public float triggerPowerMultiplierAcum = 1f;
+
+    public StatusEffect statusSource;
+    public bool endStatusOnMoveFailToRepeat = true;
+
+    public BattleTriggerOnPokemonMoveRepeatMove(PokemonBattleData pokemon, UseMoveMods mods, MoveData move) : base(pokemon, mods, true)
     {
-        this.status = status;
+        this.move = move;
     }
 
     public override bool Execute(BattleEventUseMove battleEvent)
     {
         if (battleEvent.pokemon == pokemon && maxTriggers > 0)
         {
-            if (status.move == battleEvent.move)
+            if (move == battleEvent.move)
             {
-                float powerMod = status.MultiplyMultiplier(2);
-                useMoveMods.powerMultiplier = powerMod;
+                useMoveMods.powerMultiplier *= triggerPowerMultiplierAcum;
                 battleEvent.moveMods.Implement(useMoveMods);
             }
-            else
+            else if (statusSource != null && endStatusOnMoveFailToRepeat)
             {
-                status.HandleOwnRemove();
+                statusSource.HandleOwnRemove();
             }
         }
         else

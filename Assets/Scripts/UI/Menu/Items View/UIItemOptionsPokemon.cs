@@ -42,7 +42,7 @@ public class UIItemOptionsPokemon : MonoBehaviour, ISelectHandler
             exphbar.fillAmount = ((float)pokemon.GetExperience()) / pokemon.GetTotalExperienceToNextLevel();
         if (statusSimbol)
         {
-            StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(pokemon.statusEffectId);
+            StatusEffectData status = pokemon.statusEffect;
             UpdateStatus(status);
         }
         if (pokemon.equippedItem)
@@ -73,7 +73,7 @@ public class UIItemOptionsPokemon : MonoBehaviour, ISelectHandler
 
     public void UpdateStatus(StatusEffect currenStatus)
     {
-        StatusEffectData status = BattleAnimatorMaster.GetInstance().GetStatusEffectData(currenStatus != null ? currenStatus.effectId : StatusEffectId.None);
+        StatusEffectData status = currenStatus.effectData;
         UpdateStatus(status);
     }
     public void UpdateStatus(StatusEffectData status)

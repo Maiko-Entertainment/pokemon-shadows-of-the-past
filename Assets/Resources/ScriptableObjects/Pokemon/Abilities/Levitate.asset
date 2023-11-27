@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Levitate
   m_EditorClassIdentifier: 
   id: Levitate
-  abilityId: 12
   abilityName: Levitate
   description: "By floating in the air, the Pok\xE9mon receives full immunity to
     all Ground-type moves."
-  affectedTypes: 0f000000
+  affectedTypes:
+  - {fileID: 11400000, guid: f081c465cb8c37545b569a03625ee6c4, type: 2}
   grantsInmunity: 1
   moveMods:
     powerMultiplier: 1
     accuracyMultiplier: 1
     criticalLevelChange: 0
-    moveTypeId: 19
+    moveType: {fileID: 0}
   statusChances: []
   statChanges: []

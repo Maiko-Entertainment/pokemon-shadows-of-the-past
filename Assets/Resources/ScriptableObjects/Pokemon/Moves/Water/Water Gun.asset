@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Water Gun
   m_EditorClassIdentifier: 
-  moveId: 4
   id: WaterGun
   moveName: Water Gun
   power: 40
   hitChance: 1
   alwaysHit: 0
   uses: 35
-  typeId: 1
+  moveType: {fileID: 11400000, guid: b05d1f80523ecbd46a3f2c4144f63161, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -33,6 +32,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user launches water at the opponent.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
   - {fileID: 2880431026274129760, guid: 919c8b201dde9cf44842815788fbe08f, type: 3}

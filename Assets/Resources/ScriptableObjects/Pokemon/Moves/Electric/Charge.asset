@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Charge
   m_EditorClassIdentifier: 
-  moveId: 74
   id: Charge
   moveName: Charge
   power: 0
   hitChance: 1
   alwaysHit: 0
   uses: 20
-  typeId: 4
+  moveType: {fileID: 11400000, guid: 4f9e03ca4f6cf26449a9de14bdfed0df, type: 2}
   categoryId: 2
   targetType: 1
   statusChances:
   - effectId: 15
+    effectData: {fileID: 11400000, guid: 67ce7520cfd161d489cb5f12431e25c2, type: 2}
     targetType: 1
     chance: 1
     removeStatusInstead: 0
@@ -49,6 +49,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user boosts the power of the Electric move it uses on the next
     turn. This also raises the user's Sp. Def stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 7453244475280552665, guid: 5caca78656d184f448ae887c623cd7e7, type: 3}
   - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}

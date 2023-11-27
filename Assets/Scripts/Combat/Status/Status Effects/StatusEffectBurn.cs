@@ -6,13 +6,13 @@ using UnityEngine;
 public class StatusEffectBurn : StatusEffect
 {
     public float porcentualDamage = 0.0625f;
-    public StatusEffectBurn(PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectBurn(PokemonBattleData pokemon, StatusEffectData seData): base(pokemon, seData, null)
     {
         effectId = StatusEffectId.Burn;
-        isPrimary = true;
+        // IsPrimary = true;
         minTurns = 99999;
-        captureRateBonus = 10;
-        inmuneTypes.Add(PokemonTypeId.Fire);
+        // CaptureRateBonus = 10;
+        InmuneTypes.Add(TypesMaster.Instance.GetTypeData("Fire"));
         gainStatusBlockName = "Burn Gain";
     }
 
@@ -22,8 +22,8 @@ public class StatusEffectBurn : StatusEffect
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
                     pokemon,
                     new DamageSummary(
-                        PokemonTypeId.Undefined,
-                        Mathf.Max(1, (int)(pokemon.GetPokemonHealth() * porcentualDamage)),
+                        TypesMaster.Instance.GetTypeDataNone(),
+                        Mathf.Max(1, (int)(pokemon.GetMaxHealth() * porcentualDamage)),
                         DamageSummarySource.Status,
                         effectId.ToString()
                     )
@@ -47,9 +47,12 @@ public class StatusEffectBurn : StatusEffect
                         }
                     )
                 );
-        BattleTriggerOnPokemonBurn triggerMove = new BattleTriggerOnPokemonBurn(
+        UseMoveMods mods = new UseMoveMods(null);
+        mods.powerMultiplier = 0.5f;
+        BattleTriggerOnPokemonMoveCategory triggerMove = new BattleTriggerOnPokemonMoveCategory(
             pokemon,
-            MoveCategoryId.physical
+            MoveCategoryId.physical,
+            mods
            );
         // Needs trigger to reduce physical attack damage
         battleTriggers.Add(messageTrigger);

@@ -7,12 +7,12 @@ public class StatusEffectConfusion : StatusEffect
 {
     public string hitSelfBlock = "Confusion Success";
 
-    public StatusEffectConfusion (PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectConfusion (PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         effectId = StatusEffectId.Confused;
         minTurns = 2;
         addedRangeTurns = 2;
-        captureRateBonus = 10;
+        // CaptureRateBonus = 10;
         onEndFlowchartBlock = "Confusion Lose";
         gainStatusBlockName = "Confusion Gain";
     }

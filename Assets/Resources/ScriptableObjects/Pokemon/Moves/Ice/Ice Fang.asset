@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Ice Fang
   m_EditorClassIdentifier: 
-  moveId: 91
   id: IceFang
   moveName: Ice Fang
   power: 65
   hitChance: 1
   alwaysHit: 0
   uses: 15
-  typeId: 8
+  moveType: {fileID: 11400000, guid: a877c8119d5abef47aab0a20e0ee4e4e, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 18
+    effectData: {fileID: 11400000, guid: 52974c8bd6506cc41a0eb1396f57e48e, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
   - effectId: 17
+    effectData: {fileID: 11400000, guid: 0a1e57880a79a574cac5a77ee22623ad, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
@@ -42,6 +43,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user bites with cold-infused fangs. This may (10%) also make the
     target flinch or leave it frozen.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 4718345091044778175, guid: 5d426f39e0508044491f2d3a6c0ffc9a, type: 3}

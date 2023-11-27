@@ -9,7 +9,7 @@ public class BattleEventUseMove : BattleEventPokemon
     {
         eventId = BattleEventId.pokemonUseMove;
         this.move = move;
-        moveMods = new UseMoveMods(move.typeId);
+        moveMods = new UseMoveMods(move.GetMoveType());
     }
 
     public override void Execute()

@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Growl
   m_EditorClassIdentifier: 
-  moveId: 1
   id: Growl
   moveName: Growl
   power: 0
   hitChance: 1
   alwaysHit: 0
   uses: 35
-  typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 2
   targetType: 0
   statusChances: []
@@ -45,6 +44,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: "The user growls in an endearing way, making opposing Pok\xE9mon less
     wary. This lowers their Attack stats."
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 7700162772526085419, guid: 6c9f01d22ed17c2439c95a5954cbb106, type: 3}
   - {fileID: 8955288602887193107, guid: 6f44a71ed1be3f44eaa366f571cda57a, type: 3}

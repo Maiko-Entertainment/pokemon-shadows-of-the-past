@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Flame Wheel
   m_EditorClassIdentifier: 
-  moveId: 83
   id: FlameWheel
   moveName: Flame Wheel
   power: 50
   hitChance: 1
   alwaysHit: 0
   uses: 25
-  typeId: 6
+  moveType: {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
   categoryId: 0
   targetType: 0
   statusChances:
   - effectId: 6
+    effectData: {fileID: 11400000, guid: 58239aac66acd8d4291dc0766e8e6ab1, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user acts first cloaking itself in fire and charging at the target.
     It may also leave (10%) the target with a burn.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 8642206886045826576, guid: 79474bc52dd0e0b48ae7c3685931587e, type: 3}
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}

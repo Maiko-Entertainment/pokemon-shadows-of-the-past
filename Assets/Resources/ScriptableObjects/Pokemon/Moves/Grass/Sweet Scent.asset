@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Sweet Scent
   m_EditorClassIdentifier: 
-  moveId: 48
   id: SweetScent
   moveName: Sweet Scent
   power: 0
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 20
   typeId: 11
+  moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
@@ -49,4 +49,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: "A sweet scent that harshly lowers opposing Pok\xE9mon's evasiveness.
     May charm."
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []

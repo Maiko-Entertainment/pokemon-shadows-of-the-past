@@ -132,11 +132,6 @@ public class PokemonBattleData
         return pokemon.GetCurrentStats().health;
     }
 
-    public int GetPokemonHealth()
-    {
-        return pokemon.GetCurrentStats().health;
-    }
-
     public int GetPokemonCurrentHealth()
     {
         return pokemon.GetCurrentHealth();
@@ -169,12 +164,12 @@ public class PokemonBattleData
         status.Initiate();
     }
 
-    public void RemoveStatusEffect(StatusEffectId statusId)
+    public void RemoveStatusEffect(StatusEffectData status)
     {
         List<StatusEffect> statusNew = new List<StatusEffect>();
         foreach(StatusEffect se in statusEffects)
         {
-            if (se.effectId != statusId)
+            if (se.effectData != status)
             {
                 statusNew.Add(se);
             }
@@ -190,7 +185,7 @@ public class PokemonBattleData
     {
         foreach (StatusEffect se in statusEffects)
         {
-            if (!onlyMinors || (onlyMinors && !se.isPrimary))
+            if (!onlyMinors || (onlyMinors && !se.IsPrimary))
                 se.Remove();
         }
         statusEffects = new List<StatusEffect>();
@@ -199,7 +194,7 @@ public class PokemonBattleData
     public bool AlreadyHasPrimaryStatus()
     {
         foreach (StatusEffect status in statusEffects)
-            if (status.isPrimary)
+            if (status.IsPrimary)
                 return true;
         return false;
     }
@@ -209,7 +204,7 @@ public class PokemonBattleData
         if (statusEffects != null)
         {
             foreach (StatusEffect status in statusEffects)
-                if (status.isPrimary)
+                if (status.IsPrimary)
                     return status;
             return null;
         }
@@ -221,7 +216,7 @@ public class PokemonBattleData
         if (statusEffects != null)
         {
             foreach (StatusEffect status in statusEffects)
-                if (!status.isPrimary)
+                if (!status.IsPrimary)
                     statuses.Add(status);
             return statuses;
         }

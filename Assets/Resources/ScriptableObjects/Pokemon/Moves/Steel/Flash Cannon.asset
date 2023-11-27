@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Flash Cannon
   m_EditorClassIdentifier: 
-  moveId: 46
   id: FlashCannon
   moveName: Flash Cannon
   power: 80
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 10
   typeId: 0
+  moveType: {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -45,4 +45,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user gathers all its light energy and releases it all at once.
     This may also lower the target's Sp. Def stat
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []

@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Confuse Ray
   m_EditorClassIdentifier: 
-  moveId: 57
   id: ConfuseRay
   moveName: Confuse Ray
   power: 0
   hitChance: 1
   alwaysHit: 0
   uses: 10
-  typeId: 5
+  moveType: {fileID: 11400000, guid: 3ef7845cdd809524998cfb8ba8509868, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
   - effectId: 9
+    effectData: {fileID: 11400000, guid: 23f2256b267e27d4581cc701bbd43c4f, type: 2}
     targetType: 0
     chance: 1
     removeStatusInstead: 0
@@ -37,6 +37,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The target is exposed to a sinister ray that triggers confusion
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 445084221774589045, guid: 3446dacf1457bd341bc4bb8ee3d729ab, type: 3}
   - {fileID: 2386081889705371532, guid: b061514cb5bbc6e48bac1d17819650be, type: 3}

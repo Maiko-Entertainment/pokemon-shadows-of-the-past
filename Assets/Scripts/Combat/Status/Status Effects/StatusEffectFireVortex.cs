@@ -7,13 +7,13 @@ public class StatusEffectFireVortex : StatusEffect
 {
     public float porcentualDamage = 0.125f;
     
-    public StatusEffectFireVortex(PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectFireVortex(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         effectId = StatusEffectId.FireVortex;
         minTurns = 4;
         addedRangeTurns = 1;
-        captureRateBonus = 10;
-        inmuneTypes.Add(PokemonTypeId.Fire);
+        // CaptureRateBonus = 10;
+        InmuneTypes.Add(TypesMaster.Instance.GetTypeData("Fire"));
         stopEscape = true;
         gainStatusBlockName = "Fire Vortex Gain";
     }
@@ -24,8 +24,8 @@ public class StatusEffectFireVortex : StatusEffect
         BattleTrigger statusTrigger = new BattleTriggerRoundEndDamage(
                     pokemon,
                     new DamageSummary(
-                        PokemonTypeId.Undefined,
-                        (int)(pokemon.GetPokemonHealth() * porcentualDamage),
+                        TypesMaster.Instance.GetTypeDataNone(),
+                        (int)(pokemon.GetMaxHealth() * porcentualDamage),
                         DamageSummarySource.Status,
                         effectId.ToString()
                     )

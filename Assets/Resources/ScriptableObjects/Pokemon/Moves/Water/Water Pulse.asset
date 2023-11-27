@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Water Pulse
   m_EditorClassIdentifier: 
-  moveId: 58
   id: WaterPulse
   moveName: Water Pulse
   power: 60
   hitChance: 1
   alwaysHit: 0
   uses: 20
-  typeId: 1
+  moveType: {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
   categoryId: 1
   targetType: 0
   statusChances:
   - effectId: 9
+    effectData: {fileID: 11400000, guid: 23f2256b267e27d4581cc701bbd43c4f, type: 2}
     targetType: 0
     chance: 0.2
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user attacks the target with a pulsing blast of water. This attack
     never misses.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 7724945687048909448, guid: 706c910b19ad5494da20c52a4bed00b1, type: 3}
   - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}

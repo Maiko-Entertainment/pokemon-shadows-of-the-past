@@ -10,7 +10,7 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
     public bool workOnlyOnOppositeGender = false;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
-    public List<PokemonTypeId> affectedMoveTypes = new List<PokemonTypeId>();
+    public List<TypeData> affectedMoveTypes = new List<TypeData>();
 
     public BattleTriggerOnDamageEffect(PokemonBattleData pokemon, List<MoveStatusChance> statusChances, List<MoveStatChange> moveStatChanges) : base(pokemon, true)
     {
@@ -106,7 +106,7 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
             bool hasPrimaryAlready = pokemonTarget.GetCurrentPrimaryStatus() != null && pokemonTarget.GetCurrentPrimaryStatus().effectId == msc.effectId;
             if (random < msc.chance && !hasStatus && !hasPrimaryAlready)
             {
-                bm.AddStatusEffectEvent(pokemonTarget, msc.effectId, isAbilitySource);
+                bm.AddStatusEffectEvent(pokemonTarget, msc.effectData, isAbilitySource);
                 wasTriggered = true;
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatusEffectCharged : StatusEffect
 {
-    public StatusEffectCharged(PokemonBattleData pokemon): base(pokemon)
+    public StatusEffectCharged(PokemonBattleData pokemon, StatusEffectData seData) : base(pokemon, seData, null)
     {
         effectId = StatusEffectId.Charged;
         minTurns = 1;
@@ -14,9 +14,10 @@ public class StatusEffectCharged : StatusEffect
 
     public override void Initiate()
     {
-        UseMoveMods mods = new UseMoveMods(PokemonTypeId.Unmodify);
+        UseMoveMods mods = new UseMoveMods(null);
         mods.powerMultiplier = 2;
-        BattleTriggerOnPokemonMoveDangerTypeMod trigger = new BattleTriggerOnPokemonMoveDangerTypeMod(pokemon, mods, PokemonTypeId.Electric, false);
+        List<TypeData> electric = new List<TypeData>(){ TypesMaster.Instance.GetTypeData("Electric") };
+        BattleTriggerOnPokemonMoveDangerTypeMod trigger = new BattleTriggerOnPokemonMoveDangerTypeMod(pokemon, mods, electric, false);
         trigger.healthTarget = 1;
         base.Initiate();
     }

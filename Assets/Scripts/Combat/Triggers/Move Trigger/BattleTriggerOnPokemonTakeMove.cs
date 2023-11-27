@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
 {
-    public List<PokemonTypeId> affectedTypes = new List<PokemonTypeId>();
+    public List<TypeData> affectedTypes = new List<TypeData>();
     public bool grantsInmunity = false;
     public bool showAbility = false;
 
@@ -26,7 +26,7 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
             bool showedAbility = !showAbility;
             if (affectedTypes.Count > 0)
             {
-                if (!affectedTypes.Contains(battleEvent.move.typeId)){
+                if (!affectedTypes.Contains(battleEvent.move.GetMoveType())){
                     isApplicable = false;
                 }
             }
@@ -42,7 +42,6 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
                 }
                 if (grantsInmunity)
                 {
-                    willTrigger = true;
                     BattleMaster.GetInstance()?.GetCurrentBattle()?.AddEvent(
                         new BattleEventNarrative(
                             new BattleTriggerMessageData(
@@ -51,7 +50,6 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
                             )));
                     if (!showedAbility)
                     {
-                        showedAbility = true;
                         BattleMaster.GetInstance().GetCurrentBattle().AddAbilityEvent(target);
                     }
                     BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMoveFlowchart(battleEvent));
@@ -101,7 +99,7 @@ public class BattleTriggerOnPokemonTakeMove : BattleTriggerOnPokemonMove
             bool hasPrimaryAlready = pokemonTarget.GetCurrentPrimaryStatus() != null && pokemonTarget.GetCurrentPrimaryStatus().effectId == msc.effectId;
             if (random < msc.chance && !hasStatus && !hasPrimaryAlready)
             {
-                bm.AddStatusEffectEvent(pokemonTarget, msc.effectId, showAbility);
+                bm.AddStatusEffectEvent(pokemonTarget, msc.effectData, showAbility);
                 wasTriggered = true;
             }
         }

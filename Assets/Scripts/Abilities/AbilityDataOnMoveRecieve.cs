@@ -4,9 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/On Pokemon Take Move")]
 public class AbilityDataOnMoveRecieve : AbilityData
 {
-    public List<PokemonTypeId> affectedTypes = new List<PokemonTypeId>();
+    public List<TypeData> affectedTypes = new List<TypeData>();
     public bool grantsInmunity = false;
-    public UseMoveMods moveMods = new UseMoveMods(PokemonTypeId.Unmodify);
+    public UseMoveMods moveMods = new UseMoveMods(null);
 
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> statChanges = new List<MoveStatChange>();

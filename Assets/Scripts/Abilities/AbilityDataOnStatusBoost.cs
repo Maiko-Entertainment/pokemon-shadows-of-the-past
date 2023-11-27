@@ -4,8 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Abilities/On Status Move Boost")]
 public class AbilityDataOnStatusBoost : AbilityData
 {
-    public List<StatusEffectId> includedStatus = new List<StatusEffectId>();
-    public UseMoveMods mods = new UseMoveMods(PokemonTypeId.Unmodify);
+    public List<StatusEffectData> includedStatus = new List<StatusEffectData>();
+    public UseMoveMods mods = new UseMoveMods(null);
 
     public override void Initialize(PokemonBattleData pokemon)
     {

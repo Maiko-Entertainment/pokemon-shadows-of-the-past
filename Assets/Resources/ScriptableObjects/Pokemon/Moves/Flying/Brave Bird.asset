@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Brave Bird
   m_EditorClassIdentifier: 
-  moveId: 39
   id: BraveBird
   moveName: Brave Bird
   power: 120
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 17
+  moveType: {fileID: 11400000, guid: e5e02d9e5bd3a7e479e995e333b59807, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -34,4 +34,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user tucks in its wings and charges from a low altitude. This
     also damages the user quite a lot.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []

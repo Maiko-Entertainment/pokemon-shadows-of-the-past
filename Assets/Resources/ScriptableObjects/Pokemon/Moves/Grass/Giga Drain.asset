@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Giga Drain
   m_EditorClassIdentifier: 
-  moveId: 7
   id: GigaDrain
   moveName: Giga Drain
   power: 75
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 10
   typeId: 11
+  moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -34,6 +34,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: A nutrient-draining attack. The user's HP is restored by up to half
     the damage taken by the target.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 1300966253244183155, guid: eff2128e9f6eb814d9d3c670f0c68c1d, type: 3}

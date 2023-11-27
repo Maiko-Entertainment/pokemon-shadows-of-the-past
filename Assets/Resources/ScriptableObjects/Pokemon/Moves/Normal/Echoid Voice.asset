@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Echoid Voice
   m_EditorClassIdentifier: 
-  moveId: 110
   id: EchoidVoice
   moveName: Echoid Voice
   power: 40
   hitChance: 1
   alwaysHit: 0
   uses: 15
-  typeId: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
   categoryId: 1
   targetType: 0
   statusChances:
   - effectId: 10
+    effectData: {fileID: 11400000, guid: 0670cd2ac99cd83408a7a4e1b57902d7, type: 2}
     targetType: 1
     chance: 1
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: "The user attacks the target with an echoing voice. If this move is
     used consecutively by any Pok\xE9mon, its power is boosted."
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 6371537895980592076, guid: 0f218183598caf64c87504a40850962a, type: 3}
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}

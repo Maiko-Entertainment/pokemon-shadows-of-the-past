@@ -2,21 +2,21 @@
 
 public class BattleAnimatorEventPokemonGainStatus : BattleAnimatorEventPokemon
 {
-    public StatusEffectId status;
-    public List<StatusEffectId> minors = new List<StatusEffectId>();
+    public StatusEffectData status;
+    public List<StatusEffectData> minors = new List<StatusEffectData>();
     public BattleAnimatorEventPokemonGainStatus(PokemonBattleData pokemon):
         base(pokemon)
     {
         foreach (StatusEffect s in pokemon.GetNonPrimaryStatus())
-            minors.Add(s.effectId);
+            minors.Add(s.effectData);
         if (pokemon.GetCurrentPrimaryStatus() != null)
-            this.status = pokemon.GetCurrentPrimaryStatus().effectId;
+            status = pokemon.GetCurrentPrimaryStatus().effectData;
         eventType = BattleAnimatorEventType.BattleDescriptionText;
     }
 
     public override void Execute()
     {
-        BattleAnimatorMaster.GetInstance()?.UpdatePokemonStatus(pokemon, status, minors);
+        BattleAnimatorMaster.GetInstance()?.UpdatePokemonInfo(pokemon);
         BattleAnimatorMaster.GetInstance()?.GoToNextBattleAnim(0.2f);
         base.Execute();
     }

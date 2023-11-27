@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Sleep Powder
   m_EditorClassIdentifier: 
-  moveId: 119
   id: SleepPowder
   moveName: Sleep Powder
   power: 0
   hitChance: 0.75
   alwaysHit: 0
   uses: 15
-  typeId: 11
+  moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
   - effectId: 4
+    effectData: {fileID: 11400000, guid: f9156d371e0052944838275aed48a95e, type: 2}
     targetType: 0
     chance: 1
     removeStatusInstead: 0
@@ -38,6 +38,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user scatters a cloud of soporific dust that puts the target to
     sleep.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
   - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}

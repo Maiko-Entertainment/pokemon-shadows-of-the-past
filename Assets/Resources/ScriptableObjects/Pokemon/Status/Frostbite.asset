@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 998539b35eadacd4db269e8a78d29db9, type: 3}
+  m_Name: Frostbite
+  m_EditorClassIdentifier: 
+  id: Frostbite
+  statusName: Frostbite
+  icon: {fileID: 21300000, guid: b4b25ba5c7062fa4b8327e176721ee18, type: 3}
+  flowchart: {fileID: 6151006633196087579, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+  onStartStatusBlockName: Frostbite Gain
+  onTriggerFlowchartBlock: Frostbite Gain
+  onEndFlowchartBlock: 
+  minTurnDuration: 999999
+  extraTurnRange: 0
+  percentageDamagePerRound: 0.0625
+  healOpponentsFromDamage: 0
+  multiplyDamageEachTurn: 1
+  isPrimary: 1
+  hitAnims: []
+  captureRateBonus: 10
+  inmuneTypes:
+  - {fileID: 11400000, guid: a877c8119d5abef47aab0a20e0ee4e4e, type: 2}
+  cancelMoveChance: 0
+  playAnimationEvenIfMoveIsntCanceled: 0
+  replaceMoveInsteadOfCancel: {fileID: 0}
+  damageModifiers: []
+  triggerConditionsMove:
+  - moveMods:
+      powerMultiplier: 0.5
+      accuracyMultiplier: 1
+      criticalLevelChange: 0
+      moveType: {fileID: 0}
+    triggerCondition:
+      minHealthTreshold: 0
+      maxHealthTreshold: 1
+      pokemonIsAtLeastOneOfTypes: []
+      moveIsAtLeastOneOfTypes: []
+      moveCategories: 01000000
+      minMovePowerTreshold: 0
+      maxMovePowerTrashold: 9999999
+      focusOnEnemiesTargetingPokemonInstead: 0
+  onRepeatMovePowerMultiplier: 1
+  endStatusIfMoveFailsToRepeat: 0

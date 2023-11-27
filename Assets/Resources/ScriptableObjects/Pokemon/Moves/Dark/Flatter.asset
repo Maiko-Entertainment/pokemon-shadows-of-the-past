@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Flatter
   m_EditorClassIdentifier: 
-  moveId: 90
   id: Flatter
   moveName: Flatter
   power: 0
   hitChance: 1
   alwaysHit: 0
   uses: 15
-  typeId: 14
+  moveType: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
   - effectId: 9
+    effectData: {fileID: 11400000, guid: 23f2256b267e27d4581cc701bbd43c4f, type: 2}
     targetType: 0
     chance: 1
     removeStatusInstead: 0
@@ -49,6 +49,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: Flattery is used to confuse the target. However, this also raises
     the target's Sp. Atk stat.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 8508526554112561611, guid: 12a94512100898841946e4cc5165aee2, type: 3}
   - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}

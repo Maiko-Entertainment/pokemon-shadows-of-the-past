@@ -186,7 +186,7 @@ public class BattleMaster : MonoBehaviour
         float finalDamage = baseDamage * randomMultiplier * advantageMultiplier;
 
         DamageSummary damageSummary = new DamageSummary(
-           0,
+           damage.type,
            (int)finalDamage,
            DamageSummarySource.Move,
            "",

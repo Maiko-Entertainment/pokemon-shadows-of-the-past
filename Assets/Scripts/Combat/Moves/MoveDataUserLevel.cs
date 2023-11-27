@@ -8,7 +8,7 @@ public class MoveDataUserLevel : MoveData
     {
         PokemonBattleData user = battleEvent.pokemon;
         DamageSummary summary = new DamageSummary(
-            PokemonTypeId.Undefined,
+            moveType,
             user.GetPokemonCaughtData().GetLevel(),
             DamageSummarySource.Move,
             battleEvent.move.GetId(),

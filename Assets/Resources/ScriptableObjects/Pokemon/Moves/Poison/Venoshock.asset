@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Venoshock
   m_EditorClassIdentifier: 
-  moveId: 117
   id: Venoshock
   moveName: Venoshock
   power: 65
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 15
   typeId: 16
+  moveType: {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
   categoryId: 1
   targetType: 0
   statusChances: []
@@ -44,6 +44,13 @@ MonoBehaviour:
   destroyHeldItems: 
   description: The user drenches the target in a special poisonous liquid. This move's
     power is doubled if the target is poisoned.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 3690665869915477945, guid: eca0187d566e67042ab845b3ddf25122, type: 3}
   - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}

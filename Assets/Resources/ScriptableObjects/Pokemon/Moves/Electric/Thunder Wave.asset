@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Thunder Wave
   m_EditorClassIdentifier: 
-  moveId: 60
   id: ThunderWave
   moveName: Thunder Wave
   power: 0
   hitChance: 1
   alwaysHit: 0
   uses: 20
-  typeId: 4
+  moveType: {fileID: 11400000, guid: 4f9e03ca4f6cf26449a9de14bdfed0df, type: 2}
   categoryId: 2
   targetType: 0
   statusChances:
   - effectId: 3
+    effectData: {fileID: 11400000, guid: db7c12ea5403c9e47a9f08d421f9faf0, type: 2}
     targetType: 0
     chance: 1
     removeStatusInstead: 0
@@ -37,6 +37,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user launches a weak jolt of electricity that paralyzes the target.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1970538245666351626, guid: bcc821f4fb2978646aed722e7e7e32f6, type: 3}
   - {fileID: 18068311332155588, guid: b85e2afb559df5b4c89bd14ff39ff56e, type: 3}

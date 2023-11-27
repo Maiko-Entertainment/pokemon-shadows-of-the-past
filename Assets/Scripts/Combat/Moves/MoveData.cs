@@ -12,7 +12,7 @@ public class MoveData : ScriptableObject
     public float hitChance = 1f;
     public bool alwaysHit = false;
     public int uses = 35;
-    public PokemonTypeId typeId;
+    public TypeData moveType;
     public MoveCategoryId categoryId;
     public MoveTarget targetType;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
@@ -110,7 +110,7 @@ public class MoveData : ScriptableObject
             float random = Random.value;
             if (random < msc.chance)
             {
-                bm.AddStatusEffectEvent(pokemonTarget,msc.effectId, categoryId == MoveCategoryId.status);
+                bm.AddStatusEffectEvent(pokemonTarget, msc.effectData, this, GetAttackCategory() == MoveCategoryId.status);
             }
         }
     }
@@ -228,9 +228,9 @@ public class MoveData : ScriptableObject
     {
         return categoryId;
     }
-    public virtual PokemonTypeId GetMoveType()
+    public virtual TypeData GetMoveType()
     {
-        return typeId;
+        return moveType;
     }
 
     public virtual int GetPriority(BattleManager battleStatus, BattleTeamId myTeam)
@@ -264,9 +264,8 @@ public class MoveData : ScriptableObject
                         }
                     }
                     PokemonBattleData target = battleStatus.GetTarget(myUser, statusChance.targetType);
-                    StatusEffect stat = battleStatus.CreateStatusById(statusChance.effectId, target);
-                    // TODO: Remove once Status Effects gets rewritten to Scriptable Objects
-                    if (UtilsMaster.ContainsAtLeastOne(stat.inmuneTypes.Select(it => it.ToString()).ToList(), target.GetTypes().Select((td) => td.GetId()).ToList()))
+                    StatusEffectData stat = statusChance.effectData;
+                    if (UtilsMaster.ContainsAtLeastOne(stat.GetInmuneTypes(), target.GetTypes()))
                     {
                         alreadyHasStatusBiasMultiplier = 0f;
                     }

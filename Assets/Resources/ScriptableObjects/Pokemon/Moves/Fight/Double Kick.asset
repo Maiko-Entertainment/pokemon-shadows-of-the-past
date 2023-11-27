@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334dcf0c1f2f6e149b484324437b93f0, type: 3}
   m_Name: Double Kick
   m_EditorClassIdentifier: 
-  moveId: 87
   id: DoubleHit
   moveName: Double Hit
   power: 30
@@ -20,6 +19,7 @@ MonoBehaviour:
   alwaysHit: 0
   uses: 30
   typeId: 9
+  moveType: {fileID: 11400000, guid: 7d810b4c237ca094aaaf936ac3f7279b, type: 2}
   categoryId: 0
   targetType: 0
   statusChances: []
@@ -33,6 +33,13 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The target is quickly kicked twice in succession using both feet.
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations:
   - {fileID: 1205188910026291130, guid: 97a4361afda11b84a8c14cfe6c171b16, type: 3}
   - {fileID: 8827772890599676396, guid: 83d5d80fc6197df44b44d3ba8e97767b, type: 3}

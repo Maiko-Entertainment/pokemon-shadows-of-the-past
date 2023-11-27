@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
   m_Name: Heatwave
   m_EditorClassIdentifier: 
-  moveId: 44
   id: Heatwave
   moveName: Heatwave
   power: 95
   hitChance: 0.9
   alwaysHit: 0
   uses: 10
-  typeId: 6
+  moveType: {fileID: 11400000, guid: 2afc142f5ecadf249860dcfb25befa04, type: 2}
   categoryId: 1
   targetType: 0
   statusChances:
   - effectId: 6
+    effectData: {fileID: 11400000, guid: 58239aac66acd8d4291dc0766e8e6ab1, type: 2}
     targetType: 0
     chance: 0.1
     removeStatusInstead: 0
@@ -38,4 +38,11 @@ MonoBehaviour:
   destroyHeldItems: 
   description: "The user attacks by exhaling hot breath on opposing Pok\xE9mon. This
     may (10%)  also leave them with a burn."
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
   animations: []
