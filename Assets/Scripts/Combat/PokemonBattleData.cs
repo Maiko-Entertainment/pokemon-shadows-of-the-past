@@ -106,7 +106,7 @@ public class PokemonBattleData
         heldItem = null;
     }
 
-    public void EquippedItem(ItemDataOnPokemon item)
+    public void EquipItem(ItemDataOnPokemon item)
     {
         heldItem = new PokemonBattleDataItem(item);
         heldItem.Initiate(this);
@@ -125,6 +125,10 @@ public class PokemonBattleData
         finalStats.accuracy = statsLevel.accuracy;
         finalStats.evasion = statsLevel.evasion;
         finalStats.critical = statsLevel.critical;
+        foreach(StatusEffect effect in statusEffects)
+        {
+            finalStats = effect.effectData.statsMultiplier.Multiply(finalStats);
+        }
         return finalStats;
     }
     public int GetMaxHealth()
@@ -221,6 +225,11 @@ public class PokemonBattleData
             return statuses;
         }
         return statuses;
+    }
+
+    public List<StatusEffect> GetStatusEffects()
+    {
+        return statusEffects;
     }
 
     public List<MoveEquipped> GetMoves()

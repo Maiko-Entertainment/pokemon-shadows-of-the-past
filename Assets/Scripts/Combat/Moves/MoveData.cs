@@ -17,7 +17,7 @@ public class MoveData : ScriptableObject
     public MoveTarget targetType;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
-    public List<StatusBonus> conditionalBonuses = new List<StatusBonus>();
+    public List<StatusEffectBonus> conditionalBonuses = new List<StatusEffectBonus>();
     public List<MoveTags> tags = new List<MoveTags>();
     public bool isContact;
     public float drainMultiplier = 0f;
@@ -135,7 +135,7 @@ public class MoveData : ScriptableObject
             {
                 if (user.heldItem != null)
                 {
-                    user.EquippedItem(item.equippedItem);
+                    user.EquipItem(item.equippedItem);
                     target.UnequipItem();
                 }
             }
@@ -150,28 +150,16 @@ public class MoveData : ScriptableObject
     public virtual int GetPower(PokemonBattleData user)
     {
         float powerMultiplier = 1f;
-        foreach(StatusBonus condition in conditionalBonuses)
+        foreach(StatusEffectBonus condition in conditionalBonuses)
         {
             float percentageHealth = user.GetPokemonCurrentHealth() / (float) user.GetMaxHealth();
-            if (condition.target == MoveTarget.none)
+            PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
+            List<StatusEffect> status = finalTarget.GetStatusEffects();
+            foreach (StatusEffect s in status)
             {
-                Status weather = BattleMaster.GetInstance().GetCurrentBattle().weather;
-                if (weather != null && weather.effectId == condition.statusToCheck && percentageHealth <= condition.lifeBelowTreshold)
+                if (condition.statusData.GetId() == s.effectData.GetId())
                 {
                     powerMultiplier *= condition.powerMultiplier;
-                }
-            }
-            else
-            {
-                PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
-                List<StatusEffect> status = finalTarget.GetNonPrimaryStatus();
-                StatusEffect primary = finalTarget.GetCurrentPrimaryStatus();
-                foreach (StatusEffect s in status)
-                {
-                    if (condition.statusToCheck == s.effectId || (primary != null && primary.effectId == condition.statusToCheck))
-                    {
-                        powerMultiplier *= condition.powerMultiplier;
-                    }
                 }
             }
         }
@@ -186,28 +174,16 @@ public class MoveData : ScriptableObject
     public virtual float GetAccuracy(PokemonBattleData user)
     {
         float accuracyAdded = 0f;
-        foreach (StatusBonus condition in conditionalBonuses)
+        foreach (StatusEffectBonus condition in conditionalBonuses)
         {
             float percentageHealth = user.GetPokemonCurrentHealth() / (float)user.GetMaxHealth();
-            if (condition.target == MoveTarget.none)
+            PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
+            List<StatusEffect> status = finalTarget.GetStatusEffects();
+            foreach (StatusEffect s in status)
             {
-                Status weather = BattleMaster.GetInstance().GetCurrentBattle().weather;
-                if (weather != null && weather.effectId == condition.statusToCheck && percentageHealth <= condition.lifeBelowTreshold)
+                if (condition.statusData.GetId() == s.effectData.GetId())
                 {
                     accuracyAdded += condition.accuracyBonusAdd;
-                }
-            }
-            else
-            {
-                PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
-                List<StatusEffect> status = finalTarget.GetNonPrimaryStatus();
-                StatusEffect primary = finalTarget.GetCurrentPrimaryStatus();
-                foreach (StatusEffect s in status)
-                {
-                    if (condition.statusToCheck == s.effectId || (primary != null && primary.effectId == condition.statusToCheck))
-                    {
-                        accuracyAdded += condition.accuracyBonusAdd;
-                    }
                 }
             }
         }
@@ -250,14 +226,14 @@ public class MoveData : ScriptableObject
             {
                 foreach(MoveStatusChance statusChance in statusChances)
                 {
-                    if (enemyStatusPrimary != null && enemyStatusPrimary.effectId == statusChance.effectId)
+                    if (enemyStatusPrimary != null && enemyStatusPrimary.effectData.GetId() == statusChance.effectData.GetId())
                     {
                         alreadyHasStatusBiasMultiplier = 0f;
                         break;
                     }
                     foreach(StatusEffect se in enemyMinorStatuses)
                     {
-                        if (se.effectId == statusChance.effectId)
+                        if (se.effectData.GetId() == statusChance.effectData.GetId())
                         {
                             alreadyHasStatusBiasMultiplier = 0f;
                             break;

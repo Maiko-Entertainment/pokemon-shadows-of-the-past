@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b4b25ba5c7062fa4b8327e176721ee18, type: 3}
   flowchart: {fileID: 6151006633196087579, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
   onStartStatusBlockName: Frostbite Gain
-  onTriggerFlowchartBlock: Frostbite Gain
+  onTriggerFlowchartBlock: Frostbite Damage
   onEndFlowchartBlock: 
   minTurnDuration: 999999
   extraTurnRange: 0
@@ -26,9 +26,16 @@ MonoBehaviour:
   multiplyDamageEachTurn: 1
   isPrimary: 1
   hitAnims: []
+  tickDownAtEndOfRoundInstead: 0
   captureRateBonus: 10
   inmuneTypes:
   - {fileID: 11400000, guid: a877c8119d5abef47aab0a20e0ee4e4e, type: 2}
+  statsMultiplier:
+    attack: 1
+    defense: 1
+    spAttack: 1
+    spDefense: 1
+    speed: 1
   cancelMoveChance: 0
   playAnimationEvenIfMoveIsntCanceled: 0
   replaceMoveInsteadOfCancel: {fileID: 0}
@@ -39,6 +46,7 @@ MonoBehaviour:
       accuracyMultiplier: 1
       criticalLevelChange: 0
       moveType: {fileID: 0}
+    cancelMoveInstead: 0
     triggerCondition:
       minHealthTreshold: 0
       maxHealthTreshold: 1

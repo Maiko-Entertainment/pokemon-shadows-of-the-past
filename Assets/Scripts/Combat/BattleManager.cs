@@ -8,14 +8,12 @@ public class BattleManager
     public BattleTeamData team1;
     public BattleTeamData team2;
     public BattleData battleData;
-    public Status weather = null;
     public int turnsPassed = 0;
     public BattleEndEvent postBattleEvent;
 
     public BattleEventManager eventManager = new BattleEventManager();
 
     private List<PokemonBattleData> participatedPokemon = new List<PokemonBattleData>();
-    public List<BattleStatsGetter> battleStatsSubscribers = new List<BattleStatsGetter>();
 
     public MoveData lastUsedMove = null;
 
@@ -28,6 +26,7 @@ public class BattleManager
     public static float SHADOW_IGNORE_CHANCE = 0.25f;
 
     public List<BattleFaintHistory> faintHistory = new List<BattleFaintHistory>();
+    public List<BattleDesitionHistory> battleDesitionHistories = new List<BattleDesitionHistory>();
 
     public BattleManager(BattleTeamData player, BattleTeamData opponent, BattleData battleData)
     {
@@ -77,23 +76,20 @@ public class BattleManager
         isBattleActive = isActive;
     }
 
-    public void AddStatGetter(BattleStatsGetter getter)
-    {
-        battleStatsSubscribers.Add(getter);
-    }
-    public void RemoveStatGetter(BattleStatsGetter getter)
-    {
-        battleStatsSubscribers.Remove(getter);
-    }
-
     public PokemonBattleStats GetPokemonStats(PokemonBattleData pokemon)
     {
         PokemonBattleStats statsAccum = pokemon.GetBattleStats();
-        foreach(BattleStatsGetter bsg in battleStatsSubscribers)
-        {
-            statsAccum = bsg.Apply(pokemon, statsAccum);
-        }
         return statsAccum;
+    }
+
+    public BattleDesitionHistory GetDesitionHistory(BattleTeamId teamId, int turn)
+    {
+        return battleDesitionHistories.Find((BattleDesitionHistory bd) => bd.desition.team == teamId && bd.turn == turn);
+    }
+
+    public List<BattleDesitionHistory> GetDesitionHistory(BattleTeamId teamId)
+    {
+        return battleDesitionHistories.Where((BattleDesitionHistory bd) => bd.desition.team == teamId).ToList();
     }
 
     public BattleTurnDesition PickNewRandomDesition(BattleTeamId team)
@@ -132,6 +128,7 @@ public class BattleManager
             BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText("Rebel", team1Pkmn);
         }
         BattleTurnDesition AIDesition = HandleAIInput();
+        // Add round end event
         HandleRoundEnd();
         int desitionPriority = desition.priority;
         int tacticPriority = currentTacticSelected ? 9 : -1;

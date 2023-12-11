@@ -47,26 +47,25 @@ public class UIBattleOptionsManager : MonoBehaviour
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         BattleAnimatorMaster.GetInstance()?.HideOptions();
         PokemonBattleData pokemon = bm.GetTeamActivePokemon(BattleTeamId.Team1);
-        bool hasRepeatForce = false;
-        StatusEffectRepeatMove rm = null;
-        foreach(StatusEffect se in pokemon.GetNonPrimaryStatus())
+        MoveData moveToRepeat = null;
+        foreach(StatusEffect se in pokemon.GetStatusEffects())
         {
-            if (se.effectId == StatusEffectId.RepeatMove)
+            if (se.effectData is StatusEffectDataForceRepeatMove)
             {
-                hasRepeatForce = true;
-                rm = (StatusEffectRepeatMove)se;
+                moveToRepeat = se.relatedMove;
                 break;
             }
         }
-        if (hasRepeatForce)
+        // If a status effect is forcing the pokemon to use a move, we use it
+        if (moveToRepeat)
         {
-            bm?.HandleTurnInput(
-                new BattleTurnDesitionPokemonMove(
-                    new MoveEquipped(rm.forceMove),
+            BattleTurnDesitionPokemonMove turnDesition = new BattleTurnDesitionPokemonMove(
+                    new MoveEquipped(moveToRepeat),
                     bm.GetTeamActivePokemon(BattleTeamId.Team1),
                     BattleTeamId.Team1
-                    )
-                );
+                    );
+            turnDesition.tactic = BattleMaster.GetInstance().GetCurrentBattle().GetSelectedTactic();
+            bm?.HandleTurnInput(turnDesition);
             BattleAnimatorMaster.GetInstance().HideOptions();
         }
         else

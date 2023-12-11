@@ -23,12 +23,25 @@ MonoBehaviour:
   extraTurnRange: 0
   percentageDamagePerRound: 0
   healOpponentsFromDamage: 0
+  multiplyDamageEachTurn: 1
   isPrimary: 1
   hitAnims:
   - {fileID: 7382454406820570726, guid: 32b1a8e847bdf5446b452a98708d8578, type: 3}
   - {fileID: 6964898091975201090, guid: 78ecd3eb62e93ed4ca602c2ba00406cc, type: 3}
+  tickDownAtEndOfRoundInstead: 0
   captureRateBonus: 0
   inmuneTypes:
   - {fileID: 11400000, guid: 4f9e03ca4f6cf26449a9de14bdfed0df, type: 2}
+  statsMultiplier:
+    attack: 1
+    defense: 1
+    spAttack: 1
+    spDefense: 1
+    speed: 0.5
+    accuracy: 1
+    evasion: 1
+    critical: 1
   cancelMoveChance: 0.25
+  playAnimationEvenIfMoveIsntCanceled: 0
   replaceMoveInsteadOfCancel: {fileID: 0}
+  damageModifiers: []

@@ -8,6 +8,7 @@ public class BattleTurnDesitionRun : BattleTurnDesition
 
     public override void Execute()
     {
+        base.Execute();
         BattleMaster.GetInstance().GetCurrentBattle().AddTryToRunEvent();
     }
 }

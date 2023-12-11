@@ -18,6 +18,7 @@ public class BattleTurnDesitionPokemonMove : BattleTurnDesitionPokemon
 
     public override void Execute()
     {
+        base.Execute();
         BattleMaster.GetInstance().GetCurrentBattle()?
             .AddMoveEvent(pokemon, move.move);
     }

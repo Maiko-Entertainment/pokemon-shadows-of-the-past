@@ -14,6 +14,7 @@ public class BattleTurnDesitionCapture : BattleTurnDesition
 
     public override void Execute()
     {
+        base.Execute();
         BattleMaster.GetInstance()?.GetCurrentBattle().AddEvent(new BattleEventUsePokeball(pokeball));
     }
 }

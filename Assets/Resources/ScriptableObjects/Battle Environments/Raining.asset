@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d92036171806942bccb3966bd44436, type: 3}
+  m_Name: Raining
+  m_EditorClassIdentifier: 
+  id: Raining
+  statusName: Raining
+  icon: {fileID: 21300000, guid: ec772cb0e42826842a2a3cea93b105f9, type: 3}
+  flowchart: {fileID: 0}
+  onStartStatusBlockName: Raining Start
+  onTriggerFlowchartBlock: 
+  onEndFlowchartBlock: 
+  minTurnDuration: 5
+  extraTurnRange: 0
+  percentageDamagePerRound: 0
+  fieldCategory: {fileID: 11400000, guid: 5bdfeedb834fe70499e235167feabf1f, type: 2}
+  triggerConditionsMove:
+  - moveMods:
+      powerMultiplier: 1.5
+      accuracyMultiplier: 1
+      criticalLevelChange: 1
+      moveType: {fileID: 0}
+    cancelMoveInstead: 0
+    triggerCondition:
+      minHealthTreshold: 0
+      maxHealthTreshold: 1
+      pokemonIsAtLeastOneOfTypes: []
+      moveIsAtLeastOneOfTypes:
+      - {fileID: 11400000, guid: b05d1f80523ecbd46a3f2c4144f63161, type: 2}
+      moveCategories: 
+      minMovePowerTreshold: 0
+      maxMovePowerTrashold: 999999
+      focusOnEnemiesTargetingPokemonInstead: 0
+  - moveMods:
+      powerMultiplier: 0.5
+      accuracyMultiplier: 1
+      criticalLevelChange: 1
+      moveType: {fileID: 0}
+    cancelMoveInstead: 0
+    triggerCondition:
+      minHealthTreshold: 0
+      maxHealthTreshold: 1
+      pokemonIsAtLeastOneOfTypes: []
+      moveIsAtLeastOneOfTypes:
+      - {fileID: 11400000, guid: 2afc142f5ecadf249860dcfb25befa04, type: 2}
+      moveCategories: 
+      minMovePowerTreshold: 0
+      maxMovePowerTrashold: 999999
+      focusOnEnemiesTargetingPokemonInstead: 0

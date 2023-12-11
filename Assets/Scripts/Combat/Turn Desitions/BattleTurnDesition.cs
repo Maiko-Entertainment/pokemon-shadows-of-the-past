@@ -1,4 +1,6 @@
 ﻿
+using UnityEngine.UIElements;
+
 public class BattleTurnDesition
 {
     public BattleTeamId team;
@@ -13,6 +15,8 @@ public class BattleTurnDesition
 
     public virtual void Execute()
     {
+        int currentTurn = BattleMaster.GetInstance().GetCurrentBattle().turnsPassed;
+        BattleMaster.GetInstance().GetCurrentBattle().battleDesitionHistories.Add(new BattleDesitionHistory(this, currentTurn));
     }
 
     public virtual float GetTiebreakerPriority()

@@ -17,6 +17,7 @@ public class BattleTurnDesitionItemPokemonUse : BattleTurnDesitionPokemon
 
     public override void Execute()
     {
+        base.Execute();
         BattleMaster.GetInstance().GetCurrentBattle()?
             .AddItemPokemonUseEvent(pokemon, item);
     }

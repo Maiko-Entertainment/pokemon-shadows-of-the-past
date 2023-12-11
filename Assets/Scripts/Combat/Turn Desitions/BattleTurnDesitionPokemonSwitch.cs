@@ -14,6 +14,7 @@ public class BattleTurnDesitionPokemonSwitch : BattleTurnDesitionPokemon
 
     public override void Execute()
     {
+        base.Execute();
         BattleMaster.GetInstance().GetCurrentBattle()?
             .AddSwitchInPokemonEvent(pokemon, true);
     }

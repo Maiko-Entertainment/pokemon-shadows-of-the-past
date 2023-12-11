@@ -13,7 +13,7 @@ public class BattleAnimatorEventEnterPokemon : BattleAnimatorEventPokemon
 
     public override void Execute()
     {
-        BattleAnimatorMaster.GetInstance().LoadPokemonsInfo(pokemon, pokemonHealth);
+        BattleAnimatorMaster.GetInstance().LoadPokemonsInfo(pokemon);
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(0f);
         base.Execute();
     }

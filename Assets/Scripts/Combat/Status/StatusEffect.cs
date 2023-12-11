@@ -6,6 +6,7 @@ public class StatusEffect : Status
 {
     public PokemonBattleData pokemon;
     public StatusEffectData effectData;
+    public MoveData relatedMove = null; // Almost always empty
     public List<TypeData> InmuneTypes {
         get { return effectData?.GetInmuneTypes() ?? new List<TypeData>(); }
     }
@@ -14,17 +15,15 @@ public class StatusEffect : Status
     }
     protected bool tickDownAtEndOfRound = false;
 
-    public StatusEffect(PokemonBattleData pokemon, StatusEffectData effectData, Flowchart flowchartInstance) : base()
+    public StatusEffect(PokemonBattleData pokemon, StatusEffectData effectData, Flowchart flowchartInstance) : base(flowchartInstance)
     {
         this.pokemon = pokemon;
         this.effectData = effectData;
-        this.flowchartInstance = flowchartInstance;
     }
 
     public virtual StatusEffect Copy(PokemonBattleData newPokeInstance)
     {
         StatusEffect newSe = new StatusEffect(newPokeInstance, effectData, flowchartInstance);
-        newSe.effectId = effectId;
         newSe.InmuneTypes.AddRange(InmuneTypes);
         newSe.minTurns = minTurns;
         newSe.addedRangeTurns = addedRangeTurns;
@@ -34,7 +33,6 @@ public class StatusEffect : Status
 
     public override void Initiate()
     {
-        base.Initiate();
         // Add trigger to handle status turns left reduction
         // Statuses that inherited from this should repeat this behaviour
         // Some status tick down at the end of the round instead of after a the pokemons turn
@@ -45,15 +43,9 @@ public class StatusEffect : Status
                 BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon)
             );
         battleTriggers.Add(btDrop);
-
-        foreach (BattleTrigger bt in battleTriggers)
-        {
-            BattleMaster.GetInstance()?
-                .GetCurrentBattle()?.AddTrigger(
-                    bt
-                );
-        }
         effectData.HandleVisualStart(this);
+
+        base.Initiate();
     }
 
     public virtual void HandleOwnRemove()
@@ -82,20 +74,12 @@ public class StatusEffect : Status
         if (onEndFlowchartBlock != "" && !pokemon.IsFainted())
         {
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(new BattleTriggerMessageData(flowchartInstance, onEndFlowchartBlock, new Dictionary<string, string>() { { "pokemon", pokemon.GetName() } })));
-            // TODO: Create event that destroys flowchart at the end of the animation
         }
-        foreach (BattleTrigger bt in battleTriggers)
-            BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveTrigger(bt);
-        turnsLeft = 0;
-    }
-
-    public void AddBattleTrigger(BattleTrigger bt)
-    {
-        battleTriggers.Add(bt);
+        base.Remove();
     }
 
     public override string ToString()
     {
-        return "" + effectId + " on " +pokemon.GetName()+ " - Left: " + turnsLeft;
+        return "" + effectData.id + " on " +pokemon.GetName()+ " - Left: " + turnsLeft;
     }
 }

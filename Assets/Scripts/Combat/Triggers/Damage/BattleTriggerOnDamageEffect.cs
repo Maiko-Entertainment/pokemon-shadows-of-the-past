@@ -102,8 +102,8 @@ public class BattleTriggerOnDamageEffect : BattleTriggerOnPokemonDamage
         {
             PokemonBattleData pokemonTarget = bm.GetTarget(pokemon, msc.targetType);
             float random = Random.value;
-            bool hasStatus = pokemonTarget.GetNonPrimaryStatus().Find((se) => msc.effectId == se.effectId) != null;
-            bool hasPrimaryAlready = pokemonTarget.GetCurrentPrimaryStatus() != null && pokemonTarget.GetCurrentPrimaryStatus().effectId == msc.effectId;
+            bool hasStatus = pokemonTarget.GetNonPrimaryStatus().Find((se) => msc.effectData.GetId() == se.effectData.GetId()) != null;
+            bool hasPrimaryAlready = pokemonTarget.GetCurrentPrimaryStatus() != null && pokemonTarget.GetCurrentPrimaryStatus().effectData.GetId() == msc.effectData.GetId();
             if (random < msc.chance && !hasStatus && !hasPrimaryAlready)
             {
                 bm.AddStatusEffectEvent(pokemonTarget, msc.effectData, isAbilitySource);

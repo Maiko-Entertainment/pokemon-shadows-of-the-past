@@ -228,7 +228,7 @@ public class BattleAnimatorMaster : MonoBehaviour
         combatCamera.SetIdle(0f);
     }
 
-    public void LoadPokemonsInfo(PokemonBattleData pokemon, int health)
+    public void LoadPokemonsInfo(PokemonBattleData pokemon)
     {
         List<StatusEffectData> minorData = new List<StatusEffectData>();
         foreach (StatusEffect s in pokemon.GetNonPrimaryStatus())
@@ -236,7 +236,7 @@ public class BattleAnimatorMaster : MonoBehaviour
             minorData.Add(s.effectData);
         }
         StatusEffect status = pokemon.GetCurrentPrimaryStatus();
-        battleInfoManager.UpdatePokemonData(pokemon, health, GetStatusEffectData(status!=null ? status.effectId : StatusEffectId.None), minorData);
+        battleInfoManager.UpdatePokemonInfo(pokemon.Copy());
     }
 
     public PokemonBattleAnimator InstantiatePokemonAnim(PokemonBattleData pokemon, BattleTeamId teamId)

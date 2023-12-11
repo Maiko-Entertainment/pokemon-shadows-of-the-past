@@ -4,7 +4,6 @@ using UnityEngine;
 [System.Serializable]
 public class Status
 {
-    public StatusEffectId effectId;
     public int minTurns = 1;
     public int addedRangeTurns = 3;
     public string gainStatusBlockName = "";
@@ -12,18 +11,28 @@ public class Status
     public string onWarningFlowchartBlock = "";
 
     protected List<BattleTrigger> battleTriggers = new List<BattleTrigger>();
-    protected List<BattleStatsGetter> statGetters = new List<BattleStatsGetter>();
     protected int turnsLeft = 0;
     protected int initialTurnsDuration = 0;
     protected bool stopEscape = false;
     protected Flowchart flowchartInstance = null;
 
-    public Status(){ }
+    public Status(Flowchart flowchartInstance)
+    {
+        this.flowchartInstance = flowchartInstance;
+    }
 
     public virtual void Initiate()
     {
         turnsLeft = minTurns + Random.Range(0, addedRangeTurns);
         initialTurnsDuration = turnsLeft;
+
+        foreach (BattleTrigger bt in battleTriggers)
+        {
+            BattleMaster.GetInstance()?
+                .GetCurrentBattle()?.AddTrigger(
+                    bt
+                );
+        }
     }
 
     public virtual bool IsOver()
@@ -42,20 +51,22 @@ public class Status
 
     public virtual void Remove()
     {
-        if (onEndFlowchartBlock != "")
+        if (flowchartInstance)
         {
-            Flowchart battleFlow = BattleAnimatorMaster.GetInstance().battleFlowchart;
-            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(new BattleTriggerMessageData(battleFlow, onEndFlowchartBlock)));
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventDestroy(flowchartInstance.gameObject));
         }
         foreach (BattleTrigger bt in battleTriggers)
             BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveTrigger(bt);
-        foreach (BattleStatsGetter sg in statGetters)
-            BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveStatGetter(sg);
         turnsLeft = 0;
     }
 
     public int GetTurnsPassed()
     {
         return initialTurnsDuration - turnsLeft;
+    }
+
+    public virtual void AddBattleTrigger(BattleTrigger bt)
+    {
+        battleTriggers.Add(bt);
     }
 }

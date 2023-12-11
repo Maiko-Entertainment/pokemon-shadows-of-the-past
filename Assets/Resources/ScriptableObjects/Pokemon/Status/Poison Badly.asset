@@ -19,7 +19,7 @@ MonoBehaviour:
   onStartStatusBlockName: Poison Gain
   onTriggerFlowchartBlock: Poison Damage
   onEndFlowchartBlock: 
-  minTurnDuration: 9999
+  minTurnDuration: 999999
   extraTurnRange: 0
   percentageDamagePerRound: 0.0625
   healOpponentsFromDamage: 0
@@ -29,10 +29,18 @@ MonoBehaviour:
   - {fileID: 9138697049564351032, guid: a70c8646058837e4a8d5dc3a4eb3221c, type: 3}
   - {fileID: 6693565728200948145, guid: a406d13d88fd6c445bc4e62389cf0ffc, type: 3}
   - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  tickDownAtEndOfRoundInstead: 0
   captureRateBonus: 10
   inmuneTypes:
   - {fileID: 11400000, guid: 04c0ed617b8ed774e9b4c994ff418265, type: 2}
   - {fileID: 11400000, guid: 6920b18b27a6fca44a9e1ab743bc0c84, type: 2}
+  statsMultiplier:
+    attack: 1
+    defense: 1
+    spAttack: 1
+    spDefense: 1
+    speed: 1
   cancelMoveChance: 0
   playAnimationEvenIfMoveIsntCanceled: 0
   replaceMoveInsteadOfCancel: {fileID: 0}
+  damageModifiers: []

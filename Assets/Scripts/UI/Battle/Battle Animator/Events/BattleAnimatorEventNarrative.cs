@@ -16,7 +16,10 @@ public class BattleAnimatorEventNarrative : BattleAnimatorEvent
 
     public override void Execute()
     {
-        if (messageData==null || !messageData.flowchart || string.IsNullOrEmpty(messageData.blockName))
+        if (messageData==null || !messageData.flowchart ||
+            string.IsNullOrEmpty(messageData.blockName) ||
+            !messageData.flowchart.HasBlock(messageData.blockName)
+        )
         {
             BattleAnimatorMaster.GetInstance().GoToNextBattleAnim();
             return;

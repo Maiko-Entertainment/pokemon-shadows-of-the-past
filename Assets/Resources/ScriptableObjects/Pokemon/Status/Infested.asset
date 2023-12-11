@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a334137c6afbb84b878e95df7afbaa3, type: 3}
+  m_Name: Infested
+  m_EditorClassIdentifier: 
+  id: Infested
+  statusName: Infested
+  icon: {fileID: 21300000, guid: fdb297422a5619940acde04752efbfe7, type: 3}
+  flowchart: {fileID: 0}
+  onStartStatusBlockName: 
+  onTriggerFlowchartBlock: 
+  onEndFlowchartBlock: 
+  minTurnDuration: 4
+  extraTurnRange: 1
+  percentageDamagePerRound: 0.125
+  healOpponentsFromDamage: 0
+  multiplyDamageEachTurn: 1
+  isPrimary: 0
+  hitAnims: []
+  tickDownAtEndOfRoundInstead: 0
+  captureRateBonus: 0
+  inmuneTypes:
+  - {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
+  statsMultiplier:
+    attack: 1
+    defense: 1
+    spAttack: 1
+    spDefense: 1
+    speed: 1
+  cancelMoveChance: 0
+  playAnimationEvenIfMoveIsntCanceled: 0
+  replaceMoveInsteadOfCancel: {fileID: 0}
+  damageModifiers: []

@@ -15,6 +15,7 @@ public class StatusEffectData : StatusData
 
     public int captureRateBonus = 0;
     public List<TypeData> inmuneTypes = new List<TypeData>();
+    public PokemonBattleStatsMultiplier statsMultiplier = new PokemonBattleStatsMultiplier();
 
     [Header("Cancel or Replace Move Config")]
     [Range(0f, 1f)]
