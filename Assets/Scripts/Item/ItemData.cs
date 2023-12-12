@@ -14,7 +14,7 @@ public class ItemData : ScriptableObject
     [TextArea] public string description;
     public int price = 100;
     public bool unsellable = false;
-    public List<BattleAnimation> animations = new List<BattleAnimation>();
+    public List<BattleAnimationPokemon> animations = new List<BattleAnimationPokemon>();
 
     public string GetName()
     {

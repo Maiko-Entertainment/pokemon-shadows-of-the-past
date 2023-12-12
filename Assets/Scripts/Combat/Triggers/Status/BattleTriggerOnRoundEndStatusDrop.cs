@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BattleTriggerOnRoundEndStatusDrop : BattleTriggerOnRoundEnd
 {
-    public StatusEffect status;
+    public Status status;
 
-    public BattleTriggerOnRoundEndStatusDrop(StatusEffect status): base()
+    public BattleTriggerOnRoundEndStatusDrop(Status status): base()
     {
         this.status = status;
     }
 
     public override bool Execute(BattleEventRoundEnd battleEvent)
     {
-        status.PassTurn();
+        status.PassRound();
         return base.Execute(battleEvent);
     }
 }

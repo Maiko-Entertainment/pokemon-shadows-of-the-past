@@ -104,6 +104,8 @@ public class BattleEventManager
                     BattleTriggerOnDesition btod = (BattleTriggerOnDesition)bt;
                     keepGoing = btod.Execute((BattleEventDestion)next);
                     break;
+                case BattleEventId.pokemonAddField:
+                    break;
             }
             if (!keepGoing)
             {

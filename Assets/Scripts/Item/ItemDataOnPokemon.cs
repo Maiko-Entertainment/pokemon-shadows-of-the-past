@@ -70,10 +70,10 @@ public class ItemDataOnPokemon : ItemData
     }
     public void PlayAnimations(PokemonBattleData pokemon)
     {
-        foreach (BattleAnimation anim in animations)
+        foreach (BattleAnimationPokemon anim in animations)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(
-                new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim)
+                new BattleAnimatorEventAnimation(pokemon, pokemon, anim)
             );
         }
     }

@@ -10,9 +10,4 @@ public class BattleEvent
     {
 
     }
-
-    public virtual void Delete()
-    {
-
-    }
 }

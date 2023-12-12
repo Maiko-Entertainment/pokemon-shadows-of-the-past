@@ -6,7 +6,7 @@ public class BattleTriggerOnRoundEndDialog : BattleTriggerOnRoundEnd
 {
     public BattleTriggerMessageData messageData;
     public int roundNumber;
-    public BattleTeamId teamId;
+    public BattleTeamId teamId = BattleTeamId.None;
 
     public BattleTriggerOnRoundEndDialog(BattleTriggerMessageData messageData, int roundNumber, BattleTeamId teamId = BattleTeamId.None) :
     base()
@@ -16,11 +16,18 @@ public class BattleTriggerOnRoundEndDialog : BattleTriggerOnRoundEnd
         this.teamId = teamId;
         maxTriggers = 1;
     }
+    public BattleTriggerOnRoundEndDialog(BattleTriggerMessageData messageData) :
+    base()
+    {
+        this.messageData = messageData;
+        maxTriggers = 1;
+        roundNumber = -1;
+    }
 
     public override bool Execute(BattleEventRoundEnd battleEvent)
     {
         int roundNumber = BattleMaster.GetInstance().GetCurrentBattle().turnsPassed;
-        if (roundNumber == this.roundNumber)
+        if (this.roundNumber == -1 || roundNumber == this.roundNumber)
         {
             if (maxTriggers > 0)
             {

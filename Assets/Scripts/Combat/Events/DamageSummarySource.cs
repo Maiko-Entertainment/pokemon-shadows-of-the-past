@@ -7,6 +7,6 @@ public enum DamageSummarySource
     Move = 0,
     Ability = 1,
     Status = 3,
-    Weather = 4,
+    Field = 4,
     MoveEffect = 5
 }

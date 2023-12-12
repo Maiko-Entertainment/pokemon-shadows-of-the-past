@@ -33,8 +33,8 @@ public class BattleAnimatorMaster : MonoBehaviour
     public GameObject pokeballFrontReleaseAnimPrefab;
     public GameObject pokeballBackReleaseAnimPrefab;
     public GameObject pokeballGlow;
-    public List<BattleAnimation> statDown = new List<BattleAnimation>();
-    public List<BattleAnimation> statUp = new List<BattleAnimation>();
+    public List<BattleAnimationPokemon> statDown = new List<BattleAnimationPokemon>();
+    public List<BattleAnimationPokemon> statUp = new List<BattleAnimationPokemon>();
 
     // Utils
     public Material shadowMaterial;
@@ -296,18 +296,18 @@ public class BattleAnimatorMaster : MonoBehaviour
     {
         if (change > 0)
         {
-            foreach(BattleAnimation ba in statUp)
+            foreach(BattleAnimationPokemon ba in statUp)
             {
-                BattleAnimatorEventPokemonMoveAnimation anim = new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba);
+                BattleAnimatorEventAnimation anim = new BattleAnimatorEventAnimation(pokemon, pokemon, ba);
                 anim.priority = priority;
                 AddEvent(anim);
             }
         }
         else if (change < 0)
         {
-            foreach (BattleAnimation ba in statDown)
+            foreach (BattleAnimationPokemon ba in statDown)
             {
-                BattleAnimatorEventPokemonMoveAnimation anim = new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, ba);
+                BattleAnimatorEventAnimation anim = new BattleAnimatorEventAnimation(pokemon, pokemon, ba);
                 anim.priority = priority;
                 AddEvent(anim);
             }
@@ -585,10 +585,17 @@ public class BattleAnimatorMaster : MonoBehaviour
         }
     }
 
-    public void HandlePokemonMoveAnim(PokemonBattleData pokemon, PokemonBattleData target, BattleAnimation animation)
+    public void HandlePokemonMoveAnim(PokemonBattleData pokemon, PokemonBattleData target, BattleAnimationPokemon animation)
     {
         float duration = animation.duration;
-        Instantiate(animation.gameObject).GetComponent<BattleAnimation>().Execute(pokemon, target);
+        Instantiate(animation.gameObject).GetComponent<BattleAnimationPokemon>().Execute(pokemon, target);
+        GoToNextBattleAnim(duration);
+    }
+
+    public void HandleAnim(BattleAnimation animation)
+    {
+        float duration = animation.duration;
+        Instantiate(animation.gameObject).GetComponent<BattleAnimation>().Execute();
         GoToNextBattleAnim(duration);
     }
 

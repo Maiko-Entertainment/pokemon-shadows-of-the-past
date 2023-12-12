@@ -22,7 +22,13 @@ MonoBehaviour:
   minTurnDuration: 5
   extraTurnRange: 0
   percentageDamagePerRound: 0
+  percentageDamageConditions:
+    conditionsData: []
   fieldCategory: {fileID: 11400000, guid: 5bdfeedb834fe70499e235167feabf1f, type: 2}
+  triggerAnimations: []
+  constantAnimations:
+  - {fileID: 1976121004885272536, guid: f3d67f894a8f4c440b31fa52715e326d, type: 3}
+  statGetters: []
   triggerConditionsMove:
   - moveMods:
       powerMultiplier: 1.5
@@ -31,14 +37,8 @@ MonoBehaviour:
       moveType: {fileID: 0}
     cancelMoveInstead: 0
     triggerCondition:
-      minHealthTreshold: 0
-      maxHealthTreshold: 1
-      pokemonIsAtLeastOneOfTypes: []
-      moveIsAtLeastOneOfTypes:
-      - {fileID: 11400000, guid: b05d1f80523ecbd46a3f2c4144f63161, type: 2}
-      moveCategories: 
-      minMovePowerTreshold: 0
-      maxMovePowerTrashold: 999999
+      conditionsData:
+      - {fileID: 11400000, guid: 6faafe8e5c2cb224592fcd0f97d83f92, type: 2}
       focusOnEnemiesTargetingPokemonInstead: 0
   - moveMods:
       powerMultiplier: 0.5
@@ -47,12 +47,6 @@ MonoBehaviour:
       moveType: {fileID: 0}
     cancelMoveInstead: 0
     triggerCondition:
-      minHealthTreshold: 0
-      maxHealthTreshold: 1
-      pokemonIsAtLeastOneOfTypes: []
-      moveIsAtLeastOneOfTypes:
-      - {fileID: 11400000, guid: 2afc142f5ecadf249860dcfb25befa04, type: 2}
-      moveCategories: 
-      minMovePowerTreshold: 0
-      maxMovePowerTrashold: 999999
+      conditionsData:
+      - {fileID: 11400000, guid: 41b638a5ee3326c43b883e19cf5f9eb7, type: 2}
       focusOnEnemiesTargetingPokemonInstead: 0

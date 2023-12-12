@@ -5,8 +5,8 @@ using UnityEngine;
 public class BattleEventAnimation : BattleEventPokemon
 {
     public PokemonBattleData target;
-    public BattleAnimation animation;
-    public BattleEventAnimation (PokemonBattleData user, PokemonBattleData target, BattleAnimation animation) : base(user)
+    public BattleAnimationPokemon animation;
+    public BattleEventAnimation (PokemonBattleData user, PokemonBattleData target, BattleAnimationPokemon animation) : base(user)
     {
         this.target = target;
         this.animation = animation;
@@ -15,7 +15,7 @@ public class BattleEventAnimation : BattleEventPokemon
 
     public override void Execute()
     {
-        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, target, animation));
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventAnimation(pokemon, target, animation));
         base.Execute();
     }
 }

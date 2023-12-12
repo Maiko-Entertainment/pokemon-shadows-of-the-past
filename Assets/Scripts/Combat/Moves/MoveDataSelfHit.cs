@@ -9,7 +9,7 @@ public class MoveDataSelfHit : MoveData
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         HandleStatsChanges(battleEvent.pokemon);
-        HandleStatusAdds(battleEvent.pokemon);
+        HandleStatusAdd(battleEvent.pokemon);
         battleEvent.pokemon.ReduceMovePP(this);
         PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
         if (categoryId != MoveCategoryId.status)

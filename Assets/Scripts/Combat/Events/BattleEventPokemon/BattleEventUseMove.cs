@@ -16,7 +16,6 @@ public class BattleEventUseMove : BattleEventPokemon
     {
         if (!pokemon.IsFainted())
         {
-            BattleMaster.GetInstance().GetCurrentBattle().lastUsedMove = move;
             move.Execute(this);
         }
     }

@@ -14,7 +14,7 @@ public class BattleTriggerOnDesitionStatusDrop : BattleTriggerOnDesition
     {
         if (teamId == battleEvent.desition.team)
         {
-            status.PassTurn();
+            status.PassRound();
         }
         return base.Execute(battleEvent);
     }

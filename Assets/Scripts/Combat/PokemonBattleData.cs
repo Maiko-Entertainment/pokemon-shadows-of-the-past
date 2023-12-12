@@ -129,6 +129,8 @@ public class PokemonBattleData
         {
             finalStats = effect.effectData.statsMultiplier.Multiply(finalStats);
         }
+        // We apply the stat getters to our stats, this come from weather, terrain and other sources
+        finalStats = BattleMaster.GetInstance().GetCurrentBattle().ApplyStatGetters(this, finalStats);
         return finalStats;
     }
     public int GetMaxHealth()

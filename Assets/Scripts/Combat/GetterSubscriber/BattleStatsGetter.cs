@@ -3,8 +3,8 @@ using System.Collections.Generic;
 [System.Serializable]
 public class BattleStatsGetter
 {
-    public float speedMultiplier = 1f;
-    public List<TypeData> affectedTypes = new List<TypeData>();
+    public PokemonBattleStatsMultiplier statMultiplier = new PokemonBattleStatsMultiplier();
+    public List<TriggerConditionData> affectConditions = new List<TriggerConditionData>();
 
     public PokemonBattleStats GetPokemonBattleStats(PokemonBattleData pkmn, PokemonBattleStats modifiedStats)
     {
@@ -20,26 +20,19 @@ public class BattleStatsGetter
 
     public virtual bool IsApplicable(PokemonBattleData pkmn, PokemonBattleStats stats)
     {
-        foreach(TypeData type in pkmn.GetTypes())
+        foreach(TriggerConditionData cond in affectConditions)
         {
-            if (affectedTypes.Contains(type))
+            if (!cond.MeetsConditions(pkmn))
             {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public virtual PokemonBattleStats Apply(PokemonBattleData pkmn, PokemonBattleStats modifiedStats)
     {
-        PokemonBattleStats newStats = new PokemonBattleStats();
-        newStats.accuracy = (int)(modifiedStats.accuracy);
-        newStats.evasion = (int)(modifiedStats.evasion);
-        newStats.attack = (int)(modifiedStats.attack);
-        newStats.spAttack = (int)(modifiedStats.spAttack);
-        newStats.defense = (int)(modifiedStats.defense);
-        newStats.spDefense = (int)(modifiedStats.spDefense);
-        newStats.speed = (int)(modifiedStats.speed * speedMultiplier);
-        return newStats;
+        PokemonBattleStats newBattleStats = statMultiplier.Multiply(modifiedStats);
+        return newBattleStats;
     }
 }

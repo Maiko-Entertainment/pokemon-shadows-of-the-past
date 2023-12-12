@@ -40,10 +40,10 @@ public class TacticDataBefriend : TacticData
             ));
             if (contains)
             {
-                foreach (BattleAnimation anim in afterTacticTextAnims)
+                foreach (BattleAnimationPokemon anim in afterTacticTextAnims)
                 {
                     BattleAnimatorMaster.GetInstance()?.AddEvent(
-                        new BattleAnimatorEventPokemonMoveAnimation(teamUsersActivePokemon, pokemon, anim)
+                        new BattleAnimatorEventAnimation(teamUsersActivePokemon, pokemon, anim)
                     );
                 }
                 foreach (MoveStatusChance msc in statusAdds)

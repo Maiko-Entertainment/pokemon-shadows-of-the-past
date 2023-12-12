@@ -7,8 +7,8 @@ public class MoveDataMultihit : MoveData
 {
     public int maxHits = 5;
     public float extraHitChance = 0.5f;
-    public List<BattleAnimation> beginAnimation = new List<BattleAnimation>();
-    public List<BattleAnimation> endAnimation = new List<BattleAnimation>();
+    public List<BattleAnimationPokemon> beginAnimation = new List<BattleAnimationPokemon>();
+    public List<BattleAnimationPokemon> endAnimation = new List<BattleAnimationPokemon>();
     public override void Execute(BattleEventUseMove battleEvent)
     {
         int randomHits = 2;
@@ -30,15 +30,15 @@ public class MoveDataMultihit : MoveData
         // Self targeting moves dont usually miss
         if (moveHits || targetType == MoveTarget.Self)
         {
-            foreach (BattleAnimation anim in beginAnimation)
+            foreach (BattleAnimationPokemon anim in beginAnimation)
             {
                 BattleAnimatorMaster.GetInstance()?.AddEvent(
-                    new BattleAnimatorEventPokemonMoveAnimation(battleEvent.pokemon, pokemonTarget, anim)
+                    new BattleAnimatorEventAnimation(battleEvent.pokemon, pokemonTarget, anim)
                 );
             }
-            List<BattleAnimation> reverseList = new List<BattleAnimation>(endAnimation);
+            List<BattleAnimationPokemon> reverseList = new List<BattleAnimationPokemon>(endAnimation);
             reverseList.Reverse();
-            foreach (BattleAnimation anim in reverseList)
+            foreach (BattleAnimationPokemon anim in reverseList)
             {
                 BattleMaster.GetInstance()?.GetCurrentBattle().AddEvent(
                     new BattleEventAnimation(battleEvent.pokemon, pokemonTarget, anim)
@@ -55,12 +55,14 @@ public class MoveDataMultihit : MoveData
                 else
                 {
                     HandleStatsChanges(battleEvent.pokemon);
-                    HandleStatusAdds(battleEvent.pokemon);
+                    HandleStatusAdd(battleEvent.pokemon);
                     HandleDestroy(pokemonTarget, battleEvent.pokemon);
                     HandleAnimations(battleEvent.pokemon, pokemonTarget);
                 }
                 randomHits--;
             }
+            // Fields should only be checked once
+            HandleFieldStatusAdd();
             // Negative values are used for recoil
             if (drainMultiplier != 0 && moveHits)
             {

@@ -21,6 +21,10 @@ public class BattleEventBattleEnd : BattleEvent
         if (winningTeamId == BattleTeamId.Team1)
             InventoryMaster.GetInstance().ChangeMoney(finalBattleState.team2.moneyPrice);
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventBattleEndMessage(this));
+        foreach(StatusField statuses in BattleMaster.GetInstance().GetCurrentBattle().GetStatusFields())
+        {
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventRemoveStatusFieldConstantAnimations(statuses));
+        }
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventEndBattle(this));
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventCheckEvolution());
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorSetBattleOver());

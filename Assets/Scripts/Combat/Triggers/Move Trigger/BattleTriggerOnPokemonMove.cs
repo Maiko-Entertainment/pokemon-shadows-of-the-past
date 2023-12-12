@@ -22,11 +22,20 @@ public class BattleTriggerOnPokemonMove : BattleTriggerOnPokemon
 
     public virtual bool Execute(BattleEventUseMove battleEvent)
     {
-        PokemonBattleData enemy = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(pokemon, MoveTarget.Enemy);
-        bool isEnemyAndTargetingPokemon = battleEvent.pokemon.battleId == enemy.battleId && battleEvent.move.targetType == MoveTarget.Enemy;
-        PokemonBattleData targetPokemon = triggerConditions.focusOnEnemiesTargetingPokemonInstead && isEnemyAndTargetingPokemon ?
-            enemy :
-            pokemon;
+        bool anyPokemon = pokemon == null;
+        PokemonBattleData targetPokemon;
+        if (!anyPokemon)
+        {
+            PokemonBattleData enemy = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(pokemon, MoveTarget.Enemy);
+            bool isEnemyAndTargetingPokemon = battleEvent.pokemon.battleId == enemy.battleId && battleEvent.move.targetType == MoveTarget.Enemy;
+            targetPokemon = triggerConditions.focusOnEnemiesTargetingPokemonInstead && isEnemyAndTargetingPokemon ?
+                enemy :
+                pokemon;
+        }
+        else
+        {
+            targetPokemon = battleEvent.pokemon; // If we want to apply it to any pokemon we make sure its always the pokemon we want
+        }
         if (battleEvent.pokemon.battleId == targetPokemon.battleId &&
             maxTriggers > 0 &&
             useMoveMods != null &&

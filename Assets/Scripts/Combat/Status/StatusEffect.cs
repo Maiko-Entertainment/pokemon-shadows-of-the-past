@@ -42,7 +42,7 @@ public class StatusEffect : Status
                 this,
                 BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon)
             );
-        battleTriggers.Add(btDrop);
+        _battleTriggers.Add(btDrop);
         effectData.HandleVisualStart(this);
 
         base.Initiate();
@@ -57,7 +57,7 @@ public class StatusEffect : Status
     {
         return effectData.captureRateBonus;
     }
-    public override void PassTurn()
+    public override void PassRound()
     {
         if (IsOver())
         {

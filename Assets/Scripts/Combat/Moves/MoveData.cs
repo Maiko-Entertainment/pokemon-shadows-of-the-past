@@ -16,6 +16,7 @@ public class MoveData : ScriptableObject
     public MoveCategoryId categoryId;
     public MoveTarget targetType;
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
+    public List<MoveFieldChance> fieldChances = new List<MoveFieldChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
     public List<StatusEffectBonus> conditionalBonuses = new List<StatusEffectBonus>();
     public List<MoveTags> tags = new List<MoveTags>();
@@ -29,7 +30,7 @@ public class MoveData : ScriptableObject
     public string description;
     // If you want the sound to started delayed you need to create a prefab that plays the sound and put it inside the animations list in the moment you want
     public AudioOptions soundEffect;
-    public List<BattleAnimation> animations = new List<BattleAnimation>();
+    public List<BattleAnimationPokemon> animations = new List<BattleAnimationPokemon>();
 
     public string GetId()
     {
@@ -68,7 +69,8 @@ public class MoveData : ScriptableObject
             {
                 HandleAnimations(battleEvent.pokemon, pokemonTarget);
                 HandleStatsChanges(battleEvent.pokemon);
-                HandleStatusAdds(battleEvent.pokemon);
+                HandleStatusAdd(battleEvent.pokemon);
+                HandleFieldStatusAdd();
                 HandleDestroy(pokemonTarget, battleEvent.pokemon);
             }
             bm.AddMoveSuccessEvent(battleEvent);
@@ -101,7 +103,7 @@ public class MoveData : ScriptableObject
         }
     }
 
-    public virtual void HandleStatusAdds(PokemonBattleData pokemon)
+    public virtual void HandleStatusAdd(PokemonBattleData pokemon)
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         foreach (MoveStatusChance msc in statusChances)
@@ -115,13 +117,33 @@ public class MoveData : ScriptableObject
         }
     }
 
+    public virtual void HandleFieldStatusAdd()
+    {
+        BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
+        foreach (MoveFieldChance mfc in fieldChances)
+        {
+            float random = Random.value;
+            if (random < mfc.chance)
+            {
+                if (mfc.removeStatusInstead)
+                {
+                    bm.RemoveStatusField(mfc.status);
+                }
+                else
+                {
+                    bm.AddStatusFieldEvent(mfc.status);
+                }
+            }
+        }
+    }
+
     public void HandleAnimations(PokemonBattleData user, PokemonBattleData target)
     {
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPlaySound(soundEffect));
-        foreach(BattleAnimation anim in animations)
+        foreach(BattleAnimationPokemon anim in animations)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(
-                new BattleAnimatorEventPokemonMoveAnimation(user, target, anim)
+                new BattleAnimatorEventAnimation(user, target, anim)
             );
         }
     }

@@ -10,7 +10,7 @@ public class StatusEffectData : StatusData
     public float healOpponentsFromDamage = 0f;
     public float multiplyDamageEachTurn = 1f;
     public bool isPrimary = false;
-    public List<BattleAnimation> hitAnims;
+    public List<BattleAnimationPokemon> hitAnims;
     public bool tickDownAtEndOfRoundInstead = false;
 
     public int captureRateBonus = 0;
@@ -58,7 +58,7 @@ public class StatusEffectData : StatusData
             damageEvent.multiplierByTimesTriggered = multiplyDamageEachTurn;
 
             // Animation
-            BattleTrigger animTrigger = new BattleTriggerRoundEndAnimations(
+            BattleTrigger animTrigger = new BattleTriggerOnPokemonRoundEndAnimations(
                            pokemon,
                            pokemon,
                            hitAnims
@@ -110,9 +110,9 @@ public class StatusEffectData : StatusData
     public void HandleVisualStart(StatusEffect se)
     {
         PokemonBattleData pokemon = se.pokemon;
-        foreach (BattleAnimation anim in hitAnims)
+        foreach (BattleAnimationPokemon anim in hitAnims)
         {
-            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim));
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventAnimation(pokemon, pokemon, anim));
         }
         Flowchart flowchart = BattleAnimatorMaster.GetInstance().battleFlowchart;
         BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventNarrative(

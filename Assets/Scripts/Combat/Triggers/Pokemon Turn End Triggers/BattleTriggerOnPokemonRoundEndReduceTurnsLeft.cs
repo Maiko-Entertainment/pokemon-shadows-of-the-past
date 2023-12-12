@@ -16,7 +16,7 @@ public class BattleTriggerOnPokemonRoundEndReduceTurnsLeft : BattleTriggerOnPoke
 
     public override bool Execute(BattleEventRoundEnd battleEvent)
     {
-        status.PassTurn();
+        status.PassRound();
         return base.Execute(battleEvent);
     }
 

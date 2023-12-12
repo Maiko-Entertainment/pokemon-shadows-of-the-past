@@ -10,7 +10,10 @@ public class Status
     public string onEndFlowchartBlock = "";
     public string onWarningFlowchartBlock = "";
 
-    protected List<BattleTrigger> battleTriggers = new List<BattleTrigger>();
+    protected List<BattleTrigger> _battleTriggers = new List<BattleTrigger>();
+    protected List<BattleStatsGetter> _statsGetters = new List<BattleStatsGetter>();
+    protected List<IBattleAnimationConstant> constantAnimations = new List<IBattleAnimationConstant>();
+
     protected int turnsLeft = 0;
     protected int initialTurnsDuration = 0;
     protected bool stopEscape = false;
@@ -26,12 +29,16 @@ public class Status
         turnsLeft = minTurns + Random.Range(0, addedRangeTurns);
         initialTurnsDuration = turnsLeft;
 
-        foreach (BattleTrigger bt in battleTriggers)
+        foreach (BattleTrigger bt in _battleTriggers)
         {
             BattleMaster.GetInstance()?
                 .GetCurrentBattle()?.AddTrigger(
                     bt
                 );
+        }
+        foreach (BattleStatsGetter sg in _statsGetters)
+        {
+            BattleMaster.GetInstance()?.GetCurrentBattle()?.AddStatGetter(sg);
         }
     }
 
@@ -40,7 +47,7 @@ public class Status
         return turnsLeft <= 0;
     }
 
-    public virtual void PassTurn()
+    public virtual void PassRound()
     {
         turnsLeft -= 1;
         if (IsOver())
@@ -55,8 +62,12 @@ public class Status
         {
             BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventDestroy(flowchartInstance.gameObject));
         }
-        foreach (BattleTrigger bt in battleTriggers)
+        foreach (BattleTrigger bt in _battleTriggers)
             BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveTrigger(bt);
+        foreach (BattleStatsGetter sg in _statsGetters)
+        {
+            BattleMaster.GetInstance()?.GetCurrentBattle()?.RemoveStatGetter(sg);
+        }
         turnsLeft = 0;
     }
 
@@ -67,6 +78,16 @@ public class Status
 
     public virtual void AddBattleTrigger(BattleTrigger bt)
     {
-        battleTriggers.Add(bt);
+        _battleTriggers.Add(bt);
+    }
+
+    public virtual void AddConstantAnimation(IBattleAnimationConstant battleAnimationConstant)
+    {
+        constantAnimations.Add(battleAnimationConstant);
+    }
+
+    public List<IBattleAnimationConstant> GetConstantAnimations()
+    {
+        return constantAnimations;
     }
 }

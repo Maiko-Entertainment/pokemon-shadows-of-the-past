@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
 [System.Serializable]
 public class BattleManager
 {
@@ -20,11 +21,17 @@ public class BattleManager
     private bool isBattleActive = false; // Battle animation events are done and battle is offially over
     private bool isBattleSetToOver = false; // Has battle end event been added
     private TacticData currentTacticSelected;
+    // Battle status such as wather, terrain, etc
+    private List<StatusField> statusFields = new List<StatusField>();
 
     public static int BASE_FRIENDSHIP_GAINED_PER_TAKEDOWN = 2;
     public static float SHADOW_REBEL_CHANCE = 0.5f;
     public static float SHADOW_IGNORE_CHANCE = 0.25f;
 
+    // Global stats modifiers. Weather and Terrain changes can use this
+    public List<BattleStatsGetter> statGetters = new List<BattleStatsGetter>();
+
+    // Histories
     public List<BattleFaintHistory> faintHistory = new List<BattleFaintHistory>();
     public List<BattleDesitionHistory> battleDesitionHistories = new List<BattleDesitionHistory>();
 
@@ -76,9 +83,13 @@ public class BattleManager
         isBattleActive = isActive;
     }
 
-    public PokemonBattleStats GetPokemonStats(PokemonBattleData pokemon)
+    public PokemonBattleStats ApplyStatGetters(PokemonBattleData pokemon, PokemonBattleStats stats)
     {
-        PokemonBattleStats statsAccum = pokemon.GetBattleStats();
+        PokemonBattleStats statsAccum = stats.Copy();
+        foreach(BattleStatsGetter statGetter in statGetters)
+        {
+            statGetter.GetPokemonBattleStats(pokemon, statsAccum);
+        }
         return statsAccum;
     }
 
@@ -409,6 +420,16 @@ public class BattleManager
     {
         eventManager.RemoveBattleTrigger(trigger);
     }
+
+    public void AddStatGetter(BattleStatsGetter getter)
+    {
+        statGetters.Add(getter);
+    }
+    public void RemoveStatGetter(BattleStatsGetter getter)
+    {
+        statGetters.Remove(getter);
+    }
+
     public void AddEvent(BattleEvent be)
     {
         eventManager.AddEvent(be);
@@ -446,6 +467,12 @@ public class BattleManager
     {
         BattleEventPokemonStatusAdd statusAddEvent = new BattleEventPokemonStatusAdd(target, status, isStatus);
         statusAddEvent.moveSource = moveSource;
+        eventManager.AddEvent(statusAddEvent);
+    }
+
+    public void AddStatusFieldEvent(StatusFieldData statusField)
+    {
+        BattleEventFieldStatusAdd statusAddEvent = new BattleEventFieldStatusAdd(statusField);
         eventManager.AddEvent(statusAddEvent);
     }
 
@@ -673,6 +700,63 @@ public class BattleManager
                     BattleAnimatorMaster.GetInstance()?.AddEventBattleFlowcartPokemonText(gainStatusBlockName, pokemon);
             }
         }
+    }
+
+    public void AddStatusField(BattleEventFieldStatusAdd statusEvent)
+    {
+        StatusFieldData statusField = statusEvent.statusField;
+        FieldCategoryData categoryData = statusField.fieldCategory;
+        StatusField currentStatusWithSameCategory = BattleMaster.GetInstance().GetCurrentBattle().GetStatusFieldFromCategory(categoryData);
+        if (currentStatusWithSameCategory != null && currentStatusWithSameCategory.FieldData.GetId() != statusField.GetId())
+        {
+            // If we send an event then the removal will happen after we initiate the status
+            RemoveStatusField(currentStatusWithSameCategory.FieldData);
+        }
+        // If the field is already there we dont want to create it again
+        if (currentStatusWithSameCategory == null || currentStatusWithSameCategory.FieldData.GetId() != statusField.GetId())
+        {
+            StatusField statusInstance = statusField.CreateStatusInstance();
+            statusFields.Add(statusInstance);
+            statusInstance.Initiate();
+            // TODO: add update UI event
+        }
+        else
+        {
+            // If it's already there we let them know the action had no effect
+            BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+        }
+
+    }
+
+    public void RemoveStatusField(StatusFieldData statusField)
+    {
+        List<StatusField> statusFieldsNew = new List<StatusField>();
+        foreach (StatusField sf in statusFields)
+        {
+            if (sf.FieldData.GetId() == statusField.GetId())
+            {
+                sf.Remove();
+                BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventRemoveStatusFieldConstantAnimations(sf));
+            }
+            else
+                statusFieldsNew.Add(sf);
+        }
+        statusFields = statusFieldsNew;
+        // TODO: Add update UI event
+    }
+    public List<StatusField> GetStatusFields()
+    {
+        return statusFields;
+    }
+
+    public StatusField GetStatusFieldFromCategory(FieldCategoryData categoryData)
+    {
+        foreach(StatusField statusField in statusFields)
+        {
+            if (statusField.FieldData.fieldCategory == categoryData)
+                return statusField;
+        }
+        return null;
     }
 
     public int HealPokemon(PokemonBattleData pokemon, HealSummary heal)

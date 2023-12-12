@@ -14,6 +14,8 @@ public enum BattleEventId
     pokemonChangeStats = 6,
     pokemonAddStatus = 12,
     pokemonRemoveStatus = 19,
+    pokemonAddField = 24,
+    pokemonRemoveField = 25,
     pokemonTurnEnd = 11,
     pokemonGainExp = 14,
     roundEnd = 8,

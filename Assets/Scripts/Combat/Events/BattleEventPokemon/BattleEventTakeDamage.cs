@@ -29,7 +29,7 @@ public class BattleEventTakeDamage : BattleEventPokemon
             // Handle All anims and events on hit
             damageSummary?.move?.HandleAnimations(damageSummary.pokemonSource, pokemon);
             damageSummary?.move?.HandleStatsChanges(damageSummary.pokemonSource);
-            damageSummary?.move?.HandleStatusAdds(damageSummary.pokemonSource);
+            damageSummary?.move?.HandleStatusAdd(damageSummary.pokemonSource);
             damageSummary?.move?.HandleDestroy(pokemon, damageSummary.pokemonSource);
             if (damageSummary.healOpponentByDamage > 0)
             {

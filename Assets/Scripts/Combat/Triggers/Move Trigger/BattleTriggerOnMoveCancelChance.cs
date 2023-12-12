@@ -25,9 +25,9 @@ public class BattleTriggerOnMoveCancelChance : BattleTriggerOnPokemonMove
             // Status like confusion always trigger their animation even if it doesn't trigger
             if (chanceTriggers || alwaysPlayAnimation)
             {
-                foreach(BattleAnimation anim in animations)
+                foreach(BattleAnimationPokemon anim in animations)
                 {
-                    BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventPokemonMoveAnimation(pokemon, pokemon, anim));
+                    BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventAnimation(pokemon, pokemon, anim));
                 }
                 if (flowchart && !string.IsNullOrEmpty(blockName))
                 {

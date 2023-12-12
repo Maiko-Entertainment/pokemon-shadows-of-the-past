@@ -12,7 +12,7 @@ public class TacticData : ScriptableObject
     public List<StatusEffectId> statusClears = new List<StatusEffectId>();
     public List<MoveStatusChance> statusAdds = new List<MoveStatusChance>();
     public List<MoveStatChange> statChanges = new List<MoveStatChange>();
-    public List<BattleAnimation> afterTacticTextAnims = new List<BattleAnimation>();
+    public List<BattleAnimationPokemon> afterTacticTextAnims = new List<BattleAnimationPokemon>();
 
     public string blockName;
     public string tacticName;
@@ -55,10 +55,10 @@ public class TacticData : ScriptableObject
                 )
             ));
         }
-        foreach (BattleAnimation anim in afterTacticTextAnims)
+        foreach (BattleAnimationPokemon anim in afterTacticTextAnims)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(
-                new BattleAnimatorEventPokemonMoveAnimation(teamUsersActivePokemon, pokemon, anim)
+                new BattleAnimatorEventAnimation(teamUsersActivePokemon, pokemon, anim)
             );
         }
         foreach (MoveStatusChance msc in statusAdds)

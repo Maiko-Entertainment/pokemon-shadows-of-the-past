@@ -4,10 +4,10 @@ using UnityEngine;
 public class ItemDataPokeball : ItemData
 {
     public float baseCaptureRate = 1f;
-    public List<BattleAnimation> shakeLeftAnim = new List<BattleAnimation>();
-    public List<BattleAnimation> shakeRightAnim = new List<BattleAnimation>();
-    public List<BattleAnimation> onCatchAnim = new List<BattleAnimation>();
-    public List<BattleAnimation> onFailAnim = new List<BattleAnimation>();
+    public List<BattleAnimationPokemon> shakeLeftAnim = new List<BattleAnimationPokemon>();
+    public List<BattleAnimationPokemon> shakeRightAnim = new List<BattleAnimationPokemon>();
+    public List<BattleAnimationPokemon> onCatchAnim = new List<BattleAnimationPokemon>();
+    public List<BattleAnimationPokemon> onFailAnim = new List<BattleAnimationPokemon>();
     public override CanUseResult CanUse()
     {
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
@@ -67,10 +67,10 @@ public class ItemDataPokeball : ItemData
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         PokemonBattleData pkmn1 = bm.GetTeamActivePokemon(BattleTeamId.Team1);
         PokemonBattleData pkmn2 = bm.GetTeamActivePokemon(BattleTeamId.Team2);
-        foreach (BattleAnimation anim in onCatchAnim)
+        foreach (BattleAnimationPokemon anim in onCatchAnim)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(
-                new BattleAnimatorEventPokemonMoveAnimation(pkmn1, pkmn2, anim)
+                new BattleAnimatorEventAnimation(pkmn1, pkmn2, anim)
             );
         }
     }
@@ -80,10 +80,10 @@ public class ItemDataPokeball : ItemData
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         PokemonBattleData pkmn1 = bm.GetTeamActivePokemon(BattleTeamId.Team1);
         PokemonBattleData pkmn2 = bm.GetTeamActivePokemon(BattleTeamId.Team2);
-        foreach (BattleAnimation anim in onFailAnim)
+        foreach (BattleAnimationPokemon anim in onFailAnim)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(
-                new BattleAnimatorEventPokemonMoveAnimation(pkmn1, pkmn2, anim)
+                new BattleAnimatorEventAnimation(pkmn1, pkmn2, anim)
             );
         }
     }
@@ -93,19 +93,19 @@ public class ItemDataPokeball : ItemData
         BattleManager bm = BattleMaster.GetInstance().GetCurrentBattle();
         PokemonBattleData pkmn1 = bm.GetTeamActivePokemon(BattleTeamId.Team1);
         PokemonBattleData pkmn2 = bm.GetTeamActivePokemon(BattleTeamId.Team2);
-        foreach (BattleAnimation anim in animations)
+        foreach (BattleAnimationPokemon anim in animations)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(
-                new BattleAnimatorEventPokemonMoveAnimation(pkmn1, pkmn2, anim)
+                new BattleAnimatorEventAnimation(pkmn1, pkmn2, anim)
             );
         }
         for(int i=0; i < result.shakes; i++)
         {
-            List<BattleAnimation> shakeAnims = (i % 2 == 0) ? shakeLeftAnim : shakeRightAnim;
-            foreach (BattleAnimation anim in shakeAnims)
+            List<BattleAnimationPokemon> shakeAnims = (i % 2 == 0) ? shakeLeftAnim : shakeRightAnim;
+            foreach (BattleAnimationPokemon anim in shakeAnims)
             {
                 BattleAnimatorMaster.GetInstance()?.AddEvent(
-                    new BattleAnimatorEventPokemonMoveAnimation(pkmn1, pkmn2, anim)
+                    new BattleAnimatorEventAnimation(pkmn1, pkmn2, anim)
                 );
             }
         }

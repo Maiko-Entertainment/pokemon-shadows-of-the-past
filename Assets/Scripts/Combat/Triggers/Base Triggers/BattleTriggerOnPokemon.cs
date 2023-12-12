@@ -6,7 +6,7 @@ public class BattleTriggerOnPokemon : BattleTrigger
 {
     public PokemonBattleData pokemon;
 
-    public List<BattleAnimation> animations = new List<BattleAnimation>();
+    public List<BattleAnimationPokemon> animations = new List<BattleAnimationPokemon>();
     public Flowchart flowchart;
     public string blockName = string.Empty;
 

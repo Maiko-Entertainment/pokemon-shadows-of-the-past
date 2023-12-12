@@ -20,4 +20,11 @@ public class StatusData : ScriptableObject
 
     [Range(-1f, 1f)]
     public float percentageDamagePerRound = 0f;
+    public TriggerCondition percentageDamageConditions = new TriggerCondition();
+
+
+    public virtual string GetId()
+    {
+        return id;
+    }
 }
