@@ -18,13 +18,21 @@ MonoBehaviour:
   hitChance: 1
   alwaysHit: 0
   uses: 5
-  typeId: 11
   moveType: {fileID: 11400000, guid: c807792bd42a516409410802bce44e74, type: 2}
   categoryId: 2
   targetType: 1
   statusChances: []
+  fieldChances: []
   moveStatChanges: []
-  conditionalBonuses: []
+  conditionalBonuses:
+  - statusData: {fileID: 0}
+    triggerConditionData:
+    - {fileID: 11400000, guid: 17f5ddde39580de4db52128f814066b5, type: 2}
+    lifeBelowTreshold: 0
+    target: 0
+    accuracyBonusAdd: 0
+    powerMultiplier: 1
+    healMultiplier: 1.33
   tags: 
   isContact: 0
   drainMultiplier: 0

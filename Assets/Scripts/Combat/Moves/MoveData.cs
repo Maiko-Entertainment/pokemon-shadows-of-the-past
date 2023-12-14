@@ -18,7 +18,7 @@ public class MoveData : ScriptableObject
     public List<MoveStatusChance> statusChances = new List<MoveStatusChance>();
     public List<MoveFieldChance> fieldChances = new List<MoveFieldChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
-    public List<StatusEffectBonus> conditionalBonuses = new List<StatusEffectBonus>();
+    public List<ConditionalMoveBonus> conditionalBonuses = new List<ConditionalMoveBonus>();
     public List<MoveTags> tags = new List<MoveTags>();
     public bool isContact;
     public float drainMultiplier = 0f;
@@ -172,17 +172,12 @@ public class MoveData : ScriptableObject
     public virtual int GetPower(PokemonBattleData user)
     {
         float powerMultiplier = 1f;
-        foreach(StatusEffectBonus condition in conditionalBonuses)
+        foreach(ConditionalMoveBonus condition in conditionalBonuses)
         {
-            float percentageHealth = user.GetPokemonCurrentHealth() / (float) user.GetMaxHealth();
             PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
-            List<StatusEffect> status = finalTarget.GetStatusEffects();
-            foreach (StatusEffect s in status)
+            if (condition.MeetsConditions(finalTarget))
             {
-                if (condition.statusData.GetId() == s.effectData.GetId())
-                {
-                    powerMultiplier *= condition.powerMultiplier;
-                }
+                powerMultiplier *= condition.powerMultiplier;
             }
         }
         return (int)(power * powerMultiplier);
@@ -196,17 +191,12 @@ public class MoveData : ScriptableObject
     public virtual float GetAccuracy(PokemonBattleData user)
     {
         float accuracyAdded = 0f;
-        foreach (StatusEffectBonus condition in conditionalBonuses)
+        foreach (ConditionalMoveBonus condition in conditionalBonuses)
         {
-            float percentageHealth = user.GetPokemonCurrentHealth() / (float)user.GetMaxHealth();
             PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
-            List<StatusEffect> status = finalTarget.GetStatusEffects();
-            foreach (StatusEffect s in status)
+            if (condition.MeetsConditions(finalTarget))
             {
-                if (condition.statusData.GetId() == s.effectData.GetId())
-                {
-                    accuracyAdded += condition.accuracyBonusAdd;
-                }
+                accuracyAdded += condition.accuracyBonusAdd;
             }
         }
         return hitChance + accuracyAdded;

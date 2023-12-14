@@ -22,23 +22,28 @@ MonoBehaviour:
   categoryId: 1
   targetType: 0
   statusChances:
-  - effectId: 3
-    effectData: {fileID: 11400000, guid: db7c12ea5403c9e47a9f08d421f9faf0, type: 2}
+  - effectData: {fileID: 11400000, guid: db7c12ea5403c9e47a9f08d421f9faf0, type: 2}
     targetType: 0
     chance: 0.3
     removeStatusInstead: 0
+  fieldChances: []
   moveStatChanges: []
   conditionalBonuses:
-  - statusToCheck: 13
+  - statusData: {fileID: 0}
+    triggerConditionData:
+    - {fileID: 11400000, guid: 3810986173531ac418ab966a9aa269a2, type: 2}
     lifeBelowTreshold: 1
-    target: 2
+    target: 1
     accuracyBonusAdd: 10000
-    powerMultiplier: 0
-  - statusToCheck: 12
+    powerMultiplier: 1
+    healMultiplier: 1
+  - statusData: {fileID: 0}
+    triggerConditionData: []
     lifeBelowTreshold: 1
     target: 2
     accuracyBonusAdd: -0.2
     powerMultiplier: 0
+    healMultiplier: 1
   tags: 
   isContact: 0
   drainMultiplier: 0

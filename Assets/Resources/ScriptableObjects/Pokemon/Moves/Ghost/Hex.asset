@@ -22,38 +22,25 @@ MonoBehaviour:
   categoryId: 1
   targetType: 0
   statusChances: []
+  fieldChances: []
   moveStatChanges: []
   conditionalBonuses:
   - statusData: {fileID: 11400000, guid: cf1ccc72d052f214eb1ea9d1a26282ee, type: 2}
+    triggerConditionData:
+    - {fileID: 11400000, guid: 53ea6e45575739244b8893600f64a063, type: 2}
     lifeBelowTreshold: 0
     target: 0
     accuracyBonusAdd: 0
     powerMultiplier: 2
-  - statusData: {fileID: 11400000, guid: 75fe1fb1e50ae6f4baecafaab368bd7b, type: 2}
+    healMultiplier: 1
+  - statusData: {fileID: 11400000, guid: cf1ccc72d052f214eb1ea9d1a26282ee, type: 2}
+    triggerConditionData:
+    - {fileID: 11400000, guid: 1015ccefdab7f1d42a353d5adfbab278, type: 2}
     lifeBelowTreshold: 0
     target: 0
     accuracyBonusAdd: 0
     powerMultiplier: 2
-  - statusData: {fileID: 11400000, guid: db7c12ea5403c9e47a9f08d421f9faf0, type: 2}
-    lifeBelowTreshold: 0
-    target: 0
-    accuracyBonusAdd: 0
-    powerMultiplier: 2
-  - statusData: {fileID: 11400000, guid: f9156d371e0052944838275aed48a95e, type: 2}
-    lifeBelowTreshold: 0
-    target: 0
-    accuracyBonusAdd: 0
-    powerMultiplier: 2
-  - statusData: {fileID: 11400000, guid: 52974c8bd6506cc41a0eb1396f57e48e, type: 2}
-    lifeBelowTreshold: 0
-    target: 0
-    accuracyBonusAdd: 0
-    powerMultiplier: 2
-  - statusData: {fileID: 11400000, guid: 58239aac66acd8d4291dc0766e8e6ab1, type: 2}
-    lifeBelowTreshold: 0
-    target: 0
-    accuracyBonusAdd: 0
-    powerMultiplier: 2
+    healMultiplier: 1
   tags: 
   isContact: 0
   drainMultiplier: 0
@@ -62,7 +49,7 @@ MonoBehaviour:
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
   description: The user attacks with relentless intensity. This move's power is doubled
-    if the target has a status condition.
+    if the target has a mayor status condition.
   soundEffect:
     audio: {fileID: 0}
     pitch: 1
