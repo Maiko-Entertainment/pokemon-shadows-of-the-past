@@ -3259,6 +3259,7 @@ GameObject:
   - component: {fileID: 5156675000746717320}
   - component: {fileID: 7459525753968755007}
   - component: {fileID: 2998266632665430500}
+  - component: {fileID: 8425839998148312668}
   - component: {fileID: 4404631360351731889}
   - component: {fileID: 910384431485894490}
   m_Layer: 5
@@ -3369,6 +3370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2998266632665430500}
   transition: {fileID: 4404631360351731889}
+  menuAnimation: {fileID: 8425839998148312668}
   firstSelected: {fileID: 0}
   optionsList: {fileID: 0}
   fadeOutWhenNotFocused: 0
@@ -3384,7 +3386,7 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &4404631360351731889
+--- !u!114 &8425839998148312668
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3392,6 +3394,24 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8569788742243936692}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf194d7f22ef24040b503635542a5f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.25
+  box: {fileID: 4237909461615151718}
+  background: {fileID: 2998266632665430500}
+  autoOpenOnEnable: 0
+  destroyAfterClose: 1
+  screenSide: {x: 0, y: -1}
+--- !u!114 &4404631360351731889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8569788742243936692}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 180d318f140cad144831ca77cf529c61, type: 3}
   m_Name: 

@@ -18,13 +18,25 @@ MonoBehaviour:
   hitChance: 1
   alwaysHit: 1
   uses: 10
-  typeId: 7
-  moveType: {fileID: 11400000, guid: d31aa56c8c9c0094096d410d8158e16f, type: 2}
+  moveType: {fileID: 11400000, guid: 9227b2c9f0867a4428721ed588c6e386, type: 2}
   categoryId: 2
   targetType: 1
   statusChances: []
+  fieldChances: []
   moveStatChanges: []
-  conditionalBonuses: []
+  conditionalBonuses:
+  - triggerConditionData:
+    - {fileID: 11400000, guid: 17f5ddde39580de4db52128f814066b5, type: 2}
+    target: 0
+    accuracyBonusAdd: 0
+    powerMultiplier: 1
+    healMultiplier: 1.33
+  - triggerConditionData:
+    - {fileID: 11400000, guid: d5992f8d97a06b047a032e0729aa665f, type: 2}
+    target: 0
+    accuracyBonusAdd: 0
+    powerMultiplier: 1
+    healMultiplier: 0.5
   tags: 
   isContact: 0
   drainMultiplier: 0

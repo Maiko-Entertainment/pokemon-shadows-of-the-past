@@ -7,6 +7,7 @@ public class UIMenuPile : MonoBehaviour
 {
     public CanvasGroup canvasGroup;
     public TransitionCanvasGroup transition;
+    public UIMenuAnim menuAnimation;
     public GameObject firstSelected;
     public Transform optionsList;
     public bool fadeOutWhenNotFocused = false;
@@ -16,7 +17,11 @@ public class UIMenuPile : MonoBehaviour
 
     public virtual void Open()
     {
-        if (transition)
+        if (menuAnimation)
+        {
+            menuAnimation.OpenDialog();
+        }
+        else if (transition)
         {
             transition.FadeIn();
         }
@@ -31,7 +36,11 @@ public class UIMenuPile : MonoBehaviour
 
     public void Close()
     {
-        if (transition)
+        if (menuAnimation)
+        {
+            menuAnimation.CloseDialog();
+        }
+        else if(transition)
         {
             transition.FadeOut();
         }
@@ -47,7 +56,7 @@ public class UIMenuPile : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
         if (fadeOutWhenNotFocused)
         {
-            transition.FadeOutTemporary();
+            menuAnimation?.CloseDialog(true);
         }
     }
     public void ReactivateMenu()
@@ -56,7 +65,7 @@ public class UIMenuPile : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
         if (fadeOutWhenNotFocused)
         {
-            transition.FadeIn();
+            menuAnimation?.OpenDialog();
         }
         HandleFirstSelected();
     }

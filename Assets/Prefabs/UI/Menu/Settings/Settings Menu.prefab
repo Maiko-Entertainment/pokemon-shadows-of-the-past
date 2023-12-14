@@ -936,6 +936,7 @@ GameObject:
   - component: {fileID: 8170086403190727451}
   - component: {fileID: 4402941212005292420}
   - component: {fileID: 6687209387734012858}
+  - component: {fileID: 8907102158410315793}
   m_Layer: 0
   m_Name: Settings Menu
   m_TagString: Untagged
@@ -1061,6 +1062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 128891122403821466}
   transition: {fileID: 6572827438661330149}
+  menuAnimation: {fileID: 8907102158410315793}
   firstSelected: {fileID: 7282020342691792113}
   optionsList: {fileID: 0}
   fadeOutWhenNotFocused: 1
@@ -1164,6 +1166,24 @@ MonoBehaviour:
   selectSound: {fileID: 8300000, guid: e0234395a61e68347874c5f7bb28c621, type: 3}
   turnOnSound: {fileID: 8300000, guid: 429b2ad49df8f9646ac421658faba4de, type: 3}
   turnOffSound: {fileID: 8300000, guid: 17a69a4c0429aa541b3f91280b49eb2d, type: 3}
+--- !u!114 &8907102158410315793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6913640630483255564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf194d7f22ef24040b503635542a5f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.25
+  box: {fileID: 708544551538716501}
+  background: {fileID: 128891122403821466}
+  autoOpenOnEnable: 0
+  destroyAfterClose: 1
+  screenSide: {x: 0, y: -1}
 --- !u!1 &7802182933454686308
 GameObject:
   m_ObjectHideFlags: 0

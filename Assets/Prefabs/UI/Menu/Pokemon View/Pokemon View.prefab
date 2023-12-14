@@ -559,6 +559,7 @@ GameObject:
   - component: {fileID: 2563044015256992509}
   - component: {fileID: 6180597399895176893}
   - component: {fileID: 16055190804771847}
+  - component: {fileID: 8237414157710787869}
   m_Layer: 0
   m_Name: Pokemon View
   m_TagString: Untagged
@@ -666,7 +667,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173622635733817774}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 180d318f140cad144831ca77cf529c61, type: 3}
   m_Name: 
@@ -686,7 +687,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173622635733817774}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 0.2
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -703,7 +704,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 8700715813647088903}
-  transition: {fileID: 6404594632671849615}
+  transition: {fileID: 0}
+  menuAnimation: {fileID: 8237414157710787869}
   firstSelected: {fileID: 0}
   optionsList: {fileID: 0}
   fadeOutWhenNotFocused: 0
@@ -826,6 +828,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player Character
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8237414157710787869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173622635733817774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf194d7f22ef24040b503635542a5f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.25
+  box: {fileID: 5518415529090423166}
+  background: {fileID: 8700715813647088903}
+  autoOpenOnEnable: 0
+  destroyAfterClose: 1
+  screenSide: {x: 0, y: -1}
 --- !u!1 &1789073938889957899
 GameObject:
   m_ObjectHideFlags: 0

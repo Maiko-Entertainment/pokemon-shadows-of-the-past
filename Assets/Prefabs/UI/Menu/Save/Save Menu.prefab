@@ -236,8 +236,9 @@ GameObject:
   - component: {fileID: 9190661398029884963}
   - component: {fileID: 6449220969843619482}
   - component: {fileID: 1090955614358420130}
-  - component: {fileID: 4852702979966582845}
   - component: {fileID: 4124179849250842844}
+  - component: {fileID: 4852702979966582845}
+  - component: {fileID: 3458842795789300273}
   m_Layer: 0
   m_Name: Save Menu
   m_TagString: Untagged
@@ -365,9 +366,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 9190661398029884963}
   transition: {fileID: 2699203916557122908}
+  menuAnimation: {fileID: 3458842795789300273}
   firstSelected: {fileID: 0}
   optionsList: {fileID: 0}
   fadeOutWhenNotFocused: 0
+--- !u!114 &4124179849250842844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427457344281122997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bc66d206c6ef540b4d80b33c496f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionPrefab: {fileID: 8499417710432673871, guid: bf245af722dbccf4f9d726b8649eec5d, type: 3}
+  saveTransitionPrefab: {fileID: 1949416237761992788, guid: 4149c872a250663478f6ac2e0bccb78d, type: 3}
+  loadTransitionPrefab: {fileID: 2529778229746280308, guid: 525be8a69e585fb47ae9f84932bf371c, type: 3}
+  selectSound: {fileID: 8300000, guid: d647677a8ccd0f14a8b832be0dc0878a, type: 3}
+  saveFileList: {fileID: 6385637093428625598}
+  scrollRect: {fileID: 3133523376286626925}
+  newGameButton: {fileID: 5118811085479354760}
+  activeInGame:
+  - {fileID: 3227821243414614480}
+  activeInMainMenu:
+  - {fileID: 9007265684888543257}
 --- !u!114 &4852702979966582845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +475,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player Character
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4124179849250842844
+--- !u!114 &3458842795789300273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -459,20 +484,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2427457344281122997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90bc66d206c6ef540b4d80b33c496f50, type: 3}
+  m_Script: {fileID: 11500000, guid: cf194d7f22ef24040b503635542a5f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionPrefab: {fileID: 8499417710432673871, guid: bf245af722dbccf4f9d726b8649eec5d, type: 3}
-  saveTransitionPrefab: {fileID: 1949416237761992788, guid: 4149c872a250663478f6ac2e0bccb78d, type: 3}
-  loadTransitionPrefab: {fileID: 2529778229746280308, guid: 525be8a69e585fb47ae9f84932bf371c, type: 3}
-  selectSound: {fileID: 8300000, guid: d647677a8ccd0f14a8b832be0dc0878a, type: 3}
-  saveFileList: {fileID: 6385637093428625598}
-  scrollRect: {fileID: 3133523376286626925}
-  newGameButton: {fileID: 5118811085479354760}
-  activeInGame:
-  - {fileID: 3227821243414614480}
-  activeInMainMenu:
-  - {fileID: 9007265684888543257}
+  time: 0.25
+  box: {fileID: 8617463691352438508}
+  background: {fileID: 9190661398029884963}
+  autoOpenOnEnable: 0
+  destroyAfterClose: 1
+  screenSide: {x: 0, y: -1}
 --- !u!1 &3227821243414614480
 GameObject:
   m_ObjectHideFlags: 0

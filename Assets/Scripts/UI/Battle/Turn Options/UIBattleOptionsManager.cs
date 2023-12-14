@@ -85,6 +85,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         BattleAnimatorMaster.GetInstance()?.HideOptions();
         tacticSelectorInstance = Instantiate(tacticSelector, subMenuContainer);
+        tacticSelectorInstance.GetComponent<UIMenuPile>().Open();
         isInSubmenu = true;
     }
     public void HideTacticSelector(bool preSelect = false)
@@ -104,6 +105,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         BattleAnimatorMaster.GetInstance()?.HideOptions();
         pokemonSelectorInstance = Instantiate(pokemonSelector, subMenuContainer);
+        pokemonSelectorInstance.GetComponent<UIMenuPile>()?.Open();
         pokemonSelectorInstance.SetPrefaint(!allowClose);
         isInSubmenu = true;
     }
@@ -124,6 +126,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     {
         BattleAnimatorMaster.GetInstance()?.HideOptions();
         itemSelectorInstance = Instantiate(itemSelector, subMenuContainer);
+        itemSelectorInstance.GetComponent<UIMenuPile>()?.Open();
         isInSubmenu = true;
     }
 

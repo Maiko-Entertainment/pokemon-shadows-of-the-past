@@ -1326,6 +1326,7 @@ GameObject:
   - component: {fileID: 8851532578681880609}
   - component: {fileID: 6691505094054226072}
   - component: {fileID: 756295201619436704}
+  - component: {fileID: 9173607183108546701}
   - component: {fileID: 5045579167806365247}
   m_Layer: 0
   m_Name: Pause Menu
@@ -1453,10 +1454,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 8851532578681880609}
-  transition: {fileID: 2317176269490103134}
-  firstSelected: {fileID: 0}
+  transition: {fileID: 0}
+  menuAnimation: {fileID: 9173607183108546701}
+  firstSelected: {fileID: 9182163686470264246}
   optionsList: {fileID: 1985981477100602707}
   fadeOutWhenNotFocused: 1
+--- !u!114 &9173607183108546701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660839805702424247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe5533c4dfc2c146bbc6bec76d620b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0.4
+  box: {fileID: 6974464400921820769}
+  background: {fileID: 8851532578681880609}
+  autoOpenOnEnable: 0
+  destroyAfterClose: 1
+  initialScale: {x: 0.3, y: 0.3, z: 1}
+  finalScale: {x: 1, y: 1, z: 1}
+  extraBouncyScale: {x: 0.1, y: 0.1, z: 1}
+  bounceTime: 0.1
 --- !u!114 &5045579167806365247
 MonoBehaviour:
   m_ObjectHideFlags: 0
