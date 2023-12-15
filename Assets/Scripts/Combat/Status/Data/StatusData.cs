@@ -27,4 +27,14 @@ public class StatusData : ScriptableObject
     {
         return id;
     }
+
+    public virtual string GetStatusName()
+    {
+        return statusName;
+    }
+
+    public Sprite GetIcon()
+    {
+        return icon;
+    }
 }

@@ -25,6 +25,7 @@ public class UIBattleOptionsManager : MonoBehaviour
     private UIItemsViewer itemSelectorInstance;
     private UIPokemonView pokemonSelectorInstance;
     private UIBattleOptionsTactics tacticSelectorInstance;
+    private UIBattleMovePicker moveSelectorInstance;
 
     private void Start()
     {
@@ -66,17 +67,18 @@ public class UIBattleOptionsManager : MonoBehaviour
                     );
             turnDesition.tactic = BattleMaster.GetInstance().GetCurrentBattle().GetSelectedTactic();
             bm?.HandleTurnInput(turnDesition);
-            BattleAnimatorMaster.GetInstance().HideOptions();
         }
         else
         {
-            movesSelector.Show();
+            moveSelectorInstance = Instantiate(movesSelector, subMenuContainer);
+            moveSelectorInstance.Open();
             isInSubmenu = true;
         }
     }
     public void HideMoveSelector(bool preSelect = false)
     {
-        movesSelector.Hide();
+        if (moveSelectorInstance)
+            moveSelectorInstance?.Close();
         isInSubmenu = false; 
         if (preSelect)
             UtilsMaster.SetSelected(optionsList.GetChild(0).gameObject);

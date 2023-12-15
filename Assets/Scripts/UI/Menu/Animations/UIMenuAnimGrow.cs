@@ -14,25 +14,25 @@ public class UIMenuAnimGrow : UIMenuAnim
     public override void OpenDialog()
     {
         base.OpenDialog();
-        background?.LeanAlpha(1f, time);
+        background?.LeanAlpha(1f, time).setEase(LeanTweenType.easeInOutQuad);
         box.localScale = initialScale;
-        box.LeanScale(finalScale + extraBouncyScale, time - bounceTime).setOnComplete(BounceBackToFinal);
+        box.LeanScale(finalScale + extraBouncyScale, time - bounceTime).setOnComplete(BounceBackToFinal).setEase(LeanTweenType.easeInOutQuad);
     }
 
     public override void CloseDialog(bool isTempt = false)
     {
         base.CloseDialog(isTempt);
         background?.LeanAlpha(0, time);
-        box.LeanScale(finalScale + extraBouncyScale, bounceTime).setOnComplete(BounceBackToInitial);
+        box.LeanScale(finalScale + extraBouncyScale, bounceTime).setOnComplete(BounceBackToInitial).setEase(LeanTweenType.easeInOutQuad);
     }
 
     public void BounceBackToFinal()
     {
-        box.LeanScale(finalScale, bounceTime);
+        box.LeanScale(finalScale, bounceTime).setEase(LeanTweenType.easeInOutQuad);
     }
 
     public void BounceBackToInitial()
     {
-        box.LeanScale(initialScale, time - bounceTime).setOnComplete(OnComplete);
+        box.LeanScale(initialScale, time - bounceTime).setOnComplete(OnComplete).setEase(LeanTweenType.easeInOutQuad);
     }
 }

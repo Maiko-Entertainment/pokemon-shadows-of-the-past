@@ -6,4 +6,11 @@ public class FieldCategoryData : ScriptableObject
 {
     public string id;
     public Sprite icon;
+
+    [SerializeField] protected string categoryName = "";
+
+    public string GetCategoryName()
+    {
+        return categoryName;
+    }
 }

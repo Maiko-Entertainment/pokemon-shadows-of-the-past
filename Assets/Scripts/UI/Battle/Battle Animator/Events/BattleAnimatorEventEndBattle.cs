@@ -18,6 +18,7 @@ public class BattleAnimatorEventEndBattle : BattleAnimatorEvent
         BattleAnimatorMaster.GetInstance().HideAll();
         BattleAnimatorMaster.GetInstance().HidePokemonInfo(BattleTeamId.Team1, true);
         BattleAnimatorMaster.GetInstance().HidePokemonInfo(BattleTeamId.Team2, true);
+        BattleAnimatorMaster.GetInstance().UpdateFieldStatus(new List<StatusField>());
         BattleAnimatorMaster.GetInstance().GoToNextBattleAnim(duration);
         AudioMaster.GetInstance().StopMusic(false);
         base.Execute();

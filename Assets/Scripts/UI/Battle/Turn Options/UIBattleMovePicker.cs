@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
-public class UIBattleMovePicker : MonoBehaviour
+public class UIBattleMovePicker : UIMenuPile
 {
     public Sprite physicalAttackIcon;
     public Sprite specialAttackIcon;
@@ -21,22 +21,12 @@ public class UIBattleMovePicker : MonoBehaviour
     public TextMeshProUGUI moveAccuracy;
     public Image moveCategory;
 
-    public Transform moveList;
-    public TransitionCanvasGroup transition;
-
-    private bool isOpen = false;
     protected MoveEquipped lastMoveUsed;
 
-    public void Show()
+    public override void Open()
     {
-        transition.FadeIn();
+        base.Open();
         LoadMoves();
-        isOpen = true;
-    }
-    public void Hide()
-    {
-        transition.FadeOut();
-        isOpen = false;
     }
 
     private void LoadMoves()
@@ -58,10 +48,6 @@ public class UIBattleMovePicker : MonoBehaviour
                 selectedIndex = moves.IndexOf(me);
             }
         }
-        foreach (Transform option in moveList)
-        {
-            options.Add(option.GetComponent<Selectable>());
-        }
         UtilsMaster.LineSelectables(options);
         UtilsMaster.SetSelected(options[selectedIndex].gameObject);
         UpdateSelected(moves[selectedIndex]);
@@ -69,7 +55,7 @@ public class UIBattleMovePicker : MonoBehaviour
 
     private UIPokemonMove CreateMove(MoveEquipped me, PokemonBattleData pkmn)
     {
-        UIPokemonMove bm = Instantiate(movePrefab, moveList).Load(me, pkmn.GetPokemonCaughtData());
+        UIPokemonMove bm = Instantiate(movePrefab, optionsList).Load(me, pkmn.GetPokemonCaughtData());
         bm.onClick += UseMove;
         bm.onSelect += (MoveEquipped me, PokemonCaughtData pkmn) => UpdateSelected(me);
         return bm;
@@ -95,7 +81,7 @@ public class UIBattleMovePicker : MonoBehaviour
     }
     public void UpdateSelected(MoveEquipped me)
     {
-        foreach (Transform option in moveList)
+        foreach (Transform option in optionsList)
         {
             option.GetComponent<UIPokemonMove>().UpdateSelectedStatus(me);
         }
@@ -121,17 +107,14 @@ public class UIBattleMovePicker : MonoBehaviour
 
     private void CleanMoves()
     {
-        foreach (Transform moves in moveList)
+        foreach (Transform moves in optionsList)
             Destroy(moves.gameObject);
     }
     public void HandleCancel(CallbackContext context)
     {
         if (context.phase == UnityEngine.InputSystem.InputActionPhase.Started)
         {
-            if (isOpen)
-            {
-                BattleAnimatorMaster.GetInstance().HidePokemonMoveSelection(true);
-            }
+            BattleAnimatorMaster.GetInstance().HidePokemonMoveSelection(true);
         }
     }
 }

@@ -292,7 +292,7 @@ public class BattleAnimatorMaster : MonoBehaviour
         );
     }
 
-    public void AddStatusChangeEvent(PokemonBattleData pokemon, int change, int priority = 0)
+    public void AddStatsChangeEvent(PokemonBattleData pokemon, int change, int priority = 0)
     {
         if (change > 0)
         {
@@ -557,6 +557,11 @@ public class BattleAnimatorMaster : MonoBehaviour
     public void HidePokemonInfo(BattleTeamId team, bool instant = false)
     {
         battleInfoManager.HideTeamInfo(team, instant);
+    }
+
+    public float UpdateFieldStatus(List<StatusField> statusFields)
+    {
+        return UIFieldInfoManager.Instance.LoadFieldStatus(statusFields);
     }
 
     public StatusEffectData GetStatusEffectData(StatusEffectId id)

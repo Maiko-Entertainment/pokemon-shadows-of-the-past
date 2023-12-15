@@ -461,8 +461,8 @@ RectTransform:
   - {fileID: 8252833111549033186}
   - {fileID: 8327173471735877475}
   - {fileID: 1967631787892628669}
-  - {fileID: 8372155079984211958}
   - {fileID: 3914875814709119139}
+  - {fileID: 8372155079984211958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -547,9 +547,9 @@ MonoBehaviour:
       level: 0
       experience: 0
       damageTaken: 0
-      statusEffectId: 0
+      statusEffect: {fileID: 0}
       natureId: 0
-      abilityId: 0
+      ability: {fileID: 0}
       isMale: 1
       friendship: 0
       equippedItem: {fileID: 0}
@@ -566,8 +566,8 @@ MonoBehaviour:
       evasion: 0
       critical: 0
     statusEffects: []
-    inBattleTypes: 
-    abilityId: 0
+    inBattleTypes: []
+    ability: {fileID: 0}
     heldItem:
       equippedItem: {fileID: 0}
       battleTriggers: []
@@ -718,9 +718,9 @@ MonoBehaviour:
       level: 0
       experience: 0
       damageTaken: 0
-      statusEffectId: 0
+      statusEffect: {fileID: 0}
       natureId: 0
-      abilityId: 0
+      ability: {fileID: 0}
       isMale: 1
       friendship: 0
       equippedItem: {fileID: 0}
@@ -737,8 +737,8 @@ MonoBehaviour:
       evasion: 0
       critical: 0
     statusEffects: []
-    inBattleTypes: 
-    abilityId: 0
+    inBattleTypes: []
+    ability: {fileID: 0}
     heldItem:
       equippedItem: {fileID: 0}
       battleTriggers: []
@@ -989,7 +989,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8252833111217093009}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1076,13 +1076,13 @@ RectTransform:
   m_Children:
   - {fileID: 6544213881425001197}
   m_Father: {fileID: 8252833111217093009}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15, y: 15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 15, y: -5}
   m_SizeDelta: {x: 250, y: 60}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &739024040557283114
 CanvasRenderer:
   m_ObjectHideFlags: 0

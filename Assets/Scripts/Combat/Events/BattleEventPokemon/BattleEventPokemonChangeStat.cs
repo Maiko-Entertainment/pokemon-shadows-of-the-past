@@ -33,7 +33,7 @@ public class BattleEventPokemonChangeStat : BattleEventPokemon
     {
         if (change > 0)
         {
-            BattleAnimatorMaster.GetInstance().AddStatusChangeEvent(pokemon, change, animationPriority);
+            BattleAnimatorMaster.GetInstance().AddStatsChangeEvent(pokemon, change, animationPriority);
             BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartPokemonText(
                 "Stat Up", pokemon,
                 new Dictionary<string, string>() { { "stat", statName } },
@@ -42,7 +42,7 @@ public class BattleEventPokemonChangeStat : BattleEventPokemon
         }
         else if (change < 0)
         {
-            BattleAnimatorMaster.GetInstance().AddStatusChangeEvent(pokemon, change, animationPriority);
+            BattleAnimatorMaster.GetInstance().AddStatsChangeEvent(pokemon, change, animationPriority);
             BattleAnimatorMaster.GetInstance().AddEventBattleFlowcartPokemonText(
                 "Stat Down", pokemon,
                 new Dictionary<string, string>() { { "stat", statName } },

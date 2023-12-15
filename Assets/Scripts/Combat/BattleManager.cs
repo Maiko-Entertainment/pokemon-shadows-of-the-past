@@ -718,7 +718,7 @@ public class BattleManager
             StatusField statusInstance = statusField.CreateStatusInstance();
             statusFields.Add(statusInstance);
             statusInstance.Initiate();
-            // TODO: add update UI event
+            BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventUpdateFieldsUI(statusFields));
         }
         else
         {
@@ -742,7 +742,7 @@ public class BattleManager
                 statusFieldsNew.Add(sf);
         }
         statusFields = statusFieldsNew;
-        // TODO: Add update UI event
+        BattleAnimatorMaster.GetInstance().AddEvent(new BattleAnimatorEventUpdateFieldsUI(statusFields));
     }
     public List<StatusField> GetStatusFields()
     {

@@ -250,7 +250,7 @@ public class UIBattleHealthbar : MonoBehaviour
 
     public float ShowAbility()
     {
-        float stayTime = 2f;
+        float stayTime = 1.5f;
         abilityPanel.FadeIn();
         AudioMaster.GetInstance()?.PlaySfx(abilitySound);
         StartCoroutine(FadeOutAbiliy(stayTime));

@@ -15,16 +15,16 @@ public class UIMenuAnimMoveIn : UIMenuAnim
     public override void OpenDialog()
     {
         base.OpenDialog();
-        background.LeanAlpha(1f, time);
+        background.LeanAlpha(1f, time).setEase(LeanTweenType.easeInOutQuad);
         box.localPosition = GetStartingPosition();
-        box.LeanMoveLocal(_originalPosition, time);
+        box.LeanMoveLocal(_originalPosition, time).setEase(LeanTweenType.easeInOutQuad);
     }
 
     public override void CloseDialog(bool isTempt = false)
     {
         base.CloseDialog(isTempt);
         background.LeanAlpha(0, time);
-        box.LeanMoveLocal(GetStartingPosition(), time).setOnComplete(OnComplete);
+        box.LeanMoveLocal(GetStartingPosition(), time).setOnComplete(OnComplete).setEase(LeanTweenType.easeInOutQuad);
     }
 
     public Vector3 GetStartingPosition()
