@@ -13,6 +13,6 @@ public class BattleTriggerOnDesition : BattleTrigger
     }
     public virtual bool Execute(BattleEventDestion battleEvent)
     {
-        return base.Execute(battleEvent);
+        return base.TryToExecute(battleEvent);
     }
 }

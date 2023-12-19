@@ -8,6 +8,7 @@ public enum BattleEventId
     preDesition = 20,
     pokemonUseMove = 3,
     pokemonUseMoveSuccess = 10,
+    pokemonUseMoveFail = 26,
     pokemonTakeDamage = 4,
     pokemonTakeDamageSuccess = 17,
     pokemonRecoverHealth = 5,

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
+  m_Name: Harden
+  m_EditorClassIdentifier: 
+  id: Harden
+  moveName: Harden
+  power: 0
+  hitChance: 1
+  alwaysHit: 0
+  uses: 30
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
+  categoryId: 2
+  targetType: 1
+  statusChances: []
+  fieldChances: []
+  moveStatChanges:
+  - statsAmountChange:
+      attack: 0
+      defense: 1
+      spAttack: 0
+      spDefense: 0
+      speed: 0
+      accuracy: 0
+      evasion: 0
+      critical: 0
+    changeChance: 1
+    targetType: 1
+  conditionalBonuses: []
+  tags: 
+  isContact: 0
+  drainMultiplier: 0
+  moveCritUp: 0
+  priority: 0
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 
+  description: The user stiffens all the muscles in its body to boost its Defense
+    stat.
+  soundEffect:
+    audio: {fileID: 8300000, guid: 07457130f2278b740bffc2db7c5a03bf, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+  animations:
+  - {fileID: 3568165834060000880, guid: b4af7d4134c8dc04f99b4cfd22468043, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 7726894398210948630, guid: 2687db2b277e21340b1074dc024f8b6f, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 3531474703944891691, guid: 7116afbd55041824fa298fe624b44723, type: 3}

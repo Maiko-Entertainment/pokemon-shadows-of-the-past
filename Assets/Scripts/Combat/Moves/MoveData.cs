@@ -49,6 +49,7 @@ public class MoveData : ScriptableObject
         if (!moveHits)
         {
             BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventMoveMiss(battleEvent));
+            BattleMaster.GetInstance().GetCurrentBattle().AddEvent(new BattleEventUseMoveFail(battleEvent));
         }
         else
         {
@@ -175,7 +176,7 @@ public class MoveData : ScriptableObject
         foreach(ConditionalMoveBonus condition in conditionalBonuses)
         {
             PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
-            if (condition.MeetsConditions(finalTarget))
+            if (condition.MeetsConditions(finalTarget, this))
             {
                 powerMultiplier *= condition.powerMultiplier;
             }
@@ -194,7 +195,7 @@ public class MoveData : ScriptableObject
         foreach (ConditionalMoveBonus condition in conditionalBonuses)
         {
             PokemonBattleData finalTarget = BattleMaster.GetInstance().GetCurrentBattle().GetTarget(user, condition.target);
-            if (condition.MeetsConditions(finalTarget))
+            if (condition.MeetsConditions(finalTarget, this))
             {
                 accuracyAdded += condition.accuracyBonusAdd;
             }

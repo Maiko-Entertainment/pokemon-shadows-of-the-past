@@ -32,6 +32,24 @@ public class StatusEffectMoveData : StatusEffectData
         repeatMove.endStatusOnMoveFailToRepeat = endStatusIfMoveFailsToRepeat;
         repeatMove.triggerPowerMultiplierAcum = onRepeatMovePowerMultiplier;
         statusInstance.AddBattleTrigger(repeatMove);
+
+        if (endStatusIfMoveFailsToRepeat)
+        {
+            BattleTeamId teamId = BattleMaster.GetInstance().GetCurrentBattle().GetTeamId(pokemon);
+            BattleTriggerOnDesitionCheckForMove desitionTrigger = new BattleTriggerOnDesitionCheckForMove(teamId, pokemon, creator);
+            desitionTrigger.onNotUseMove += (BattleEventDestion ev, PokemonBattleData pokemon, MoveData move) => HandleMoveFail(statusInstance);
+            statusInstance.AddBattleTrigger(desitionTrigger);
+
+            BattleTriggerOnMoveFail moveFailTrigger = new BattleTriggerOnMoveFail(pokemon, creator);
+            moveFailTrigger.onExecute += (BattleEventUseMoveFail move) => HandleMoveFail(statusInstance);
+            statusInstance.AddBattleTrigger(moveFailTrigger);
+
+        }
         return statusInstance;
+    }
+
+    public void HandleMoveFail(StatusEffect status)
+    {
+        status.HandleOwnRemove();
     }
 }

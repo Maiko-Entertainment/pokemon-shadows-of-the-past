@@ -12,6 +12,6 @@ public class BattleTriggerOnPokemonGainStatusEffectSuccess : BattleTriggerOnPoke
 
     public virtual bool Execute(BattleEventPokemonStatusAddSuccess battleEvent)
     {
-        return base.Execute(battleEvent);
+        return base.TryToExecute(battleEvent);
     }
 }

@@ -6,7 +6,7 @@ public class BattleTriggerOnPokemonMoveCategory : BattleTriggerOnPokemonMove
         this.moveCategory = moveCategory;
     }
 
-    public override bool Execute(BattleEvent battleEvent)
+    public override bool TryToExecute(BattleEvent battleEvent)
     {
         BattleEventUseMove be = (BattleEventUseMove)battleEvent;
         if (be.move.GetAttackCategory() == moveCategory && be.pokemon.battleId == pokemon.battleId)

@@ -12,6 +12,7 @@ public class BattleTriggerOnMoveCancelChance : BattleTriggerOnPokemonMove
 
     public BattleTriggerOnMoveCancelChance(PokemonBattleData pokemon, float chance) : base(pokemon, new UseMoveMods(null), true)
     {
+        priority = 15;
         this.chance = chance;
     }
 
@@ -45,6 +46,7 @@ public class BattleTriggerOnMoveCancelChance : BattleTriggerOnPokemonMove
                 // If we dont have a move to replace it then we cancel the move
                 if (!useThisMoveInstead)
                 {
+                    BattleMaster.GetInstance().GetCurrentBattle().AddEvent(new BattleEventUseMoveFail(battleEvent));
                     return false;
                 }
                 else

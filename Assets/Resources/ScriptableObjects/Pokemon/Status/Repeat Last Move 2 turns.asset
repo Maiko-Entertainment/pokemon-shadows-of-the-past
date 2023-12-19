@@ -9,29 +9,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 998539b35eadacd4db269e8a78d29db9, type: 3}
-  m_Name: Move Up
+  m_Script: {fileID: 11500000, guid: 508668b611c6d7f458a979d6a7cba0de, type: 3}
+  m_Name: Repeat Last Move 2 turns
   m_EditorClassIdentifier: 
-  id: MoveUp
-  statusName: Move Up
-  icon: {fileID: 21300000, guid: eb50b1ba92b4ccf46a779e8cdc6a57d4, type: 3}
-  flowchart: {fileID: 6151006633196087579, guid: 1707e4cfec5c319488eb513b23a2f267, type: 3}
+  id: RepeatLastMove
+  statusName: Repeat
+  icon: {fileID: 21300000, guid: fb93bb10e0b6d7148b1f42c7aece3362, type: 3}
+  flowchart: {fileID: 0}
   onStartStatusBlockName: 
   onTriggerFlowchartBlock: 
   onEndFlowchartBlock: 
-  minTurnDuration: 1
+  minTurnDuration: 2
   extraTurnRange: 0
   percentageDamagePerRound: 0
   healOpponentsFromDamage: 0
   multiplyDamageEachTurn: 1
   isPrimary: 0
   hitAnims: []
+  tickDownAtEndOfRoundInstead: 0
   captureRateBonus: 0
   inmuneTypes: []
+  statsMultiplier:
+    attack: 1
+    defense: 1
+    spAttack: 1
+    spDefense: 1
+    speed: 1
   cancelMoveChance: 0
   playAnimationEvenIfMoveIsntCanceled: 0
   replaceMoveInsteadOfCancel: {fileID: 0}
   damageModifiers: []
-  triggerConditionsMove: []
-  onRepeatMovePowerMultiplier: 2
-  endStatusIfMoveFailsToRepeat: 1

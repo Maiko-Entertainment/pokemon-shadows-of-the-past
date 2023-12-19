@@ -98,6 +98,11 @@ public class BattleManager
         return battleDesitionHistories.Find((BattleDesitionHistory bd) => bd.desition.team == teamId && bd.turn == turn);
     }
 
+    public List<BattleDesitionHistory> GetDesitionHistory(int turn)
+    {
+        return battleDesitionHistories.Where((BattleDesitionHistory bd) => bd.turn == turn).ToList();
+    }
+
     public List<BattleDesitionHistory> GetDesitionHistory(BattleTeamId teamId)
     {
         return battleDesitionHistories.Where((BattleDesitionHistory bd) => bd.desition.team == teamId).ToList();
@@ -665,7 +670,7 @@ public class BattleManager
             bool isStatusAlready = false;
             foreach(StatusEffect s in nonPrimary)
             {
-                if (s.effectData == statusData)
+                if (s.effectData.GetId() == statusData.GetId())
                 {
                     isStatusAlready = true;
                     break;
@@ -681,7 +686,7 @@ public class BattleManager
             if (isStatusAlready || status.IsPrimary && alreadyHasPrimaryStatus) 
             {
                 // Cant add status due to type message
-                BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
+                if (isFromStatusMove) BattleAnimatorMaster.GetInstance()?.AddEventInmuneTextEvent();
             }
             else if (typePreventsStatus)
             {

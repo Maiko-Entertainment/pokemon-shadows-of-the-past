@@ -5,6 +5,7 @@ using UnityEngine;
 public class AbilityDataOnStatusBoost : AbilityData
 {
     public List<StatusEffectData> includedStatus = new List<StatusEffectData>();
+    public List<StatusFieldData> includedFieldStatus = new List<StatusFieldData>();
     public UseMoveMods mods = new UseMoveMods(null);
 
     public override void Initialize(PokemonBattleData pokemon)

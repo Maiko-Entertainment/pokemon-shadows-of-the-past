@@ -57,7 +57,11 @@ public class WorldInteractableWorldBrainPokemon : WorldInteractableBrainFollower
         spritesRight = new Sprite[spriteSheetColumns];
         spritesUp = new Sprite[spriteSheetColumns];
         if (sprites.Length == 0)
+        {
             Debug.LogError(pokemon.GetPokemonBaseData().species + " has no sprites for world");
+            base.Load();
+            return this;
+        }
         Array.Copy(sprites, 0, spritesDown, 0, spriteSheetColumns);
         Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Left), spritesLeft, 0, spriteSheetColumns);
         Array.Copy(sprites, GetDirectionStartingIndex(MoveBrainDirection.Right), spritesRight, 0, spriteSheetColumns);

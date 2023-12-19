@@ -19,4 +19,13 @@ public class ConditionalMoveBonus
         }
         return true;
     }
+
+    public bool MeetsConditions(PokemonBattleData pokemon, MoveData move)
+    {
+        foreach (TriggerConditionData condition in triggerConditionData)
+        {
+            if (!condition.MeetsConditions(pokemon, move)) return false;
+        }
+        return true;
+    }
 }

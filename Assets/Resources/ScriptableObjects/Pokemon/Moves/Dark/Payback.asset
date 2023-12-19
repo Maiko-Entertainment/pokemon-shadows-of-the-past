@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
+  m_Name: Payback
+  m_EditorClassIdentifier: 
+  id: Payback
+  moveName: Payback
+  power: 50
+  hitChance: 1
+  alwaysHit: 0
+  uses: 10
+  moveType: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
+  categoryId: 0
+  targetType: 0
+  statusChances: []
+  fieldChances: []
+  moveStatChanges: []
+  conditionalBonuses:
+  - triggerConditionData:
+    - {fileID: 11400000, guid: 8ab706ac8188f6b4db334db7fd84173d, type: 2}
+    target: 0
+    accuracyBonusAdd: 0
+    powerMultiplier: 2
+    healMultiplier: 1
+  tags: 
+  isContact: 1
+  drainMultiplier: 0
+  moveCritUp: 0
+  priority: 0
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 00000000010000000200000003000000
+  description: The user stores power, then attacks. This move's power is doubled
+    if the user moves after the target.
+  soundEffect:
+    audio: {fileID: 8300000, guid: 6b08ffc69ea9ac4429ff33f593963c49, type: 3}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+  animations:
+  - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 2649632935763573628, guid: f7ad4828f12fbb74bb14ef7fe2abb852, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 7192018481969620676, guid: d12830958ce4800478486f1c690e75b3, type: 3}
+  - {fileID: 1122879976169921065, guid: 0847c00ebdd70b04bbbf5ff517e9ec84, type: 3}
+  - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
+  - {fileID: 7192018481969620676, guid: d12830958ce4800478486f1c690e75b3, type: 3}
+  - {fileID: 7506177397669444216, guid: 0aa2586e4f54008408caff0f7d836bd8, type: 3}
+  - {fileID: 1733190058133143404, guid: 9d272b7f426271245a9dcdfcbd31ece3, type: 3}
+  - {fileID: 7192018481969620676, guid: d12830958ce4800478486f1c690e75b3, type: 3}
+  - {fileID: 7506177397669444216, guid: 0aa2586e4f54008408caff0f7d836bd8, type: 3}
+  - {fileID: 3531474703944891691, guid: 7116afbd55041824fa298fe624b44723, type: 3}

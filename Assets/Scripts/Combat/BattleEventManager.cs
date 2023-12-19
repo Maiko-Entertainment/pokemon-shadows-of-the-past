@@ -13,7 +13,13 @@ public class BattleEventManager
         {
             battleEvents.Add(trigger.eventId, new List<BattleTrigger>());
         }
-        battleEvents[trigger.eventId].Add(trigger);
+        int index;
+        for (index = 0; index < battleEvents[trigger.eventId].Count; index++)
+        {
+            if (trigger.priority > battleEvents[trigger.eventId][index].priority)
+                break;
+        }
+        battleEvents[trigger.eventId].Insert(index, trigger);
     }
 
     public void RemoveBattleTrigger(BattleTrigger trigger)
@@ -104,8 +110,10 @@ public class BattleEventManager
                     BattleTriggerOnDesition btod = (BattleTriggerOnDesition)bt;
                     keepGoing = btod.Execute((BattleEventDestion)next);
                     break;
-                case BattleEventId.pokemonAddField:
+                default:
+                    keepGoing = bt.Execute(next);
                     break;
+
             }
             if (!keepGoing)
             {

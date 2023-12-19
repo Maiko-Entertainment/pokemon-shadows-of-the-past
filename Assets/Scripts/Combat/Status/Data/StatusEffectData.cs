@@ -35,7 +35,7 @@ public class StatusEffectData : StatusData
 
     public virtual StatusEffect CreateStatusInstance(PokemonBattleData pokemon)
     {
-        Flowchart flowchartInstance = Instantiate(flowchart);
+        Flowchart flowchartInstance = flowchart ? Instantiate(flowchart) : null;
         StatusEffect se = new StatusEffect(pokemon, this, flowchartInstance);
         se.minTurns = minTurnDuration;
         se.addedRangeTurns = extraTurnRange;

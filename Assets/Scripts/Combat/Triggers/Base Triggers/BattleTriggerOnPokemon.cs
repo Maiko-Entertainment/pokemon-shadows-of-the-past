@@ -22,11 +22,21 @@ public class BattleTriggerOnPokemon : BattleTrigger
 
     public virtual bool Execute(BattleEventPokemon battleEvent)
     {
-        return base.Execute(battleEvent);
+        return base.TryToExecute(battleEvent);
     }
 
     public override string ToString()
     {
         return ""+pokemon?.pokemon?.GetName();
+    }
+
+    public override bool MeetsConditions(BattleEvent ev)
+    {
+        BattleEventPokemon pokeEvent = ev as BattleEventPokemon;
+        if ( pokeEvent != null && pokeEvent.pokemon.battleId == pokemon.battleId)
+        {
+            return base.MeetsConditions(ev);
+        }
+        return false;
     }
 }

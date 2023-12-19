@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Status/Pokemon/Force Repeat Last Move")]
-public class StatusEffectDataForceRepeatMove : StatusEffectData
+public class StatusEffectDataForceRepeatMove : StatusEffectMoveData
 {
     public override StatusEffect CreateStatusInstance(PokemonBattleData pokemon)
     {

@@ -6,6 +6,16 @@ public class BattleTriggerCleanUp : BattleTriggerOnPokemon
 {
     public BattleTrigger removeOnLeaveTrigger;
     public bool cleanUpDone = false;
+
+    public delegate void OnExecute(BattleEventPokemon battleEvent);
+    public OnExecute onExecute;
+
+    public BattleTriggerCleanUp(PokemonBattleData pokemon) :
+        base(pokemon, false)
+    {
+        eventId = BattleEventId.pokemonLeaveCleanUp;
+    }
+
     public BattleTriggerCleanUp(PokemonBattleData pokemon, BattleTrigger removeOnLeaveTrigger) : 
         base(pokemon, false)
     {
@@ -17,9 +27,13 @@ public class BattleTriggerCleanUp : BattleTriggerOnPokemon
     {
         if (battleEvent.pokemon == pokemon)
         {
-            BattleMaster.GetInstance().GetCurrentBattle()?
-                .RemoveTrigger(removeOnLeaveTrigger);
+            if (removeOnLeaveTrigger != null)
+            {
+                BattleMaster.GetInstance().GetCurrentBattle()?
+                    .RemoveTrigger(removeOnLeaveTrigger);
+            }
             cleanUpDone = true;
+            onExecute?.Invoke(battleEvent);
         }
         return base.Execute(battleEvent);
     }
