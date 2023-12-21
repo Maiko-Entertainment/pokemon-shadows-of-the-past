@@ -8,12 +8,6 @@ public class BattleTrigger
 
     protected int amountOfTimesTriggered = 0;
 
-    public virtual bool TryToExecute(BattleEvent battleEvent) 
-    {
-        if (MeetsConditions(battleEvent)) return Execute(battleEvent);
-        return true;
-    }
-
     public virtual bool Execute(BattleEvent battleEvent)
     {
         maxTriggers -= 1;

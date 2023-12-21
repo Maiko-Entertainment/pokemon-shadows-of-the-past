@@ -22,7 +22,7 @@ public class BattleTriggerOnPokemon : BattleTrigger
 
     public virtual bool Execute(BattleEventPokemon battleEvent)
     {
-        return base.TryToExecute(battleEvent);
+        return base.Execute(battleEvent);
     }
 
     public override string ToString()
@@ -33,7 +33,7 @@ public class BattleTriggerOnPokemon : BattleTrigger
     public override bool MeetsConditions(BattleEvent ev)
     {
         BattleEventPokemon pokeEvent = ev as BattleEventPokemon;
-        if ( pokeEvent != null && pokeEvent.pokemon.battleId == pokemon.battleId)
+        if ( pokeEvent != null && pokemon != null && pokeEvent.pokemon.battleId == pokemon.battleId)
         {
             return base.MeetsConditions(ev);
         }

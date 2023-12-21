@@ -11,6 +11,6 @@ public class BattleTriggerOnRoundEnd : BattleTrigger
 
     public virtual bool Execute(BattleEventRoundEnd roundEnd)
     {
-        return base.TryToExecute(roundEnd);
+        return base.Execute(roundEnd);
     }
 }

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a6ba33be049ed4983417545e4a7458, type: 3}
+  m_Name: Snarl
+  m_EditorClassIdentifier: 
+  id: Snarl
+  moveName: Snarl
+  description: "The user yells as if it's ranting about something, which lowers the
+    Sp. Atk stats of opposing Pok\xE9mon."
+  power: 55
+  hitChance: 1
+  alwaysHit: 0
+  uses: 15
+  moveType: {fileID: 11400000, guid: fa986c95558394246b7bf199cf39e28c, type: 2}
+  categoryId: 1
+  targetType: 0
+  statusChances: []
+  fieldChances: []
+  moveStatChanges:
+  - statsAmountChange:
+      attack: 0
+      defense: 0
+      spAttack: -1
+      spDefense: 0
+      speed: 0
+      accuracy: 0
+      evasion: 0
+      critical: 0
+    changeChance: 1
+    targetType: 0
+  conditionalBonuses: []
+  isContact: 0
+  drainMultiplier: 0
+  moveCritUp: 0
+  priority: 0
+  percentageHealthCost: 0
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+  animations:
+  - {fileID: 7726894398210948630, guid: 2687db2b277e21340b1074dc024f8b6f, type: 3}
+  - {fileID: 7700162772526085419, guid: 6c9f01d22ed17c2439c95a5954cbb106, type: 3}
+  - {fileID: 8955288602887193107, guid: 6f44a71ed1be3f44eaa366f571cda57a, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 3568165834060000880, guid: 92f4adcccd0ea36429843548a1d09168, type: 3}
+  - {fileID: 7944822217226408529, guid: f357cf6c38853424f96b0667ffffdb79, type: 3}
+  - {fileID: 1733190058133143404, guid: 9d272b7f426271245a9dcdfcbd31ece3, type: 3}
+  - {fileID: 7192018481969620676, guid: d12830958ce4800478486f1c690e75b3, type: 3}
+  - {fileID: 3531474703944891691, guid: 7116afbd55041824fa298fe624b44723, type: 3}

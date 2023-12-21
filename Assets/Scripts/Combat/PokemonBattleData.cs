@@ -138,6 +138,11 @@ public class PokemonBattleData
         return pokemon.GetCurrentStats().health;
     }
 
+    public float GetHealthPercentage()
+    {
+        return GetPokemonCurrentHealth() / (float) GetMaxHealth();
+    }
+
     public int GetPokemonCurrentHealth()
     {
         return pokemon.GetCurrentHealth();

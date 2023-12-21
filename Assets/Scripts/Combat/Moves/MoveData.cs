@@ -8,6 +8,7 @@ public class MoveData : ScriptableObject
 {
     public string id;
     public string moveName = "";
+    [TextArea] public string description;
     public int power;
     public float hitChance = 1f;
     public bool alwaysHit = false;
@@ -19,15 +20,13 @@ public class MoveData : ScriptableObject
     public List<MoveFieldChance> fieldChances = new List<MoveFieldChance>();
     public List<MoveStatChange> moveStatChanges = new List<MoveStatChange>();
     public List<ConditionalMoveBonus> conditionalBonuses = new List<ConditionalMoveBonus>();
-    public List<MoveTags> tags = new List<MoveTags>();
     public bool isContact;
     public float drainMultiplier = 0f;
     public int moveCritUp = 0;
     public int priority = 0;
+    public float percentageHealthCost = 0f;
     public bool stealInsteadOfDestroy = false;
     public List<ItemCategory> destroyHeldItems = new List<ItemCategory>();
-    [TextArea]
-    public string description;
     // If you want the sound to started delayed you need to create a prefab that plays the sound and put it inside the animations list in the moment you want
     public AudioOptions soundEffect;
     public List<BattleAnimationPokemon> animations = new List<BattleAnimationPokemon>();
@@ -44,6 +43,11 @@ public class MoveData : ScriptableObject
         battleEvent.pokemon.ReduceMovePP(this);
         PokemonBattleData pokemonTarget = bm.GetTarget(battleEvent.pokemon, battleEvent.move.targetType);
         bool moveHits = bm.CheckForMoveHit(battleEvent) || alwaysHit;
+        bool hasEnoughHealth = battleEvent.pokemon.GetHealthPercentage() >= percentageHealthCost;
+        if (!hasEnoughHealth)
+        {
+            moveHits = false;
+        }
         // Move use anim
         BattleAnimatorMaster.GetInstance()?.AddEvent(new BattleAnimatorEventPokemonMoveFlowchart(battleEvent));
         if (!moveHits)
@@ -79,6 +83,17 @@ public class MoveData : ScriptableObject
             if (drainMultiplier != 0 && moveHits)
             {
                 BattleMaster.GetInstance().GetCurrentBattle()?.AddTrigger(new BattleTriggerDrainOnMoveDamage(battleEvent.pokemon, this, drainMultiplier));
+            }
+            // Handle health pay
+            if (hasEnoughHealth)
+            {
+                DamageSummary selfDamage = new DamageSummary(
+                    TypesMaster.Instance.nullType,
+                    (int)(battleEvent.pokemon.GetMaxHealth() * percentageHealthCost),
+                    DamageSummarySource.MoveEffect,
+                    GetId()
+                );
+                bm.AddDamageDealtEvent(battleEvent.pokemon, selfDamage);
             }
         }
     }

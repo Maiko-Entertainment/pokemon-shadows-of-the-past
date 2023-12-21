@@ -26,6 +26,6 @@ public class BattleTriggerPokemonDamageDeal : BattleTriggerBeforeDamage
         {
             maxTriggers++;
         }
-        return base.Execute(damageEvent);
+        return true;
     }
 }

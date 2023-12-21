@@ -9,7 +9,7 @@ public class BattleTriggerOnPokemonFaintDialogue : BattleTriggerOnPokemonFaint
         this.messageData = messageData;
     }
 
-    public override bool TryToExecute(BattleEvent battleEvent)
+    public override bool Execute(BattleEvent battleEvent)
     {
         BattleEventPokemonFaint castEvent = (BattleEventPokemonFaint)battleEvent;
         PokemonBattleData faintedPokemon = castEvent.pokemon;
@@ -27,6 +27,6 @@ public class BattleTriggerOnPokemonFaintDialogue : BattleTriggerOnPokemonFaint
             );
 
         }
-        return base.TryToExecute(battleEvent);
+        return base.Execute(battleEvent);
     }
 }

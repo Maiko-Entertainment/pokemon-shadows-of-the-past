@@ -27,6 +27,8 @@ public class UIMenuAnim : MonoBehaviour
     public virtual void CloseDialog(bool isTempt = false)
     {
         isCloseTemporary = isTempt;
+        background.interactable = false;
+        background.blocksRaycasts = false;
     }
 
     public virtual void OnComplete()

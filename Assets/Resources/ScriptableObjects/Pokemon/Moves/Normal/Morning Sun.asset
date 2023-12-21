@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de397844a680ce1489db9094ec48b8ca, type: 3}
+  m_Name: Morning Sun
+  m_EditorClassIdentifier: 
+  id: MorningSun
+  moveName: Morning Sun
+  description: The user restores its own HP. Restores more in harsh sunlight and
+    less when sun is hidden due to weather.
+  power: 0
+  hitChance: 1
+  alwaysHit: 1
+  uses: 10
+  moveType: {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
+  categoryId: 2
+  targetType: 1
+  statusChances: []
+  fieldChances: []
+  moveStatChanges: []
+  conditionalBonuses:
+  - triggerConditionData:
+    - {fileID: 11400000, guid: 17f5ddde39580de4db52128f814066b5, type: 2}
+    target: 0
+    accuracyBonusAdd: 0
+    powerMultiplier: 1
+    healMultiplier: 1.33
+  - triggerConditionData:
+    - {fileID: 11400000, guid: d5992f8d97a06b047a032e0729aa665f, type: 2}
+    target: 0
+    accuracyBonusAdd: 0
+    powerMultiplier: 1
+    healMultiplier: 0.5
+  isContact: 0
+  drainMultiplier: 0
+  moveCritUp: 0
+  priority: 0
+  percentageHealthCost: 0
+  stealInsteadOfDestroy: 0
+  destroyHeldItems: 
+  soundEffect:
+    audio: {fileID: 0}
+    pitch: 1
+    customDuration: -1
+    volumeModifier: 1
+    fadeTime: 0.5
+    loopMusic: 1
+  animations:
+  - {fileID: 1411707322810226079, guid: ba0eea88b0f69e644b6f4c89458dace6, type: 3}
+  - {fileID: 5361808875794825781, guid: 1a14f9b2d2d70d34db69265fd6880d13, type: 3}
+  - {fileID: 7192018481969620676, guid: d12830958ce4800478486f1c690e75b3, type: 3}
+  - {fileID: 5171261980098165801, guid: 1056999a28f51db4ca37f41927a85d9e, type: 3}
+  - {fileID: 2768247979156975970, guid: a7f02945724d40d499e2d512cd15d4c7, type: 3}
+  - {fileID: 2679350634734784108, guid: 4b96e854026594f4fa83a29e66412755, type: 3}
+  - {fileID: 3531474703944891691, guid: 7116afbd55041824fa298fe624b44723, type: 3}
+  restoreTarget: 1
+  restorePercentage: 0.5

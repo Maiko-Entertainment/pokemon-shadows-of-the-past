@@ -23,6 +23,6 @@ public class BattleAnimatorEventPokemonGainStatus : BattleAnimatorEventPokemon
 
     public override string ToString()
     {
-        return base.ToString() + " - " + status.ToString();
+        return base.ToString() + " - " + (status ? status.ToString() : "");
     }
 }

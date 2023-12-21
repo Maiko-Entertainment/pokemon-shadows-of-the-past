@@ -13,7 +13,7 @@ public class PokemonEvolutionDataRequirementItemUse : PokemonEvolutionDataRequir
 
     public override bool MeetsRequirement(PokemonCaughtData pokemon, ItemData item)
     {
-        bool isItemCorrect = item.GetItemId() == item.GetItemId();
+        bool isItemCorrect = this.item.GetItemId() == item.GetItemId();
         return isItemCorrect;
     }
 

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Bite
   moveName: Bite
+  description: The target is bitten with viciously sharp fangs. This may (30%) also
+    make the target flinch.
   power: 60
   hitChance: 1
   alwaysHit: 0
@@ -22,22 +24,20 @@ MonoBehaviour:
   categoryId: 0
   targetType: 0
   statusChances:
-  - effectId: 17
-    effectData: {fileID: 11400000, guid: 0a1e57880a79a574cac5a77ee22623ad, type: 2}
+  - effectData: {fileID: 11400000, guid: 0a1e57880a79a574cac5a77ee22623ad, type: 2}
     targetType: 0
     chance: 0.3
     removeStatusInstead: 0
+  fieldChances: []
   moveStatChanges: []
   conditionalBonuses: []
-  tags: 
-  isContact: 0
+  isContact: 1
   drainMultiplier: 0
   moveCritUp: 0
   priority: 0
+  percentageHealthCost: 0
   stealInsteadOfDestroy: 0
   destroyHeldItems: 
-  description: The target is bitten with viciously sharp fangs. This may (30%) also
-    make the target flinch.
   soundEffect:
     audio: {fileID: 0}
     pitch: 1

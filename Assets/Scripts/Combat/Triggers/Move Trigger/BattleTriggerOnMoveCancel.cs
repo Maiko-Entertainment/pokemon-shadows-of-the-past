@@ -11,8 +11,6 @@ public class BattleTriggerOnMoveCancel : BattleTriggerOnPokemonMove
     public List<MoveTags> moveTags = new List<MoveTags>();
 
     public float chance = 1f;
-
-    public string blockName = "";
     public Dictionary<string, string> extraVariables = new Dictionary<string, string>();
     public BattleTriggerOnMoveCancel(PokemonBattleData pokemon): base(pokemon, null, true)
     {
@@ -26,14 +24,15 @@ public class BattleTriggerOnMoveCancel : BattleTriggerOnPokemonMove
         bool matchesCategory = protectedCategories.Contains(move.GetAttackCategory());
         bool matchesTags = moveTags.Count == 0;
         bool meetsChance = Random.value <= chance;
-        foreach(MoveTags tag in move.tags)
+        /* TODO: Redo once tags are scriptable objects
+         * foreach(MoveTags tag in move.tags)
         {
             if (moveTags.Contains(tag))
             {
                 matchesTags = true;
                 break;
             }
-        }
+        }*/
         if (matchesCategory &&
             matchesTags &&
             meetsChance &&

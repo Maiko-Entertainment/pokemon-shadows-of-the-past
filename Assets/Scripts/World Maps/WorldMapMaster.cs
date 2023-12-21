@@ -13,7 +13,6 @@ public class WorldMapMaster : MonoBehaviour
     public Transform mapNameContainer;
     public WorldInteractableWorldBrainPokemon pokeFollowerPrefab;
     public GameObject shadowWorldEntity;
-    public Material ghostlyMaterial;
 
     public bool forceMapLoad = false;
     public int customMap = 2;

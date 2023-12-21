@@ -27,7 +27,7 @@ public class ItemDataOnPokemonEvolve : ItemDataOnPokemon
         List<PokemonBaseEvolution> evos = pokemon.GetPokemonBaseData().evolutions;
         foreach (PokemonBaseEvolution evo in evos)
         {
-            if (CanUseOnPokemon(pokemon).canUse)
+            if (CanUseOnPokemon(pokemon).canUse && evo.CanEvolve(pokemon, this))
             {
                 UIPauseMenuMaster.GetInstance().CloseAllMenus();
                 PokemonBaseData evolution = evo.pokemon;
