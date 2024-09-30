@@ -13,3 +13,5 @@ This is a fanmade project made in my free time. I wanted to recreate the pokemon
 - Dialog system with cutscenes.
 - Pokemon follow you.
 - Wild pokemon appear in the over world.
+
+## [Link to download the game](https://www.pokecommunity.com/threads/pokemon-shadows-of-the-past-chapter-1-v-0-3-0-out-the-pc-update-drop-pokemon-release-them-and-more.500126/)
