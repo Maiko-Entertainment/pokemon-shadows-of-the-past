@@ -9,7 +9,7 @@ public class UISetInteractableOnCondition : MonoBehaviour
     public List<SpawnConditionItemInInventory> inventoryConditions = new List<SpawnConditionItemInInventory>();
     public Selectable selectable;
 
-    private void Start()
+    private void Awake()
     {
         CheckForSpawn();
     }

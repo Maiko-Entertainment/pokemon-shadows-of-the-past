@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public static class UtilsMaster
 {
+    public static bool IsEnabled(Selectable sel)
+    {
+        return sel.interactable;
+    }
+
     public static List<Selectable> LineSelectables(List<Selectable> selectables)
     {
         for (int i = 0; i < selectables.Count; i++)
@@ -14,7 +19,8 @@ public static class UtilsMaster
             nav.mode = Navigation.Mode.Explicit;
             if (i != 0)
             {
-                nav.selectOnUp = selectables[i - 1].GetComponent<Selectable>();
+                Selectable target = selectables[i - 1];
+                nav.selectOnUp = target.GetComponent<Selectable>();
             }
             else
             {

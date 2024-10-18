@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,5 +46,20 @@ public class UISettingsViewer : MonoBehaviour
         {
             AudioMaster.GetInstance()?.PlaySfx(turnOffSound);
         }
+    }
+    public void OnCloseGame()
+    {
+        UIPauseMenuMaster.GetInstance().OpenConfirmMenu(
+                    "Close Game?",
+                    "Just making sure you didn't hit this by accident lol.",
+                    HandleConfirmCloseGame
+                    );
+    }
+
+    private async void HandleConfirmCloseGame()
+    {
+        float time = TransitionMaster.Instance.TransitionCloseGame();
+        await Task.Delay((int)(time * 1000));
+        Application.Quit();
     }
 }

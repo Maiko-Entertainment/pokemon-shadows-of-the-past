@@ -679,7 +679,7 @@ public class BattleManager
             string gainStatusBlockName = "";
             if (!isStatusAlready)
             {
-                status = statusData.CreateStatusInstance(pokemon, battleEvent.moveSource);
+                 status = statusData.CreateStatusInstance(pokemon, battleEvent.moveSource);
                 typePreventsStatus = UtilsMaster.ContainsAtLeastOne(statusData.GetInmuneTypes(), pokemon.GetTypes());
                 gainStatusBlockName = statusData.onStartStatusBlockName;
             }

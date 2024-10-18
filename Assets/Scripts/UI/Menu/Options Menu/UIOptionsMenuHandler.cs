@@ -15,7 +15,7 @@ public class UIOptionsMenuHandler : MonoBehaviour
         {
             foreach(Transform option in optionsList)
             {
-                if (option.GetComponent<Selectable>())
+                if (option.GetComponent<Selectable>() && option.GetComponent<Selectable>().interactable)
                 {
                     selectables.Add(option.GetComponent<Selectable>());
                 }

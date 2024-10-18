@@ -19,10 +19,10 @@ MonoBehaviour:
     powerMultiplier: 1
     accuracyMultiplier: 1
     criticalLevelChange: 0
-    moveTypeId: 19
+    moveType: {fileID: 0}
   statusClears: 
   statusAdds:
-  - effectId: 8
+  - effectData: {fileID: 11400000, guid: aa813097c3f843a44aa1aeb554aec1d7, type: 2}
     targetType: 1
     chance: 1
     removeStatusInstead: 0
@@ -32,5 +32,7 @@ MonoBehaviour:
   tacticName: Play Fetch
   tacticDescription: Try to befriend the pokemon by playing fetch!
   tacticIcon: {fileID: 21300000, guid: f6a94ecd8adc5834a97daca86e2d007d, type: 3}
-  workingTypes: 0a0000000600000004000000
+  workingTypes:
+  - {fileID: 11400000, guid: 960393600b702024dbf486d9eea47f94, type: 2}
+  - {fileID: 11400000, guid: 2afc142f5ecadf249860dcfb25befa04, type: 2}
   failBlockName: Play Fetch Fail

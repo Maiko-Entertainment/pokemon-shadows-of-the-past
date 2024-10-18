@@ -15,13 +15,9 @@ public class FungusSetSaveElement : Command
 
     public string GetId()
     {
-        if (string.IsNullOrEmpty(saveIdString))
+        if (saveElement != null)
         {
-            if (saveElement != null)
-            {
-                return saveElement?.GetId();
-            }
-            return variableId.ToString();
+            return saveElement?.GetId();
         }
         return saveIdString;
     }
