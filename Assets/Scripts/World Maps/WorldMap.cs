@@ -21,6 +21,7 @@ public class WorldMap : MonoBehaviour
     public List<WorldMapTimeOfDayEffect> timeOfDayEffects = new List<WorldMapTimeOfDayEffect>();
     public bool noSave = false;
     public bool isMainMenu = false;
+    public List<WorldMapPokemonEncounter> pokemonEncounters = new List<WorldMapPokemonEncounter>();
 
     public void HandleEntrance()
     {
@@ -29,6 +30,15 @@ public class WorldMap : MonoBehaviour
             WorldMapMaster.GetInstance().CreateTitleCard(titleCard);
         CreateDayEffects();
         TransitionMaster.GetInstance()?.SetCameraProfile(volumeProfile);
+    }
+
+    public WorldMapPokemonEncounter GetWorldMapPokemonEncounter(WorldMapPokemonEncounterCategory category)
+    {
+        foreach(WorldMapPokemonEncounter encounter in pokemonEncounters)
+        {
+            if (encounter.category == category) return encounter;
+        }
+        return null;
     }
 
     public void CreateDayEffects()

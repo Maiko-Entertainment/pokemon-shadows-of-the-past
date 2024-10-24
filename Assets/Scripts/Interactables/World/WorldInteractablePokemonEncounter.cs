@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// TODO: Delete this after WorldInteractablePokemonEncounter2 has fully replaced it
 public class WorldInteractablePokemonEncounter : WorldInteractable
 {
     public List<PokemonEncounter> possibleEncounters = new List<PokemonEncounter>();

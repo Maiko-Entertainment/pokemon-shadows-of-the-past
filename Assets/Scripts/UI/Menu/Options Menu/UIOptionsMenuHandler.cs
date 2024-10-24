@@ -63,6 +63,10 @@ public class UIOptionsMenuHandler : MonoBehaviour
     {
         UIPauseMenuMaster.GetInstance().OpenPokedexViewer();
     }
+    public void OpenMapView()
+    {
+        UIPauseMenuMaster.GetInstance().OpenMapViewer();
+    }
     public void OpenPokemonView()
     {
         UIPauseMenuMaster.GetInstance().OpenPokemonViewer();

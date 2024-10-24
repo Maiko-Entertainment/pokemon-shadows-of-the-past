@@ -10,6 +10,7 @@ public class UIPauseMenuMaster : MonoBehaviour
     public UIMenuPile pokemonViewerPrefab;
     public UIMenuPile itemViewerPrefab;
     public UIMenuPile pokedexViewerPrefab;
+    public UIMenuPile mapViewerPrefab;
     public UIMenuPile shopViewerPrefab;
     public UIMenuPile pcViewerPrefab;
     public UIMenuPile saveViewerPrefab;
@@ -136,6 +137,12 @@ public class UIPauseMenuMaster : MonoBehaviour
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
         OpenMenu(pokedexViewerPrefab);
     }
+    public void OpenMapViewer()
+    {
+        if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
+        OpenMenu(mapViewerPrefab);
+    }
+
     public void OpenPokemonViewer()
     {
         if (menuOpenSound) AudioMaster.GetInstance().PlaySfx(menuOpenSound);
